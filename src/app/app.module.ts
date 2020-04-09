@@ -12,7 +12,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TeacherStaffComponent } from './components/dashboard/list-page/teacher-staff/teacher-staff.component';
 import { ListPageComponent } from './components/dashboard/list-page/list-page.component';
 import { StudentsComponent } from './components/dashboard/list-page/students/students.component';
-import { ClassComponent } from './dashboard/list-page/class/class.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +21,7 @@ import { ClassComponent } from './dashboard/list-page/class/class.component';
     DashboardComponent,
     TeacherStaffComponent,
     ListPageComponent,
-    StudentsComponent,
-    ClassComponent
+    StudentsComponent
   ],
   imports: [
     BrowserModule,
