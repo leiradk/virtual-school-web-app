@@ -12,6 +12,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TeacherStaffComponent } from './components/dashboard/list-page/teacher-staff/teacher-staff.component';
 import { ListPageComponent } from './components/dashboard/list-page/list-page.component';
 import { StudentsComponent } from './components/dashboard/list-page/students/students.component';
+import { ContentComponent } from './components/dashboard/content/content.component';
+import { NavbarComponent } from './components/dashboard/navbar/navbar.component';
+import { SidebarComponent } from './components/dashboard/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { StudentsComponent } from './components/dashboard/list-page/students/stu
     DashboardComponent,
     TeacherStaffComponent,
     ListPageComponent,
-    StudentsComponent
+    StudentsComponent,
+    ContentComponent,
+    NavbarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
