@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { LoginComponent } from "./components/landing-page/login/login.component";
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
 
 const routes: Routes = [
   {
@@ -24,6 +25,22 @@ const routes: Routes = [
         component: LoginComponent,
       },
     ],
+  },
+
+  {
+    path: "dashboard",
+    component: DashboardComponent,
+    // children: [
+    //   {
+    //     path: "",
+    //     redirectTo: "main",
+    //     pathMatch: "full",
+    //   },
+    //   {
+    //     path: "main",
+    //     component: DashboardComponent,
+    //   },
+    // ],
   },
 ];
 

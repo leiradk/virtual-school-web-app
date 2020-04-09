@@ -9,13 +9,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginComponent } from './components/landing-page/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TeacherStaffComponent } from './components/dashboard/list-page/teacher-staff/teacher-staff.component';
+import { ListPageComponent } from './components/dashboard/list-page/list-page.component';
+import { StudentsComponent } from './components/dashboard/list-page/students/students.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    TeacherStaffComponent,
+    ListPageComponent,
+    StudentsComponent
   ],
   imports: [
     BrowserModule,
