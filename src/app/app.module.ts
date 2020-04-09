@@ -9,12 +9,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginComponent } from './components/landing-page/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { TeacherStaffComponent } from './components/dashboard/list-page/teacher-staff/teacher-staff.component';
-import { ListPageComponent } from './components/dashboard/list-page/list-page.component';
-import { StudentsComponent } from './components/dashboard/list-page/students/students.component';
+import { TeacherStaffComponent } from './components/dashboard/content/list-page/teacher-staff/teacher-staff.component';
+import { ListPageComponent } from './components/dashboard/content/list-page/list-page.component';
+import { StudentsComponent } from './components/dashboard/content/list-page/students/students.component';
 import { ContentComponent } from './components/dashboard/content/content.component';
 import { NavbarComponent } from './components/dashboard/navbar/navbar.component';
 import { SidebarComponent } from './components/dashboard/sidebar/sidebar.component';
+import { MainPageComponent } from './components/dashboard/content/main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SidebarComponent } from './components/dashboard/sidebar/sidebar.compone
     StudentsComponent,
     ContentComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
