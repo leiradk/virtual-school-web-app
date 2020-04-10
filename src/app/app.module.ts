@@ -15,7 +15,7 @@ import { StudentsComponent } from './components/dashboard/content/list-page/stud
 import { ContentComponent } from './components/dashboard/content/content.component';
 import { NavbarComponent } from './components/dashboard/navbar/navbar.component';
 import { SidebarComponent } from './components/dashboard/sidebar/sidebar.component';
-import { MainPageComponent } from './components/dashboard/content/main-page/main-page.component';
+import { ClasslistComponent } from './components/dashboard/content/list-page/classlist/classlist.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { MainPageComponent } from './components/dashboard/content/main-page/main
     ContentComponent,
     NavbarComponent,
     SidebarComponent,
-    MainPageComponent
+    ClasslistComponent
   ],
   imports: [
     BrowserModule,
