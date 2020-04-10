@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentsComponent implements OnInit {
 
+  load = false;
   constructor() { }
 
   ngOnInit(): void {
+    // setTimeout(() => {
+    // this.load = true;
+    // }, 1000)
+
   }
 
 }

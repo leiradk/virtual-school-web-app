@@ -1,4 +1,6 @@
 // Call the dataTables jQuery plugin
-$(document).ready(function() {
+jQuery(document).ready(function($) {
+  $.noConflict();
   $('#dataTable').DataTable();
 });
+
