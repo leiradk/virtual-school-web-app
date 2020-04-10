@@ -9,6 +9,8 @@ export class TeacherStaffComponent implements OnInit {
   searchText;
   public people: any;
   p: number = 1;
+  viewList: number = 5;
+
   constructor() {}
 
   ngOnInit(): void {
