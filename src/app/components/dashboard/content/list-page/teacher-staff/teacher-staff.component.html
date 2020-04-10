@@ -17,46 +17,55 @@
     </div>
     <div class="card-body">
       <!-- <div class="table-responsive"> -->
-        <table class="footable">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Office</th>
-              <th>Age</th>
-              <th>Start date</th>
-              <th>Salary</th>
-            </tr>
-          </thead>
-          <tfoot>
-            <tr>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Office</th>
-              <th>Age</th>
-              <th>Start date</th>
-              <th>Salary</th>
-            </tr>
-          </tfoot>
-          <tbody>
-            <tr>
-              <td>Tiger Nixon</td>
-              <td>System Architect</td>
-              <td>Edinburgh</td>
-              <td>61</td>
-              <td>2011/04/25</td>
-              <td>$320,800</td>
-            </tr>
-            <tr>
-              <td>Garrett Winters</td>
-              <td>Accountant</td>
-              <td>Tokyo</td>
-              <td>63</td>
-              <td>2011/07/25</td>
-              <td>$170,750</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="search-field">
+        <input type="text" placeholder="Search" [(ngModel)]="searchText" />
+      </div>
+      <table
+        id="dtBasicExample"
+        class="table table-striped table-bordered table-sm"
+        cellspacing="0"
+        width="100%"
+      >
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Age</th>
+            <th>Start date</th>
+            <th>Salary</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Age</th>
+            <th>Start date</th>
+            <th>Salary</th>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr
+            *ngFor="
+              let staff of people
+                | filter: searchText
+                | paginate: { itemsPerPage: 5, currentPage: p };
+              let i = index
+            "
+          >
+            <td>{{ staff.Name }}</td>
+            <td>{{ staff.Position }}</td>
+            <td>{{ staff.Office }}</td>
+            <td>{{ staff.Age }}</td>
+            <td>{{ staff.StartDate }}</td>
+            <td>{{ staff.Salary }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
       <!-- </div> -->
     </div>
   </div>

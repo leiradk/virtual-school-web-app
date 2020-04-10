@@ -2,10 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginComponent } from './components/landing-page/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -37,6 +41,8 @@ import { MainPageComponent } from './components/dashboard/content/main-page/main
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
