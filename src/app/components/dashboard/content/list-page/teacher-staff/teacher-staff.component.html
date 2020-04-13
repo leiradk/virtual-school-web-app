@@ -17,46 +17,81 @@
     </div>
     <div class="card-body">
       <!-- <div class="table-responsive"> -->
-        <table class="footable">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Office</th>
-              <th>Age</th>
-              <th>Start date</th>
-              <th>Salary</th>
-            </tr>
-          </thead>
-          <tfoot>
-            <tr>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Office</th>
-              <th>Age</th>
-              <th>Start date</th>
-              <th>Salary</th>
-            </tr>
-          </tfoot>
-          <tbody>
-            <tr>
-              <td>Tiger Nixon</td>
-              <td>System Architect</td>
-              <td>Edinburgh</td>
-              <td>61</td>
-              <td>2011/04/25</td>
-              <td>$320,800</td>
-            </tr>
-            <tr>
-              <td>Garrett Winters</td>
-              <td>Accountant</td>
-              <td>Tokyo</td>
-              <td>63</td>
-              <td>2011/07/25</td>
-              <td>$170,750</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <div class="dataTables_length" id="dataTable_length">
+            <label>
+              show:<select
+                class="custom-select custom-select-sm form-control form-control-sm"
+                [(ngModel)]="viewList"
+              >
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+              </select> entry
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <div class="dataTable_filter" id="dataTable_filter">
+            <label for="Search">
+              Search:
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                placeholder="Search"
+                [(ngModel)]="searchText"
+            /></label>
+          </div>
+        </div>
+      </div>
+
+      <table
+        id="dtBasicExample"
+        class="table table-striped table-bordered table-sm"
+        cellspacing="0"
+        width="100%"
+      >
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Age</th>
+            <th>Start date</th>
+            <th>Salary</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Age</th>
+            <th>Start date</th>
+            <th>Salary</th>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr
+            *ngFor="
+              let staff of people
+                | filter: searchText
+                | paginate: { itemsPerPage: viewList, currentPage: p };
+              let i = index
+            "
+          >
+            <td>{{ staff.Name }}</td>
+            <td>{{ staff.Position }}</td>
+            <td>{{ staff.Office }}</td>
+            <td>{{ staff.Age }}</td>
+            <td>{{ staff.StartDate }}</td>
+            <td>{{ staff.Salary }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
       <!-- </div> -->
     </div>
   </div>

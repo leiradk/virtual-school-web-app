@@ -6,7 +6,8 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { MainPageComponent } from "./components/dashboard/content/main-page/main-page.component";
 import { StudentsComponent } from "./components/dashboard/content/list-page/students/students.component";
 import { TeacherStaffComponent } from "./components/dashboard/content/list-page/teacher-staff/teacher-staff.component";
-
+import { ClasslistComponent } from "./components/dashboard/content/list-page/classlist/classlist.component";
+import { TeacherComponent } from "./components/dashboard/content/add-page/teacher/teacher.component";
 const routes: Routes = [
   {
     path: "",
@@ -50,7 +51,15 @@ const routes: Routes = [
       {
         path: "staff-teacher-lists",
         component: TeacherStaffComponent,
+      }, 
+      {
+        path: "class-list",
+        component: ClasslistComponent,
       },
+      {
+        path: "add-teacher",
+        component: TeacherComponent
+      }
     ],
   },
 ];
