@@ -29,6 +29,7 @@ import { NavbarComponent } from "./components/dashboard/navbar/navbar.component"
 import { SidebarComponent } from "./components/dashboard/sidebar/sidebar.component";
 import { MainPageComponent } from "./components/dashboard/content/main-page/main-page.component";
 import { ClasslistComponent } from './components/dashboard/content/list-page/classlist/classlist.component';
+import { ParentListComponent } from './components/dashboard/content/list-page/parent-list/parent-list.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ClasslistComponent } from './components/dashboard/content/list-page/cla
     NavbarComponent,
     SidebarComponent,
     MainPageComponent,
-    ClasslistComponent
+    ClasslistComponent,
+    ParentListComponent
   ],
   imports: [
     BrowserModule,
