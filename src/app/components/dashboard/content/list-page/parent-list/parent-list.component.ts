@@ -1,17 +1,17 @@
-import { Component, OnInit } from "@angular/core";
-import $ from "jQuery";
+import { Component, OnInit } from '@angular/core';
+
 @Component({
-  selector: "app-students",
-  templateUrl: "./students.component.html",
-  styleUrls: ["./students.component.scss"],
+  selector: 'app-parent-list',
+  templateUrl: './parent-list.component.html',
+  styleUrls: ['./parent-list.component.scss']
 })
-export class StudentsComponent implements OnInit {
+export class ParentListComponent implements OnInit {
+
   searchText;
   public people: any;
   p: number = 1;
   viewList: number = 5;
-
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     this.people = [
@@ -64,6 +64,6 @@ export class StudentsComponent implements OnInit {
         Salary: "$320,800",
       },
     ];
-
   }
+
 }

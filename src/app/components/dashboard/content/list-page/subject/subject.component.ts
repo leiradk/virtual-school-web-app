@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import $ from "jQuery";
 @Component({
-  selector: "app-classlist",
-  templateUrl: "./classlist.component.html",
-  styleUrls: ["./classlist.component.scss"],
+  selector: "app-subject",
+  templateUrl: "./subject.component.html",
+  styleUrls: ["./subject.component.scss"],
 })
-export class ClasslistComponent implements OnInit {
+export class SubjectComponent implements OnInit {
 
     searchText;
     public people: any;

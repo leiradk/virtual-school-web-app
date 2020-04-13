@@ -5,53 +5,45 @@
   <p class="mb-4">
     DataTables is a third party plugin that is used to generate the demo table
     below. For more information about DataTables, please visit the
-    <a target="_blank" href="https://datatables.net"
-      >official DataTables documentation</a
-    >.
+    <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.
   </p>
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Teacher & Staff List</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Student List</h6>
     </div>
     <div class="card-body">
-      <!-- <div class="table-responsive"> -->
-      <div class="row">
-        <div class="col-sm-12 col-md-6">
-          <div class="dataTables_length" id="dataTable_length">
-            <label>
-              show:<select
-                class="custom-select custom-select-sm form-control form-control-sm"
-                [(ngModel)]="viewList"
-              >
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-              </select> entry
-            </label>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-6">
-          <div class="dataTable_filter" id="dataTable_filter">
-            <label for="Search">
-              Search:
-              <input
-                type="text"
-                class="form-control form-control-sm"
-                placeholder="Search"
-                [(ngModel)]="searchText"
-            /></label>
+      <div class="table-responsive">
+        <div class="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="dataTable_length">
+                <label>
+                  Show
+                  <select class="custom-select custom-select-sm form-control form-control-sm" [(ngModel)]="viewList">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_filter" id="dataTable_filter">
+                <label for="Search">
+                  Search:
+                  <input type="search" class="form-control form-control-sm" aria-controls="dataTable"
+                    [(ngModel)]="searchText" />
+                </label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <table
-        id="dtBasicExample"
-        class="table table-striped table-bordered table-sm"
-        cellspacing="0"
-        width="100%"
-      >
+      <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
           <tr>
             <th>Name</th>
@@ -73,14 +65,12 @@
           </tr>
         </tfoot>
         <tbody>
-          <tr
-            *ngFor="
+          <tr *ngFor="
               let staff of people
                 | filter: searchText
                 | paginate: { itemsPerPage: viewList, currentPage: p };
               let i = index
-            "
-          >
+            ">
             <td>{{ staff.Name }}</td>
             <td>{{ staff.Position }}</td>
             <td>{{ staff.Office }}</td>
@@ -90,10 +80,8 @@
           </tr>
         </tbody>
       </table>
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
-
-      <!-- </div> -->
     </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 </div>
 <!-- /.container-fluid -->

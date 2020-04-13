@@ -7,7 +7,9 @@ import { MainPageComponent } from "./components/dashboard/content/main-page/main
 import { StudentsComponent } from "./components/dashboard/content/list-page/students/students.component";
 import { TeacherStaffComponent } from "./components/dashboard/content/list-page/teacher-staff/teacher-staff.component";
 import { ClasslistComponent } from "./components/dashboard/content/list-page/classlist/classlist.component";
-import { TeacherComponent } from "./components/dashboard/content/add-page/teacher/teacher.component";
+import { ParentListComponent } from "./components/dashboard/content/list-page/parent-list/parent-list.component";
+import { SubjectComponent } from './components/dashboard/content/list-page/subject/subject.component';
+
 const routes: Routes = [
   {
     path: "",
@@ -57,9 +59,13 @@ const routes: Routes = [
         component: ClasslistComponent,
       },
       {
-        path: "add-teacher",
-        component: TeacherComponent
-      }
+        path: "parents-list",
+        component: ParentListComponent,
+      },
+      {
+        path: "subject-list",
+        component: SubjectComponent,
+      },
     ],
   },
 ];
