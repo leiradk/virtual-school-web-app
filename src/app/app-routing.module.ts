@@ -8,6 +8,7 @@ import { StudentsComponent } from "./components/dashboard/content/list-page/stud
 import { TeacherStaffComponent } from "./components/dashboard/content/list-page/teacher-staff/teacher-staff.component";
 import { ClasslistComponent } from "./components/dashboard/content/list-page/classlist/classlist.component";
 import { ParentListComponent } from "./components/dashboard/content/list-page/parent-list/parent-list.component";
+import { SubjectComponent } from './components/dashboard/content/list-page/subject/subject.component';
 
 const routes: Routes = [
   {
@@ -60,6 +61,10 @@ const routes: Routes = [
       {
         path: "parents-list",
         component: ParentListComponent,
+      },
+      {
+        path: "subject-list",
+        component: SubjectComponent,
       },
     ],
   },
