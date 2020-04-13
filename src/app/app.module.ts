@@ -30,6 +30,7 @@ import { SidebarComponent } from "./components/dashboard/sidebar/sidebar.compone
 import { MainPageComponent } from "./components/dashboard/content/main-page/main-page.component";
 import { ClasslistComponent } from './components/dashboard/content/list-page/classlist/classlist.component';
 import { ParentListComponent } from './components/dashboard/content/list-page/parent-list/parent-list.component';
+import { SubjectComponent } from './components/dashboard/content/list-page/subject/subject.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ParentListComponent } from './components/dashboard/content/list-page/pa
     SidebarComponent,
     MainPageComponent,
     ClasslistComponent,
-    ParentListComponent
+    ParentListComponent,
+    SubjectComponent
   ],
   imports: [
     BrowserModule,
