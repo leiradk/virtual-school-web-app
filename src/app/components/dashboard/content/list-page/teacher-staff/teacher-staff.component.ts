@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import $ from "jQuery";
+
 @Component({
   selector: "app-teacher-staff",
   templateUrl: "./teacher-staff.component.html",
