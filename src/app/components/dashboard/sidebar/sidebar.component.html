@@ -72,8 +72,8 @@
         aria-expanded="true"
         aria-controls="collapseUtilities"
       >
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>Utilities</span>
+        <i class="fas fa-fw fa-plus"></i>
+        <span>Add</span>
       </a>
       <div
         id="collapseUtilities"
@@ -82,8 +82,8 @@
         data-parent="#accordionSidebar"
       >
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Custom Utilities:</h6>
-          <a class="collapse-item" href="utilities-color.html">Colors</a>
+          <h6 class="collapse-header">Add for:</h6>
+          <a class="collapse-item" [routerLink]="['/dashboard/add-teacher']" routerLinkActive="active">Teachers</a>
           <a class="collapse-item" href="utilities-border.html">Borders</a>
           <a class="collapse-item" href="utilities-animation.html"
             >Animations</a

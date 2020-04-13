@@ -29,6 +29,8 @@ import { NavbarComponent } from "./components/dashboard/navbar/navbar.component"
 import { SidebarComponent } from "./components/dashboard/sidebar/sidebar.component";
 import { MainPageComponent } from "./components/dashboard/content/main-page/main-page.component";
 import { ClasslistComponent } from './components/dashboard/content/list-page/classlist/classlist.component';
+import { AddPageComponent } from './components/dashboard/content/add-page/add-page.component';
+import { TeacherComponent } from './components/dashboard/content/add-page/teacher/teacher.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { ClasslistComponent } from './components/dashboard/content/list-page/cla
     NavbarComponent,
     SidebarComponent,
     MainPageComponent,
-    ClasslistComponent
+    ClasslistComponent,
+    AddPageComponent,
+    TeacherComponent
   ],
   imports: [
     BrowserModule,

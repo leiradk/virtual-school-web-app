@@ -14,4 +14,8 @@ export class ApiHostService {
   signin(payload) {
     return this.https.post(`${this.localhost}login`, payload)
   }
+
+  addTeacher(payload) {
+    return this.https.post(`${this.localhost}admin/add/teacher`, payload);
+  }
 }
