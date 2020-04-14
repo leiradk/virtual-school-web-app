@@ -101,32 +101,34 @@
         (ngSubmit)="onSubmit()"
         >
           <div class="form-group">
-            <label for="inputEmail">Email address</label>
-            <input type="email" class="form-control" id="inputEmail" aria-describedby="email"
-              placeholder="Enter email"formControlName="email" >
+            <label for="inputEmail">Email address <span class="validator" *ngIf="email.invalid && email.touched"> - Email is Required</span></label>
+            <input required type="email" class="form-control" id="inputEmail" aria-describedby="email"
+              placeholder="Enter email" formControlName="email">
+              {{email.touched}}
+              {{email.valid}}
           </div>
           <div class="form-group">
-            <label for="inputFirstName">First Name</label>
-            <input type="email" class="form-control" id="inputFirstName" aria-describedby="emailHelp"
-              placeholder="Enter email" formControlName="firstname">
+            <label for="inputFirstName">Firstname <span class="validator" *ngIf="firstname.invalid && firstname.touched"> - Firstname is required</span></label>
+            <input type="text" class="form-control" id="inputFirstName" aria-describedby="firstnameHelp"
+              placeholder="Enter firstname" formControlName="firstname" formControlName="firstname">
           </div>
           <div class="form-group">
             <label for="inputMiddleName">Middle Name (Optional)</label>
-            <input type="email" class="form-control" id="inputMiddleName" aria-describedby="emailHelp"
+            <input type="text" class="form-control" id="inputMiddleName" aria-describedby="middlenameHelp"
               placeholder="Enter email" formControlName="middlename">
-            <small id="emailHelp" class="form-text text-muted">If you dont have one, you can just skip this field.</small>
+            <small id="middlenameHelp" class="form-text text-muted">If you dont have one, you can just skip this field.</small>
           </div>
           <div class="form-group">
-            <label for="inputLastName">Last Name</label>
-            <input type="email" class="form-control" id="inputLastName" aria-describedby="emailHelp"
+            <label for="inputLastName">Last Name <span class="validator" *ngIf="lastname.invalid && lastname.touched"> - Lastname is required</span></label>
+            <input type="text" class="form-control" id="inputLastName" aria-describedby="lastnameHelp"
               placeholder="Enter email" formControlName="lastname">
           </div>
           <div class="form-group">
-            <label for="inputPassword">Password</label>
+            <label for="inputPassword">Password <span class="validator" *ngIf="password.invalid && password.touched"> - Input 6 character or more</span></label>
             <input type="password" class="form-control" id="inputPassword" placeholder="Password" formControlName="password">
           </div>
           <div class="form-group">
-            <label for="inputReTypePassword">Password</label>
+            <label for="inputReTypePassword">Password <span class="validator" *ngIf="repassword.invalid && repassword.touched"> - Input 6 character or more</span></label>
             <input type="password" class="form-control" id="inputReTypePassword" placeholder="Password" formControlName="repassword">
           </div>
           <button type="submit" class="btn btn-primary" [disabled]="addStudentForm.valid === false">Submit</button>

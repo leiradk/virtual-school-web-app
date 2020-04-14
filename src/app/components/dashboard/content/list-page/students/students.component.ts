@@ -27,6 +27,25 @@ export class StudentsComponent implements OnInit {
 
     this.mockData();
   }
+
+  get email() {
+    return this.addStudentForm.get('email') as FormControl;
+  } 
+  get firstname() {
+    return this.addStudentForm.get('firstname') as FormControl;
+  }
+  get middlename() {
+    return this.addStudentForm.get('middlename') as FormControl;
+  }
+  get lastname() {
+    return this.addStudentForm.get('lastname') as FormControl;
+  }
+  get password() {
+    return this.addStudentForm.get('password') as FormControl;
+  }
+  get repassword() {
+    return this.addStudentForm.get('repassword') as FormControl;
+  }
   studentFormModel() {
     this.addStudentForm = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
