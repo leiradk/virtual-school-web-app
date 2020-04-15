@@ -5,6 +5,8 @@ import {
   Validators,
   FormControl,
 } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
+
 @Component({
   selector: "app-students",
   templateUrl: "./students.component.html",
@@ -19,6 +21,7 @@ export class StudentsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private toastr: ToastrService
   ) {
     this.studentFormModel();
   }
@@ -56,6 +59,10 @@ export class StudentsComponent implements OnInit {
       repassword: [null, [Validators.required, Validators.minLength(6)]],
     });
   }
+
+  showSuccess() {
+    this.toastr.success('Hello WOrld', 'Toastr Fun', {timeOut: 2000})
+  }
   onSubmit(){
     console.log(this.addStudentForm);
     const { value } = this.addStudentForm;
@@ -66,6 +73,7 @@ export class StudentsComponent implements OnInit {
       status: 'student'
     }
     this.people.push(data);
+    // this.showSuccess();
   }
   mockData(){
     this.people = [

@@ -12,7 +12,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
-
+import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { ToastrModule} from "ngx-toastr";
 //services
 import { ApiHostService } from "./services/api-host.service";
 import { SystemUtils } from "./services/system.utils";
@@ -59,6 +60,8 @@ import { SubjectComponent } from './components/dashboard/content/list-page/subje
     NgxPaginationModule,
     // HttpModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [ ApiHostService, SystemUtils],
   bootstrap: [AppComponent],
