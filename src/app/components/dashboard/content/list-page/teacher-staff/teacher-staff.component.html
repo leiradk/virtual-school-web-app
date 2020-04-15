@@ -11,7 +11,8 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Teacher List</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Teacher List <a data-toggle="modal" data-target="#myModal"><i
+        class="fas fa-fw fa-plus-circle"></i></a></h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -46,22 +47,18 @@
       <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
           <tr>
+            <th>Email</th>
             <th>Name</th>
             <th>Position</th>
-            <th>Office</th>
-            <th>Age</th>
-            <th>Start date</th>
-            <th>Salary</th>
+            <th>Department</th>
           </tr>
         </thead>
         <tfoot>
           <tr>
+            <th>Email</th>
             <th>Name</th>
             <th>Position</th>
-            <th>Office</th>
-            <th>Age</th>
-            <th>Start date</th>
-            <th>Salary</th>
+            <th>Department</th>
           </tr>
         </tfoot>
         <tbody>
@@ -71,12 +68,10 @@
                 | paginate: { itemsPerPage: viewList, currentPage: p };
               let i = index
             ">
-            <td>{{ staff.Name }}</td>
-            <td>{{ staff.Position }}</td>
-            <td>{{ staff.Office }}</td>
-            <td>{{ staff.Age }}</td>
-            <td>{{ staff.StartDate }}</td>
-            <td>{{ staff.Salary }}</td>
+            <td>{{ staff.email }}</td>
+            <td>{{ staff.name }}</td>
+            <td>{{ staff.position }}</td>
+            <td>{{ staff.department }}</td>
           </tr>
         </tbody>
       </table>
@@ -85,3 +80,82 @@
   </div>
 </div>
 <!-- /.container-fluid -->
+
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add Student</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form
+        class="user"
+        [formGroup]="addStaffFOrm"
+        (ngSubmit)="onSubmit()"
+        >
+          <div class="form-group">
+            <label for="inputEmail">Email address <span class="validator" *ngIf="email.invalid && email.touched"> - Email is Required</span></label>
+            <input required type="email" class="form-control" id="inputEmail" aria-describedby="email"
+              placeholder="Enter email" formControlName="email">
+
+          </div>
+          <div class="form-group">
+            <label for="inputFirstName">Firstname <span class="validator" *ngIf="firstname.invalid && firstname.touched"> - Firstname is required</span></label>
+            <input type="text" class="form-control" id="inputFirstName" aria-describedby="firstnameHelp"
+              placeholder="Enter firstname" formControlName="firstname" formControlName="firstname">
+          </div>
+          <div class="form-group">
+            <label for="inputMiddleName">Middle Name (Optional)</label>
+            <input type="text" class="form-control" id="inputMiddleName" aria-describedby="middlenameHelp"
+              placeholder="Enter email" formControlName="middlename">
+            <small id="middlenameHelp" class="form-text text-muted">If you dont have one, you can just skip this field.</small>
+          </div>
+          <div class="form-group">
+            <label for="inputLastName">Last Name <span class="validator" *ngIf="lastname.invalid && lastname.touched"> - Lastname is required</span></label>
+            <input type="text" class="form-control" id="inputLastName" aria-describedby="lastnameHelp"
+              placeholder="Enter email" formControlName="lastname">
+          </div>
+          <div class="form-group">
+            <label for="inputLastName">Postition <span class="validator" *ngIf="position.invalid && position.touched"> - Position is required</span></label>
+            <input type="text" class="form-control" id="inputPosition" aria-describedby="positionHelp"
+              placeholder="Enter Position" formControlName="position">
+          </div>
+          <div class="form-group">
+            <label for="inputLastName">Department <span class="validator" *ngIf="department.invalid && department.touched"> - Department is required</span></label>
+            <input type="text" class="form-control" id="inputDepartment" aria-describedby="departmentHelp"
+              placeholder="Enter Department" formControlName="department">
+          </div>
+          <div class="form-group">
+            <label for="inputLastName">Username <span class="validator" *ngIf="username.invalid && username.touched"> - Lastname is required</span></label>
+            <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp"
+              placeholder="Enter username" formControlName="username">
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Password <span class="validator" *ngIf="password.invalid && password.touched"> - Input 6 character or more</span></label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password" formControlName="password">
+          </div>
+          <div class="form-group">
+            <label for="inputReTypePassword">Re-type Password <span class="validator" *ngIf="repassword.invalid && repassword.touched"> - Input 6 character or more</span></label>
+            <input type="password" class="form-control" id="inputReTypePassword" placeholder="Password" formControlName="repassword">
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="addStaffFOrm.valid === false">Submit</button>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"  data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

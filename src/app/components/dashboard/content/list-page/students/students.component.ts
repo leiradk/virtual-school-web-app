@@ -73,7 +73,9 @@ export class StudentsComponent implements OnInit {
       status: 'student'
     }
     this.people.push(data);
-    // this.showSuccess();
+    setTimeout(() => {
+      this.showSuccess();
+    }, 1000);
   }
   mockData(){
     this.people = [
