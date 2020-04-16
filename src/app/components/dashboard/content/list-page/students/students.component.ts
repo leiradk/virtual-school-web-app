@@ -7,7 +7,7 @@ import {
 } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { ApiHostService } from "../../../../../services/api-host.service";
-
+import { SystemUtils } from "../../../../../services/system.utils";
 
 @Component({
   selector: "app-students",
@@ -20,23 +20,34 @@ export class StudentsComponent implements OnInit {
   public people: any = [];
   p: number = 1;
   viewList: number = 5;
-
+  userData: any;
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
-    private apiService: ApiHostService
+    private apiService: ApiHostService,
+    private system: SystemUtils
   ) {
     this.studentFormModel();
   }
 
   ngOnInit(): void {
-
-    this.mockData();
+    this.userData = this.system.retrieveItem("userData");
+    this.getStudents();
+    // this.mockData();
   }
 
+  getStudents() {
+    const { token } = this.userData;
+    this.apiService.getStudents(token).subscribe((response: any) => {
+      const { status, body } = response;
+      if(status === 200) {
+        this.people = body;
+      }
+    });
+  }
   // get email() {
   //   return this.addStudentForm.get('email') as FormControl;
-  // } 
+  // }
   // get firstname() {
   //   return this.addStudentForm.get('firstname') as FormControl;
   // }
@@ -47,19 +58,19 @@ export class StudentsComponent implements OnInit {
   //   return this.addStudentForm.get('lastname') as FormControl;
   // }
   get username() {
-    return this.addStudentForm.get('username') as FormControl;
+    return this.addStudentForm.get("username") as FormControl;
   }
   get position() {
-    return this.addStudentForm.get('position') as FormControl;
+    return this.addStudentForm.get("position") as FormControl;
   }
   get department() {
-    return this.addStudentForm.get('department') as FormControl;
+    return this.addStudentForm.get("department") as FormControl;
   }
   get password() {
-    return this.addStudentForm.get('password') as FormControl;
+    return this.addStudentForm.get("password") as FormControl;
   }
   get repassword() {
-    return this.addStudentForm.get('repassword') as FormControl;
+    return this.addStudentForm.get("repassword") as FormControl;
   }
   studentFormModel() {
     this.addStudentForm = this.fb.group({
@@ -76,9 +87,9 @@ export class StudentsComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.success('Hello WOrld', 'Toastr Fun', {timeOut: 2000})
+    this.toastr.success("Hello WOrld", "Toastr Fun", { timeOut: 2000 });
   }
-  onSubmit(){
+  onSubmit() {
     console.log(this.addStudentForm);
     const { value } = this.addStudentForm;
 
@@ -86,34 +97,29 @@ export class StudentsComponent implements OnInit {
       username: value.username,
       position: value.position,
       department: value.department,
-      password: value.password
-    }
-    this.apiService.addStudent(data)
-      .subscribe((response: any) => {
-        const { status } = response;
-        if(status === 201) {
-          console.log('response');
-        } else {
-          console.log('failed to add')
-          console.log(response);
-
-        }
-      });
+      password: value.password,
+    };
+    this.apiService.addStudent(data).subscribe((response: any) => {
+      const { status } = response;
+      if (status === 201) {
+        console.log("response");
+      } else {
+        console.log("failed to add");
+        console.log(response);
+      }
+    });
     this.people.push(data);
     setTimeout(() => {
       this.showSuccess();
     }, 1000);
   }
-  mockData(){
+  mockData() {
     this.people = [
       {
         email: "sample@gmail.com",
         name: "Tiger",
         status: "Student",
-   
       },
-  
     ];
   }
-  
 }

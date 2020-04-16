@@ -26,4 +26,7 @@ export class ApiHostService {
   getTeacher(token) {
     return this.https.get(`${this.localhost}admin/list/teachers?token=${token}`);
   }
+  getStudents(token) {
+    return this.https.get(`${this.localhost}admin/list/students?token=${token}`);
+  }
 }
