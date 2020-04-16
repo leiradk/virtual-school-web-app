@@ -7,6 +7,7 @@ import {
 } from "@angular/forms";
 import { ApiHostService } from "../../../../../services/api-host.service";
 import { ToastrService } from "ngx-toastr";
+import { SystemUtils } from '../../../../../services/system.utils';
 
 declare var jQuery: any;
 
@@ -22,11 +23,12 @@ export class TeacherStaffComponent implements OnInit {
   public people: any;
   p: number = 1;
   viewList: number = 5;
-
+  userData: any;
   constructor(
     private fb: FormBuilder,
     private apiService: ApiHostService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private system: SystemUtils
   ) {
     this.studentFormModel();
 
@@ -36,11 +38,13 @@ export class TeacherStaffComponent implements OnInit {
 
   ngOnInit(): void {
     // this.mockData();
+    this.userData = this.system.retrieveItem('userData');
     this.getTeacher();
   }
 
   getTeacher() {
-    this.apiService.getTeacher().subscribe((response: any) => {
+    const { token } = this.userData;
+    this.apiService.getTeacher(token).subscribe((response: any) => {
       console.log(response);
       const { status, body } = response;
       if (status === 200) {

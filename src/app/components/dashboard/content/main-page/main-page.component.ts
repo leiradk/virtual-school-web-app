@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SystemUtils } from '../../../../services/system.utils';
 
 @Component({
   selector: 'app-main-page',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private system: SystemUtils
+  ) { }
 
   ngOnInit(): void {
+    const data = this.system.retrieveItem("userData");
+    console.log(data);
   }
 
 }

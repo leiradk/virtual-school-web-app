@@ -7,7 +7,7 @@ import {
 } from "@angular/forms";
 import { ApiHostService } from "../../../services/api-host.service";
 import { Router } from "@angular/router";
-
+import { SystemUtils } from '../../../services/system.utils';
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private apiHost: ApiHostService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private system: SystemUtils
   ) {
     this.signInModel();
   }
@@ -36,9 +37,11 @@ export class LoginComponent implements OnInit {
     const { value } = this.signInForm;
 
     this.apiHost.signin(value).subscribe((response: any) => {
+      console.log(response);
       if (response) {
-        const { status } = response;
+        const { status, body } = response;
         if (status === 200) {
+          // this.system.storeLocal('userData', body);
           this.router.navigate(["/dashboard"]);
         }
       }
