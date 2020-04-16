@@ -6,6 +6,8 @@ import {
   FormControl,
 } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
+import { ApiHostService } from "../../../../../services/api-host.service";
+
 
 @Component({
   selector: "app-students",
@@ -21,7 +23,8 @@ export class StudentsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private apiService: ApiHostService
   ) {
     this.studentFormModel();
   }
@@ -31,17 +34,26 @@ export class StudentsComponent implements OnInit {
     this.mockData();
   }
 
-  get email() {
-    return this.addStudentForm.get('email') as FormControl;
-  } 
-  get firstname() {
-    return this.addStudentForm.get('firstname') as FormControl;
+  // get email() {
+  //   return this.addStudentForm.get('email') as FormControl;
+  // } 
+  // get firstname() {
+  //   return this.addStudentForm.get('firstname') as FormControl;
+  // }
+  // get middlename() {
+  //   return this.addStudentForm.get('middlename') as FormControl;
+  // }
+  // get lastname() {
+  //   return this.addStudentForm.get('lastname') as FormControl;
+  // }
+  get username() {
+    return this.addStudentForm.get('username') as FormControl;
   }
-  get middlename() {
-    return this.addStudentForm.get('middlename') as FormControl;
+  get position() {
+    return this.addStudentForm.get('position') as FormControl;
   }
-  get lastname() {
-    return this.addStudentForm.get('lastname') as FormControl;
+  get department() {
+    return this.addStudentForm.get('department') as FormControl;
   }
   get password() {
     return this.addStudentForm.get('password') as FormControl;
@@ -51,10 +63,13 @@ export class StudentsComponent implements OnInit {
   }
   studentFormModel() {
     this.addStudentForm = this.fb.group({
-      email: [null, [Validators.required, Validators.email]],
-      firstname: [null, Validators.required],
-      middlename: [null, Validators.required],
-      lastname: [null, Validators.required],
+      // email: [null, [Validators.required, Validators.email]],
+      // firstname: [null, Validators.required],
+      // middlename: [null, Validators.required],
+      // lastname: [null, Validators.required],
+      username: [null, Validators.required],
+      position: [null, Validators.required],
+      department: [null, Validators.required],
       password: [null, [Validators.required, Validators.minLength(6)]],
       repassword: [null, [Validators.required, Validators.minLength(6)]],
     });
@@ -68,10 +83,22 @@ export class StudentsComponent implements OnInit {
     const { value } = this.addStudentForm;
 
     const data = {
-      email: value.email,
-      name: `${value.firstname} ${value.middlename} ${value.lastname}`,
-      status: 'student'
+      username: value.username,
+      position: value.position,
+      department: value.department,
+      password: value.password
     }
+    this.apiService.addStudent(data)
+      .subscribe((response: any) => {
+        const { status } = response;
+        if(status === 201) {
+          console.log('response');
+        } else {
+          console.log('failed to add')
+          console.log(response);
+
+        }
+      });
     this.people.push(data);
     setTimeout(() => {
       this.showSuccess();

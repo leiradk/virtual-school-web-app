@@ -18,6 +18,9 @@ export class ApiHostService {
   addTeacher(payload) {
     return this.https.post(`${this.localhost}admin/add/teacher`, payload);
   }
+  addStudent(payload) {
+    return this.https.post(`${this.localhost}admin/add/student`, payload);
+  }
 
   //get data
   getTeacher() {
