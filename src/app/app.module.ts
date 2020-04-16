@@ -32,6 +32,7 @@ import { MainPageComponent } from "./components/dashboard/content/main-page/main
 import { ClasslistComponent } from './components/dashboard/content/list-page/classlist/classlist.component';
 import { ParentListComponent } from './components/dashboard/content/list-page/parent-list/parent-list.component';
 import { SubjectComponent } from './components/dashboard/content/list-page/subject/subject.component';
+import { LoadingSpinnerComponent } from './components/ui/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SubjectComponent } from './components/dashboard/content/list-page/subje
     MainPageComponent,
     ClasslistComponent,
     ParentListComponent,
-    SubjectComponent
+    SubjectComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

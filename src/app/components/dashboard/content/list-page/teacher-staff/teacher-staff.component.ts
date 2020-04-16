@@ -28,6 +28,8 @@ export class TeacherStaffComponent implements OnInit {
 
   }
 
+  showSpinner: boolean = true;
+
   ngOnInit(): void {
     // this.mockData();
     this.getTeacher();
@@ -40,6 +42,7 @@ export class TeacherStaffComponent implements OnInit {
       const { status, body } = response;
       if(status === 200) {
         this.people = body;
+        this.showSpinner = false;
       }
     })
   }
