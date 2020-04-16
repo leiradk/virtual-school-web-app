@@ -66,19 +66,21 @@
         </tfoot>
         <tbody>
           <tr *ngIf="showSpinner">
-              <td colspan="5"><app-loading-spinner></app-loading-spinner></td>
+            <td colspan="5">
+              <app-loading-spinner></app-loading-spinner>
+            </td>
           </tr>
-            <tr *ngFor="
+          <tr *ngFor="
               let staff of people
                 | filter: searchText
                 | paginate: { itemsPerPage: viewList, currentPage: p };
               let i = index
             ">
-              <td>{{ staff.username }}</td>
-              <td>{{ staff.position }}</td>
-              <td>{{ staff.usertype }}</td>
-              <td>{{ staff.created }}</td>
-              <td>{{ staff.createdby }}</td>
+            <td>{{ staff.username }}</td>
+            <td>{{ staff.position }}</td>
+            <td>{{ staff.usertype }}</td>
+            <td>{{ staff.created }}</td>
+            <td>{{ staff.createdby }}</td>
           </tr>
         </tbody>
       </table>
@@ -156,13 +158,19 @@
             <input type="password" class="form-control" id="inputReTypePassword" placeholder="Password"
               formControlName="repassword">
           </div>
-          <button type="submit" class="btn btn-primary" [disabled]="addStaffFOrm.valid === false">Submit</button>
-        </form>
-      </div>
+          <div class="form-group">
+            <div class="custom-control custom-checkbox small">
+              <input type="checkbox" class="custom-control-input" id="continueModal" />
+              <label class="custom-control-label" for="continueModal">Do not close modal</label>
+            </div>
+          </div>
 
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" style="width: 25%" [disabled]="addStaffFOrm.valid === false">Submit</button>
+            <button type="button" class="btn btn-danger" style="width: 25%" data-dismiss="modal">Close</button>
+          </div>
+        </form>
       </div>
 
     </div>

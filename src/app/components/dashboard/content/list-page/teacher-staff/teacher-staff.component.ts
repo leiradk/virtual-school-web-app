@@ -6,6 +6,9 @@ import {
   FormControl,
 } from "@angular/forms";
 import { ApiHostService } from "../../../../../services/api-host.service";
+import { ToastrService } from "ngx-toastr";
+
+declare var jQuery: any;
 
 @Component({
   selector: "app-teacher-staff",
@@ -22,7 +25,8 @@ export class TeacherStaffComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private apiService: ApiHostService
+    private apiService: ApiHostService,
+    private toastr: ToastrService
   ) {
     this.studentFormModel();
 
@@ -35,17 +39,21 @@ export class TeacherStaffComponent implements OnInit {
     this.getTeacher();
   }
 
-
   getTeacher() {
     this.apiService.getTeacher().subscribe((response: any) => {
       console.log(response);
       const { status, body } = response;
-      if(status === 200) {
+      if (status === 200) {
         this.people = body;
         this.showSpinner = false;
       }
     })
   }
+
+  showSuccess() {
+    this.toastr.success('Added successfully', 'Congratulations', { timeOut: 2000 })
+  }
+
   onSubmit() {
     const { value } = this.addStaffFOrm;
     console.log(value);
@@ -55,15 +63,30 @@ export class TeacherStaffComponent implements OnInit {
       position: value.position,
       department: value.department
     }
+
+    // get chckbox status
+    let contModal = <HTMLInputElement>document.getElementById('continueModal');
+    if (!contModal.checked) {
+      jQuery('#myModal').modal('hide'); //close modal after submit
+    }
+
+    setTimeout(() => { this.showSuccess(); }, 500); //add toast message
+    this.addStaffFOrm.reset(); //reset form
+    this.getTeacher(); //reload table data
+
+    //
+    // ------>  Please check the code below. I want to put the top code snippet inside if(status === 200)
+    //
     this.apiService.addTeacher(data).subscribe((response: any) => {
       const { status } = response;
-      if(status === 200) {
-        this.getTeacher();
-      }else {
+      if (status === 200) {
+        this.getTeacher(); //reload table
+      } else {
         console.log(response);
       }
     })
   }
+
   studentFormModel() {
     this.addStaffFOrm = this.fb.group({
       // email: [null, [Validators.required, Validators.email]],
