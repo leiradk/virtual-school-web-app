@@ -10,6 +10,8 @@ import { ClasslistComponent } from "./components/dashboard/admin/content/list-pa
 import { ParentListComponent } from "./components/dashboard/admin/content/list-page/parent-list/parent-list.component";
 import { SubjectComponent } from './components/dashboard/admin/content/list-page/subject/subject.component';
 import { TeacherComponent } from './components/dashboard/teacher/teacher.component';
+import { TeacherMainComponent } from './components/dashboard/teacher/teacher-content/teacher-main/teacher-main.component';
+import { ClassDetailsComponent } from './components/dashboard/teacher/teacher-content/class-details/class-details.component';
 
 
 const routes: Routes = [
@@ -73,17 +75,21 @@ const routes: Routes = [
   {
     path: "teacher",
     component: TeacherComponent,
-    // children: [
-    //   {
-    //     path: "",
-    //     redirectTo: "main",
-    //     pathMatch: "full"
-    //   },
-    //   {
-    //     path: "main",
-    //     component:
-    //   }
-    // ]
+    children: [
+      {
+        path: "",
+        redirectTo: "main",
+        pathMatch: "full"
+      },
+      {
+        path: "main",
+        component: TeacherMainComponent
+      },
+      {
+        path: "class-details",
+        component: ClassDetailsComponent
+      }
+    ]
   }
 ];
 

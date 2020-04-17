@@ -27,7 +27,7 @@
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-primary btn-user btn-block" [class.spinner]="loading"
+                  <button type="submit" class="btn btn-primary btn-user btn-block" [disabled]="loading" [class.spinner]="loading"
                     [disabled]="loading">Login</button>
                   <!-- <hr> -->
                   <!-- <a href="index.html" class="btn btn-google btn-user btn-block">

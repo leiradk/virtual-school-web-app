@@ -37,6 +37,9 @@ import { TeacherComponent } from './components/dashboard/teacher/teacher.compone
 import { TeacherContentComponent } from './components/dashboard/teacher/teacher-content/teacher-content.component';
 import { TeacherSidebarComponent } from './components/dashboard/teacher/teacher-sidebar/teacher-sidebar.component';
 import { TeacherNavbarComponent } from './components/dashboard/teacher/teacher-navbar/teacher-navbar.component';
+import { TeacherMainComponent } from './components/dashboard/teacher/teacher-content/teacher-main/teacher-main.component';
+import { ClassDetailsComponent } from './components/dashboard/teacher/teacher-content/class-details/class-details.component';
+import { ClassHomeComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +60,10 @@ import { TeacherNavbarComponent } from './components/dashboard/teacher/teacher-n
     TeacherComponent,
     TeacherContentComponent,
     TeacherSidebarComponent,
-    TeacherNavbarComponent
+    TeacherNavbarComponent,
+    TeacherMainComponent,
+    ClassDetailsComponent,
+    ClassHomeComponent,
   ],
   imports: [
     BrowserModule,
