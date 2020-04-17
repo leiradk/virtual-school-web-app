@@ -25,7 +25,9 @@ export class LoginComponent implements OnInit {
     this.signInModel();
   }
 
-  ngOnInit(): void {}
+  loading = false;
+
+  ngOnInit(): void { }
   signInModel() {
     this.signInForm = this.fb.group({
       username: [null, Validators.required],
@@ -47,5 +49,6 @@ export class LoginComponent implements OnInit {
         }
       }
     });
+    this.loading = true;
   }
 }
