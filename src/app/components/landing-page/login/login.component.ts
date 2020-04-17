@@ -13,6 +13,7 @@ import { SystemUtils } from '../../../services/system.utils';
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.scss"],
 })
+
 export class LoginComponent implements OnInit {
   public signInForm: FormGroup;
   constructor(
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
       if (response) {
         const { status, body } = response;
         if (status === 200) {
-          // this.system.storeLocal('userData', body);
+          this.system.storeLocal('userData', body);
           this.router.navigate(["/dashboard"]);
         }
       }

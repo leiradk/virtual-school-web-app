@@ -9,12 +9,15 @@ import { ToastrService } from "ngx-toastr";
 import { ApiHostService } from "../../../../../services/api-host.service";
 import { SystemUtils } from "../../../../../services/system.utils";
 
+declare var jQuery: any;
+
 @Component({
   selector: "app-students",
   templateUrl: "./students.component.html",
   styleUrls: ["./students.component.scss"],
 })
 export class StudentsComponent implements OnInit {
+
   public addStudentForm: FormGroup;
   searchText;
   public people: any = [];
@@ -30,6 +33,8 @@ export class StudentsComponent implements OnInit {
     this.studentFormModel();
   }
 
+  showSpinner: boolean = true;
+
   ngOnInit(): void {
     this.userData = this.system.retrieveItem("userData");
     this.getStudents();
@@ -40,8 +45,9 @@ export class StudentsComponent implements OnInit {
     const { token } = this.userData;
     this.apiService.getStudents(token).subscribe((response: any) => {
       const { status, body } = response;
-      if(status === 200) {
+      if (status === 200) {
         this.people = body;
+        this.showSpinner = false;
       }
     });
   }
@@ -72,6 +78,7 @@ export class StudentsComponent implements OnInit {
   get repassword() {
     return this.addStudentForm.get("repassword") as FormControl;
   }
+
   studentFormModel() {
     this.addStudentForm = this.fb.group({
       // email: [null, [Validators.required, Validators.email]],
@@ -87,9 +94,11 @@ export class StudentsComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.success("Hello WOrld", "Toastr Fun", { timeOut: 2000 });
+    this.toastr.success('Student Added successfully', 'Congratulations', { timeOut: 2000 });
   }
+
   onSubmit() {
+    console.log('Im here student add');
     console.log(this.addStudentForm);
     const { value } = this.addStudentForm;
 
@@ -99,6 +108,18 @@ export class StudentsComponent implements OnInit {
       department: value.department,
       password: value.password,
     };
+
+
+    // get chckbox status
+    let contModal = <HTMLInputElement>document.getElementById('continueModal');
+    if (!contModal.checked) {
+      jQuery('#myModal').modal('hide'); //close modal after submit
+    }
+
+    setTimeout(() => { this.showSuccess(); }, 500); //add toast message
+    this.addStudentForm.reset(); //reset form
+    this.getStudents(); //reload table data
+
     this.apiService.addStudent(data).subscribe((response: any) => {
       const { status } = response;
       if (status === 201) {
@@ -109,10 +130,8 @@ export class StudentsComponent implements OnInit {
       }
     });
     this.people.push(data);
-    setTimeout(() => {
-      this.showSuccess();
-    }, 1000);
   }
+
   mockData() {
     this.people = [
       {

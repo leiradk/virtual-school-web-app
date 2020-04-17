@@ -55,7 +55,7 @@ export class TeacherStaffComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.success('Added successfully', 'Congratulations', { timeOut: 2000 })
+    this.toastr.success('Teacher Added successfully', 'Congratulations', { timeOut: 2000 })
   }
 
   onSubmit() {
