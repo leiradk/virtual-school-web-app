@@ -16,6 +16,7 @@ import { SystemUtils } from '../../../services/system.utils';
 
 export class LoginComponent implements OnInit {
   public signInForm: FormGroup;
+  loading = false;
   constructor(
     private apiHost: ApiHostService,
     private fb: FormBuilder,
@@ -25,7 +26,6 @@ export class LoginComponent implements OnInit {
     this.signInModel();
   }
 
-  loading = false;
 
   ngOnInit(): void { }
   signInModel() {
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     console.log(this.signInForm.value);
     const { value } = this.signInForm;
-
+    this.loading = true;
     this.apiHost.signin(value).subscribe((response: any) => {
       console.log(response);
       if (response) {
@@ -61,8 +61,9 @@ export class LoginComponent implements OnInit {
         } else {
           this.loading = false;
         }
+      } else {
+        this.loading = false;
       }
     });
-    this.loading = true;
   }
 }
