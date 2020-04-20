@@ -79,7 +79,21 @@
                     }
                 }
             }
-           
+            .post-content{
+                margin: 20px 0 20px 0;
+            }
+            .post-comment{
+                input{
+                    background-color: #f2f3f5;
+                    border: 1px solid #ccd0d5;
+                    border-radius: 16px;
+                    display: flex;
+                    justify-content: flex-end;
+                    outline: none;
+                    width: 100%;
+                    padding: 0px 10px 0px 10px
+                }
+            }
         }
     }
 
