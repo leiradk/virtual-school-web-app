@@ -7,15 +7,15 @@ import {
 } from "@angular/forms";
 import { ApiHostService } from "../../../services/api-host.service";
 import { Router } from "@angular/router";
-import { SystemUtils } from "../../../services/system.utils";
+import { SystemUtils } from '../../../services/system.utils';
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.scss"],
 })
+
 export class LoginComponent implements OnInit {
   public signInForm: FormGroup;
-  loading: any;
   constructor(
     private apiHost: ApiHostService,
     private fb: FormBuilder,
@@ -25,7 +25,9 @@ export class LoginComponent implements OnInit {
     this.signInModel();
   }
 
-  ngOnInit(): void {}
+  loading = false;
+
+  ngOnInit(): void { }
   signInModel() {
     this.signInForm = this.fb.group({
       username: [null, Validators.required],
@@ -38,6 +40,7 @@ export class LoginComponent implements OnInit {
     const { value } = this.signInForm;
 
     this.apiHost.signin(value).subscribe((response: any) => {
+      console.log(response);
       if (response) {
         const { status, body } = response;
         if (status === 200) {
@@ -60,5 +63,6 @@ export class LoginComponent implements OnInit {
         }
       }
     });
+    this.loading = true;
   }
 }
