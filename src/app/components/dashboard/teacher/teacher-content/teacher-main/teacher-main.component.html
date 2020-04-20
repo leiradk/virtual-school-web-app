@@ -692,16 +692,18 @@
       </div>
     </div>
 
-
-    <div style="height: 250px !important;" class="card border-left-primary shadow h-100 py-2">
-      <div style="display: flex; align-items: center; justify-content: center;" class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col-auto add-class">
-            <i class="fas fa-plus fa-2x text-gray-300"></i>
+    <a class="card add-class" data-toggle="modal" data-target="#myModal">
+      <div style="height: 250px !important;" class=" border-left-primary shadow h-100 py-2">
+        <div style="display: flex; align-items: center; justify-content: center;" (click)="addClass()"
+          class="card-body h-100">
+          <div class="row no-gutters align-items-center">
+            <div class="col-auto add-class">
+              <i class="fas fa-plus fa-2x text-gray-300"></i>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </a>
 
     <!-- <div class="col-xl-3 col-md-6 mb-4">
       <div class="card border-left-primary shadow h-100 py-2">
@@ -714,5 +716,53 @@
         </div>
       </div>
     </div> -->
+  </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add Class</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <form class="user" [formGroup]="addClassFOrm" (ngSubmit)="onSubmit()">
+
+        <div class="modal-body">
+          <div class=" form-group">
+            <label for="inputName"><span class="validator" *ngIf="name.invalid && name.touched">
+                Class Name is required</span></label>
+            <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp"
+              placeholder="Enter Class Name" formControlName="name">
+          </div>
+          <div class=" form-group">
+            <label for="inputLastName"><span class="validator" *ngIf="subjectname.invalid && subjectname.touched">
+            Subject Name is required</span></label>
+            <input type="text" class="form-control" id="inputSubjectName" aria-describedby="subjectNameHelp"
+              placeholder="Enter Subject Name" formControlName="subjectname">
+          </div>
+          <div class=" form-group">
+            <label for="inputLastName"><span class="validator" *ngIf="gradelevel.invalid && gradelevel.touched">
+          Grade Level is required</span></label>
+            <input type="text" class="form-control" id="inputgradelevel" aria-describedby="gradeLevelHelp"
+              placeholder="Enter Grade Level" formControlName="gradelevel">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" style="width: 25%"
+            [disabled]="addClassFOrm.valid === false">Submit</button>
+          <!-- <button type="button" class="btn btn-danger" style="width: 25%" data-dismiss="modal">Close</button> -->
+        </div>
+      </form>
+
+
+
+    </div>
   </div>
 </div>
