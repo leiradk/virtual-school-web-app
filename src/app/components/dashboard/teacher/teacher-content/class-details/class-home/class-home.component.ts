@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./class-home.component.scss']
 })
 export class ClassHomeComponent implements OnInit {
-
+  myFocusVar: any = false;
   constructor() { }
 
   ngOnInit(): void {
