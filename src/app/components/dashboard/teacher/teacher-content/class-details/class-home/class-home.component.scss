@@ -1,0 +1,137 @@
+.subject-details {
+  padding: 20px 0;
+
+  .subject-title {
+    font-size: 25px;
+  }
+
+  .reminders {
+    margin: 20px 0;
+  }
+  .post-box {
+    .post-card,
+    .posted-card {
+      border: 1px solid #dddfe2;
+      transition: 0.3s;
+      width: 100%;
+      margin: 20px 0;
+    }
+    .post-card {
+      .post-field {
+        display: flex;
+        .user-image {
+          img {
+            width: 70px;
+            height: 70px;
+          }
+        }
+        .user-post {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          margin: 0 0 0 15px;
+          textarea {
+            width: 100%;
+            border: none;
+            outline: none;
+            resize: none;
+            overflow: hidden;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            &:focus {
+              font-size: 20px;
+              font-weight: bold;
+              -webkit-transition: all 0.5s ease;
+              -moz-transition: all 0.5s ease;
+              transition: all 0.5s ease;
+            }
+          }
+        }
+      }
+      .footer {
+        display: flex;
+        .select-file{
+          .file-upload{
+            display: none;
+          }
+          .button-trigger{
+            background-color: white;
+            color: black;
+            border: none;
+          }
+        }
+        .submit-post {
+          display: flex;
+          width: 100%;
+          justify-content: flex-end;
+        }
+      }
+    }
+    .posted-card {
+      .post-header {
+        display: flex;
+        img {
+          width: 50px;
+          height: 50px;
+        }
+        .card-user {
+          margin: 0 0 0 15px;
+          display: flex;
+          flex-direction: column;
+          .card-name {
+            font-weight: bold;
+            font-size: 20px;
+          }
+          .card-date {
+            font-size: 11px;
+          }
+        }
+      }
+      .post-content {
+        margin: 20px 0 20px 0;
+      }
+      .post-comment {
+        input {
+          background-color: #f2f3f5;
+          border: 1px solid #ccd0d5;
+          border-radius: 16px;
+          display: flex;
+          justify-content: flex-end;
+          outline: none;
+          width: 100%;
+          padding: 0px 10px 0px 10px;
+          height: 40px;
+          line-height: 23px;
+          font-size: 20px;
+        }
+      }
+      .comments {
+        display: flex;
+        flex-direction: column;
+        .user-comment {
+          display: flex;
+          margin: 0px 0 20px 0px;
+          .comment-image {
+            img {
+              width: 30px;
+              height: 30px;
+            }
+          }
+          .comment-content {
+            margin-left: 10px;
+            span {
+              font-weight: bold;
+              color: #385898;
+              // cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .view {
+    text-align: right;
+  }
+}

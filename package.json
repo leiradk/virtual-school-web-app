@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~9.0.5",
+    "@angular/animations": "^9.0.7",
     "@angular/common": "~9.0.5",
     "@angular/compiler": "~9.0.5",
     "@angular/core": "~9.0.5",
@@ -24,10 +24,12 @@
     "jquery": "^3.4.1",
     "ng2-search-filter": "^0.5.1",
     "ngx-pagination": "^5.0.0",
+    "ngx-toastr": "^12.0.1",
     "peerjs": "^1.2.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",
     "rxjs-compat": "^6.5.5",
+    "spinkit": "^2.0.1",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

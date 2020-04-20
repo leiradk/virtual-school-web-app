@@ -1,41 +1,57 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { ApiHostService } from '../../../services/api-host.service';
+import { Component, OnInit } from "@angular/core";
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from "@angular/forms";
+import { ApiHostService } from "../../../services/api-host.service";
+import { Router } from "@angular/router";
+import { SystemUtils } from '../../../services/system.utils';
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"],
 })
-export class LoginComponent implements OnInit {
 
+export class LoginComponent implements OnInit {
   public signInForm: FormGroup;
+  loading = false;
   constructor(
     private apiHost: ApiHostService,
     private fb: FormBuilder,
-
+    private router: Router,
+    private system: SystemUtils
   ) {
     this.signInModel();
   }
 
-  ngOnInit(): void {
-  }
+
+  ngOnInit(): void { }
   signInModel() {
     this.signInForm = this.fb.group({
       username: [null, Validators.required],
-      password: [null, Validators.required]
-    })
+      password: [null, Validators.required],
+    });
   }
 
   onSubmit() {
     console.log(this.signInForm.value);
     const { value } = this.signInForm;
-
+    this.loading = true;
     this.apiHost.signin(value).subscribe((response: any) => {
+      console.log(response);
       if (response) {
-        console.log(response);
+        const { status, body } = response;
+        if (status === 200) {
+          this.system.storeLocal('userData', body);
+          this.router. navigate(["/dashboard"]);
+        }else {
+          this.loading = false;
+        }
+      } else {
+        this.loading = false;
       }
-    })
-
+    });
   }
-
 }

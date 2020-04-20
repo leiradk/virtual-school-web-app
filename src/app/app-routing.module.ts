@@ -3,12 +3,16 @@ import { Routes, RouterModule } from "@angular/router";
 import { LoginComponent } from "./components/landing-page/login/login.component";
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
-import { MainPageComponent } from "./components/dashboard/content/main-page/main-page.component";
-import { StudentsComponent } from "./components/dashboard/content/list-page/students/students.component";
-import { TeacherStaffComponent } from "./components/dashboard/content/list-page/teacher-staff/teacher-staff.component";
-import { ClasslistComponent } from "./components/dashboard/content/list-page/classlist/classlist.component";
-import { ParentListComponent } from "./components/dashboard/content/list-page/parent-list/parent-list.component";
-import { SubjectComponent } from './components/dashboard/content/list-page/subject/subject.component';
+import { MainPageComponent } from "./components/dashboard/admin/content/main-page/main-page.component";
+import { StudentsComponent } from "./components/dashboard/admin/content/list-page/students/students.component";
+import { TeacherStaffComponent } from "./components/dashboard/admin/content/list-page/teacher-staff/teacher-staff.component";
+import { ClasslistComponent } from "./components/dashboard/admin/content/list-page/classlist/classlist.component";
+import { ParentListComponent } from "./components/dashboard/admin/content/list-page/parent-list/parent-list.component";
+import { SubjectComponent } from './components/dashboard/admin/content/list-page/subject/subject.component';
+import { TeacherComponent } from './components/dashboard/teacher/teacher.component';
+import { TeacherMainComponent } from './components/dashboard/teacher/teacher-content/teacher-main/teacher-main.component';
+import { ClassDetailsComponent } from './components/dashboard/teacher/teacher-content/class-details/class-details.component';
+
 
 const routes: Routes = [
   {
@@ -53,7 +57,7 @@ const routes: Routes = [
       {
         path: "staff-teacher-lists",
         component: TeacherStaffComponent,
-      }, 
+      },
       {
         path: "class-list",
         component: ClasslistComponent,
@@ -68,6 +72,25 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: "teacher",
+    component: TeacherComponent,
+    children: [
+      {
+        path: "",
+        redirectTo: "main",
+        pathMatch: "full"
+      },
+      {
+        path: "main",
+        component: TeacherMainComponent
+      },
+      {
+        path: "class-details",
+        component: ClassDetailsComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
