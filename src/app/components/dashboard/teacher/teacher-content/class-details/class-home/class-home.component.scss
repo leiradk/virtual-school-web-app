@@ -36,6 +36,16 @@
                         outline: none;
                         resize: none;
                         overflow: hidden;
+                        -webkit-transition: all .5s ease;
+                        -moz-transition: all .5s ease;
+                        transition: all .5s ease;
+                        &:focus{
+                            font-size: 20px;
+                            font-weight: bold;
+                            -webkit-transition: all .5s ease;
+                            -moz-transition: all .5s ease;
+                            transition: all .5s ease;
+                        }
                     }
                 }
             }
@@ -65,7 +75,7 @@
                     }
                     .card-date{
                         font-size: 11px;
-                        
+
                     }
                 }
             }
