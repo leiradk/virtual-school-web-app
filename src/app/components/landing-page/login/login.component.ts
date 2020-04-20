@@ -44,9 +44,21 @@ export class LoginComponent implements OnInit {
       if (response) {
         const { status, body } = response;
         if (status === 200) {
-          this.system.storeLocal('userData', body);
-          this.router. navigate(["/dashboard"]);
-        }else {
+          const { data } = body;
+          console.log(data);
+
+          if (parseInt(data.usertype) === 10002) {
+            this.system.storeLocal('userData', body);
+            this.router.navigate(["/teacher"]);
+          } else if (parseInt(data.usertype) === 10001) {
+            console.log(data);
+            this.system.storeLocal('userData', body);
+            this.router.navigate(["/dashboard"]);
+          } else {
+            console.log('failed')
+          }
+
+        } else {
           this.loading = false;
         }
       } else {
