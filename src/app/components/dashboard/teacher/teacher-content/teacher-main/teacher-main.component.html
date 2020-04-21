@@ -18,7 +18,7 @@
             Grade 1
           </div>
           <div class="points center">
-            View
+            <a  [routerLink]="['/teacher/class-details']" class="view-detials" (click)="viewDetails(details)">View</a>
           </div>
           <svg width="110" height="110" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" role="img"
             aria-labelledby="title desc" class="center">
@@ -149,7 +149,7 @@
 
     <a class="card add-class" data-toggle="modal" data-target="#myModal">
       <div style="height: 250px !important;" class=" border-left-primary shadow h-100 py-2">
-        <div style="display: flex; align-items: center; justify-content: center;" (click)="addClass()"
+        <div style="display: flex; align-items: center; justify-content: center;" 
           class="card-body h-100">
           <div class="row no-gutters align-items-center">
             <div class="col-auto add-class">

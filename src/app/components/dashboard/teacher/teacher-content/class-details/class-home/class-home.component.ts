@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SystemUtils } from '../../../../../../services/system.utils';
 
 @Component({
   selector: 'app-class-home',
@@ -8,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class ClassHomeComponent implements OnInit {
   myFocusVar: any = false;
   comments: any = [];
-  constructor() { }
+  classDetails: any;
+  constructor(
+    private system: SystemUtils
+  ) { }
 
   ngOnInit(): void {
     this.comments = [{
@@ -19,7 +23,8 @@ export class ClassHomeComponent implements OnInit {
       user: "Melvin Elayron",
       comment: "this is a comment"
     }
-  ]
+  ];
+  this.classDetails = this.system.retrieveItem('classDetails');
   }
 
 }
