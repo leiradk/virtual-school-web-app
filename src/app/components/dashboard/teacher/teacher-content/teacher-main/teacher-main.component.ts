@@ -48,6 +48,7 @@ export class TeacherMainComponent implements OnInit {
   }
 
   viewDetails(data) {
+    console.log(data)
     this.system.storeLocal('classDetails', data);
   }
   onSubmit() {
