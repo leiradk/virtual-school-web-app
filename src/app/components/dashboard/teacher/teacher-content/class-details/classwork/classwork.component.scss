@@ -1,0 +1,40 @@
+.cw {
+    width: 50%;
+    margin: 30px auto 0 auto;
+    .cw-card {
+        border: 1px solid #dddfe2;
+        transition: 0.3s;
+        width: 100%;
+        margin: 20px 0;
+        .cw-list {
+            display: flex;
+            flex-direction: column;
+            .cw-item {
+                display: flex;
+                justify-content: space-around;
+                // flex-flow: row wrap;
+                border-bottom: 1px solid #dddfe2;
+                margin: 5px;
+                padding: 10px 10px 10px 10px;
+                &:last-child {
+                    border-bottom: none;
+                }
+                div {
+                    display: flex;
+                    
+                }
+
+                .task-file {
+                    flex: 1;
+                }
+                .task-name {
+                    flex: 1;
+                }
+                .cw-date {
+                    flex: 4;
+                    justify-content: flex-end;
+                }
+            }
+        }
+    }
+}

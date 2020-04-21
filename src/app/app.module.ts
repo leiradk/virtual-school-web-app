@@ -42,6 +42,8 @@ import { ClassDetailsComponent } from './components/dashboard/teacher/teacher-co
 import { ClassHomeComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-home.component';
 import { ClassReminderComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-reminder/class-reminder.component';
 import { ClassPostComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-post/class-post.component';
+import { ClassworkComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/classwork.component';
+import { CheckStudentsComponent } from './components/dashboard/teacher/teacher-content/class-details/check-students/check-students.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +70,8 @@ import { ClassPostComponent } from './components/dashboard/teacher/teacher-conte
     ClassHomeComponent,
     ClassReminderComponent,
     ClassPostComponent,
+    ClassworkComponent,
+    CheckStudentsComponent,
   ],
   imports: [
     BrowserModule,
