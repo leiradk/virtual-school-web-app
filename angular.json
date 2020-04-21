@@ -30,8 +30,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -68,7 +67,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "project-a-web-app:build",
-            "aot":true
+            "aot": true
           },
           "configurations": {
             "production": {
@@ -95,7 +94,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ionicons/scss/ionicons.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -125,6 +125,30 @@
           "configurations": {
             "production": {
               "devServerTarget": "project-a-web-app:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "project-a-web-app:ionic-cordova-build",
+            "devServerTarget": "project-a-web-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "project-a-web-app:ionic-cordova-build:production",
+              "devServerTarget": "project-a-web-app:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "project-a-web-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "project-a-web-app:build:production"
             }
           }
         }

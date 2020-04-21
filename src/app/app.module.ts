@@ -42,8 +42,12 @@ import { ClassDetailsComponent } from './components/dashboard/teacher/teacher-co
 import { ClassHomeComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-home.component';
 import { ClassReminderComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-reminder/class-reminder.component';
 import { ClassPostComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-post/class-post.component';
+<<<<<<< HEAD
 import { ClassworkComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/classwork.component';
 import { CheckStudentsComponent } from './components/dashboard/teacher/teacher-content/class-details/check-students/check-students.component';
+=======
+import { IonicModule } from '@ionic/angular';
+>>>>>>> 497ee722c740ff82b794e5555e0a86d0618889aa
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,7 +88,8 @@ import { CheckStudentsComponent } from './components/dashboard/teacher/teacher-c
     // HttpModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    IonicModule.forRoot()
   ],
   providers: [ ApiHostService, SystemUtils],
   bootstrap: [AppComponent],
