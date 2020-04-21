@@ -29,4 +29,7 @@ export class ApiHostService {
   getStudents(token) {
     return this.https.get(`${this.localhost}admin/list/students?token=${token}`);
   }
+  getClassroom(token) {
+    return this.https.get(`${this.localhost}teacher/get/classroom?token=${token}`);
+  }
 }

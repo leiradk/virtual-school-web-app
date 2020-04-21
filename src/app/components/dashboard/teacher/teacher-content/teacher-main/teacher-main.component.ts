@@ -5,6 +5,8 @@ import {
   Validators,
   FormControl,
 } from "@angular/forms";
+import { ApiHostService } from '../../../../../services/api-host.service';
+import { SystemUtils } from '../../../../../services/system.utils';
 @Component({
   selector: 'app-teacher-main',
   templateUrl: './teacher-main.component.html',
@@ -12,13 +14,19 @@ import {
 })
 export class TeacherMainComponent implements OnInit {
   public addClassFOrm: FormGroup;
+  userData: any;
+  classDetails: any;
   constructor(
     private fb: FormBuilder,
+    private apiService: ApiHostService,
+    private system: SystemUtils
   ) {
     this.classFormModel();
   }
 
   ngOnInit(): void {
+    this.userData = this.system.retrieveItem('userData');
+    this.getClassroom(this.userData);
   }
 
   get name() {
@@ -46,5 +54,17 @@ export class TeacherMainComponent implements OnInit {
     console.log('dadsadsad');
     const { value } = this.addClassFOrm;
     console.log(value);
+  }
+
+  getClassroom(data) {
+    const { token } = data;
+    this.apiService.getClassroom(token)
+      .subscribe((response: any) => {
+        console.log(response);
+        const { status, message, body } = response;
+        if(status === 200) {
+          this.classDetails = body;
+        }
+      });
   }
 }
