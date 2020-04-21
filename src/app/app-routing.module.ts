@@ -13,7 +13,6 @@ import { TeacherComponent } from './components/dashboard/teacher/teacher.compone
 import { TeacherMainComponent } from './components/dashboard/teacher/teacher-content/teacher-main/teacher-main.component';
 import { ClassDetailsComponent } from './components/dashboard/teacher/teacher-content/class-details/class-details.component';
 
-
 const routes: Routes = [
   {
     path: "",
