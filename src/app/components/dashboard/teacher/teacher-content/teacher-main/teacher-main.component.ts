@@ -16,6 +16,9 @@ export class TeacherMainComponent implements OnInit {
   public addClassFOrm: FormGroup;
   userData: any;
   classDetails: any;
+  month: any;
+  day: any;
+  year: any;
   constructor(
     private fb: FormBuilder,
     private apiService: ApiHostService,
@@ -53,8 +56,25 @@ export class TeacherMainComponent implements OnInit {
   }
   onSubmit() {
     console.log('dadsadsad');
+
     const { value } = this.addClassFOrm;
-    console.log(value);
+    const payload = {
+      token: this.userData.token,
+      className: value.name,
+      classSubject: value.subjectname,
+      classGradeLevel: value.gradelevel
+    }
+
+      this.apiService.addClass(payload)
+        .subscribe((response: any) => {
+          const { status } = response;
+          if(status === 201 ) {
+            console.log('success')
+          } else {
+            console.log(response);
+          }
+        });
+    console.log(payload);
   }
 
   getClassroom(data) {
@@ -65,7 +85,42 @@ export class TeacherMainComponent implements OnInit {
         const { status, message, body } = response;
         if(status === 200) {
           this.classDetails = body;
+          // console.log(body[0].classCreated.split(' ')[0].split('-'));
+          const date = body[0].classCreated.split(' ')[0].split('-');
+          console.log(date);
+          console.log(this.getDate(parseInt(date[1])));
+          this.month = this.getDate(parseInt(date[1]));
+          this.day = date[2];
+          this.year = date[0];
         }
       });
+  }
+
+  getDate(month) {
+    if(month === 1) {
+      return 'January';
+    } else if( month === 2){
+      return 'February'
+    } else if( month === 3){
+      return 'March'
+    }else if( month === 4){
+      return 'April'
+    }else if( month === 5){
+      return 'May'
+    }else if( month === 6){
+      return 'June'
+    }else if( month === 7){
+      return 'July'
+    }else if( month === 8){
+      return 'August'
+    }else if( month === 9){
+      return 'September'
+    }else if( month === 10){
+      return 'October'
+    }else if( month === 11){
+      return 'November'
+    }else if( month === 12){
+      return 'December'
+    }
   }
 }
