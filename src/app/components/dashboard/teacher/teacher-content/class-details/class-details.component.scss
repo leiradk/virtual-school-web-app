@@ -6,12 +6,12 @@
 li.nav-item{
     width: 25%;
 }
+
 .navigate-bar{
     display: flex;
     .nav-item{
         width: 25%;
         text-align: center;
-       
     }
     button{
         cursor: pointer;
@@ -24,13 +24,19 @@ li.nav-item{
         border-color: #dee2e6 #dee2e6 #fff;
         color: #007bff;
     }
+    button:hover:not(.active){
+        color: #dee2e6 !important;
+        font-weight: bold;
+        background-color: #7f8c8d !important;
+    }
     .active{
         border-right: 1px solid;
         border-left: 1px solid;
         border-color: #dee2e6 #dee2e6 #fff;
         border-radius: 1px;
         border-radius: 5px;
-        color: black !important;
+        color: #dee2e6 !important;
         font-weight: bold;
+        background-color: #4E73DF !important;
     }
 }
