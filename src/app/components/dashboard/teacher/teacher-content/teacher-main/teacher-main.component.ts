@@ -24,6 +24,8 @@ export class TeacherMainComponent implements OnInit {
     this.classFormModel();
   }
 
+  showSpinner: boolean = true;
+
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
     this.getClassroom(this.userData);
@@ -63,8 +65,9 @@ export class TeacherMainComponent implements OnInit {
       .subscribe((response: any) => {
         console.log(response);
         const { status, message, body } = response;
-        if(status === 200) {
+        if (status === 200) {
           this.classDetails = body;
+          this.showSpinner = false;
         }
       });
   }

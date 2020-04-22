@@ -11,14 +11,14 @@
 
 
 
-    <div *ngFor = "let details of classDetails" class="card">
+    <div *ngFor="let details of classDetails" class="card">
       <div class="additional">
         <div class="user-card">
           <div class="level center">
             Grade 1
           </div>
           <div class="points center">
-            <a  [routerLink]="['/teacher/class-details']" class="view-detials" (click)="viewDetails(details)">View</a>
+            <a [routerLink]="['/teacher/class-details']" class="view-detials" (click)="viewDetails(details)">View</a>
           </div>
           <svg width="110" height="110" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" role="img"
             aria-labelledby="title desc" class="center">
@@ -147,10 +147,12 @@
       </div>
     </div>
 
-    <a class="card add-class" data-toggle="modal" data-target="#myModal">
+    <div *ngIf="showSpinner" style="width: 100%;">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <a *ngIf="showSpinner==false" class="card add-class" data-toggle="modal" data-target="#myModal">
       <div style="height: 250px !important;" class=" border-left-primary shadow h-100 py-2">
-        <div style="display: flex; align-items: center; justify-content: center;" 
-          class="card-body h-100">
+        <div style="display: flex; align-items: center; justify-content: center;" class="card-body h-100">
           <div class="row no-gutters align-items-center">
             <div class="col-auto add-class">
               <i class="fas fa-plus fa-2x text-gray-300"></i>
@@ -198,13 +200,13 @@
           </div>
           <div class=" form-group">
             <label for="inputLastName"><span class="validator" *ngIf="subjectname.invalid && subjectname.touched">
-            Subject Name is required</span></label>
+                Subject Name is required</span></label>
             <input type="text" class="form-control" id="inputSubjectName" aria-describedby="subjectNameHelp"
               placeholder="Enter Subject Name" formControlName="subjectname">
           </div>
           <div class=" form-group">
             <label for="inputLastName"><span class="validator" *ngIf="gradelevel.invalid && gradelevel.touched">
-          Grade Level is required</span></label>
+                Grade Level is required</span></label>
             <input type="text" class="form-control" id="inputgradelevel" aria-describedby="gradeLevelHelp"
               placeholder="Enter Grade Level" formControlName="gradelevel">
           </div>
