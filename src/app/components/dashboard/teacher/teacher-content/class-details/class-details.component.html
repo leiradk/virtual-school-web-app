@@ -5,13 +5,12 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <br />
 
-            <div class="navigate-bar">
+            <div class="navigate-bar border-bottom-primary">
                 <div class="nav-item"><button [routerLink]="['/teacher/class-details/home']"  [ngClass]="homeActive" (click)="getActiveClass()">Home</button></div>
                 <div class="nav-item" ><button [routerLink]="['/teacher/class-details/class-work']" [ngClass]="cwActive" (click)="getActiveClass()">Classwork</button></div>
                 <div class="nav-item" ><button [routerLink]="['/teacher/class-details/people']" [ngClass]="peopleActive" (click)="getActiveClass()">People</button></div>
                 <div class="nav-item" ><button [routerLink]="['/teacher/class-details/hone']" [ngClass]="gradesActive">Grades</button></div>
               
-             
             </div>
             <div class="nav-content">
                 <router-outlet></router-outlet>
