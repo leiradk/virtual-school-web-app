@@ -1,27 +1,77 @@
-<div class="cw">
-    <div class="content">
-        <div class="add-work"><button><i class="fa fa-plus"></i> Create</button></div>
-        <div class="cw-box">
-            <div class="cw-card">
-                <div class="cw-list">
-
-                    <div class="cw-item">
-                        <div class="task-file">task</div>
-                        <div class="task-name">name</div>
-                        <div class="cw-date">file</div>
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <button><i class="fa fa-plus"></i> Create</button>
+                    <div class="create-work">
                     </div>
-                    <div class="cw-item">
-                        <div class="task-file">task</div>
-                        <div class="task-name">name</div>
-                        <div class="cw-date">file</div>
-                    </div>
-                    <div class="cw-item">
-                        <div class="task-file">task</div>
-                        <div class="task-name">name</div>
-                        <div class="cw-date">file</div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="dataTable_length">
+                                <label>
+                                    Show
+                                    <select class="custom-select custom-select-sm form-control form-control-sm"
+                                        [(ngModel)]="viewList">
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                    </select>
+                                    entries
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_filter" id="dataTable_filter">
+                                <label for="Search">
+                                    Search:
+                                    <input type="search" class="form-control form-control-sm" aria-controls="dataTable"
+                                        [(ngModel)]="searchText" />
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>File</th>
+                        <th>Name</th>
+                        <th>Date</th>
+
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>File</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <!-- <tr>
+                  <td colspan="6">
+                    <app-loading-spinner></app-loading-spinner>
+                  </td>
+                </tr> -->
+                    <tr *ngFor="
+                let files of file
+                  | filter: searchText
+                  | paginate: { itemsPerPage: viewList, currentPage: p };
+                let i = index
+              ">
+                        <td>{{files.file}}</td>
+                        <td>{{files.filename}}</td>
+                        <td>{{files.date}}</td>
+
+
+                    </tr>
+                </tbody>
+            </table>
         </div>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
 </div>
