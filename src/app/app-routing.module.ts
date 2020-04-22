@@ -12,7 +12,9 @@ import { SubjectComponent } from './components/dashboard/admin/content/list-page
 import { TeacherComponent } from './components/dashboard/teacher/teacher.component';
 import { TeacherMainComponent } from './components/dashboard/teacher/teacher-content/teacher-main/teacher-main.component';
 import { ClassDetailsComponent } from './components/dashboard/teacher/teacher-content/class-details/class-details.component';
-
+import { ClassHomeComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-home.component';
+import { ClassworkComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/classwork.component';
+import { CheckStudentsComponent } from './components/dashboard/teacher/teacher-content/class-details/check-students/check-students.component';
 const routes: Routes = [
   {
     path: "",
@@ -86,7 +88,26 @@ const routes: Routes = [
       },
       {
         path: "class-details",
-        component: ClassDetailsComponent
+        component: ClassDetailsComponent,
+        children: [
+          {
+            path: "",
+            redirectTo: "home",
+            pathMatch: "full"
+          },
+          {
+            path: 'home',
+            component: ClassHomeComponent
+          },
+          {
+            path: 'class-work',
+            component: ClassworkComponent
+          },
+          {
+            path: 'people',
+            component: CheckStudentsComponent
+          },
+        ]
       }
     ]
   }
@@ -96,4 +117,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
