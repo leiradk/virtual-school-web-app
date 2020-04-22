@@ -3,7 +3,8 @@
         .cs-page {
             display: flex;
             flex-direction: column;
-            margin: 25px 0 0px 0px;
+            margin: 25px auto 0px auto;
+            width: 50rem;
             .cs-item {
                 padding: 0 0 40px 0px;
             }
@@ -12,21 +13,33 @@
                 font-weight: bold;
                 font-size: 50px;
             }
-            .cs-list{
+            .cs-list {
                 display: flex;
                 flex-direction: column;
-                .cs-list-title{
-                border-bottom: 1px solid #dddfe2;
-                display: flex;
-                flex-direction: row;
-                div{
+                .cs-list-title {
+                    border-bottom: 1px solid #dddfe2;
                     display: flex;
-                    flex: 1;
-                    &.cs-list-title-icon{
-                        justify-content: flex-end;
+                    flex-direction: row;
+                    div {
+                        display: flex;
+                        flex: 1;
+                        &.cs-list-title-icon {
+                            justify-content: flex-end;
+                        }
                     }
                 }
-
+                .cs-list-body{
+                    display: flex;
+                    flex-direction: column;
+                    .student-list-header{
+                        display: flex;
+                        div{
+                            flex: 1;
+                            &.header-action{
+                                text-align: right;
+                            }
+                        }
+                    }
                 }
             }
         }

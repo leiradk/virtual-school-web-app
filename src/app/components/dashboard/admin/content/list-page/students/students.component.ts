@@ -19,9 +19,9 @@ declare var jQuery: any;
 export class StudentsComponent implements OnInit {
 
   public addStudentForm: FormGroup;
-  searchText;
   public people: any = [];
   p: number = 1;
+  searchText;
   viewList: number = 5;
   userData: any;
   constructor(
