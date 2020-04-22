@@ -5,19 +5,31 @@
             flex-direction: column;
             margin: 25px auto 0px auto;
             width: 50rem;
-            .cs-item {
-                padding: 0 0 40px 0px;
-            }
+
             .cs-header {
-                border-bottom: 1px solid #dddfe2;
+                display: flex;
+                border-bottom: 1px solid #4e73df !important;
                 font-weight: bold;
-                font-size: 50px;
+                font-size: 30px;
+                div {
+                    flex: 1;
+                    // color: red;
+                }
+                .cs-title{
+                    color: #4e73df !important;
+                }
+                .cs-invite{
+                    text-align: right;
+                }
+            }
+            .cs-teacher{
+                padding: 15px 0px 20px 0px;
             }
             .cs-list {
                 display: flex;
                 flex-direction: column;
                 .cs-list-title {
-                    border-bottom: 1px solid #dddfe2;
+                    border-bottom: 1px solid #4e73df !important;
                     display: flex;
                     flex-direction: row;
                     div {
@@ -25,18 +37,44 @@
                         flex: 1;
                         &.cs-list-title-icon {
                             justify-content: flex-end;
+                            font-size: 30px;
+
+                        }
+                        &.cs-list-title-label {
+                            color: #4e73df !important;
+                            font-weight: bold;
+                            font-size: 30px;
                         }
                     }
                 }
-                .cs-list-body{
+                .cs-list-body {
                     display: flex;
                     flex-direction: column;
-                    .student-list-header{
+                    font-weight: bold;
+                    .student-list-header {
                         display: flex;
+                        padding: .5rem;
+
+                        div {
+                            flex: 1;
+                            &.header-action {
+                                text-align: right;
+                            }
+                            &.header-status {
+                                text-align: center;
+                            }
+                        }
+                    }
+                    .student-list-body{
+                        display: flex;
+                        padding: .5rem;
                         div{
                             flex: 1;
-                            &.header-action{
+                            &.body-action {
                                 text-align: right;
+                            }
+                            &.body-status {
+                                text-align: center;
                             }
                         }
                     }
@@ -44,4 +82,8 @@
             }
         }
     }
+}
+
+.fa.fa-plus{
+    color:#4e73df !important;
 }

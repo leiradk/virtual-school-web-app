@@ -85,8 +85,9 @@ export class TeacherMainComponent implements OnInit {
       .subscribe((response: any) => {
         console.log(response);
         const { status, message, body } = response;
+        this.classDetails = body;
         if (status === 200) {
-          this.classDetails = body;
+          console.log(response);
           // console.log(body[0].classCreated.split(' ')[0].split('-'));
           const date = body[0].classCreated.split(' ')[0].split('-');
           console.log(date);

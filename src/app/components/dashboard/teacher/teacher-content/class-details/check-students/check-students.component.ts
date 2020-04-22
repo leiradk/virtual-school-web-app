@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckStudentsComponent implements OnInit {
 
+  student: any;
   constructor() { }
 
   ngOnInit(): void {
+    this.student = [
+      {
+        name: 'wilver deypalubos',
+        status: 'Pending'
+      },
+      {
+        name: 'Ariel Delo Santos',
+        status: 'Pending'
+      }
+    ]
+
   }
 
 }
