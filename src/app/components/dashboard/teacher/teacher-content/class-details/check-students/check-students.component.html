@@ -1,12 +1,7 @@
 <div class="cs">
     <div class="content">
         <div class="cs-page">
-            <!-- <input type="search" list="mylist">
-            <datalist id="mylist">
-                <option value="Option 1">
-                <option value="Option 2">
-                <option value="Option 3">
-            </datalist> -->
+
             <div class="cs-item cs-header">
                 <div class="cs-title">Teacher</div>
                 <div class="cs-invite"><i class="fa fa-plus"></i></div>
@@ -15,7 +10,8 @@
             <div class="cs-item cs-list">
                 <div class="cs-list-title">
                     <div class="cs-list-title-label">Student</div>
-                    <div class="cs-list-title-icon"><i class="fa fa-plus"></i></div>
+                    <div class="cs-list-title-icon"><a class="add-class" data-toggle="modal" data-target="#myModal"><i
+                                class="fa fa-plus"></i></a></div>
                 </div>
                 <div class="cs-list-body">
                     <div class="student-list-header">
@@ -40,5 +36,45 @@
             </div>
         </div>
 
+    </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add Class</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <input type="search" list="mylist">
+                <datalist id="mylist">
+                    <option value="Option 1">
+                    <option value="Option 2">
+                    <option value="Option 3">
+                </datalist>
+                <button>Send Invite</button>
+            </div>
+
+            <!-- <form class="user" [formGroup]="addClassFOrm" (ngSubmit)="onSubmit()">
+
+                <div class="modal-body">
+                    <div class=" form-group">
+                        <label for="inputName"><span class="validator" *ngIf="name.invalid && name.touched">
+                                Class Name is required</span></label>
+                        <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp"
+                            placeholder="Enter Class Name" formControlName="name">
+                    </div>
+          </form> -->
+
+
+
+        </div>
     </div>
 </div>
