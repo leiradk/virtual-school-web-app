@@ -45,6 +45,11 @@ import { ClassPostComponent } from './components/dashboard/teacher/teacher-conte
 import { ClassworkComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/classwork.component';
 import { CheckStudentsComponent } from './components/dashboard/teacher/teacher-content/class-details/check-students/check-students.component';
 import { IonicModule } from '@ionic/angular';
+import { StudentComponent } from './components/dashboard/student/student.component';
+import { StudentNavbarComponent } from './components/dashboard/student/student-navbar/student-navbar.component';
+import { StudentSidebarComponent } from './components/dashboard/student/student-sidebar/student-sidebar.component';
+import { StudentContentComponent } from './components/dashboard/student/student-content/student-content.component';
+import { StudentMainComponent } from './components/dashboard/student/student-content/student-main/student-main.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +78,11 @@ import { IonicModule } from '@ionic/angular';
     ClassPostComponent,
     ClassworkComponent,
     CheckStudentsComponent,
+    StudentComponent,
+    StudentNavbarComponent,
+    StudentSidebarComponent,
+    StudentContentComponent,
+    StudentMainComponent,
   ],
   imports: [
     BrowserModule,

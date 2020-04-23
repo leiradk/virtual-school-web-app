@@ -15,6 +15,9 @@ import { ClassDetailsComponent } from './components/dashboard/teacher/teacher-co
 import { ClassHomeComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-home.component';
 import { ClassworkComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/classwork.component';
 import { CheckStudentsComponent } from './components/dashboard/teacher/teacher-content/class-details/check-students/check-students.component';
+import { StudentComponent } from "./components/dashboard/student/student.component";
+import { StudentMainComponent } from "./components/dashboard/student/student-content/student-main/student-main.component";
+
 const routes: Routes = [
   {
     path: "",
@@ -108,6 +111,21 @@ const routes: Routes = [
             component: CheckStudentsComponent
           },
         ]
+      }
+    ]
+  },
+  {
+    path: "student",
+    component: StudentComponent,
+    children: [
+      {
+        path: "",
+        redirectTo: "main",
+        pathMatch: "full"
+      },
+      {
+        path: "main",
+        component: StudentMainComponent
       }
     ]
   }
