@@ -24,6 +24,9 @@ export class ApiHostService {
   addClass(payload) {
     return this.https.post(`${this.localhost}teacher/add/class`, payload);
   }
+  sendClassInvites(payload) {
+    return this.https.post(`${this.localhost}teacher/send/invite/class`, payload);
+  }
   //get data
   getTeacher(token) {
     return this.https.get(`${this.localhost}admin/list/teachers?token=${token}`);
@@ -34,4 +37,9 @@ export class ApiHostService {
   getClassroom(token) {
     return this.https.get(`${this.localhost}teacher/get/classes?token=${token}`);
   }
+  searchStudents(token) {
+    return this.https.get(`${this.localhost}list/student?token=${token}`);
+  }
+
+
 }
