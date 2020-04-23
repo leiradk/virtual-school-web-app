@@ -55,9 +55,7 @@
             <div class="modal-body">
                 <input type="search" list="mylist">
                 <datalist id="mylist">
-                    <option value="Option 1">
-                    <option value="Option 2">
-                    <option value="Option 3">
+                    <option *ngFor="let students of student" value="{{students.name}}">
                 </datalist>
                 <button>Send Invite</button>
             </div>

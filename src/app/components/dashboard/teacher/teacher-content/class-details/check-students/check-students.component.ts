@@ -19,7 +19,15 @@ export class CheckStudentsComponent implements OnInit {
       {
         name: 'Ariel Delo Santos',
         status: 'Pending'
-      }
+      },
+      {
+        name: 'Blythe lobrigas',
+        status: 'Pending'
+      },
+      {
+        name: 'Melvin Elayron',
+        status: 'Pending'
+      },
     ]
 
   }
