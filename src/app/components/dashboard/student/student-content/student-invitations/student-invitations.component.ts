@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiHostService } from '../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../services/system.utils';
+import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-student-invitations',
   templateUrl: './student-invitations.component.html',
@@ -23,7 +24,8 @@ export class StudentInvitationsComponent implements OnInit {
 
   getDate(){
     const myDate = new Date();
-    console.log(myDate);
+    const cValue = formatDate(myDate, 'yyyy-MM-dd hh:mm:ss', 'en-US');
+    console.log(cValue);
   }
   getInvitations() {
     const { token } = this.userData;
