@@ -13,8 +13,8 @@
       <!-- <div class="card-body"> -->
   
   
-  
-      <div *ngFor="let details of classDetails" class="card">
+        <div *ngFor="let details of classDetails">
+      <div *ngIf="details.inviteStatus === 'accepted'" class="card">
         <div class="additional">
           <div class="user-card">
             <div class="level center">

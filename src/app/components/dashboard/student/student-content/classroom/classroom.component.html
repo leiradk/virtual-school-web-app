@@ -1,0 +1,55 @@
+<div class="class-details">
+    <div class="row">
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <br />
+
+            <div class="navigate-bar border-bottom-primary">
+                <div class="nav-item"><button [routerLink]="['/teacher/class-details/home']" >Home</button></div>
+                <div class="nav-item" ><button [routerLink]="['/teacher/class-details/class-work']" >Classwork</button></div>
+                <div class="nav-item" ><button [routerLink]="['/teacher/class-details/people']">People</button></div>
+                <div class="nav-item" ><button [routerLink]="['/teacher/class-details/hone']">Grades</button></div>
+                
+                <!-- <div class="nav-item"><button [routerLink]="['/teacher/class-details/home']"  [ngClass]="homeActive" (click)="getActiveClass()">Home</button></div>
+                <div class="nav-item" ><button [routerLink]="['/teacher/class-details/class-work']" [ngClass]="cwActive" (click)="getActiveClass()">Classwork</button></div>
+                <div class="nav-item" ><button [routerLink]="['/teacher/class-details/people']" [ngClass]="peopleActive" (click)="getActiveClass()">People</button></div>
+                <div class="nav-item" ><button [routerLink]="['/teacher/class-details/hone']" [ngClass]="gradesActive">Grades</button></div> -->
+            </div>
+            <div class="nav-content">
+                <router-outlet></router-outlet>
+            </div>
+            <!-- <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="#stream" class="nav-link active" role="tab" data-toggle="tab">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#classwork" class="nav-link" role="tab" data-toggle="tab">Classwork</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#people" class="nav-link" role="tab" data-toggle="tab">People</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#grade" class="nav-link" role="tab" data-toggle="tab">Grade</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="stream">
+                    <app-class-home></app-class-home>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="classwork">
+                    <app-classwork></app-classwork>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="people">
+                    <app-check-students></app-check-students>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="grade">4</div>
+            </div> -->
+        </div>
+
+
+
+    </div>
+</div>
