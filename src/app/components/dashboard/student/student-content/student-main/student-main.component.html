@@ -2,7 +2,8 @@
     @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
   </style>
   <div *ngIf="errorData" class="error-message">
-    <span>Something Went Wrong</span>
+    <app-error404></app-error404>
+    <!-- <span>Something Went Wrong</span> -->
   </div>
   <div *ngIf="!errorData" class="subject-lists">
     <div class="row">
