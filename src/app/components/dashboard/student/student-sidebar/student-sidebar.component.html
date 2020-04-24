@@ -1,8 +1,12 @@
 <div class="p-4 pt-5">
     <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(assets/teacher/images/logo.jpg);"></a>
     <ul class="list-unstyled components mb-5">
-      <li class="active">
-        <a [routerLink]="['/teacher/main']" >Dashboard</a>
+      <!-- class="active" -->
+      <li >
+        <a [routerLink]="['/student/main']" >Dashboard</a>
+      </li>
+      <li>
+        <a [routerLink]="['/student/invitations']">Invitations</a>
       </li>
       <li >
         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Classes</a>
@@ -13,9 +17,7 @@
        
         </ul>
       </li>
-      <li>
-        <a href="#">About</a>
-      </li>
+    
       <li>
         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
         <ul class="collapse list-unstyled" id="pageSubmenu">

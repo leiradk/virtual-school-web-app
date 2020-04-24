@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiHostService } from '../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../services/system.utils';
+import { map, catchError} from 'rxjs/operators';
+import { throwError } from 'rxjs';
 @Component({
   selector: 'app-student-main',
   templateUrl: './student-main.component.html',
@@ -14,6 +16,7 @@ export class StudentMainComponent implements OnInit {
   year: any;
   showSpinner: boolean = true;
   userData: any;
+  errorData: boolean = false;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils
@@ -25,7 +28,8 @@ export class StudentMainComponent implements OnInit {
     this.getClassroom(this.userData)
   }
 
-
+  
+  
   getClassroom(data) {
     const { token } = data;
     this.apiService.getClassroom(token)
@@ -44,6 +48,15 @@ export class StudentMainComponent implements OnInit {
           this.year = date[0];
           this.showSpinner = false;
         }
+      }, (errorResponse: any) => {
+        console.log(errorResponse);
+        
+          const { status, message } = errorResponse.error;
+          if(status === 403) {
+            console.log('something went wrong');
+            this.errorData = true;
+          }
+          
       });
   }
   getDate(month) {

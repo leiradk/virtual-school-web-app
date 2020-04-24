@@ -17,6 +17,7 @@ import { ClassworkComponent } from './components/dashboard/teacher/teacher-conte
 import { CheckStudentsComponent } from './components/dashboard/teacher/teacher-content/class-details/check-students/check-students.component';
 import { StudentComponent } from "./components/dashboard/student/student.component";
 import { StudentMainComponent } from "./components/dashboard/student/student-content/student-main/student-main.component";
+import { StudentInvitationsComponent } from "./components/dashboard/student/student-content/student-invitations/student-invitations.component";
 
 const routes: Routes = [
   {
@@ -126,7 +127,12 @@ const routes: Routes = [
       {
         path: "main",
         component: StudentMainComponent
-      }
+      },
+      {
+        path: "invitations",
+        component: StudentInvitationsComponent
+      },
+      
     ]
   }
 ];

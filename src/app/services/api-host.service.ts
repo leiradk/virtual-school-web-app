@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SystemUtils } from './system.utils';
+import { map, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,25 +15,84 @@ export class ApiHostService {
   //post data
   signin(payload) {
     return this.https.post(`${this.localhost}login`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      )
   }
 
   addTeacher(payload) {
-    return this.https.post(`${this.localhost}admin/add/teacher`, payload);
+    return this.https.post(`${this.localhost}admin/add/teacher`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
   }
   addStudent(payload) {
-    return this.https.post(`${this.localhost}admin/add/student`, payload);
+    return this.https.post(`${this.localhost}admin/add/student`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
   }
   addClass(payload) {
-    return this.https.post(`${this.localhost}teacher/add/class`, payload);
+    return this.https.post(`${this.localhost}teacher/add/class`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
   }
   //get data
   getTeacher(token) {
-    return this.https.get(`${this.localhost}admin/list/teachers?token=${token}`);
+    return this.https.get(`${this.localhost}admin/list/teachers?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
   }
   getStudents(token) {
-    return this.https.get(`${this.localhost}admin/list/students?token=${token}`);
+    return this.https.get(`${this.localhost}admin/list/students?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
   }
   getClassroom(token) {
-    return this.https.get(`${this.localhost}teacher/get/classes?token=${token}`);
+    return this.https.get(`${this.localhost}teacher/get/classes?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      )
+  }
+  getClassInvitation(token) {
+    return this.https.get(`${this.localhost}student/list/class/invitation?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
   }
 }

@@ -50,6 +50,7 @@ import { StudentNavbarComponent } from './components/dashboard/student/student-n
 import { StudentSidebarComponent } from './components/dashboard/student/student-sidebar/student-sidebar.component';
 import { StudentContentComponent } from './components/dashboard/student/student-content/student-content.component';
 import { StudentMainComponent } from './components/dashboard/student/student-content/student-main/student-main.component';
+import { StudentInvitationsComponent } from './components/dashboard/student/student-content/student-invitations/student-invitations.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,6 +84,7 @@ import { StudentMainComponent } from './components/dashboard/student/student-con
     StudentSidebarComponent,
     StudentContentComponent,
     StudentMainComponent,
+    StudentInvitationsComponent,
   ],
   imports: [
     BrowserModule,
