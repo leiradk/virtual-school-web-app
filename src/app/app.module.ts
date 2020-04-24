@@ -52,6 +52,7 @@ import { StudentContentComponent } from './components/dashboard/student/student-
 import { StudentMainComponent } from './components/dashboard/student/student-content/student-main/student-main.component';
 import { StudentInvitationsComponent } from './components/dashboard/student/student-content/student-invitations/student-invitations.component';
 import { Error404Component } from './components/ui/error404/error404.component';
+import { ClassroomComponent } from './components/dashboard/student/student-content/classroom/classroom.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,6 +88,7 @@ import { Error404Component } from './components/ui/error404/error404.component';
     StudentMainComponent,
     StudentInvitationsComponent,
     Error404Component,
+    ClassroomComponent,
   ],
   imports: [
     BrowserModule,

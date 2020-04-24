@@ -18,6 +18,7 @@ import { CheckStudentsComponent } from './components/dashboard/teacher/teacher-c
 import { StudentComponent } from "./components/dashboard/student/student.component";
 import { StudentMainComponent } from "./components/dashboard/student/student-content/student-main/student-main.component";
 import { StudentInvitationsComponent } from "./components/dashboard/student/student-content/student-invitations/student-invitations.component";
+import { ClassroomComponent } from "./components/dashboard/student/student-content/classroom/classroom.component";
 
 const routes: Routes = [
   {
@@ -131,6 +132,10 @@ const routes: Routes = [
       {
         path: "invitations",
         component: StudentInvitationsComponent
+      },
+      {
+        path: "classroom",
+        component: ClassroomComponent
       },
       
     ]

@@ -54,6 +54,19 @@ export class ApiHostService {
         })
       );
   }
+
+  //put data
+  acceptInvitation(payload) {
+    return this.https.put(`${this.localhost}student/accept/class/invite`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
   //get data
   getTeacher(token) {
     return this.https.get(`${this.localhost}admin/list/teachers?token=${token}`)

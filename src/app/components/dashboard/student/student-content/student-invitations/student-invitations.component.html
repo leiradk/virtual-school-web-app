@@ -1,17 +1,17 @@
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
-  </style>
-  
-  <div class="subject-lists">
-    <div class="row">
-      <!-- Earnings (Monthly) Card Example -->
-      <!-- <div class="col-xl-3 col-md-6 mb-4"> -->
-      <!-- <div class="card border-left-primary shadow h-100 py-2"> -->
-      <!-- <div class="card-body"> -->
-  
-  
-  
-      <div *ngFor="let details of invitationsDetails" class="card">
+  @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+</style>
+
+<div class="subject-lists">
+  <div class="row">
+    <!-- Earnings (Monthly) Card Example -->
+    <!-- <div class="col-xl-3 col-md-6 mb-4"> -->
+    <!-- <div class="card border-left-primary shadow h-100 py-2"> -->
+    <!-- <div class="card-body"> -->
+
+
+    <div *ngFor="let details of invitationsDetails" >
+      <div  *ngIf="details.inviteStatus === 'pending'" class="card">
         <div class="additional">
           <div class="user-card">
             <div class="level center">
@@ -19,8 +19,7 @@
             </div>
             <div class="points center">
               <!-- <a [routerLink]="['/teacher/class-details']" class="view-detials" (click)="viewDetails(details)">View</a> -->
-              <span *ngIf="details.inviteStatus === 'pending'"><a (click)="getDate()">Accept</a></span>
-              <span *ngIf="details.inviteStatus !== 'pending'">View</span>
+              <span><a (click)="acceptInitation(details)" class="accept-invitations">Accept</a></span>
             </div>
             <svg width="110" height="110" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" role="img"
               aria-labelledby="title desc" class="center">
@@ -31,15 +30,15 @@
                 .skin {
                   fill: #eab38f;
                 }
-  
+
                 .eyes {
                   fill: #1f1f1f;
                 }
-  
+
                 .hair {
                   fill: #2f1b0d;
                 }
-  
+
                 .line {
                   fill: none;
                   stroke: #2f1b0d;
@@ -112,49 +111,51 @@
             <div class="coords">
               <span>Subject: {{details.classSubject}}</span>
               <span>Status: {{details.inviteStatus}}</span>
-  
+
             </div>
             <div class="coords">
               <!-- <span>Created: {{month}} {{day}}, {{year}}</span> -->
             </div>
             <div class="stats">
               <!-- <div>
-                <div class="title">Students</div>
-                <i class="fa fa-group"></i>
-                <div class="value">{{details.invitationAccepted}}</div>
-              </div> -->
+              <div class="title">Students</div>
+              <i class="fa fa-group"></i>
+              <div class="value">{{details.invitationAccepted}}</div>
+            </div> -->
               <div>
                 <div class="title">Notifications</div>
                 <i class="fa fa-paper-plane"></i>
                 <div class="value">0</div>
               </div>
               <!-- <div>
-                <div class="title">Pending</div>
-                <i class="fa fa-exclamation"></i>
-                <div class="value">{{details.invitationPending}}</div>
-              </div>
-              <div>
-                <div class="title">Accepted</div>
-                <i class="fa fa-check"></i>
-                <div class="value infinity">{{details.invitationAccepted}}</div>
-              </div> -->
+              <div class="title">Pending</div>
+              <i class="fa fa-exclamation"></i>
+              <div class="value">{{details.invitationPending}}</div>
+            </div>
+            <div>
+              <div class="title">Accepted</div>
+              <i class="fa fa-check"></i>
+              <div class="value infinity">{{details.invitationAccepted}}</div>
+            </div> -->
             </div>
           </div>
         </div>
-        <div class="general">
+        <div class="general" *ngIf="details.inviteStatus === 'pending'">
           <h1>{{details.className}}</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a volutpat mauris, at molestie lacus.
             Nam vestibulum sodales odio ut pulvinar.</p>
           <span class="more">Mouse over the card for more info</span>
         </div>
       </div>
-  
-      <div *ngIf="showSpinner" style="width: 100%;">
-        <app-loading-spinner></app-loading-spinner>
-      </div>
- 
-  
-      <!-- <div class="col-xl-3 col-md-6 mb-4">
+    </div>
+
+
+    <div *ngIf="showSpinner" style="width: 100%;">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+
+
+    <!-- <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
@@ -165,7 +166,5 @@
           </div>
         </div>
       </div> -->
-    </div>
   </div>
-  
-  
+</div>
