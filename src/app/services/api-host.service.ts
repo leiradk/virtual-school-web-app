@@ -108,4 +108,9 @@ export class ApiHostService {
         })
       );
   }
+  searchStudents(token) {
+    return this.https.get(`${this.localhost}list/student?token=${token}`);
+  }
+
+
 }

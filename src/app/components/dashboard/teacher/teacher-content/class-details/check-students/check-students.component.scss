@@ -15,14 +15,14 @@
                     flex: 1;
                     // color: red;
                 }
-                .cs-title{
+                .cs-title {
                     color: #4e73df !important;
                 }
-                .cs-invite{
+                .cs-invite {
                     text-align: right;
                 }
             }
-            .cs-teacher{
+            .cs-teacher {
                 padding: 15px 0px 20px 0px;
             }
             .cs-list {
@@ -38,7 +38,6 @@
                         &.cs-list-title-icon {
                             justify-content: flex-end;
                             font-size: 30px;
-
                         }
                         &.cs-list-title-label {
                             color: #4e73df !important;
@@ -53,7 +52,7 @@
                     font-weight: bold;
                     .student-list-header {
                         display: flex;
-                        padding: .5rem;
+                        padding: 0.5rem;
 
                         div {
                             flex: 1;
@@ -65,10 +64,10 @@
                             }
                         }
                     }
-                    .student-list-body{
+                    .student-list-body {
                         display: flex;
-                        padding: .5rem;
-                        div{
+                        padding: 0.5rem;
+                        div {
                             flex: 1;
                             &.body-action {
                                 text-align: right;
@@ -84,6 +83,20 @@
     }
 }
 
-.fa.fa-plus{
-    color:#4e73df !important;
+.fa.fa-plus {
+    color: #4e73df !important;
+}
+
+.invite-student {
+    cursor: pointer;
+}
+.modal-header{
+    border-bottom: none !important;
+}
+.search-students {
+    width: 100%;
+    outline: none;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
 }
