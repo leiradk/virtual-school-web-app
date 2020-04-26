@@ -112,5 +112,7 @@ export class ApiHostService {
     return this.https.get(`${this.localhost}list/student?token=${token}`);
   }
 
-
+  sendClassInvites(payload){
+    return this.https.post(`${this.localhost}teacher/send/invite/class`, payload);
+  }
 }
