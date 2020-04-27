@@ -23,6 +23,7 @@ export class StudentMainComponent implements OnInit {
     private system: SystemUtils
   ) { }
 
+
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
 
@@ -33,6 +34,7 @@ export class StudentMainComponent implements OnInit {
   getInvitations() {
     const { token } = this.userData;
     console.log(token)
+    
     this.apiService.getClassInvitation(token)
       .subscribe((response: any) => {
         console.log(response);

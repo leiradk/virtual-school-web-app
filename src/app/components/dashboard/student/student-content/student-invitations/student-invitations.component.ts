@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ApiHostService } from '../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../services/system.utils';
 import { formatDate } from '@angular/common';
+import { ToastrService } from "ngx-toastr";
+
+
+declare var jQuery: any;
+
 @Component({
   selector: 'app-student-invitations',
   templateUrl: './student-invitations.component.html',
@@ -14,12 +19,17 @@ export class StudentInvitationsComponent implements OnInit {
   invitationsDetails: any;
   constructor(
     private apiService: ApiHostService,
+    private toastr: ToastrService,
     private system: SystemUtils
   ) { }
 
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
     this.getInvitations();
+  }
+
+  showSuccess() {
+    this.toastr.success('Class is added successfully', 'Congratulations', { timeOut: 2000 })
   }
 
   acceptInitation(value){
@@ -38,11 +48,15 @@ export class StudentInvitationsComponent implements OnInit {
         console.log(response);
         if (status === 200 ) {
           this.getInvitations;
+          setTimeout(() => { this.showSuccess(); }, 500); //add toast message
+          this.getInvitations();
+          // jQuery('#myModal').modal('hide'); //close modal after submit
         }
       }, (error: any) => {
         console.log(error);
       })
   }
+  
   getInvitations() {
     const { token } = this.userData;
     console.log(token)

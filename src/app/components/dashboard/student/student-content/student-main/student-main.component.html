@@ -1,19 +1,21 @@
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
-  </style>
-  <div *ngIf="errorData" class="error-message">
-    <app-error404></app-error404>
-    <!-- <span>Something Went Wrong</span> -->
-  </div>
-  <div *ngIf="!errorData" class="subject-lists">
-    <div class="row">
-      <!-- Earnings (Monthly) Card Example -->
-      <!-- <div class="col-xl-3 col-md-6 mb-4"> -->
-      <!-- <div class="card border-left-primary shadow h-100 py-2"> -->
-      <!-- <div class="card-body"> -->
-  
-  
-        <div *ngFor="let details of classDetails">
+  @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+</style>
+<div *ngIf="errorData" class="error-message">
+  <app-error404></app-error404>
+  <!-- <span>Something Went Wrong</span> -->
+</div>
+<div *ngIf="showSpinner">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<div *ngIf="!errorData" class="subject-lists">
+  <div class="row">
+    <!-- Earnings (Monthly) Card Example -->
+    <!-- <div class="col-xl-3 col-md-6 mb-4"> -->
+    <!-- <div class="card border-left-primary shadow h-100 py-2"> -->
+    <!-- <div class="card-body"> -->
+
+    <div *ngFor="let details of classDetails">
       <div *ngIf="details.inviteStatus === 'accepted'" class="card">
         <div class="additional">
           <div class="user-card">
@@ -33,15 +35,15 @@
                 .skin {
                   fill: #eab38f;
                 }
-  
+
                 .eyes {
                   fill: #1f1f1f;
                 }
-  
+
                 .hair {
                   fill: #2f1b0d;
                 }
-  
+
                 .line {
                   fill: none;
                   stroke: #2f1b0d;
@@ -114,7 +116,7 @@
             <div class="coords">
               <span>Subject: {{details.classSubject}}</span>
               <span>Status: Active</span>
-  
+
             </div>
             <div class="coords">
               <span>Created: {{month}} {{day}}, {{year}}</span>
@@ -150,12 +152,12 @@
           <span class="more">Mouse over the card for more info</span>
         </div>
       </div>
-  
+
       <div *ngIf="showSpinner" style="width: 100%;">
         <app-loading-spinner></app-loading-spinner>
       </div>
- 
-  
+
+
       <!-- <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
           <div class="card-body">
@@ -169,5 +171,3 @@
       </div> -->
     </div>
   </div>
-  
-  
