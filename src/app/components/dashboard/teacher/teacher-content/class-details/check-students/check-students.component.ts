@@ -24,6 +24,9 @@ export class CheckStudentsComponent implements OnInit {
     private fb: FormBuilder,
   ) { this.classFormModel() }
 
+
+  showSpinner: boolean = true;
+
   ngOnInit(): void {
 
     this.userData = this.system.retrieveItem('userData');
@@ -47,6 +50,7 @@ export class CheckStudentsComponent implements OnInit {
         const { body, status } = response;
         if (status === 200) {
           this.student = body;
+          this.showSpinner = false;
         }
       })
   }
