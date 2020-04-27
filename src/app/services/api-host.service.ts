@@ -67,6 +67,11 @@ export class ApiHostService {
       );
   }
 
+
+  sendClassInvites(payload) {
+    return this.https.post(`${this.localhost}teacher/send/invite/class`, payload);
+  }
+
   //get data
   getTeacher(token) {
     return this.https.get(`${this.localhost}admin/list/teachers?token=${token}`)
@@ -112,7 +117,15 @@ export class ApiHostService {
     return this.https.get(`${this.localhost}list/student?token=${token}`);
   }
 
-  sendClassInvites(payload){
-    return this.https.post(`${this.localhost}teacher/send/invite/class`, payload);
+  getInvitedStudents(id, token) {
+    return this.https.get(`${this.localhost}teacher/list/invited/by/class?classID=${id}&token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
   }
+
 }

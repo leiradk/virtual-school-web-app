@@ -16,6 +16,7 @@ export class CheckStudentsComponent implements OnInit {
   public inviteForm: FormGroup;
 
   student: any;
+  invited: any;
   userData: any
   classDetails: any;
   constructor(
@@ -30,6 +31,7 @@ export class CheckStudentsComponent implements OnInit {
     this.classDetails = this.system.retrieveItem('classDetails');
 
     this.getStudents(this.userData);
+    this.getInvitedStudents();
 
   }
   get username() {
@@ -67,5 +69,23 @@ export class CheckStudentsComponent implements OnInit {
       .subscribe((response: any) => {
         console.log(response);
       })
+  }
+
+
+  getInvitedStudents() {
+    const { token } = this.userData;
+    const { rid } = this.classDetails;
+    this.apiService.getInvitedStudents(rid, token)
+      .subscribe((response: any) => {
+        const { status } = response; {
+          if(status === 200) {
+            const { body } = response;
+            this.invited = body;
+          }
+        }
+        console.log(response);
+      }, (error: any) => {
+        console.log(error);
+      });
   }
 }

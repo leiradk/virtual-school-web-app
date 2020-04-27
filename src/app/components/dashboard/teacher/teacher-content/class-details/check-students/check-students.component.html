@@ -19,13 +19,13 @@
                         <div class="header-status">status</div>
                         <div class="header-action">Action</div>
                     </div>
-                    <div *ngFor="let students of student" class="student-list-body">
-                        <div class="body-name">{{students.username}}</div>
-                        <!-- <div class="body-status">{{students.status}}</div> -->
+                    <div *ngFor="let invites of invited" class="student-list-body">
+                        <div class="body-name">{{invites.student}}</div>
+                        <div class="body-status">{{invites.inviteStatus}}</div>
                         <div class="body-action dropdown">
-                            <div><a type="button" class="dropdown-toggle" data-toggle="dropdown"></a>
-                            </div>
-                            <div class="dropdown-menu">
+                            <a href="#action" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"></a>
+
+                            <div id="action" class="collapse dropdown-menu">
                                 <a class="dropdown-item" href="#">Link 1</a>
                                 <a class="dropdown-item" href="#">Link 2</a>
                                 <a class="dropdown-item" href="#">Link 3</a>
@@ -61,7 +61,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button >Send Invite</button>
+                    <button>Send Invite</button>
                 </div>
             </form>
 
