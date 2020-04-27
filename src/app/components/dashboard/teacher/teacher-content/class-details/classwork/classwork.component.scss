@@ -1,4 +1,4 @@
-.create-work{
+.create-work {
     border: none;
     background: white;
     font-size: 20px;
@@ -6,6 +6,84 @@
     margin: 10px;
 }
 
-.container-fluid{
+.container-fluid {
     margin-top: 20px;
+}
+
+.classwork {
+    display: flex;
+    .left {
+        flex: 1;
+        margin: 5px;
+        margin: 0px 15px 0 0px;
+        .task-list{
+            display: flex;
+            div{
+                flex: 1;
+                font-weight: bold;
+                &.task-view{
+                    text-align: right;
+                }
+            }
+        }
+    }
+    .center {
+        flex: 2;
+        margin: 0px 15px 0 15px;
+        .card-title {
+            div {
+                flex: 1;
+                &.view-details {
+                    text-align: right;
+                }
+            }
+        }
+        .card-body {
+            .tasked-student {
+                display: flex;
+                text-align: center;
+                .submitted-task {
+                    flex: 1;
+                    .submit-count {
+                        font-weight: bold;
+                        font-size: 30px;
+                    }
+                    .footer-title {
+                        font-weight: bold;
+                        font-size: 25px;
+                    }
+                }
+                .student-assigned {
+                    flex: 1;
+                    .student-count {
+                        font-weight: bold;
+                        font-size: 30px;
+                    }
+                    .footer-title {
+                        font-weight: bold;
+                        font-size: 25px;
+                    }
+                }
+            }
+        }
+    }
+    .right {
+        flex: 1;
+        margin: 0px 0px 0 15px;
+    }
+}
+
+.vl {
+    border-left: 1px solid rgba(0, 0, 0, 0.125);
+    top: 0;
+}
+
+.card-title {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    display: flex;
+    padding: 10px;
+    font-weight: bold;
+    font-weight: 20px;
+    background-color: #4e73df !important;
+    color: white;
 }

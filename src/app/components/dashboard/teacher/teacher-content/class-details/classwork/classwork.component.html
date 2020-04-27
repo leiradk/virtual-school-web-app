@@ -1,79 +1,50 @@
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-body">
-            <div class="table-responsive">
-                <div class="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                    <button class="create-work" data-toggle="modal"
-                    data-target="#myModal"><i class="fa fa-plus"></i> Create</button>
-                    <div class="create-work">
+            <div class="classwork">
+                <div class="card tasks left">
+                    <div class="card-title">
+                        Tasks
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6">
-                            <div class="dataTables_length" id="dataTable_length">
-                                <label>
-                                    Show
-                                    <select class="custom-select custom-select-sm form-control form-control-sm"
-                                        [(ngModel)]="viewList">
-                                        <option value="5">5</option>
-                                        <option value="10">10</option>
-                                        <option value="20">20</option>
-                                    </select>
-                                    entries
-                                </label>
-                            </div>
+                    <div class="card-body">
+                        <div class="task-list">
+                            <div class="task-title">Task Title</div>
+                            <div class="task-view">View</div>
                         </div>
-                        <div class="col-sm-12 col-md-6">
-                            <div class="dataTables_filter" id="dataTable_filter">
-                                <label for="Search">
-                                    Search:
-                                    <input type="search" class="form-control form-control-sm" aria-controls="dataTable"
-                                        [(ngModel)]="searchText" />
-                                </label>
+                    </div>
+                </div>
+                <!-- Event # 1 -->
+                <div class="card class-work-card center">
+                    <div class="card-title">
+                        <div class="title-name">Class Work Title</div>
+                        <div class="view-details"><a>View</a></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="tasked-student">
+                            <div class="submitted-task">
+                                <div class="submit-count">
+                                    0
+                                </div>
+                                <div class="footer-title">
+                                    Submitted
+                                </div>
+                            </div>
+                            <div class="vl"></div>
+                            <div class="student-assigned">
+                                <div class="student-count">
+                                    0
+                                </div>
+                                <div class="footer-title">
+                                    Student
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="tasks right">
+                </div>
             </div>
-
-            <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>File</th>
-                        <th>Name</th>
-                        <th>Date</th>
-
-
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>File</th>
-                        <th>Name</th>
-                        <th>Date</th>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    <!-- <tr>
-                  <td colspan="6">
-                    <app-loading-spinner></app-loading-spinner>
-                  </td>
-                </tr> -->
-                    <tr *ngFor="
-                let files of file
-                  | filter: searchText
-                  | paginate: { itemsPerPage: viewList, currentPage: p };
-                let i = index
-              ">
-                        <td>{{files.file}}</td>
-                        <td>{{files.filename}}</td>
-                        <td>{{files.date}}</td>
-
-
-                    </tr>
-                </tbody>
-            </table>
         </div>
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
 </div>
 
@@ -83,14 +54,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- <form class="user" [formGroup]="inviteForm" (ngSubmit)="onSubmit()"> -->
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Work</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add Work</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
 
-                <!-- Modal body -->
-                <!-- <div class="modal-body">
+            <!-- Modal body -->
+            <!-- <div class="modal-body">
                     <input type="search" placeholder="Type a username" class="search-students"
                         formControlName="username" list="mylist">
                     <datalist id="mylist">
