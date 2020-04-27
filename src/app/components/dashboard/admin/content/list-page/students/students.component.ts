@@ -45,6 +45,7 @@ export class StudentsComponent implements OnInit {
     const { token } = this.userData;
     this.apiService.getStudents(token).subscribe((response: any) => {
       const { status, body } = response;
+      console.log(body);
       if (status === 200) {
         this.people = body;
         this.showSpinner = false;
@@ -103,13 +104,14 @@ export class StudentsComponent implements OnInit {
     const { value } = this.addStudentForm;
 
     const data = {
+  
       username: value.username,
       position: value.position,
       department: value.department,
       password: value.password,
     };
 
-
+console.log(data);
     // get chckbox status
     let contModal = <HTMLInputElement>document.getElementById('continueModal');
     if (!contModal.checked) {
