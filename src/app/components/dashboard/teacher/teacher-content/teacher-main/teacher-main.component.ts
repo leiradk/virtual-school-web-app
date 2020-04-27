@@ -7,11 +7,17 @@ import {
 } from "@angular/forms";
 import { ApiHostService } from '../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../services/system.utils';
+import { ToastrService } from "ngx-toastr";
+
+
+declare var jQuery: any;
+
 @Component({
   selector: 'app-teacher-main',
   templateUrl: './teacher-main.component.html',
   styleUrls: ['./teacher-main.component.scss']
 })
+
 export class TeacherMainComponent implements OnInit {
   public addClassFOrm: FormGroup;
   userData: any;
@@ -22,16 +28,22 @@ export class TeacherMainComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiHostService,
-    private system: SystemUtils
+    private system: SystemUtils,
+    private toastr: ToastrService,
   ) {
     this.classFormModel();
   }
 
   showSpinner: boolean = true;
 
+  showSuccess() {
+    this.toastr.success('Invite has been successfully sent', 'Congratulations', { timeOut: 4000 })
+  }
+
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
     this.getClassroom(this.userData);
+    this.showSpinner = true;
   }
 
   get name() {
@@ -67,16 +79,20 @@ export class TeacherMainComponent implements OnInit {
       classGradeLevel: value.gradelevel
     }
 
-      this.apiService.addClass(payload)
-        .subscribe((response: any) => {
-          const { status } = response;
-          if(status === 201 ) {
-            console.log('success')
-          } else {
-            console.log(response);
-          }
-        });
+    this.apiService.addClass(payload)
+      .subscribe((response: any) => {
+        const { status } = response;
+        if (status === 201) {
+          console.log('success')
+        } else {
+          console.log(response);
+        }
+      });
     console.log(payload);
+    this.showSuccess(); // show toastr
+    jQuery('#myModal').modal('hide'); //close modal after submit
+    this.ngOnInit();
+    this.getClassroom(this.userData);
   }
 
   getClassroom(data) {
@@ -101,29 +117,29 @@ export class TeacherMainComponent implements OnInit {
   }
 
   getDate(month) {
-    if(month === 1) {
+    if (month === 1) {
       return 'January';
-    } else if( month === 2){
+    } else if (month === 2) {
       return 'February'
-    } else if( month === 3){
+    } else if (month === 3) {
       return 'March'
-    }else if( month === 4){
+    } else if (month === 4) {
       return 'April'
-    }else if( month === 5){
+    } else if (month === 5) {
       return 'May'
-    }else if( month === 6){
+    } else if (month === 6) {
       return 'June'
-    }else if( month === 7){
+    } else if (month === 7) {
       return 'July'
-    }else if( month === 8){
+    } else if (month === 8) {
       return 'August'
-    }else if( month === 9){
+    } else if (month === 9) {
       return 'September'
-    }else if( month === 10){
+    } else if (month === 10) {
       return 'October'
-    }else if( month === 11){
+    } else if (month === 11) {
       return 'November'
-    }else if( month === 12){
+    } else if (month === 12) {
       return 'December'
     }
   }

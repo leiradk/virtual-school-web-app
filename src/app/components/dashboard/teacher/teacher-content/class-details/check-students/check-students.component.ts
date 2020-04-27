@@ -7,6 +7,11 @@ import {
   Validators,
   FormControl,
 } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
+
+
+declare var jQuery: any;
+
 @Component({
   selector: 'app-check-students',
   templateUrl: './check-students.component.html',
@@ -22,8 +27,13 @@ export class CheckStudentsComponent implements OnInit {
     private apiService: ApiHostService,
     private system: SystemUtils,
     private fb: FormBuilder,
+    private toastr: ToastrService,
   ) { this.classFormModel() }
 
+
+  showSuccess() {
+    this.toastr.success('Invite has been successfully sent', 'Congratulations', { timeOut: 4000 })
+  }
 
   showSpinner: boolean = true;
 
@@ -33,16 +43,18 @@ export class CheckStudentsComponent implements OnInit {
     this.classDetails = this.system.retrieveItem('classDetails');
 
     this.getStudents(this.userData);
-
   }
+
   get username() {
     return this.inviteForm.get("username") as FormControl;
   }
+
   classFormModel() {
     this.inviteForm = this.fb.group({
       username: [null, Validators.required]
     });
   }
+
   getStudents(userData) {
     const { token } = userData;
     this.apiService.searchStudents(token)
@@ -71,5 +83,7 @@ export class CheckStudentsComponent implements OnInit {
       .subscribe((response: any) => {
         console.log(response);
       })
+    this.showSuccess(); // show toastr
+    jQuery('#myModal').modal('hide'); //close modal after submit
   }
 }

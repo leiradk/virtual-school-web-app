@@ -4,14 +4,18 @@
 
 <div class="subject-lists">
   <div class="row">
+
     <!-- Earnings (Monthly) Card Example -->
     <!-- <div class="col-xl-3 col-md-6 mb-4"> -->
     <!-- <div class="card border-left-primary shadow h-100 py-2"> -->
     <!-- <div class="card-body"> -->
 
 
-    <div *ngFor="let details of invitationsDetails" >
-      <div  *ngIf="details.inviteStatus === 'pending'" class="card">
+    <div *ngFor="let details of invitationsDetails">
+      <div *ngIf="details.inviteStatus === 'pending'" class="card">
+        <div *ngIf="showBar" class="load-over-component">
+          <app-loading-bar></app-loading-bar>
+        </div>
         <div class="additional">
           <div class="user-card">
             <div class="level center">

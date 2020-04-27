@@ -53,6 +53,7 @@ import { StudentMainComponent } from './components/dashboard/student/student-con
 import { StudentInvitationsComponent } from './components/dashboard/student/student-content/student-invitations/student-invitations.component';
 import { Error404Component } from './components/ui/error404/error404.component';
 import { ClassroomComponent } from './components/dashboard/student/student-content/classroom/classroom.component';
+import { LoadingBarComponent } from './components/ui/loading-bar/loading-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +90,7 @@ import { ClassroomComponent } from './components/dashboard/student/student-conte
     StudentInvitationsComponent,
     Error404Component,
     ClassroomComponent,
+    LoadingBarComponent,
   ],
   imports: [
     BrowserModule,
