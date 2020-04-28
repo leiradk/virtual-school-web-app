@@ -14,6 +14,7 @@ declare var jQuery: any;
 })
 export class StudentInvitationsComponent implements OnInit {
 
+  myCLass: any;
   showBar: boolean = false;
   showSpinner: boolean = true;
 
@@ -37,42 +38,46 @@ export class StudentInvitationsComponent implements OnInit {
 
 
   acceptInitation(value) {
+    this.myCLass = value.rid;
+    console.log(this.myCLass)
     this.showBar = true;
     const { token } = this.userData;
     const { rid } = value;
     const myDate = new Date();
     const cValue = formatDate(myDate, 'yyyy-MM-dd hh:mm:ss', 'en-US');
-    console.log(value);
-    console.log(rid);
+    // console.log(value);
+    // console.log(rid);
     const payload = {
       token: token,
       classID: rid
     }
 
     this.apiService.acceptInvitation(payload).subscribe((response: any) => {
-        const { status } = response;
-        console.log(response);
-        if (status === 200) {
-          this.showBar = false;
-          this.showSuccess();
-          this.ngOnInit();
-          // jQuery('#myModal').modal('hide'); //close modal after submit
-        }
-      }, (error: any) => {
-        console.log(error);
-      })
+      const { status } = response;
+      console.log(response);
+      this.showBar = false;
+      if (status === 200) {
+        this.showBar = false;
+        this.showSuccess();
+        this.ngOnInit();
+        // jQuery('#myModal').modal('hide'); //close modal after submit
+      }
+    }, (error: any) => {
+      this.showBar = false;
+      console.log(error);
+    })
   }
 
   getInvitations() {
     const { token } = this.userData;
     console.log(token)
     this.apiService.getClassInvitation(token).subscribe((response: any) => {
-        console.log(response);
-        const { status, body } = response;
-        if (status === 200) {
-          this.invitationsDetails = body;
-          this.showSpinner = false;
-        }
-      });
+      console.log(response);
+      const { status, body } = response;
+      if (status === 200) {
+        this.invitationsDetails = body;
+        this.showSpinner = false;
+      }
+    });
   }
 }
