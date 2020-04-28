@@ -51,6 +51,7 @@ export class StudentsComponent implements OnInit {
       }
     });
   }
+
   // get email() {
   //   return this.addStudentForm.get('email') as FormControl;
   // }
@@ -94,14 +95,12 @@ export class StudentsComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.success('Student Added successfully', 'Congratulations', { timeOut: 2000 });
+    this.toastr.success('Student Added successfully. Reloading List.', 'Congratulations', { timeOut: 5000 })
   }
 
   onSubmit() {
-    console.log('Im here student add');
-    console.log(this.addStudentForm);
     const { value } = this.addStudentForm;
-
+    console.log(value);
     const data = {
       username: value.username,
       position: value.position,
@@ -116,29 +115,30 @@ export class StudentsComponent implements OnInit {
       jQuery('#myModal').modal('hide'); //close modal after submit
     }
 
-    setTimeout(() => { this.showSuccess(); }, 500); //add toast message
+
+    this.showSpinner = true;
+
+    setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
     this.addStudentForm.reset(); //reset form
-    this.getStudents(); //reload table data
+
 
     this.apiService.addStudent(data).subscribe((response: any) => {
       const { status } = response;
       if (status === 201) {
-        console.log("response");
+        this.ngOnInit();
       } else {
-        console.log("failed to add");
         console.log(response);
       }
     });
-    this.people.push(data);
   }
 
-  mockData() {
-    this.people = [
-      {
-        email: "sample@gmail.com",
-        name: "Tiger",
-        status: "Student",
-      },
-    ];
-  }
+  // mockData() {
+  //   this.people = [
+  //     {
+  //       email: "sample@gmail.com",
+  //       name: "Tiger",
+  //       status: "Student",
+  //     },
+  //   ];
+  // }
 }

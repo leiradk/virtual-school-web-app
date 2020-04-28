@@ -37,13 +37,12 @@ export class TeacherMainComponent implements OnInit {
   showSpinner: boolean = true;
 
   showSuccess() {
-    this.toastr.success('Invite has been successfully sent', 'Congratulations', { timeOut: 4000 })
+    this.toastr.success('Class has been added successfully. Reloading data. Please wait.', 'Congratulations', { timeOut: 5000 })
   }
 
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
     this.getClassroom(this.userData);
-    this.showSpinner = true;
   }
 
   get name() {
@@ -55,6 +54,7 @@ export class TeacherMainComponent implements OnInit {
   get gradelevel() {
     return this.addClassFOrm.get("gradelevel") as FormControl;
   }
+
   classFormModel() {
     this.addClassFOrm = this.fb.group({
       name: [null, Validators.required],
@@ -68,9 +68,8 @@ export class TeacherMainComponent implements OnInit {
     console.log(data)
     this.system.storeLocal('classDetails', data);
   }
-  onSubmit() {
-    console.log('dadsadsad');
 
+  onSubmit() {
     const { value } = this.addClassFOrm;
     const payload = {
       token: this.userData.token,
@@ -79,31 +78,33 @@ export class TeacherMainComponent implements OnInit {
       classGradeLevel: value.gradelevel
     }
 
-    this.apiService.addClass(payload)
-      .subscribe((response: any) => {
+    
+    jQuery('#myModal').modal('hide'); //close modal after submit
+
+    this.showSpinner = true;
+
+    setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
+    this.addClassFOrm.reset(); //reset form
+
+    this.apiService.addClass(payload).subscribe((response: any) => {
         const { status } = response;
         if (status === 201) {
           console.log('success')
+          this.ngOnInit();
         } else {
           console.log(response);
         }
       });
     console.log(payload);
-    this.showSuccess(); // show toastr
-    jQuery('#myModal').modal('hide'); //close modal after submit
-    this.ngOnInit();
-    this.getClassroom(this.userData);
   }
 
   getClassroom(data) {
     const { token } = data;
-    this.apiService.getClassroom(token)
-      .subscribe((response: any) => {
-        console.log(response);
+    this.apiService.getClassroom(token).subscribe((response: any) => {
         const { status, message, body } = response;
+        console.log(response);
         this.classDetails = body;
         if (status === 200) {
-          console.log(response);
           // console.log(body[0].classCreated.split(' ')[0].split('-'));
           const date = body[0].classCreated.split(' ')[0].split('-');
           console.log(date);

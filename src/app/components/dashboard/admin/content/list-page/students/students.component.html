@@ -9,7 +9,7 @@
   </p>
 
   <!-- DataTales Example -->
-  <div class="card shadow mb-4"> 
+  <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">Student List <a data-toggle="modal" data-target="#myModal"><i
             class="fas fa-fw fa-plus-circle"></i></a></h6>
@@ -73,19 +73,21 @@
               <app-loading-spinner></app-loading-spinner>
             </td>
           </tr>
-          <tr *ngFor="
+          <ng-container *ngIf="showSpinner === false">
+            <tr *ngFor="
               let student of people
                 | filter: searchText
                 | paginate: { itemsPerPage: viewList, currentPage: p };
               let i = index
             ">
-            <td>{{ student.username }}</td>
-            <td>{{ student.posistion }}</td>
-            <td>{{ student.usertype }}</td>
-            <td>{{ student.created }}</td>
-            <td>{{ student.createdby }}</td>
-            <td>{{ student.email }}</td>
-          </tr>
+              <td>{{ student.username }}</td>
+              <td>{{ student.posistion }}</td>
+              <td>{{ student.usertype }}</td>
+              <td>{{ student.created }}</td>
+              <td>{{ student.createdby }}</td>
+              <td>{{ student.email }}</td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
     </div>

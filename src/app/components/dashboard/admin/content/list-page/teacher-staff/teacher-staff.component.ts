@@ -55,7 +55,7 @@ export class TeacherStaffComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.success('Teacher Added successfully', 'Congratulations', { timeOut: 2000 })
+    this.toastr.success('Teacher Added successfully. Reloading List.', 'Congratulations', { timeOut: 5000 })
   }
 
   onSubmit() {
@@ -74,17 +74,17 @@ export class TeacherStaffComponent implements OnInit {
       jQuery('#myModal').modal('hide'); //close modal after submit
     }
 
-    setTimeout(() => { this.showSuccess(); }, 500); //add toast message
-    this.addStaffFOrm.reset(); //reset form
-    this.getTeacher(); //reload table data
+    this.showSpinner = true;
 
-    //
+    setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
+    this.addStaffFOrm.reset(); //reset form
+
     // ------>  Please check the code below. I want to put the top code snippet inside if(status === 200)
-    //
     this.apiService.addTeacher(data).subscribe((response: any) => {
       const { status } = response;
-      if (status === 200) {
-        this.getTeacher(); //reload table
+      if (status === 201) {
+        //reload onInit
+        this.ngOnInit();
       } else {
         console.log(response);
       }
