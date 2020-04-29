@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       password: [null, Validators.required],
     });
   }
-
+  // login the user if fields are correct
   onSubmit() {
     console.log(this.signInForm.value);
     const { value } = this.signInForm;

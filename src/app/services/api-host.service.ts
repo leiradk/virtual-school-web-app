@@ -13,6 +13,8 @@ export class ApiHostService {
     private https: HttpClient
   ) { }
   //post data
+
+  //API for sign-in
   signin(payload) {
     return this.https.post(`${this.localhost}login`, payload)
       .pipe(
@@ -24,6 +26,7 @@ export class ApiHostService {
       )
   }
 
+  //api for adding teacher on admin side
   addTeacher(payload) {
     return this.https.post(`${this.localhost}admin/add/teacher`, payload)
       .pipe(
@@ -34,6 +37,8 @@ export class ApiHostService {
         })
       );
   }
+
+  //add student admin side
   addStudent(payload) {
     return this.https.post(`${this.localhost}admin/add/student`, payload)
       .pipe(
@@ -44,6 +49,8 @@ export class ApiHostService {
         })
       );
   }
+
+  //addd classroom admin side
   addClass(payload) {
     return this.https.post(`${this.localhost}teacher/add/class`, payload)
       .pipe(
@@ -55,7 +62,19 @@ export class ApiHostService {
       );
   }
 
+  //send classroom invitation to students
+  sendClassInvites(payload) {
+    return this.https.post(`${this.localhost}teacher/send/invite/class`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
   //put data
+  //accept classroom invitation on student side
   acceptInvitation(payload) {
     return this.https.put(`${this.localhost}student/accept/class/invite`, payload)
       .pipe(
@@ -68,11 +87,9 @@ export class ApiHostService {
   }
 
 
-  sendClassInvites(payload) {
-    return this.https.post(`${this.localhost}teacher/send/invite/class`, payload);
-  }
 
   //get data
+  //get list teacher for the admin 
   getTeacher(token) {
     return this.https.get(`${this.localhost}admin/list/teachers?token=${token}`)
       .pipe(
@@ -83,6 +100,8 @@ export class ApiHostService {
         })
       );
   }
+
+  // get list student for the admin
   getStudents(token) {
     return this.https.get(`${this.localhost}admin/list/students?token=${token}`)
       .pipe(
@@ -93,6 +112,8 @@ export class ApiHostService {
         })
       );
   }
+
+  //get classroom for a teacher
   getClassroom(token) {
     return this.https.get(`${this.localhost}teacher/get/classes?token=${token}`)
       .pipe(
@@ -103,6 +124,8 @@ export class ApiHostService {
         })
       )
   }
+
+  //get classroom invitation for a student
   getClassInvitation(token) {
     return this.https.get(`${this.localhost}student/list/class/invitation?token=${token}`)
       .pipe(
@@ -113,10 +136,20 @@ export class ApiHostService {
         })
       );
   }
+
+  //search student based on the list
   searchStudents(token) {
-    return this.https.get(`${this.localhost}list/student?token=${token}`);
+    return this.https.get(`${this.localhost}list/student?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
   }
 
+  //get all classroom invitations for a student
   getInvitedStudents(id, token) {
     return this.https.get(`${this.localhost}teacher/list/invited/by/class?classID=${id}&token=${token}`)
       .pipe(

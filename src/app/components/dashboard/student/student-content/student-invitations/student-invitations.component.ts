@@ -22,7 +22,8 @@ export class StudentInvitationsComponent implements OnInit {
     this.getInvitations();
   }
 
-  acceptInitation(value){
+  //accepting classroom invations 
+  acceptInitation(value) {
     const { token } = this.userData;
     const { rid } = value;
     const myDate = new Date();
@@ -34,15 +35,17 @@ export class StudentInvitationsComponent implements OnInit {
     }
     this.apiService.acceptInvitation(payload)
       .subscribe((response: any) => {
-        const {status} = response;
+        const { status } = response;
         console.log(response);
-        if (status === 200 ) {
+        if (status === 200) {
           this.getInvitations;
         }
       }, (error: any) => {
         console.log(error);
       })
   }
+
+  //get classroom invitations
   getInvitations() {
     const { token } = this.userData;
     console.log(token)
@@ -50,7 +53,7 @@ export class StudentInvitationsComponent implements OnInit {
       .subscribe((response: any) => {
         console.log(response);
         const { status, body } = response;
-        if(status === 200 ) {
+        if (status === 200) {
           this.invitationsDetails = body;
           this.showSpinner = false;
         }

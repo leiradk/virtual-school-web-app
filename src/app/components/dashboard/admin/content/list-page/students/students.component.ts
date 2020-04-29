@@ -98,6 +98,7 @@ export class StudentsComponent implements OnInit {
     this.toastr.success('Student Added successfully', 'Congratulations', { timeOut: 2000 });
   }
 
+  //adding student details on 
   onSubmit() {
     console.log('Im here student add');
     console.log(this.addStudentForm);
@@ -134,13 +135,4 @@ console.log(data);
     this.people.push(data);
   }
 
-  mockData() {
-    this.people = [
-      {
-        email: "sample@gmail.com",
-        name: "Tiger",
-        status: "Student",
-      },
-    ];
-  }
 }

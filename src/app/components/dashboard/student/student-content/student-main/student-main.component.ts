@@ -30,6 +30,7 @@ export class StudentMainComponent implements OnInit {
     this.getInvitations();
   }
 
+  //get accepted classroom invitations
   getInvitations() {
     const { token } = this.userData;
     console.log(token)
@@ -62,6 +63,7 @@ export class StudentMainComponent implements OnInit {
       });
   }
 
+  
   getClassroom(data) {
     const { token } = data;
     this.apiService.getClassroom(token)

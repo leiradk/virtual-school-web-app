@@ -18,6 +18,8 @@ export class ClassDetailsComponent implements OnInit {
     console.log(window.location.href);
     this.getActiveClass();
   }
+
+  //set active on header 
   getActiveClass() {
     setTimeout(() => {
       this.getUrl = window.location.href;
