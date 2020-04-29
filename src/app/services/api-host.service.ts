@@ -73,6 +73,20 @@ export class ApiHostService {
         })
       );
   }
+
+  //save a teachers post for his/her students
+  teacherPost(payload) {
+    return this.https.post(`${this.localhost}teacher/add/class/post`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
+
   //put data
   //accept classroom invitation on student side
   acceptInvitation(payload) {
@@ -160,5 +174,6 @@ export class ApiHostService {
         })
       );
   }
+
 
 }

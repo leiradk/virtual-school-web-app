@@ -5,6 +5,7 @@ import {
   Validators,
   FormControl,
 } from "@angular/forms";
+import { ApiHostService } from '../../../../../../../services/api-host.service';
 @Component({
   selector: 'app-class-post',
   templateUrl: './class-post.component.html',
@@ -18,6 +19,7 @@ export class ClassPostComponent implements OnInit {
   loading = false;
   constructor(
     private fb: FormBuilder,
+    private apiService: ApiHostService
   ) {
     this.postModel();
   }
@@ -51,14 +53,25 @@ export class ClassPostComponent implements OnInit {
 
   onSubmit() {
     const { value } = this.postForm;
-    console.log(value);
-    const payload = [{
+    // console.log(value);
+    // const payload = [{
+    //   user: "Melvin Elayron",
+    //   comment: value.postContent
+    // }];
+    // for (let i = 0; i <= this.comments.length; i++){
+    //   payload.push(this.comments[i]);
+    // }
+    // this.comments = payload;
+    // console.log(value);
+    const payload = {
       user: "Melvin Elayron",
       comment: value.postContent
-    }];
-    for (let i = 0; i <= this.comments.length; i++){
-      payload.push(this.comments[i]);
-    }
-    this.comments = payload;
+    };
+    this.apiService.teacherPost(payload)
+      .subscribe((response: any) => {
+        console.log(response);
+      }, (error: any) => {
+        console.log(error);
+      });
   }
 }
