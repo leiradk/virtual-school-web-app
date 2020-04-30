@@ -6,6 +6,7 @@ import {
   FormControl,
 } from "@angular/forms";
 import { ApiHostService } from '../../../../../../../services/api-host.service';
+import { SystemUtils } from '../../../../../../../services/system.utils';
 @Component({
   selector: 'app-class-post',
   templateUrl: './class-post.component.html',
@@ -15,11 +16,15 @@ import { ApiHostService } from '../../../../../../../services/api-host.service';
 export class ClassPostComponent implements OnInit {
   myFocusVar: any = false;
   comments: any = [];
+  classDetails: any;
+  userData: any;
+  postDetails: any;
   public postForm: FormGroup;
   loading = false;
   constructor(
     private fb: FormBuilder,
-    private apiService: ApiHostService
+    private apiService: ApiHostService,
+    private system: SystemUtils
   ) {
     this.postModel();
   }
@@ -27,6 +32,8 @@ export class ClassPostComponent implements OnInit {
   isSticky: boolean = false;
 
   ngOnInit(): void {
+    this.classDetails = this.system.retrieveItem('classDetails');
+    this.userData = this.system.retrieveItem('userData');
     this.comments = [{
       user: "Wilver Deypalubos",
       comment: "this is a comment"
@@ -35,7 +42,8 @@ export class ClassPostComponent implements OnInit {
       user: "Melvin Elayron",
       comment: "this is a comment"
     }
-    ]
+    ];
+    this.getPosts();
   }
 
   postModel() {
@@ -51,8 +59,32 @@ export class ClassPostComponent implements OnInit {
     this.isSticky = window.pageYOffset >= 250;
   }
 
+  
+
+  // get data (post details) to the backend
+  getPosts() {
+    const { token } = this.userData;
+    const { rid } = this.classDetails;
+    this.apiService.getTeacherPosts(rid, token)
+      .subscribe((response: any) => {
+        console.log(response);
+        const { post } = response.body;
+        const { status } = response;
+        console.log(post);
+        if(status === 200) {
+          this.postDetails = post;
+        }
+
+      }, (error: any) => {
+        console.log(error);
+      })
+  }
+
+  //passing data (post details) to the backend
   onSubmit() {
     const { value } = this.postForm;
+    const { token } = this.userData;
+    const { rid } = this.classDetails
     // console.log(value);
     // const payload = [{
     //   user: "Melvin Elayron",
@@ -64,8 +96,9 @@ export class ClassPostComponent implements OnInit {
     // this.comments = payload;
     // console.log(value);
     const payload = {
-      user: "Melvin Elayron",
-      comment: value.postContent
+      token: token,
+      message: value.postContent,
+      classID: rid,
     };
     this.apiService.teacherPost(payload)
       .subscribe((response: any) => {
