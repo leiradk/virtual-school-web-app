@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.scss']
 })
-export class StudentComponent implements OnInit {
+
+export class StudentComponent {
+
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  toggle:boolean;
 
+  receiveMessage($event) {
+    this.toggle = $event
+  }
 }
