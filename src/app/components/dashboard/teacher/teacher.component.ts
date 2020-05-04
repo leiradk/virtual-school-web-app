@@ -35,4 +35,9 @@ export class TeacherComponent implements OnInit {
     }
   }
 
+  toggle:boolean;
+
+  receiveMessage($event) {
+    this.toggle = $event
+  }
 }

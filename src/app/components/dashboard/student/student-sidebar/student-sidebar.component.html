@@ -41,7 +41,7 @@
         </div>
       </div>
       <!-- sidebar-search  -->
-      <div class="sidebar-menu"  [ngClass]="{'showMenuIcons': toggle}">
+      <div class="sidebar-menu" [ngClass]="{'showMenuIcons': toggle}">
         <ul>
           <li class="header-menu">
             <span>General</span>
@@ -69,24 +69,17 @@
             </div>
           </li>
           <li class="sidebar-dropdown">
-            <a a [routerLink]="['/student/invitations']">
+            <a [routerLink]="['/student/invitations']">
               <i class="fa fa-envelope"></i>
-              <span>Invitation</span>
+              <span>Invitations</span>
               <span class="badge badge-pill badge-danger">3</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li>
-                  <a href="#">Products
-
-                  </a>
+                <!-- <li *ngFor="let class of classDetails">
+                  <a (click)="viewDetails(class)">{{class.roomName}}</a>
                 </li>
-                <li>
-                  <a href="#">Orders</a>
-                </li>
-                <li>
-                  <a href="#">Credit cart</a>
-                </li>
+              </ul> -->
               </ul>
             </div>
           </li>

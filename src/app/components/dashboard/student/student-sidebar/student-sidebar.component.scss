@@ -132,6 +132,13 @@ body {
 .page-wrapper.toggled #show-sidebar {
   left: -40px;
 }
+
+
+.sidebar-dropdown.active .sidebar-submenu{
+  display: block !important;
+}
+
+
 /*----------------sidebar-wrapper----------------*/
 
 .sidebar-wrapper {
