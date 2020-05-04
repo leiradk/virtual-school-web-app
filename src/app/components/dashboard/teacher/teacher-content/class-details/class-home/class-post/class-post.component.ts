@@ -61,18 +61,32 @@ export class ClassPostComponent implements OnInit {
   getComments(id) {
     const { token } = this.userData;
     this.getAllComments = [];
+    console.log(this.userData);
+    const { userType } = this.userData.data;
+    if (userType === '10002') {
+      this.getTeacherComments(id, token);
+    } else {
+      this.getStudentComments(id, token);
+
+    }
+  }
+
+  getTeacherComments(id, token) {
+    this.apiService.getTeacherComments(id, token)
+      .subscribe((response: any) => {
+        const { comments } = response.body;
+        this.getAllComments = comments;
+      }, (error: any) => {
+        console.log(error);
+
+      })
+  }
+  getStudentComments(id, token) {
     this.apiService.getStudentComments(id, token)
       .subscribe((response: any) => {
         const { comments } = response.body;
         this.getAllComments = comments;
-        // if (this.getAllComments === undefined) {
-        //   this.getAllComments.splice(index, 0, comments)
-        //   console.log(this.getAllComments);
-        //   if (this.getAllComments[index].length > 0) {
-        //     console.log('data')
-        //   }
-        // } else {
-        // }
+
         console.log(this.getAllComments);
       }, (error: any) => {
         console.log(error);
@@ -97,14 +111,24 @@ export class ClassPostComponent implements OnInit {
     console.log(this.userData);
     const { userType } = this.userData.data;
     if (userType === '10002') {
-      console.log('teacher');
+      this.postTeacherComments(payload);
     } else {
       this.postStudentComments(payload);
     }
   }
+
+  //add comments from the teacher
+  postTeacherComments(payload) {
+    this.apiService.sendCommentTeacher(payload)
+      .subscribe((response: any) => {
+        console.log(response);
+      }, (error: any) => {
+        console.log(error);
+      })
+  }
   //add comments from the student
   postStudentComments(payload) {
-    this.apiService.sendComment(payload)
+    this.apiService.sendCommentStudent(payload)
       .subscribe((response: any) => {
         console.log(response);
       }, (error: any) => {
@@ -151,14 +175,12 @@ export class ClassPostComponent implements OnInit {
   studentSide(rid, token) {
     this.apiService.getStudentPosts(rid, token)
       .subscribe((response: any) => {
-        console.log(response);
         const { post } = response.body;
         const { status } = response;
         console.log(post);
         if (status === 200) {
           this.postDetails = post;
           for (let i = 0; i <= (this.postDetails.length - 1); i++) {
-            console.log(i);
             const bool = false;
             this.viewAllComments.push(bool)
           }
@@ -200,13 +222,10 @@ export class ClassPostComponent implements OnInit {
 
   //GET the postID for payload on api comments
   viewComments(view, id) {
-    console.log(id);
-    console.log(this.viewAllComments[2]);
+
 
     for (let i = 0; i < this.postDetails.length; i++) {
-      console.log(i);
-      console.log(this.postDetails[i]);
-      console.log(this.viewAllComments[i]);
+
       if (this.postDetails[i].postID === id) {
         this.viewAllComments[i] = view;
       } else {

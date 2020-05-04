@@ -86,7 +86,7 @@ export class ApiHostService {
       );
   }
   //send comment on the student side
-  sendComment(payload) {
+  sendCommentStudent(payload) {
     return this.https.post(`${this.localhost}student/comment/post`, payload)
       .pipe(
         map((data: any) => {
@@ -97,6 +97,20 @@ export class ApiHostService {
       );
   }
 
+  sendCommentTeacher(payload) {
+    return this.https.post(`${this.localhost}teacher/comment/post`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
+
+
+  // http://139.162.238.76:8000/vs/teacher/comment/post
   // http://139.162.238.76:8000/vs/student/comment/post
 
   //put data
@@ -222,4 +236,16 @@ export class ApiHostService {
         })
       );
   }
+  //get all classroom post on teacher side
+  getTeacherComments(id, token) {
+    return this.https.get(`${this.localhost}teacher/post/get/comments?postID=${id}&token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
 }
