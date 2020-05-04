@@ -51,33 +51,30 @@ export class StudentInvitationsComponent implements OnInit {
       token: token,
       classID: rid
     }
-
-    this.apiService.acceptInvitation(payload).subscribe((response: any) => {
-      const { status } = response;
-      console.log(response);
-      this.showBar = false;
-      if (status === 200) {
-        this.showBar = false;
-        this.showSuccess();
-        this.ngOnInit();
-        // jQuery('#myModal').modal('hide'); //close modal after submit
-      }
-    }, (error: any) => {
-      this.showBar = false;
-      console.log(error);
-    })
+    this.apiService.acceptInvitation(payload)
+      .subscribe((response: any) => {
+        const { status } = response;
+        console.log(response);
+        if (status === 200) {
+          this.getInvitations;
+        }
+      }, (error: any) => {
+        console.log(error);
+      })
   }
 
+  //get classroom invitations
   getInvitations() {
     const { token } = this.userData;
     console.log(token)
-    this.apiService.getClassInvitation(token).subscribe((response: any) => {
-      console.log(response);
-      const { status, body } = response;
-      if (status === 200) {
-        this.invitationsDetails = body;
-        this.showSpinner = false;
-      }
-    });
+    this.apiService.getClassInvitation(token)
+      .subscribe((response: any) => {
+        console.log(response);
+        const { status, body } = response;
+        if (status === 200) {
+          this.invitationsDetails = body;
+          this.showSpinner = false;
+        }
+      });
   }
 }

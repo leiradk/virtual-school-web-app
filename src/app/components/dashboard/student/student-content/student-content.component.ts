@@ -12,4 +12,7 @@ export class StudentContentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  postComment() {
+    
+  }
 }

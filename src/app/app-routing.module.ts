@@ -135,9 +135,28 @@ const routes: Routes = [
       },
       {
         path: "classroom",
-        component: ClassroomComponent
+        component: ClassroomComponent,
+        children: [
+          {
+            path: "",
+            redirectTo: "home",
+            pathMatch: "full"
+          },
+          {
+            path: 'home',
+            component: ClassHomeComponent
+          },
+          {
+            path: 'class-work',
+            component: ClassworkComponent
+          },
+          {
+            path: 'people',
+            component: CheckStudentsComponent
+          },
+        ]
       },
-      
+
     ]
   }
 ];

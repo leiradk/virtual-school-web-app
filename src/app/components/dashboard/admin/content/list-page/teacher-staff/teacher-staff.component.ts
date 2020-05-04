@@ -42,6 +42,7 @@ export class TeacherStaffComponent implements OnInit {
     this.getTeacher();
   }
 
+  //get data list for teacher and staff
   getTeacher() {
     const { token } = this.userData;
     this.apiService.getTeacher(token).subscribe((response: any) => {
@@ -58,6 +59,8 @@ export class TeacherStaffComponent implements OnInit {
     this.toastr.success('Teacher Added successfully. Reloading List.', 'Congratulations', { timeOut: 5000 })
   }
 
+
+  //adding teacher and staff
   onSubmit() {
     const { value } = this.addStaffFOrm;
     console.log(value);
@@ -80,6 +83,7 @@ export class TeacherStaffComponent implements OnInit {
     this.addStaffFOrm.reset(); //reset form
 
     // ------>  Please check the code below. I want to put the top code snippet inside if(status === 200)
+    // adds a teacher
     this.apiService.addTeacher(data).subscribe((response: any) => {
       const { status } = response;
       if (status === 201) {
@@ -90,6 +94,7 @@ export class TeacherStaffComponent implements OnInit {
       }
     })
   }
+
 
   studentFormModel() {
     this.addStaffFOrm = this.fb.group({

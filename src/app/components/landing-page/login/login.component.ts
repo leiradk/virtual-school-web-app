@@ -34,32 +34,31 @@ export class LoginComponent implements OnInit {
       password: [null, Validators.required],
     });
   }
-
+  // login the user if fields are correct
   onSubmit() {
-    console.log(this.signInForm.value);
     const { value } = this.signInForm;
     this.loading = true;
     this.apiHost.signin(value).subscribe((response: any) => {
-      console.log(response);
       if (response) {
         const { status, body } = response;
         if (status === 200) {
           const { data } = body;
-          console.log(data);
 
           if (parseInt(data.usertype) === 10002) {
             this.system.storeLocal('userData', body);
             this.router.navigate(["/teacher"]);
           } else if (parseInt(data.usertype) === 10001) {
-            console.log(data);
             this.system.storeLocal('userData', body);
             this.router.navigate(["/dashboard"]);
+
           } else if (parseInt(data.usertype) === 10003) {
-            console.log(data);
             this.system.storeLocal('userData', body);
             this.router.navigate(["/student"]);
+            this.loading = false;
+            
           } else {
             console.log('failed')
+            this.loading = false;
           }
 
         } else {

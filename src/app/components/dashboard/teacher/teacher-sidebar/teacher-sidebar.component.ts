@@ -31,7 +31,8 @@ export class TeacherSidebarComponent implements OnInit {
     this.system.storeLocal('classDetails', data);
 
   }
-  
+
+  //getting all classroom for one specific teacher
   getClassroom(data) {
     const { token } = data;
     this.apiService.getClassroom(token)

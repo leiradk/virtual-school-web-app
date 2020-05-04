@@ -3,126 +3,75 @@
   <div class="col-md-7">
     <!-- Post Create Box
             ================================================= -->
-    <div class="create-post">
-      <div class="row">
-        <div class="col-md-12 col-sm-12">
-          <div class="form-group">
-            <img src="../../../../../../../assets/images/users/user-1.jpg" alt="" class="profile-photo-md" />
-            <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control"
-              placeholder="Write what you wish"></textarea>
+    <form *ngIf="postForm && userData.data.usertype === '10002'" [formGroup]="postForm" (ngSubmit)="onSubmit()">
+      <div class="create-post">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <img src="../../../../../../../assets/images/users/user-1.jpg" alt="" class="profile-photo-md" />
+              <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control"
+                placeholder="Post an announcement" formControlName="postContent"></textarea>
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12">
+            <div class="tools">
+              <button class="btn btn-primary pull-right" *ngIf="postForm.valid">Publish</button>
+              <ul class="publishing-tools list-inline pull-right">
+                <li><a href="#"><i class="fa fa-pencil-square-o"></i></a></li>
+                <li><a href="#"><i class="fa fa-video-camera"></i></a></li>
+                <li><a href="#"><i class="fa fa-picture-o"></i></a></li>
+                <li><a href="#"><i class="fa fa-map-o"></i></a></li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="col-md-12 col-sm-12">
-          <div class="tools">
-            <button class="btn btn-primary pull-right">Publish</button>
-            <ul class="publishing-tools list-inline pull-right">
-              <li><a href="#"><i class="fa fa-pencil-square-o"></i></a></li>
-              <li><a href="#"><i class="fa fa-video-camera"></i></a></li>
-              <li><a href="#"><i class="fa fa-picture-o"></i></a></li>
-              <li><a href="#"><i class="fa fa-map-o"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div><!-- Post Create Box End-->
-
+      </div><!-- Post Create Box End-->
+    </form>
     <!-- Post Content
             ================================================= -->
-    <div class="post-content">
-      <img src="../../../../../../../assets/images/post-images/1.jpg" alt="post-image"
-        class="img-responsive post-image" />
+    <div *ngFor="let post of postDetails; let i = index" class="post-content">
       <div class="post-container">
         <img src="../../../../../../../assets/images/users/user-5.jpg" alt="user" class="profile-photo-md pull-left" />
         <div class="post-detail">
           <div class="user-info">
-            <h5><a href="timeline.html" class="profile-link">Alexis Clark</a> <span class="following">following</span>
+            <h5><a href="timeline.html" class="profile-link">{{post.postedBy}}</a> <span
+                class="following">Teacher</span>
             </h5>
             <p class="text-muted">Published a photo about 3 mins ago</p>
           </div>
           <div class="reaction">
-            <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
+            <a class="btn text-green"><i class="fa fa-thumbs-up"></i> 13</a>
             <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
           </div>
           <div class="line-divider"></div>
           <div class="post-text">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-              officia deserunt mollit anim id est laborum. <i class="em em-anguished"></i> <i
-                class="em em-anguished"></i> <i class="em em-anguished"></i></p>
+            <p>{{post.message}} <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i
+                class="em em-anguished"></i></p>
           </div>
           <div class="line-divider"></div>
-          <div class="post-comment">
-            <img src="../../../../../../../assets/images/users/user-11.jpg" alt="" class="profile-photo-sm" />
-            <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i> Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+          <div class="view-comment">
+            <p>
+              <a *ngIf="!viewAllComments[i]" (click)="viewComments(true, post.postID)" class="view-all">View Comments</a>
+              <a *ngIf="viewAllComments[i]" (click)="viewComments(false, post.postID)" class="view-all">Hide Comments</a>
+            </p>
           </div>
-          <div class="post-comment">
-            <img src="../../../../../../../assets/images/users/user-4.jpg" alt="" class="profile-photo-sm" />
-            <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud </p>
+          <div class="line-divider"></div>
+          <div *ngFor="let comment of getAllComments;" class="post-comment">
+            <div class="post-comment comment-list" *ngIf="viewAllComments[i] && postID === post.postID">
+              <img src="../../../../../../../assets/images/users/user-11.jpg" alt="" class="profile-photo-sm" />
+              <p><a href="timeline.html" class="profile-link">{{comment.commentedBy}} </a>{{comment.comment}} </p>
+            </div>
           </div>
           <div class="post-comment">
             <img src="../../../../../../../assets/images/users/user-1.jpg" alt="" class="profile-photo-sm" />
-            <input type="text" class="form-control" placeholder="Post a comment">
+            <input type="text" class="form-control" placeholder="Post a comment" [(ngModel)]="arr[i]"
+              (keyup.enter)="addInput(arr[i], post)">
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Post Content
-            ================================================= -->
-    <div class="post-content">
-      <video class="post-video" controls>
-        <source src="videos/8.mp4" type="video/mp4"> </video>
-      <div class="post-container">
-        <img src="../../../../../../../assets/images/users/user-3.jpg" alt="user" class="profile-photo-md pull-left" />
-        <div class="post-detail">
-          <div class="user-info">
-            <h5><a href="timeline.html" class="profile-link">Sophia Lee</a> <span class="following">following</span>
-            </h5>
-            <p class="text-muted">Updated her status about 33 mins ago</p>
-          </div>
-          <div class="reaction">
-            <a class="btn text-green"><i class="icon ion-thumbsup"></i> 75</a>
-            <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 8</a>
-          </div>
-          <div class="line-divider"></div>
-          <div class="post-text">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-              dolore eu fugiat nulla pariatur.</p>
-          </div>
-          <div class="line-divider"></div>
-          <div class="post-comment">
-            <img src="../../../../../../../assets/images/users/user-14.jpg" alt="" class="profile-photo-sm" />
-            <p><a href="timeline.html" class="profile-link">Olivia </a> Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <i
-                class="em em-anguished"></i> Ut enim ad minim veniam, quis nostrud </p>
-          </div>
-          <div class="post-comment">
-            <img src="../../../../../../../assets/images/users/user-1.jpg" alt="" class="profile-photo-sm" />
-            <p><a href="timeline.html" class="profile-link">Sarah</a> Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam.</p>
-          </div>
-          <div class="post-comment">
-            <img src="../../../../../../../assets/images/users/user-2.jpg" alt="" class="profile-photo-sm" />
-            <p><a href="timeline.html" class="profile-link">Linda</a> Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-          <div class="post-comment">
-            <img src="../../../../../../../assets/images/users/user-1.jpg" alt="" class="profile-photo-sm" />
-            <input type="text" class="form-control" placeholder="Post a comment">
-          </div>
-        </div>
-      </div>
-    </div>
+
 
 
   </div>
@@ -130,7 +79,7 @@
   <!-- Newsfeed Common Side Bar Right
           ================================================= -->
   <div class="col-md-5 static">
-    <div class="suggestions" id="sticky-sidebar"  [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
+    <div class="suggestions" id="sticky-sidebar" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
       <div class="profile-card">
         <img src="../../../../../../../assets/images/users/user-1.jpg" alt="user" class="profile-photo" />
         <h5><a href="timeline.html" class="text-white">Sarah Cruiz</a></h5>

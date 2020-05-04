@@ -64,10 +64,12 @@ export class TeacherMainComponent implements OnInit {
     });
   }
 
+  //storing class details on local storage as classDetails
   viewDetails(data) {
-    console.log(data)
     this.system.storeLocal('classDetails', data);
   }
+
+//submitting class details to add classroom
 
   onSubmit() {
     const { value } = this.addClassFOrm;
@@ -98,6 +100,7 @@ export class TeacherMainComponent implements OnInit {
     console.log(payload);
   }
 
+  //get all classroom for a specific teacher
   getClassroom(data) {
     const { token } = data;
     this.apiService.getClassroom(token).subscribe((response: any) => {
@@ -117,6 +120,7 @@ export class TeacherMainComponent implements OnInit {
       });
   }
 
+  //get month
   getDate(month) {
     if (month === 1) {
       return 'January';

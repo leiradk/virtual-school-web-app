@@ -50,7 +50,6 @@
           <tr>
             <th>Username</th>
             <th>Position</th>
-            <th>User Type</th>
             <th>Created</th>
             <th>Created By</th>
             <th>Email</th>
@@ -61,7 +60,6 @@
           <tr>
             <th>Username</th>
             <th>Position</th>
-            <th>User Type</th>
             <th>Created</th>
             <th>Created By</th>
             <th>Email</th>
@@ -80,14 +78,12 @@
                 | paginate: { itemsPerPage: viewList, currentPage: p };
               let i = index
             ">
-              <td>{{ student.username }}</td>
-              <td>{{ student.posistion }}</td>
-              <td>{{ student.usertype }}</td>
-              <td>{{ student.created }}</td>
-              <td>{{ student.createdby }}</td>
-              <td>{{ student.email }}</td>
-            </tr>
-          </ng-container>
+            <td>{{ student.username }}</td>
+            <td>{{ student.position }}</td>
+            <td>{{ student.created }}</td>
+            <td>{{ student.createdby }}</td>
+            <td>{{ student.email }}</td>
+          </tr>
         </tbody>
       </table>
     </div>
