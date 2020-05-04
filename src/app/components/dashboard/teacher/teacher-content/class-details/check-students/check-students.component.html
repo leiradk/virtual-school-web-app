@@ -4,13 +4,13 @@
 
             <div class="cs-item cs-header">
                 <div class="cs-title">Teacher</div>
-                <div class="cs-invite"><i class="fa fa-plus"></i></div>
+                <div *ngIf="userData.data.usertype === '10002'" class="cs-invite"><i class="fa fa-plus"></i></div>
             </div>
             <div class="cs-item cs-teacher">Teacher Name</div>
             <div class="cs-item cs-list">
                 <div class="cs-list-title">
                     <div class="cs-list-title-label">Student</div>
-                    <div class="cs-list-title-icon"><a class="invite-student" data-toggle="modal"
+                    <div *ngIf="userData.data.usertype === '10002'" class="cs-list-title-icon"><a class="invite-student" data-toggle="modal"
                             data-target="#myModal"><i class="fa fa-plus"></i></a></div>
                 </div>
                 <div class="cs-list-body">

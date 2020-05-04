@@ -63,7 +63,9 @@ export class StudentMainComponent implements OnInit {
       });
   }
 
-  
+  viewDetails(data) {
+    this.system.storeLocal('classDetails', data);
+  }
   getClassroom(data) {
     const { token } = data;
     this.apiService.getClassroom(token)

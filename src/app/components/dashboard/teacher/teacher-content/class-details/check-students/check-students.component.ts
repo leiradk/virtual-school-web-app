@@ -33,6 +33,7 @@ export class CheckStudentsComponent implements OnInit {
     this.getStudents(this.userData);
     this.getInvitedStudents();
 
+    console.log(this.userData.data.usertype);
   }
   get username() {
     return this.inviteForm.get("username") as FormControl;
