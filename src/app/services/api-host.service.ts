@@ -85,7 +85,7 @@ export class ApiHostService {
         })
       );
   }
-
+  //send comment on the student side
   sendComment(payload) {
     return this.https.post(`${this.localhost}student/comment/post`, payload)
       .pipe(
@@ -97,104 +97,129 @@ export class ApiHostService {
       );
   }
 
-    //put data
-    //accept classroom invitation on student side
-    acceptInvitation(payload) {
-      return this.https.put(`${this.localhost}student/accept/class/invite`, payload)
-        .pipe(
-          map((data: any) => {
-            return data;
-          }), catchError(error => {
-            return throwError(error);
-          })
-        );
-    }
+  // http://139.162.238.76:8000/vs/student/comment/post
+
+  //put data
+  //accept classroom invitation on student side
+  acceptInvitation(payload) {
+    return this.https.put(`${this.localhost}student/accept/class/invite`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
 
 
-//get data
-//get list teacher for the admin 
-getTeacher(token) {
-  return this.https.get(`${this.localhost}admin/list/teachers?token=${token}`)
-    .pipe(
-      map((data: any) => {
-        return data;
-      }), catchError(error => {
-        return throwError(error);
-      })
-    );
-}
+  //get data
+  //get list teacher for the admin 
+  getTeacher(token) {
+    return this.https.get(`${this.localhost}admin/list/teachers?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
-// get list student for the admin
-getStudents(token) {
-  return this.https.get(`${this.localhost}admin/list/students?token=${token}`)
-    .pipe(
-      map((data: any) => {
-        return data;
-      }), catchError(error => {
-        return throwError(error);
-      })
-    );
-}
+  // get list student for the admin
+  getStudents(token) {
+    return this.https.get(`${this.localhost}admin/list/students?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
-//get classroom for a teacher
-getClassroom(token) {
-  return this.https.get(`${this.localhost}teacher/get/classes?token=${token}`)
-    .pipe(
-      map((data: any) => {
-        return data;
-      }), catchError(error => {
-        return throwError(error);
-      })
-    )
-}
+  //get classroom for a teacher
+  getClassroom(token) {
+    return this.https.get(`${this.localhost}teacher/get/classes?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      )
+  }
 
-//get classroom invitation for a student
-getClassInvitation(token) {
-  return this.https.get(`${this.localhost}student/list/class/invitation?token=${token}`)
-    .pipe(
-      map((data: any) => {
-        return data;
-      }), catchError(error => {
-        return throwError(error);
-      })
-    );
-}
+  //get classroom invitation for a student
+  getClassInvitation(token) {
+    return this.https.get(`${this.localhost}student/list/class/invitation?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
-//search student based on the list
-searchStudents(token) {
-  return this.https.get(`${this.localhost}list/student?token=${token}`)
-    .pipe(
-      map((data: any) => {
-        return data;
-      }), catchError(error => {
-        return throwError(error);
-      })
-    );
-}
+  //search student based on the list
+  searchStudents(token) {
+    return this.https.get(`${this.localhost}list/student?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
-//get all classroom invitations for a student
-getInvitedStudents(id, token) {
-  return this.https.get(`${this.localhost}teacher/list/invited/by/class?classID=${id}&token=${token}`)
-    .pipe(
-      map((data: any) => {
-        return data;
-      }), catchError(error => {
-        return throwError(error);
-      })
-    );
-}
+  //get all classroom invitations for a student
+  getInvitedStudents(id, token) {
+    return this.https.get(`${this.localhost}teacher/list/invited/by/class?classID=${id}&token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
-//get all classroom invitations for a student
-getTeacherPosts(id, token) {
-  return this.https.get(`${this.localhost}teacher/get/class/post?classID=${id}&token=${token}`)
-    .pipe(
-      map((data: any) => {
-        return data;
-      }), catchError(error => {
-        return throwError(error);
-      })
-    );
-}
+  //get all classroom post on teacher side
+  getTeacherPosts(id, token) {
+    return this.https.get(`${this.localhost}teacher/get/class/post?classID=${id}&token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
+  //get all classroom post on student side
+  getStudentPosts(id, token) {
+    return this.https.get(`${this.localhost}student/get/class/post?classID=${id}&token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
+  //get all classroom post on student side
+  getStudentComments(id, token) {
+    return this.https.get(`${this.localhost}student/post/get/comments?postID=${id}&token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 }
