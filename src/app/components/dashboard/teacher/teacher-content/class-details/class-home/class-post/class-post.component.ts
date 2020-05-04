@@ -197,16 +197,7 @@ export class ClassPostComponent implements OnInit {
     const { value } = this.postForm;
     const { token } = this.userData;
     const { rid } = this.classDetails
-    // console.log(value);
-    // const payload = [{
-    //   user: "Melvin Elayron",
-    //   comment: value.postContent
-    // }];
-    // for (let i = 0; i <= this.comments.length; i++){
-    //   payload.push(this.comments[i]);
-    // }
-    // this.comments = payload;
-    // console.log(value);
+
     const payload = {
       token: token,
       message: value.postContent,
