@@ -1,6 +1,6 @@
 <div class="wrapper d-flex align-items-stretch">
-  <nav id="sidebar">
-    <app-teacher-sidebar></app-teacher-sidebar>
+  <nav id="sidebar" class="toggled" [ngClass]="{'afterToggled': toggle, 'toggled': !toggle}">
+    <app-teacher-sidebar (messageEvent)="receiveMessage($event)"></app-teacher-sidebar>
   </nav>
 
   <!-- Page Content  -->

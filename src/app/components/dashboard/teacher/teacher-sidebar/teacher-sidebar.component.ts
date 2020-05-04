@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ApiHostService } from '../../../../services/api-host.service';
 import { SystemUtils } from '../../../../services/system.utils';
 import { Router } from '@angular/router';
@@ -17,6 +17,10 @@ export class TeacherSidebarComponent implements OnInit {
     // private location: Location
   ) { }
 
+
+  public toggle: boolean = false;
+  public togClass: boolean = false;
+
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
     this.getClassroom(this.userData);
@@ -25,8 +29,9 @@ export class TeacherSidebarComponent implements OnInit {
   viewDetails(data) {
     console.log(data)
     this.system.storeLocal('classDetails', data);
-   
+
   }
+  
   getClassroom(data) {
     const { token } = data;
     this.apiService.getClassroom(token)
@@ -39,4 +44,14 @@ export class TeacherSidebarComponent implements OnInit {
       });
   }
 
+  @Output() messageEvent = new EventEmitter<boolean>();
+
+  clickEvent(event) {
+    this.toggle = !this.toggle;
+    this.messageEvent.emit(this.toggle)
+  }
+
+  toggleClass() {
+    this.togClass = !this.togClass;
+  }
 }

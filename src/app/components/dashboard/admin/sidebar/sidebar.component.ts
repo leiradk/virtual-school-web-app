@@ -12,4 +12,10 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  public toggle: boolean = true;
+
+  clickEvent(event) {
+    this.toggle = !this.toggle;
+  }
 }
