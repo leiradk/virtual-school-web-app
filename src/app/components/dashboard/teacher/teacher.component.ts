@@ -25,9 +25,7 @@ export class TeacherComponent implements OnInit {
         this.router.navigate(["/Landing-Page"]);
       } else {
         const { data } = this.data;
-        console.log(data.usertype);
         if (parseInt(data.usertype) === 10001) {
-          console.log('wewwe');
           this.router.navigate(["/dashboard"]);
 
         }

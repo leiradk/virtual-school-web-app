@@ -17,6 +17,10 @@ import { SystemUtils } from '../../../services/system.utils';
 export class LoginComponent implements OnInit {
   public signInForm: FormGroup;
   loading = false;
+  errorMessage: any = {
+    message: '',
+    failed: false
+  };
   constructor(
     private apiHost: ApiHostService,
     private fb: FormBuilder,
@@ -28,6 +32,14 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void { }
+
+  get username() {
+    return this.signInForm.get("username") as FormControl;
+  }
+  get password() {
+    return this.signInForm.get("password") as FormControl;
+  }
+
   signInModel() {
     this.signInForm = this.fb.group({
       username: [null, Validators.required],
@@ -55,7 +67,7 @@ export class LoginComponent implements OnInit {
             this.system.storeLocal('userData', body);
             this.router.navigate(["/student"]);
             this.loading = false;
-            
+
           } else {
             console.log('failed')
             this.loading = false;
@@ -66,6 +78,31 @@ export class LoginComponent implements OnInit {
         }
       } else {
         this.loading = false;
+      }
+    }, (errors: any) => {
+      this.loading = false;
+      const { error } = errors;
+      if (error.status === 403) {
+        this.errorMessage = {
+          message: error.message,
+          failed: true
+        }
+        setTimeout(() => {
+          this.errorMessage.failed = false;
+          console.log(this.errorMessage);
+        }, 2000)
+        console.log(this.errorMessage);
+      } else {
+        this.errorMessage = {
+          message: "Something went worng! Please Try Again.",
+          failed: true
+        }
+        setTimeout(() => {
+          this.errorMessage.failed = false;
+          console.log(this.errorMessage);
+        }, 2000)
+        console.log(this.errorMessage);
+
       }
     });
   }

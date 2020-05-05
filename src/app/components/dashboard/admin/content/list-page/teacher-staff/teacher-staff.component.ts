@@ -46,24 +46,26 @@ export class TeacherStaffComponent implements OnInit {
   getTeacher() {
     const { token } = this.userData;
     this.apiService.getTeacher(token).subscribe((response: any) => {
-      console.log(response);
       const { status, body } = response;
       if (status === 200) {
         this.people = body;
         this.showSpinner = false;
       }
+    }, (error: any) => {
+      console.log(error);
     })
   }
 
   showSuccess() {
     this.toastr.success('Teacher Added successfully. Reloading List.', 'Congratulations', { timeOut: 5000 })
   }
-
+  showFailed() {
+    this.toastr.warning('Something Went Wrong.', 'Adding Failed', { timeOut: 5000 })
+  }
 
   //adding teacher and staff
   onSubmit() {
     const { value } = this.addStaffFOrm;
-    console.log(value);
     const data = {
       username: value.username,
       password: value.password,
@@ -77,21 +79,24 @@ export class TeacherStaffComponent implements OnInit {
       jQuery('#myModal').modal('hide'); //close modal after submit
     }
 
-    this.showSpinner = true;
 
-    setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
-    this.addStaffFOrm.reset(); //reset form
+
 
     // ------>  Please check the code below. I want to put the top code snippet inside if(status === 200)
     // adds a teacher
     this.apiService.addTeacher(data).subscribe((response: any) => {
       const { status } = response;
       if (status === 201) {
+        this.showSpinner = true;
         //reload onInit
         this.ngOnInit();
+        this.showSuccess(); //add toast message
+        this.addStaffFOrm.reset(); //reset form
       } else {
-        console.log(response);
       }
+    }, (error: any) => {
+      this.showFailed(); //add toast message
+
     })
   }
 

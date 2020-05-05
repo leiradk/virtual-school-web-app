@@ -43,14 +43,16 @@ export class StudentsComponent implements OnInit {
 
   getStudents() {
     const { token } = this.userData;
-    this.apiService.getStudents(token).subscribe((response: any) => {
-      const { status, body } = response;
-      console.log(body);
-      if (status === 200) {
-        this.people = body;
-        this.showSpinner = false;
-      }
-    });
+    this.apiService.getStudents(token)
+      .subscribe((response: any) => {
+        const { status, body } = response;
+        if (status === 200) {
+          this.people = body;
+          this.showSpinner = false;
+        }
+      }, (error: any) => {
+        console.log(error);
+      });
   }
 
   // get email() {
@@ -98,41 +100,40 @@ export class StudentsComponent implements OnInit {
   showSuccess() {
     this.toastr.success('Student Added successfully. Reloading List.', 'Congratulations', { timeOut: 5000 })
   }
+  showFailed() {
+    this.toastr.warning('Something Went Wrong.', 'Adding Failed', { timeOut: 5000 })
+  }
 
   //adding student details on 
   onSubmit() {
     const { value } = this.addStudentForm;
-    console.log(value);
     const data = {
-  
+
       username: value.username,
       position: value.position,
       department: value.department,
       password: value.password,
     };
 
-console.log(data);
     // get chckbox status
     let contModal = <HTMLInputElement>document.getElementById('continueModal');
     if (!contModal.checked) {
       jQuery('#myModal').modal('hide'); //close modal after submit
     }
 
-
     this.showSpinner = true;
 
-    setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
-    this.addStudentForm.reset(); //reset form
-
-
-    this.apiService.addStudent(data).subscribe((response: any) => {
-      const { status } = response;
-      if (status === 201) {
-        this.ngOnInit();
-      } else {
-        console.log(response);
-      }
-    });
+    this.apiService.addStudent(data)
+      .subscribe((response: any) => {
+        const { status } = response;
+        if (status === 201) {
+          this.ngOnInit();
+          this.showSuccess(); //add toast message
+          this.addStudentForm.reset(); //reset form
+        }
+      }, (error: any) => {
+        this.showFailed();
+      });
   }
 
 }

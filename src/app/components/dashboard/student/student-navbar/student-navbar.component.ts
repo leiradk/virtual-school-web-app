@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { SystemUtils } from "../../../../services/system.utils";
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-student-navbar',
   templateUrl: './student-navbar.component.html',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private system: SystemUtils,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
-
+  logout() {
+    this.system.deleteKey('userData');
+    this.system.deleteKey('classDetails');
+    this.router.navigate(["/Landing-Page"]);
+  }
 }

@@ -11,6 +11,7 @@
               <div class="p-5">
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                  <p *ngIf="errorMessage.failed" class="alert alert-danger">{{errorMessage.message}}</p>
                 </div>
                 <form class="user" *ngIf="signInForm" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
                   <div class="form-group">
@@ -27,8 +28,9 @@
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-primary btn-user btn-block" [disabled]="loading" [class.spinner]="loading"
-                    [disabled]="loading">Login</button>
+                  <button type="submit" class="btn btn-primary btn-user btn-block" [class.spinner]="loading"
+                    [disabled]="loading || signInForm.valid === false">Login</button>
+                    <!-- [disabled]="addClassFOrm.valid === false" -->
                   <!-- <hr> -->
                   <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
                     <i class="fab fa-google fa-fw"></i> Login with Google
