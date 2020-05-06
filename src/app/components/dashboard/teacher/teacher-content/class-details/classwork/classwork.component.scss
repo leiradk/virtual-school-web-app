@@ -16,12 +16,12 @@
         flex: 1;
         margin: 5px;
         margin: 0px 15px 0 0px;
-        .task-list{
+        .task-list {
             display: flex;
-            div{
+            div {
                 flex: 1;
                 font-weight: bold;
-                &.task-view{
+                &.task-view {
                     text-align: right;
                 }
             }
@@ -73,6 +73,13 @@
     }
 }
 
+.basic-info-title {
+    font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgb(78,115,223);
+}
+
 .vl {
     border-left: 1px solid rgba(0, 0, 0, 0.125);
     top: 0;
@@ -87,3 +94,67 @@
     background-color: #4e73df !important;
     color: white;
 }
+
+.btn.active.focus {
+    outline: none !important;
+    background-color: #0c7cd5 !important;
+    color: #dddfe2 !important;
+    box-shadow: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.subject-title {
+    font-size: 20px;
+}
+
+.reminders {
+    border: 1px solid #dddfe2;
+    transition: 0.3s;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.reminder-butt {
+    border: 1px solid #dddfe2;
+}
+
+.view {
+    text-align: right;
+    padding-top: 15px;
+}
+
+.view:hover {
+    color: #5c647e;
+}
+
+.fas {
+    float: right;
+}
+
+.btn-circle:hover {
+    background-color: #66bb6a !important;
+    color: #dddfe2 !important;
+}
+
+.lesson-title {
+    background-color: #fff !important;
+    font-weight: 700 !important;
+}
+
+.page-heading {
+    margin-bottom: 1rem !important;
+    font-size: 1.5rem !important;
+}
+
+.media {
+    display: block;
+}
+
+// .sticky {
+//     position: fixed;
+//     top: 30px;
+//     width: 25%;
+// }
