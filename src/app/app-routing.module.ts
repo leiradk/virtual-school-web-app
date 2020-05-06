@@ -12,7 +12,13 @@ import { SubjectComponent } from './components/dashboard/admin/content/list-page
 import { TeacherComponent } from './components/dashboard/teacher/teacher.component';
 import { TeacherMainComponent } from './components/dashboard/teacher/teacher-content/teacher-main/teacher-main.component';
 import { ClassDetailsComponent } from './components/dashboard/teacher/teacher-content/class-details/class-details.component';
-
+import { ClassHomeComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-home.component';
+import { ClassworkComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/classwork.component';
+import { CheckStudentsComponent } from './components/dashboard/teacher/teacher-content/class-details/check-students/check-students.component';
+import { StudentComponent } from "./components/dashboard/student/student.component";
+import { StudentMainComponent } from "./components/dashboard/student/student-content/student-main/student-main.component";
+import { StudentInvitationsComponent } from "./components/dashboard/student/student-content/student-invitations/student-invitations.component";
+import { ClassroomComponent } from "./components/dashboard/student/student-content/classroom/classroom.component";
 
 const routes: Routes = [
   {
@@ -87,8 +93,70 @@ const routes: Routes = [
       },
       {
         path: "class-details",
-        component: ClassDetailsComponent
+        component: ClassDetailsComponent,
+        children: [
+          {
+            path: "",
+            redirectTo: "home",
+            pathMatch: "full"
+          },
+          {
+            path: 'home',
+            component: ClassHomeComponent
+          },
+          {
+            path: 'class-work',
+            component: ClassworkComponent
+          },
+          {
+            path: 'people',
+            component: CheckStudentsComponent
+          },
+        ]
       }
+    ]
+  },
+  {
+    path: "student",
+    component: StudentComponent,
+    children: [
+      {
+        path: "",
+        redirectTo: "main",
+        pathMatch: "full"
+      },
+      {
+        path: "main",
+        component: StudentMainComponent
+      },
+      {
+        path: "invitations",
+        component: StudentInvitationsComponent
+      },
+      {
+        path: "classroom",
+        component: ClassroomComponent,
+        children: [
+          {
+            path: "",
+            redirectTo: "home",
+            pathMatch: "full"
+          },
+          {
+            path: 'home',
+            component: ClassHomeComponent
+          },
+          {
+            path: 'class-work',
+            component: ClassworkComponent
+          },
+          {
+            path: 'people',
+            component: CheckStudentsComponent
+          },
+        ]
+      },
+
     ]
   }
 ];
@@ -97,4 +165,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

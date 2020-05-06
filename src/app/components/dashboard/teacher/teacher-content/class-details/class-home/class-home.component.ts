@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SystemUtils } from '../../../../../../services/system.utils';
+import { Router } from "@angular/router";
+// import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-class-home',
@@ -8,7 +11,12 @@ import { Component, OnInit } from '@angular/core';
 export class ClassHomeComponent implements OnInit {
   myFocusVar: any = false;
   comments: any = [];
-  constructor() { }
+  classDetails: any;
+  constructor(
+    private system: SystemUtils,
+    private router: Router,
+    // private location: Location
+  ) { }
 
   ngOnInit(): void {
     this.comments = [{
@@ -19,7 +27,12 @@ export class ClassHomeComponent implements OnInit {
       user: "Melvin Elayron",
       comment: "this is a comment"
     }
-  ]
+    ];
+
+    // this.router.navigateByUrl("/teacher/class-details", { skipLocationChange: true }).then(() => {
+    //   this.router.navigate([decodeURI(this.location.path())]);
+    // });
+    this.classDetails = this.system.retrieveItem('classDetails');
   }
 
 }

@@ -1,0 +1,135 @@
+.cs {
+    .content {
+        .cs-page {
+            display: flex;
+            flex-direction: column;
+            margin: 25px auto 0px auto;
+            width: 50rem;
+
+            .cs-header {
+                display: flex;
+                border-bottom: 1px solid #4e73df !important;
+                font-weight: bold;
+                font-size: 30px;
+                div {
+                    flex: 1;
+                    // color: red;
+                }
+                .cs-title {
+                    color: #4e73df !important;
+                }
+                .cs-invite {
+                    text-align: right;
+                }
+            }
+            .cs-teacher {
+                padding: 15px 0px 20px 0px;
+            }
+            .cs-list {
+                display: flex;
+                flex-direction: column;
+                .cs-list-title {
+                    border-bottom: 1px solid #4e73df !important;
+                    display: flex;
+                    flex-direction: row;
+                    div {
+                        display: flex;
+                        flex: 1;
+                        &.cs-list-title-icon {
+                            justify-content: flex-end;
+                            font-size: 30px;
+                        }
+                        &.cs-list-title-label {
+                            color: #4e73df !important;
+                            font-weight: bold;
+                            font-size: 30px;
+                        }
+                    }
+                }
+                .cs-list-body {
+                    display: flex;
+                    flex-direction: column;
+                    font-weight: bold;
+                    .student-list-header {
+                        display: flex;
+                        padding: 0.5rem;
+
+                        div {
+                            flex: 1;
+                            &.header-action {
+                                text-align: right;
+                            }
+                            &.header-status {
+                                text-align: center;
+                            }
+                        }
+                    }
+                    .student-list-body {
+                        display: flex;
+                        padding: 0.5rem;
+                        div {
+                            flex: 1;
+                            &.body-action {
+                                text-align: right;
+                            }
+                            &.body-status {
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.fa.fa-plus {
+    color: #4e73df !important;
+}
+
+.invite-student {
+    cursor: pointer;
+}
+.modal-header {
+    border-bottom: none !important;
+}
+.search-students {
+    width: 100%;
+    outline: none;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+}
+
+.send-invite:hover {
+    color: #4e73df !important;
+}
+
+.btn-primary{
+	background: #27aae1;
+	padding: 5px 20px;
+	border: none;
+	font-size: 14px;
+	border-radius: 4px;
+	color: #fff;
+	position: relative;
+  font-weight: 600;
+  outline: none;
+}
+
+.btn-primary::before{
+  content: "";
+  background: rgba(255,255,255, 0.2);
+  position: absolute;
+  width: 95%;
+  height: 1px;
+  top: 1px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.btn-primary:hover{
+  background: #149AC9;
+  transition: all 1s;
+}

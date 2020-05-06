@@ -19,9 +19,9 @@ declare var jQuery: any;
 export class StudentsComponent implements OnInit {
 
   public addStudentForm: FormGroup;
-  searchText;
   public people: any = [];
   p: number = 1;
+  searchText;
   viewList: number = 5;
   userData: any;
   constructor(
@@ -45,12 +45,14 @@ export class StudentsComponent implements OnInit {
     const { token } = this.userData;
     this.apiService.getStudents(token).subscribe((response: any) => {
       const { status, body } = response;
+      console.log(body);
       if (status === 200) {
         this.people = body;
         this.showSpinner = false;
       }
     });
   }
+
   // get email() {
   //   return this.addStudentForm.get('email') as FormControl;
   // }
@@ -94,51 +96,43 @@ export class StudentsComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.success('Student Added successfully', 'Congratulations', { timeOut: 2000 });
+    this.toastr.success('Student Added successfully. Reloading List.', 'Congratulations', { timeOut: 5000 })
   }
 
+  //adding student details on 
   onSubmit() {
-    console.log('Im here student add');
-    console.log(this.addStudentForm);
     const { value } = this.addStudentForm;
-
+    console.log(value);
     const data = {
+  
       username: value.username,
       position: value.position,
       department: value.department,
       password: value.password,
     };
 
-
+console.log(data);
     // get chckbox status
     let contModal = <HTMLInputElement>document.getElementById('continueModal');
     if (!contModal.checked) {
       jQuery('#myModal').modal('hide'); //close modal after submit
     }
 
-    setTimeout(() => { this.showSuccess(); }, 500); //add toast message
+
+    this.showSpinner = true;
+
+    setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
     this.addStudentForm.reset(); //reset form
-    this.getStudents(); //reload table data
+
 
     this.apiService.addStudent(data).subscribe((response: any) => {
       const { status } = response;
       if (status === 201) {
-        console.log("response");
+        this.ngOnInit();
       } else {
-        console.log("failed to add");
         console.log(response);
       }
     });
-    this.people.push(data);
   }
 
-  mockData() {
-    this.people = [
-      {
-        email: "sample@gmail.com",
-        name: "Tiger",
-        status: "Student",
-      },
-    ];
-  }
 }

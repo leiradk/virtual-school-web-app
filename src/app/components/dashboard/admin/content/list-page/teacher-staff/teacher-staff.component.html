@@ -70,18 +70,20 @@
               <app-loading-spinner></app-loading-spinner>
             </td>
           </tr>
-          <tr *ngFor="
+          <ng-container *ngIf="showSpinner === false">
+            <tr *ngFor="
               let staff of people
                 | filter: searchText
                 | paginate: { itemsPerPage: viewList, currentPage: p };
               let i = index
             ">
-            <td>{{ staff.username }}</td>
-            <td>{{ staff.position }}</td>
-            <td>{{ staff.usertype }}</td>
-            <td>{{ staff.created }}</td>
-            <td>{{ staff.createdby }}</td>
-          </tr>
+              <td>{{ staff.username }}</td>
+              <td>{{ staff.position }}</td>
+              <td>{{ staff.usertype }}</td>
+              <td>{{ staff.created }}</td>
+              <td>{{ staff.createdby }}</td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
     </div>
@@ -167,7 +169,8 @@
 
           <!-- Modal footer -->
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" style="width: 25%" [disabled]="addStaffFOrm.valid === false">Submit</button>
+            <button type="submit" class="btn btn-primary" style="width: 25%"
+              [disabled]="addStaffFOrm.valid === false">Submit</button>
             <button type="button" class="btn btn-danger" style="width: 25%" data-dismiss="modal">Close</button>
           </div>
         </form>

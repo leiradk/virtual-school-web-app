@@ -1,0 +1,315 @@
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="classwork">
+                <div class="card col-xl-4 col-md-4 mb-4">
+                    <div class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <div
+                                        class="subject-title text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        List of Classworks
+                                    </div>
+                                    <!-- Display notification for events here -->
+                                    <!-- Event # 1 -->
+                                    <div class="reminder-butt">
+                                        <!-- Card Header - Accordion -->
+                                        <a href="#collapseCardExample" class="d-block card-header py-3 collapsed"
+                                            data-toggle="collapse" role="button" aria-expanded="false"
+                                            aria-controls="collapseCardExample">
+                                            <h6 class="m-0 font-weight-bold text-primary">Exam Schedule: Nov 5, 2020
+                                            </h6>
+                                        </a>
+                                        <!-- Card Content - Collapse -->
+                                        <div class="collapse" id="collapseCardExample">
+                                            <div class="card-body">
+                                                This is a collapsable card example using Bootstrap's built in collapse
+                                                functionality.
+                                                <strong>Click on the card header</strong> to see the card body collapse
+                                                and expand!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Display notification for events here -->
+                                    <div class="view">
+                                        <p><a href="instructor-lesson-add.html" class="btn btn-primary btn-rounded">
+                                                Add Classwork
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event # 1 -->
+                <div class="card column col-xl-8 col-md-8 mb-8">
+                    <!-- <div class="card-title">
+                        <div class="title-name">Class Work Title</div>
+                        <div class="view-details"><a>View</a></div>
+                    </div> -->
+                    <div class="card-body">
+                        <!-- Content -->
+                        <div class="layout-content" data-scrollable>
+                            <div class="container-fluid">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h1 class="page-heading h2">
+                                            Edit Class
+                                        </h1>
+                                    </div>
+                                    <div class="media-right media-middle">
+                                        <a href="#" class="btn btn-success btn-rounded">SAVE</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Basic Information</h4>
+                                            </div>
+                                            <div class="card-block">
+
+                                                <div class="form-group">
+                                                    <label for="title" class="basic-info-title">Class Name</label>
+                                                    <input type="text" class="form-control" placeholder="Write a title"
+                                                        value="Basics of Vue.js">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="details" class="basic-info-title">Class
+                                                        Description</label>
+                                                    <div id="summernote">Lorem ipsum dolor sit amet, consectetur
+                                                        adipisicing elit. Cumque necessitatibus distinctio adipisci
+                                                        eius, unde dignissimos maxime doloribus quisquam non harum?
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="details" class="basic-info-title">Completion
+                                                        Badge</label>
+                                                    <div>
+                                                        <div data-toggle="buttons">
+                                                            <label class="btn btn-white btn-circle active">
+                                                                <input type="radio" name="options" id="option1"
+                                                                    autocomplete="off" checked>
+                                                                <i class="fa fa-users" aria-hidden="true"></i>
+                                                            </label>
+                                                            <label class="btn btn-white btn-circle">
+                                                                <input type="radio" name="options" id="option2"
+                                                                    autocomplete="off">
+                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                            </label>
+                                                            <label class="btn btn-white btn-circle">
+                                                                <input type="radio" name="options" id="option3"
+                                                                    autocomplete="off">
+                                                                <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                                            </label>
+                                                            <label class="btn btn-white btn-circle">
+                                                                <input type="radio" name="options" id="option3"
+                                                                    autocomplete="off">
+                                                                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                                            </label>
+                                                            <label class="btn btn-white btn-circle">
+                                                                <input type="radio" name="options" id="option3"
+                                                                    autocomplete="off">
+                                                                <i class="fa fa-shield" aria-hidden="true"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Lessons</h4>
+                                            </div>
+                                            <div class="card-block">
+                                                <p><a href="instructor-lesson-add.html"
+                                                        class="btn btn-primary btn-rounded">Add Lesson
+                                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                                    </a>
+                                                </p>
+                                                <div class="nestable" id="nestable-handles-primary">
+                                                    <ul class="nestable-list">
+                                                        <li class="nestable-item nestable-item-handle" data-id="2">
+                                                            <div class="nestable-handle"><i class="fa fa-bars"
+                                                                    aria-hidden="true"></i></div>
+                                                            <div class="nestable-content">
+                                                                <div class="media">
+                                                                    <div class="media-left media-middle">
+                                                                        <img src="../../../../../../../assets/teacher/images/classwork/vuejs.png"
+                                                                            alt="" width="100" class="img-rounded">
+                                                                    </div>
+                                                                    <div class="media-body media-middle">
+                                                                        <h5 class="lesson-title h6 m-b-0">
+                                                                            <a href="instructor-lesson-add.html">Awesome
+                                                                                Vue.js with SASS Processing</a>
+                                                                        </h5>
+                                                                        <small class="text-muted">updated 1 month
+                                                                            ago</small>
+                                                                    </div>
+                                                                    <div class="media-right media-middle">
+                                                                        <a href="instructor-lesson-add.html"
+                                                                            class="btn btn-white btn-sm"><i
+                                                                                class="fa fa-pencil"
+                                                                                aria-hidden="true"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="nestable-item nestable-item-handle" data-id="1">
+                                                            <div class="nestable-handle"><i class="fa fa-bars"
+                                                                    aria-hidden="true"></i></div>
+                                                            <div class="nestable-content">
+                                                                <div class="media">
+                                                                    <div class="media-left media-middle">
+                                                                        <img src="../../../../../../../assets/teacher/images/classwork/nodejs.png"
+                                                                            alt="" width="100" class="img-rounded">
+                                                                    </div>
+                                                                    <div class="media-body media-middle">
+                                                                        <h4 class="lesson-title h6 m-b-0">
+                                                                            <a href="instructor-lesson-add.html">Github
+                                                                                Webhooks for Beginners</a>
+                                                                        </h4>
+                                                                        <small class="text-muted">updated 1 month
+                                                                            ago</small>
+                                                                    </div>
+                                                                    <div class="media-right media-middle">
+                                                                        <a href="instructor-lesson-add.html"
+                                                                            class="btn btn-white btn-sm"><i
+                                                                                class="fa fa-pencil"
+                                                                                aria-hidden="true"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="nestable-item nestable-item-handle" data-id="2">
+                                                            <div class="nestable-handle">
+                                                                <i class="fa fa-bars" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="nestable-content">
+                                                                <div class="media">
+                                                                    <div class="media-left">
+                                                                        <img src="../../../../../../../assets/teacher/images/classwork/gulp.png"
+                                                                            alt="" width="100" class="img-rounded">
+                                                                    </div>
+                                                                    <div class="media-body media-middle">
+                                                                        <h4 class="lesson-title h6 m-b-0">
+                                                                            <a href="instructor-lesson-add.html">Browserify:
+                                                                                Writing Modular JavaScript</a>
+                                                                        </h4>
+                                                                        <small class="text-muted">updated 1 month
+                                                                            ago</small>
+                                                                    </div>
+                                                                    <div class="media-right media-middle">
+                                                                        <a href="instructor-lesson-add.html"
+                                                                            class="btn btn-white btn-sm"><i
+                                                                                class="fa fa-pencil"
+                                                                                aria-hidden="true"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <!-- 4:3 aspect ratio -->
+                                            <div style="overflow:hidden; height:150px">
+                                                <iframe class="embed-responsive-item"
+                                                    src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0"
+                                                    frameborder="0" webkitallowfullscreen="" mozallowfullscreen=""
+                                                    allowfullscreen="" width="100%" height="150"></iframe>
+                                            </div>
+                                            <div class="card-block">
+                                                <textarea name="video" class="form-control" rows="6"
+                                                    style="font-size:12px">&lt;iframe class=&quot;embed-responsive-item&quot; src=&quot;https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0&quot; frameborder=&quot;0&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen width=&quot;100%&quot;&gt;&lt;/iframe&gt;</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <p class="basic-info-title">Additional Information</p>
+                                            </div>
+
+                                            <form class="form-horizontal p-a-1">
+                                                <div class="form-group row">
+                                                    <label for="select"
+                                                        class="col-sm-6  form-control-label">Category</label>
+                                                    <div class="col-sm-6">
+                                                        <select class="c-select form-control">
+                                                            <option value="#">HTML</option>
+                                                            <option value="#">Angular JS</option>
+                                                            <option value="#" selected>Vue.js</option>
+                                                            <option value="#">CSS / LESS</option>
+                                                            <option value="#">Design / Concept</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="duration"
+                                                        class="col-sm-6 form-control-label">Duration</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="No. of Days" value="10">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="start" class="col-sm-6  form-control-label">Start
+                                                        Date</label>
+                                                    <div class="col-sm-6">
+                                                        <input class="datepicker form-control" type="text"
+                                                            value="01/28/2016" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="end" class="col-sm-6  form-control-label">End
+                                                        Date</label>
+                                                    <div class="col-sm-6">
+                                                        <input class="datepicker form-control" type="text"
+                                                            value="01/28/2016" />
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal fade" id="editLesson">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            // Edit Lesson
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tasks right">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- <form class="user" [formGroup]="inviteForm" (ngSubmit)="onSubmit()"> -->
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add Work</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -40,6 +40,20 @@ import { TeacherNavbarComponent } from './components/dashboard/teacher/teacher-n
 import { TeacherMainComponent } from './components/dashboard/teacher/teacher-content/teacher-main/teacher-main.component';
 import { ClassDetailsComponent } from './components/dashboard/teacher/teacher-content/class-details/class-details.component';
 import { ClassHomeComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-home.component';
+import { ClassReminderComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-reminder/class-reminder.component';
+import { ClassPostComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-post/class-post.component';
+import { ClassworkComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/classwork.component';
+import { CheckStudentsComponent } from './components/dashboard/teacher/teacher-content/class-details/check-students/check-students.component';
+import { IonicModule } from '@ionic/angular';
+import { StudentComponent } from './components/dashboard/student/student.component';
+import { StudentNavbarComponent } from './components/dashboard/student/student-navbar/student-navbar.component';
+import { StudentSidebarComponent } from './components/dashboard/student/student-sidebar/student-sidebar.component';
+import { StudentContentComponent } from './components/dashboard/student/student-content/student-content.component';
+import { StudentMainComponent } from './components/dashboard/student/student-content/student-main/student-main.component';
+import { StudentInvitationsComponent } from './components/dashboard/student/student-content/student-invitations/student-invitations.component';
+import { Error404Component } from './components/ui/error404/error404.component';
+import { ClassroomComponent } from './components/dashboard/student/student-content/classroom/classroom.component';
+import { LoadingBarComponent } from './components/ui/loading-bar/loading-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +78,19 @@ import { ClassHomeComponent } from './components/dashboard/teacher/teacher-conte
     TeacherMainComponent,
     ClassDetailsComponent,
     ClassHomeComponent,
+    ClassReminderComponent,
+    ClassPostComponent,
+    ClassworkComponent,
+    CheckStudentsComponent,
+    StudentComponent,
+    StudentNavbarComponent,
+    StudentSidebarComponent,
+    StudentContentComponent,
+    StudentMainComponent,
+    StudentInvitationsComponent,
+    Error404Component,
+    ClassroomComponent,
+    LoadingBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +103,8 @@ import { ClassHomeComponent } from './components/dashboard/teacher/teacher-conte
     // HttpModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    IonicModule.forRoot()
   ],
   providers: [ ApiHostService, SystemUtils],
   bootstrap: [AppComponent],
