@@ -8,6 +8,7 @@ import {
 import { ApiHostService } from '../../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../../services/system.utils';
 import { subscribeOn } from 'rxjs/operators';
+import { SharedPostService } from '../../../../../../../services/shared-post.service';
 @Component({
   selector: 'app-class-post',
   templateUrl: './class-post.component.html',
