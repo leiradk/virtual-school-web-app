@@ -37,7 +37,7 @@ export class TeacherSidebarComponent implements OnInit {
     const { token } = data;
     this.apiService.getClassroom(token)
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         const { status, message, body } = response;
         if (status === 200) {
           this.classDetails = body;

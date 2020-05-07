@@ -72,8 +72,10 @@ export class ClassPostComponent implements OnInit {
   getComments(id) {
     const { token } = this.userData;
     this.getAllComments = [];
-    const { userType } = this.userData.data;
-    if (userType === '10002') {
+    // console.log(this.userData.data);
+    const { usertype } = this.userData.data;
+    console.log(usertype);
+    if (usertype === '10002') {
       this.getTeacherComments(id, token);
     } else {
       this.getStudentComments(id, token);
@@ -219,7 +221,7 @@ export class ClassPostComponent implements OnInit {
 
 
     for (let i = 0; i < this.postDetails.length; i++) {
-
+      
       if (this.postDetails[i].postID === id) {
         this.viewAllComments[i] = view;
       } else {
