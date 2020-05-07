@@ -96,7 +96,7 @@ export class ApiHostService {
         })
       );
   }
-
+  //send comment of the teacher side
   sendCommentTeacher(payload) {
     return this.https.post(`${this.localhost}teacher/comment/post`, payload)
       .pipe(
@@ -108,10 +108,18 @@ export class ApiHostService {
       );
   }
 
+  //add classwork for the students
+  addClasswork(payload) {
+    return this.https.post(`${this.localhost}teacher/add/classwork`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
-
-  // http://139.162.238.76:8000/vs/teacher/comment/post
-  // http://139.162.238.76:8000/vs/student/comment/post
 
   //put data
   //accept classroom invitation on student side
@@ -125,8 +133,19 @@ export class ApiHostService {
         })
       );
   }
+  //update classwork for students
+  updateClassWork(payload) {
+    return this.https.put(`${this.localhost}/teacher/update/classwork`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
-
+  // http://139.162.238.76/vs/teacher/update/classwork
 
   //get data
   //get list teacher for the admin 
@@ -248,4 +267,27 @@ export class ApiHostService {
       );
   }
 
+  //get all rooms classwork for the teacher
+  getClassworkTeacher(id, token) {
+    return this.https.get(`${this.localhost}teacher/get/classworks?postID=${id}&token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
+  //get all rooms classwork for the teacher
+  getClassworkStudent(id, token) {
+    return this.https.get(`${this.localhost}student/get/classworks?postID=${id}&token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 }
