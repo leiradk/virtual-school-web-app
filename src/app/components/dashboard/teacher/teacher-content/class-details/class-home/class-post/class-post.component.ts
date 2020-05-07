@@ -27,10 +27,12 @@ export class ClassPostComponent implements OnInit {
   viewAllComments: any = [];
   postID: any;
   getAllComments: any = [];
+  pathParam;
   constructor(
     private fb: FormBuilder,
     private apiService: ApiHostService,
-    private system: SystemUtils
+    private system: SystemUtils,
+    private sharedPost: SharedPostService
   ) {
     this.postModel();
   }
@@ -40,7 +42,11 @@ export class ClassPostComponent implements OnInit {
   ngOnInit(): void {
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
-
+    // this.pathParam = this.sharedPost.token;
+    // this.pathParam.subscribe((token: any)=>{
+    //   this.token = token;
+    //   console.log('subscribeToken', this.token)
+    // })
     this.getPosts();
   }
 
