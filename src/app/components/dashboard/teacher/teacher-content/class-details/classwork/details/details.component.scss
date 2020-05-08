@@ -73,6 +73,17 @@
     }
 }
 
+.list-classwork {
+    border: none !important;
+    margin-top: -20px !important;
+    height: 100% !important;
+    padding-bottom: 1 0px !important;
+}
+
+.list-classwork.card-body {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
 .basic-info-title {
     font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-size: 1rem;
@@ -198,8 +209,7 @@
 //     width: 25%;
 // }
 
-
-.empty-work{
+.empty-work {
     color: #999;
     opacity: 1;
     text-align: center;
