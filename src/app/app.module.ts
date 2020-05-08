@@ -56,6 +56,8 @@ import { ClassroomComponent } from './components/dashboard/student/student-conte
 import { LoadingBarComponent } from './components/ui/loading-bar/loading-bar.component';
 import { LessonsComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/lessons/lessons.component';
 import { DetailsComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/details/details.component';
+import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,7 +110,8 @@ import { DetailsComponent } from './components/dashboard/teacher/teacher-content
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    RichTextEditorAllModule,
   ],
   providers: [ ApiHostService, SystemUtils],
   bootstrap: [AppComponent],

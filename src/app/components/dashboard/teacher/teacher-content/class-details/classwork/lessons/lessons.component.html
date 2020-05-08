@@ -1,10 +1,20 @@
 <div class="layout-content" data-scrollable>
     <div class="container-fluid">
 
-        <ol class="breadcrumb m-b-0">
-            <li><a [routerLink]="['/teacher/class-details/class-work/details']">Back to Class Details</a></li>
-        </ol>
-        <h1 class="page-heading h2">Add Lesson</h1>
+
+        <button class="button back-btn" [routerLink]="['/teacher/class-details/class-work/details']">
+            Class Details
+        </button>
+        <div class="media">
+            <div class="media-body">
+                <h1 class="page-heading h2">
+                    Add Lesson
+                </h1>
+            </div>
+            <div class="media-right media-middle">
+                <a href="#" class="btn btn-success btn-rounded">SAVE</a>
+            </div>
+        </div>
         <div class="card">
             <div class="p-a-1">
                 <form action="#">
@@ -79,25 +89,16 @@
             <div class="card-block">
                 <div class="row">
 
-                    <div class="col-md-6">
-                        <!-- <form id="my-awesome-dropzone" action="/target" class="dropzone"></form> -->
-                        Drop Zone Here
-                        follow
-                        https://medium.com/@tarekabdelkhalek/how-to-create-a-drag-and-drop-file-uploading-in-angular-78d9eba0b854
-                    </div>
-                    <div class="col-md-6">
-                        Tree for files here
-                        <!-- <div data-toggle="tree">
-                            <ul style="display: none;">
-                                <li class="folder expanded">
-                                    lesson files
-                                    <ul>
-                                        <li> lesson-1-install.zip</li>
-                                        <li> lesson-1-steps.zip</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div> -->
+                    <div class="col-md-12">
+                        <div class="dropzone">
+                            <!-- <input type="file" #fileDropRef id="fileDropRef" multiple
+                                (change)="fileBrowserHandler($event.target.files)" /> -->
+                            <input type="file" id="fileDropRef" />
+                            <i class="fas fa-upload"></i>
+                            <h3>Drag and drop file here</h3>
+                            <h3>or</h3>
+                            <label for="fileDropRef">Browse for File</label>
+                        </div>
                     </div>
                 </div>
             </div>

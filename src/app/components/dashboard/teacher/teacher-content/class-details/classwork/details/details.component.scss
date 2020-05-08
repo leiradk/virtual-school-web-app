@@ -95,13 +95,6 @@
     color: white;
 }
 
-.btn.active.focus {
-    outline: none !important;
-    background-color: #0c7cd5 !important;
-    color: #dddfe2 !important;
-    box-shadow: none !important;
-}
-
 .show {
     display: block !important;
 }
@@ -134,9 +127,55 @@
     float: right;
 }
 
-.btn-circle:hover {
-    background-color: #66bb6a !important;
+.btn.active.focus {
+    outline: none !important;
     color: #dddfe2 !important;
+    box-shadow: none !important;
+}
+
+.badge1.active.focus {
+    background-color: #2196f3 !important;
+}
+
+.badge2.active.focus {
+    background-color: #f44336 !important;
+}
+
+.badge3.active.focus {
+    background-color: #66bb6a !important;
+}
+
+.badge4.active.focus {
+    background-color: #ffa726 !important;
+}
+
+.badge5.active.focus {
+    background-color: #29b6f6 !important;
+}
+
+.badge1:hover {
+    background-color: #2196f3 !important;
+    color: #fff !important;
+}
+
+.badge2:hover {
+    background-color: #f44336 !important;
+    color: #fff !important;
+}
+
+.badge3:hover {
+    background-color: #66bb6a !important;
+    color: #fff !important;
+}
+
+.badge4:hover {
+    background-color: #ffa726 !important;
+    color: #fff !important;
+}
+
+.badge5:hover {
+    background-color: #29b6f6 !important;
+    color: #fff !important;
 }
 
 .lesson-title {

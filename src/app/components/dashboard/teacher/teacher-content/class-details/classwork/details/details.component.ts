@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { ToolbarService, LinkService, ImageService, HtmlEditorService, TableService } from '@syncfusion/ej2-angular-richtexteditor';
 
 @Component({
   selector: 'app-details',
@@ -7,7 +8,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
     '../../../../../../../../assets/teacher/css/classwork/style.css',
     '../../../../../../../../assets/teacher/css/classwork/bootstrap-datepicker.css',
     '../../../../../../../../assets/teacher/css/classwork/nestable.css',
-    '../../../../../../../../assets/teacher/css/classwork/summernote.css']
+    '../../../../../../../../assets/teacher/css/classwork/summernote.css'],
+  providers: [ToolbarService, LinkService, ImageService, HtmlEditorService, TableService]
 })
 export class DetailsComponent implements OnInit {
   p: number = 1;
@@ -29,5 +31,19 @@ export class DetailsComponent implements OnInit {
   checkScroll() {
     this.isSticky = window.pageYOffset >= 250;
   }
+
+  public tools: object = {
+    items: [
+      'Bold', 'Italic', 'Underline', 'StrikeThrough', '|',
+      'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
+      'LowerCase', 'UpperCase', '|', 'Undo', 'Redo', '|',
+      'Formats', 'Alignments', '|', 'OrderedList', 'UnorderedList', '|',
+      'Indent', 'Outdent', '|', 'CreateLink', 'CreateTable',
+      'Image', '|', 'ClearFormat', 'Print', 'SourceCode', '|', 'FullScreen']
+  };
+
+  public value: string = `
+    <p>The RichTextEditor triggers events based on its actions. </p>
+    <p> The events can be used as an extension point to perform custom operations.</p>`
 
 }
