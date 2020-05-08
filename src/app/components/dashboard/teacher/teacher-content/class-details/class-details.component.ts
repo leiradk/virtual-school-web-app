@@ -15,7 +15,7 @@ export class ClassDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(window.location.href);
+    // console.log(window.location.href);
     this.getActiveClass();
   }
 

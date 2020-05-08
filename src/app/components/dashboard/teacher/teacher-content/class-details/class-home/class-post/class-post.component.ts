@@ -8,6 +8,9 @@ import {
 import { ApiHostService } from '../../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../../services/system.utils';
 import { subscribeOn } from 'rxjs/operators';
+import { SharedPostService } from '../../../../../../../services/shared-post.service';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-class-post',
   templateUrl: './class-post.component.html',
@@ -26,10 +29,13 @@ export class ClassPostComponent implements OnInit {
   viewAllComments: any = [];
   postID: any;
   getAllComments: any = [];
+  pathParam: Observable<string>;
+  post: any;
   constructor(
     private fb: FormBuilder,
     private apiService: ApiHostService,
-    private system: SystemUtils
+    private system: SystemUtils,
+    private sharedPost: SharedPostService
   ) {
     this.postModel();
   }
@@ -39,8 +45,13 @@ export class ClassPostComponent implements OnInit {
   ngOnInit(): void {
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
-
-    this.getPosts();
+    this.pathParam = this.sharedPost.post;
+    this.pathParam.subscribe((post: any) => {
+      this.postDetails = post;
+      if (this.postDetails === null) {
+        this.getPosts();
+      }
+    })
   }
 
 
@@ -61,9 +72,10 @@ export class ClassPostComponent implements OnInit {
   getComments(id) {
     const { token } = this.userData;
     this.getAllComments = [];
-    console.log(this.userData);
-    const { userType } = this.userData.data;
-    if (userType === '10002') {
+    // console.log(this.userData.data);
+    const { usertype } = this.userData.data;
+    console.log(usertype);
+    if (usertype === '10002') {
       this.getTeacherComments(id, token);
     } else {
       this.getStudentComments(id, token);
@@ -87,7 +99,6 @@ export class ClassPostComponent implements OnInit {
         const { comments } = response.body;
         this.getAllComments = comments;
 
-        console.log(this.getAllComments);
       }, (error: any) => {
         console.log(error);
 
@@ -108,7 +119,6 @@ export class ClassPostComponent implements OnInit {
   //add comments from the backend
   setComment(payload) {
 
-    console.log(this.userData);
     const { userType } = this.userData.data;
     if (userType === '10002') {
       this.postTeacherComments(payload);
@@ -140,14 +150,10 @@ export class ClassPostComponent implements OnInit {
   getPosts() {
     const { token } = this.userData;
     const { rid } = this.classDetails;
-    console.log('userData:', this.userData);
     const { usertype } = this.userData.data;
-    console.log(usertype);
     if (usertype === '10002') {
-      console.log('teacher');
       this.teacherSide(rid, token);
     } else {
-      console.log('student');
       this.studentSide(rid, token)
 
     }
@@ -159,12 +165,11 @@ export class ClassPostComponent implements OnInit {
   teacherSide(rid, token) {
     this.apiService.getTeacherPosts(rid, token)
       .subscribe((response: any) => {
-        console.log(response);
         const { post } = response.body;
         const { status } = response;
-        console.log(post);
         if (status === 200) {
           this.postDetails = post;
+          this.sharedPost.setRouteToken(this.postDetails);
         }
 
       }, (error: any) => {
@@ -177,13 +182,13 @@ export class ClassPostComponent implements OnInit {
       .subscribe((response: any) => {
         const { post } = response.body;
         const { status } = response;
-        console.log(post);
         if (status === 200) {
           this.postDetails = post;
-          for (let i = 0; i <= (this.postDetails.length - 1); i++) {
-            const bool = false;
-            this.viewAllComments.push(bool)
-          }
+          this.sharedPost.setRouteToken(this.postDetails);
+          // for (let i = 0; i <= (this.postDetails.length - 1); i++) {
+          //   const bool = false;
+          //   this.viewAllComments.push(bool)
+          // }
         }
 
       }, (error: any) => {
@@ -216,7 +221,7 @@ export class ClassPostComponent implements OnInit {
 
 
     for (let i = 0; i < this.postDetails.length; i++) {
-
+      
       if (this.postDetails[i].postID === id) {
         this.viewAllComments[i] = view;
       } else {

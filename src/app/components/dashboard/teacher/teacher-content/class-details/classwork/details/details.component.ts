@@ -1,5 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ToolbarService, LinkService, ImageService, HtmlEditorService, TableService } from '@syncfusion/ej2-angular-richtexteditor';
+import { ApiHostService } from '../../../../../../../services/api-host.service';
+import { SystemUtils } from '../../../../../../../services/system.utils';
 
 @Component({
   selector: 'app-details',
@@ -16,9 +18,20 @@ export class DetailsComponent implements OnInit {
   searchText;
   viewList: number = 5;
   file: any;
-  constructor() { }
+  classDetails: any;
+  userData: any;
+  error: any;
+  errorMessage: any;
+  constructor(
+    private apiService: ApiHostService,
+    private system: SystemUtils
+  ) { }
 
   ngOnInit(): void {
+    this.classDetails = this.system.retrieveItem('classDetails');
+    this.userData = this.system.retrieveItem('userData');
+    this.getClasswork(this.classDetails, this.userData);
+
     this.file = [{
       file: 'file',
       filename: 'filename',
@@ -46,4 +59,21 @@ export class DetailsComponent implements OnInit {
     <p>The RichTextEditor triggers events based on its actions. </p>
     <p> The events can be used as an extension point to perform custom operations.</p>`
 
+  getClasswork(classID, userID) {
+    const { token } = userID;
+    const { id } = classID;
+
+    this.apiService.getClassworkTeacher(id, token)
+      .subscribe((response: any) => {
+        console.log(response);
+      }, (error: any) => {
+        const { message, status } = error.error;
+
+        if (status === 404) {
+          this.error = true;
+          this.errorMessage = message;
+          console.log(message);
+        }
+      })
+  }
 }
