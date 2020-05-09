@@ -51,8 +51,8 @@
           <div class="line-divider"></div>
           <div class="view-comment">
             <p>
-              <a *ngIf="!viewAllComments[i]" (click)="viewComments(true, post.postID)" class="view-all">View Comments</a>
-              <a *ngIf="viewAllComments[i]" (click)="viewComments(false, post.postID)" class="view-all">Hide Comments</a>
+              <a *ngIf="!viewAllComments[i]" (click)="viewComments(true, post.postID, i)" class="view-all">View Comments</a>
+              <a *ngIf="viewAllComments[i]" (click)="viewComments(false, post.postID, i)" class="view-all">Hide Comments</a>
             </p>
           </div>
           <div class="line-divider"></div>

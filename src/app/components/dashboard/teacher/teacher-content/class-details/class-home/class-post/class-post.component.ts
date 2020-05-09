@@ -31,6 +31,8 @@ export class ClassPostComponent implements OnInit {
   getAllComments: any = [];
   pathParam: Observable<string>;
   post: any;
+  commentUpdate: any;
+  storeAllComments: any = [];
   constructor(
     private fb: FormBuilder,
     private apiService: ApiHostService,
@@ -52,6 +54,14 @@ export class ClassPostComponent implements OnInit {
         this.getPosts();
       }
     })
+
+    const data = [
+    ];
+    const pushing = [{
+      data: 'dasdsad',
+    }]
+    data.push(pushing)
+    console.log(data[0][0]);
   }
 
 
@@ -69,29 +79,43 @@ export class ClassPostComponent implements OnInit {
   }
 
   //get comments on the student side
-  getComments(id) {
+  getComments(id, index) {
     const { token } = this.userData;
     this.getAllComments = [];
     // console.log(this.userData.data);
     const { usertype } = this.userData.data;
     console.log(usertype);
     if (usertype === '10002') {
-      this.getTeacherComments(id, token);
+      this.getTeacherComments(id, token, index);
     } else {
       this.getStudentComments(id, token);
 
     }
   }
 
-  getTeacherComments(id, token) {
-    this.apiService.getTeacherComments(id, token)
-      .subscribe((response: any) => {
-        const { comments } = response.body;
-        this.getAllComments = comments;
-      }, (error: any) => {
-        console.log(error);
+  getTeacherComments(id, token, index) {
+    if (this.storeAllComments[index] === undefined) {
+      console.log('data');
+      this.apiService.getTeacherComments(id, token)
+        .subscribe((response: any) => {
+          const { comments } = response.body;
+          this.getAllComments = comments;
+          this.storeAllComments[index] = this.getAllComments;
+          // console.log(this.storeAllComments);
+        }, (error: any) => {
+          console.log(error);
+          const { message, status } = error.error;
+          if (status === 404) {
+            console.log(message);
+            this.storeAllComments[index] = undefined;
+          }
 
-      })
+        })
+    } else {
+      this.getAllComments = this.storeAllComments[index];
+
+    }
+
   }
   getStudentComments(id, token) {
     this.apiService.getStudentComments(id, token)
@@ -217,18 +241,44 @@ export class ClassPostComponent implements OnInit {
   }
 
   //GET the postID for payload on api comments
-  viewComments(view, id) {
-
-
+  viewComments(view, id, index) {
+    let data: any = [];
     for (let i = 0; i < this.postDetails.length; i++) {
-      
+
       if (this.postDetails[i].postID === id) {
         this.viewAllComments[i] = view;
       } else {
         this.viewAllComments[i] = false;
       }
+      if (this.storeAllComments) {
+        if (this.storeAllComments[i]) {
+        } else {
+          this.storeAllComments[i] = undefined
+        }
+      } else {
+        this.storeAllComments[i] = undefined
+      }
+      // console.log(this.storeAllComments[i] === true);
+
     }
-    this.postID = id;
-    this.getComments(id);
+    // if (this.storeAllComments[index]) {
+    //   console.log(this.storeAllComments[index]);
+    //   for(let x = 0; x <= this.storeAllComments[index].length; x++) {
+    //     data.push(this.storeAllComments[index][x])
+    //   }
+    // } else {
+    //   console.log('empty')
+    // }
+    // if (data) {
+    //   console.log('not empty')
+    //   this.getAllComments = data;
+    // } else {
+    //   console.log('empty')
+
+    // }
+    if (view === true) {
+      this.postID = id;
+      this.getComments(id, index);
+    }
   }
 }

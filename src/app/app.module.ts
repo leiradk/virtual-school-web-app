@@ -57,6 +57,8 @@ import { LoadingBarComponent } from './components/ui/loading-bar/loading-bar.com
 import { LessonsComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/lessons/lessons.component';
 import { DetailsComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/details/details.component';
 import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { QuizzesComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/quizzes/quizzes.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +99,7 @@ import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor'
     LoadingBarComponent,
     LessonsComponent,
     DetailsComponent,
+    QuizzesComponent,
   ],
   imports: [
     BrowserModule,
@@ -112,6 +115,7 @@ import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor'
     BrowserAnimationsModule,
     IonicModule.forRoot(),
     RichTextEditorAllModule,
+    NgbModule,
   ],
   providers: [ ApiHostService, SystemUtils],
   bootstrap: [AppComponent],
