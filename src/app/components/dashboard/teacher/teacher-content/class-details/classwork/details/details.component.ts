@@ -32,6 +32,7 @@ export class DetailsComponent implements OnInit {
   errorMessage: any;
   placement = 'bottom';
   base64textString: any;
+  fileName: any;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -117,12 +118,30 @@ export class DetailsComponent implements OnInit {
   }
   onSubmit() {
     console.log(this.classWorkForm)
-    
+    const date = this.classWorkForm.value.dueDate.year + "-" + this.classWorkForm.value.dueDate.month + "-" + this.classWorkForm.value.dueDate.day;
+    const payload = {
+      token: this.userData.token,
+      title: this.classWorkForm.value.workTitle,
+      classID: this.classDetails.rid,
+      instructions: this.classWorkForm.value.instruction,
+      points: this.classWorkForm.value.points,
+      dueDate: date,
+      attachment: this.base64textString
+    }
+    console.log(payload);
+    this.apiService.addClasswork(payload)
+      .subscribe((response: any) => {
+        console.log(response);
+      }, (error: any) => {
+        console.log(error);
+      })
   }
 
   onFileChange(event) {
     var files = event.target.files;
     var file = files[0];
+    console.log(file)
+    this.fileName = file.name;
     if (files && file) {
       var reader = new FileReader();
 
@@ -136,9 +155,9 @@ export class DetailsComponent implements OnInit {
   handleFile(event) {
     var binaryString = event.target.result;
     // console.log(binaryString);
-    this.base64textString = btoa(binaryString);   
+    this.base64textString = btoa(binaryString);
     console.log(btoa(binaryString));
-    this.classWorkForm.value.workFile = this.base64textString;
-    // console.log(this.classWorkForm)
+    // this.classWorkForm.value.workFile = this.base64textString;
+    console.log(this.classWorkForm)
   }
 }
