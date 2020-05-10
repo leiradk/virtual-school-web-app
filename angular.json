@@ -17,6 +17,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/beta/", 
+            "deployUrl": "/beta/",
             "outputPath": "dist/project-a-web-app",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -57,7 +59,7 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumError": "150kb"
                 }
               ]
             }
