@@ -33,6 +33,7 @@ export class DetailsComponent implements OnInit {
   placement = 'bottom';
   base64textString: any;
   fileName: any;
+  teacherAccount: any;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -45,7 +46,11 @@ export class DetailsComponent implements OnInit {
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
     this.getClasswork(this.classDetails, this.userData);
-
+    console.log(this.userData)
+    const { data } = this.userData;
+    if (data.usertype === "10002") {
+      this.teacherAccount = true;
+    }
     this.file = [{
       file: 'file',
       filename: 'filename',
@@ -82,7 +87,7 @@ export class DetailsComponent implements OnInit {
         console.log(response);
       }, (error: any) => {
         const { message, status } = error.error;
-
+        console.log(error);
         if (status === 404) {
           this.error = true;
           this.errorMessage = message;

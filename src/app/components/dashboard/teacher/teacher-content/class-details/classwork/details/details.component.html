@@ -35,7 +35,7 @@
                                     <div class="empty-work">
                                         {{errorMessage}}
                                     </div>
-                                    <div class="view">
+                                    <div *ngIf="teacherAccount" class="view">
                                         <p><a class="btn btn-primary btn-rounded modal-buttons" data-toggle="modal"
                                                 data-target="#myModalClasswork">
                                                 Add Classwork

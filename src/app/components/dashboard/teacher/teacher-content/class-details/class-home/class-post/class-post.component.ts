@@ -30,6 +30,7 @@ export class ClassPostComponent implements OnInit {
   postID: any;
   getAllComments: any = [];
   pathParam: Observable<string>;
+  commentParams: Observable<string>;
   post: any;
   commentUpdate: any;
   storeAllComments: any = [];
@@ -84,6 +85,7 @@ export class ClassPostComponent implements OnInit {
     this.getAllComments = [];
     // console.log(this.userData.data);
     const { usertype } = this.userData.data;
+    this.sharedPost.setComments(this.storeAllComments);
     console.log(usertype);
     if (usertype === '10002') {
       this.getTeacherComments(id, token, index);
@@ -94,27 +96,32 @@ export class ClassPostComponent implements OnInit {
   }
 
   getTeacherComments(id, token, index) {
-    if (this.storeAllComments[index] === undefined) {
-      console.log('data');
-      this.apiService.getTeacherComments(id, token)
-        .subscribe((response: any) => {
-          const { comments } = response.body;
-          this.getAllComments = comments;
-          this.storeAllComments[index] = this.getAllComments;
-          // console.log(this.storeAllComments);
-        }, (error: any) => {
-          console.log(error);
-          const { message, status } = error.error;
-          if (status === 404) {
-            console.log(message);
-            this.storeAllComments[index] = undefined;
-          }
+    this.commentParams = this.sharedPost.comments;
+    this.commentParams.subscribe((comment: any) => {
+      console.log(comment);
+      if (comment[index] === undefined) {
+        console.log('data');
+        this.apiService.getTeacherComments(id, token)
+          .subscribe((response: any) => {
+            const { comments } = response.body;
+            this.getAllComments = comments;
+            this.storeAllComments[index] = this.getAllComments;
+            this.sharedPost.setComments(this.storeAllComments);
+          }, (error: any) => {
+            console.log(error);
+            const { message, status } = error.error;
+            if (status === 404) {
+              console.log(message);
+              this.storeAllComments[index] = undefined;
+            }
 
-        })
-    } else {
-      this.getAllComments = this.storeAllComments[index];
+          })
+      } else {
+        this.getAllComments = this.storeAllComments[index];
 
-    }
+      }
+    })
+
 
   }
   getStudentComments(id, token) {
