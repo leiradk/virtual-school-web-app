@@ -34,6 +34,8 @@ export class DetailsComponent implements OnInit {
   base64textString: any;
   fileName: any;
   teacherAccount: any;
+  classWork: any;
+  downloadFile: any;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -80,11 +82,14 @@ export class DetailsComponent implements OnInit {
 
   getClasswork(classID, userID) {
     const { token } = userID;
-    const { id } = classID;
+    const { rid } = classID;
 
-    this.apiService.getClassworkTeacher(id, token)
+    this.apiService.getClassworkTeacher(rid, token)
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
+        const { classworks } = response.body;
+        this.classWork = classworks;
+        console.log(this.classWork)
       }, (error: any) => {
         const { message, status } = error.error;
         console.log(error);
@@ -145,7 +150,7 @@ export class DetailsComponent implements OnInit {
   onFileChange(event) {
     var files = event.target.files;
     var file = files[0];
-    console.log(file)
+    console.log(files[0])
     this.fileName = file.name;
     if (files && file) {
       var reader = new FileReader();
@@ -161,8 +166,25 @@ export class DetailsComponent implements OnInit {
     var binaryString = event.target.result;
     // console.log(binaryString);
     this.base64textString = btoa(binaryString);
-    console.log(btoa(binaryString));
+    // console.log(btoa(binaryString));
     // this.classWorkForm.value.workFile = this.base64textString;
-    console.log(this.classWorkForm)
+    // console.log(this.classWorkForm)
+  }
+
+  download(attachment) {
+    this.downloadFile = "data:application/pdf;base64," + attachment;
+    console.log('data');
+    console.log(this.downloadFile);
+    const downloadLink = document.createElement("a");
+    const fileName = "sample.pptx";
+
+    downloadLink.href = this.downloadFile;
+    downloadLink.download = fileName;
+    downloadLink.click();
+  }
+
+  dueDateVal(date) {
+    const dateSplit = date.split(' ');
+    return dateSplit[0];
   }
 }

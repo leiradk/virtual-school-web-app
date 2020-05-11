@@ -269,7 +269,7 @@ export class ApiHostService {
 
   //get all rooms classwork for the teacher
   getClassworkTeacher(id, token) {
-    return this.https.get(`${this.localhost}teacher/get/classworks?postID=${id}&token=${token}`)
+    return this.https.get(`${this.localhost}teacher/get/classworks?classID=${id}&token=${token}`)
       .pipe(
         map((data: any) => {
           return data;
@@ -281,7 +281,7 @@ export class ApiHostService {
 
   //get all rooms classwork for the teacher
   getClassworkStudent(id, token) {
-    return this.https.get(`${this.localhost}student/get/classworks?postID=${id}&token=${token}`)
+    return this.https.get(`${this.localhost}student/get/classworks?classID=${id}&token=${token}`)
       .pipe(
         map((data: any) => {
           return data;
