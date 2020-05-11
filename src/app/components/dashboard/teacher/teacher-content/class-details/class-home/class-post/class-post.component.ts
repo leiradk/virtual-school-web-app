@@ -27,6 +27,7 @@ export class ClassPostComponent implements OnInit {
   public postForm: FormGroup;
   loading = false;
   viewAllComments: any = [];
+  unviewed: boolean = false;
   postID: any;
   getAllComments: any = [];
   pathParam: Observable<string>;
@@ -242,6 +243,7 @@ export class ClassPostComponent implements OnInit {
 
   //GET the postID for payload on api comments
   viewComments(view, id, index) {
+    this.unviewed = !this.unviewed;
     let data: any = [];
     for (let i = 0; i < this.postDetails.length; i++) {
 
