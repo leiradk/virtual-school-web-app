@@ -258,24 +258,9 @@ export class ClassPostComponent implements OnInit {
       } else {
         this.storeAllComments[i] = undefined
       }
-      // console.log(this.storeAllComments[i] === true);
 
     }
-    // if (this.storeAllComments[index]) {
-    //   console.log(this.storeAllComments[index]);
-    //   for(let x = 0; x <= this.storeAllComments[index].length; x++) {
-    //     data.push(this.storeAllComments[index][x])
-    //   }
-    // } else {
-    //   console.log('empty')
-    // }
-    // if (data) {
-    //   console.log('not empty')
-    //   this.getAllComments = data;
-    // } else {
-    //   console.log('empty')
 
-    // }
     if (view === true) {
       this.postID = id;
       this.getComments(id, index);

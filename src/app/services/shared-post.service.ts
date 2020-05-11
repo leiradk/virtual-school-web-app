@@ -6,6 +6,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class SharedPostService {
   private pathParams = new BehaviorSubject<string>(null);
   post: Observable<string>;
+  comments: Observable<string>;
   constructor() { 
     this.post = this.pathParams.asObservable();
   }
