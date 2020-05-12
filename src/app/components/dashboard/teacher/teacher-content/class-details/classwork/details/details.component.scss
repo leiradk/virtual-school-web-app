@@ -121,10 +121,6 @@
     margin: 20px 0;
 }
 
-.reminder-butt {
-    border: 1px solid #dddfe2;
-}
-
 .view {
     text-align: right;
     padding-top: 15px;
@@ -274,6 +270,10 @@
     background: #66bb6a !important;
 }
 
+.reminder-butt .card-header:hover{
+    font-size: 35px !important;
+}
+
 .reminder-butt .work-title {
     color: #fff !important;
 }
@@ -282,10 +282,9 @@
     background: #dddddddc !important;
 }
 
-.show {
-    background-color: #55595c;
+.btns-work{
+    background: #141414dc !important;
 }
-
 .card-body{
     margin-top: 0;
     margin-bottom: 0p;
@@ -303,6 +302,8 @@
 .ctr {
     text-align: center;
 }
+
+
 
 .subject-title {
     font-size: 20px;
