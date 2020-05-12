@@ -35,7 +35,9 @@ export class CheckStudentsComponent implements OnInit {
   showSuccess() {
     this.toastr.success('Invite has been successfully sent', 'Congratulations', { timeOut: 4000 })
   }
-
+  showFailed() {
+    this.toastr.warning('Invite have failed to sent', 'Try Again', { timeOut: 4000 })
+  }
   showSpinner: boolean = true;
 
   ngOnInit(): void {
@@ -86,9 +88,13 @@ export class CheckStudentsComponent implements OnInit {
     this.apiService.sendClassInvites(payload)
       .subscribe((response: any) => {
         console.log(response);
-      })
-    this.showSuccess(); // show toastr
-    jQuery('#myModal').modal('hide'); //close modal after submit
+        this.showSuccess(); // show toastr
+        jQuery('#myModal').modal('hide'); //close modal after submit
+      }, (error => {
+        this.showFailed()
+        jQuery('#myModal').modal('hide'); //close modal after submit
+      }))
+
   }
 
 
@@ -98,7 +104,7 @@ export class CheckStudentsComponent implements OnInit {
     this.apiService.getInvitedStudents(rid, token)
       .subscribe((response: any) => {
         const { status } = response; {
-          if(status === 200) {
+          if (status === 200) {
             const { body } = response;
             this.invited = body;
           }
