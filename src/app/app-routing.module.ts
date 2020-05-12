@@ -15,6 +15,7 @@ import { ClassDetailsComponent } from './components/dashboard/teacher/teacher-co
 import { ClassHomeComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-home.component';
 import { ClassworkComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/classwork.component';
 import { LessonsComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/lessons/lessons.component';
+import { WorkViewComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/work-view/work-view.component';
 import { DetailsComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/details/details.component';
 import { CheckStudentsComponent } from './components/dashboard/teacher/teacher-content/class-details/check-students/check-students.component';
 import { StudentComponent } from "./components/dashboard/student/student.component";
@@ -122,6 +123,9 @@ const routes: Routes = [
               {
                 path: 'lessons',
                 component: LessonsComponent,
+              },  {
+                path: 'work-view',
+                component: WorkViewComponent,
               },
             ]
           },

@@ -59,6 +59,7 @@ import { DetailsComponent } from './components/dashboard/teacher/teacher-content
 import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QuizzesComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/quizzes/quizzes.component';
+import { WorkViewComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/work-view/work-view.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { QuizzesComponent } from './components/dashboard/teacher/teacher-content
     LessonsComponent,
     DetailsComponent,
     QuizzesComponent,
+    WorkViewComponent,
   ],
   imports: [
     BrowserModule,
