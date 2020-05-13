@@ -121,10 +121,6 @@
     margin: 20px 0;
 }
 
-.reminder-butt {
-    border: 1px solid #dddfe2;
-}
-
 .view {
     text-align: right;
     padding-top: 15px;
@@ -268,4 +264,51 @@
     background-color: #fff;
     background-image: none;
     border: none !important;
+}
+
+.reminder-butt .card-header {
+    background: #66bb6a !important;
+}
+
+.reminder-butt .card-header:hover{
+    font-size: 35px !important;
+}
+
+.reminder-butt .work-title {
+    color: #fff !important;
+}
+
+.reminder-butt .card-body {
+    background: #dddddddc !important;
+}
+
+.btns-work{
+    background: #141414dc !important;
+}
+.card-body{
+    margin-top: 0;
+    margin-bottom: 0p;
+    margin-bottom: 0px;
+    border-bottom: solid #aaa 1px;
+    span {
+        font-weight: 700;
+    }
+    .instructions{
+        color: #141414;
+        font-style: italic;
+    }
+}
+
+.ctr {
+    text-align: center;
+}
+
+
+
+.subject-title {
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 10px !important;
+    border-bottom: #1414147c solid 2px;
+    margin-bottom: 20px !important;
 }

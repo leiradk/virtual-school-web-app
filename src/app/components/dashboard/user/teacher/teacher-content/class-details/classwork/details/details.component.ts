@@ -20,6 +20,7 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
   providers: [ToolbarService, LinkService, ImageService, HtmlEditorService, TableService]
 })
 export class DetailsComponent implements OnInit {
+  
   public classWorkForm: FormGroup;
   model: NgbDateStruct;
   p: number = 1;
@@ -36,6 +37,10 @@ export class DetailsComponent implements OnInit {
   teacherAccount: any;
   classWork: any;
   downloadFile: any;
+  public isCollapsed: boolean[] = [];
+
+
+
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,

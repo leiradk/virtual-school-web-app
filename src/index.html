@@ -86,6 +86,18 @@
       $("#sidebar").toggleClass("active");
     });
   </script>
+  
+  <script>
+    var elem = document.querySelector('input[type="range"]');
+
+    var rangeValue = function () {
+      var newValue = elem.value;
+      var target = document.querySelector('.value');
+      target.innerHTML = newValue;
+    }
+
+    elem.addEventListener("input", rangeValue);
+  </script>
   <!-- <script src="assets/teacher/popper.js"></script>
     <script src="assets/teacher/main.js"></script>
     <script src="assets/teacher/bootstrap.min.js"></script>
@@ -99,8 +111,7 @@
 
   <script src="assets/teacher/js/classwork/main.min.js"></script>
   <script src="assets/teacher/js/classwork/fancytree.js"></script>
-
-
+  <script src="assets/teacher/js/classwork/slider.js"></script>
 </body>
 
 </html>
