@@ -1,0 +1,13 @@
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar" class="toggled" [ngClass]="{'afterToggled': toggle, 'toggled': !toggle}">
+      <app-user-sidebar (messageEvent)="receiveMessage($event)"></app-user-sidebar>
+    </nav>
+  
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5">
+      <app-user-navbar></app-user-navbar>
+      <!-- Content Row -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  

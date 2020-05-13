@@ -46,14 +46,14 @@ export class LoginComponent implements OnInit {
 
           if (parseInt(data.usertype) === 10002) {
             this.system.storeLocal('userData', body);
-            this.router.navigate(["/teacher"]);
+            this.router.navigate(["/user/t"]);
           } else if (parseInt(data.usertype) === 10001) {
             this.system.storeLocal('userData', body);
             this.router.navigate(["/dashboard"]);
 
           } else if (parseInt(data.usertype) === 10003) {
             this.system.storeLocal('userData', body);
-            this.router.navigate(["/student"]);
+            this.router.navigate(["/user/s"]);
             this.loading = false;
             
           } else {

@@ -1,0 +1,33 @@
+<div class="subject-details">
+    <div class="column">
+      <!-- Earnings (Monthly) Card Example -->
+      <div class="col-xl-12 col-md-12 mb-12">
+        <div class="border-bottom-primary h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="subject-title text-xs font-weight-bold text-primary text-uppercase mb-1">
+                  {{classDetails.className}} Grade {{classDetails.classGradeLevel}}
+                </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  {{classDetails.joined}} Students
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-12 col-md-12 mb-12">
+        <div class="row">
+          <div class="col-xl-4 col-md-4 mb-4">
+            <!-- Reminder Here -->
+            <app-reminders></app-reminders>
+          </div>
+          <div class="column col-xl-8 col-md-8 mb-8">
+            <!-- Post Here -->
+            <app-posts></app-posts>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

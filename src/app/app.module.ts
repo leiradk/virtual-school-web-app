@@ -14,6 +14,8 @@ import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { ToastrModule} from "ngx-toastr";
+import { IonicModule } from '@ionic/angular';
+
 //services
 import { ApiHostService } from "./services/api-host.service";
 import { SystemUtils } from "./services/system.utils";
@@ -33,33 +35,47 @@ import { ClasslistComponent } from './components/dashboard/admin/content/list-pa
 import { ParentListComponent } from './components/dashboard/admin/content/list-page/parent-list/parent-list.component';
 import { SubjectComponent } from './components/dashboard/admin/content/list-page/subject/subject.component';
 import { LoadingSpinnerComponent } from './components/ui/loading-spinner/loading-spinner.component';
-import { TeacherComponent } from './components/dashboard/teacher/teacher.component';
-import { TeacherContentComponent } from './components/dashboard/teacher/teacher-content/teacher-content.component';
-import { TeacherSidebarComponent } from './components/dashboard/teacher/teacher-sidebar/teacher-sidebar.component';
-import { TeacherNavbarComponent } from './components/dashboard/teacher/teacher-navbar/teacher-navbar.component';
-import { TeacherMainComponent } from './components/dashboard/teacher/teacher-content/teacher-main/teacher-main.component';
-import { ClassDetailsComponent } from './components/dashboard/teacher/teacher-content/class-details/class-details.component';
-import { ClassHomeComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-home.component';
-import { ClassReminderComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-reminder/class-reminder.component';
-import { ClassPostComponent } from './components/dashboard/teacher/teacher-content/class-details/class-home/class-post/class-post.component';
-import { ClassworkComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/classwork.component';
-import { CheckStudentsComponent } from './components/dashboard/teacher/teacher-content/class-details/check-students/check-students.component';
-import { IonicModule } from '@ionic/angular';
-import { StudentComponent } from './components/dashboard/student/student.component';
-import { StudentNavbarComponent } from './components/dashboard/student/student-navbar/student-navbar.component';
-import { StudentSidebarComponent } from './components/dashboard/student/student-sidebar/student-sidebar.component';
-import { StudentContentComponent } from './components/dashboard/student/student-content/student-content.component';
-import { StudentMainComponent } from './components/dashboard/student/student-content/student-main/student-main.component';
-import { StudentInvitationsComponent } from './components/dashboard/student/student-content/student-invitations/student-invitations.component';
+import { TeacherComponent } from './components/dashboard/user/teacher/teacher.component';
+import { TeacherContentComponent } from './components/dashboard/user/teacher/teacher-content/teacher-content.component';
+import { TeacherSidebarComponent } from './components/dashboard/user/teacher/teacher-sidebar/teacher-sidebar.component';
+import { TeacherNavbarComponent } from './components/dashboard/user/teacher/teacher-navbar/teacher-navbar.component';
+import { TeacherMainComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-main.component';
+import { ClassDetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-details.component';
+import { ClassHomeComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-home.component';
+import { ClassReminderComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-reminder/class-reminder.component';
+import { ClassPostComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-post/class-post.component';
+import { ClassworkComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/classwork.component';
+import { CheckStudentsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/check-students/check-students.component';
+import { StudentComponent } from './components/dashboard/user/student/student.component';
+import { StudentNavbarComponent } from './components/dashboard/user/student/student-navbar/student-navbar.component';
+import { StudentSidebarComponent } from './components/dashboard/user/student/student-sidebar/student-sidebar.component';
+import { StudentContentComponent } from './components/dashboard/user/student/student-content/student-content.component';
+import { StudentMainComponent } from './components/dashboard/user/student/student-content/student-main/student-main.component';
+import { StudentInvitationsComponent } from './components/dashboard/user/student/student-content/student-invitations/student-invitations.component';
 import { Error404Component } from './components/ui/error404/error404.component';
-import { ClassroomComponent } from './components/dashboard/student/student-content/classroom/classroom.component';
+import { ClassroomComponent } from './components/dashboard/user/student/student-content/classroom/classroom.component';
 import { LoadingBarComponent } from './components/ui/loading-bar/loading-bar.component';
-import { LessonsComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/lessons/lessons.component';
-import { DetailsComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/details/details.component';
+import { LessonsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/lessons/lessons.component';
+import { DetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/details/details.component';
 import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { QuizzesComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/quizzes/quizzes.component';
-import { WorkViewComponent } from './components/dashboard/teacher/teacher-content/class-details/classwork/work-view/work-view.component';
+import { QuizzesComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/quizzes/quizzes.component';
+import { WorkViewComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/work-view/work-view.component';
+import { UserComponent } from './components/dashboard/user/user.component';
+import { UserSidebarComponent } from './components/dashboard/user/user-sidebar/user-sidebar.component';
+import { UserNavbarComponent } from './components/dashboard/user/user-navbar/user-navbar.component';
+import { RoomDetailsComponent } from './components/dashboard/user/room-details/room-details.component';
+import { TeacherSideComponent } from './components/dashboard/user/room-details/teacher-side/teacher-side.component';
+import { StudentSideComponent } from './components/dashboard/user/room-details/student-side/student-side.component';
+import { TeacherHomeComponent } from './components/dashboard/user/room-details/teacher-side/teacher-home/teacher-home.component';
+import { AssignWorkComponent } from './components/dashboard/user/room-details/teacher-side/assign-work/assign-work.component';
+import { InviteUsersComponent } from './components/dashboard/user/room-details/teacher-side/invite-users/invite-users.component';
+import { PostsComponent } from './components/dashboard/user/room-details/teacher-side/teacher-home/posts/posts.component';
+import { RemindersComponent } from './components/dashboard/user/room-details/teacher-side/teacher-home/reminders/reminders.component';
+import { AssignDetailsComponent } from './components/dashboard/user/room-details/teacher-side/assign-work/assign-details/assign-details.component';
+import { AssignLessonsComponent } from './components/dashboard/user/room-details/teacher-side/assign-work/assign-lessons/assign-lessons.component';
+import { AssignQuizzesComponent } from './components/dashboard/user/room-details/teacher-side/assign-work/assign-quizzes/assign-quizzes.component';
+import { ViewWorkDetailsComponent } from './components/dashboard/user/room-details/teacher-side/assign-work/view-work-details/view-work-details.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +118,21 @@ import { WorkViewComponent } from './components/dashboard/teacher/teacher-conten
     DetailsComponent,
     QuizzesComponent,
     WorkViewComponent,
+    UserComponent,
+    UserSidebarComponent,
+    UserNavbarComponent,
+    RoomDetailsComponent,
+    TeacherSideComponent,
+    StudentSideComponent,
+    TeacherHomeComponent,
+    AssignWorkComponent,
+    InviteUsersComponent,
+    PostsComponent,
+    RemindersComponent,
+    AssignDetailsComponent,
+    AssignLessonsComponent,
+    AssignQuizzesComponent,
+    ViewWorkDetailsComponent,
   ],
   imports: [
     BrowserModule,
