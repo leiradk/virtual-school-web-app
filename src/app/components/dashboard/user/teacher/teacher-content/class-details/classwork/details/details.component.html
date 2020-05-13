@@ -9,37 +9,52 @@
                                 <div class="subject-title text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     List of Classworks
                                 </div>
-                                <div *ngFor="let work of classWork" class="col">
+                                <div *ngFor="let work of classWork; let i = index" class="col">
 
                                     <!-- Display notification for events here -->
                                     <!-- Event # 1 -->
                                     <div class="reminder-butt">
                                         <!-- Card Header - Accordion -->
-                                        <a href="#collapseCardExample" class="d-block card-header py-3 collapsed"
+                                        <!-- <a href="#collapseCardExample" class="d-block card-header py-3 collapsed"
                                             data-toggle="collapse" role="button" aria-expanded="false"
                                             aria-controls="collapseCardExample">
                                             <h6 class="m-0 font-weight-bold text-primary">{{work.title}} - Due
-                                                Date:{{dueDateVal(work.dueDate)}}
+                                                on:{{dueDateVal(work.dueDate)}}
+                                            </h6>
+                                        </a> -->
+                                        <a (click)="isCollapsed[i] = !isCollapsed[i]"
+                                            class="d-block card-header py-3 collapsed" data-toggle="collapse"
+                                            role="button" aria-expanded="false" aria-controls="collapseCardExample">
+                                            <h6 class="m-0 font-weight-bold text-primary work-title">{{work.title}}
                                             </h6>
                                         </a>
                                         <!-- Card Content - Collapse -->
-                                        <div class="collapse" id="collapseCardExample">
+                                        <div [ngbCollapse]="!isCollapsed[i]" class="collapse" id="collapseCardExample">
                                             <div class="card-body">
-                                                <p>Points: {{work.points}}</p>
-                                                {{work.instruction}}
+                                                <p class="due work-details"> Due on:
+                                                    <span>{{dueDateVal(work.dueDate)}}</span> </p>
+                                                <p class="points work-details">Total Points:
+                                                    <span>{{work.points}}</span></p>
+                                                <p class="submit work-details">Total Submission: <span>5</span></p>
+                                                <p class="instructions">{{work.instruction}}</p>
                                             </div>
-                                            <a (click)="download(work.attachment)"
-                                                class="btn btn-primary btn-rounded modal-buttons">download</a>
+                                            <div class="btns-work ctr">
+                                                <a (click)="download(work.attachment)"
+                                                    class="btn btn-primary btn-rounded modal-buttons">Download</a>
+                                                <a [routerLink]="['/teacher/class-details/class-work/work-view']"
+                                                    class="btn btn-primary btn-rounded modal-buttons">View Details</a>
+                                            </div>
                                         </div>
+                                    </div>
 
-                                    </div>
-                                    <!-- Display notification for events here -->
-                                    <div class="empty-work">
+                                    <!-- PLEASE READ HERE -->
+                                    <!-- Add ngIf here. Show only if empty classwork -->
+                                    <!-- <div class="empty-work" >
                                         {{errorMessage}}
-                                    </div>
+                                    </div> -->
 
                                 </div>
-                                <div *ngIf="teacherAccount" class="view">
+                                <div *ngIf="teacherAccount" class="view ctr">
                                     <p><a class="btn btn-primary btn-rounded modal-buttons" data-toggle="modal"
                                             data-target="#myModalClasswork">
                                             Add Classwork
@@ -49,7 +64,7 @@
                                             class="btn btn-primary btn-rounded modal-buttons" data-toggle="modal"
                                             data-target="#myModalClasswork">
                                             Quizzes
-                                            <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
                                         </a>
                                     </p>
                                 </div>
