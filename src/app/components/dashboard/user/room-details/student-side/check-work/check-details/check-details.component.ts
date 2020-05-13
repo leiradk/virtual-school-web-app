@@ -1,28 +1,19 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { ToolbarService, LinkService, ImageService, HtmlEditorService, TableService } from '@syncfusion/ej2-angular-richtexteditor';
-import { ApiHostService } from '../../../../../../../../services/api-host.service';
-import { SystemUtils } from '../../../../../../../../services/system.utils';
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-  FormControl,
-} from "@angular/forms";
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { ApiHostService } from '../../../../../../../services/api-host.service';
+import { SystemUtils } from '../../../../../../../services/system.utils';
+import { SharedWorkDetailsService } from '../../../../../../../services/shared-work-details.service';
+
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss',
-    '../../../../../../../../../assets/teacher/css/classwork/style.css',
-    '../../../../../../../../../assets/teacher/css/classwork/bootstrap-datepicker.css',
-    '../../../../../../../../../assets/teacher/css/classwork/nestable.css',
-    '../../../../../../../../../assets/teacher/css/classwork/summernote.css'],
-  providers: [ToolbarService, LinkService, ImageService, HtmlEditorService, TableService]
+  selector: 'app-check-details',
+  templateUrl: './check-details.component.html',
+  styleUrls: ['./check-details.component.scss',
+    '../../../../../../../../assets/teacher/css/classwork/style.css',
+    '../../../../../../../../assets/teacher/css/classwork/dropzone.css',
+    '../../../../../../../../assets/teacher/css/classwork/fancytree.css',
+    '../../../../../../../../assets/teacher/css/classwork/nouislider.css']
 })
-export class DetailsComponent implements OnInit {
-  
-  public classWorkForm: FormGroup;
-  model: NgbDateStruct;
+export class CheckDetailsComponent implements OnInit {
+
   p: number = 1;
   searchText;
   viewList: number = 5;
@@ -38,15 +29,11 @@ export class DetailsComponent implements OnInit {
   classWork: any;
   downloadFile: any;
   public isCollapsed: boolean[] = [];
-
-
-
   constructor(
     private apiService: ApiHostService,
+    private workDetails: SharedWorkDetailsService,
     private system: SystemUtils,
-    private fb: FormBuilder,
   ) {
-    this.workFormModel();
   }
 
   ngOnInit(): void {
@@ -89,7 +76,7 @@ export class DetailsComponent implements OnInit {
     const { token } = userID;
     const { rid } = classID;
 
-    this.apiService.getClassworkTeacher(rid, token)
+    this.apiService.getClassworkStudent(rid, token)
       .subscribe((response: any) => {
         // console.log(response);
         const { classworks } = response.body;
@@ -105,52 +92,7 @@ export class DetailsComponent implements OnInit {
         }
       })
   }
-  get workTitle() {
-    return this.classWorkForm.get("workTitle") as FormControl;
-  }
-  get points() {
-    return this.classWorkForm.get("points") as FormControl;
-  }
-  get instruction() {
-    return this.classWorkForm.get("instruction") as FormControl;
-  }
-  get dueDate() {
-    return this.classWorkForm.get("dueDate") as FormControl;
-  }
-  // get workFile() {
-  //   return this.classWorkForm.get("workFile") as FormControl;
-  // }
 
-
-  workFormModel() {
-    this.classWorkForm = this.fb.group({
-      workTitle: [null, Validators.required],
-      points: [null, Validators.required],
-      instruction: [null, Validators.required],
-      dueDate: [null, Validators.required],
-      // workFile: [null, Validators.required]
-    });
-  }
-  onSubmit() {
-    console.log(this.classWorkForm)
-    const date = this.classWorkForm.value.dueDate.year + "-" + this.classWorkForm.value.dueDate.month + "-" + this.classWorkForm.value.dueDate.day;
-    const payload = {
-      token: this.userData.token,
-      title: this.classWorkForm.value.workTitle,
-      classID: this.classDetails.rid,
-      instructions: this.classWorkForm.value.instruction,
-      points: this.classWorkForm.value.points,
-      dueDate: date,
-      attachment: this.base64textString
-    }
-    console.log(payload);
-    this.apiService.addClasswork(payload)
-      .subscribe((response: any) => {
-        console.log(response);
-      }, (error: any) => {
-        console.log(error);
-      })
-  }
 
   onFileChange(event) {
     var files = event.target.files;
@@ -178,8 +120,8 @@ export class DetailsComponent implements OnInit {
 
   download(attachment) {
     this.downloadFile = "data:application/pdf;base64," + attachment;
-    console.log('data');
-    console.log(this.downloadFile);
+    // console.log('data');
+    // console.log(this.downloadFile);
     const downloadLink = document.createElement("a");
     const fileName = "sample.pptx";
 
@@ -193,6 +135,7 @@ export class DetailsComponent implements OnInit {
     return dateSplit[0];
   }
   viewDetails(work) {
-    console.log(work);
+    this.workDetails.setRouteToken(work);
+    this.system.storeLocal('workDetails', work);
   }
 }

@@ -25,6 +25,17 @@ import { ClassroomComponent } from "./components/dashboard/user/student/student-
 import { UserComponent } from "./components/dashboard/user/user.component";
 import { RoomDetailsComponent } from "./components/dashboard/user/room-details/room-details.component";
 import { InviteUsersComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/invite-users.component";
+import { AssignWorkComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-work.component";
+import { AssignDetailsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-details/assign-details.component";
+import { ViewWorkDetailsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/view-work-details/view-work-details.component";
+
+
+import { CheckWorkComponent } from "./components/dashboard/user/room-details/student-side/check-work/check-work.component";
+import { CheckDetailsComponent } from "./components/dashboard/user/room-details/student-side/check-work/check-details/check-details.component";
+import { CheckClassWorkComponent } from "./components/dashboard/user/room-details/student-side/check-work/check-class-work/check-class-work.component";
+import { StudentHomeComponent } from "./components/dashboard/user/room-details/student-side/student-home/student-home.component";
+import { CheckUsersComponent } from "./components/dashboard/user/room-details/student-side/check-users/check-users.component";
+
 CheckStudentsComponent
 const routes: Routes = [
   {
@@ -216,16 +227,33 @@ const routes: Routes = [
               },
               {
                 path: 'home',
-                component: ClassHomeComponent
+                component: StudentHomeComponent
               },
               {
                 path: 'class-work',
-                component: ClassworkComponent,
-
+                component: CheckWorkComponent,
+                children: [
+                  {
+                    path: "",
+                    redirectTo: 'details',
+                    pathMatch: "full"
+                  },
+                  {
+                    path: 'details',
+                    component: CheckDetailsComponent,
+                  },
+                  {
+                    path: 'lessons',
+                    component: LessonsComponent,
+                  }, {
+                    path: 'work-view',
+                    component: CheckClassWorkComponent,
+                  },
+                ]
               },
               {
                 path: 'people',
-                component: CheckStudentsComponent
+                component: CheckUsersComponent
               },
             ]
           },
@@ -260,7 +288,7 @@ const routes: Routes = [
               },
               {
                 path: 'class-work',
-                component: ClassworkComponent,
+                component: AssignWorkComponent,
                 children: [
                   {
                     path: "",
@@ -276,7 +304,7 @@ const routes: Routes = [
                     component: LessonsComponent,
                   }, {
                     path: 'work-view',
-                    component: WorkViewComponent,
+                    component: ViewWorkDetailsComponent,
                   },
                 ]
               },

@@ -1,0 +1,82 @@
+<div class="row" style="padding-top: 20px;">
+
+    <div class="container-fluid">
+      <!-- Post Create Box
+              ================================================= -->
+      <!-- <form *ngIf="postForm && userData.data.usertype === '10002'" [formGroup]="postForm" (ngSubmit)="onSubmit()">
+        <div class="create-post">
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <div class="form-group">
+                <img src="../../../../../../../assets/images/users/user-1.jpg" alt="" class="profile-photo-md" />
+                <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control"
+                  placeholder="Post an announcement" formControlName="postContent"></textarea>
+              </div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+              <div class="tools">
+                <button class="btn btn-primary pull-right" *ngIf="postForm.valid">Publish</button>
+                <ul class="publishing-tools list-inline pull-right">
+                  <li><a href="#"><i class="fa fa-pencil-square-o"></i></a></li>
+                  <li><a href="#"><i class="fa fa-video-camera"></i></a></li>
+                  <li><a href="#"><i class="fa fa-picture-o"></i></a></li>
+                  <li><a href="#"><i class="fa fa-map-o"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- Post Create Box End-->
+      <!-- </form> -->
+      <!-- Post Content
+              ================================================= -->
+      <div *ngFor="let post of postDetails; let i = index" class="post-content">
+        <div class="post-container">
+          <img src="../../../../../../../assets/images/users/user-5.jpg" alt="user" class="profile-photo-md pull-left" />
+          <div class="post-detail">
+            <div class="user-info">
+              <h5><a href="timeline.html" class="profile-link">{{post.postedBy}}</a> <span
+                  class="following">Teacher</span>
+              </h5>
+              <p class="text-muted">Published a photo about 3 mins ago</p>
+            </div>
+            <div class="reaction">
+              <a class="btn text-green"><i class="fa fa-thumbs-up"></i> 13</a>
+              <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+            </div>
+            <div class="line-divider"></div>
+            <div class="post-text">
+              <p>{{post.message}} <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i
+                  class="em em-anguished"></i></p>
+            </div>
+            <div class="line-divider"></div>
+            <div class="view-comment">
+              <p>
+                <a *ngIf="!viewAllComments[i]" (click)="viewComments(true, post.postID, i)" class="view-all">View
+                  Comments</a>
+                <a *ngIf="viewAllComments[i]" (click)="viewComments(false, post.postID, i)" class="view-all">Hide
+                  Comments</a>
+              </p>
+            </div>
+            <div class="line-divider"></div>
+            <div *ngFor="let comment of getAllComments;" class="post-comment unviewed"
+              [ngClass]="{'unviewed': !unviewed}">
+              <div class="post-comment comment-list" *ngIf="viewAllComments[i] && postID === post.postID">
+                <img src="../../../../../../../assets/images/users/user-11.jpg" alt="" class="profile-photo-sm" />
+                <p><a href="timeline.html" class="profile-link">{{comment.commentedBy}} </a>{{comment.comment}} </p>
+              </div>
+            </div>
+            <div class="post-comment write-comment">
+              <img src="../../../../../../../assets/images/users/user-1.jpg" alt="" class="profile-photo-sm" />
+              <input type="text" class="form-control" placeholder="Post a comment" [(ngModel)]="arr[i]"
+                (keyup.enter)="addInput(arr[i], post)">
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  
+  
+  
+    </div>
+  </div>

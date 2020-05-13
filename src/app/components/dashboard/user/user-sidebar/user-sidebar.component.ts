@@ -22,7 +22,7 @@ export class UserSidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
-    this.getClassroom(this.userData);
+    // this.getClassroom(this.userData);
     const { usertype } = this.userData.data;
     this.userType = usertype;
     console.log(usertype)
@@ -35,17 +35,16 @@ export class UserSidebarComponent implements OnInit {
   }
 
   //getting all classroom for one specific teacher
-  getClassroom(data) {
-    const { token } = data;
-    this.apiService.getClassroom(token)
-      .subscribe((response: any) => {
-        // console.log(response);
-        const { status, message, body } = response;
-        if (status === 200) {
-          this.classDetails = body;
-        }
-      });
-  }
+  // getClassroom(data) {
+  //   const { token } = data;
+  //   this.apiService.getClassroom(token)
+  //     .subscribe((response: any) => {
+  //       const { status, message, body } = response;
+  //       if (status === 200) {
+  //         this.classDetails = body;
+  //       }
+  //     });
+  // }
 
   @Output() messageEvent = new EventEmitter<boolean>();
 

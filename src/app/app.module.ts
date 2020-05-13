@@ -76,6 +76,13 @@ import { AssignDetailsComponent } from './components/dashboard/user/room-details
 import { AssignLessonsComponent } from './components/dashboard/user/room-details/teacher-side/assign-work/assign-lessons/assign-lessons.component';
 import { AssignQuizzesComponent } from './components/dashboard/user/room-details/teacher-side/assign-work/assign-quizzes/assign-quizzes.component';
 import { ViewWorkDetailsComponent } from './components/dashboard/user/room-details/teacher-side/assign-work/view-work-details/view-work-details.component';
+import { StudentHomeComponent } from './components/dashboard/user/room-details/student-side/student-home/student-home.component';
+import { CheckPostComponent } from './components/dashboard/user/room-details/student-side/student-home/check-post/check-post.component';
+import { CheckRemindersComponent } from './components/dashboard/user/room-details/student-side/student-home/check-reminders/check-reminders.component';
+import { CheckUsersComponent } from './components/dashboard/user/room-details/student-side/check-users/check-users.component';
+import { CheckWorkComponent } from './components/dashboard/user/room-details/student-side/check-work/check-work.component';
+import { CheckDetailsComponent } from './components/dashboard/user/room-details/student-side/check-work/check-details/check-details.component';
+import { CheckClassWorkComponent } from './components/dashboard/user/room-details/student-side/check-work/check-class-work/check-class-work.component';
 
 @NgModule({
   declarations: [
@@ -133,6 +140,13 @@ import { ViewWorkDetailsComponent } from './components/dashboard/user/room-detai
     AssignLessonsComponent,
     AssignQuizzesComponent,
     ViewWorkDetailsComponent,
+    StudentHomeComponent,
+    CheckPostComponent,
+    CheckRemindersComponent,
+    CheckUsersComponent,
+    CheckWorkComponent,
+    CheckDetailsComponent,
+    CheckClassWorkComponent,
   ],
   imports: [
     BrowserModule,

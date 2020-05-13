@@ -41,8 +41,8 @@
                                             <div class="btns-work ctr">
                                                 <a (click)="download(work.attachment)"
                                                     class="btn btn-primary btn-rounded modal-buttons">Download</a>
-                                                <a [routerLink]="['/user/t/classroom/class-work/work-view']"
-                                                    class="btn btn-primary btn-rounded modal-buttons">View Details</a>
+                                                <a [routerLink]="['/user/s/classroom/class-work/work-view']"
+                                                   (click)="viewDetails(work)" class="btn btn-primary btn-rounded modal-buttons">View Details</a>
                                             </div>
                                         </div>
                                     </div>
@@ -327,91 +327,3 @@
     </div>
 </div>
 
-
-<!-- The Modal -->
-<div id="myModalClasswork" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
-
-    <!-- dialog -->
-    <div class="modal-dialog">
-        <form class="user" [formGroup]="classWorkForm" (ngSubmit)="onSubmit()">
-
-            <!-- content -->
-            <div class="modal-content">
-
-                <!-- header -->
-                <div class="modal-header">
-                    <h1 id="myModalLabel" class="modal-title">
-                        Modal title
-                    </h1>
-                </div>
-                <!-- header -->
-
-                <!-- body -->
-                <div class="modal-body">
-                    <div class=" form-group">
-                        <label for="inputName"><span class="validator" *ngIf="workTitle.invalid && workTitle.touched">
-                                Work Title is required</span></label>
-                        <input type="text" class="form-control" id="inputWorkTitle" aria-describedby="workTitleHelp"
-                            placeholder="Enter Work Title" formControlName="workTitle">
-                    </div>
-                    <div class=" form-group">
-                        <label for="inputName"><span class="validator" *ngIf="points.invalid && points.touched">
-                                Points/Items is required</span></label>
-                        <input type="text" class="form-control" id="inputPoints" aria-describedby="pointsHelp"
-                            placeholder="Enter Items/Points" formControlName="points">
-                    </div>
-                    <div class=" form-group">
-                        <label for="inputName"><span class="validator"
-                                *ngIf="instruction.invalid && instruction.touched">
-                                intruction is required</span></label>
-                        <input type="text" class="form-control" id="inputInstruction" aria-describedby="instructionHelp"
-                            placeholder="Enter Instructions" formControlName="instruction">
-                    </div>
-
-                    <div class="form-group">
-                        <div class="date-container">
-                            <div class="input-group-container">
-                                <input class="date-picker" placeholder="yyyy-mm-dd (Due Date)" name="dp"
-                                    formControlName="dueDate" ngbDatepicker #d="ngbDatepicker">
-                            </div>
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
-                                        class="fa fa-calendar"></i></button>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class=" form-group">
-                        <!-- <label for="inputName"><span class="validator" *ngIf="name.invalid && name.touched"> -->
-                        <!-- Class Name is required</span></label> -->
-                        <a (click)="file.click()" class="btn btn-primary btn-rounded">Upload</a> {{fileName}}
-                        <input type="file" id="file" class="work-file" #file (change)="onFileChange($event)">
-                    </div>
-                </div>
-                <!-- body -->
-
-                <!-- footer -->
-                <div class="modal-footer">
-                    <!-- <button class="btn btn-secondary" data-dismiss="modal">
-                        close
-                    </button>
-                    <button class="btn btn-default">
-                        Default
-                    </button> -->
-                    <button class="btn btn-primary">
-                        Submit
-                    </button>
-                    <a class="btn btn-primary" data-dismiss="modal">Cancel</a>
-                </div>
-                <!-- footer -->
-
-            </div>
-            <!-- content -->
-        </form>
-
-    </div>
-    <!-- dialog -->
-
-</div>
-<!-- modal -->
