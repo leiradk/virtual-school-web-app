@@ -41,7 +41,7 @@
                                             <div class="btns-work ctr">
                                                 <a (click)="download(work.attachment)"
                                                     class="btn btn-primary btn-rounded modal-buttons">Download</a>
-                                                <a [routerLink]="['/user/t/classroom/class-work/work-view']"
+                                                <a [routerLink]="['/user/t/classroom/class-work/work-view']" (click)="viewDetails(work)"
                                                     class="btn btn-primary btn-rounded modal-buttons">View Details</a>
                                             </div>
                                         </div>

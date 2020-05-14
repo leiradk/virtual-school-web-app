@@ -75,22 +75,33 @@ export class CheckDetailsComponent implements OnInit {
   getClasswork(classID, userID) {
     const { token } = userID;
     const { rid } = classID;
+    this.workDetails.classWork.subscribe((response: any) => {
+      console.log('classwork:', response);
+      if (response === null || response === undefined) {
+        console.log('empty')
+        this.apiService.getClassworkStudent(rid, token)
+          .subscribe((response: any) => {
+            // console.log(response);
+            const { classworks } = response.body;
+            this.classWork = classworks;
+            this.workDetails.setClassWork(this.classWork);
+            // console.log(this.classWork)
+          }, (error: any) => {
+            const { message, status } = error.error;
+            console.log(error);
+            if (status === 404) {
+              this.error = true;
+              this.errorMessage = message;
+              console.log(message);
+            }
+          })
+      } else {
+        console.log('not empty')
+        this.classWork = response;
+      }
+    })
 
-    this.apiService.getClassworkStudent(rid, token)
-      .subscribe((response: any) => {
-        // console.log(response);
-        const { classworks } = response.body;
-        this.classWork = classworks;
-        console.log(this.classWork)
-      }, (error: any) => {
-        const { message, status } = error.error;
-        console.log(error);
-        if (status === 404) {
-          this.error = true;
-          this.errorMessage = message;
-          console.log(message);
-        }
-      })
+
   }
 
 
@@ -136,6 +147,10 @@ export class CheckDetailsComponent implements OnInit {
   }
   viewDetails(work) {
     this.workDetails.setRouteToken(work);
-    this.system.storeLocal('workDetails', work);
+    // this.system.storeLocal('workDetails', work);
+    this.workDetails.workDetails.subscribe((response: any) => {
+      console.log(response);
+      // this.system.storeLocal('workDetails', response);
+    })
   }
 }

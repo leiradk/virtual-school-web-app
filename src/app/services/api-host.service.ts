@@ -119,7 +119,16 @@ export class ApiHostService {
         })
       );
   }
-
+  submitClasswork(payload) {
+    return this.https.post(`${this.localhost}student/submit/classwork`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
   //put data
   //accept classroom invitation on student side
@@ -290,4 +299,16 @@ export class ApiHostService {
         })
       );
   }
+
+  getClassworkSubmissions(id, token) {
+    return this.https.get(`${this.localhost}teacher/get/classworks/submitted?classworkID=${id}&token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+  // http://139.162.238.76/vs/teacher/get/classworks/submitted?classworkID=classworkidhere&token=tokenhere
 }

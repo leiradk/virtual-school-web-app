@@ -95,106 +95,106 @@ const routes: Routes = [
       },
     ],
   },
-  {
-    path: "teacher",
-    component: TeacherComponent,
-    children: [
-      {
-        path: "",
-        redirectTo: "main",
-        pathMatch: "full"
-      },
-      {
-        path: "main",
-        component: TeacherMainComponent
-      },
-      {
-        path: "class-details",
-        component: ClassDetailsComponent,
-        children: [
-          {
-            path: "",
-            redirectTo: "home",
-            pathMatch: "full"
-          },
-          {
-            path: 'home',
-            component: ClassHomeComponent
-          },
-          {
-            path: 'class-work',
-            component: ClassworkComponent,
-            children: [
-              {
-                path: "",
-                redirectTo: 'details',
-                pathMatch: "full"
-              },
-              {
-                path: 'details',
-                component: DetailsComponent,
-              },
-              {
-                path: 'lessons',
-                component: LessonsComponent,
-              }, {
-                path: 'work-view',
-                component: WorkViewComponent,
-              },
-            ]
-          },
-          {
-            path: 'people',
-            component: CheckStudentsComponent
-          },
-        ]
-      }
-    ]
-  },
-  {
-    path: "student",
-    component: StudentComponent,
-    children: [
-      {
-        path: "",
-        redirectTo: "main",
-        pathMatch: "full"
-      },
-      {
-        path: "main",
-        component: StudentMainComponent
-      },
-      {
-        path: "invitations",
-        component: StudentInvitationsComponent
-      },
-      {
-        path: "classroom",
-        component: ClassroomComponent,
-        children: [
-          {
-            path: "",
-            redirectTo: "home",
-            pathMatch: "full"
-          },
-          {
-            path: 'home',
-            component: ClassHomeComponent
-          },
-          {
-            path: 'class-work',
-            component: ClassworkComponent,
+  // {
+  //   path: "teacher",
+  //   component: TeacherComponent,
+  //   children: [
+  //     {
+  //       path: "",
+  //       redirectTo: "main",
+  //       pathMatch: "full"
+  //     },
+  //     {
+  //       path: "main",
+  //       component: TeacherMainComponent
+  //     },
+  //     {
+  //       path: "class-details",
+  //       component: ClassDetailsComponent,
+  //       children: [
+  //         {
+  //           path: "",
+  //           redirectTo: "home",
+  //           pathMatch: "full"
+  //         },
+  //         {
+  //           path: 'home',
+  //           component: ClassHomeComponent
+  //         },
+  //         {
+  //           path: 'class-work',
+  //           component: ClassworkComponent,
+  //           children: [
+  //             {
+  //               path: "",
+  //               redirectTo: 'details',
+  //               pathMatch: "full"
+  //             },
+  //             {
+  //               path: 'details',
+  //               component: DetailsComponent,
+  //             },
+  //             {
+  //               path: 'lessons',
+  //               component: LessonsComponent,
+  //             }, {
+  //               path: 'work-view',
+  //               component: WorkViewComponent,
+  //             },
+  //           ]
+  //         },
+  //         {
+  //           path: 'people',
+  //           component: CheckStudentsComponent
+  //         },
+  //       ]
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: "student",
+  //   component: StudentComponent,
+  //   children: [
+  //     {
+  //       path: "",
+  //       redirectTo: "main",
+  //       pathMatch: "full"
+  //     },
+  //     {
+  //       path: "main",
+  //       component: StudentMainComponent
+  //     },
+  //     {
+  //       path: "invitations",
+  //       component: StudentInvitationsComponent
+  //     },
+  //     {
+  //       path: "classroom",
+  //       component: ClassroomComponent,
+  //       children: [
+  //         {
+  //           path: "",
+  //           redirectTo: "home",
+  //           pathMatch: "full"
+  //         },
+  //         {
+  //           path: 'home',
+  //           component: ClassHomeComponent
+  //         },
+  //         {
+  //           path: 'class-work',
+  //           component: ClassworkComponent,
 
-          },
-          {
-            path: 'people',
-            component: CheckStudentsComponent
-          },
-        ]
-      },
+  //         },
+  //         {
+  //           path: 'people',
+  //           component: CheckStudentsComponent
+  //         },
+  //       ]
+  //     },
 
-    ]
-  },
+  //   ]
+  // },
   {
     path: "user",
     component: UserComponent,
@@ -297,7 +297,7 @@ const routes: Routes = [
                   },
                   {
                     path: 'details',
-                    component: DetailsComponent,
+                    component: AssignDetailsComponent,
                   },
                   {
                     path: 'lessons',

@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { ToolbarService, LinkService, ImageService, HtmlEditorService, TableService } from '@syncfusion/ej2-angular-richtexteditor';
 import { ApiHostService } from '../../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../../services/system.utils';
+import { SharedWorkDetailsService } from '../../../../../../../services/shared-work-details.service';
 import {
   FormGroup,
   FormBuilder,
@@ -13,10 +14,10 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-assign-details',
   templateUrl: './assign-details.component.html',
   styleUrls: ['./assign-details.component.scss',
-  '../../../../../../../../assets/teacher/css/classwork/style.css',
-  '../../../../../../../../assets/teacher/css/classwork/bootstrap-datepicker.css',
-  '../../../../../../../../assets/teacher/css/classwork/nestable.css',
-  '../../../../../../../../assets/teacher/css/classwork/summernote.css'],
+    '../../../../../../../../assets/teacher/css/classwork/style.css',
+    '../../../../../../../../assets/teacher/css/classwork/bootstrap-datepicker.css',
+    '../../../../../../../../assets/teacher/css/classwork/nestable.css',
+    '../../../../../../../../assets/teacher/css/classwork/summernote.css'],
 })
 export class AssignDetailsComponent implements OnInit {
   public classWorkForm: FormGroup;
@@ -40,6 +41,7 @@ export class AssignDetailsComponent implements OnInit {
     private apiService: ApiHostService,
     private system: SystemUtils,
     private fb: FormBuilder,
+    private workDetails: SharedWorkDetailsService
   ) {
     this.workFormModel();
   }
@@ -186,5 +188,15 @@ export class AssignDetailsComponent implements OnInit {
   dueDateVal(date) {
     const dateSplit = date.split(' ');
     return dateSplit[0];
+  }
+
+  viewDetails(work) {
+    console.log(work);
+    this.workDetails.setRouteToken(work);
+    // this.system.storeLocal('workDetails', work);
+    // this.workDetails.workDetails.subscribe((response: any) => {
+    // console.log(response);
+    // this.system.storeLocal('workDetails', response);
+    // })
   }
 }
