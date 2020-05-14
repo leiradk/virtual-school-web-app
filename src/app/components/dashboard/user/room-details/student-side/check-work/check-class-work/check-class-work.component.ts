@@ -57,9 +57,9 @@ export class CheckClassWorkComponent implements OnInit {
 
       reader.readAsBinaryString(file);
       // console.log(reader.readAsBinaryString(file));
-
     }
   }
+  
   handleFile(event) {
     var binaryString = event.target.result;
     // console.log(binaryString);
@@ -68,4 +68,15 @@ export class CheckClassWorkComponent implements OnInit {
     // this.classWorkForm.value.workFile = this.base64textString;
     // console.log(this.classWorkForm)
   }
+
+  public tools: object = {
+    items: [
+      'Bold', 'Italic', 'Underline', 'StrikeThrough', '|',
+      'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
+      'LowerCase', 'UpperCase', '|', 'Undo', 'Redo', '|',
+      'Formats', 'Alignments', '|', 'OrderedList', 'UnorderedList', '|',
+      'Indent', 'Outdent', '|', 'CreateLink', 'CreateTable',
+      'Image', '|', 'ClearFormat', 'Print', 'SourceCode', '|', 'FullScreen']
+  };
+  
 }

@@ -157,7 +157,32 @@ input[type="range"]::-webkit-slider-thumb:active {
     padding-left: 0.5rem !important;
 }
 
-
-.work-file{
+.work-file {
     display: none;
+}
+
+.break-line {
+    margin: 5px !important;
+}
+
+.instruction {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.e-rte-content {
+    min-height: 140px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.uploaded {
+    background: #187dbc;
+    width: fit-content;
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 12px;
+    color: #fff;
 }

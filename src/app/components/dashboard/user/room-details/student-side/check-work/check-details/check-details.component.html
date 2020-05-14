@@ -39,10 +39,9 @@
                                                 <p class="instructions">{{work.instruction}}</p>
                                             </div>
                                             <div class="btns-work ctr">
-                                                <a (click)="download(work.attachment)"
-                                                    class="btn btn-primary btn-rounded modal-buttons">Download</a>
                                                 <a [routerLink]="['/user/s/classroom/class-work/work-view']"
-                                                   (click)="viewDetails(work)" class="btn btn-primary btn-rounded modal-buttons">View Details</a>
+                                                    (click)="viewDetails(work)"
+                                                    class="btn btn-primary btn-rounded modal-buttons">View Details</a>
                                             </div>
                                         </div>
                                     </div>
@@ -82,237 +81,162 @@
                         <!-- Content -->
                         <div class="layout-content" data-scrollable>
                             <div class="container-fluid">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h1 class="page-heading h2">
-                                            Edit Class
-                                        </h1>
-                                    </div>
-                                    <div class="media-right media-middle">
-                                        <a href="#" class="btn btn-success btn-rounded">SAVE</a>
-                                    </div>
-                                </div>
+                                <h1 class="page-heading h2">Basics of Vue.js</h1>
+                                <!--name of class-->
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="card">
-                                            <div class="card-header">
-                                                <h4 class="card-title">Basic Information</h4>
+                                            <div style="overflow:hidden; height:300px">
+                                                <iframe class="embed-responsive-item"
+                                                    src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0"
+                                                    frameborder="0" webkitallowfullscreen="" mozallowfullscreen=""
+                                                    allowfullscreen="" width="100%" height="300"></iframe>
                                             </div>
                                             <div class="card-block">
-
-                                                <div class="form-group">
-                                                    <label for="title" class="basic-info-title">Class Name</label>
-                                                    <input type="text" class="form-control" placeholder="Write a title"
-                                                        value="Basics of Vue.js">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="details" class="basic-info-title">
-                                                        Class Description
-                                                    </label>
-                                                    <ejs-richtexteditor #toolsRTE id='alltoolRTE'
-                                                        [toolbarSettings]='tools' [(value)]='value'>
-                                                    </ejs-richtexteditor>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="details" class="basic-info-title">Completion
-                                                        Badge</label>
-                                                    <div>
-                                                        <div data-toggle="buttons">
-                                                            <label class="btn btn-white btn-circle active badge1">
-                                                                <input type="radio" name="options" id="option1"
-                                                                    autocomplete="off" checked>
-                                                                <i class="fa fa-users" aria-hidden="true"></i>
-                                                            </label>
-                                                            <label class="btn btn-white btn-circle badge2">
-                                                                <input type="radio" name="options" id="option2"
-                                                                    autocomplete="off">
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                            </label>
-                                                            <label class="btn btn-white btn-circle badge3">
-                                                                <input type="radio" name="options" id="option3"
-                                                                    autocomplete="off">
-                                                                <i class="fa fa-play-circle" aria-hidden="true"></i>
-                                                            </label>
-                                                            <label class="btn btn-white btn-circle badge4">
-                                                                <input type="radio" name="options" id="option3"
-                                                                    autocomplete="off">
-                                                                <i class="fa fa-credit-card" aria-hidden="true"></i>
-                                                            </label>
-                                                            <label class="btn btn-white btn-circle badge5">
-                                                                <input type="radio" name="options" id="option3"
-                                                                    autocomplete="off">
-                                                                <i class="fa fa-shield" aria-hidden="true"></i>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <!--class description-->
+                                                The RichTextEditor triggers events based on its actions.
+                                                The events can be used as an extension point to perform custom
+                                                operations.
                                             </div>
                                         </div>
+
+                                        <!-- Lessons -->
                                         <div class="card">
-                                            <div class="card-header">
-                                                <h4 class="card-title">Lessons</h4>
-                                            </div>
-                                            <div class="card-block">
-                                                <p><a [routerLink]="['/teacher/class-details/class-work/lessons']"
-                                                        class="btn btn-primary btn-rounded">Add Lesson
-                                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                                    </a>
-                                                </p>
-                                                <div class="nestable" id="nestable-handles-primary">
-                                                    <ul class="nestable-list">
-                                                        <li class="nestable-item nestable-item-handle" data-id="2">
-                                                            <div class="nestable-handle"><i class="fa fa-bars"
-                                                                    aria-hidden="true"></i></div>
-                                                            <div class="nestable-content">
-                                                                <div class="media">
-                                                                    <div class="media-left media-middle">
-                                                                        <img src="../../../../../../../assets/teacher/images/classwork/vuejs.png"
-                                                                            alt="" width="100" class="img-rounded">
-                                                                    </div>
-                                                                    <div class="media-body media-middle">
-                                                                        <h5 class="lesson-title h6 m-b-0">
-                                                                            <a href="instructor-lesson-add.html">Awesome
-                                                                                Vue.js with SASS Processing</a>
-                                                                        </h5>
-                                                                        <small class="text-muted">updated 1 month
-                                                                            ago</small>
-                                                                    </div>
-                                                                    <div class="media-right media-middle">
-                                                                        <a href="instructor-lesson-add.html"
-                                                                            class="btn btn-white btn-sm"><i
-                                                                                class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="nestable-item nestable-item-handle" data-id="1">
-                                                            <div class="nestable-handle"><i class="fa fa-bars"
-                                                                    aria-hidden="true"></i></div>
-                                                            <div class="nestable-content">
-                                                                <div class="media">
-                                                                    <div class="media-left media-middle">
-                                                                        <img src="../../../../../../../assets/teacher/images/classwork/nodejs.png"
-                                                                            alt="" width="100" class="img-rounded">
-                                                                    </div>
-                                                                    <div class="media-body media-middle">
-                                                                        <h4 class="lesson-title h6 m-b-0">
-                                                                            <a href="instructor-lesson-add.html">Github
-                                                                                Webhooks for Beginners</a>
-                                                                        </h4>
-                                                                        <small class="text-muted">updated 1 month
-                                                                            ago</small>
-                                                                    </div>
-                                                                    <div class="media-right media-middle">
-                                                                        <a href="instructor-lesson-add.html"
-                                                                            class="btn btn-white btn-sm"><i
-                                                                                class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="nestable-item nestable-item-handle" data-id="2">
-                                                            <div class="nestable-handle">
-                                                                <i class="fa fa-bars" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="nestable-content">
-                                                                <div class="media">
-                                                                    <div class="media-left">
-                                                                        <img src="../../../../../../../assets/teacher/images/classwork/gulp.png"
-                                                                            alt="" width="100" class="img-rounded">
-                                                                    </div>
-                                                                    <div class="media-body media-middle">
-                                                                        <h4 class="lesson-title h6 m-b-0">
-                                                                            <a href="instructor-lesson-add.html">Browserify:
-                                                                                Writing Modular JavaScript</a>
-                                                                        </h4>
-                                                                        <small class="text-muted">updated 1 month
-                                                                            ago</small>
-                                                                    </div>
-                                                                    <div class="media-right media-middle">
-                                                                        <a href="instructor-lesson-add.html"
-                                                                            class="btn btn-white btn-sm"><i
-                                                                                class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                            <ul class="list-group">
+                                                <li class="list-group-item active">
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <div class="text-muted">1.</div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <a href="#">Awesome Vue.js with SASS Processing</a>
+                                                        </div>
+                                                        <div class="media-right">
+                                                            <small class="text-muted-light">2:03</small>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <div class="text-muted">2.</div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <a href="#">Github Webhooks for Beginners</a>
+                                                        </div>
+                                                        <div class="media-right">
+                                                            <small class="text-muted-light">25:01</small>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <div class="text-muted">3.</div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <a href="#">Browserify: Writing Modular JavaScript</a>
+                                                        </div>
+                                                        <div class="media-right">
+                                                            <small class="text-muted-light">12:10</small>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <div class="text-muted">4.</div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <a href="#">Take Quiz</a>
+                                                        </div>
+                                                        <div class="media-right">
+                                                            <small class="text-muted-light">10:00</small>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="card">
-                                            <!-- 4:3 aspect ratio -->
-                                            <div style="overflow:hidden; height:150px">
-                                                <iframe class="embed-responsive-item"
-                                                    src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0"
-                                                    frameborder="0" webkitallowfullscreen="" mozallowfullscreen=""
-                                                    allowfullscreen="" width="100%" height="150"></iframe>
-                                            </div>
                                             <div class="card-block">
-                                                <textarea name="video" class="form-control" rows="6"
-                                                    style="font-size:12px">&lt;iframe class=&quot;embed-responsive-item&quot; src=&quot;https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0&quot; frameborder=&quot;0&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen width=&quot;100%&quot;&gt;&lt;/iframe&gt;</textarea>
+                                                <a href="#" class="btn btn-primary btn-block btn-rounded">
+                                                    <i class="fa fa-download" aria-hidden="true"></i>
+                                                    <br> Download Files</a>
                                             </div>
                                         </div>
                                         <div class="card">
-                                            <div class="card-header">
-                                                <p class="basic-info-title">Additional Information</p>
+                                            <div class="card-header bg-white">
+                                                <div class="media">
+                                                    <div class="media-left media-middle">
+                                                        <img src="../../../../../../../../assets/teacher/images/classwork/people/teacher/guy-9.jpg"
+                                                            alt="About Adrian" width="50" class="img-circle">
+                                                    </div>
+                                                    <div class="media-body media-middle">
+                                                        <h4 class="teacher-title"><a href="#">Adrian Demian</a></h4>
+                                                        <p class="teacher-subtitle">Instructor</p>
+                                                    </div>
+                                                </div>
                                             </div>
-
-                                            <form class="form-horizontal p-a-1">
-                                                <div class="form-group row">
-                                                    <label for="select"
-                                                        class="col-sm-6  form-control-label">Category</label>
-                                                    <div class="col-sm-6">
-                                                        <select class="c-select form-control">
-                                                            <option value="#">HTML</option>
-                                                            <option value="#">Angular JS</option>
-                                                            <option value="#" selected>Vue.js</option>
-                                                            <option value="#">CSS / LESS</option>
-                                                            <option value="#">Design / Concept</option>
-                                                        </select>
-                                                    </div>
+                                            <div class="card-block">
+                                                <p>Having over 12 years exp. Adrian is one of the lead UI designers in
+                                                    the industry Lorem ipsum dolor sit amet, consectetur adipisicing
+                                                    elit. Facere, aut.</p>
+                                                <div>
+                                                    <a href="" class="btns"><i class="fa fa-facebook"></i></a>
+                                                    <a href="" class="btns"><i class="fa fa-twitter"></i></a>
+                                                    <a href="" class="btns"><i class="fa fa-github"></i></a>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label for="duration"
-                                                        class="col-sm-6 form-control-label">Duration</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" class="form-control"
-                                                            placeholder="No. of Days" value="10">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="start" class="col-sm-6  form-control-label">Start
-                                                        Date</label>
-                                                    <div class="col-sm-6">
-                                                        <input class="datepicker form-control" type="text"
-                                                            value="01/28/2016" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="end" class="col-sm-6  form-control-label">End
-                                                        Date</label>
-                                                    <div class="col-sm-6">
-                                                        <input class="datepicker form-control" type="text"
-                                                            value="01/28/2016" />
-                                                    </div>
-                                                </div>
-                                            </form>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
 
-                                <div class="modal fade" id="editLesson">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            // Edit Lesson
+                                        <div class="card">
+                                            <ul class="list-group list-group-fit">
+                                                <li class="list-group-item">
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="media-body media-middle">
+                                                            2
+                                                            <small class="text-muted">hrs</small> &nbsp; 26
+                                                            <small class="text-muted">min</small>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="media-body media-middle">
+                                                            Beginner
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
+
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Ratings</h4>
+                                            </div>
+                                            <div class="card-block">
+                                                <div>
+                                                    <i class="fa fa-star rating-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star rating-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star rating-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star rating-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o rating-star" aria-hidden="true"></i>
+                                                </div>
+                                                <small class="text-muted">20 ratings</small>
+                                            </div>
+                                        </div>
+
+                                        <a href="forum.html" class="btn-block btn-rounded btns">
+                                            <i class="fa fa-question-circle" aria-hidden="true"></i> Get Help
+                                        </a>
                                     </div>
                                 </div>
 
@@ -326,4 +250,3 @@
         </div>
     </div>
 </div>
-

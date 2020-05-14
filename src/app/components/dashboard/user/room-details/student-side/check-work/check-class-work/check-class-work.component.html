@@ -17,11 +17,6 @@
                                 <div class="media-body media-middle">
                                     <h4 class="">{{workData.title}}</h4>
                                     <span class="text-muted">Assigned by </span><a href="#">{{classDetails.teacher}}</a>
-                                    <div class="btns-work ctr">
-                                        <a (click)="download(workData.attachment)"
-                                            class="btn btn-primary btn-rounded modal-buttons">Download</a>
-
-                                    </div>
                                 </div>
                                 <div class="media-right media-middle">
                                     <div style="width:50px">
@@ -39,46 +34,38 @@
                                     <ul class="list-group m-b-0">
                                         <li class="list-group-item">
                                             <div class="row">
-                                                <div class="col-md-8">
-                                                    <p>
-                                                        <strong>Instruction: {{workData.instruction}}.</strong>
+                                                <div class="full-width">
+                                                    <p class="instruction">
+                                                        <strong>Instruction:</strong>
+                                                        {{workData.instruction}}
                                                     </p>
-                                                    <small class="text-muted">Answer:</small>
-                                                    <div class=" form-group">
-                                                        <!-- <label for="inputName"><span class="validator" *ngIf="name.invalid && name.touched"> -->
-                                                        <!-- Class Name is required</span></label> -->
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <ejs-richtexteditor #toolsRTE id='alltoolRTE'
+                                                        [toolbarSettings]='tools'>
+                                                    </ejs-richtexteditor>
+                                                    <div class="uploaded" *ngIf="fileName">{{fileName}}</div>
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <div class="btns-work ctr">
+                                                        <!-- Download files from teacher -->
+                                                        <a (click)="download(workData.attachment)"
+                                                            class="btn btn-primary btn-block btn-rounded">
+                                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                                            <br> Download Files</a>
+                                                        <!-- Upload files / answer -->
+                                                        <div class="break-line"></div>
                                                         <a (click)="file.click()"
-                                                            class="btn btn-primary btn-rounded">Upload your answer</a> {{fileName}}
+                                                            class="btn btn-primary btn-block btn-rounded">
+                                                            <i class="fa fa-upload" aria-hidden="true"></i>
+                                                            <br> Upload Files</a>
                                                         <input type="file" id="file" class="work-file" #file
                                                             (change)="onFileChange($event)">
+                                                        <div class="break-line"></div>
+                                                        <a class="btn btn-success btn-block btn-rounded">
+                                                            <i class="fas fa-check"></i>
+                                                            <br> Submit Answer</a>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="row m-b-1">
-                                                        <div class="col-md-3">
-                                                            <!-- <strong>Score:</strong> -->
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <!-- <div class="media">
-                                                                <div class="media-body">
-                                                                    <input type="range" min="0" max="10" step="1"
-                                                                        value="0">
-                                                                </div>
-                                                                <div class="media-right">
-                                                                    <h4>
-                                                                        <div class="value">0.0</div>
-                                                                    </h4>
-                                                                </div>
-                                                            </div> -->
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <textarea class="form-control" rows="2"
-                                                            placeholder="Write comment"></textarea>
-                                                    </div>
-                                                    <a href="#"
-                                                        class="btn btn-success btn-rounded pull-xs-right btn-sm">Submit
-                                                        Answer <i class="fas fa-check"></i></a>
                                                 </div>
                                             </div>
                                         </li>

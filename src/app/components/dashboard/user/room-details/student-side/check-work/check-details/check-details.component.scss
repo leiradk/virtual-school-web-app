@@ -191,8 +191,12 @@
 }
 
 .page-heading {
-    margin-bottom: 1rem !important;
+    margin-bottom: 0 !important;
     font-size: 1.5rem !important;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    font-weight: 600 !important;
+    margin-top: -35px !important;
 }
 
 .media {
@@ -270,7 +274,7 @@
     background: #66bb6a !important;
 }
 
-.reminder-butt .card-header:hover{
+.reminder-butt .card-header:hover {
     font-size: 35px !important;
 }
 
@@ -282,10 +286,10 @@
     background: #dddddddc !important;
 }
 
-.btns-work{
+.btns-work {
     background: #141414dc !important;
 }
-.card-body{
+.card-body {
     margin-top: 0;
     margin-bottom: 0p;
     margin-bottom: 0px;
@@ -293,7 +297,7 @@
     span {
         font-weight: 700;
     }
-    .instructions{
+    .instructions {
         color: #141414;
         font-style: italic;
     }
@@ -303,12 +307,33 @@
     text-align: center;
 }
 
-
-
 .subject-title {
     font-size: 20px;
     text-align: center;
     padding-bottom: 10px !important;
     border-bottom: #1414147c solid 2px;
     margin-bottom: 20px !important;
+}
+
+.teacher-title {
+    margin: 0 !important;
+    font-size: 1.25rem;
+    margin-bottom: 0.625rem;
+}
+
+.teacher-subtitle {
+    margin: 0 !important;
+    color: #818a91;
+}
+
+.rating-star {
+    padding-right: 10px !important;
+    color: #f8b739 !important;
+    font-size: 20px;
+}
+
+.btns{
+    padding: 5px;
+    text-align: center;
+    background: rgba(221, 221, 221, 0.61) !important;
 }
