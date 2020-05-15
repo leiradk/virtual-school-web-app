@@ -214,13 +214,13 @@
           </button>
         </div>
         <div class="modal-body">
-          Select "Logout" below if you are ready to end your current session.
+          Select "Logout" below if you are ready to end your current session.exexex
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">
             Cancel
           </button>
-          <a class="btn btn-primary" [routerLink]="['/Landing-Page/login']">Logout</a>
+          <a class="btn btn-primary" data-dismiss="modal" (click)="logout()">Logout</a>
         </div>
       </div>
     </div>
