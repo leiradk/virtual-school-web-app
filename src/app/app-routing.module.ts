@@ -28,6 +28,7 @@ import { InviteUsersComponent } from "./components/dashboard/user/room-details/t
 import { AssignWorkComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-work.component";
 import { AssignDetailsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-details/assign-details.component";
 import { ViewWorkDetailsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/view-work-details/view-work-details.component";
+import { TeacherHomeComponent } from "./components/dashboard/user/room-details/teacher-side/teacher-home/teacher-home.component";
 
 
 import { CheckWorkComponent } from "./components/dashboard/user/room-details/student-side/check-work/check-work.component";
@@ -284,7 +285,7 @@ const routes: Routes = [
               },
               {
                 path: 'home',
-                component: ClassHomeComponent
+                component: TeacherHomeComponent
               },
               {
                 path: 'class-work',
