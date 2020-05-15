@@ -28,6 +28,8 @@ export class CheckClassWorkComponent implements OnInit {
   fileName: any;
   userData: any;
   base64textString: any;
+  index: any;
+  getAllClasswork: any;
   constructor(
     private workDetails: SharedWorkDetailsService,
     private system: SystemUtils,
@@ -40,15 +42,40 @@ export class CheckClassWorkComponent implements OnInit {
   showSpinner: boolean = false;
 
   ngOnInit(): void {
-    this.workDetails.workDetails.subscribe((response: any) => {
-      this.workData = response;
-      console.log(response);
+    this.workDetails.workDetails.subscribe((workDetails: any) => {
+      this.index = workDetails;
+      this.workDetails.classWork.subscribe((classWork: any) => {
+        this.getAllClasswork = classWork;
+        this.workData = this.getAllClasswork[this.index];
+        console.log(this.workData)
+      })
     })
+
     // this.workData = this.system.retrieveItem('workDetails');
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
   }
 
+  next() {
+    if (this.index === (this.getAllClasswork.length - 1)) {
+      this.index = this.getAllClasswork.length - 1;
+    } else {
+      this.index = this.index + 1;
+    }
+    this.workDetails.setRouteToken(this.index);
+    this.workData = this.getAllClasswork[this.index];
+    console.log(this.index);
+  }
+  prev() {
+    if (this.index === 0) {
+      this.index = 0;
+    } else {
+      this.index = this.index - 1;
+    }
+    this.workDetails.setRouteToken(this.index);
+    this.workData = this.getAllClasswork[this.index];
+    console.log(this.index);
+  }
   submitWorkModel() {
     this.submitWorkForm = this.fb.group({
       comment: [null, Validators.required],

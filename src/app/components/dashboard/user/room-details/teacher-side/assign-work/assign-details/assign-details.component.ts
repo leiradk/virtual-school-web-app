@@ -88,7 +88,7 @@ export class AssignDetailsComponent implements OnInit {
 
     this.apiService.getClassworkTeacher(rid, token)
       .subscribe((response: any) => {
-        // console.log(response);
+        console.log(response);
         const { classworks } = response.body;
         this.classWork = classworks;
         console.log(this.classWork)
@@ -138,7 +138,8 @@ export class AssignDetailsComponent implements OnInit {
       instructions: this.classWorkForm.value.instruction,
       points: this.classWorkForm.value.points,
       dueDate: date,
-      attachment: this.base64textString
+      attachment: this.base64textString,
+      attachmentFilename: this.fileName
     }
     console.log(payload);
     this.apiService.addClasswork(payload)
@@ -152,7 +153,6 @@ export class AssignDetailsComponent implements OnInit {
   onFileChange(event) {
     var files = event.target.files;
     var file = files[0];
-    console.log(files[0])
     this.fileName = file.name;
     if (files && file) {
       var reader = new FileReader();

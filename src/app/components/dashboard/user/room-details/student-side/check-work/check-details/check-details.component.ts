@@ -149,12 +149,12 @@ export class CheckDetailsComponent implements OnInit {
     return dateSplit[0];
   }
 
-  viewDetails(work) {
-    this.workDetails.setRouteToken(work);
+  viewDetails(work, index) {
+    this.workDetails.setRouteToken(index);
+    console.log(index)
     // this.system.storeLocal('workDetails', work);
-    this.workDetails.workDetails.subscribe((response: any) => {
-      console.log(response);
-      // this.system.storeLocal('workDetails', response);
-    })
+    // this.workDetails.workDetails.subscribe((response: any) => {
+    //   console.log(response);
+    // })
   }
 }

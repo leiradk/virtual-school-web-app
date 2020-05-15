@@ -20,7 +20,7 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
   providers: [ToolbarService, LinkService, ImageService, HtmlEditorService, TableService]
 })
 export class DetailsComponent implements OnInit {
-  
+
   public classWorkForm: FormGroup;
   model: NgbDateStruct;
   p: number = 1;
@@ -132,6 +132,7 @@ export class DetailsComponent implements OnInit {
     });
   }
   onSubmit() {
+    console.log('data');
     console.log(this.classWorkForm)
     const date = this.classWorkForm.value.dueDate.year + "-" + this.classWorkForm.value.dueDate.month + "-" + this.classWorkForm.value.dueDate.day;
     const payload = {
@@ -141,15 +142,17 @@ export class DetailsComponent implements OnInit {
       instructions: this.classWorkForm.value.instruction,
       points: this.classWorkForm.value.points,
       dueDate: date,
-      attachment: this.base64textString
+      attachment: this.base64textString,
+      attachmentFilename: this.fileName
+
     }
     console.log(payload);
-    this.apiService.addClasswork(payload)
-      .subscribe((response: any) => {
-        console.log(response);
-      }, (error: any) => {
-        console.log(error);
-      })
+    // this.apiService.addClasswork(payload)
+    //   .subscribe((response: any) => {
+    //     console.log(response);
+    //   }, (error: any) => {
+    //     console.log(error);
+    //   })
   }
 
   onFileChange(event) {
@@ -159,7 +162,7 @@ export class DetailsComponent implements OnInit {
     this.fileName = file.name;
     if (files && file) {
       var reader = new FileReader();
-
+      console.log(this.fileName)
       reader.onload = this.handleFile.bind(this);
 
       reader.readAsBinaryString(file);

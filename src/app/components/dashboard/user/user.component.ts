@@ -8,14 +8,14 @@ import { SystemUtils } from "../../../services/system.utils";
 export class UserComponent implements OnInit {
   data: any;
   userType: any;
-  toggle:boolean;
-
+  toggle: boolean;
+  userData: any;
   constructor(
     private system: SystemUtils
   ) { }
 
   ngOnInit(): void {
-
+    this.userData = this.system.retrieveItem('userData');
   }
   receiveMessage($event) {
     this.toggle = $event
