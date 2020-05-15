@@ -12,6 +12,7 @@ export class UserSidebarComponent implements OnInit {
   classDetails: any;
   data: any;
   userType: any;
+  dashboardRoute: any;
   public toggle: boolean = false;
   public togClass: boolean = false;
   constructor(
@@ -26,7 +27,7 @@ export class UserSidebarComponent implements OnInit {
     const { usertype } = this.userData.data;
     this.userType = usertype;
     console.log(usertype)
-
+    this.routeDashboard();
   }
   viewDetails(data) {
     console.log(data)
@@ -34,6 +35,14 @@ export class UserSidebarComponent implements OnInit {
 
   }
 
+  routeDashboard() {
+    const { usertype } = this.userData.data;
+    if (usertype === '10002') {
+      this.dashboardRoute = '/user/t/main';
+    } else if (usertype === '10003') {
+      this.dashboardRoute = '/user/s/main';
+    }
+  }
   //getting all classroom for one specific teacher
   // getClassroom(data) {
   //   const { token } = data;

@@ -104,7 +104,7 @@ export class CheckClassWorkComponent implements OnInit {
 
   onSubmit() {
     this.showSpinner = true;
-    // console.log(this.submitWorkForm.value);
+
     console.log(this.workData);
     const payload = {
       token: this.userData.token,
@@ -112,12 +112,10 @@ export class CheckClassWorkComponent implements OnInit {
       messageAnswer: this.submitWorkForm.value.comment,
       attachment: this.submitWorkForm.value.file
     }
-    // const { comment } = this.submitWorkForm.value;
 
-    // const quesionHtml = new DOMParser().parseFromString(comment, 'text/html');
-    // const htmlAsString = quesionHtml.body.innerHTML;
-    // console.log(htmlAsString);
+
     console.log(payload)
+
     this.apiService.submitClasswork(payload)
       .subscribe((response: any) => {
 
@@ -135,7 +133,7 @@ export class CheckClassWorkComponent implements OnInit {
         const { message, status } = error.error;
         console.log(error);
         if (status === 403) {
-          this.toastr.error('Answer could not be submitted. Please try again.', 'Error', { timeOut: 5000 })
+          this.toastr.error(message, 'Error', { timeOut: 5000 })
           this.showSpinner = false;
         }
       })
