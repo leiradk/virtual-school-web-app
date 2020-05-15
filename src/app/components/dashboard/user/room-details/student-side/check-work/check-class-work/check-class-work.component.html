@@ -74,11 +74,12 @@
                                 </div>
                             </div>
                         </form>
-
+                        <div  *ngIf="showSpinner">
+                            <app-loading-spinner></app-loading-spinner>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-

@@ -36,6 +36,9 @@ export class CheckDetailsComponent implements OnInit {
   ) {
   }
 
+
+  showSpinner: boolean = true;
+
   ngOnInit(): void {
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
@@ -51,6 +54,7 @@ export class CheckDetailsComponent implements OnInit {
       date: 'date'
     }]
   }
+  
   isSticky: boolean = false;
 
   @HostListener('window:scroll', ['$event'])
@@ -96,12 +100,10 @@ export class CheckDetailsComponent implements OnInit {
             }
           })
       } else {
-        console.log('not empty')
+        this.showSpinner = false;
         this.classWork = response;
       }
     })
-
-
   }
 
 
@@ -120,6 +122,7 @@ export class CheckDetailsComponent implements OnInit {
 
     }
   }
+
   handleFile(event) {
     var binaryString = event.target.result;
     // console.log(binaryString);
@@ -145,6 +148,7 @@ export class CheckDetailsComponent implements OnInit {
     const dateSplit = date.split(' ');
     return dateSplit[0];
   }
+
   viewDetails(work) {
     this.workDetails.setRouteToken(work);
     // this.system.storeLocal('workDetails', work);

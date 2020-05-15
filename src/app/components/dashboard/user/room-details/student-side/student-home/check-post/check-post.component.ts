@@ -44,7 +44,11 @@ export class CheckPostComponent implements OnInit {
     this.postModel();
   }
 
+
+  showSpinner: boolean = true;
+
   isSticky: boolean = false;
+  
   ngOnInit(): void {
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
@@ -64,11 +68,13 @@ export class CheckPostComponent implements OnInit {
     data.push(pushing)
     console.log(data[0][0]);
   }
+
   postModel() {
     this.postForm = this.fb.group({
       postContent: [null, Validators.required],
     });
   }
+
   get postContent() {
     return this.postForm.get('postContent') as FormControl;
   }
@@ -119,9 +125,8 @@ export class CheckPostComponent implements OnInit {
 
       }
     })
-
-
   }
+
   getStudentComments(id, token) {
     this.apiService.getStudentComments(id, token)
       .subscribe((response: any) => {
@@ -130,7 +135,6 @@ export class CheckPostComponent implements OnInit {
 
       }, (error: any) => {
         console.log(error);
-
       })
   }
 
@@ -145,6 +149,7 @@ export class CheckPostComponent implements OnInit {
     }
     this.setComment(payload);
   }
+
   //add comments from the backend
   setComment(payload) {
 
@@ -183,11 +188,8 @@ export class CheckPostComponent implements OnInit {
     if (usertype === '10002') {
       this.teacherSide(rid, token);
     } else {
-      this.studentSide(rid, token)
-
+      this.studentSide(rid, token);
     }
-
-
   }
 
   //teacher side api for getting post
@@ -199,12 +201,14 @@ export class CheckPostComponent implements OnInit {
         if (status === 200) {
           this.postDetails = post;
           this.sharedPost.setRouteToken(this.postDetails);
+          this.showSpinner = false;
         }
 
       }, (error: any) => {
         console.log(error);
       })
   }
+
   //student side api for getting post
   studentSide(rid, token) {
     this.apiService.getStudentPosts(rid, token)
@@ -214,6 +218,7 @@ export class CheckPostComponent implements OnInit {
         if (status === 200) {
           this.postDetails = post;
           this.sharedPost.setRouteToken(this.postDetails);
+          this.showSpinner = false;
           // for (let i = 0; i <= (this.postDetails.length - 1); i++) {
           //   const bool = false;
           //   this.viewAllComments.push(bool)

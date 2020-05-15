@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedWorkDetailsService } from '../../../../../../../services/shared-work-details.service';
 import { SystemUtils } from '../../../../../../../services/system.utils';
 import { ApiHostService } from '../../../../../../../services/api-host.service';
+import { ToastrService } from "ngx-toastr";
 import {
   FormGroup,
   FormBuilder,
@@ -32,8 +33,11 @@ export class CheckClassWorkComponent implements OnInit {
     private system: SystemUtils,
     private apiService: ApiHostService,
     private fb: FormBuilder,
+    private toastr: ToastrService,
 
   ) { this.submitWorkModel() }
+
+  showSpinner: boolean = false;
 
   ngOnInit(): void {
     this.workDetails.workDetails.subscribe((response: any) => {
@@ -51,6 +55,7 @@ export class CheckClassWorkComponent implements OnInit {
       file: [null, Validators.required],
     });
   }
+
   download(attachment) {
     this.downloadFile = "data:application/pdf;base64," + attachment;
     // console.log('data');
@@ -98,6 +103,7 @@ export class CheckClassWorkComponent implements OnInit {
   };
 
   onSubmit() {
+    this.showSpinner = true;
     // console.log(this.submitWorkForm.value);
     console.log(this.workData);
     const payload = {
@@ -114,9 +120,24 @@ export class CheckClassWorkComponent implements OnInit {
     console.log(payload)
     this.apiService.submitClasswork(payload)
       .subscribe((response: any) => {
-        console.log(response)
+
+        // const { status, body } = response;
+        if (response === 201) {
+          //
+          //   PLEASE
+          //   FIX HERE - Elay
+          //
+          const { status, body } = response;
+          this.toastr.success('Answer submitted successfully!', 'Congratulations', { timeOut: 5000 })
+          this.showSpinner = false;
+        }
       }, (error: any) => {
-        console.log(error)
+        const { message, status } = error.error;
+        console.log(error);
+        if (status === 403) {
+          this.toastr.error('Answer could not be submitted. Please try again.', 'Error', { timeOut: 5000 })
+          this.showSpinner = false;
+        }
       })
   }
 }
