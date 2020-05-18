@@ -44,6 +44,8 @@ export class PostsComponent implements OnInit {
     this.postModel();
   }
 
+  showSpinner: boolean = true;
+
   isSticky: boolean = false;
   ngOnInit(): void {
     this.classDetails = this.system.retrieveItem('classDetails');
@@ -199,6 +201,7 @@ export class PostsComponent implements OnInit {
         if (status === 200) {
           this.postDetails = post;
           this.sharedPost.setRouteToken(this.postDetails);
+          this.showSpinner = false;
         }
 
       }, (error: any) => {

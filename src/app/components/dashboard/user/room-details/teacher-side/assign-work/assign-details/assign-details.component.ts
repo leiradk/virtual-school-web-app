@@ -46,6 +46,8 @@ export class AssignDetailsComponent implements OnInit {
     this.workFormModel();
   }
 
+  showSpinner: boolean = true;
+
   ngOnInit(): void {
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
@@ -92,6 +94,8 @@ export class AssignDetailsComponent implements OnInit {
         this.classWork = classworks;
         this.workDetails.setClassWork(this.classWork);
         // console.log(this.classWork)
+        console.log(this.classWork);
+        this.showSpinner = false;
       }, (error: any) => {
         const { message, status } = error.error;
         console.log(error);

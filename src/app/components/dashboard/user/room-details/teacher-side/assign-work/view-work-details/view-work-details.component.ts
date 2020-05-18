@@ -23,6 +23,9 @@ export class ViewWorkDetailsComponent implements OnInit {
     private system: SystemUtils,
   ) { }
 
+
+  showSpinner: boolean = true;
+
   ngOnInit(): void {
     console.log('workview');
     this.userData = this.system.retrieveItem('userData');
@@ -32,9 +35,9 @@ export class ViewWorkDetailsComponent implements OnInit {
       this.workDetails = response;
       console.log('data');
       console.log(this.workDetails)
+      console.log('im here');
     })
     this.getSubmittedWorks();
-
   }
 
   getSubmittedWorks() {
@@ -47,11 +50,14 @@ export class ViewWorkDetailsComponent implements OnInit {
         if (status === 200) {
           const { submitted } = response.body;
           this.submittedTask = submitted;
+
+          this.showSpinner = false;
         }
       }, (error: any) => {
         console.log(error)
       })
   }
+
   download(file) {
     this.downloadFile = "data:application/pdf;base64," + file;
     console.log('data');
