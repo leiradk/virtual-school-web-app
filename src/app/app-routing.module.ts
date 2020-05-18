@@ -41,24 +41,13 @@ CheckStudentsComponent
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "Landing-Page",
+    redirectTo: "login",
     pathMatch: "full",
   },
 
   {
-    path: "Landing-Page",
-    component: LandingPageComponent,
-    children: [
-      {
-        path: "",
-        redirectTo: "login",
-        pathMatch: "full",
-      },
-      {
-        path: "login",
-        component: LoginComponent,
-      },
-    ],
+    path: "login",
+    component: LoginComponent,
   },
 
   {

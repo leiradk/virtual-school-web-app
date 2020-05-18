@@ -16,7 +16,8 @@ export class UserNavbarComponent implements OnInit {
   ngOnInit(): void {
   }
   logout() {
-    this.router.navigate(["/landing-Page/login"]);
+    console.log('logout')
+    this.router.navigate(["/login"]);
     this.system.deleteKey('userData');
     this.system.deleteKey('classDetails');
     this.system.deleteKey('workDetails');

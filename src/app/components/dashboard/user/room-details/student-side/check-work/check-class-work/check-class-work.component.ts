@@ -141,13 +141,13 @@ export class CheckClassWorkComponent implements OnInit {
     }
 
 
-    console.log(payload)
+    console.log('payload:', payload)
 
     this.apiService.submitClasswork(payload)
       .subscribe((response: any) => {
-
-        // const { status, body } = response;
-        if (response === 201) {
+        console.log(response);
+        const { status, body } = response;
+        if (status === 201 || status === 200) {
           //
           //   PLEASE
           //   FIX HERE - Elay

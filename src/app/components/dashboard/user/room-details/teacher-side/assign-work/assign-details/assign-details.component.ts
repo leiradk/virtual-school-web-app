@@ -82,16 +82,16 @@ export class AssignDetailsComponent implements OnInit {
     <p>The RichTextEditor triggers events based on its actions. </p>
     <p> The events can be used as an extension point to perform custom operations.</p>`
 
-  getClasswork(classID, userID) {
+  updateClassWork(classID, userID) {
     const { token } = userID;
     const { rid } = classID;
-
     this.apiService.getClassworkTeacher(rid, token)
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         const { classworks } = response.body;
         this.classWork = classworks;
-        console.log(this.classWork)
+        this.workDetails.setClassWork(this.classWork);
+        // console.log(this.classWork)
       }, (error: any) => {
         const { message, status } = error.error;
         console.log(error);
@@ -101,6 +101,35 @@ export class AssignDetailsComponent implements OnInit {
           console.log(message);
         }
       })
+  }
+
+  getClasswork(classID, userID) {
+
+    this.workDetails.classWork.subscribe((response: any) => {
+      console.log('classwork:', response);
+      if (response === null || response === undefined) {
+        console.log('empty')
+        this.updateClassWork(classID, userID);
+      } else {
+        // this.showSpinner = false;
+        this.classWork = response;
+      }
+    })
+    // this.apiService.getClassworkTeacher(rid, token)
+    //   .subscribe((response: any) => {
+    //     console.log(response);
+    //     const { classworks } = response.body;
+    //     this.classWork = classworks;
+    //     console.log(this.classWork)
+    //   }, (error: any) => {
+    //     const { message, status } = error.error;
+    //     console.log(error);
+    //     if (status === 404) {
+    //       this.error = true;
+    //       this.errorMessage = message;
+    //       console.log(message);
+    //     }
+    //   })
   }
   get workTitle() {
     return this.classWorkForm.get("workTitle") as FormControl;
@@ -129,6 +158,7 @@ export class AssignDetailsComponent implements OnInit {
     });
   }
   onSubmit() {
+
     console.log(this.classWorkForm)
     const date = this.classWorkForm.value.dueDate.year + "-" + this.classWorkForm.value.dueDate.month + "-" + this.classWorkForm.value.dueDate.day;
     const payload = {
@@ -145,6 +175,7 @@ export class AssignDetailsComponent implements OnInit {
     this.apiService.addClasswork(payload)
       .subscribe((response: any) => {
         console.log(response);
+        this.updateClassWork(this.classDetails.rid, this.userData.token)
       }, (error: any) => {
         console.log(error);
       })

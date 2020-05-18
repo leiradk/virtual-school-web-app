@@ -8,6 +8,7 @@ import {
 import { ApiHostService } from "../../../services/api-host.service";
 import { Router } from "@angular/router";
 import { SystemUtils } from '../../../services/system.utils';
+import { SharedWorkDetailsService } from '../../../services/shared-work-details.service';
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -21,13 +22,16 @@ export class LoginComponent implements OnInit {
     private apiHost: ApiHostService,
     private fb: FormBuilder,
     private router: Router,
-    private system: SystemUtils
+    private system: SystemUtils,
+    private sharedWork: SharedWorkDetailsService
   ) {
     this.signInModel();
   }
 
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.loggout();
+  }
   signInModel() {
     this.signInForm = this.fb.group({
       username: [null, Validators.required],
@@ -55,7 +59,7 @@ export class LoginComponent implements OnInit {
             this.system.storeLocal('userData', body);
             this.router.navigate(["/user/s"]);
             this.loading = false;
-            
+
           } else {
             console.log('failed')
             this.loading = false;
@@ -68,5 +72,12 @@ export class LoginComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+  loggout() {
+    this.sharedWork.setClassWork(null);
+    this.sharedWork.setClassWork(null);
+    this.system.deleteKey('workList');
+    this.system.deleteKey('workDetails');
+    this.system.deleteKey('userData');
   }
 }
