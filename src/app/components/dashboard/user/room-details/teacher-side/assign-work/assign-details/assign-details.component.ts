@@ -46,6 +46,8 @@ export class AssignDetailsComponent implements OnInit {
     this.workFormModel();
   }
 
+  showSpinner: boolean = true;
+
   ngOnInit(): void {
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
@@ -85,13 +87,13 @@ export class AssignDetailsComponent implements OnInit {
   getClasswork(classID, userID) {
     const { token } = userID;
     const { rid } = classID;
-
     this.apiService.getClassworkTeacher(rid, token)
       .subscribe((response: any) => {
         // console.log(response);
         const { classworks } = response.body;
         this.classWork = classworks;
-        console.log(this.classWork)
+        console.log(this.classWork);
+        this.showSpinner = false;
       }, (error: any) => {
         const { message, status } = error.error;
         console.log(error);
@@ -102,6 +104,7 @@ export class AssignDetailsComponent implements OnInit {
         }
       })
   }
+
   get workTitle() {
     return this.classWorkForm.get("workTitle") as FormControl;
   }

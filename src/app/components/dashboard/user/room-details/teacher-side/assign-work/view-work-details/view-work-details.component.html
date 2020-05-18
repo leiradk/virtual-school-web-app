@@ -93,6 +93,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <tr *ngIf="showSpinner">
+                                        <td colspan="6">
+                                            <app-loading-spinner></app-loading-spinner>
+                                        </td>
+                                    </tr>
                                     <tr *ngFor="let submitted of submittedTask; let i = index">
                                         <td><span class="label label-default">Feb 17th, 2016</span></td>
                                         <td><a href="#">{{submitted.answeredBy}}</a></td>

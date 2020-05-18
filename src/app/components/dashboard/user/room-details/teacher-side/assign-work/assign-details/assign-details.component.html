@@ -9,6 +9,9 @@
                                 <div class="subject-title text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     List of Classworks
                                 </div>
+                                <div class="col" *ngIf="showSpinner">
+                                    <app-loading-spinner></app-loading-spinner>
+                                </div>
                                 <div *ngFor="let work of classWork; let i = index" class="col">
 
                                     <!-- Display notification for events here -->
