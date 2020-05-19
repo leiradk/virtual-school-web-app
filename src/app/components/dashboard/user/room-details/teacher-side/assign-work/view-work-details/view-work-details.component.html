@@ -20,9 +20,9 @@
                                 </div>
                                 <div class="media-right media-middle">
                                     <div style="width:50px">
-                                        <a (click)="prev()" class="btn btn-white btn-sm"><i
+                                        <a [class.disabled]="disable" (click)="prev()" class="btn btn-white btn-sm"><i
                                                 class="fas fa-chevron-left"></i></a>
-                                        <a (click)="next()" class="btn btn-primary btn-sm"><i
+                                        <a [class.disabled]="disable" (click)="next()" class="btn btn-primary btn-sm"><i
                                                 class="fas fa-chevron-right"></i></a>
                                     </div>
                                 </div>
@@ -53,27 +53,16 @@
                                         <td><a href="#">{{submitted.answeredBy}}</a></td>
                                         <td class="center"><span class="text-muted">{{submitted.points}}</span></td>
                                         <td><span class="text-muted">PENDING</span></td>
-                                        <td><a (click)="download(submitted.attachment)"
-                                                class="btn btn-sm btn-primary">download</a></td>
+                                        <td><a *ngIf="submitted.attachmentFilename"
+                                                (click)="download(submitted.attachment)"
+                                                class="btn btn-sm btn-primary">download</a>
+                                            <p *ngIf="!submitted.attachmentFilename">No Downloaded file</p>
+                                        </td>
                                         <td class="right"><a href="#" class="btn btn-sm btn-primary" data-toggle="modal"
                                                 data-target="#reviewModal" (click)="modalData(submitted)">Review</a>
                                         </td>
                                     </tr>
-                                    <!-- <tr>
-                                        <td><span class="label label-default">Feb 17th, 2016</span></td>
-                                        <td><a href="#">Andrew Brain</a>
-                                        </td>
-                                        <td class="center">512</td>
-                                        <td class="text-muted">Feb 17th, 2016</td>
-                                        <td class="right"><a href="#" class="btn btn-sm btn-default">Results</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="label label-default">Feb 17th, 2016</span></td>
-                                        <td><a href="#">Samantha Doe</a></td>
-                                        <td class="center">123</td>
-                                        <td class="text-muted">Feb 17th, 2016</td>
-                                        <td class="right"><a href="#" class="btn btn-sm btn-default">Results</a></td>
-                                    </tr> -->
+                
                                 </tbody>
                             </table>
                         </div>
@@ -115,8 +104,13 @@
                                             <hr />
                                             <small class="text-muted">ANSWER:</small>
                                             <br />
+                                            <!-- {{workDetails.attachmentFilename}} -->
+                                            <p *ngIf="workDetails.attachmentFilename">File: <a
+                                             
+                                                    class="btn btn-sm btn-primary">download</a></p>
+                                            <br />
                                             <pre class="stude-answer">
-                                                <div [innerHTML]="reviewData"></div>
+                                                <div [innerHTML]="message"></div>
                                             </pre>
                                             <hr />
                                             <div class="form-group">
@@ -129,11 +123,11 @@
                                                 <div class="col-md-12">
                                                     <div class="media">
                                                         <div class="media-body">
-                                                            <input type="range" min="0" max="10" step="1" value="0">
+                                                            <input #grade (change)="setGrade(grade.value)"type="range" min="0" max="{{workDetails.points}}" step="1" value="0">
                                                         </div>
                                                         <div class="media-right">
                                                             <h4>
-                                                                <div class="value">0.0</div>
+                                                                <div class="value">{{totalGrade}}/{{workDetails.points}}</div>
                                                             </h4>
                                                         </div>
                                                     </div>
@@ -148,9 +142,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a href="#" class="btn btn-success btn-rounded pull-xs-right btn-sm">Set
+                <button (click)="setReview()" class="btn btn-success btn-rounded pull-xs-right btn-sm">Set
                     Review <i class="fas fa-check"></i>
-                </a>
+                </button>
             </div>
         </div>
     </div>

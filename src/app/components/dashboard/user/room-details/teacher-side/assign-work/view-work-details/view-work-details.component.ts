@@ -21,6 +21,9 @@ export class ViewWorkDetailsComponent implements OnInit {
   index: any;
   getAllClasswork: any;
   workData: any;
+  message: any;
+  disable: boolean = false;
+  totalGrade: any = 0;
   constructor(
     private apiService: ApiHostService,
     private sharedWork: SharedWorkDetailsService,
@@ -73,6 +76,9 @@ export class ViewWorkDetailsComponent implements OnInit {
     console.log(this.index);
   }
   getSubmittedWorks() {
+    this.disable = true;
+    this.submittedTask = null;
+    console.log(this.workDetails)
     const { token } = this.userData;
     const { classworkID } = this.workDetails;
     this.apiService.getClassworkSubmissions(classworkID, token)
@@ -82,10 +88,11 @@ export class ViewWorkDetailsComponent implements OnInit {
         if (status === 200) {
           const { submitted } = response.body;
           this.submittedTask = submitted;
-
+          this.disable = false;
           this.showSpinner = false;
         }
       }, (error: any) => {
+        this.disable = false;
         this.showSpinner = false;
         console.log(error)
       })
@@ -113,7 +120,30 @@ export class ViewWorkDetailsComponent implements OnInit {
   modalData(workData) {
     console.log(workData);
 
-    this.reviewData = workData.messageAnswer;
-    console.log(this.reviewData.replace(/<[^>]*>/, ''));
+    this.reviewData = workData;
+    this.message = this.reviewData.messageAnswer;
+    console.log(this.message)
+    console.log(this.reviewData)
+    // console.log(this.reviewData.replace(/<[^>]*>/, ''));
+  }
+
+  setGrade(value) {
+    console.log(value);
+    this.totalGrade = value;
+  }
+  setReview() {
+    const payload = {
+      token: this.userData.token,
+      classworkID: this.workDetails.classworkID,
+      answeredID: this.reviewData.answeredID,
+      points: this.totalGrade,
+    }
+    console.log(payload);
+    this.apiService.submitClassworkPoints(payload)
+      .subscribe((response: any) => {
+        console.log(response);
+      }, (error: any) => {
+        console.log(error);
+      })
   }
 }

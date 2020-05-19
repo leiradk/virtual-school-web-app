@@ -129,8 +129,13 @@ export class ApiHostService {
         })
       );
   }
-  submitClassworkPoints(payload) {
-    return this.https.post(`${this.localhost}teacher/add/classworks/points`, payload)
+
+
+
+  //put data
+  //accept classroom invitation on student side
+  acceptInvitation(payload) {
+    return this.https.put(`${this.localhost}student/accept/class/invite`, payload)
       .pipe(
         map((data: any) => {
           return data;
@@ -140,11 +145,8 @@ export class ApiHostService {
       );
   }
 
-
-  //put data
-  //accept classroom invitation on student side
-  acceptInvitation(payload) {
-    return this.https.put(`${this.localhost}student/accept/class/invite`, payload)
+  submitClassworkPoints(payload) {
+    return this.https.put(`${this.localhost}teacher/add/classworks/points`, payload)
       .pipe(
         map((data: any) => {
           return data;
