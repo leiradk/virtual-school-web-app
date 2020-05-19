@@ -17,6 +17,10 @@ export class ViewWorkDetailsComponent implements OnInit {
   workDetails: any;
   userData: any;
   submittedTask: any;
+  reviewData: any;
+  index: any;
+  getAllClasswork: any;
+  workData: any;
   constructor(
     private apiService: ApiHostService,
     private sharedWork: SharedWorkDetailsService,
@@ -27,25 +31,53 @@ export class ViewWorkDetailsComponent implements OnInit {
   showSpinner: boolean = true;
 
   ngOnInit(): void {
-    console.log('workview');
+    // console.log('workview');
     this.userData = this.system.retrieveItem('userData');
-    this.sharedWork.workDetails.subscribe((response: any) => {
-      console.log(response)
-
-      this.workDetails = response;
-      console.log('data');
-      console.log(this.workDetails)
-      console.log('im here');
+    this.sharedWork.workDetails.subscribe((workDetails: any) => {
+      this.index = workDetails;
+      console.log('workDetails', workDetails)
+      this.sharedWork.classWork.subscribe((classWork: any) => {
+        console.log('classWork', classWork)
+        this.getAllClasswork = classWork;
+        this.workDetails = this.getAllClasswork[this.index];
+      })
     })
     this.getSubmittedWorks();
   }
 
+  next() {
+    if (this.index === (this.getAllClasswork.length - 1)) {
+      this.index = this.getAllClasswork.length - 1;
+    } else {
+      this.showSpinner = true;
+      this.index = this.index + 1;
+      this.sharedWork.setRouteToken(this.index);
+      this.workDetails = this.getAllClasswork[this.index];
+      this.getSubmittedWorks();
+    }
+
+    console.log(this.index);
+
+  }
+  prev() {
+    if (this.index === 0) {
+      this.index = 0;
+    } else {
+      this.showSpinner = true;
+      this.index = this.index - 1;
+      this.sharedWork.setRouteToken(this.index);
+      this.workDetails = this.getAllClasswork[this.index];
+      this.getSubmittedWorks();
+    }
+
+    console.log(this.index);
+  }
   getSubmittedWorks() {
     const { token } = this.userData;
     const { classworkID } = this.workDetails;
     this.apiService.getClassworkSubmissions(classworkID, token)
       .subscribe((response: any) => {
-        console.log(response)
+        console.log(response);
         const { status } = response;
         if (status === 200) {
           const { submitted } = response.body;
@@ -54,19 +86,34 @@ export class ViewWorkDetailsComponent implements OnInit {
           this.showSpinner = false;
         }
       }, (error: any) => {
+        this.showSpinner = false;
         console.log(error)
       })
   }
 
   download(file) {
-    this.downloadFile = "data:application/pdf;base64," + file;
-    console.log('data');
-    console.log(this.downloadFile);
     const downloadLink = document.createElement("a");
-    const fileName = "sample.pptx";
+
+    if (this.submittedTask.attachmentFilename === null) {
+      const fileName = "Unnamed.pptx";
+      downloadLink.download = fileName;
+
+    } else {
+      const fileName = this.submittedTask.attachmentFilename;
+      downloadLink.download = fileName;
+
+    }
+    this.downloadFile = "data:application/pdf;base64," + file;
+
 
     downloadLink.href = this.downloadFile;
-    downloadLink.download = fileName;
     downloadLink.click();
+  }
+
+  modalData(workData) {
+    console.log(workData);
+
+    this.reviewData = workData.messageAnswer;
+    console.log(this.reviewData.replace(/<[^>]*>/, ''));
   }
 }

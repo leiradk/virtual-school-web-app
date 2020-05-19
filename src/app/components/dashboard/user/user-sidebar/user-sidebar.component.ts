@@ -26,7 +26,7 @@ export class UserSidebarComponent implements OnInit {
     // this.getClassroom(this.userData);
     const { usertype } = this.userData.data;
     this.userType = usertype;
-    console.log(usertype)
+    // console.log(usertype)
     this.routeDashboard();
   }
   viewDetails(data) {

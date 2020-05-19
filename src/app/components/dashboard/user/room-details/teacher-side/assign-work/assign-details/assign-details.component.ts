@@ -116,6 +116,7 @@ export class AssignDetailsComponent implements OnInit {
         this.updateClassWork(classID, userID);
       } else {
         // this.showSpinner = false;
+        this.showSpinner = false; 
         this.classWork = response;
       }
     })
@@ -225,9 +226,9 @@ export class AssignDetailsComponent implements OnInit {
     return dateSplit[0];
   }
 
-  viewDetails(work) {
-    console.log(work);
-    this.workDetails.setRouteToken(work);
+  viewDetails(work, index) {
+    console.log(index);
+    this.workDetails.setRouteToken(index);
     // this.system.storeLocal('workDetails', work);
     // this.workDetails.workDetails.subscribe((response: any) => {
     // console.log(response);

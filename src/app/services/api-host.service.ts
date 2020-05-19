@@ -129,6 +129,17 @@ export class ApiHostService {
         })
       );
   }
+  submitClassworkPoints(payload) {
+    return this.https.post(`${this.localhost}teacher/add/classworks/points`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
 
   //put data
   //accept classroom invitation on student side
