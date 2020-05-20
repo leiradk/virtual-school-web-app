@@ -40,12 +40,12 @@ import { TeacherContentComponent } from './components/dashboard/user/teacher/tea
 import { TeacherSidebarComponent } from './components/dashboard/user/teacher/teacher-sidebar/teacher-sidebar.component';
 import { TeacherNavbarComponent } from './components/dashboard/user/teacher/teacher-navbar/teacher-navbar.component';
 import { TeacherMainComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-main.component';
-import { ClassDetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-details.component';
-import { ClassHomeComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-home.component';
-import { ClassReminderComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-reminder/class-reminder.component';
-import { ClassPostComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-post/class-post.component';
-import { ClassworkComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/classwork.component';
-import { CheckStudentsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/check-students/check-students.component';
+// import { ClassDetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-details.component';
+// import { ClassHomeComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-home.component';
+// import { ClassReminderComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-reminder/class-reminder.component';
+// import { ClassPostComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-post/class-post.component';
+// import { ClassworkComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/classwork.component';
+// import { CheckStudentsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/check-students/check-students.component';
 import { StudentComponent } from './components/dashboard/user/student/student.component';
 import { StudentNavbarComponent } from './components/dashboard/user/student/student-navbar/student-navbar.component';
 import { StudentSidebarComponent } from './components/dashboard/user/student/student-sidebar/student-sidebar.component';
@@ -55,12 +55,12 @@ import { StudentInvitationsComponent } from './components/dashboard/user/student
 import { Error404Component } from './components/ui/error404/error404.component';
 import { ClassroomComponent } from './components/dashboard/user/student/student-content/classroom/classroom.component';
 import { LoadingBarComponent } from './components/ui/loading-bar/loading-bar.component';
-import { LessonsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/lessons/lessons.component';
-import { DetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/details/details.component';
+// import { LessonsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/lessons/lessons.component';
+// import { DetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/details/details.component';
 import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { QuizzesComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/quizzes/quizzes.component';
-import { WorkViewComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/work-view/work-view.component';
+// import { QuizzesComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/quizzes/quizzes.component';
+// import { WorkViewComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/work-view/work-view.component';
 import { UserComponent } from './components/dashboard/user/user.component';
 import { UserSidebarComponent } from './components/dashboard/user/user-sidebar/user-sidebar.component';
 import { UserNavbarComponent } from './components/dashboard/user/user-navbar/user-navbar.component';
@@ -106,12 +106,12 @@ import { CheckClassWorkComponent } from './components/dashboard/user/room-detail
     TeacherSidebarComponent,
     TeacherNavbarComponent,
     TeacherMainComponent,
-    ClassDetailsComponent,
-    ClassHomeComponent,
-    ClassReminderComponent,
-    ClassPostComponent,
-    ClassworkComponent,
-    CheckStudentsComponent,
+    // ClassDetailsComponent,
+    // ClassHomeComponent,
+    // ClassReminderComponent,
+    // ClassPostComponent,
+    // ClassworkComponent,
+    // CheckStudentsComponent,
     StudentComponent,
     StudentNavbarComponent,
     StudentSidebarComponent,
@@ -121,10 +121,10 @@ import { CheckClassWorkComponent } from './components/dashboard/user/room-detail
     Error404Component,
     ClassroomComponent,
     LoadingBarComponent,
-    LessonsComponent,
-    DetailsComponent,
-    QuizzesComponent,
-    WorkViewComponent,
+    // LessonsComponent,
+    // DetailsComponent,
+    // QuizzesComponent,
+    // WorkViewComponent,
     UserComponent,
     UserSidebarComponent,
     UserNavbarComponent,

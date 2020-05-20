@@ -21,12 +21,8 @@ export class RoomDetailsComponent implements OnInit {
     this.data = this.system.retrieveItem("userData");
     const { usertype } = this.data.data;
     this.userType = usertype;
-    // console.log(usertype)
     this.setWorkDetails();
-    this.sharedWork.workDetails.subscribe((response: any) => {
-      // console.log(response);
-      // this.system.storeLocal('workDetails', response);
-    })
+
 
     window.onbeforeunload = (ev) => {
 

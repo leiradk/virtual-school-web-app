@@ -38,9 +38,7 @@ export class ViewWorkDetailsComponent implements OnInit {
     this.userData = this.system.retrieveItem('userData');
     this.sharedWork.workDetails.subscribe((workDetails: any) => {
       this.index = workDetails;
-      console.log('workDetails', workDetails)
       this.sharedWork.classWork.subscribe((classWork: any) => {
-        console.log('classWork', classWork)
         this.getAllClasswork = classWork;
         this.workDetails = this.getAllClasswork[this.index];
       })
@@ -59,7 +57,6 @@ export class ViewWorkDetailsComponent implements OnInit {
       this.getSubmittedWorks();
     }
 
-    console.log(this.index);
 
   }
   prev() {
@@ -73,17 +70,14 @@ export class ViewWorkDetailsComponent implements OnInit {
       this.getSubmittedWorks();
     }
 
-    console.log(this.index);
   }
   getSubmittedWorks() {
     this.disable = true;
     this.submittedTask = null;
-    console.log(this.workDetails)
     const { token } = this.userData;
     const { classworkID } = this.workDetails;
     this.apiService.getClassworkSubmissions(classworkID, token)
       .subscribe((response: any) => {
-        console.log(response);
         const { status } = response;
         if (status === 200) {
           const { submitted } = response.body;
@@ -118,17 +112,14 @@ export class ViewWorkDetailsComponent implements OnInit {
   }
 
   modalData(workData) {
-    console.log(workData);
 
     this.reviewData = workData;
     this.message = this.reviewData.messageAnswer;
-    console.log(this.message)
-    console.log(this.reviewData)
+
     // console.log(this.reviewData.replace(/<[^>]*>/, ''));
   }
 
   setGrade(value) {
-    console.log(value);
     this.totalGrade = value;
   }
   setReview() {
@@ -138,7 +129,6 @@ export class ViewWorkDetailsComponent implements OnInit {
       answeredID: this.reviewData.answeredID,
       points: this.totalGrade,
     }
-    console.log(payload);
     this.apiService.submitClassworkPoints(payload)
       .subscribe((response: any) => {
         console.log(response);

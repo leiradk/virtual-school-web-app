@@ -91,13 +91,10 @@ export class TeacherMainComponent implements OnInit {
     this.apiService.addClass(payload).subscribe((response: any) => {
         const { status } = response;
         if (status === 201) {
-          console.log('success')
           this.ngOnInit();
         } else {
-          console.log(response);
         }
       });
-    console.log(payload);
   }
 
   //get all classroom for a specific teacher
@@ -105,13 +102,11 @@ export class TeacherMainComponent implements OnInit {
     const { token } = data;
     this.apiService.getClassroom(token).subscribe((response: any) => {
         const { status, message, body } = response;
-        console.log(response);
         this.classDetails = body;
         if (status === 200) {
           // console.log(body[0].classCreated.split(' ')[0].split('-'));
           const date = body[0].classCreated.split(' ')[0].split('-');
-          console.log(date);
-          console.log(this.getDate(parseInt(date[1])));
+
           this.month = this.getDate(parseInt(date[1]));
           this.day = date[2];
           this.year = date[0];

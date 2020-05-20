@@ -52,7 +52,6 @@ export class AssignDetailsComponent implements OnInit {
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
     this.getClasswork(this.classDetails, this.userData);
-    console.log(this.userData)
     const { data } = this.userData;
     if (data.usertype === "10002") {
       this.teacherAccount = true;
@@ -94,11 +93,9 @@ export class AssignDetailsComponent implements OnInit {
         this.classWork = classworks;
         this.workDetails.setClassWork(this.classWork);
         // console.log(this.classWork)
-        console.log(this.classWork);
         this.showSpinner = false;
       }, (error: any) => {
         const { message, status } = error.error;
-        console.log(error);
         if (status === 404) {
           this.error = true;
           this.errorMessage = message;
@@ -110,9 +107,7 @@ export class AssignDetailsComponent implements OnInit {
   getClasswork(classID, userID) {
 
     this.workDetails.classWork.subscribe((response: any) => {
-      console.log('classwork:', response);
       if (response === null || response === undefined) {
-        console.log('empty')
         this.updateClassWork(classID, userID);
       } else {
         // this.showSpinner = false;
@@ -211,8 +206,6 @@ export class AssignDetailsComponent implements OnInit {
 
   download(attachment) {
     this.downloadFile = "data:application/pdf;base64," + attachment;
-    console.log('data');
-    console.log(this.downloadFile);
     const downloadLink = document.createElement("a");
     const fileName = "sample.pptx";
 
@@ -227,7 +220,6 @@ export class AssignDetailsComponent implements OnInit {
   }
 
   viewDetails(work, index) {
-    console.log(index);
     this.workDetails.setRouteToken(index);
     // this.system.storeLocal('workDetails', work);
     // this.workDetails.workDetails.subscribe((response: any) => {

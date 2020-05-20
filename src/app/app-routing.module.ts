@@ -11,13 +11,13 @@ import { ParentListComponent } from "./components/dashboard/admin/content/list-p
 import { SubjectComponent } from './components/dashboard/admin/content/list-page/subject/subject.component';
 import { TeacherComponent } from './components/dashboard/user/teacher/teacher.component';
 import { TeacherMainComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-main.component';
-import { ClassDetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-details.component';
-import { ClassHomeComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-home.component';
-import { ClassworkComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/classwork.component';
-import { LessonsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/lessons/lessons.component';
-import { WorkViewComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/work-view/work-view.component';
-import { DetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/details/details.component';
-import { CheckStudentsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/check-students/check-students.component';
+// import { ClassDetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-details.component';
+// import { ClassHomeComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-home.component';
+// import { ClassworkComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/classwork.component';
+// import { LessonsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/lessons/lessons.component';
+// import { WorkViewComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/work-view/work-view.component';
+// import { DetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/details/details.component';
+// import { CheckStudentsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/check-students/check-students.component';
 import { StudentComponent } from "./components/dashboard/user/student/student.component";
 import { StudentMainComponent } from "./components/dashboard/user/student/student-content/student-main/student-main.component";
 import { StudentInvitationsComponent } from "./components/dashboard/user/student/student-content/student-invitations/student-invitations.component";
@@ -29,6 +29,7 @@ import { AssignWorkComponent } from "./components/dashboard/user/room-details/te
 import { AssignDetailsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-details/assign-details.component";
 import { ViewWorkDetailsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/view-work-details/view-work-details.component";
 import { TeacherHomeComponent } from "./components/dashboard/user/room-details/teacher-side/teacher-home/teacher-home.component";
+import { AssignLessonsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-lessons/assign-lessons.component";
 
 
 import { CheckWorkComponent } from "./components/dashboard/user/room-details/student-side/check-work/check-work.component";
@@ -37,7 +38,7 @@ import { CheckClassWorkComponent } from "./components/dashboard/user/room-detail
 import { StudentHomeComponent } from "./components/dashboard/user/room-details/student-side/student-home/student-home.component";
 import { CheckUsersComponent } from "./components/dashboard/user/room-details/student-side/check-users/check-users.component";
 
-CheckStudentsComponent
+// CheckStudentsComponent
 const routes: Routes = [
   {
     path: "",
@@ -232,10 +233,11 @@ const routes: Routes = [
                     path: 'details',
                     component: CheckDetailsComponent,
                   },
+                  // {
+                  //   path: 'lessons',
+                  //   component: LessonsComponent,
+                  // }, 
                   {
-                    path: 'lessons',
-                    component: LessonsComponent,
-                  }, {
                     path: 'work-view',
                     component: CheckClassWorkComponent,
                   },
@@ -291,7 +293,7 @@ const routes: Routes = [
                   },
                   {
                     path: 'lessons',
-                    component: LessonsComponent,
+                    component: AssignLessonsComponent,
                   }, {
                     path: 'work-view',
                     component: ViewWorkDetailsComponent,

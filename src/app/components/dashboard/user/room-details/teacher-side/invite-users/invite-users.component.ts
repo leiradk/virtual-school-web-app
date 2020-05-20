@@ -40,7 +40,6 @@ export class InviteUsersComponent implements OnInit {
     this.getStudents(this.userData);
     this.getInvitedStudents();
 
-    console.log(this.userData.data.usertype);
   }
 
   showSuccess() {
@@ -76,14 +75,12 @@ export class InviteUsersComponent implements OnInit {
     const { value } = this.inviteForm;
     const { token } = this.userData;
     const { rid } = this.classDetails;
-    console.log(value);
     const payload = {
       token: token,
       classID: rid,
       user: value.username
 
     }
-    console.log(payload);
     this.apiService.sendClassInvites(payload)
       .subscribe((response: any) => {
         console.log(response);
@@ -108,7 +105,6 @@ export class InviteUsersComponent implements OnInit {
             this.invited = body;
           }
         }
-        console.log(response);
       }, (error: any) => {
         console.log(error);
       });

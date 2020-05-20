@@ -60,13 +60,7 @@ export class CheckPostComponent implements OnInit {
       }
     })
 
-    const data = [
-    ];
-    const pushing = [{
-      data: 'dasdsad',
-    }]
-    data.push(pushing)
-    console.log(data[0][0]);
+
   }
 
   postModel() {
@@ -90,7 +84,6 @@ export class CheckPostComponent implements OnInit {
     // console.log(this.userData.data);
     const { usertype } = this.userData.data;
     this.sharedPost.setComments(this.storeAllComments);
-    console.log(usertype);
     if (usertype === '10002') {
       this.getTeacherComments(id, token, index);
     } else {
@@ -102,9 +95,7 @@ export class CheckPostComponent implements OnInit {
   getTeacherComments(id, token, index) {
     this.commentParams = this.sharedPost.comments;
     this.commentParams.subscribe((comment: any) => {
-      console.log(comment);
       if (comment[index] === undefined) {
-        console.log('data');
         this.apiService.getTeacherComments(id, token)
           .subscribe((response: any) => {
             const { comments } = response.body;
@@ -112,7 +103,6 @@ export class CheckPostComponent implements OnInit {
             this.storeAllComments[index] = this.getAllComments;
             this.sharedPost.setComments(this.storeAllComments);
           }, (error: any) => {
-            console.log(error);
             const { message, status } = error.error;
             if (status === 404) {
               console.log(message);

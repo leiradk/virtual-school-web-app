@@ -32,11 +32,6 @@ export class CheckUsersComponent implements OnInit {
 
     console.log(this.userData.data.usertype);
   }
-
-
-
-
-
   getStudents(userData) {
     const { token } = userData;
     this.apiService.searchStudents(token)

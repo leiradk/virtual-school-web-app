@@ -55,16 +55,12 @@ export class PostsComponent implements OnInit {
       this.postDetails = post;
       if (this.postDetails === null) {
         this.getPosts();
+      } else {
+        this.showSpinner = false;
       }
     })
 
-    const data = [
-    ];
-    const pushing = [{
-      data: 'dasdsad',
-    }]
-    data.push(pushing)
-    console.log(data[0][0]);
+
   }
   postModel() {
     this.postForm = this.fb.group({
@@ -206,6 +202,8 @@ export class PostsComponent implements OnInit {
 
       }, (error: any) => {
         console.log(error);
+        this.showSpinner = false;
+
       })
   }
   //student side api for getting post

@@ -47,7 +47,6 @@ export class CheckClassWorkComponent implements OnInit {
       this.workDetails.classWork.subscribe((classWork: any) => {
         this.getAllClasswork = classWork;
         this.workData = this.getAllClasswork[this.index];
-        console.log(this.workData)
       })
     })
 
@@ -64,7 +63,6 @@ export class CheckClassWorkComponent implements OnInit {
     }
     this.workDetails.setRouteToken(this.index);
     this.workData = this.getAllClasswork[this.index];
-    console.log(this.index);
   }
   prev() {
     if (this.index === 0) {
@@ -74,7 +72,6 @@ export class CheckClassWorkComponent implements OnInit {
     }
     this.workDetails.setRouteToken(this.index);
     this.workData = this.getAllClasswork[this.index];
-    console.log(this.index);
   }
   submitWorkModel() {
     this.submitWorkForm = this.fb.group({
@@ -98,7 +95,6 @@ export class CheckClassWorkComponent implements OnInit {
   onFileChange(event) {
     var files = event.target.files;
     var file = files[0];
-    console.log(files[0])
     this.fileName = file.name;
     if (files && file) {
       var reader = new FileReader();
@@ -132,7 +128,6 @@ export class CheckClassWorkComponent implements OnInit {
   onSubmit() {
     this.showSpinner = true;
 
-    console.log(this.workData);
     const payload = {
       token: this.userData.token,
       classworkID: this.workData.classworkID,
@@ -141,11 +136,9 @@ export class CheckClassWorkComponent implements OnInit {
     }
 
 
-    console.log('payload:', payload)
 
     this.apiService.submitClasswork(payload)
       .subscribe((response: any) => {
-        console.log(response);
         const { status, body } = response;
         if (status === 201 || status === 200) {
           //
@@ -158,7 +151,6 @@ export class CheckClassWorkComponent implements OnInit {
         }
       }, (error: any) => {
         const { message, status } = error.error;
-        console.log(error);
         if (status === 403) {
           this.toastr.error(message, 'Error', { timeOut: 5000 })
           this.showSpinner = false;

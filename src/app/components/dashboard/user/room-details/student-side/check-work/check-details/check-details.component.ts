@@ -43,7 +43,6 @@ export class CheckDetailsComponent implements OnInit {
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
     this.getClasswork(this.classDetails, this.userData);
-    console.log(this.userData)
     const { data } = this.userData;
     if (data.usertype === "10002") {
       this.teacherAccount = true;
@@ -80,9 +79,7 @@ export class CheckDetailsComponent implements OnInit {
     const { token } = userID;
     const { rid } = classID;
     this.workDetails.classWork.subscribe((response: any) => {
-      console.log('classwork:', response);
       if (response === null || response === undefined) {
-        console.log('empty')
         this.apiService.getClassworkStudent(rid, token)
           .subscribe((response: any) => {
             // console.log(response);
@@ -92,7 +89,6 @@ export class CheckDetailsComponent implements OnInit {
             // console.log(this.classWork)
           }, (error: any) => {
             const { message, status } = error.error;
-            console.log(error);
             if (status === 404) {
               this.error = true;
               this.errorMessage = message;
@@ -110,7 +106,6 @@ export class CheckDetailsComponent implements OnInit {
   onFileChange(event) {
     var files = event.target.files;
     var file = files[0];
-    console.log(files[0])
     this.fileName = file.name;
     if (files && file) {
       var reader = new FileReader();
@@ -151,7 +146,6 @@ export class CheckDetailsComponent implements OnInit {
 
   viewDetails(work, index) {
     this.workDetails.setRouteToken(index);
-    console.log(index)
     // this.system.storeLocal('workDetails', work);
     // this.workDetails.workDetails.subscribe((response: any) => {
     //   console.log(response);
