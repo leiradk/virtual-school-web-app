@@ -8,6 +8,7 @@ import {
 import { ApiHostService } from '../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../services/system.utils';
 import { ToastrService } from "ngx-toastr";
+import { SharedPostService } from "../../../../../../services/shared-post.service";
 
 
 declare var jQuery: any;
@@ -30,6 +31,8 @@ export class TeacherMainComponent implements OnInit {
     private apiService: ApiHostService,
     private system: SystemUtils,
     private toastr: ToastrService,
+    private sharedPost: SharedPostService
+
   ) {
     this.classFormModel();
   }
@@ -43,8 +46,13 @@ export class TeacherMainComponent implements OnInit {
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
     this.getClassroom(this.userData);
-  }
+    this.system.deleteKey('classDetails');
 
+  }
+  deleteClassData() {
+    this.sharedPost.setRouteToken(null);
+    this.sharedPost.setComments(null);
+  }
   get name() {
     return this.addClassFOrm.get("name") as FormControl;
   }
@@ -67,9 +75,10 @@ export class TeacherMainComponent implements OnInit {
   //storing class details on local storage as classDetails
   viewDetails(data) {
     this.system.storeLocal('classDetails', data);
+    this.deleteClassData();
   }
 
-//submitting class details to add classroom
+  //submitting class details to add classroom
 
   onSubmit() {
     const { value } = this.addClassFOrm;
@@ -80,7 +89,7 @@ export class TeacherMainComponent implements OnInit {
       classGradeLevel: value.gradelevel
     }
 
-    
+
     jQuery('#myModal').modal('hide'); //close modal after submit
 
     this.showSpinner = true;
@@ -89,30 +98,30 @@ export class TeacherMainComponent implements OnInit {
     this.addClassFOrm.reset(); //reset form
 
     this.apiService.addClass(payload).subscribe((response: any) => {
-        const { status } = response;
-        if (status === 201) {
-          this.ngOnInit();
-        } else {
-        }
-      });
+      const { status } = response;
+      if (status === 201) {
+        this.ngOnInit();
+      } else {
+      }
+    });
   }
 
   //get all classroom for a specific teacher
   getClassroom(data) {
     const { token } = data;
     this.apiService.getClassroom(token).subscribe((response: any) => {
-        const { status, message, body } = response;
-        this.classDetails = body;
-        if (status === 200) {
-          // console.log(body[0].classCreated.split(' ')[0].split('-'));
-          const date = body[0].classCreated.split(' ')[0].split('-');
+      const { status, message, body } = response;
+      this.classDetails = body;
+      if (status === 200) {
+        // console.log(body[0].classCreated.split(' ')[0].split('-'));
+        const date = body[0].classCreated.split(' ')[0].split('-');
 
-          this.month = this.getDate(parseInt(date[1]));
-          this.day = date[2];
-          this.year = date[0];
-          this.showSpinner = false;
-        }
-      });
+        this.month = this.getDate(parseInt(date[1]));
+        this.day = date[2];
+        this.year = date[0];
+        this.showSpinner = false;
+      }
+    });
   }
 
   //get month

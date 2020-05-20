@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SystemUtils } from "../../../../services/system.utils";
+
 import { Router } from "@angular/router";
 
 @Component({
@@ -11,7 +12,7 @@ export class TeacherComponent implements OnInit {
   data: any;
   constructor(
     private system: SystemUtils,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -35,9 +36,11 @@ export class TeacherComponent implements OnInit {
     }
   }
 
-  toggle:boolean;
+  toggle: boolean;
 
   receiveMessage($event) {
     this.toggle = $event
   }
+
+ 
 }

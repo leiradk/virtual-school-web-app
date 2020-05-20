@@ -11,13 +11,16 @@ export class UserComponent implements OnInit {
   toggle: boolean;
   userData: any;
   constructor(
-    private system: SystemUtils
+    private system: SystemUtils,
+
   ) { }
 
   ngOnInit(): void {
+
     this.userData = this.system.retrieveItem('userData');
   }
   receiveMessage($event) {
     this.toggle = $event
   }
+
 }

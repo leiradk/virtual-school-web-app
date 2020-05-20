@@ -51,15 +51,7 @@ export class PostsComponent implements OnInit {
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
     this.pathParam = this.sharedPost.post;
-    this.pathParam.subscribe((post: any) => {
-      this.postDetails = post;
-      if (this.postDetails === null) {
-        this.getPosts();
-      } else {
-        this.showSpinner = false;
-      }
-    })
-
+    this.getPosts();
 
   }
   postModel() {
@@ -83,12 +75,8 @@ export class PostsComponent implements OnInit {
     const { usertype } = this.userData.data;
     this.sharedPost.setComments(this.storeAllComments);
     console.log(usertype);
-    if (usertype === '10002') {
-      this.getTeacherComments(id, token, index);
-    } else {
-      this.getStudentComments(id, token);
+    this.getTeacherComments(id, token, index);
 
-    }
   }
 
   getTeacherComments(id, token, index) {
@@ -120,17 +108,6 @@ export class PostsComponent implements OnInit {
 
 
   }
-  getStudentComments(id, token) {
-    this.apiService.getStudentComments(id, token)
-      .subscribe((response: any) => {
-        const { comments } = response.body;
-        this.getAllComments = comments;
-
-      }, (error: any) => {
-        console.log(error);
-
-      })
-  }
 
   //set the payload for setComment()
   addInput(comment, value) {
@@ -147,25 +124,13 @@ export class PostsComponent implements OnInit {
   setComment(payload) {
 
     const { userType } = this.userData.data;
-    if (userType === '10002') {
-      this.postTeacherComments(payload);
-    } else {
-      this.postStudentComments(payload);
-    }
+    this.postTeacherComments(payload);
+
   }
 
   //add comments from the teacher
   postTeacherComments(payload) {
     this.apiService.sendCommentTeacher(payload)
-      .subscribe((response: any) => {
-        console.log(response);
-      }, (error: any) => {
-        console.log(error);
-      })
-  }
-  //add comments from the student
-  postStudentComments(payload) {
-    this.apiService.sendCommentStudent(payload)
       .subscribe((response: any) => {
         console.log(response);
       }, (error: any) => {
@@ -178,52 +143,41 @@ export class PostsComponent implements OnInit {
     const { token } = this.userData;
     const { rid } = this.classDetails;
     const { usertype } = this.userData.data;
-    if (usertype === '10002') {
-      this.teacherSide(rid, token);
-    } else {
-      this.studentSide(rid, token)
-
-    }
-
+    this.teacherSide(rid, token);
 
   }
 
   //teacher side api for getting post
   teacherSide(rid, token) {
-    this.apiService.getTeacherPosts(rid, token)
-      .subscribe((response: any) => {
-        const { post } = response.body;
-        const { status } = response;
-        if (status === 200) {
-          this.postDetails = post;
-          this.sharedPost.setRouteToken(this.postDetails);
-          this.showSpinner = false;
-        }
 
-      }, (error: any) => {
-        console.log(error);
+    this.pathParam.subscribe(post => {
+      console.log(post);
+      this.postDetails = post;
+      if (this.postDetails === null) {
+        this.apiService.getTeacherPosts(rid, token)
+          .subscribe((response: any) => {
+            const { post } = response.body;
+            const { status } = response;
+            if (status === 200) {
+              this.postDetails = post;
+              this.sharedPost.setRouteToken(this.postDetails);
+              this.showSpinner = false;
+            }
+
+          }, (error: any) => {
+            const { status } = error.error;
+            if (status === 404) {
+              this.postDetails = null;
+              this.showSpinner = false;
+            }
+
+
+          })
+      } else {
         this.showSpinner = false;
+      }
+    });
 
-      })
-  }
-  //student side api for getting post
-  studentSide(rid, token) {
-    this.apiService.getStudentPosts(rid, token)
-      .subscribe((response: any) => {
-        const { post } = response.body;
-        const { status } = response;
-        if (status === 200) {
-          this.postDetails = post;
-          this.sharedPost.setRouteToken(this.postDetails);
-          // for (let i = 0; i <= (this.postDetails.length - 1); i++) {
-          //   const bool = false;
-          //   this.viewAllComments.push(bool)
-          // }
-        }
-
-      }, (error: any) => {
-        console.log(error);
-      })
   }
 
 

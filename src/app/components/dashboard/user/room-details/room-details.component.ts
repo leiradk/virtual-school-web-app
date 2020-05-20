@@ -22,16 +22,16 @@ export class RoomDetailsComponent implements OnInit {
     const { usertype } = this.data.data;
     this.userType = usertype;
     this.setWorkDetails();
-
+  
 
     window.onbeforeunload = (ev) => {
 
       this.sharedWork.workDetails.subscribe((response: any) => {
-        // console.log(response);
+        console.log(response);
         this.system.storeLocal('workDetails', response);
       })
       this.sharedWork.classWork.subscribe((response: any) => {
-        // console.log(response);
+        console.log(response);
         this.system.storeLocal('workList', response);
       })
     };
