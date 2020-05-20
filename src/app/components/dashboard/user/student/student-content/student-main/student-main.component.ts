@@ -3,6 +3,7 @@ import { ApiHostService } from '../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../services/system.utils';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { SharedPostService } from "../../../../../../services/shared-post.service";
 @Component({
   selector: 'app-student-main',
   templateUrl: './student-main.component.html',
@@ -20,22 +21,29 @@ export class StudentMainComponent implements OnInit {
 
   constructor(
     private apiService: ApiHostService,
-    private system: SystemUtils
+    private system: SystemUtils,
+    private sharedPost: SharedPostService
+
   ) { }
 
 
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
-
+    this.system.deleteKey('classDetails');
     // this.getClassroom(this.userData)
     this.getInvitations();
   }
 
+  deleteClassData() {
+    this.sharedPost.setRouteToken(null);
+    this.sharedPost.setComments(null);
+    console.log('nulling data')
+  }
   //get accepted classroom invitations
   getInvitations() {
     const { token } = this.userData;
     console.log(token)
-    
+
     this.apiService.getClassInvitation(token)
       .subscribe((response: any) => {
         console.log(response);
@@ -67,6 +75,7 @@ export class StudentMainComponent implements OnInit {
 
   viewDetails(data) {
     this.system.storeLocal('classDetails', data);
+    this.deleteClassData();
   }
   getClassroom(data) {
     const { token } = data;

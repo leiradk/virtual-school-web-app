@@ -9,6 +9,7 @@ import { ApiHostService } from '../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../services/system.utils';
 import { ToastrService } from "ngx-toastr";
 import { SharedPostService } from "../../../../../../services/shared-post.service";
+import { SharedWorkDetailsService } from "../../../../../../services/shared-work-details.service";
 
 
 declare var jQuery: any;
@@ -31,7 +32,8 @@ export class TeacherMainComponent implements OnInit {
     private apiService: ApiHostService,
     private system: SystemUtils,
     private toastr: ToastrService,
-    private sharedPost: SharedPostService
+    private sharedPost: SharedPostService,
+    private sharedWork: SharedWorkDetailsService
 
   ) {
     this.classFormModel();
@@ -47,11 +49,14 @@ export class TeacherMainComponent implements OnInit {
     this.userData = this.system.retrieveItem('userData');
     this.getClassroom(this.userData);
     this.system.deleteKey('classDetails');
+    this.deleteClassData();
 
   }
   deleteClassData() {
     this.sharedPost.setRouteToken(null);
     this.sharedPost.setComments(null);
+    this.sharedWork.setClassWork(null);
+    this.sharedWork.setRouteToken(null);
   }
   get name() {
     return this.addClassFOrm.get("name") as FormControl;

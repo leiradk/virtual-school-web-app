@@ -7,7 +7,7 @@ import {
 } from "@angular/forms";
 import { ApiHostService } from '../../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../../services/system.utils';
-import { subscribeOn } from 'rxjs/operators';
+import { subscribeOn, take } from 'rxjs/operators';
 import { SharedPostService } from '../../../../../../../services/shared-post.service';
 import { Observable } from 'rxjs';
 
@@ -21,7 +21,7 @@ export class CheckPostComponent implements OnInit {
   comments: any = [];
   classDetails: any;
   userData: any;
-  postDetails: any;
+  postDetails: any = null;
   arr: any = [];
   public postForm: FormGroup;
   loading = false;
@@ -48,19 +48,12 @@ export class CheckPostComponent implements OnInit {
   showSpinner: boolean = true;
 
   isSticky: boolean = false;
-  
+
   ngOnInit(): void {
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
     this.pathParam = this.sharedPost.post;
-    this.pathParam.subscribe((post: any) => {
-      this.postDetails = post;
-      if (this.postDetails === null) {
-        this.getPosts();
-      }
-    })
-
-
+    this.getPosts();
   }
 
   postModel() {
@@ -84,19 +77,16 @@ export class CheckPostComponent implements OnInit {
     // console.log(this.userData.data);
     const { usertype } = this.userData.data;
     this.sharedPost.setComments(this.storeAllComments);
-    if (usertype === '10002') {
-      this.getTeacherComments(id, token, index);
-    } else {
-      this.getStudentComments(id, token);
-
-    }
+    this.getStudentComments(id, token, index);
   }
 
-  getTeacherComments(id, token, index) {
+
+
+  getStudentComments(id, token, index) {
     this.commentParams = this.sharedPost.comments;
     this.commentParams.subscribe((comment: any) => {
       if (comment[index] === undefined) {
-        this.apiService.getTeacherComments(id, token)
+        this.apiService.getStudentComments(id, token)
           .subscribe((response: any) => {
             const { comments } = response.body;
             this.getAllComments = comments;
@@ -117,17 +107,6 @@ export class CheckPostComponent implements OnInit {
     })
   }
 
-  getStudentComments(id, token) {
-    this.apiService.getStudentComments(id, token)
-      .subscribe((response: any) => {
-        const { comments } = response.body;
-        this.getAllComments = comments;
-
-      }, (error: any) => {
-        console.log(error);
-      })
-  }
-
   //set the payload for setComment()
   addInput(comment, value) {
     const { postID } = value;
@@ -144,22 +123,11 @@ export class CheckPostComponent implements OnInit {
   setComment(payload) {
 
     const { userType } = this.userData.data;
-    if (userType === '10002') {
-      this.postTeacherComments(payload);
-    } else {
-      this.postStudentComments(payload);
-    }
+
+    this.postStudentComments(payload);
   }
 
-  //add comments from the teacher
-  postTeacherComments(payload) {
-    this.apiService.sendCommentTeacher(payload)
-      .subscribe((response: any) => {
-        console.log(response);
-      }, (error: any) => {
-        console.log(error);
-      })
-  }
+
   //add comments from the student
   postStudentComments(payload) {
     this.apiService.sendCommentStudent(payload)
@@ -175,51 +143,53 @@ export class CheckPostComponent implements OnInit {
     const { token } = this.userData;
     const { rid } = this.classDetails;
     const { usertype } = this.userData.data;
-    if (usertype === '10002') {
-      this.teacherSide(rid, token);
-    } else {
-      this.studentSide(rid, token);
-    }
+    this.studentSide(rid, token);
   }
 
-  //teacher side api for getting post
-  teacherSide(rid, token) {
-    this.apiService.getTeacherPosts(rid, token)
-      .subscribe((response: any) => {
-        const { post } = response.body;
-        const { status } = response;
-        if (status === 200) {
-          this.postDetails = post;
-          this.sharedPost.setRouteToken(this.postDetails);
-          this.showSpinner = false;
-        }
-
-      }, (error: any) => {
-        console.log(error);
-      })
-  }
 
   //student side api for getting post
+
   studentSide(rid, token) {
-    this.apiService.getStudentPosts(rid, token)
-      .subscribe((response: any) => {
-        const { post } = response.body;
-        const { status } = response;
-        if (status === 200) {
+
+    this.pathParam.pipe(take(1)).subscribe({
+      next: (post) => {
+        console.log(post);
+        this.postDetails = null;
+        if (post === null) {
+          this.apiService.getStudentPosts(rid, token)
+            .subscribe((response: any) => {
+              const { post } = response.body;
+              const { status } = response;
+              if (status === 200) {
+                this.postDetails = post;
+                this.sharedPost.setRouteToken(this.postDetails);
+                this.showSpinner = false;
+              }
+            }, (error: any) => {
+              const { status } = error.error;
+              if (status === 404) {
+                this.postDetails = null;
+                this.showSpinner = false;
+              }
+
+            })
+        } else {
+          console.log('hello')
           this.postDetails = post;
-          this.sharedPost.setRouteToken(this.postDetails);
           this.showSpinner = false;
-          // for (let i = 0; i <= (this.postDetails.length - 1); i++) {
-          //   const bool = false;
-          //   this.viewAllComments.push(bool)
-          // }
         }
+      },
+      error: err => {
+        console.log(err)
 
-      }, (error: any) => {
-        console.log(error);
-      })
+      },
+      complete: () => {
+        console.log('completed')
+
+      },
+    });
+
   }
-
 
   //passing data (post details) to the backend
   onSubmit() {

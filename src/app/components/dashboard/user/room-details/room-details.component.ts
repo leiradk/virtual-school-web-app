@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SystemUtils } from "../../../../services/system.utils";
 import { SharedWorkDetailsService } from "../../../../services/shared-work-details.service";
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-room-details',
@@ -26,11 +27,11 @@ export class RoomDetailsComponent implements OnInit {
 
     window.onbeforeunload = (ev) => {
 
-      this.sharedWork.workDetails.subscribe((response: any) => {
+      this.sharedWork.workDetails.pipe(take(1)).subscribe((response: any) => {
         console.log(response);
         this.system.storeLocal('workDetails', response);
       })
-      this.sharedWork.classWork.subscribe((response: any) => {
+      this.sharedWork.classWork.pipe(take(1)).subscribe((response: any) => {
         console.log(response);
         this.system.storeLocal('workList', response);
       })

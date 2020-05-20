@@ -7,7 +7,7 @@ import {
 } from "@angular/forms";
 import { ApiHostService } from '../../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../../services/system.utils';
-import { subscribeOn } from 'rxjs/operators';
+import { subscribeOn, take } from 'rxjs/operators';
 import { SharedPostService } from '../../../../../../../services/shared-post.service';
 import { Observable } from 'rxjs';
 
@@ -21,7 +21,7 @@ export class PostsComponent implements OnInit {
   comments: any = [];
   classDetails: any;
   userData: any;
-  postDetails: any;
+  postDetails: any = null;
   arr: any = [];
   public postForm: FormGroup;
   loading = false;
@@ -52,6 +52,7 @@ export class PostsComponent implements OnInit {
     this.userData = this.system.retrieveItem('userData');
     this.pathParam = this.sharedPost.post;
     this.getPosts();
+
 
   }
   postModel() {
@@ -150,32 +151,45 @@ export class PostsComponent implements OnInit {
   //teacher side api for getting post
   teacherSide(rid, token) {
 
-    this.pathParam.subscribe(post => {
-      console.log(post);
-      this.postDetails = post;
-      if (this.postDetails === null) {
-        this.apiService.getTeacherPosts(rid, token)
-          .subscribe((response: any) => {
-            const { post } = response.body;
-            const { status } = response;
-            if (status === 200) {
-              this.postDetails = post;
-              this.sharedPost.setRouteToken(this.postDetails);
-              this.showSpinner = false;
-            }
 
-          }, (error: any) => {
-            const { status } = error.error;
-            if (status === 404) {
-              this.postDetails = null;
-              this.showSpinner = false;
-            }
+    this.pathParam.pipe(take(1)).subscribe({
+      next: (post) => {
+        console.log(post);
+        this.postDetails = null;
+        if (post === null) {
+          this.apiService.getTeacherPosts(rid, token)
+            .subscribe((response: any) => {
+              const { post } = response.body;
+              const { status } = response;
+              if (status === 200) {
+                this.postDetails = post;
+                this.sharedPost.setRouteToken(this.postDetails);
+                this.showSpinner = false;
+              }
+
+            }, (error: any) => {
+              const { status } = error.error;
+              if (status === 404) {
+                this.postDetails = null;
+                this.showSpinner = false;
+              }
 
 
-          })
-      } else {
-        this.showSpinner = false;
-      }
+            })
+        } else {
+          console.log('hello')
+          this.postDetails = post;
+          this.showSpinner = false;
+        }
+      },
+      error: err => {
+        console.log(err)
+
+      },
+      complete: () => {
+        console.log('completed')
+
+      },
     });
 
   }

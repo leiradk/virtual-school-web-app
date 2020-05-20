@@ -270,7 +270,7 @@
     background: #66bb6a !important;
 }
 
-.reminder-butt .card-header:hover{
+.reminder-butt .card-header:hover {
     font-size: 35px !important;
 }
 
@@ -282,10 +282,10 @@
     background: #dddddddc !important;
 }
 
-.btns-work{
+.btns-work {
     background: #141414dc !important;
 }
-.card-body{
+.card-body {
     margin-top: 0;
     margin-bottom: 0p;
     margin-bottom: 0px;
@@ -293,7 +293,7 @@
     span {
         font-weight: 700;
     }
-    .instructions{
+    .instructions {
         color: #141414;
         font-style: italic;
     }
@@ -303,12 +303,17 @@
     text-align: center;
 }
 
-
-
 .subject-title {
     font-size: 20px;
     text-align: center;
     padding-bottom: 10px !important;
     border-bottom: #1414147c solid 2px;
     margin-bottom: 20px !important;
+}
+
+.no-classwork {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #e7dede;
 }

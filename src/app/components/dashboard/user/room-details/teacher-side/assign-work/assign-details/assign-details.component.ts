@@ -10,6 +10,7 @@ import {
   FormControl,
 } from "@angular/forms";
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { take } from 'rxjs/operators';
 @Component({
   selector: 'app-assign-details',
   templateUrl: './assign-details.component.html',
@@ -98,6 +99,7 @@ export class AssignDetailsComponent implements OnInit {
         const { message, status } = error.error;
         if (status === 404) {
           this.error = true;
+          this.showSpinner = false;
           this.errorMessage = message;
           console.log(message);
         }
@@ -106,12 +108,12 @@ export class AssignDetailsComponent implements OnInit {
 
   getClasswork(classID, userID) {
 
-    this.workDetails.classWork.subscribe((response: any) => {
+    this.workDetails.classWork.pipe(take(1)).subscribe((response: any) => {
       if (response === null || response === undefined) {
         this.updateClassWork(classID, userID);
       } else {
         // this.showSpinner = false;
-        this.showSpinner = false; 
+        this.showSpinner = false;
         this.classWork = response;
       }
     })
