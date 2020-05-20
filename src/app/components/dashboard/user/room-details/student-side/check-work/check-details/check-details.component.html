@@ -12,6 +12,9 @@
                                 <div class="col" *ngIf="showSpinner">
                                     <app-loading-spinner></app-loading-spinner>
                                 </div>
+                                <div class="col" *ngIf="error">
+                                    <p class="no-classwork">{{errorMessage}}</p>
+                                </div>
                                 <div *ngFor="let work of classWork; let i = index" class="col">
 
                                     <!-- Display notification for events here -->

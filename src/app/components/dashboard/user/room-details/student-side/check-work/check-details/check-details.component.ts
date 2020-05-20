@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { ApiHostService } from '../../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../../services/system.utils';
 import { SharedWorkDetailsService } from '../../../../../../../services/shared-work-details.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-check-details',
@@ -53,7 +54,7 @@ export class CheckDetailsComponent implements OnInit {
       date: 'date'
     }]
   }
-  
+
   isSticky: boolean = false;
 
   @HostListener('window:scroll', ['$event'])
@@ -78,11 +79,12 @@ export class CheckDetailsComponent implements OnInit {
   getClasswork(classID, userID) {
     const { token } = userID;
     const { rid } = classID;
-    this.workDetails.classWork.subscribe((response: any) => {
+    this.workDetails.classWork.pipe(take(1)).subscribe((response: any) => {
       if (response === null || response === undefined) {
         this.apiService.getClassworkStudent(rid, token)
           .subscribe((response: any) => {
             // console.log(response);
+            this.showSpinner = false;
             const { classworks } = response.body;
             this.classWork = classworks;
             this.workDetails.setClassWork(this.classWork);
@@ -91,8 +93,9 @@ export class CheckDetailsComponent implements OnInit {
             const { message, status } = error.error;
             if (status === 404) {
               this.error = true;
+              this.showSpinner = false;
               this.errorMessage = message;
-              console.log(message);
+              console.log(message); 
             }
           })
       } else {
