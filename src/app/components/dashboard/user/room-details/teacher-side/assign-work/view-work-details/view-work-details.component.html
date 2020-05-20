@@ -56,17 +56,15 @@
                                         <td><a *ngIf="submitted.attachmentFilename"
                                                 (click)="download(submitted.attachment)"
                                                 class="btn btn-sm btn-primary">download</a>
-                                            <p *ngIf="!submitted.attachmentFilename">No Downloaded file</p>
+                                            <p *ngIf="!submitted.attachmentFilename">No Downloadable File Found</p>
                                         </td>
                                         <td class="right"><a href="#" class="btn btn-sm btn-primary" data-toggle="modal"
                                                 data-target="#reviewModal" (click)="modalData(submitted)">Review</a>
                                         </td>
                                     </tr>
-                
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -127,7 +125,7 @@
                                                         </div>
                                                         <div class="media-right">
                                                             <h4>
-                                                                <div class="value">{{totalGrade}}/{{workDetails.points}}</div>
+                                                                <div class="value"><span class="edit-score" contenteditable="true">{{totalGrade}}</span>/{{workDetails.points}}</div>
                                                             </h4>
                                                         </div>
                                                     </div>
