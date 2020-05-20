@@ -20,7 +20,7 @@ export class CheckUsersComponent implements OnInit {
     private apiService: ApiHostService,
     private system: SystemUtils,
 
-  ) {  }
+  ) { }
 
   ngOnInit(): void {
 
@@ -49,7 +49,7 @@ export class CheckUsersComponent implements OnInit {
   getInvitedStudents() {
     const { token } = this.userData;
     const { rid } = this.classDetails;
-    this.apiService.getInvitedStudents(rid, token)
+    this.apiService.getClassmates(rid, token)
       .subscribe((response: any) => {
         const { status } = response; {
           if (status === 200) {

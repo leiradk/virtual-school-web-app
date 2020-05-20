@@ -230,6 +230,18 @@ export class ApiHostService {
       );
   }
 
+  //search student based on the list
+  getClassmates(id, token) {
+    return this.https.get(`${this.localhost}student/get/class/joined?classID=${id}&token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+  
   //get all classroom invitations for a student
   getInvitedStudents(id, token) {
     return this.https.get(`${this.localhost}teacher/list/invited/by/class?classID=${id}&token=${token}`)
