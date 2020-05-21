@@ -45,7 +45,7 @@
                                                 <p class="instructions">{{work.instruction}}</p>
                                             </div>
                                             <div class="btns-work ctr">
-                                                <a (click)="download(work.attachment)"
+                                                <a (click)="download(work.attachment, work.attachmentFilename)"
                                                     class="btn btn-primary btn-rounded modal-buttons">Download</a>
                                                 <a [routerLink]="['/user/t/classroom/class-work/work-view']"
                                                     (click)="viewDetails(work, i)"

@@ -34,6 +34,8 @@ export class CheckPostComponent implements OnInit {
   post: any;
   commentUpdate: any;
   storeAllComments: any = [];
+  error: boolean = false;
+  message: any;
   constructor(
     private fb: FormBuilder,
     private apiService: ApiHostService,
@@ -166,10 +168,14 @@ export class CheckPostComponent implements OnInit {
                 this.showSpinner = false;
               }
             }, (error: any) => {
-              const { status } = error.error;
+              const { status, message } = error.error;
+              this.postDetails = null;
+              this.showSpinner = false;
+              this.error = true;
               if (status === 404) {
-                this.postDetails = null;
-                this.showSpinner = false;
+                this.message = message
+              } else {
+                this.message = 'Something went wrong, Please try again';
               }
 
             })

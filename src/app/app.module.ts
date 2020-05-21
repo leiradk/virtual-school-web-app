@@ -31,9 +31,7 @@ import { ContentComponent } from "./components/dashboard/admin/content/content.c
 import { NavbarComponent } from "./components/dashboard/admin/navbar/navbar.component";
 import { SidebarComponent } from "./components/dashboard/admin/sidebar/sidebar.component";
 import { MainPageComponent } from "./components/dashboard/admin/content/main-page/main-page.component";
-import { ClasslistComponent } from './components/dashboard/admin/content/list-page/classlist/classlist.component';
 import { ParentListComponent } from './components/dashboard/admin/content/list-page/parent-list/parent-list.component';
-import { SubjectComponent } from './components/dashboard/admin/content/list-page/subject/subject.component';
 import { LoadingSpinnerComponent } from './components/ui/loading-spinner/loading-spinner.component';
 import { TeacherComponent } from './components/dashboard/user/teacher/teacher.component';
 import { TeacherContentComponent } from './components/dashboard/user/teacher/teacher-content/teacher-content.component';
@@ -97,9 +95,7 @@ import { CheckClassWorkComponent } from './components/dashboard/user/room-detail
     NavbarComponent,
     SidebarComponent,
     MainPageComponent,
-    ClasslistComponent,
     ParentListComponent,
-    SubjectComponent,
     LoadingSpinnerComponent,
     TeacherComponent,
     TeacherContentComponent,

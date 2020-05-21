@@ -52,9 +52,10 @@
                                         <td><span class="label label-default">Feb 17th, 2016</span></td>
                                         <td><a href="#">{{submitted.answeredBy}}</a></td>
                                         <td class="center"><span class="text-muted">{{submitted.points}}</span></td>
-                                        <td><span class="text-muted">PENDING</span></td>
+                                        <td><span class="text-muted">PENDING {{submitted.attachmentFilename}}</span>
+                                        </td>
                                         <td><a *ngIf="submitted.attachmentFilename"
-                                                (click)="download(submitted.attachment)"
+                                                (click)="download(submitted.attachment, submitted.attachmentFilename)"
                                                 class="btn btn-sm btn-primary">download</a>
                                             <p *ngIf="!submitted.attachmentFilename">No Downloadable File Found</p>
                                         </td>
@@ -104,7 +105,7 @@
                                             <br />
                                             <!-- {{workDetails.attachmentFilename}} -->
                                             <p *ngIf="workDetails.attachmentFilename">File: <a
-                                             
+                                                    (click)="download(reviewData.attachment, reviewData.attachmentFilename)"
                                                     class="btn btn-sm btn-primary">download</a></p>
                                             <br />
                                             <pre class="stude-answer">
@@ -121,11 +122,14 @@
                                                 <div class="col-md-12">
                                                     <div class="media">
                                                         <div class="media-body">
-                                                            <input #grade (change)="setGrade(grade.value)"type="range" min="0" max="{{workDetails.points}}" step="1" value="0">
+                                                            <input #grade (change)="setGrade(grade.value)" type="range"
+                                                                min="0" max="{{workDetails.points}}" step="1" value="0">
                                                         </div>
                                                         <div class="media-right">
                                                             <h4>
-                                                                <div class="value"><span class="edit-score" contenteditable="true">{{totalGrade}}</span>/{{workDetails.points}}</div>
+                                                                <div class="value"><span #value class="edit-score" (change)="grade.value = value"
+                                                                        contenteditable="true">{{totalGrade}}</span>/{{workDetails.points}}
+                                                                </div>
                                                             </h4>
                                                         </div>
                                                     </div>

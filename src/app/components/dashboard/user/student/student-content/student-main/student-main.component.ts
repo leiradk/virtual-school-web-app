@@ -44,6 +44,7 @@ export class StudentMainComponent implements OnInit {
 
     this.apiService.getClassInvitation(token)
       .subscribe((response: any) => {
+        this.errorData = false;
         const { status, body } = response;
         if (status === 200) {
           // this.invitationsDetails = body;
@@ -60,7 +61,7 @@ export class StudentMainComponent implements OnInit {
             let roomCount = 0;
             this.showSpinner = false;
             for (let i = 0; i <= (this.classDetails.length - 1); i++) {
-              if (this.classDetails.inviteStatus === 'accepted') {
+              if (this.classDetails[i].inviteStatus === 'accepted') {
                 roomCount++;
                 if (roomCount > 0) {
                   this.roomExists = true;
@@ -70,14 +71,16 @@ export class StudentMainComponent implements OnInit {
 
               }
             }
+          } else {
+            this.roomExists = false;
           }
         }
       }, (errorResponse: any) => {
         this.showSpinner = false;
         const { status, message } = errorResponse.error;
+        this.roomExists = false;
         if (status === 403) {
           this.errorData = true;
-          this.roomExists = false;
         }
 
       });

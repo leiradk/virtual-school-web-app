@@ -27,6 +27,7 @@ export class TeacherMainComponent implements OnInit {
   month: any;
   day: any;
   year: any;
+  errorData: boolean = false;
   constructor(
     private fb: FormBuilder,
     private apiService: ApiHostService,
@@ -119,6 +120,7 @@ export class TeacherMainComponent implements OnInit {
       .subscribe((response: any) => {
         const { status, message, body } = response;
         this.classDetails = body;
+        this.errorData = false;
         if (status === 200) {
           // console.log(body[0].classCreated.split(' ')[0].split('-'));
           const date = body[0].classCreated.split(' ')[0].split('-');
@@ -130,6 +132,7 @@ export class TeacherMainComponent implements OnInit {
         }
       }, (error: any) => {
         this.showSpinner = false;
+        this.errorData = true;
       });
   }
 

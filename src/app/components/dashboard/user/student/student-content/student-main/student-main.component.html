@@ -8,10 +8,11 @@
 <div *ngIf="showSpinner">
   <app-loading-spinner></app-loading-spinner>
 </div>
-<div class="empty-room-container" *ngIf="!showSpinner && roomExists">
+<div class="empty-room-container" *ngIf="!showSpinner && !roomExists">
   <p class="empty-room">No class found yet</p>
 </div>
-<div *ngIf="!errorData" class="subject-lists">
+
+<div *ngIf="!errorData && roomExists" class="subject-lists">
   <div class="row">
     <!-- Earnings (Monthly) Card Example -->
     <!-- <div class="col-xl-3 col-md-6 mb-4"> -->

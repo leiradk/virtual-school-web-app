@@ -11,6 +11,9 @@ import {
 } from "@angular/forms";
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { take } from 'rxjs/operators';
+
+declare var jQuery: any;
+
 @Component({
   selector: 'app-assign-details',
   templateUrl: './assign-details.component.html',
@@ -89,7 +92,8 @@ export class AssignDetailsComponent implements OnInit {
     const { rid } = classID;
     this.apiService.getClassworkTeacher(rid, token)
       .subscribe((response: any) => {
-        // console.log(response);
+        console.log(response);
+        jQuery('#myModal').modal('hide'); //close modal after submit
         const { classworks } = response.body;
         this.classWork = classworks;
         this.workDetails.setClassWork(this.classWork);
@@ -97,11 +101,12 @@ export class AssignDetailsComponent implements OnInit {
         this.showSpinner = false;
       }, (error: any) => {
         const { message, status } = error.error;
+        this.error = true;
+        this.showSpinner = false;
         if (status === 404) {
-          this.error = true;
-          this.showSpinner = false;
-          this.errorMessage = message;
-          console.log(message);
+          this.errorMessage = 'Empty Classwork';
+        } else if (status === 500) {
+          this.errorMessage = 'Something went wrong, please try again';
         }
       })
   }
@@ -177,7 +182,7 @@ export class AssignDetailsComponent implements OnInit {
     this.apiService.addClasswork(payload)
       .subscribe((response: any) => {
         console.log(response);
-        this.updateClassWork(this.classDetails.rid, this.userData.token)
+        this.updateClassWork(this.classDetails, this.userData)
       }, (error: any) => {
         console.log(error);
       })
@@ -206,10 +211,10 @@ export class AssignDetailsComponent implements OnInit {
     // console.log(this.classWorkForm)
   }
 
-  download(attachment) {
+  download(attachment, name) {
     this.downloadFile = "data:application/pdf;base64," + attachment;
     const downloadLink = document.createElement("a");
-    const fileName = "sample.pptx";
+    const fileName = name;
 
     downloadLink.href = this.downloadFile;
     downloadLink.download = fileName;

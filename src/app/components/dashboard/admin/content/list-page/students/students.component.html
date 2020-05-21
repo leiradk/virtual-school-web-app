@@ -81,7 +81,8 @@
             ">
               <td>{{ student.username }}</td>
               <td>{{ student.created }}</td>
-              <td>{{ student.email }}</td>
+              <td *ngIf="student.email !== null">{{ student.email }}</td>
+              <td *ngIf="student.email === null">No email added yet</td>
             </tr>
           </ng-container>
         </tbody>
@@ -130,23 +131,23 @@
               placeholder="Enter email" formControlName="lastname">
           </div> -->
           <div class="form-group">
-            <label for="inputLastName">Username<span class="validator" *ngIf="username.invalid && username.touched"> -
+            <label for="inputUsername">Username<span class="validator" *ngIf="username.invalid && username.touched"> -
                 Username is required</span></label>
             <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp"
               placeholder="Enter Username" formControlName="username">
           </div>
           <div class="form-group">
-            <label for="inputLastName">Position <span class="validator" *ngIf="position.invalid && position.touched"> -
+            <label for="inputYearLevel">Year Level <span class="validator" *ngIf="yearlevel.invalid && yearlevel.touched"> -
                 Position is required</span></label>
-            <input type="text" class="form-control" id="inputPosition" aria-describedby="positionHelp"
-              placeholder="Enter position" formControlName="position">
+            <input type="text" class="form-control" id="inputYearLevel" aria-describedby="yearLevelHelp"
+              placeholder="Enter Year Level" formControlName="yearlevel">
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="inputLastName">department <span class="validator"
                 *ngIf="department.invalid && department.touched"> - Department is required</span></label>
             <input type="text" class="form-control" id="inputDepartment" aria-describedby="departmentHelp"
               placeholder="Enter department" formControlName="department">
-          </div>
+          </div> -->
           <div class="form-group">
             <label for="inputPassword">Password <span class="validator" *ngIf="password.invalid && password.touched"> -
                 Input 6 character or more</span></label>

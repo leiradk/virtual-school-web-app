@@ -76,12 +76,12 @@ export class StudentsComponent implements OnInit {
   get username() {
     return this.addStudentForm.get("username") as FormControl;
   }
-  get position() {
-    return this.addStudentForm.get("position") as FormControl;
+  get yearlevel() {
+    return this.addStudentForm.get("yearlevel") as FormControl;
   }
-  get department() {
-    return this.addStudentForm.get("department") as FormControl;
-  }
+  // get department() {
+  //   return this.addStudentForm.get("department") as FormControl;
+  // }
   get password() {
     return this.addStudentForm.get("password") as FormControl;
   }
@@ -96,8 +96,8 @@ export class StudentsComponent implements OnInit {
       // middlename: [null, Validators.required],
       // lastname: [null, Validators.required],
       username: [null, Validators.required],
-      position: [null, Validators.required],
-      department: [null, Validators.required],
+      yearlevel: [null, Validators.required],
+      // department: [null, Validators.required],
       password: [null, [Validators.required, Validators.minLength(6)]],
       repassword: [null, [Validators.required, Validators.minLength(6)]],
     });
@@ -114,10 +114,8 @@ export class StudentsComponent implements OnInit {
   onSubmit() {
     const { value } = this.addStudentForm;
     const data = {
-
       username: value.username,
-      position: value.position,
-      department: value.department,
+      yearLevel: value.yearlevel,
       password: value.password,
     };
 
@@ -127,11 +125,7 @@ export class StudentsComponent implements OnInit {
       jQuery('#myModal').modal('hide'); //close modal after submit
     }
 
-
     this.showSpinner = true;
-
-
-
 
     this.apiService.addStudent(data)
       .subscribe((response: any) => {

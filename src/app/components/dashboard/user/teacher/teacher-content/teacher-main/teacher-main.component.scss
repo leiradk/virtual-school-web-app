@@ -19,8 +19,8 @@ body {
   -webkit-transform: translate(-50%, -50%);
 }
 
-.card-body:hover i{
-    color: dodgerblue !important;
+.card-body:hover i {
+  color: dodgerblue !important;
 }
 
 .card {
@@ -36,12 +36,10 @@ body {
   font-family: "Abel", sans-serif !important;
 }
 
-
 .card h1 {
   text-align: center;
   font-family: "Abel", sans-serif !important;
   font-weight: 700;
-
 }
 
 .card .additional {
@@ -192,10 +190,20 @@ body {
   font-size: 0.9em;
 }
 
-.add-class{
+.add-class {
   cursor: pointer;
 }
 
-.view-detials{
+.view-detials {
   color: white;
+}
+
+.empty-room-container {
+  width: 100%;
+  .empty-main {
+    font-size: 50px;
+    font-weight: bold;
+    color: #c0c0c0;
+    text-align: center;
+  }
 }

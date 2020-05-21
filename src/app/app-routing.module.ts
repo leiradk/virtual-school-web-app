@@ -6,9 +6,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { MainPageComponent } from "./components/dashboard/admin/content/main-page/main-page.component";
 import { StudentsComponent } from "./components/dashboard/admin/content/list-page/students/students.component";
 import { TeacherStaffComponent } from "./components/dashboard/admin/content/list-page/teacher-staff/teacher-staff.component";
-import { ClasslistComponent } from "./components/dashboard/admin/content/list-page/classlist/classlist.component";
 import { ParentListComponent } from "./components/dashboard/admin/content/list-page/parent-list/parent-list.component";
-import { SubjectComponent } from './components/dashboard/admin/content/list-page/subject/subject.component';
 import { TeacherComponent } from './components/dashboard/user/teacher/teacher.component';
 import { TeacherMainComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-main.component';
 // import { ClassDetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-details.component';
@@ -72,18 +70,12 @@ const routes: Routes = [
         path: "staff-teacher-lists",
         component: TeacherStaffComponent,
       },
-      {
-        path: "class-list",
-        component: ClasslistComponent,
-      },
+
       {
         path: "parents-list",
         component: ParentListComponent,
       },
-      {
-        path: "subject-list",
-        component: SubjectComponent,
-      },
+
     ],
   },
   // {

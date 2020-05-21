@@ -48,6 +48,7 @@ export class TeacherStaffComponent implements OnInit {
     const { token } = this.userData;
     this.apiService.getTeacher(token)
       .subscribe((response: any) => {
+        this.error = false;
         const { status, body } = response;
         if (status === 200) {
           this.people = body;

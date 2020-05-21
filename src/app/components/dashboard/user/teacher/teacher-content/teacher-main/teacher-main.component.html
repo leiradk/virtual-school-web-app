@@ -9,9 +9,9 @@
     <!-- <div class="card border-left-primary shadow h-100 py-2"> -->
     <!-- <div class="card-body"> -->
 
-<!-- <ng-container *ngIf="showSpinner === false"> -->
-      
-    <ng-container>
+    <!-- <ng-container *ngIf="showSpinner === false"> -->
+
+    <ng-container *ngIf="!showSpinner && !errorData">
       <div *ngFor="let details of classDetails" class="card">
         <div class="additional">
           <div class="user-card">
@@ -149,6 +149,9 @@
       </div>
     </ng-container>
 
+    <div class="empty-room-container" *ngIf="!showSpinner && errorData" style="width: 100%;">
+      <p class="empty-main">No Class Created Yet</p>
+    </div>
     <div *ngIf="showSpinner" style="width: 100%;">
       <app-loading-spinner></app-loading-spinner>
     </div>

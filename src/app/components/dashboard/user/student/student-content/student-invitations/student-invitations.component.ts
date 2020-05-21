@@ -41,7 +41,6 @@ export class StudentInvitationsComponent implements OnInit {
 
   acceptInitation(value) {
     this.myCLass = value.rid;
-    console.log(this.myCLass)
     this.showBar = true;
     const { token } = this.userData;
     const { rid } = value;
@@ -53,15 +52,14 @@ export class StudentInvitationsComponent implements OnInit {
       token: token,
       classID: rid
     }
-    console.log(payload);
     this.apiService.acceptInvitation(payload)
       .subscribe((response: any) => {
+        console.log()
         const { status } = response;
-        console.log(response);
         this.accepting = true;
-        if (status === 200) {
-          this.getInvitations;
-        }
+        this.getInvitations;
+        // if (status === 200) {
+        // }
       }, (error: any) => {
         console.log(error);
         this.accepting = true;
@@ -71,10 +69,8 @@ export class StudentInvitationsComponent implements OnInit {
   //get classroom invitations
   getInvitations() {
     const { token } = this.userData;
-    console.log(token)
     this.apiService.getClassInvitation(token)
       .subscribe((response: any) => {
-        console.log(response);
         const { status, body } = response;
         if (status === 200) {
           this.invitationsDetails = body;
@@ -83,20 +79,18 @@ export class StudentInvitationsComponent implements OnInit {
             let roomCount = 0;
             this.showSpinner = false;
             for (let i = 0; i <= (this.invitationsDetails.length - 1); i++) {
-              if (this.invitationsDetails.inviteStatus === 'pending') {
+              if (this.invitationsDetails[i].inviteStatus === 'pending') {
                 roomCount++;
-                console.log(roomCount);
                 if (roomCount > 0) {
-                  this.invitationsExist = false;
-                } else {
                   this.invitationsExist = true;
+                } else {
+                  this.invitationsExist = false;
                 }
 
               } else {
-                this.invitationsExist = true;
+                this.invitationsExist = false;
               }
             }
-            console.log(this.invitationsExist);
           }
         }
       }, (error: any) => {

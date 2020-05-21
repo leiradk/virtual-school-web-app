@@ -95,7 +95,7 @@ export class CheckDetailsComponent implements OnInit {
               this.error = true;
               this.showSpinner = false;
               this.errorMessage = message;
-              console.log(message); 
+              console.log(message);
             }
           })
       } else {
@@ -148,6 +148,7 @@ export class CheckDetailsComponent implements OnInit {
   }
 
   viewDetails(work, index) {
+    console.log(work);
     this.workDetails.setRouteToken(index);
     // this.system.storeLocal('workDetails', work);
     // this.workDetails.workDetails.subscribe((response: any) => {

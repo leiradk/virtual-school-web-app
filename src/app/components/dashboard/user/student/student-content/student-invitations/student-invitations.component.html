@@ -10,7 +10,7 @@
     <!-- <div class="card border-left-primary shadow h-100 py-2"> -->
     <!-- <div class="card-body"> -->
 
-    <ng-container *ngIf="showSpinner === false">
+    <ng-container *ngIf="showSpinner === false && invitationsExist">
       <div *ngFor="let details of invitationsDetails">
         <div *ngIf="details.inviteStatus === 'pending'" class="card">
           <div *ngIf=" myCLass === details.rid && !accepting" class="load-over-component">
@@ -154,7 +154,7 @@
       </div>
     </ng-container>
 
-    <div class="empty-room-container" *ngIf="!showSpinner && invitationsExist">
+    <div class="empty-room-container" *ngIf="!showSpinner && !invitationsExist">
       <p class="empty-room">No invitations found yet</p>
     </div>
     <div *ngIf="showSpinner" style="width: 100%;">

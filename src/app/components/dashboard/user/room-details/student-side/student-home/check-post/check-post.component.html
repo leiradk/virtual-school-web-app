@@ -1,6 +1,9 @@
 <div style="padding-top: 20px; text-align: center;" *ngIf="showSpinner">
   <app-loading-spinner></app-loading-spinner>
 </div>
+<div style="padding-top: 20px; text-align: center;" *ngIf="error">
+  <p class="error-message">{{message}}</p>
+</div>
 <div class="row" style="padding-top: 20px;">
 
   <div class="container-fluid">

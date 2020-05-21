@@ -80,12 +80,12 @@ export class CheckClassWorkComponent implements OnInit {
     });
   }
 
-  download(attachment) {
+  download(attachment, filename) {
     this.downloadFile = "data:application/pdf;base64," + attachment;
     // console.log('data');
     // console.log(this.downloadFile);
     const downloadLink = document.createElement("a");
-    const fileName = "sample.pptx";
+    const fileName = filename;
 
     downloadLink.href = this.downloadFile;
     downloadLink.download = fileName;
@@ -132,7 +132,8 @@ export class CheckClassWorkComponent implements OnInit {
       token: this.userData.token,
       classworkID: this.workData.classworkID,
       messageAnswer: this.submitWorkForm.value.comment,
-      attachment: this.submitWorkForm.value.file
+      attachment: this.submitWorkForm.value.file,
+      attachmentFilename: this.fileName
     }
 
 

@@ -41,6 +41,7 @@ export class ViewWorkDetailsComponent implements OnInit {
       this.sharedWork.classWork.subscribe((classWork: any) => {
         this.getAllClasswork = classWork;
         this.workDetails = this.getAllClasswork[this.index];
+        console.log(this.workDetails);
       })
     })
     this.getSubmittedWorks();
@@ -82,6 +83,7 @@ export class ViewWorkDetailsComponent implements OnInit {
         if (status === 200) {
           const { submitted } = response.body;
           this.submittedTask = submitted;
+          console.log(this.submittedTask)
           this.disable = false;
           this.showSpinner = false;
         }
@@ -92,19 +94,11 @@ export class ViewWorkDetailsComponent implements OnInit {
       })
   }
 
-  download(file) {
-    const downloadLink = document.createElement("a");
-
-    if (this.submittedTask.attachmentFilename === null) {
-      const fileName = "Unnamed.pptx";
-      downloadLink.download = fileName;
-
-    } else {
-      const fileName = this.submittedTask.attachmentFilename;
-      downloadLink.download = fileName;
-
-    }
+  download(file, filename) {
+    console.log(filename)
     this.downloadFile = "data:application/pdf;base64," + file;
+    const downloadLink = document.createElement("a");
+    downloadLink.download = this.submittedTask.attachmentFilename;
 
 
     downloadLink.href = this.downloadFile;
