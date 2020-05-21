@@ -18,7 +18,7 @@ export class StudentMainComponent implements OnInit {
   showSpinner: boolean = true;
   userData: any;
   errorData: boolean = false;
-
+  roomExists: boolean = false;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -55,13 +55,29 @@ export class StudentMainComponent implements OnInit {
           // this.month = this.getDate(parseInt(date[1]));
           // this.day = date[2];
           // this.year = date[0];
-          this.showSpinner = false;
+          console.log(this.classDetails);
+          if (this.classDetails) {
+            let roomCount = 0;
+            this.showSpinner = false;
+            for (let i = 0; i <= (this.classDetails.length - 1); i++) {
+              if (this.classDetails.inviteStatus === 'accepted') {
+                roomCount++;
+                if (roomCount > 0) {
+                  this.roomExists = true;
+                } else {
+                  this.roomExists = false;
+                }
+
+              }
+            }
+          }
         }
       }, (errorResponse: any) => {
         this.showSpinner = false;
         const { status, message } = errorResponse.error;
         if (status === 403) {
           this.errorData = true;
+          this.roomExists = false;
         }
 
       });

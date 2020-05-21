@@ -33,6 +33,9 @@
     <div style="padding-top: 20px; text-align: center;" *ngIf="showSpinner">
       <app-loading-spinner></app-loading-spinner>
     </div>
+    <div style="padding-top: 20px; text-align: center;" *ngIf="error">
+      <p class="error-message">{{message}}</p>
+    </div>
     <!-- Post Content
               ================================================= -->
     <div *ngFor="let post of postDetails; let i = index" class="post-content">

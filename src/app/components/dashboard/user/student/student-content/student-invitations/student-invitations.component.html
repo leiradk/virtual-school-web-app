@@ -13,7 +13,7 @@
     <ng-container *ngIf="showSpinner === false">
       <div *ngFor="let details of invitationsDetails">
         <div *ngIf="details.inviteStatus === 'pending'" class="card">
-          <div *ngIf=" myCLass === details.rid" class="load-over-component">
+          <div *ngIf=" myCLass === details.rid && !accepting" class="load-over-component">
             <app-loading-bar></app-loading-bar>
           </div>
           <div class="additional">
@@ -154,7 +154,9 @@
       </div>
     </ng-container>
 
-
+    <div class="empty-room-container" *ngIf="!showSpinner && invitationsExist">
+      <p class="empty-room">No invitations found yet</p>
+    </div>
     <div *ngIf="showSpinner" style="width: 100%;">
       <app-loading-spinner></app-loading-spinner>
     </div>

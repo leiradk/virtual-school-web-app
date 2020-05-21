@@ -146,6 +146,7 @@ export class StudentsComponent implements OnInit {
         }
       }, (error: any) => {
         const { message } = error.error;
+        this.addStudentForm.reset(); //reset form
         setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
         this.error = true;
       });

@@ -17,9 +17,11 @@ export class StudentInvitationsComponent implements OnInit {
   myCLass: any;
   showBar: boolean = false;
   showSpinner: boolean = true;
-
+  accepting: boolean = false;
   userData: any;
   invitationsDetails: any;
+
+  invitationsExist: boolean = false;
   constructor(
     private apiService: ApiHostService,
     private toastr: ToastrService,
@@ -56,11 +58,13 @@ export class StudentInvitationsComponent implements OnInit {
       .subscribe((response: any) => {
         const { status } = response;
         console.log(response);
+        this.accepting = true;
         if (status === 200) {
           this.getInvitations;
         }
       }, (error: any) => {
         console.log(error);
+        this.accepting = true;
       })
   }
 
@@ -75,7 +79,29 @@ export class StudentInvitationsComponent implements OnInit {
         if (status === 200) {
           this.invitationsDetails = body;
           this.showSpinner = false;
+          if (this.invitationsDetails) {
+            let roomCount = 0;
+            this.showSpinner = false;
+            for (let i = 0; i <= (this.invitationsDetails.length - 1); i++) {
+              if (this.invitationsDetails.inviteStatus === 'pending') {
+                roomCount++;
+                console.log(roomCount);
+                if (roomCount > 0) {
+                  this.invitationsExist = false;
+                } else {
+                  this.invitationsExist = true;
+                }
+
+              } else {
+                this.invitationsExist = true;
+              }
+            }
+            console.log(this.invitationsExist);
+          }
         }
+      }, (error: any) => {
+        this.invitationsExist = false;
+        this.showSpinner = false;
       });
   }
 }

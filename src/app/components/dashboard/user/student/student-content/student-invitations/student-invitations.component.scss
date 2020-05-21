@@ -210,3 +210,13 @@ body {
 .accept-invitations {
   cursor: pointer;
 }
+
+.empty-room-container {
+  width: 100%;
+  .empty-room {
+    font-size: 50px;
+    font-weight: bold;
+    color: #c0c0c0;
+    text-align: center;
+  }
+}

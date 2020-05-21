@@ -106,6 +106,7 @@ export class TeacherStaffComponent implements OnInit {
         }
       }, (error: any) => {
         const { message } = error.error;
+        this.addStaffFOrm.reset(); //reset form
         setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
       })
   }

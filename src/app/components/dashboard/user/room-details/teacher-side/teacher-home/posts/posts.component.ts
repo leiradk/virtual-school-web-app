@@ -34,6 +34,8 @@ export class PostsComponent implements OnInit {
   post: any;
   commentUpdate: any;
   storeAllComments: any = [];
+  error: boolean = false;
+  message: any;
   constructor(
     private fb: FormBuilder,
     private apiService: ApiHostService,
@@ -150,8 +152,6 @@ export class PostsComponent implements OnInit {
 
   //teacher side api for getting post
   teacherSide(rid, token) {
-
-
     this.pathParam.pipe(take(1)).subscribe({
       next: (post) => {
         this.postDetails = null;
@@ -169,9 +169,15 @@ export class PostsComponent implements OnInit {
               }
 
             }, (error: any) => {
-              const { status } = error.error;
+              const { status, message } = error.error;
+              console.log(error)
+              this.postDetails = null;
+              this.error = true;
+              if (status === 500) {
+                this.message = message;
+              }
               if (status === 404) {
-                this.postDetails = null;
+                this.message = message;
               }
               this.showSpinner = false;
             })
@@ -183,7 +189,6 @@ export class PostsComponent implements OnInit {
       },
       error: err => {
         console.log(err)
-
       },
       complete: () => {
         console.log('completed')
