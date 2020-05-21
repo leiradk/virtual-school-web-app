@@ -98,7 +98,8 @@ export class ViewWorkDetailsComponent implements OnInit {
     console.log(filename)
     this.downloadFile = "data:application/pdf;base64," + file;
     const downloadLink = document.createElement("a");
-    downloadLink.download = this.submittedTask.attachmentFilename;
+    console.log(this.submittedTask.attachmentFilename)
+    downloadLink.download = filename;
 
 
     downloadLink.href = this.downloadFile;
