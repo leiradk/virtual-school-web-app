@@ -9,8 +9,9 @@
     <!-- <div class="card border-left-primary shadow h-100 py-2"> -->
     <!-- <div class="card-body"> -->
 
-
-    <ng-container *ngIf="showSpinner === false">
+<!-- <ng-container *ngIf="showSpinner === false"> -->
+      
+    <ng-container>
       <div *ngFor="let details of classDetails" class="card">
         <div class="additional">
           <div class="user-card">
@@ -151,7 +152,7 @@
     <div *ngIf="showSpinner" style="width: 100%;">
       <app-loading-spinner></app-loading-spinner>
     </div>
-    <a *ngIf="showSpinner==false" class="card add-class" data-toggle="modal" data-target="#myModal">
+    <a class="card add-class" data-toggle="modal" data-target="#myModal">
       <div style="height: 250px !important;" class=" border-left-primary shadow h-100 py-2">
         <div style="display: flex; align-items: center; justify-content: center;" class="card-body h-100">
           <div class="row no-gutters align-items-center">

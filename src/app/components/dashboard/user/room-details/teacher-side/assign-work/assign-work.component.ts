@@ -11,5 +11,4 @@ export class AssignWorkComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
