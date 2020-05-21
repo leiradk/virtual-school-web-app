@@ -51,6 +51,7 @@ export class StudentInvitationsComponent implements OnInit {
       token: token,
       classID: rid
     }
+    console.log(payload);
     this.apiService.acceptInvitation(payload)
       .subscribe((response: any) => {
         const { status } = response;

@@ -1,4 +1,4 @@
-.fa-plus-circle{
+.fa-plus-circle {
     cursor: pointer;
 }
 .validator {
@@ -6,4 +6,11 @@
     background-color: #f8d7da;
     border-color: #f5c6cb;
     padding: 5px 10px !important;
+}
+
+.no-content {
+    color: #c0c0c0;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
 }

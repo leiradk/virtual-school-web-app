@@ -24,6 +24,7 @@ export class TeacherStaffComponent implements OnInit {
   p: number = 1;
   viewList: number = 5;
   userData: any;
+  error: boolean = false;
   constructor(
     private fb: FormBuilder,
     private apiService: ApiHostService,
@@ -45,14 +46,17 @@ export class TeacherStaffComponent implements OnInit {
   //get data list for teacher and staff
   getTeacher() {
     const { token } = this.userData;
-    this.apiService.getTeacher(token).subscribe((response: any) => {
-      console.log(response);
-      const { status, body } = response;
-      if (status === 200) {
-        this.people = body;
+    this.apiService.getTeacher(token)
+      .subscribe((response: any) => {
+        const { status, body } = response;
+        if (status === 200) {
+          this.people = body;
+          this.showSpinner = false;
+        }
+      }, (error: any) => {
         this.showSpinner = false;
-      }
-    })
+        this.error = true;
+      })
   }
 
   showSuccess() {
@@ -63,7 +67,6 @@ export class TeacherStaffComponent implements OnInit {
   //adding teacher and staff
   onSubmit() {
     const { value } = this.addStaffFOrm;
-    console.log(value);
     const data = {
       username: value.username,
       password: value.password,
@@ -90,7 +93,6 @@ export class TeacherStaffComponent implements OnInit {
         //reload onInit
         this.ngOnInit();
       } else {
-        console.log(response);
       }
     })
   }

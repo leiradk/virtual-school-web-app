@@ -37,16 +37,13 @@ export class StudentMainComponent implements OnInit {
   deleteClassData() {
     this.sharedPost.setRouteToken(null);
     this.sharedPost.setComments(null);
-    console.log('nulling data')
   }
   //get accepted classroom invitations
   getInvitations() {
     const { token } = this.userData;
-    console.log(token)
 
     this.apiService.getClassInvitation(token)
       .subscribe((response: any) => {
-        console.log(response);
         const { status, body } = response;
         if (status === 200) {
           // this.invitationsDetails = body;
@@ -59,14 +56,11 @@ export class StudentMainComponent implements OnInit {
           // this.day = date[2];
           // this.year = date[0];
           this.showSpinner = false;
-          console.log(this.showSpinner)
         }
       }, (errorResponse: any) => {
-        console.log(errorResponse);
-
+        this.showSpinner = false;
         const { status, message } = errorResponse.error;
         if (status === 403) {
-          console.log('something went wrong');
           this.errorData = true;
         }
 
@@ -76,35 +70,6 @@ export class StudentMainComponent implements OnInit {
   viewDetails(data) {
     this.system.storeLocal('classDetails', data);
     this.deleteClassData();
-  }
-  getClassroom(data) {
-    const { token } = data;
-    this.apiService.getClassroom(token)
-      .subscribe((response: any) => {
-        console.log(response);
-        const { status, message, body } = response;
-        this.classDetails = body;
-        if (status === 200) {
-          console.log(response);
-          // console.log(body[0].classCreated.split(' ')[0].split('-'));
-          const date = body[0].classCreated.split(' ')[0].split('-');
-          console.log(date);
-          console.log(this.getDate(parseInt(date[1])));
-          this.month = this.getDate(parseInt(date[1]));
-          this.day = date[2];
-          this.year = date[0];
-          this.showSpinner = false;
-        }
-      }, (errorResponse: any) => {
-        console.log(errorResponse);
-
-        const { status, message } = errorResponse.error;
-        if (status === 403) {
-          console.log('something went wrong');
-          this.errorData = true;
-        }
-
-      });
   }
   getDate(month) {
     if (month === 1) {

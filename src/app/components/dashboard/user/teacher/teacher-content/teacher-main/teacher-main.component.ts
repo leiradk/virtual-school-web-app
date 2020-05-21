@@ -102,31 +102,35 @@ export class TeacherMainComponent implements OnInit {
     setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
     this.addClassFOrm.reset(); //reset form
 
-    this.apiService.addClass(payload).subscribe((response: any) => {
-      const { status } = response;
-      if (status === 201) {
-        this.ngOnInit();
-      } else {
-      }
-    });
+    this.apiService.addClass(payload)
+      .subscribe((response: any) => {
+        const { status } = response;
+        if (status === 201) {
+          this.ngOnInit();
+        } else {
+        }
+      });
   }
 
   //get all classroom for a specific teacher
   getClassroom(data) {
     const { token } = data;
-    this.apiService.getClassroom(token).subscribe((response: any) => {
-      const { status, message, body } = response;
-      this.classDetails = body;
-      if (status === 200) {
-        // console.log(body[0].classCreated.split(' ')[0].split('-'));
-        const date = body[0].classCreated.split(' ')[0].split('-');
+    this.apiService.getClassroom(token)
+      .subscribe((response: any) => {
+        const { status, message, body } = response;
+        this.classDetails = body;
+        if (status === 200) {
+          // console.log(body[0].classCreated.split(' ')[0].split('-'));
+          const date = body[0].classCreated.split(' ')[0].split('-');
 
-        this.month = this.getDate(parseInt(date[1]));
-        this.day = date[2];
-        this.year = date[0];
+          this.month = this.getDate(parseInt(date[1]));
+          this.day = date[2];
+          this.year = date[0];
+          this.showSpinner = false;
+        }
+      }, (error: any) => {
         this.showSpinner = false;
-      }
-    });
+      });
   }
 
   //get month
