@@ -54,14 +54,23 @@ export class TeacherStaffComponent implements OnInit {
           this.showSpinner = false;
         }
       }, (error: any) => {
+        const { message } = error.error;
+        setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
+        this.addStaffFOrm.reset(); //reset form
         this.showSpinner = false;
         this.error = true;
+
       })
   }
 
   showSuccess() {
     this.toastr.success('Teacher Added successfully. Reloading List.', 'Congratulations', { timeOut: 5000 })
   }
+
+  showFailed(message) {
+    this.toastr.warning(message, 'Warning', { timeOut: 5000 })
+  }
+
 
 
   //adding teacher and staff
@@ -82,19 +91,23 @@ export class TeacherStaffComponent implements OnInit {
 
     this.showSpinner = true;
 
-    setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
-    this.addStaffFOrm.reset(); //reset form
 
     // ------>  Please check the code below. I want to put the top code snippet inside if(status === 200)
     // adds a teacher
-    this.apiService.addTeacher(data).subscribe((response: any) => {
-      const { status } = response;
-      if (status === 201) {
-        //reload onInit
-        this.ngOnInit();
-      } else {
-      }
-    })
+    this.apiService.addTeacher(data)
+      .subscribe((response: any) => {
+        const { status } = response;
+        if (status === 201) {
+          //reload onInit
+          setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
+          this.addStaffFOrm.reset(); //reset form
+          this.ngOnInit();
+        } else {
+        }
+      }, (error: any) => {
+        const { message } = error.error;
+        setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
+      })
   }
 
 

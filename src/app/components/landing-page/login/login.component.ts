@@ -9,6 +9,7 @@ import { ApiHostService } from "../../../services/api-host.service";
 import { Router } from "@angular/router";
 import { SystemUtils } from '../../../services/system.utils';
 import { SharedWorkDetailsService } from '../../../services/shared-work-details.service';
+import { ToastrService } from "ngx-toastr";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private system: SystemUtils,
-    private sharedWork: SharedWorkDetailsService
+    private sharedWork: SharedWorkDetailsService,
+    private toastr: ToastrService
   ) {
     this.signInModel();
   }
@@ -38,6 +40,11 @@ export class LoginComponent implements OnInit {
       password: [null, Validators.required],
     });
   }
+
+  showFailed(message) {
+    this.toastr.warning(message, 'Warning', { timeOut: 5000 })
+  }
+
   // login the user if fields are correct
   onSubmit() {
     const { value } = this.signInForm;
@@ -71,6 +78,10 @@ export class LoginComponent implements OnInit {
       } else {
         this.loading = false;
       }
+    }, (error: any) => {
+      const { message } = error.error;
+      setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
+      this.loading = false;
     });
   }
   loggout() {
