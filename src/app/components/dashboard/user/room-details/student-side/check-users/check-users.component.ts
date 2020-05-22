@@ -15,7 +15,7 @@ export class CheckUsersComponent implements OnInit {
   userData: any
   classDetails: any;
   showSpinner: boolean = true;
-
+  error: boolean = false;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -27,7 +27,6 @@ export class CheckUsersComponent implements OnInit {
     this.userData = this.system.retrieveItem('userData');
     this.classDetails = this.system.retrieveItem('classDetails');
 
-    this.getStudents(this.userData);
     this.getInvitedStudents();
 
     console.log(this.userData.data.usertype);
@@ -41,6 +40,8 @@ export class CheckUsersComponent implements OnInit {
           this.student = body;
           this.showSpinner = false;
         }
+      }, (error: any) => {
+        console.log
       })
   }
 
@@ -51,15 +52,18 @@ export class CheckUsersComponent implements OnInit {
     const { rid } = this.classDetails;
     this.apiService.getClassmates(rid, token)
       .subscribe((response: any) => {
-        const { status } = response; {
-          if (status === 200) {
-            const { body } = response;
-            this.invited = body;
-          }
+        this.showSpinner = false;
+        const { status } = response;
+        if (status === 200) {
+          const { body } = response;
+          this.invited = body;
         }
+
         console.log(response);
       }, (error: any) => {
         console.log(error);
+        this.showSpinner = false;
+        this.error = true;
       });
   }
 }

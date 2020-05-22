@@ -22,7 +22,10 @@
                     <div class="col" *ngIf="showSpinner">
                         <app-loading-spinner></app-loading-spinner>
                     </div>
-                    <div *ngIf="!showSpinner">
+                    <div class="col" *ngIf="!showSpinner && error">
+                        <p class="error-meesage">No student is invited yet.</p>
+                    </div>
+                    <div *ngIf="!showSpinner && !error">
                         <div *ngFor="let invites of invited" class="student-list-body">
                             <div class="body-name">{{invites.student}}</div>
                             <div class="body-status">{{invites.inviteStatus}}</div>
@@ -38,7 +41,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

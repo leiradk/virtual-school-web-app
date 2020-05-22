@@ -19,23 +19,32 @@
                         <div class="header-status">status</div>
                         <div class="header-action">Action</div>
                     </div>
-                    <div *ngFor="let invites of invited" class="student-list-body">
-                        <div class="body-name">{{invites.student}}</div>
-                        <div class="body-status">{{invites.inviteStatus}}</div>
-                        <div class="body-action dropdown">
-                            <a href="#action" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"></a>
+                    <div class="col" *ngIf="showSpinner">
+                        <app-loading-spinner></app-loading-spinner>
+                    </div>
+                    <div class="col" *ngIf="!showSpinner && error">
+                        <p class="error-meesage">You are the only student invited to this class yet.</p>
+                    </div>
+                    <div *ngIf="!showSpinner && !error">
+                        <div *ngFor="let invites of invited" class="student-list-body">
+                            <div class="body-name">{{invites.student}}</div>
+                            <div class="body-status">{{invites.inviteStatus}}</div>
+                            <div class="body-action dropdown">
+                                <a href="#action" data-toggle="collapse" aria-expanded="false"
+                                    class="dropdown-toggle"></a>
 
-                            <div id="action" class="collapse dropdown-menu">
-                                <a class="dropdown-item" href="#">Link 1</a>
-                                <a class="dropdown-item" href="#">Link 2</a>
-                                <a class="dropdown-item" href="#">Link 3</a>
+                                <div id="action" class="collapse dropdown-menu">
+                                    <a class="dropdown-item" href="#">Link 1</a>
+                                    <a class="dropdown-item" href="#">Link 2</a>
+                                    <a class="dropdown-item" href="#">Link 3</a>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
 
     </div>
 </div>
-

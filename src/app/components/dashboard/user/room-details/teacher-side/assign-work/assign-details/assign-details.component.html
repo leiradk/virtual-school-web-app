@@ -19,7 +19,8 @@
 
                                     <!-- Display notification for events here -->
                                     <!-- Event # 1 -->
-                                    <div class="reminder-butt">
+                                    <div *ngIf="!showSpinner" class="reminder-butt">
+                                       
                                         <!-- Card Header - Accordion -->
                                         <!-- <a href="#collapseCardExample" class="d-block card-header py-3 collapsed"
                                             data-toggle="collapse" role="button" aria-expanded="false"

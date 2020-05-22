@@ -24,6 +24,7 @@ export class InviteUsersComponent implements OnInit {
   userData: any
   classDetails: any;
   showSpinner: boolean = true;
+  error: boolean = false;
 
   constructor(
     private apiService: ApiHostService,
@@ -37,7 +38,7 @@ export class InviteUsersComponent implements OnInit {
     this.userData = this.system.retrieveItem('userData');
     this.classDetails = this.system.retrieveItem('classDetails');
 
-    this.getStudents(this.userData);
+    // this.getStudents(this.userData);
     this.getInvitedStudents();
 
   }
@@ -87,6 +88,7 @@ export class InviteUsersComponent implements OnInit {
       user: value.username
 
     }
+    this.error = false;
     this.showSpinner = true;
     this.apiService.sendClassInvites(payload)
       .subscribe((response: any) => {
@@ -108,14 +110,17 @@ export class InviteUsersComponent implements OnInit {
     const { rid } = this.classDetails;
     this.apiService.getInvitedStudents(rid, token)
       .subscribe((response: any) => {
-        const { status } = response; {
-          if (status === 200) {
-            const { body } = response;
-            this.invited = body;
-          }
+        const { status } = response;
+        this.showSpinner = false;
+        if (status === 200) {
+          const { body } = response;
+          this.invited = body;
         }
+
       }, (error: any) => {
         console.log(error);
+        this.error = true;
+        this.showSpinner = false;
       });
   }
 }
