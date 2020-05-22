@@ -91,11 +91,12 @@ export class CheckDetailsComponent implements OnInit {
             // console.log(this.classWork)
           }, (error: any) => {
             const { message, status } = error.error;
+            this.error = true;
+            this.showSpinner = false;
             if (status === 404) {
-              this.error = true;
-              this.showSpinner = false;
               this.errorMessage = message;
-              console.log(message);
+            } else if (status === 500) {
+              this.errorMessage = "Something went wrong please try again";
             }
           })
       } else {
@@ -148,7 +149,7 @@ export class CheckDetailsComponent implements OnInit {
   }
 
   viewDetails(work, index) {
-    console.log(work);
+    // console.log(work);
     this.workDetails.setRouteToken(index);
     // this.system.storeLocal('workDetails', work);
     // this.workDetails.workDetails.subscribe((response: any) => {

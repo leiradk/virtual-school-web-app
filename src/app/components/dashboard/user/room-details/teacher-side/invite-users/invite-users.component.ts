@@ -25,6 +25,7 @@ export class InviteUsersComponent implements OnInit {
   classDetails: any;
   showSpinner: boolean = true;
   error: boolean = false;
+  errorMessage: any;
 
   constructor(
     private apiService: ApiHostService,
@@ -119,8 +120,14 @@ export class InviteUsersComponent implements OnInit {
 
       }, (error: any) => {
         console.log(error);
+        const { status, message } = error.error;
         this.error = true;
         this.showSpinner = false;
+        if(status === 404) {
+          this.errorMessage = message;
+        } else if(status === 500) {
+          this.errorMessage = "Something went wrong, please try again"
+        }
       });
   }
 }

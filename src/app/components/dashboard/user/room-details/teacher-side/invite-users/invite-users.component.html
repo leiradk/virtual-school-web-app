@@ -23,7 +23,7 @@
                         <app-loading-spinner></app-loading-spinner>
                     </div>
                     <div class="col" *ngIf="!showSpinner && error">
-                        <p class="error-meesage">No student is invited yet.</p>
+                        <p class="error-meesage">{{errorMessage}}</p>
                     </div>
                     <div *ngIf="!showSpinner && !error">
                         <div *ngFor="let invites of invited" class="student-list-body">

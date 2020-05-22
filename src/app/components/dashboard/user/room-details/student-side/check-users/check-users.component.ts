@@ -16,6 +16,7 @@ export class CheckUsersComponent implements OnInit {
   classDetails: any;
   showSpinner: boolean = true;
   error: boolean = false;
+  errorMessage: any;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -62,8 +63,15 @@ export class CheckUsersComponent implements OnInit {
         console.log(response);
       }, (error: any) => {
         console.log(error);
+        const { status, message } = error.error;
         this.showSpinner = false;
         this.error = true;
+        if (status === 404) {
+          this.errorMessage = "You are the only student invited to this class yet.";
+        } else if (status === 500) {
+          this.errorMessage = "Something went wrong, please try again";
+        }
+
       });
   }
 }
