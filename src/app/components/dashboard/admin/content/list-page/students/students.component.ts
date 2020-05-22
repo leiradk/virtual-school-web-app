@@ -112,6 +112,7 @@ export class StudentsComponent implements OnInit {
 
   //adding student details on 
   onSubmit() {
+    this.error = false;
     const { value } = this.addStudentForm;
     const data = {
       username: value.username,

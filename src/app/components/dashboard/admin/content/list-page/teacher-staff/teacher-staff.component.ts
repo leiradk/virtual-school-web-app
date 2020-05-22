@@ -76,6 +76,7 @@ export class TeacherStaffComponent implements OnInit {
 
   //adding teacher and staff
   onSubmit() {
+    this.error = false;
     const { value } = this.addStaffFOrm;
     const data = {
       username: value.username,
