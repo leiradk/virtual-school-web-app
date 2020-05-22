@@ -362,16 +362,18 @@
                         <input type="text" class="form-control" id="inputWorkTitle" aria-describedby="workTitleHelp"
                             placeholder="Enter Work Title" formControlName="workTitle">
                     </div>
+                    
                     <div class=" form-group">
                         <label for="inputName"><span class="validator" *ngIf="points.invalid && points.touched">
                                 Points/Items is required</span></label>
                         <input type="text" class="form-control" id="inputPoints" aria-describedby="pointsHelp"
                             placeholder="Enter Items/Points" formControlName="points">
                     </div>
+
                     <div class=" form-group">
                         <label for="inputName"><span class="validator"
                                 *ngIf="instruction.invalid && instruction.touched">
-                                intruction is required</span></label>
+                                instruction is required</span></label>
                         <input type="text" class="form-control" id="inputInstruction" aria-describedby="instructionHelp"
                             placeholder="Enter Instructions" formControlName="instruction">
                     </div>

@@ -92,6 +92,7 @@ export class StudentInvitationsComponent implements OnInit {
               }
             }
           }
+          
         }
       }, (error: any) => {
         this.invitationsExist = false;
