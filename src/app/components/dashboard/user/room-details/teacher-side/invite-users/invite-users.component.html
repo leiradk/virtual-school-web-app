@@ -10,8 +10,8 @@
             <div class="cs-item cs-list">
                 <div class="cs-list-title">
                     <div class="cs-list-title-label">Student</div>
-                    <div *ngIf="userData.data.usertype === '10002'" class="cs-list-title-icon"><a class="invite-student" data-toggle="modal"
-                            data-target="#myModal"><i class="fa fa-plus"></i></a></div>
+                    <div *ngIf="userData.data.usertype === '10002'" class="cs-list-title-icon"><a class="invite-student"
+                            data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i></a></div>
                 </div>
                 <div class="cs-list-body">
                     <div class="student-list-header">
@@ -19,19 +19,26 @@
                         <div class="header-status">status</div>
                         <div class="header-action">Action</div>
                     </div>
-                    <div *ngFor="let invites of invited" class="student-list-body">
-                        <div class="body-name">{{invites.student}}</div>
-                        <div class="body-status">{{invites.inviteStatus}}</div>
-                        <div class="body-action dropdown">
-                            <a href="#action" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"></a>
+                    <div class="col" *ngIf="showSpinner">
+                        <app-loading-spinner></app-loading-spinner>
+                    </div>
+                    <div *ngIf="!showSpinner">
+                        <div *ngFor="let invites of invited" class="student-list-body">
+                            <div class="body-name">{{invites.student}}</div>
+                            <div class="body-status">{{invites.inviteStatus}}</div>
+                            <div class="body-action dropdown">
+                                <a href="#action" data-toggle="collapse" aria-expanded="false"
+                                    class="dropdown-toggle"></a>
 
-                            <div id="action" class="collapse dropdown-menu">
-                                <a class="dropdown-item" href="#">Link 1</a>
-                                <a class="dropdown-item" href="#">Link 2</a>
-                                <a class="dropdown-item" href="#">Link 3</a>
+                                <div id="action" class="collapse dropdown-menu">
+                                    <a class="dropdown-item" href="#">Link 1</a>
+                                    <a class="dropdown-item" href="#">Link 2</a>
+                                    <a class="dropdown-item" href="#">Link 3</a>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

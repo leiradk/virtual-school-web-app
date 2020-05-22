@@ -63,11 +63,17 @@ export class InviteUsersComponent implements OnInit {
     const { token } = userData;
     this.apiService.searchStudents(token)
       .subscribe((response: any) => {
+        this.showSpinner = false;
+        console.log(response);
+
         const { body, status } = response;
         if (status === 200) {
           this.student = body;
           this.showSpinner = false;
         }
+      }, (error: any) => {
+        console.log(error);
+        this.showSpinner = false;
       })
   }
 
@@ -81,12 +87,15 @@ export class InviteUsersComponent implements OnInit {
       user: value.username
 
     }
+    this.showSpinner = true;
     this.apiService.sendClassInvites(payload)
       .subscribe((response: any) => {
         console.log(response);
+        this.getStudents(this.userData);
         this.showSuccess(); // show toastr
         jQuery('#myModal').modal('hide'); //close modal after submit
       }, (error => {
+        this.showSpinner = false;
         this.showFailed()
         jQuery('#myModal').modal('hide'); //close modal after submit
       }))

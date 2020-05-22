@@ -172,7 +172,7 @@ export class AssignDetailsComponent implements OnInit {
       token: this.userData.token,
       title: this.classWorkForm.value.workTitle,
       classID: this.classDetails.rid,
-      instructions: this.classWorkForm.value.instruction,
+      instruction: this.classWorkForm.value.instruction,
       points: this.classWorkForm.value.points,
       dueDate: date,
       attachment: this.base64textString,

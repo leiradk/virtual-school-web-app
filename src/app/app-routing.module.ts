@@ -24,10 +24,10 @@ import { UserComponent } from "./components/dashboard/user/user.component";
 import { RoomDetailsComponent } from "./components/dashboard/user/room-details/room-details.component";
 import { InviteUsersComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/invite-users.component";
 import { AssignWorkComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-work.component";
+import { AssignLessonsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-lessons/assign-lessons.component";
 import { AssignDetailsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-details/assign-details.component";
 import { ViewWorkDetailsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/view-work-details/view-work-details.component";
 import { TeacherHomeComponent } from "./components/dashboard/user/room-details/teacher-side/teacher-home/teacher-home.component";
-import { AssignLessonsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-lessons/assign-lessons.component";
 
 
 import { CheckWorkComponent } from "./components/dashboard/user/room-details/student-side/check-work/check-work.component";
@@ -286,7 +286,8 @@ const routes: Routes = [
                   {
                     path: 'lessons',
                     component: AssignLessonsComponent,
-                  }, {
+                  },
+                  {
                     path: 'work-view',
                     component: ViewWorkDetailsComponent,
                   },
