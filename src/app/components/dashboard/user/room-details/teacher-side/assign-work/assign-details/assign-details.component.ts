@@ -3,6 +3,7 @@ import { ToolbarService, LinkService, ImageService, HtmlEditorService, TableServ
 import { ApiHostService } from '../../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../../services/system.utils';
 import { SharedWorkDetailsService } from '../../../../../../../services/shared-work-details.service';
+import { ToastrService } from "ngx-toastr";
 import {
   FormGroup,
   FormBuilder,
@@ -45,12 +46,21 @@ export class AssignDetailsComponent implements OnInit {
     private apiService: ApiHostService,
     private system: SystemUtils,
     private fb: FormBuilder,
-    private workDetails: SharedWorkDetailsService
+    private workDetails: SharedWorkDetailsService,
+    private toastr: ToastrService,
   ) {
     this.workFormModel();
   }
 
   showSpinner: boolean = true;
+
+  showSuccess() {
+    this.toastr.success('Teacher Added successfully. Reloading List.', 'Congratulations', { timeOut: 5000 })
+  }
+
+  showFailed(message) {
+    this.toastr.warning(message, 'Warning', { timeOut: 5000 })
+  }
 
   ngOnInit(): void {
     this.classDetails = this.system.retrieveItem('classDetails');
@@ -138,6 +148,7 @@ export class AssignDetailsComponent implements OnInit {
     //     }
     //   })
   }
+
   get workTitle() {
     return this.classWorkForm.get("workTitle") as FormControl;
   }
@@ -164,6 +175,7 @@ export class AssignDetailsComponent implements OnInit {
       // workFile: [null, Validators.required]
     });
   }
+
   onSubmit() {
 
     console.log(this.classWorkForm)
@@ -172,17 +184,27 @@ export class AssignDetailsComponent implements OnInit {
       token: this.userData.token,
       title: this.classWorkForm.value.workTitle,
       classID: this.classDetails.rid,
-      instructions: this.classWorkForm.value.instruction,
+      instruction: this.classWorkForm.value.instruction,
       points: this.classWorkForm.value.points,
       dueDate: date,
       attachment: this.base64textString,
       attachmentFilename: this.fileName
     }
     console.log(payload);
+
+    //animation 
+    //close modal
+    //loading and toast
+    this.showSpinner = true;
+    jQuery('#myModalClasswork').modal('hide'); 
+    this.classWorkForm.reset();
+
     this.apiService.addClasswork(payload)
       .subscribe((response: any) => {
         console.log(response);
-        this.updateClassWork(this.classDetails, this.userData)
+
+        this.updateClassWork(this.classDetails, this.userData);
+        this.showSuccess();
       }, (error: any) => {
         console.log(error);
       })
