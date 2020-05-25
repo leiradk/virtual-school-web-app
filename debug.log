@@ -1,2 +1,10 @@
 [0519/220754.821:ERROR:process_info.cc(359)] UncheckedAllocate
 [0519/220754.845:ERROR:process_info.cc(359)] UncheckedAllocate
+[0525/124242.104:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0525/124242.104:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0525/124242.104:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0525/124242.108:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0525/130822.961:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0525/130822.962:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0525/130822.963:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0525/130822.963:ERROR:crash_report_database_win.cc(469)] failed to stat report

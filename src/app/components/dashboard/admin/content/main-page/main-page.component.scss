@@ -1,0 +1,22 @@
+#dashboard-content {
+    background-color: #dddddd !important;
+    width: 80vw;
+}
+
+.hide {
+    display: none !important;
+}
+
+.link-to-list:hover {
+    cursor: pointer;
+    .list-content-item:hover {
+        .hide {
+            display: flex !important;
+        }
+        .listed-user {
+            color: #1b1a3d;
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+}
