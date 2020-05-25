@@ -19,6 +19,7 @@ export class StudentMainComponent implements OnInit {
   userData: any;
   errorData: boolean = false;
   roomExists: boolean = false;
+  errorMessage: any;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -67,8 +68,11 @@ export class StudentMainComponent implements OnInit {
                   this.roomExists = true;
                 } else {
                   this.roomExists = false;
+                  this.errorMessage = "No class found yet";
                 }
-
+              } else {
+                this.roomExists = false;
+                this.errorMessage = "No class found yet";
               }
             }
           } else {
@@ -79,8 +83,11 @@ export class StudentMainComponent implements OnInit {
         this.showSpinner = false;
         const { status, message } = errorResponse.error;
         this.roomExists = false;
+        this.errorData = true;
         if (status === 403) {
-          this.errorData = true;
+          this.errorMessage = "No class found yet";
+        } else if (status === 500) {
+          this.errorMessage = "Something went wrong, please try again";
         }
 
       });
