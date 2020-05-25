@@ -14,7 +14,7 @@ declare var jQuery: any;
 @Component({
   selector: "app-teacher-staff",
   templateUrl: "./teacher-staff.component.html",
-  styleUrls: ["./teacher-staff.component.scss"],
+  styleUrls: ["./teacher-staff.component.scss", "../../../../../../../assets/staff_teacher/css/styles.min.css"],
 })
 export class TeacherStaffComponent implements OnInit {
   public addStaffFOrm: FormGroup;

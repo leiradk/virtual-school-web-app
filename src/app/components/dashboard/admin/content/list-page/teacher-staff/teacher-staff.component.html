@@ -1,15 +1,15 @@
 <!-- Begin Page Content -->
-<div class="container-fluid">
-  <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+<!-- <div class="container-fluid"> -->
+<!-- Page Heading -->
+<!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1>
   <p class="mb-4">
     DataTables is a third party plugin that is used to generate the demo table
     below. For more information about DataTables, please visit the
     <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.
-  </p>
+  </p> -->
 
-  <!-- DataTales Example -->
-  <div class="card shadow mb-4">
+<!-- DataTales Example -->
+<!-- <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">Teacher List <a data-toggle="modal" data-target="#myModal"><i
             class="fas fa-fw fa-plus-circle"></i></a></h6>
@@ -88,8 +88,86 @@
     </div>
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
-</div>
+</div> -->
 <!-- /.container-fluid -->
+
+
+
+<div id="dashboard-content" style="width: 80vw;">
+  <div class="d-xl-flex justify-content-xl-start">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#"><span>Home</span></a></li>
+      <li class="breadcrumb-item active"><span>Library</span></li>
+    </ol>
+    <div class="float-right d-xl-flex justify-content-xl-end total-number"><span
+        class="d-xl-flex justify-content-xl-end align-items-xl-center">Total number of Staff &amp;
+        Teacher:</span><strong
+        class="d-xl-flex justify-content-xl-center align-items-xl-center total-number-value">500</strong></div>
+  </div>
+  <div class="d-xl-flex justify-content-xl-center align-items-xl-center title teacher-content title-full-width">
+    <div class="d-xl-flex justify-content-xl-center align-items-xl-center left-item-full"><i
+        class="fa fa-user-secret title-icon-left"></i></div>
+    <div class="mid-item"><span
+        class="text-uppercase d-xl-flex justify-content-xl-start align-items-xl-center list-title">staff &amp;
+        teacher</span></div>
+    <div class="d-xl-flex justify-content-xl-center align-items-xl-center right-item">
+      <span class="add-text">Add Staff &amp; Teacher</span><a data-toggle="modal" data-target="#myModal">
+        <i class="fa fa-plus title-icon-right"></i></a>
+    </div>
+  </div>
+  <div class="d-xl-flex justify-content-xl-center align-items-xl-start list-wrapper">
+    <div class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list full-width">
+      <div class="table-responsive table-bordered">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="tbl-large-head">NAME</th>
+              <th class="tbl-large-head">POSITION</th>
+              <th class="tbl-small-head">DATE CREATED</th>
+              <th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td *ngIf="error && !showSpinner" class="no-content" colspan="5">
+                <p>No user added yet</p>
+              </td>
+            </tr>
+            <tr *ngIf="showSpinner">
+              <td colspan="5">
+                <app-loading-spinner></app-loading-spinner>
+              </td>
+            </tr>
+            <ng-container *ngIf="showSpinner === false">
+              <tr class="teacher-data" *ngFor="
+                let staff of people
+                  | filter: searchText
+                  | paginate: { itemsPerPage: viewList, currentPage: p };
+                let i = index">
+                <td>
+                  <a class="link-to-list" href="#">
+                    <div class="d-xl-flex align-items-xl-center list-content-item"><img
+                        class="border rounded-circle border-primary teacher-list-img"
+                        src="../../../../../../../assets/images/profile.jpg"><span
+                        class="d-xl-flex align-items-xl-center listed-user">{{ staff.username }}</span>
+                      <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
+                          class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
+                          class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
+                      </div>
+                    </div>
+                  </a>
+                </td>
+                <td class="text-left">{{ staff.position }}</td>
+                <td class="text-left">{{ staff.created }}</td>
+                <td class="text-left">Active</td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -130,7 +208,8 @@
               placeholder="Enter email" formControlName="lastname">
           </div> -->
           <div class="form-group">
-            <label for="inputLastName">Postition <span class="validator" *ngIf="position.invalid && position.touched"> -
+            <label for="inputLastName">Postition <span class="validator" *ngIf="position.invalid && position.touched">
+                -
                 Position is required</span></label>
             <input type="text" class="form-control" id="inputPosition" aria-describedby="positionHelp"
               placeholder="Enter Position" formControlName="position">
@@ -142,13 +221,15 @@
               placeholder="Enter Department" formControlName="department">
           </div>
           <div class="form-group">
-            <label for="inputLastName">Username <span class="validator" *ngIf="username.invalid && username.touched"> -
+            <label for="inputLastName">Username <span class="validator" *ngIf="username.invalid && username.touched">
+                -
                 Lastname is required</span></label>
             <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp"
               placeholder="Enter username" formControlName="username">
           </div>
           <div class="form-group">
-            <label for="inputPassword">Password <span class="validator" *ngIf="password.invalid && password.touched"> -
+            <label for="inputPassword">Password <span class="validator" *ngIf="password.invalid && password.touched">
+                -
                 Input 6 character or more</span></label>
             <input type="password" class="form-control" id="inputPassword" placeholder="Password"
               formControlName="password">

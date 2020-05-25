@@ -8,3 +8,47 @@
     font-size: 20px;
     text-align: center;
 }
+
+#dashboard-content {
+    background-color: #dddddd !important;
+    width: 80vw;
+}
+
+.hide {
+    display: none !important;
+}
+
+.teacher-list-img {
+    width: 50px;
+    height: 50px;
+}
+
+.teacher-data:hover {
+    background-color: #1cd66a4b;
+}
+
+.link-to-list:hover {
+    cursor: pointer;
+    .list-content-item:hover {
+        .hide {
+            display: flex !important;
+        }
+        .listed-user {
+            color: #1b1a3d;
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+}
+
+.list-options {
+    padding-right: 30px;
+}
+
+.list-content-item {
+    width: 100%;
+}
+
+.listed-user {
+    width: 100%;
+}
