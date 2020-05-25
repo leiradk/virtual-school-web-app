@@ -155,7 +155,7 @@
     </ng-container>
 
     <div class="empty-room-container" *ngIf="!showSpinner && !invitationsExist">
-      <p class="empty-room">No invitations found yet</p>
+      <p class="empty-room">{{errorMessage}}</p>
     </div>
     <div *ngIf="showSpinner" style="width: 100%;">
       <app-loading-spinner></app-loading-spinner>

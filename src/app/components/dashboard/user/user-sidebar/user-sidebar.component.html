@@ -18,7 +18,8 @@
                 </div>
                 <div class="user-info">
                     <span class="user-name">DK
-                        <strong>Teacher</strong>
+                        <strong *ngIf="userType === '10003'">Student</strong>
+                        <strong *ngIf="userType === '10002'">Teacher</strong>
                     </span>
                     <span class="user-role">Teacher</span>
                     <span class="user-status">

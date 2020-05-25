@@ -22,6 +22,7 @@ export class StudentInvitationsComponent implements OnInit {
   invitationsDetails: any;
 
   invitationsExist: boolean = false;
+  errorMessage: any;
   constructor(
     private apiService: ApiHostService,
     private toastr: ToastrService,
@@ -85,18 +86,26 @@ export class StudentInvitationsComponent implements OnInit {
                   this.invitationsExist = true;
                 } else {
                   this.invitationsExist = false;
+                  this.errorMessage = "No invitations found yet"
                 }
 
               } else {
                 this.invitationsExist = false;
+                this.errorMessage = "No invitations found yet"
               }
             }
           }
-          
+
         }
       }, (error: any) => {
+        const { status } = error.error;
         this.invitationsExist = false;
         this.showSpinner = false;
+        if (status === 500) {
+          this.errorMessage = "Something went wrong, please try again"
+        } else {
+          this.errorMessage = "No invitations found yet";
+        }
       });
   }
 }

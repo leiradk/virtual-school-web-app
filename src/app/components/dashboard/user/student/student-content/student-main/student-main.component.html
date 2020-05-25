@@ -9,7 +9,7 @@
   <app-loading-spinner></app-loading-spinner>
 </div>
 <div class="empty-room-container" *ngIf="!showSpinner && !roomExists">
-  <p class="empty-room">No class found yet</p>
+  <p class="empty-room">{{errorMessage}}</p>
 </div>
 
 <div *ngIf="!errorData && roomExists" class="subject-lists">
