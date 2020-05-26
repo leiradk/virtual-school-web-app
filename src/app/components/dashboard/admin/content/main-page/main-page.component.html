@@ -23,28 +23,29 @@
             <div class="d-flex d-md-flex d-lg-flex d-xl-flex justify-content-xl-center list-body">
                 <!-- Start: list content wrapper -->
                 <div class="list-content-wrapper">
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar1.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Twila Kate McDonald</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
+                    <p *ngIf="teacherSpinner"
+                        class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
+                        <app-loading-spinner></app-loading-spinner>
+                    </p>
+                    <p *ngIf="teacherError && !teacherSpinner"
+                        class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
+                        {{teacherMessage}}
+                    </p>
+                    <p *ngIf="!teacherSpinner && !teacherError">
+                        <a *ngFor="let teacher of teacherData" class="link-to-list" href="#">
+                            <div class="d-xl-flex align-items-xl-center list-content-item"><img
+                                    class="border rounded-circle border-primary teacher-list-img"
+                                    src="../../../../../../assets/admin/img/avatars/avatar1.jpeg"><span
+                                    class="d-xl-flex align-items-xl-center listed-user">{{teacher.username}}</span>
+                                <div
+                                    class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
+                                    <i
+                                        class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
+                                        class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar1.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Twila Kate McDonald</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    </p>
                 </div>
                 <!-- End: list content wrapper -->
             </div>
@@ -103,171 +104,31 @@
             <div class="d-flex d-md-flex d-lg-flex d-xl-flex justify-content-xl-center list-body">
                 <!-- Start: list content wrapper -->
                 <div class="list-content-wrapper">
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item hide"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
+                    <p *ngIf="studentSpinner"
+                        class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
+                        <app-loading-spinner></app-loading-spinner>
+                    </p>
+                    <p *ngIf="studentError && !studentSpinner"
+                        class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
+                        {{studentMessage}}
+                    </p>
+                    <p *ngIf="!studentError && !studentSpinner">
+                        <a *ngFor="let student of studentData" class="link-to-list" href="#">
+                            <div class="d-xl-flex align-items-xl-center list-content-item"><img
+                                    class="border rounded-circle border-primary teacher-list-img"
+                                    src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
+                                    class="d-xl-flex align-items-xl-center listed-user">{{student.username}}</span>
+                                <div
+                                    class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
+                                    <i
+                                        class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
+                                        class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="link-to-list" href="#">
-                        <div class="d-xl-flex align-items-xl-center list-content-item"><img
-                                class="border rounded-circle border-primary teacher-list-img"
-                                src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                class="d-xl-flex align-items-xl-center listed-user">Mel Vin</span>
-                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"><i
-                                    class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                                    class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    </p>
+
+
                 </div>
                 <!-- End: list content wrapper -->
             </div>
