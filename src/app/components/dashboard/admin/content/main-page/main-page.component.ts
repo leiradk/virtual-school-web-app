@@ -22,6 +22,12 @@ export class MainPageComponent implements OnInit {
   teacherSpinner: boolean = true;
   teacherError: boolean = false;
   teacherMessage: any;
+
+  //teacher variables
+  parentData: any = [];
+  parentSpinner: boolean = true;
+  parentError: boolean = false;
+  parentMessage: any;
   constructor(
     private system: SystemUtils,
     private router: Router,
@@ -48,6 +54,7 @@ export class MainPageComponent implements OnInit {
     }
     this.studentList();
     this.teacherList();
+    this.parentsList();
   }
 
   studentList() {
@@ -99,6 +106,35 @@ export class MainPageComponent implements OnInit {
           this.teacherMessage = "Unauthorized Access of Data"
         } else if (status === 404) {
           this.teacherMessage = "Opps! Looks like this list is empty."
+        }
+
+      })
+  }
+
+  // http://139.162.238.76:8000/vs/admin/list/parents?token=tokenhere
+  parentsList() {
+    //get data list for Parents
+    const { token } = this.data;
+    this.apiService.getParents(token)
+      .subscribe((response: any) => {
+        this.parentError = false;
+        this.parentSpinner = false;
+        const { status, body } = response;
+        if (status === 200) {
+          this.parentData = body;
+          console.log(this.parentData)
+        }
+      }, (error: any) => {
+        console.log(error);
+        const { status, message } = error.error;
+        this.parentSpinner = false;
+        this.parentError = true;
+        if (status === 500) {
+          this.parentMessage = "Ops. Something went wrong, Please try again"
+        } else if (status === 401) {
+          this.parentMessage = "Unauthorized Access of Data"
+        } else if (status === 404) {
+          this.parentMessage = "Opps! Looks like this list is empty."
         }
 
       })

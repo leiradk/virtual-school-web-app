@@ -194,6 +194,18 @@ export class ApiHostService {
       );
   }
 
+  // get list student for the admin
+  getParents(token) {
+    return this.https.get(`${this.localhost}admin/list/parents?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
   //get classroom for a teacher
   getClassroom(token) {
     return this.https.get(`${this.localhost}teacher/get/classes?token=${token}`)
@@ -241,7 +253,7 @@ export class ApiHostService {
         })
       );
   }
-  
+
   //get all classroom invitations for a student
   getInvitedStudents(id, token) {
     return this.https.get(`${this.localhost}teacher/list/invited/by/class?classID=${id}&token=${token}`)

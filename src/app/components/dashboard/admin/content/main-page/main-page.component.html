@@ -74,8 +74,29 @@
             <div class="d-flex d-md-flex d-lg-flex d-xl-flex justify-content-xl-center list-body">
                 <!-- Start: list content wrapper -->
                 <div class="list-content-wrapper">
-                    <p class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
-                        Opps! Looks like this list is empty.</p>
+                    <p *ngIf="teacherSpinner"
+                        class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
+                        <app-loading-spinner></app-loading-spinner>
+                    </p>
+                    <p *ngIf="parentError && !parentSpinner"
+                        class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
+                        {{parentMessage}}
+                    </p>
+                    <p *ngIf="!parentError && !parentSpinner">
+                        <a *ngFor="let parent of parentData" class="link-to-list" href="#">
+                            <div class="d-xl-flex align-items-xl-center list-content-item"><img
+                                    class="border rounded-circle border-primary teacher-list-img"
+                                    src="../../../../../../assets/admin/img/avatars/avatar1.jpeg"><span
+                                    class="d-xl-flex align-items-xl-center listed-user">parent</span>
+                                <div
+                                    class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
+                                    <i
+                                        class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
+                                        class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </p>
                 </div>
                 <!-- End: list content wrapper -->
             </div>
