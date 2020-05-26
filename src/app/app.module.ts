@@ -81,6 +81,7 @@ import { CheckUsersComponent } from './components/dashboard/user/room-details/st
 import { CheckWorkComponent } from './components/dashboard/user/room-details/student-side/check-work/check-work.component';
 import { CheckDetailsComponent } from './components/dashboard/user/room-details/student-side/check-work/check-details/check-details.component';
 import { CheckClassWorkComponent } from './components/dashboard/user/room-details/student-side/check-work/check-class-work/check-class-work.component';
+import { ArchivesComponent } from './components/dashboard/admin/content/list-page/archives/archives.component';
 
 @NgModule({
   declarations: [
@@ -143,6 +144,7 @@ import { CheckClassWorkComponent } from './components/dashboard/user/room-detail
     CheckWorkComponent,
     CheckDetailsComponent,
     CheckClassWorkComponent,
+    ArchivesComponent,
   ],
   imports: [
     BrowserModule,

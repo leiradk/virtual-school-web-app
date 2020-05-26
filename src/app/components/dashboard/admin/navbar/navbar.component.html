@@ -1,26 +1,58 @@
 <!-- Start: Navigation with Search -->
 <nav class="navbar navbar-light navbar-expand-md navigation-clean-search" id="navbar-admin">
-  <div class="container-fluid"><a class="navbar-brand" href="#"><img class="logo-img" src="../../../../../assets/images/logo.png"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-      <div
-          class="collapse navbar-collapse d-lg-flex d-xl-flex justify-content-lg-end justify-content-xl-end" id="navcol-1">
-          <!-- Start: Search Field With Icon -->
-          <div class="search-container"><input type="text" class="search-input" name="search-bar" placeholder="Search Here" style="width: 300px;"><button class="btn btn-light border rounded-0 search-btn" type="button"> <i class="fa fa-search"></i></button></div>
-          <!-- End: Search Field With Icon -->
-          <!-- Start: notif & message -->
-          <div>
-              <!-- Start: notification --><i class="fa fa-bell border rounded-0 notification" data-bs-hover-animate="rubberBand"></i>
-              <!-- End: notification -->
-              <!-- Start: messages --><i class="fa fa-envelope border rounded-0 messages" data-bs-hover-animate="rubberBand"></i>
-              <!-- End: messages -->
-          </div>
-          <!-- End: notif & message -->
-          <!-- Start: Profile image -->
-          <div><img class="border rounded-circle border-primary profile-img" src="../../../../../assets/teacher/images/classwork/people/teacher/guy-9.jpg"></div>
-          <!-- End: Profile image -->
-          <!-- Start: Profile and Account Settings -->
-          <div class="account-settings"><strong class="account-name">Blythe Lobrigas<i class="fa fa-chevron-down account-dropdown"></i></strong><span class="d-xl-flex align-items-xl-start account-type">Administrator</span></div>
-          <!-- End: Profile and Account Settings -->
-  </div>
+  <div class="container-fluid"><a class="navbar-brand" href="#"><img class="logo-img"
+        src="../../../../../assets/images/logo.png"></a><button data-toggle="collapse" class="navbar-toggler"
+      data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+        class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse d-lg-flex d-xl-flex justify-content-lg-end justify-content-xl-end"
+      id="navcol-1">
+      <!-- Start: Search Field With Icon -->
+      <div class="search-container"><input type="text" class="search-input" name="search-bar" placeholder="Search Here"
+          style="width: 300px;"><button class="btn btn-light border rounded-0 search-btn" type="button"> <i
+            class="fa fa-search"></i></button></div>
+      <!-- End: Search Field With Icon -->
+      <!-- Start: notif & message -->
+      <div>
+        <!-- Start: notification --><i class="fa fa-bell border rounded-0 notification"
+          data-bs-hover-animate="rubberBand"></i>
+        <!-- End: notification -->
+        <!-- Start: messages --><i class="fa fa-envelope border rounded-0 messages"
+          data-bs-hover-animate="rubberBand"></i>
+        <!-- End: messages -->
+      </div>
+      <!-- End: notif & message -->
+      <!-- Start: Profile image -->
+      <div><img class="border rounded-circle border-primary profile-img"
+          src="../../../../../assets/teacher/images/classwork/people/teacher/guy-9.jpg"></div>
+      <!-- End: Profile image -->
+      <!-- Start: Profile and Account Settings -->
+      <div class="account-settings" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false"><strong class="account-name">Blythe Lobrigas<i
+            class="fa fa-chevron-down account-dropdown"></i></strong><span
+          class="d-xl-flex align-items-xl-start account-type">Administrator</span>
+      </div>
+      <!-- Dropdown - User Information -->
+      <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+        <a class="dropdown-item" href="#">
+          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+          Profile
+        </a>
+        <a class="dropdown-item" href="#">
+          <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+          Settings
+        </a>
+        <a class="dropdown-item" href="#">
+          <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+          Activity Log
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+          Logout
+        </a>
+      </div>
+      <!-- End: Profile and Account Settings -->
+    </div>
   </div>
 </nav>
 <!-- End: Navigation with Search -->
