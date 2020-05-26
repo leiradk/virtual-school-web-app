@@ -111,6 +111,8 @@ export class MainPageComponent implements OnInit {
           this.studentMessage = "Unauthorized Access of Data"
         } else if (status === 404) {
           this.studentMessage = "Opps! Looks like this list is empty."
+        } else {
+          this.studentMessage = "Ops. Something went wrong, Please try again"
         }
       });
   }
@@ -157,6 +159,8 @@ export class MainPageComponent implements OnInit {
           this.teacherMessage = "Unauthorized Access of Data"
         } else if (status === 404) {
           this.teacherMessage = "Opps! Looks like this list is empty."
+        } else {
+          this.teacherMessage = "Ops. Something went wrong, Please try again"
         }
 
       })
@@ -206,6 +210,8 @@ export class MainPageComponent implements OnInit {
           this.parentMessage = "Unauthorized Access of Data"
         } else if (status === 404) {
           this.parentMessage = "Opps! Looks like this list is empty."
+        } else {
+          this.parentMessage = "Ops. Something went wrong, Please try again"
         }
 
       })

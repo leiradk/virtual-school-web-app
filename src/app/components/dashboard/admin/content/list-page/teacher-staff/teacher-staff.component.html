@@ -130,7 +130,7 @@
           <tbody>
             <tr>
               <td *ngIf="error && !showSpinner" class="no-content" colspan="5">
-                <p>No user added yet</p>
+                <p>{{teacherMessage}}</p>
               </td>
             </tr>
             <tr *ngIf="showSpinner">

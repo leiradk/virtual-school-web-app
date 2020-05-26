@@ -8,6 +8,9 @@ import {
 import { ApiHostService } from "../../../../../../services/api-host.service";
 import { ToastrService } from "ngx-toastr";
 import { SystemUtils } from '../../../../../../services/system.utils';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { AdminListDataService } from "../../../../../../services/admin-list-data.service";
 
 declare var jQuery: any;
 
@@ -25,11 +28,14 @@ export class TeacherStaffComponent implements OnInit {
   viewList: number = 5;
   userData: any;
   error: boolean = false;
+  teacherParams: Observable<string>;
+  teacherMessage: any;
   constructor(
     private fb: FormBuilder,
     private apiService: ApiHostService,
     private toastr: ToastrService,
-    private system: SystemUtils
+    private system: SystemUtils,
+    private adminList: AdminListDataService
   ) {
     this.studentFormModel();
 
@@ -40,9 +46,31 @@ export class TeacherStaffComponent implements OnInit {
   ngOnInit(): void {
     // this.mockData();
     this.userData = this.system.retrieveItem('userData');
-    this.getTeacher();
+    this.teacherParams = this.adminList.teacher;
+    this.checkTeacherList();
   }
 
+  checkTeacherList() {
+    this.teacherParams.pipe(take(1)).subscribe({
+      next: (post) => {
+        console.log(post);
+        if (post === null || post === undefined) {
+          this.getTeacher();
+        } else {
+          this.showSpinner = false;
+          this.error = false;
+          this.people = post;
+        }
+      },
+      error: err => {
+        console.log(err)
+
+      },
+      complete: () => {
+
+      },
+    });
+  }
   //get data list for teacher and staff
   getTeacher() {
     const { token } = this.userData;
@@ -53,13 +81,23 @@ export class TeacherStaffComponent implements OnInit {
         if (status === 200) {
           this.people = body;
           this.showSpinner = false;
+          this.adminList.setTeacher(this.people);
         }
       }, (error: any) => {
-        const { message } = error.error;
+        const { status, message } = error.error;
         setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
         this.addStaffFOrm.reset(); //reset form
         this.showSpinner = false;
         this.error = true;
+        if (status === 500) {
+          this.teacherMessage = "Ops. Something went wrong, Please try again"
+        } else if (status === 401) {
+          this.teacherMessage = "Unauthorized Access of Data"
+        } else if (status === 404) {
+          this.teacherMessage = "Opps! Looks like this list is empty."
+        } else {
+          this.teacherMessage = "Ops. Something went wrong, Please try again"
+        }
 
       })
   }
@@ -116,10 +154,7 @@ export class TeacherStaffComponent implements OnInit {
 
   studentFormModel() {
     this.addStaffFOrm = this.fb.group({
-      // email: [null, [Validators.required, Validators.email]],
-      // firstname: [null, Validators.required],
-      // middlename: [null, Validators.required],
-      // lastname: [null, Validators.required],
+
       position: [null, Validators.required],
       department: [null, Validators.required],
       username: [null, Validators.required],
@@ -130,18 +165,7 @@ export class TeacherStaffComponent implements OnInit {
   }
 
 
-  // get email() {
-  //   return this.addStaffFOrm.get('email') as FormControl;
-  // }
-  // get firstname() {
-  //   return this.addStaffFOrm.get('firstname') as FormControl;
-  // }
-  // get middlename() {
-  //   return this.addStaffFOrm.get('middlename') as FormControl;
-  // }
-  // get lastname() {
-  //   return this.addStaffFOrm.get('lastname') as FormControl;
-  // }
+
   get position() {
     return this.addStaffFOrm.get('position') as FormControl;
   }

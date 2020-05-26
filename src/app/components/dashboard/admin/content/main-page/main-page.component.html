@@ -131,7 +131,7 @@
                     </p>
                     <p *ngIf="studentError && !studentSpinner"
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
-                        {{studentMessage}}
+                        {{studentMessage}} 
                     </p>
                     <p *ngIf="!studentError && !studentSpinner">
                         <a *ngFor="let student of studentData" class="link-to-list" href="#">
