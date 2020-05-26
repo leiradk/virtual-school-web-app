@@ -2,6 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { SystemUtils } from "../../../../../services/system.utils";
 import { Router } from "@angular/router";
 import { ApiHostService } from "../../../../../services/api-host.service";
+import { AdminListDataService } from "../../../../../services/admin-list-data.service";
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: "app-main-page",
@@ -16,22 +19,27 @@ export class MainPageComponent implements OnInit {
   studentSpinner: boolean = true;
   studentError: boolean = false;
   studentMessage: any;
+  studentParams: Observable<string>;
+
 
   //teacher variables
   teacherData: any = [];
   teacherSpinner: boolean = true;
   teacherError: boolean = false;
   teacherMessage: any;
+  teacherParams: Observable<string>;
 
   //teacher variables
   parentData: any = [];
   parentSpinner: boolean = true;
   parentError: boolean = false;
   parentMessage: any;
+  parentParams: Observable<string>;
   constructor(
     private system: SystemUtils,
     private router: Router,
     private apiService: ApiHostService,
+    private adminList: AdminListDataService,
   ) { }
 
   ngOnInit(): void {
@@ -45,18 +53,41 @@ export class MainPageComponent implements OnInit {
         this.router.navigate(["/Landing-Page"]);
       } else {
         const { data } = this.data;
-        console.log(data.usertype);
         if (parseInt(data.usertype) === 10002) {
           this.router.navigate(["/teacher"]);
 
         }
       }
     }
-    this.studentList();
-    this.teacherList();
+    this.studentParams = this.adminList.student;
+    this.teacherParams = this.adminList.teacher;
+    this.parentParams = this.adminList.parent;
+    this.checkTeacherList();
     this.parentsList();
+    this.checkStudentList();
   }
 
+  checkStudentList() {
+    this.studentParams.pipe(take(1)).subscribe({
+      next: (post) => {
+        console.log(post);
+        if (post === null || post === undefined) {
+          this.studentList();
+        } else {
+          this.studentSpinner = false;
+          this.studentError = false;
+          this.studentData = post;
+        }
+      },
+      error: err => {
+        console.log(err)
+
+      },
+      complete: () => {
+
+      },
+    });
+  }
   studentList() {
     const { token } = this.data;
     this.apiService.getStudents(token)
@@ -65,7 +96,7 @@ export class MainPageComponent implements OnInit {
         this.studentError = false;
         if (status === 200) {
           this.studentData = body;
-          console.log(this.studentData);
+          this.adminList.setStudent(this.studentData);
           this.studentSpinner = false;
         }
       }, (error: any) => {
@@ -83,7 +114,27 @@ export class MainPageComponent implements OnInit {
         }
       });
   }
+  checkTeacherList() {
+    this.teacherParams.pipe(take(1)).subscribe({
+      next: (post) => {
+        console.log(post);
+        if (post === null || post === undefined) {
+          this.teacherList();
+        } else {
+          this.teacherSpinner = false;
+          this.teacherError = false;
+          this.teacherData = post;
+        }
+      },
+      error: err => {
+        console.log(err)
 
+      },
+      complete: () => {
+
+      },
+    });
+  }
   teacherList() {
     //get data list for teacher and staff
     const { token } = this.data;
@@ -94,7 +145,7 @@ export class MainPageComponent implements OnInit {
         const { status, body } = response;
         if (status === 200) {
           this.teacherData = body;
-          console.log(this.teacherData)
+          this.adminList.setTeacher(this.teacherData);
         }
       }, (error: any) => {
         const { status, message } = error.error;
@@ -111,7 +162,28 @@ export class MainPageComponent implements OnInit {
       })
   }
 
-  // http://139.162.238.76:8000/vs/admin/list/parents?token=tokenhere
+  checkParentList() {
+    this.parentParams.pipe(take(1)).subscribe({
+      next: (post) => {
+        console.log(post);
+        if (post === null || post === undefined) {
+          this.parentsList();
+        } else {
+          this.parentSpinner = false;
+          this.parentError = false;
+          this.parentData = post;
+        }
+      },
+      error: err => {
+        console.log(err)
+
+      },
+      complete: () => {
+        console.log('completed')
+
+      },
+    });
+  }
   parentsList() {
     //get data list for Parents
     const { token } = this.data;
@@ -122,7 +194,6 @@ export class MainPageComponent implements OnInit {
         const { status, body } = response;
         if (status === 200) {
           this.parentData = body;
-          console.log(this.parentData)
         }
       }, (error: any) => {
         console.log(error);
