@@ -61,9 +61,9 @@ export class ArchivesComponent implements OnInit {
         }
       }
     }
-    this.studentParams = this.adminList.student;
-    this.teacherParams = this.adminList.teacher;
-    this.parentParams = this.adminList.parent;
+    this.studentParams = this.adminList.inactiveStudent;
+    this.teacherParams = this.adminList.inactiveTeacher;
+    this.parentParams = this.adminList.inactiveParent;
     this.checkTeacherList();
     this.parentsList();
     this.checkStudentList();
@@ -72,8 +72,9 @@ export class ArchivesComponent implements OnInit {
   checkStudentList() {
     this.studentParams.pipe(take(1)).subscribe({
       next: (post) => {
+        console.log('post', post);
         console.log(post);
-        if (post === null || post === undefined) {
+        if (post === null || post === undefined || post.length === 0) {
           this.studentList();
         } else {
           this.studentSpinner = false;
@@ -104,12 +105,12 @@ export class ArchivesComponent implements OnInit {
           }
           if (value.length === 0) {
             this.studentError = true;
-            this.adminList.setStudent(null);
+            this.adminList.setInactiveStudent(null);
             this.studentMessage = "Opps! Looks like this list is empty."
           } else {
             this.studentError = false;
             this.studentData = value;
-            this.adminList.setStudent(this.parentData);
+            this.adminList.setInactiveStudent(this.studentData);
           }
 
           this.studentSpinner = false;
@@ -169,12 +170,12 @@ export class ArchivesComponent implements OnInit {
           }
           if (value.length === 0) {
             this.teacherError = true;
-            this.adminList.setTeacher(null);
+            this.adminList.setInactiveTeacher(null);
             this.teacherMessage = "Opps! Looks like this list is empty."
           } else {
             this.teacherError = false;
             this.teacherData = value;
-            this.adminList.setTeacher(this.parentData);
+            this.adminList.setInactiveTeacher(this.teacherData);
           }
         }
       }, (error: any) => {
@@ -239,13 +240,13 @@ export class ArchivesComponent implements OnInit {
             }
           }
           if (value.length === 0) {
-            this.teacherError = true;
-            this.adminList.setTeacher(null);
-            this.teacherMessage = "Opps! Looks like this list is empty."
+            this.parentError = true;
+            this.adminList.setInactiveParents(null);
+            this.parentMessage = "Opps! Looks like this list is empty."
           } else {
-            this.teacherError = false;
-            this.teacherData = value;
-            this.adminList.setTeacher(this.parentData);
+            this.parentError = false;
+            this.parentData = value;
+            this.adminList.setInactiveParents(this.parentData);
           }
           this.parentData = body;
         }
