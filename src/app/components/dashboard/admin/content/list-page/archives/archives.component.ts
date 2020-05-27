@@ -91,6 +91,12 @@ export class ArchivesComponent implements OnInit {
       },
     });
   }
+  refreshStudentList() {
+    console.log('refresh');
+    this.studentError = false;
+    this.studentSpinner = true;
+    this.studentList();
+  }
   studentList() {
     const { token } = this.data;
     this.apiService.getStudents(token)
@@ -122,12 +128,14 @@ export class ArchivesComponent implements OnInit {
         this.studentSpinner = false;
         this.studentError = true;
         if (status === 500) {
+          this.refreshStudent = true;
           this.studentMessage = "Ops. Something went wrong, Click here to try again"
         } else if (status === 401) {
           this.studentMessage = "Unauthorized Access of Data"
         } else if (status === 404) {
           this.studentMessage = "Opps! Looks like this list is empty."
         } else {
+          this.refreshStudent = true;
           this.studentMessage = "Ops. Something went wrong, Click here to try again"
         }
       });
@@ -152,6 +160,12 @@ export class ArchivesComponent implements OnInit {
 
       },
     });
+  }
+  refreshTeacherList() {
+    console.log('refresh');
+    this.teacherError = false;
+    this.teacherSpinner = true;
+    this.teacherList();
   }
   teacherList() {
     //get data list for teacher and staff
@@ -183,12 +197,14 @@ export class ArchivesComponent implements OnInit {
         this.teacherSpinner = false;
         this.teacherError = true;
         if (status === 500) {
+          this.refreshTeacher = true;
           this.teacherMessage = "Ops. Something went wrong, Click here to try again"
         } else if (status === 401) {
           this.teacherMessage = "Unauthorized Access of Data"
         } else if (status === 404) {
           this.teacherMessage = "Opps! Looks like this list is empty."
         } else {
+          this.refreshTeacher = true;
           this.teacherMessage = "Ops. Something went wrong, Click here to try again"
         }
 

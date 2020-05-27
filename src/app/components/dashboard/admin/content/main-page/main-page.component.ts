@@ -90,6 +90,12 @@ export class MainPageComponent implements OnInit {
       },
     });
   }
+  refreshStudentList() {
+    console.log('refresh');
+    this.studentError = false;
+    this.studentSpinner = true;
+    this.studentList();
+  }
   studentList() {
     const { token } = this.data;
     this.apiService.getStudents(token)
@@ -110,7 +116,7 @@ export class MainPageComponent implements OnInit {
           } else {
             this.studentError = false;
             this.studentData = value;
-            this.adminList.setStudent(this.teacherData);
+            this.adminList.setStudent(this.studentData);
           }
           this.studentSpinner = false;
         }
@@ -121,12 +127,14 @@ export class MainPageComponent implements OnInit {
         this.studentSpinner = false;
         this.studentError = true;
         if (status === 500) {
+          this.refreshStudent = true;
           this.studentMessage = "Ops. Something went wrong, Click here to try again"
         } else if (status === 401) {
           this.studentMessage = "Unauthorized Access of Data"
         } else if (status === 404) {
           this.studentMessage = "Opps! Looks like this list is empty."
         } else {
+          this.refreshStudent = true;
           this.studentMessage = "Ops. Something went wrong, Click here to try again"
         }
       });
@@ -152,6 +160,12 @@ export class MainPageComponent implements OnInit {
       },
     });
   }
+  refreshTeacherList() {
+    console.log('refresh');
+    this.teacherError = false;
+    this.teacherSpinner = true;
+    this.teacherList();
+  }
   teacherList() {
     //get data list for teacher and staff
     const { token } = this.data;
@@ -167,6 +181,7 @@ export class MainPageComponent implements OnInit {
               value.push(body[i]);
             }
           }
+          console.log('value', value)
           if (value.length === 0) {
             this.teacherError = true;
             this.adminList.setTeacher(null);
@@ -181,12 +196,14 @@ export class MainPageComponent implements OnInit {
         this.teacherSpinner = false;
         this.teacherError = true;
         if (status === 500) {
+          this.refreshTeacher = true;
           this.teacherMessage = "Ops. Something went wrong, Click here to try again"
         } else if (status === 401) {
           this.teacherMessage = "Unauthorized Access of Data"
         } else if (status === 404) {
           this.teacherMessage = "Opps! Looks like this list is empty."
         } else {
+          this.refreshTeacher = true;
           this.teacherMessage = "Ops. Something went wrong, Click here to try again"
         }
 

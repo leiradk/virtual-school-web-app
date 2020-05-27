@@ -30,7 +30,7 @@
                     <p *ngIf="teacherError && !teacherSpinner"
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
                         {{teacherMessage}}
-                        <a class="refresh-list" (click)="refreshParentList()">
+                        <a *ngIf="refreshTeacher" class="refresh-list" (click)="refreshTeacherList()">
                             <i class="fa fa-refresh"></i>
                         </a>
                     </p>
@@ -85,11 +85,11 @@
                     <p *ngIf="parentError && !parentSpinner"
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
                         {{parentMessage}}
-                        <a class="refresh-list" (click)="refreshParentList()">
+                        <a *ngIf="refreshParent" class="refresh-list" (click)="refreshParentList()">
                             <i class="fa fa-refresh"></i>
                         </a>
                     </p>
-                    <!-- *ngIf="refreshParent" -->
+                    <!--  -->
                     <p *ngIf="!parentError && !parentSpinner">
                         <a *ngFor="let parent of parentData" class="link-to-list" href="#">
                             <div *ngIf="parent.status === 'active'"
@@ -141,7 +141,7 @@
                     <p *ngIf="studentError && !studentSpinner"
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
                         {{studentMessage}}
-                        <a class="refresh-list" (click)="refreshParentList()">
+                        <a *ngIf="studentError" class="refresh-list" (click)="refreshStudentList()">
                             <i class="fa fa-refresh"></i>
                         </a>
                     </p>

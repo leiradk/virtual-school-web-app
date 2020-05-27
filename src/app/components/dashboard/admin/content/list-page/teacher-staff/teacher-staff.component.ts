@@ -46,7 +46,7 @@ export class TeacherStaffComponent implements OnInit {
   ngOnInit(): void {
     // this.mockData();
     this.userData = this.system.retrieveItem('userData');
-    this.teacherParams = this.adminList.teacher;
+    this.teacherParams = this.adminList.allTeacher;
     this.checkTeacherList();
   }
 
@@ -78,19 +78,9 @@ export class TeacherStaffComponent implements OnInit {
       .subscribe((response: any) => {
         this.error = false;
         const { status, body } = response;
-        const value = [];
         if (status === 200) {
-          for (let i = 0; i <= (body.length - 1); i++) {
-            if (body[i].status === 'active') {
-              value.push(body[i]);
-            }
-          }
-          if (value.length === 0) {
-            this.adminList.setTeacher(null);
-          } else {
-            this.people = value;
-            this.adminList.setTeacher(this.people);
-          }
+          this.people = body;
+          this.adminList.setAllTeachers(this.people);
           this.showSpinner = false;
         }
       }, (error: any) => {
