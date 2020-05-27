@@ -27,7 +27,7 @@
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
                         <app-loading-spinner></app-loading-spinner>
                     </p>
-                    <p *ngIf="parentError && !parentSpinner"
+                    <p *ngIf="teacherError && !teacherSpinner"
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
                         {{teacherMessage}}
                         <a class="refresh-list" (click)="refreshParentList()">
@@ -138,7 +138,7 @@
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
                         <app-loading-spinner></app-loading-spinner>
                     </p>
-                    <p *ngIf="parentError && !parentSpinner"
+                    <p *ngIf="studentError && !studentSpinner"
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
                         {{studentMessage}}
                         <a class="refresh-list" (click)="refreshParentList()">
