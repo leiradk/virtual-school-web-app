@@ -29,7 +29,7 @@ export class MainPageComponent implements OnInit {
   teacherMessage: any;
   teacherParams: Observable<string>;
   refreshTeacher: boolean = false;
-  
+
   //parent variables
   parentData: any = [];
   parentSpinner: boolean = true;
@@ -95,10 +95,23 @@ export class MainPageComponent implements OnInit {
     this.apiService.getStudents(token)
       .subscribe((response: any) => {
         const { status, body } = response;
+        const value = [];
         this.studentError = false;
         if (status === 200) {
-          this.studentData = body;
-          this.adminList.setStudent(this.studentData);
+          for (let i = 0; i <= (body.length - 1); i++) {
+            if (body[i].status === 'active') {
+              value.push(body[i]);
+            }
+          }
+          if (value.length === 0) {
+            this.studentError = true;
+            this.adminList.setStudent(null);
+            this.studentMessage = "Opps! Looks like this list is empty."
+          } else {
+            this.studentError = false;
+            this.studentData = value;
+            this.adminList.setStudent(this.teacherData);
+          }
           this.studentSpinner = false;
         }
       }, (error: any) => {
@@ -147,9 +160,21 @@ export class MainPageComponent implements OnInit {
         this.teacherError = false;
         this.teacherSpinner = false;
         const { status, body } = response;
+        const value = [];
         if (status === 200) {
-          this.teacherData = body;
-          this.adminList.setTeacher(this.teacherData);
+          for (let i = 0; i <= (body.length - 1); i++) {
+            if (body[i].status === 'active') {
+              value.push(body[i]);
+            }
+          }
+          if (value.length === 0) {
+            this.teacherError = true;
+            this.adminList.setTeacher(null);
+            this.teacherMessage = "Opps! Looks like this list is empty."
+          } else {
+            this.teacherData = value;
+            this.adminList.setTeacher(this.teacherData);
+          }
         }
       }, (error: any) => {
         const { status, message } = error.error;
@@ -202,11 +227,24 @@ export class MainPageComponent implements OnInit {
     const { token } = this.data;
     this.apiService.getParents(token)
       .subscribe((response: any) => {
-        this.parentError = false;
         this.parentSpinner = false;
         const { status, body } = response;
+        const value = [];
         if (status === 200) {
-          this.parentData = body;
+          for (let i = 0; i <= (body.length - 1); i++) {
+            if (body[i].status === 'active') {
+              value.push(body[i]);
+            }
+          }
+          if (value.length === 0) {
+            this.parentError = true;
+            this.adminList.setParents(null);
+            this.parentMessage = "Opps! Looks like this list is empty."
+          } else {
+            this.parentError = false;
+            this.parentData = value;
+            this.adminList.setParents(this.parentData);
+          }
         }
       }, (error: any) => {
         console.log(error);

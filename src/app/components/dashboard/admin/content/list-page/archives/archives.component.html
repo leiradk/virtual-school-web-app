@@ -61,7 +61,7 @@
                 class="link-to-list"
                 href="#"
               >
-                <div class="d-xl-flex align-items-xl-center list-content-item">
+                <div  *ngIf="teacher.status === 'inactive'" class="d-xl-flex align-items-xl-center list-content-item">
                   <img
                     class="border rounded-circle border-primary teacher-list-img"
                     src="../../../../../../assets/admin/img/avatars/avatar1.jpeg"
@@ -149,7 +149,7 @@
                 class="link-to-list"
                 href="#"
               >
-                <div class="d-xl-flex align-items-xl-center list-content-item">
+                <div *ngIf="parent.status === 'inactive'" class="d-xl-flex align-items-xl-center list-content-item">
                   <img
                     class="border rounded-circle border-primary teacher-list-img"
                     src="../../../../../../assets/admin/img/avatars/avatar1.jpeg"
@@ -233,7 +233,7 @@
                 class="link-to-list"
                 href="#"
               >
-                <div class="d-xl-flex align-items-xl-center list-content-item">
+                <div *ngIf="student.status === 'inactive'" class="d-xl-flex align-items-xl-center list-content-item">
                   <img
                     class="border rounded-circle border-primary teacher-list-img"
                     src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"

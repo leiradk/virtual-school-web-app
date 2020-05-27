@@ -23,7 +23,7 @@ export class TeacherStaffComponent implements OnInit {
   public addStaffFOrm: FormGroup;
 
   searchText;
-  public people: any;
+  public people: any = [];
   p: number = 1;
   viewList: number = 5;
   userData: any;
@@ -78,10 +78,21 @@ export class TeacherStaffComponent implements OnInit {
       .subscribe((response: any) => {
         this.error = false;
         const { status, body } = response;
+        const value = [];
         if (status === 200) {
-          this.people = body;
+          for (let i = 0; i <= (body.length - 1); i++) {
+            if (body[i].status === 'active') {
+              value.push(body[i]);
+            }
+          }
+          if (value.length === 0) {
+            this.adminList.setTeacher(null);
+            console.log('empty');
+          } else {
+            this.people = value;
+            this.adminList.setTeacher(this.people);
+          }
           this.showSpinner = false;
-          this.adminList.setTeacher(this.people);
         }
       }, (error: any) => {
         const { status, message } = error.error;
