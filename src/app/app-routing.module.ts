@@ -1,12 +1,13 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { LoginComponent } from "./components/landing-page/login/login.component";
-import { LandingPageComponent } from "./components/landing-page/landing-page.component";
+// import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { MainPageComponent } from "./components/dashboard/admin/content/main-page/main-page.component";
 import { StudentsComponent } from "./components/dashboard/admin/content/list-page/students/students.component";
 import { TeacherStaffComponent } from "./components/dashboard/admin/content/list-page/teacher-staff/teacher-staff.component";
 import { ParentListComponent } from "./components/dashboard/admin/content/list-page/parent-list/parent-list.component";
+import { ArchivesComponent } from "./components/dashboard/admin/content/list-page/archives/archives.component";
 import { TeacherComponent } from './components/dashboard/user/teacher/teacher.component';
 import { TeacherMainComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-main.component';
 // import { ClassDetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-details.component';
@@ -74,6 +75,10 @@ const routes: Routes = [
       {
         path: "parents-list",
         component: ParentListComponent,
+      },
+      {
+        path: "archive",
+        component: ArchivesComponent,
       },
 
     ],

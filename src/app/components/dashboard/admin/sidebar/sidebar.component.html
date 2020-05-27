@@ -23,6 +23,12 @@
         <i class="fa fa-users list-icon"></i><span style="font-weight: bold;">Student</span>
       </li>
     </a>
+    <a [routerLink]="['/dashboard/archive']" routerLinkActive="active" class="collapse-item">
+      <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
+        [ngClass]="{'active':toggleAchive}">{{toggleSidebar('archive')}}
+        <i class="fa fa-users list-icon"></i><span style="font-weight: bold;">Archive</span>
+      </li>
+    </a>  
   </ul>
 </div>
 <!-- End: sidebar -->
