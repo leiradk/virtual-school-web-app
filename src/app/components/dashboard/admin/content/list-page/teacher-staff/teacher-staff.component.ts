@@ -87,7 +87,6 @@ export class TeacherStaffComponent implements OnInit {
           }
           if (value.length === 0) {
             this.adminList.setTeacher(null);
-            console.log('empty');
           } else {
             this.people = value;
             this.adminList.setTeacher(this.people);
