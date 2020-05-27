@@ -80,9 +80,10 @@
                     </p>
                     <p *ngIf="parentError && !parentSpinner"
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
-                        {{parentMessage}} <br /><a *ngIf="refreshParent" class="refresh-list" style="cursor: pointer;"
+                        {{parentMessage}} <br /><a  class="refresh-list" style="cursor: pointer;"
                             (click)="refreshParentList()"><i class="fa fa-refresh"></i></a>
                     </p>
+                    <!-- *ngIf="refreshParent" -->
                     <p *ngIf="!parentError && !parentSpinner">
                         <a *ngFor="let parent of parentData" class="link-to-list" href="#">
                             <div class="d-xl-flex align-items-xl-center list-content-item"><img
