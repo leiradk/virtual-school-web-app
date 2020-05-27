@@ -80,7 +80,8 @@
                     </p>
                     <p *ngIf="parentError && !parentSpinner"
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
-                        {{parentMessage}}
+                        {{parentMessage}} <br /><a *ngIf="refreshParent" class="refresh-list" style="cursor: pointer;"
+                            (click)="refreshParentList()"><i class="fa fa-refresh"></i></a>
                     </p>
                     <p *ngIf="!parentError && !parentSpinner">
                         <a *ngFor="let parent of parentData" class="link-to-list" href="#">
@@ -131,7 +132,7 @@
                     </p>
                     <p *ngIf="studentError && !studentSpinner"
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
-                        {{studentMessage}} 
+                        {{studentMessage}}
                     </p>
                     <p *ngIf="!studentError && !studentSpinner">
                         <a *ngFor="let student of studentData" class="link-to-list" href="#">

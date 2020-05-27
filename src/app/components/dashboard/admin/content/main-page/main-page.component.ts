@@ -3,7 +3,7 @@ import { SystemUtils } from "../../../../../services/system.utils";
 import { Router } from "@angular/router";
 import { ApiHostService } from "../../../../../services/api-host.service";
 import { AdminListDataService } from "../../../../../services/admin-list-data.service";
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -20,7 +20,7 @@ export class MainPageComponent implements OnInit {
   studentError: boolean = false;
   studentMessage: any;
   studentParams: Observable<string>;
-
+  refreshStudent: boolean = false;
 
   //teacher variables
   teacherData: any = [];
@@ -28,13 +28,15 @@ export class MainPageComponent implements OnInit {
   teacherError: boolean = false;
   teacherMessage: any;
   teacherParams: Observable<string>;
-
-  //teacher variables
+  refreshTeacher: boolean = false;
+  
+  //parent variables
   parentData: any = [];
   parentSpinner: boolean = true;
   parentError: boolean = false;
   parentMessage: any;
   parentParams: Observable<string>;
+  refreshParent: boolean = false;
   constructor(
     private system: SystemUtils,
     private router: Router,
@@ -106,13 +108,13 @@ export class MainPageComponent implements OnInit {
         this.studentSpinner = false;
         this.studentError = true;
         if (status === 500) {
-          this.studentMessage = "Ops. Something went wrong, Please try again"
+          this.studentMessage = "Ops. Something went wrong, Click here to try again"
         } else if (status === 401) {
           this.studentMessage = "Unauthorized Access of Data"
         } else if (status === 404) {
           this.studentMessage = "Opps! Looks like this list is empty."
         } else {
-          this.studentMessage = "Ops. Something went wrong, Please try again"
+          this.studentMessage = "Ops. Something went wrong, Click here to try again"
         }
       });
   }
@@ -154,13 +156,13 @@ export class MainPageComponent implements OnInit {
         this.teacherSpinner = false;
         this.teacherError = true;
         if (status === 500) {
-          this.teacherMessage = "Ops. Something went wrong, Please try again"
+          this.teacherMessage = "Ops. Something went wrong, Click here to try again"
         } else if (status === 401) {
           this.teacherMessage = "Unauthorized Access of Data"
         } else if (status === 404) {
           this.teacherMessage = "Opps! Looks like this list is empty."
         } else {
-          this.teacherMessage = "Ops. Something went wrong, Please try again"
+          this.teacherMessage = "Ops. Something went wrong, Click here to try again"
         }
 
       })
@@ -188,6 +190,13 @@ export class MainPageComponent implements OnInit {
       },
     });
   }
+
+  refreshParentList() {
+    console.log('refresh');
+    this.parentError = false;
+    this.parentSpinner = true;
+    this.parentsList();
+  }
   parentsList() {
     //get data list for Parents
     const { token } = this.data;
@@ -205,13 +214,15 @@ export class MainPageComponent implements OnInit {
         this.parentSpinner = false;
         this.parentError = true;
         if (status === 500) {
-          this.parentMessage = "Ops. Something went wrong, Please try again"
+          this.refreshParent = true;
+          this.parentMessage = "Ops. Something went wrong, Click here to try again"
         } else if (status === 401) {
           this.parentMessage = "Unauthorized Access of Data"
         } else if (status === 404) {
           this.parentMessage = "Opps! Looks like this list is empty."
         } else {
-          this.parentMessage = "Ops. Something went wrong, Please try again"
+          this.refreshParent = true;
+          this.parentMessage = "Ops. Something went wrong, Click here to try again"
         }
 
       })
