@@ -95,10 +95,23 @@ export class ArchivesComponent implements OnInit {
     this.apiService.getStudents(token)
       .subscribe((response: any) => {
         const { status, body } = response;
-        this.studentError = false;
+        const value = [];
         if (status === 200) {
-          this.studentData = body;
-          this.adminList.setStudent(this.studentData);
+          for (let i = 0; i <= (body.length - 1); i++) {
+            if (body[i].status === 'inactive') {
+              value.push(body[i]);
+            }
+          }
+          if (value.length === 0) {
+            this.studentError = true;
+            this.adminList.setStudent(null);
+            this.studentMessage = "Opps! Looks like this list is empty."
+          } else {
+            this.studentError = false;
+            this.studentData = value;
+            this.adminList.setStudent(this.parentData);
+          }
+
           this.studentSpinner = false;
         }
       }, (error: any) => {
@@ -147,9 +160,22 @@ export class ArchivesComponent implements OnInit {
         this.teacherError = false;
         this.teacherSpinner = false;
         const { status, body } = response;
+        const value = [];
         if (status === 200) {
-          this.teacherData = body;
-          this.adminList.setTeacher(this.teacherData);
+          for (let i = 0; i <= (body.length - 1); i++) {
+            if (body[i].status === 'inactive') {
+              value.push(body[i]);
+            }
+          }
+          if (value.length === 0) {
+            this.teacherError = true;
+            this.adminList.setTeacher(null);
+            this.teacherMessage = "Opps! Looks like this list is empty."
+          } else {
+            this.teacherError = false;
+            this.teacherData = value;
+            this.adminList.setTeacher(this.parentData);
+          }
         }
       }, (error: any) => {
         const { status, message } = error.error;
@@ -205,7 +231,22 @@ export class ArchivesComponent implements OnInit {
         this.parentError = false;
         this.parentSpinner = false;
         const { status, body } = response;
+        const value = [];
         if (status === 200) {
+          for (let i = 0; i <= (body.length - 1); i++) {
+            if (body[i].status === 'inactive') {
+              value.push(body[i]);
+            }
+          }
+          if (value.length === 0) {
+            this.teacherError = true;
+            this.adminList.setTeacher(null);
+            this.teacherMessage = "Opps! Looks like this list is empty."
+          } else {
+            this.teacherError = false;
+            this.teacherData = value;
+            this.adminList.setTeacher(this.parentData);
+          }
           this.parentData = body;
         }
       }, (error: any) => {
