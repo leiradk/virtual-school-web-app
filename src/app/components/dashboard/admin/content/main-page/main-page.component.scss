@@ -35,4 +35,14 @@
 
 .refresh-list {
     cursor: pointer;
+    padding-top: 20px;
+}
+
+.refresh-list:hover {
+    color: #007bff !important;
+    cursor: pointer !important;
+}
+
+.empty-list-text {
+    flex-direction: column !important;
 }

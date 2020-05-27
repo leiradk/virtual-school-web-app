@@ -27,9 +27,12 @@
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
                         <app-loading-spinner></app-loading-spinner>
                     </p>
-                    <p *ngIf="teacherError && !teacherSpinner"
+                    <p *ngIf="parentError && !parentSpinner"
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
                         {{teacherMessage}}
+                        <a class="refresh-list" (click)="refreshParentList()">
+                            <i class="fa fa-refresh"></i>
+                        </a>
                     </p>
                     <p *ngIf="!teacherSpinner && !teacherError">
                         <a *ngFor="let teacher of teacherData" class="link-to-list" href="#">
@@ -81,8 +84,10 @@
                     </p>
                     <p *ngIf="parentError && !parentSpinner"
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
-                        {{parentMessage}} <br /><a class="refresh-list" style="cursor: pointer;"
-                            (click)="refreshParentList()"><i class="fa fa-refresh"></i></a>
+                        {{parentMessage}}
+                        <a class="refresh-list" (click)="refreshParentList()">
+                            <i class="fa fa-refresh"></i>
+                        </a>
                     </p>
                     <!-- *ngIf="refreshParent" -->
                     <p *ngIf="!parentError && !parentSpinner">
@@ -133,9 +138,12 @@
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
                         <app-loading-spinner></app-loading-spinner>
                     </p>
-                    <p *ngIf="studentError && !studentSpinner"
+                    <p *ngIf="parentError && !parentSpinner"
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
                         {{studentMessage}}
+                        <a class="refresh-list" (click)="refreshParentList()">
+                            <i class="fa fa-refresh"></i>
+                        </a>
                     </p>
                     <p *ngIf="!studentError && !studentSpinner">
                         <a *ngFor="let student of studentData" class="link-to-list" href="#">
