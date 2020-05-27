@@ -1,41 +1,35 @@
-.fa-plus-circle {
-    cursor: pointer;
-}
-
-.no-content {
-    color: #c0c0c0;
-    font-weight: bold;
-    font-size: 20px;
-    text-align: center;
-}
-
 #dashboard-content {
     background-color: #dddddd !important;
     width: 80vw;
 }
 
-.hide {
-    display: none !important;
+// .hide {
+//   // display: none !important;
+//   color: rgba(33, 37, 41, 0.28);
+// }
+
+.option-edit,
+.option-delete {
+    color: rgba(33, 37, 41, 0.28) !important;
+    padding-right: 10px !important;
 }
 
-.teacher-list-img {
-    width: 50px;
-    height: 50px;
+.option-edit:hover {
+    color: #2ccb6f !important;
 }
-
-.teacher-data:hover {
-    background-color: #1cd66a4b;
+.option-delete:hover {
+    color: #cd3232 !important;
 }
 
 .link-to-list:hover {
     cursor: pointer;
     .list-content-item:hover {
         .hide {
-            display: flex !important;
+            color: #1b1a3d;
         }
         .listed-user {
             color: #1b1a3d;
-            font-size: 20px;
+            font-size: 18px !important;
             font-weight: 700;
         }
     }
@@ -53,6 +47,26 @@
     width: 100%;
 }
 
-.list-wrapper{
-    height: 75vh !important;
+.refresh-list {
+    cursor: pointer;
+    padding-top: 20px;
+}
+
+.refresh-list:hover {
+    color: #007bff !important;
+    cursor: pointer !important;
+}
+
+.empty-list-text {
+    flex-direction: column !important;
+}
+
+.title,
+.footer {
+    height: 10% !important;
+}
+
+.teacher-list-img {
+    width: 50px !important;
+    height: 50px !important;
 }

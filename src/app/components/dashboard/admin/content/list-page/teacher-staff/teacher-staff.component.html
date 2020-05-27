@@ -172,11 +172,8 @@
                 <td class="text-left">{{staff.status}}</td>
               </ng-container>
 
-
-            </tr>
-            <tr *ngIf="people.length === 0">
-              <td class="no-content" colspan="5">
-                <p>Opps! Looks like this list is empty.</p>
+              <td *ngIf="people.length === 0" class="no-content" colspan="5">
+                <p>empty</p>
               </td>
             </tr>
           </tbody>

@@ -4,32 +4,32 @@
     <a [routerLink]="['/dashboard/main']" routerLinkActive="active" class="collapse-item">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleDashboard}">{{toggleSidebar('dashboard')}}
-        <i class="fa fa-user-secret list-icon"></i><span style="font-weight: bold;">Dashboard</span></li>
+        <i class="fas fa-tachometer-alt side-icon"></i><span style="font-weight: bold;">Dashboard</span></li>
     </a>
     <a [routerLink]="['/dashboard/staff-teacher-lists']" routerLinkActive="active" class="collapse-item">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleStaff}">{{toggleSidebar('staff')}}
-        <i class="fa fa-user-secret list-icon"></i><span style="font-weight: bold;">Staff &amp; Teacher</span></li>
+        <i class="fas fa-chalkboard-teacher side-icon"></i><span style="font-weight: bold;">Staff &amp; Teacher</span></li>
     </a>
     <!-- [routerLink]="['/dashboard/parents-list']" -->
     <a routerLinkActive="active" class="collapse-item disabled">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleParent}">{{toggleSidebar('parent')}}
-        <i class="fa fa-users list-icon"></i><span class="disabled" style="font-weight: bold;">Parent/Guardian</span>
+        <i class="fas fa-users side-icon"></i><span class="disabled" style="font-weight: bold;">Parent/Guardian</span>
       </li>
     </a>
     <a [routerLink]="['/dashboard/student-lists']" routerLinkActive="active" class="collapse-item">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleStudent}">{{toggleSidebar('student')}}
-        <i class="fa fa-users list-icon"></i><span style="font-weight: bold;">Student</span>
+        <i class="fas fa-user-graduate side-icon"></i><span style="font-weight: bold;">Student</span>
       </li>
     </a>
     <a [routerLink]="['/dashboard/archive']" routerLinkActive="active" class="collapse-item">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleAchive}">{{toggleSidebar('archive')}}
-        <i class="fa fa-users list-icon"></i><span style="font-weight: bold;">Archive</span>
+        <i class="fas fa-archive side-icon"></i><span style="font-weight: bold;">Archive</span>
       </li>
-    </a>  
+    </a>
   </ul>
 </div>
 <!-- End: sidebar -->
