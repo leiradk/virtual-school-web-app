@@ -11,7 +11,8 @@
         [ngClass]="{'active':toggleStaff}">{{toggleSidebar('staff')}}
         <i class="fa fa-user-secret list-icon"></i><span style="font-weight: bold;">Staff &amp; Teacher</span></li>
     </a>
-    <a [routerLink]="['/dashboard/parents-list']" routerLinkActive="active" class="collapse-item disabled">
+    <!-- [routerLink]="['/dashboard/parents-list']" -->
+    <a routerLinkActive="active" class="collapse-item disabled">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleParent}">{{toggleSidebar('parent')}}
         <i class="fa fa-users list-icon"></i><span class="disabled" style="font-weight: bold;">Parent/Guardian</span>
