@@ -1,3 +1,27 @@
 #dashboard-wrapper {
   width: 80vw !important;
 }
+
+.refresh-list {
+  cursor: pointer;
+  padding-top: 20px;
+}
+
+.refresh-list:hover {
+  color: #007bff !important;
+  cursor: pointer !important;
+}
+
+.empty-list-text {
+  flex-direction: column !important;
+}
+
+.title,
+.footer {
+  height: 10% !important;
+}
+
+.listed-user,
+.listed-user:hover {
+  color: #cd3232 !important;
+}

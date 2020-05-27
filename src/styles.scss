@@ -1,15 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 /* update your 'styles.css' with */
-@import '~bootstrap/dist/css/bootstrap.css';
+@import "~bootstrap/dist/css/bootstrap.css";
 
 /* or your 'styles.scss' with */
 @import "~bootstrap/scss/bootstrap";
 
 //regular style toast
-@import '~ngx-toastr/toastr.css';
+@import "~ngx-toastr/toastr.css";
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    font-family: "Barlow Semi Condensed", sans-serif !important;
+}
