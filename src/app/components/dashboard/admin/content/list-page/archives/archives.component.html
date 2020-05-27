@@ -1,1 +1,272 @@
-<p>archives works!</p>
+<!-- Start: content -->
+<div id="dashboard-wrapper">
+  <div id="dashboard-content">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#"><span>Dashboard</span></a>
+      </li>
+      <li class="breadcrumb-item active"><span>Archive</span></li>
+    </ol>
+    <!-- Start: list wrapper -->
+    <div
+      class="d-lg-flex d-xl-flex justify-content-lg-start justify-content-xl-start list-wrapper"
+    >
+      <!-- Start: list content -->
+      <div
+        class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list"
+      >
+        <!-- Start: title -->
+        <div class="d-xl-flex align-items-xl-center title teacher-content">
+          <div
+            class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"
+          >
+            <i class="fa fa-user-secret title-icon-left"></i>
+          </div>
+          <div
+            class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item"
+          >
+            <span
+              class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title"
+              >staff &amp; teacher</span
+            >
+          </div>
+          <div
+            class="d-xl-flex justify-content-xl-center align-items-xl-center right-item"
+          >
+            <i class="fa fa-plus title-icon-right"></i>
+          </div>
+        </div>
+        <!-- End: title -->
+        <!-- Start: list-body -->
+        <div
+          class="d-flex d-md-flex d-lg-flex d-xl-flex justify-content-xl-center list-body"
+        >
+          <!-- Start: list content wrapper -->
+          <div class="list-content-wrapper">
+            <p
+              *ngIf="teacherSpinner"
+              class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text"
+            >
+              <app-loading-spinner></app-loading-spinner>
+            </p>
+            <p
+              *ngIf="teacherError && !teacherSpinner"
+              class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text"
+            >
+              {{ teacherMessage }}
+            </p>
+            <p *ngIf="!teacherSpinner && !teacherError">
+              <a
+                *ngFor="let teacher of teacherData"
+                class="link-to-list"
+                href="#"
+              >
+                <div class="d-xl-flex align-items-xl-center list-content-item">
+                  <img
+                    class="border rounded-circle border-primary teacher-list-img"
+                    src="../../../../../../assets/admin/img/avatars/avatar1.jpeg"
+                  /><span class="d-xl-flex align-items-xl-center listed-user">{{
+                    teacher.username
+                  }}</span>
+                  <div
+                    class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"
+                  >
+                    <i
+                      class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"
+                    ></i
+                    ><i
+                      class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"
+                    ></i>
+                  </div>
+                </div>
+              </a>
+            </p>
+          </div>
+          <!-- End: list content wrapper -->
+        </div>
+        <!-- End: list-body -->
+        <!-- Start: list footer -->
+        <div class="d-xl-flex align-items-xl-center footer">
+          <span
+            class="text-capitalize text-center d-lg-flex d-xl-flex justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center footer-view-all"
+            >View All Teacher &amp; Staff</span
+          >
+        </div>
+        <!-- End: list footer -->
+      </div>
+      <!-- End: list content -->
+      <!-- Start: list content -->
+      <div
+        class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list"
+      >
+        <!-- Start: title -->
+        <div class="d-xl-flex align-items-xl-center title parent-content">
+          <div
+            class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"
+          >
+            <i class="fa fa-users title-icon-left"></i>
+          </div>
+          <div class="d-lg-flex justify-content-lg-center mid-item">
+            <span
+              class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title"
+              >parent/guardian</span
+            >
+          </div>
+          <div
+            class="d-xl-flex justify-content-xl-center align-items-xl-center right-item"
+          >
+            <i class="fa fa-plus title-icon-right"></i>
+          </div>
+        </div>
+        <!-- End: title -->
+        <!-- Start: list-body -->
+        <div
+          class="d-flex d-md-flex d-lg-flex d-xl-flex justify-content-xl-center list-body"
+        >
+          <!-- Start: list content wrapper -->
+          <div class="list-content-wrapper">
+            <p
+              *ngIf="parentSpinner"
+              class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text"
+            >
+              <app-loading-spinner></app-loading-spinner>
+            </p>
+            <p
+              *ngIf="parentError && !parentSpinner"
+              class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text"
+            >
+              {{ parentMessage }} <br /><a
+                *ngIf="refreshParent"
+                class="refresh-list"
+                style="cursor: pointer;"
+                (click)="refreshParentList()"
+                ><i class="fa fa-refresh"></i
+              ></a>
+            </p>
+            <p *ngIf="!parentError && !parentSpinner">
+              <a
+                *ngFor="let parent of parentData"
+                class="link-to-list"
+                href="#"
+              >
+                <div class="d-xl-flex align-items-xl-center list-content-item">
+                  <img
+                    class="border rounded-circle border-primary teacher-list-img"
+                    src="../../../../../../assets/admin/img/avatars/avatar1.jpeg"
+                  /><span class="d-xl-flex align-items-xl-center listed-user"
+                    >parent</span
+                  >
+                  <div
+                    class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"
+                  >
+                    <i
+                      class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"
+                    ></i
+                    ><i
+                      class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"
+                    ></i>
+                  </div>
+                </div>
+              </a>
+            </p>
+          </div>
+          <!-- End: list content wrapper -->
+        </div>
+        <!-- End: list-body -->
+        <!-- Start: list footer -->
+        <div class="d-xl-flex align-items-xl-center footer">
+          <span
+            class="text-capitalize text-center d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center footer-view-all"
+            >View All Parent/Guardian</span
+          >
+        </div>
+        <!-- End: list footer -->
+      </div>
+      <!-- End: list content -->
+      <!-- Start: list content -->
+      <div
+        class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list"
+      >
+        <!-- Start: title -->
+        <div class="d-xl-flex align-items-xl-center title student-content">
+          <div
+            class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"
+          >
+            <i class="fa fa-user title-icon-left"></i>
+          </div>
+          <div
+            class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item"
+          >
+            <span
+              class="text-uppercase d-lg-flex d-xl-flex justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center list-title"
+              >student</span
+            >
+          </div>
+          <div
+            class="d-xl-flex justify-content-xl-center align-items-xl-center right-item"
+          >
+            <i class="fa fa-plus title-icon-right"></i>
+          </div>
+        </div>
+        <!-- End: title -->
+        <!-- Start: list-body -->
+        <div
+          class="d-flex d-md-flex d-lg-flex d-xl-flex justify-content-xl-center list-body"
+        >
+          <!-- Start: list content wrapper -->
+          <div class="list-content-wrapper">
+            <p
+              *ngIf="studentSpinner"
+              class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text"
+            >
+              <app-loading-spinner></app-loading-spinner>
+            </p>
+            <p
+              *ngIf="studentError && !studentSpinner"
+              class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text"
+            >
+              {{ studentMessage }}
+            </p>
+            <p *ngIf="!studentError && !studentSpinner">
+              <a
+                *ngFor="let student of studentData"
+                class="link-to-list"
+                href="#"
+              >
+                <div class="d-xl-flex align-items-xl-center list-content-item">
+                  <img
+                    class="border rounded-circle border-primary teacher-list-img"
+                    src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"
+                  /><span class="d-xl-flex align-items-xl-center listed-user">{{
+                    student.username
+                  }}</span>
+                  <div
+                    class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide"
+                  >
+                    <i
+                      class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"
+                    ></i
+                    ><i
+                      class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"
+                    ></i>
+                  </div>
+                </div>
+              </a>
+            </p>
+          </div>
+          <!-- End: list content wrapper -->
+        </div>
+        <!-- End: list-body -->
+        <!-- Start: list footer -->
+        <div class="d-xl-flex align-items-xl-center footer">
+          <span
+            class="text-capitalize text-center d-xl-flex justify-content-xl-center align-items-xl-center footer-view-all"
+            >View All Student</span
+          >
+        </div>
+        <!-- End: list footer -->
+      </div>
+      <!-- End: list content -->
+    </div>
+  </div>
+</div>
