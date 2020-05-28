@@ -74,7 +74,7 @@ export class ArchivesComponent implements OnInit {
     this.teacherParams = this.adminList.inactiveTeacher;
     this.parentParams = this.adminList.inactiveParent;
     this.checkTeacherList();
-    this.parentsList();
+    this.checkParentList();
     this.checkStudentList();
   }
 
@@ -112,12 +112,16 @@ export class ArchivesComponent implements OnInit {
       .subscribe((response: any) => {
         const { status, body } = response;
         const value = [];
+        const active = [];
         if (status === 200) {
           for (let i = 0; i <= (body.length - 1); i++) {
             if (body[i].status === 'inactive') {
               value.push(body[i]);
+            } else {
+              active.push(body[i]);
             }
           }
+          this.adminList.setStudent(active);
           if (value.length === 0) {
             this.studentError = true;
             this.adminList.setInactiveStudent(null);
@@ -153,7 +157,7 @@ export class ArchivesComponent implements OnInit {
     this.teacherParams.pipe(take(1)).subscribe({
       next: (post) => {
         console.log(post);
-        if (post === null || post === undefined) {
+        if (post === null || post === undefined || post.length === 0) {
           this.teacherList();
         } else {
           this.teacherSpinner = false;
@@ -185,12 +189,17 @@ export class ArchivesComponent implements OnInit {
         this.teacherSpinner = false;
         const { status, body } = response;
         const value = [];
+        const active = [];
         if (status === 200) {
+          this.adminList.setAllTeachers(body);
           for (let i = 0; i <= (body.length - 1); i++) {
             if (body[i].status === 'inactive') {
               value.push(body[i]);
+            } else {
+              active.push(body[i]);
             }
           }
+          this.adminList.setTeacher(active);
           if (value.length === 0) {
             this.teacherError = true;
             this.adminList.setInactiveTeacher(null);
@@ -224,7 +233,7 @@ export class ArchivesComponent implements OnInit {
     this.parentParams.pipe(take(1)).subscribe({
       next: (post) => {
         console.log(post);
-        if (post === null || post === undefined) {
+        if (post === null || post === undefined || post.length === 0) {
           this.parentsList();
         } else {
           this.parentSpinner = false;
@@ -258,12 +267,16 @@ export class ArchivesComponent implements OnInit {
         this.parentSpinner = false;
         const { status, body } = response;
         const value = [];
+        const active = [];
         if (status === 200) {
           for (let i = 0; i <= (body.length - 1); i++) {
             if (body[i].status === 'inactive') {
               value.push(body[i]);
+            } else {
+              active.push(body[i])
             }
           }
+          this.adminList.setParents(active);
           if (value.length === 0) {
             this.parentError = true;
             this.adminList.setInactiveParents(null);
@@ -273,7 +286,7 @@ export class ArchivesComponent implements OnInit {
             this.parentData = value;
             this.adminList.setInactiveParents(this.parentData);
           }
-          this.parentData = body;
+          // this.parentData = body;
         }
       }, (error: any) => {
         console.log(error);

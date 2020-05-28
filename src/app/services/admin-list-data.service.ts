@@ -23,7 +23,7 @@ export class AdminListDataService {
   constructor() {
     this.student = this.studentParams.asObservable();
     this.teacher = this.teacherParams.asObservable();
-    this.parent = this.teacherParams.asObservable();
+    this.parent = this.parentParams.asObservable();
     this.inactiveStudent = this.inactiveStudentParams.asObservable();
     this.inactiveTeacher = this.inactiveTeacherParams.asObservable();
     this.inactiveParent = this.inactiveParentParams.asObservable();

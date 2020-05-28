@@ -73,7 +73,7 @@ export class MainPageComponent implements OnInit {
     this.teacherParams = this.adminList.teacher;
     this.parentParams = this.adminList.parent;
     this.checkTeacherList();
-    this.parentsList();
+    this.checkParentList();
     this.checkStudentList();
   }
 
@@ -81,7 +81,7 @@ export class MainPageComponent implements OnInit {
     this.studentParams.pipe(take(1)).subscribe({
       next: (post) => {
         console.log(post);
-        if (post === null || post === undefined) {
+        if (post === null || post === undefined || post.length === 0) {
           this.studentList();
         } else {
           this.studentSpinner = false;
@@ -110,13 +110,17 @@ export class MainPageComponent implements OnInit {
       .subscribe((response: any) => {
         const { status, body } = response;
         const value = [];
+        const inactive = [];
         this.studentError = false;
         if (status === 200) {
           for (let i = 0; i <= (body.length - 1); i++) {
             if (body[i].status === 'active') {
               value.push(body[i]);
+            } else {
+              inactive.push(body[i])
             }
           }
+          this.adminList.setInactiveStudent(inactive);
           if (value.length === 0) {
             this.studentError = true;
             this.adminList.setStudent(null);
@@ -151,7 +155,7 @@ export class MainPageComponent implements OnInit {
     this.teacherParams.pipe(take(1)).subscribe({
       next: (post) => {
         console.log(post);
-        if (post === null || post === undefined) {
+        if (post === null || post === undefined || post.length === 0) {
           this.teacherList();
         } else {
           this.teacherSpinner = false;
@@ -183,13 +187,18 @@ export class MainPageComponent implements OnInit {
         this.teacherSpinner = false;
         const { status, body } = response;
         const value = [];
+        const inactive = [];
         if (status === 200) {
+          this.adminList.setAllTeachers(body);
           for (let i = 0; i <= (body.length - 1); i++) {
             if (body[i].status === 'active') {
               value.push(body[i]);
+            } else {
+              inactive.push(body[i]);
             }
           }
-          console.log('value', value)
+          this.adminList.setInactiveTeacher(inactive);
+          
           if (value.length === 0) {
             this.teacherError = true;
             this.adminList.setTeacher(null);
@@ -222,7 +231,7 @@ export class MainPageComponent implements OnInit {
     this.parentParams.pipe(take(1)).subscribe({
       next: (post) => {
         console.log(post);
-        if (post === null || post === undefined) {
+        if (post === null || post === undefined || post.length === 0) {
           this.parentsList();
         } else {
           this.parentSpinner = false;
@@ -255,12 +264,16 @@ export class MainPageComponent implements OnInit {
         this.parentSpinner = false;
         const { status, body } = response;
         const value = [];
+        const inactive = [];
         if (status === 200) {
           for (let i = 0; i <= (body.length - 1); i++) {
             if (body[i].status === 'active') {
               value.push(body[i]);
+            } else {
+              inactive.push(body[i])
             }
           }
+          this.adminList.setInactiveParents(inactive);
           if (value.length === 0) {
             this.parentError = true;
             this.adminList.setParents(null);
