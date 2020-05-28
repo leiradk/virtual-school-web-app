@@ -153,7 +153,7 @@
                   let i = index
                 ">
               <ng-container *ngIf="staff.status === 'active' && people.length > 0">
-                <td>
+                <td [ngClass]="{'active' : getStatus(staff.status)}">
                   <a class="link-to-list" href="#">
                     <div class="d-xl-flex align-items-xl-center list-content-item">
                       <img class="border rounded-circle border-primary teacher-list-img"
@@ -174,9 +174,10 @@
                     </div>
                   </a>
                 </td>
-                <td class="text-left">{{ staff.position }}</td>
-                <td class="text-left">{{ staff.created }}</td>
-                <td class="text-left">{{staff.status}}</td>
+                <td class="text-left inactive" [ngClass]="{'active' : getStatus(staff.status)}">{{ staff.position }}
+                </td>
+                <td class="text-left" [ngClass]="{'active' : getStatus(staff.status)}">{{ staff.created }}</td>
+                <td class="text-left" [ngClass]="{'active' : getStatus(staff.status)}">{{staff.status}}</td>
               </ng-container>
 
               <td *ngIf="people.length === 0" class="no-content" colspan="5">

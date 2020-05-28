@@ -164,8 +164,16 @@ export class TeacherStaffComponent implements OnInit {
     });
   }
 
-
-
+getStatus(status) {
+  console.log(status)
+  if(status ==='Active' || status === 'active') {
+    console.log(true)
+    return true;
+  } else {
+    console.log(false)
+    return false;
+  }
+}
   get position() {
     return this.addStaffFOrm.get('position') as FormControl;
   }
