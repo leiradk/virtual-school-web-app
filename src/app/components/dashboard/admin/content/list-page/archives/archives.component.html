@@ -13,20 +13,21 @@
       <div class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list">
         <!-- Start: title -->
         <div class="d-xl-flex align-items-xl-center title teacher-content">
-          <div [ngClass]="{'hide-for-search': showSearch}"
-                    class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
-                        class="fa fa-user-secret title-icon-left"></i>
-                </div>
-                <div [ngClass]="{'hide-for-search': showSearch}"
-                    class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
-                    <span
-                        class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">Staff &amp; Teacher</span>
-                </div>
-                <div class="search-right">
-                    <form id="demo-2">
-                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()">
-                    </form>
-                </div>
+          <div [ngClass]="{'hide-for-search': teacherShowSearch}"
+            class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
+              class="fa fa-user-secret title-icon-left"></i>
+          </div>
+          <div [ngClass]="{'hide-for-search': teacherShowSearch}"
+            class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
+            <span
+              class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">Staff
+              &amp; Teacher</span>
+          </div>
+          <div class="search-right">
+            <form id="demo-2">
+              <input type="search" placeholder="Search" (focus)="toggle('teacher')" (focusout)="toggle('teacher')">
+            </form>
+          </div>
         </div>
         <!-- End: title -->
         <!-- Start: list-body -->
@@ -45,7 +46,7 @@
               </a>
             </p>
             <p *ngIf="!teacherSpinner && !teacherError">
-              <a *ngFor="let teacher of teacherData" class="link-to-list" href="#">
+              <a *ngFor="let teacher of teacherData | filter: teacherSearchText" class="link-to-list" href="#">
                 <div *ngIf="teacher.status === 'inactive'" class="d-xl-flex align-items-xl-center list-content-item">
                   <img class="border rounded-circle border-primary teacher-list-img"
                     src="../../../../../../assets/admin/img/avatars/avatar1.jpeg" /><span
@@ -84,20 +85,21 @@
       <div class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list">
         <!-- Start: title -->
         <div class="d-xl-flex align-items-xl-center title parent-content">
-          <div [ngClass]="{'hide-for-search': showSearch}"
-                    class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
-                        class="fa fa-user-secret title-icon-left"></i>
-                </div>
-                <div [ngClass]="{'hide-for-search': showSearch}"
-                    class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
-                    <span
-                        class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">Parent or Guardian</span>
-                </div>
-                <div class="search-right">
-                    <form id="demo-2">
-                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()">
-                    </form>
-                </div>
+          <div [ngClass]="{'hide-for-search': parentShowSearch}"
+            class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
+              class="fa fa-user-secret title-icon-left"></i>
+          </div>
+          <div [ngClass]="{'hide-for-search': parentShowSearch}"
+            class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
+            <span
+              class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">Parent
+              or Guardian</span>
+          </div>
+          <div class="search-right">
+            <form id="demo-2">
+              <input type="search" placeholder="Search" (focus)="toggle('parent')" (focusout)="toggle('parent')">
+            </form>
+          </div>
         </div>
         <!-- End: title -->
         <!-- Start: list-body -->
@@ -116,7 +118,7 @@
               </a>
             </p>
             <p *ngIf="!parentError && !parentSpinner">
-              <a *ngFor="let parent of parentData" class="link-to-list" href="#">
+              <a *ngFor="let parent of parentData filter: parentSearchText" class="link-to-list" href="#">
                 <div *ngIf="parent.status === 'inactive'" class="d-xl-flex align-items-xl-center list-content-item">
                   <img class="border rounded-circle border-primary teacher-list-img"
                     src="../../../../../../assets/admin/img/avatars/avatar1.jpeg" /><span
@@ -153,20 +155,20 @@
       <div class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list">
         <!-- Start: title -->
         <div class="d-xl-flex align-items-xl-center title student-content">
-          <div [ngClass]="{'hide-for-search': showSearch}"
-                    class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
-                        class="fa fa-user-secret title-icon-left"></i>
-                </div>
-                <div [ngClass]="{'hide-for-search': showSearch}"
-                    class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
-                    <span
-                        class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">Student</span>
-                </div>
-                <div class="search-right">
-                    <form id="demo-2">
-                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()">
-                    </form>
-                </div>
+          <div [ngClass]="{'hide-for-search': studentShowSearch}"
+            class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
+              class="fa fa-user-secret title-icon-left"></i>
+          </div>
+          <div [ngClass]="{'hide-for-search': studentShowSearch}"
+            class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
+            <span
+              class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">Student</span>
+          </div>
+          <div class="search-right">
+            <form id="demo-2">
+              <input type="search" placeholder="Search" (focus)="toggle('student')" (focusout)="toggle('student')">
+            </form>
+          </div>
         </div>
         <!-- End: title -->
         <!-- Start: list-body -->
@@ -185,7 +187,7 @@
               </a>
             </p>
             <p *ngIf="!studentError && !studentSpinner">
-              <a *ngFor="let student of studentData" class="link-to-list" href="#">
+              <a *ngFor="let student of studentData | filter: studentSearchText" class="link-to-list" href="#">
                 <div *ngIf="student.status === 'inactive'" class="d-xl-flex align-items-xl-center list-content-item">
                   <img class="border rounded-circle border-primary teacher-list-img"
                     src="../../../../../../assets/admin/img/avatars/avatar5.jpeg" /><span

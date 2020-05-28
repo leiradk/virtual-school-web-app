@@ -21,6 +21,8 @@ export class ArchivesComponent implements OnInit {
   studentMessage: any;
   studentParams: Observable<string>;
   refreshStudent: boolean = false;
+  studentSearchText: any;
+  public studentShowSearch: boolean = false;
 
   //teacher variables
   teacherData: any = [];
@@ -29,6 +31,8 @@ export class ArchivesComponent implements OnInit {
   teacherMessage: any;
   teacherParams: Observable<string>;
   refreshTeacher: boolean = false;
+  teacherSearchText: any;
+  public teacherShowSearch: boolean = false;
 
   //parent variables
   parentData: any = [];
@@ -37,6 +41,9 @@ export class ArchivesComponent implements OnInit {
   parentMessage: any;
   parentParams: Observable<string>;
   refreshParent: boolean = false;
+  parentSearchText: any;
+  public parentShowSearch: boolean = false;
+
   constructor(
     private system: SystemUtils,
     private router: Router,
@@ -287,15 +294,32 @@ export class ArchivesComponent implements OnInit {
   }
 
 
-  public showSearch: boolean = false;
 
-  toggle() {
-    if (this.showSearch === true) {
-      setTimeout(() => {
-        this.showSearch = !this.showSearch;
-      }, 300);
-    } else {
-      this.showSearch = !this.showSearch;
+  toggle(search) {
+    if (search === 'teacher') {
+      if (this.teacherShowSearch === true) {
+        setTimeout(() => {
+          this.teacherShowSearch = !this.teacherShowSearch;
+        }, 300);
+      } else {
+        this.teacherShowSearch = !this.teacherShowSearch;
+      }
+    } else if (search === "student") {
+      if (this.studentShowSearch === true) {
+        setTimeout(() => {
+          this.studentShowSearch = !this.studentShowSearch;
+        }, 300);
+      } else {
+        this.studentShowSearch = !this.studentShowSearch;
+      }
+    } else if (search === 'parent') {
+      if (this.parentShowSearch === true) {
+        setTimeout(() => {
+          this.parentShowSearch = !this.parentShowSearch;
+        }, 300);
+      } else {
+        this.parentShowSearch = !this.parentShowSearch;
+      }
     }
   }
 

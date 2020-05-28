@@ -165,7 +165,6 @@ export class TeacherStaffComponent implements OnInit {
   }
 
 getStatus(status) {
-  console.log(status)
   if(status ==='Active' || status === 'active') {
     console.log(true)
     return true;
