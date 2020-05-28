@@ -13,7 +13,8 @@ import { take } from 'rxjs/operators';
 })
 export class MainPageComponent implements OnInit {
   data: any = [];
-
+  getUsername: any;
+  userType: any;
   //student variables
   studentData: any = [];
   studentSpinner: boolean = true;
@@ -320,5 +321,38 @@ export class MainPageComponent implements OnInit {
         this.studentShowSearch = !this.studentShowSearch;
       }
     }
+  }
+  getUsernameData(user, type) {
+    this.getUsername = user;
+    this.userType = type;
+  }
+  addToArchive() {
+    const { token } = this.data;
+
+    const payload = {
+      token: token,
+      username: this.getUsername,
+      action: 'inactive'
+    }
+    if (this.userType === 'teacher') {
+      this.teacherSpinner = true;
+    } else if (this.userType === 'parent') {
+      this.parentSpinner = true;
+    } else if (this.userType === 'student') {
+      this.studentSpinner = true;
+    }
+    this.apiService.addToArchive(payload)
+      .subscribe((response: any) => {
+        console.log(response)
+        if (this.userType === 'teacher') {
+          this.teacherList();
+        } else if (this.userType === 'parent') {
+          this.parentsList();
+        } else if (this.userType === 'student') {
+          this.studentList();
+        }
+      }, (error: any) => {
+        console.log(error);
+      })
   }
 }

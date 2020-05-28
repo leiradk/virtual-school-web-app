@@ -13,6 +13,8 @@ import { take } from 'rxjs/operators';
 })
 export class ArchivesComponent implements OnInit {
   data: any = [];
+  getUsername: any;
+  getType: any;
 
   //student variables
   studentData: any = [];
@@ -321,6 +323,39 @@ export class ArchivesComponent implements OnInit {
         this.parentShowSearch = !this.parentShowSearch;
       }
     }
+  }
+
+  getUsernameData(user, type) {
+    this.getUsername = user;
+    this.getType = type
+  }
+  pullFromArchive() {
+    const { token } = this.data;
+    const payload = {
+      token: token,
+      username: this.getUsername,
+      action: 'active'
+    }
+    if (this.getType === 'teacher') {
+      this.teacherSpinner = true;
+    } else if (this.getType === 'parent') {
+      this.parentSpinner = true;
+    } else if (this.getType === 'student') {
+      this.studentSpinner = true;
+    }
+    this.apiService.pullFromArchive(payload)
+      .subscribe((response: any) => {
+        if (this.getType === 'teacher') {
+          this.teacherList();
+        } else if (this.getType === 'parent') {
+          this.parentsList();
+        } else if (this.getType === 'student') {
+          this.studentList();
+        }
+      }, (error: any) => {
+        console.log(error);
+      })
+
   }
 
 }

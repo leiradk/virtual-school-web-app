@@ -22,8 +22,8 @@
                 </div>
                 <div class="search-right">
                     <div id="demo-2">
-                        <input type="search" placeholder="Search" (focus)="toggle('teacher')" (focusout)="toggle('teacher')"
-                            [(ngModel)]="teacherSearchText">
+                        <input type="search" placeholder="Search" (focus)="toggle('teacher')"
+                            (focusout)="toggle('teacher')" [(ngModel)]="teacherSearchText">
                     </div>
                 </div>
             </div>
@@ -58,7 +58,8 @@
                                             class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
                                         </i>
                                     </a>
-                                    <a data-toggle="modal" data-target="#archiveModal">
+                                    <a data-toggle="modal" (click)="getUsernameData(teacher.username, 'teacher')"
+                                        data-target="#archiveModal">
                                         <i
                                             class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                                         </i>
@@ -94,7 +95,8 @@
                 </div>
                 <div class="search-right">
                     <div id="demo-2">
-                        <input type="search" placeholder="Search" (focus)="toggle('parent')" (focusout)="toggle('parent')" [(ngModel)]="parentSearchText">
+                        <input type="search" placeholder="Search" (focus)="toggle('parent')"
+                            (focusout)="toggle('parent')" [(ngModel)]="parentSearchText">
                     </div>
                 </div>
             </div>
@@ -116,8 +118,7 @@
                     </p>
                     <!--  -->
                     <p *ngIf="!parentError && !parentSpinner">
-                        <a *ngFor="let parent of parentData  | filter: parentSearchText" class=" link-to-list"
-                            href="#">
+                        <a *ngFor="let parent of parentData  | filter: parentSearchText" class=" link-to-list" href="#">
                             <div *ngIf="parent.status === 'active'"
                                 class="d-xl-flex align-items-xl-center list-content-item"><img
                                     class="border rounded-circle border-primary teacher-list-img"
@@ -130,7 +131,8 @@
                                             class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
                                         </i>
                                     </a>
-                                    <a data-toggle="modal" data-target="#archiveModal">
+                                    <a data-toggle="modal" (click)="getUsernameData(parent.username, 'parent')"
+                                        data-target="#archiveModal">
                                         <i
                                             class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                                         </i>
@@ -165,7 +167,8 @@
                 </div>
                 <div class="search-right">
                     <div id="demo-2">
-                        <input type="search" placeholder="Search" (focus)="toggle('student')" (focusout)="toggle('student')" [(ngModel)]="studentSearchText">
+                        <input type="search" placeholder="Search" (focus)="toggle('student')"
+                            (focusout)="toggle('student')" [(ngModel)]="studentSearchText">
                     </div>
                 </div>
             </div>
@@ -181,12 +184,13 @@
                     <p *ngIf="studentError && !studentSpinner"
                         class="text-center d-xl-flex justify-content-xl-center align-items-xl-center empty-list-text">
                         {{studentMessage}}
-                        <a *ngIf="studentError" class="refresh-list" (click)="refreshStudentList()">
+                        <a *ngIf="refreshStudent" class="refresh-list" (click)="refreshStudentList()">
                             <i class="fa fa-refresh"></i>
                         </a>
                     </p>
                     <p *ngIf="!studentError && !studentSpinner">
-                        <a *ngFor="let student of studentData | filter: studentSearchText" class="link-to-list" href="#">
+                        <a *ngFor="let student of studentData | filter: studentSearchText" class="link-to-list"
+                            href="#">
                             <div *ngIf="student.status === 'active'"
                                 class="d-xl-flex align-items-xl-center list-content-item"><img
                                     class="border rounded-circle border-primary teacher-list-img"
@@ -199,7 +203,8 @@
                                             class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
                                         </i>
                                     </a>
-                                    <a data-toggle="modal" data-target="#archiveModal">
+                                    <a data-toggle="modal" (click)="getUsernameData(student.username, 'student')"
+                                        data-target="#archiveModal">
                                         <i
                                             class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                                         </i>
@@ -236,7 +241,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>
-                <a data-dismiss="modal" class="btn btn-primary" style="cursor: pointer;">Send to Archive</a>
+                <a data-dismiss="modal" (click)="addToArchive()" class="btn btn-primary" style="cursor: pointer;">Send
+                    to Archive</a>
             </div>
         </div>
     </div>

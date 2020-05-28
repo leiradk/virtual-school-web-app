@@ -144,7 +144,28 @@ export class ApiHostService {
         })
       );
   }
-
+  //add a user to the archive
+  addToArchive(payload) {
+    return this.https.put(`${this.localhost}admin/add/to/archive/user`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+  pullFromArchive(payload) {
+    return this.https.put(`${this.localhost}admin/pull/to/archive/user`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+  //submit points to a student
   submitClassworkPoints(payload) {
     return this.https.put(`${this.localhost}teacher/add/classworks/points`, payload)
       .pipe(
@@ -347,5 +368,6 @@ export class ApiHostService {
         })
       );
   }
-  // http://139.162.238.76/vs/teacher/get/classworks/submitted?classworkID=classworkidhere&token=tokenhere
+
+
 }

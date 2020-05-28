@@ -24,9 +24,10 @@
               &amp; Teacher</span>
           </div>
           <div class="search-right">
-            <form id="demo-2">
-              <input type="search" placeholder="Search" (focus)="toggle('teacher')" (focusout)="toggle('teacher')">
-            </form>
+            <div id="demo-2">
+              <input type="search" placeholder="Search" (focus)="toggle('teacher')" (focusout)="toggle('teacher')"
+                [(ngModel)]="teacherSearchText">
+            </div>
           </div>
         </div>
         <!-- End: title -->
@@ -59,7 +60,8 @@
                         class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
                       </i>
                     </a>
-                    <a data-toggle="modal" data-target="#archiveModal">
+                    <a data-toggle="modal" data-target="#archiveModal"
+                      (click)="getUsernameData(teacher.username, 'teacher')">
                       <i
                         class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                       </i>
@@ -96,9 +98,10 @@
               or Guardian</span>
           </div>
           <div class="search-right">
-            <form id="demo-2">
-              <input type="search" placeholder="Search" (focus)="toggle('parent')" (focusout)="toggle('parent')">
-            </form>
+            <div id="demo-2">
+              <input type="search" placeholder="Search" (focus)="toggle('parent')" (focusout)="toggle('parent')"
+                [(ngModel)]="parentSearchText">
+            </div>
           </div>
         </div>
         <!-- End: title -->
@@ -129,7 +132,8 @@
                         class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
                       </i>
                     </a>
-                    <a data-toggle="modal" data-target="#archiveModal">
+                    <a data-toggle="modal" data-target="#archiveModal"
+                      (click)="getUsernameData(parent.username, 'parent')">
                       <i
                         class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                       </i>
@@ -165,9 +169,10 @@
               class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">Student</span>
           </div>
           <div class="search-right">
-            <form id="demo-2">
-              <input type="search" placeholder="Search" (focus)="toggle('student')" (focusout)="toggle('student')">
-            </form>
+            <div id="demo-2">
+              <input type="search" placeholder="Search" (focus)="toggle('student')" (focusout)="toggle('student')"
+                [(ngModel)]="studentSearchText">
+            </div>
           </div>
         </div>
         <!-- End: title -->
@@ -200,7 +205,8 @@
                         class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
                       </i>
                     </a>
-                    <a data-toggle="modal" data-target="#archiveModal">
+                    <a data-toggle="modal" data-target="#archiveModal"
+                      (click)="getUsernameData(student.username, 'student')">
                       <i
                         class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                       </i>
@@ -239,7 +245,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>
-        <a data-dismiss="modal" class="btn btn-primary" style="cursor: pointer;">Send to Archive</a>
+        <a data-dismiss="modal" (click)="pullFromArchive()" class="btn btn-primary" style="cursor: pointer;">Send to
+          Archive</a>
       </div>
     </div>
   </div>
