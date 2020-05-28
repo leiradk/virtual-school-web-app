@@ -18,12 +18,13 @@
                     class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
                     <span
                         class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">staff
-                        &amp; teacher</span>
+                        &amp; teacher {{teacherSearchText}}</span>
                 </div>
                 <div class="search-right">
-                    <form id="demo-2">
-                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()">
-                    </form>
+                    <div id="demo-2">
+                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()"
+                            [(ngModel)]="teacherSearchText">
+                    </div>
                 </div>
             </div>
             <!-- End: title -->
@@ -43,12 +44,13 @@
                         </a>
                     </p>
                     <p *ngIf="!teacherSpinner && !teacherError">
-                        <a *ngFor="let teacher of teacherData" class="link-to-list" href="#">
+                        <a *ngFor="let teacher of teacherData  | filter: teacherSearchText" class="link-to-list"
+                            href="#">
                             <div *ngIf="teacher.status === 'active'"
                                 class="d-xl-flex align-items-xl-center list-content-item"><img
                                     class="border rounded-circle border-primary teacher-list-img"
                                     src="../../../../../../assets/admin/img/avatars/avatar1.jpeg"><span
-                                    class="d-xl-flex align-items-xl-center listed-user">{{teacher.username}} </span>
+                                    class="d-xl-flex align-items-xl-center listed-user">{{teacher.username}}</span>
                                 <div
                                     class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
                                     <a data-toggle="modal" data-target="#editModal">
@@ -91,9 +93,9 @@
                         or Guardian</span>
                 </div>
                 <div class="search-right">
-                    <form id="demo-2">
-                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()">
-                    </form>
+                    <div id="demo-2">
+                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()" [(ngModel)]="parentSearchText">
+                    </div>
                 </div>
             </div>
             <!-- End: title -->
@@ -114,7 +116,8 @@
                     </p>
                     <!--  -->
                     <p *ngIf="!parentError && !parentSpinner">
-                        <a *ngFor="let parent of parentData" class="link-to-list" href="#">
+                        <a *ngFor="let parent of parentData  | filter: parentSearchText" class=" link-to-list"
+                            href="#">
                             <div *ngIf="parent.status === 'active'"
                                 class="d-xl-flex align-items-xl-center list-content-item"><img
                                     class="border rounded-circle border-primary teacher-list-img"
@@ -161,9 +164,9 @@
                         class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">Student</span>
                 </div>
                 <div class="search-right">
-                    <form id="demo-2">
-                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()">
-                    </form>
+                    <div id="demo-2">
+                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()" [(ngModel)]="studentSearchText">
+                    </div>
                 </div>
             </div>
             <!-- End: title -->
@@ -183,7 +186,7 @@
                         </a>
                     </p>
                     <p *ngIf="!studentError && !studentSpinner">
-                        <a *ngFor="let student of studentData" class="link-to-list" href="#">
+                        <a *ngFor="let student of studentData | filter: studentSearchText" class="link-to-list" href="#">
                             <div *ngIf="student.status === 'active'"
                                 class="d-xl-flex align-items-xl-center list-content-item"><img
                                     class="border rounded-circle border-primary teacher-list-img"

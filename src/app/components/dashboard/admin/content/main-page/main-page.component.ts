@@ -21,7 +21,8 @@ export class MainPageComponent implements OnInit {
   studentMessage: any;
   studentParams: Observable<string>;
   refreshStudent: boolean = false;
-
+  studentSearchText: any;
+  
   //teacher variables
   teacherData: any = [];
   teacherSpinner: boolean = true;
@@ -29,7 +30,8 @@ export class MainPageComponent implements OnInit {
   teacherMessage: any;
   teacherParams: Observable<string>;
   refreshTeacher: boolean = false;
-
+  teacherSearchText: any;
+  
   //parent variables
   parentData: any = [];
   parentSpinner: boolean = true;
@@ -37,6 +39,8 @@ export class MainPageComponent implements OnInit {
   parentMessage: any;
   parentParams: Observable<string>;
   refreshParent: boolean = false;
+  parentSearchText: any;
+
   constructor(
     private system: SystemUtils,
     private router: Router,
