@@ -79,6 +79,7 @@ export class TeacherStaffComponent implements OnInit {
         this.error = false;
         const { status, body } = response;
         if (status === 200) {
+          console.log(body);
           this.people = body;
           this.adminList.setAllTeachers(this.people);
           this.showSpinner = false;
