@@ -17,6 +17,7 @@
 .option-edit:hover {
     color: #2ccb6f !important;
 }
+
 .option-delete:hover {
     color: #cd3232 !important;
 }
@@ -35,14 +36,15 @@
     }
 }
 
+.list-wrapper {
+    height: 80vh !important;
+}
+
 .list-options {
     padding-right: 30px;
 }
 
-.list-content-item {
-    width: 100%;
-}
-
+.list-content-item,
 .listed-user {
     width: 100%;
 }

@@ -39,12 +39,13 @@
     padding-right: 30px;
 }
 
-.list-content-item {
+.list-content-item,
+.listed-user {
     width: 100%;
 }
 
-.listed-user {
-    width: 100%;
+.teacher-data {
+    text-transform: capitalize;
 }
 
 .refresh-list {
@@ -69,4 +70,20 @@
 .teacher-list-img {
     width: 50px !important;
     height: 50px !important;
+}
+
+.list-wrapper {
+    height: 75vh !important;
+}
+
+.inactive {
+    color: #d03a3b;
+    background-color: rgb(208, 58, 59, 0) !important;
+    .link-to-list {
+        .list-content-item {
+            .listed-user {
+                color: #d03a3b;
+            }
+        }
+    }
 }
