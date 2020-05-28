@@ -13,17 +13,20 @@
       <div class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list">
         <!-- Start: title -->
         <div class="d-xl-flex align-items-xl-center title teacher-content">
-          <div class="d-xl-flex justify-content-xl-center align-items-xl-center left-item">
-            <i class="fa fa-user-secret title-icon-left"></i>
-          </div>
-          <div class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
-            <span
-              class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">staff
-              &amp; teacher</span>
-          </div>
-          <div class="d-xl-flex justify-content-xl-center align-items-xl-center right-item">
-            <i class="fa fa-plus title-icon-right"></i>
-          </div>
+          <div [ngClass]="{'hide-for-search': showSearch}"
+                    class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
+                        class="fa fa-user-secret title-icon-left"></i>
+                </div>
+                <div [ngClass]="{'hide-for-search': showSearch}"
+                    class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
+                    <span
+                        class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">Staff &amp; Teacher</span>
+                </div>
+                <div class="search-right">
+                    <form id="demo-2">
+                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()">
+                    </form>
+                </div>
         </div>
         <!-- End: title -->
         <!-- Start: list-body -->
@@ -50,9 +53,16 @@
                     teacher.username
                   }}</span>
                   <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
-                    <i
-                      class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                      class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
+                    <a data-toggle="modal" data-target="#editModal">
+                      <i
+                        class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
+                      </i>
+                    </a>
+                    <a data-toggle="modal" data-target="#archiveModal">
+                      <i
+                        class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
+                      </i>
+                    </a>
                   </div>
                 </div>
               </a>
@@ -74,16 +84,20 @@
       <div class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list">
         <!-- Start: title -->
         <div class="d-xl-flex align-items-xl-center title parent-content">
-          <div class="d-xl-flex justify-content-xl-center align-items-xl-center left-item">
-            <i class="fa fa-users title-icon-left"></i>
-          </div>
-          <div class="d-lg-flex justify-content-lg-center mid-item">
-            <span
-              class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">parent/guardian</span>
-          </div>
-          <div class="d-xl-flex justify-content-xl-center align-items-xl-center right-item">
-            <i class="fa fa-plus title-icon-right"></i>
-          </div>
+          <div [ngClass]="{'hide-for-search': showSearch}"
+                    class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
+                        class="fa fa-user-secret title-icon-left"></i>
+                </div>
+                <div [ngClass]="{'hide-for-search': showSearch}"
+                    class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
+                    <span
+                        class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">Parent or Guardian</span>
+                </div>
+                <div class="search-right">
+                    <form id="demo-2">
+                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()">
+                    </form>
+                </div>
         </div>
         <!-- End: title -->
         <!-- Start: list-body -->
@@ -108,9 +122,16 @@
                     src="../../../../../../assets/admin/img/avatars/avatar1.jpeg" /><span
                     class="d-xl-flex align-items-xl-center listed-user">parent</span>
                   <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
-                    <i
-                      class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                      class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
+                    <a data-toggle="modal" data-target="#editModal">
+                      <i
+                        class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
+                      </i>
+                    </a>
+                    <a data-toggle="modal" data-target="#archiveModal">
+                      <i
+                        class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
+                      </i>
+                    </a>
                   </div>
                 </div>
               </a>
@@ -132,16 +153,20 @@
       <div class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list">
         <!-- Start: title -->
         <div class="d-xl-flex align-items-xl-center title student-content">
-          <div class="d-xl-flex justify-content-xl-center align-items-xl-center left-item">
-            <i class="fa fa-user title-icon-left"></i>
-          </div>
-          <div class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
-            <span
-              class="text-uppercase d-lg-flex d-xl-flex justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center list-title">student</span>
-          </div>
-          <div class="d-xl-flex justify-content-xl-center align-items-xl-center right-item">
-            <i class="fa fa-plus title-icon-right"></i>
-          </div>
+          <div [ngClass]="{'hide-for-search': showSearch}"
+                    class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
+                        class="fa fa-user-secret title-icon-left"></i>
+                </div>
+                <div [ngClass]="{'hide-for-search': showSearch}"
+                    class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
+                    <span
+                        class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">Student</span>
+                </div>
+                <div class="search-right">
+                    <form id="demo-2">
+                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()">
+                    </form>
+                </div>
         </div>
         <!-- End: title -->
         <!-- Start: list-body -->
@@ -168,9 +193,16 @@
                     student.username
                   }}</span>
                   <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
-                    <i
-                      class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options"></i><i
-                      class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"></i>
+                    <a data-toggle="modal" data-target="#editModal">
+                      <i
+                        class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
+                      </i>
+                    </a>
+                    <a data-toggle="modal" data-target="#archiveModal">
+                      <i
+                        class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
+                      </i>
+                    </a>
                   </div>
                 </div>
               </a>
@@ -188,6 +220,46 @@
         <!-- End: list footer -->
       </div>
       <!-- End: list content -->
+    </div>
+  </div>
+</div>
+
+<div id="archiveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show"
+  aria-modal="true" style="display: none;">
+  <div role="document" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="exampleModalLabel" class="modal-title">Archive</h5><button type="button" data-dismiss="modal"
+          aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to archive this user? Status will be set to 'INACTIVE'.
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>
+        <a data-dismiss="modal" class="btn btn-primary" style="cursor: pointer;">Send to Archive</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show"
+  aria-modal="true" style="display: none;">
+  <div role="document" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="exampleModalLabel" class="modal-title">Edit User</h5><button type="button" data-dismiss="modal"
+          aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        Form body here.
+        <br /> Fullname
+        <br /> Position
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>
+        <a data-dismiss="modal" class="btn btn-primary" style="cursor: pointer;">Save Changes</a>
+      </div>
     </div>
   </div>
 </div>

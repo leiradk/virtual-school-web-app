@@ -10,13 +10,21 @@
         <div class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list">
             <!-- Start: title -->
             <div class="d-xl-flex align-items-xl-center title teacher-content">
-                <div class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
-                        class="fa fa-user-secret title-icon-left"></i></div>
-                <div class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item"><span
+                <div [ngClass]="{'hide-for-search': showSearch}"
+                    class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
+                        class="fa fa-user-secret title-icon-left"></i>
+                </div>
+                <div [ngClass]="{'hide-for-search': showSearch}"
+                    class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
+                    <span
                         class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">staff
-                        &amp; teacher</span></div>
-                <div class="d-xl-flex justify-content-xl-center align-items-xl-center right-item"><i
-                        class="fa fa-plus title-icon-right"></i></div>
+                        &amp; teacher</span>
+                </div>
+                <div class="search-right">
+                    <form id="demo-2">
+                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()">
+                    </form>
+                </div>
             </div>
             <!-- End: title -->
             <!-- Start: list-body -->
@@ -72,13 +80,21 @@
         <div class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list">
             <!-- Start: title -->
             <div class="d-xl-flex align-items-xl-center title parent-content">
-                <div class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
-                        class="fa fa-users title-icon-left"></i></div>
-                <div class="d-lg-flex justify-content-lg-center mid-item"><span
-                        class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">parent/guardian</span>
+                <div [ngClass]="{'hide-for-search': showSearch}"
+                    class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
+                        class="fa fa-user-secret title-icon-left"></i>
                 </div>
-                <div class="d-xl-flex justify-content-xl-center align-items-xl-center right-item"><i
-                        class="fa fa-plus title-icon-right"></i></div>
+                <div [ngClass]="{'hide-for-search': showSearch}"
+                    class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
+                    <span
+                        class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">Parent
+                        or Guardian</span>
+                </div>
+                <div class="search-right">
+                    <form id="demo-2">
+                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()">
+                    </form>
+                </div>
             </div>
             <!-- End: title -->
             <!-- Start: list-body -->
@@ -135,13 +151,20 @@
         <div class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list">
             <!-- Start: title -->
             <div class="d-xl-flex align-items-xl-center title student-content">
-                <div class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
-                        class="fa fa-user title-icon-left"></i></div>
-                <div class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item"><span
-                        class="text-uppercase d-lg-flex d-xl-flex justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center list-title">student</span>
+                <div [ngClass]="{'hide-for-search': showSearch}"
+                    class="d-xl-flex justify-content-xl-center align-items-xl-center left-item"><i
+                        class="fa fa-user-secret title-icon-left"></i>
                 </div>
-                <div class="d-xl-flex justify-content-xl-center align-items-xl-center right-item"><i
-                        class="fa fa-plus title-icon-right"></i></div>
+                <div [ngClass]="{'hide-for-search': showSearch}"
+                    class="d-lg-flex justify-content-lg-center align-items-lg-center mid-item">
+                    <span
+                        class="text-uppercase d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center list-title">Student</span>
+                </div>
+                <div class="search-right">
+                    <form id="demo-2">
+                        <input type="search" placeholder="Search" (focus)="toggle()" (focusout)="toggle()">
+                    </form>
+                </div>
             </div>
             <!-- End: title -->
             <!-- Start: list-body -->

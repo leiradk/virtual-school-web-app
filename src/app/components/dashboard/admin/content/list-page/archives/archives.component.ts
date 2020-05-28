@@ -286,4 +286,17 @@ export class ArchivesComponent implements OnInit {
       })
   }
 
+
+  public showSearch: boolean = false;
+
+  toggle() {
+    if (this.showSearch === true) {
+      setTimeout(() => {
+        this.showSearch = !this.showSearch;
+      }, 300);
+    } else {
+      this.showSearch = !this.showSearch;
+    }
+  }
+
 }
