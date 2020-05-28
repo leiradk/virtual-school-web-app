@@ -164,15 +164,18 @@ export class TeacherStaffComponent implements OnInit {
     });
   }
 
-getStatus(status) {
-  if(status ==='Active' || status === 'active') {
-    console.log(true)
-    return true;
-  } else {
-    console.log(false)
-    return false;
+  dateCreated(date) {
+    const splitData = date.split(' ');
+    return splitData[0];
   }
-}
+
+  getStatus(status) {
+    if (status === 'Active' || status === 'active') {
+      return true;
+    } else {
+      return false;
+    }
+  }
   get position() {
     return this.addStaffFOrm.get('position') as FormControl;
   }

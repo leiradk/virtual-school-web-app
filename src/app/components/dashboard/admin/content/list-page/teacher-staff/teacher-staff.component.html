@@ -146,7 +146,7 @@
           </tbody>
           <tbody *ngIf="!showSpinner && !error">
 
-            <tr  [ngClass]="{'inactive' : !getStatus(staff.status)}" class="teacher-data" *ngFor="
+            <tr [ngClass]="{'inactive' : !getStatus(staff.status)}" class="teacher-data" *ngFor="
                   let staff of people
                     | filter: searchText
                     | paginate: { itemsPerPage: viewList, currentPage: p };
@@ -176,7 +176,8 @@
                 </td>
                 <td class="text-left" [ngClass]="{'active' : getStatus(staff.status)}">{{ staff.position }}
                 </td>
-                <td class="text-left" [ngClass]="{'active' : getStatus(staff.status)}">{{ staff.created }}</td>
+                <td class="text-left" [ngClass]="{'active' : getStatus(staff.status)}">{{ dateCreated(staff.created) }}
+                </td>
                 <td class="text-left" [ngClass]="{'active' : getStatus(staff.status)}">{{staff.status}}</td>
               </ng-container>
 
