@@ -138,24 +138,22 @@
               </td>
             </tr>
           </tbody>
-          <!-- <tbody *ngIf="error && !showSpinner"> -->
-          <tbody>
+          <tbody *ngIf="error && !showSpinner">
             <tr>
               <td class="no-content" colspan="5">
-                <p>{{ teacherMessage }}</p>
+                <p>{{ studentMessage }}</p>
               </td>
             </tr>
           </tbody>
-          <!-- <tbody *ngIf="!showSpinner && !error"> -->
-          <tbody>
-            <!-- 
-            <tr [ngClass]="{'inactive' : !getStatus(staff.status)}" class="teacher-data" *ngFor="
-                  let staff of people
+          <tbody *ngIf="!showSpinner && !error">
+
+            <tr [ngClass]="{'inactive' : !getStatus(student.status)}" class="teacher-data" *ngFor="
+                  let student of people
                     | filter: searchText
                     | paginate: { itemsPerPage: viewList, currentPage: p };
                   let i = index
-                "> -->
-            <tr>
+                ">
+              <!-- <tr> -->
               <ng-container>
                 <td>
                   <a class="link-to-list" href="#">
@@ -163,7 +161,7 @@
                       <img class="border rounded-circle border-primary teacher-list-img"
                         src="../../../../../../../assets/images/profile.jpg" /><span
                         class="d-xl-flex align-items-xl-center listed-user">
-                        <!-- {{ staff.username }} -->
+                        {{ student.username }}
                       </span>
                       <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
                         <a data-toggle="modal" data-target="#editModal">
@@ -190,17 +188,14 @@
                     </div>
                   </a>
                 </td>
-                <td class="text-left" [ngClass]="{'active' : getStatus(staff.status)}">position
+                <td class="text-left" [ngClass]="{'active' : getStatus(student.status)}">{{student.position}}
                 </td>
-                <td class="text-left" [ngClass]="{'active' : getStatus(staff.status)}">date
+                <td class="text-left" [ngClass]="{'active' : getStatus(student.status)}">{{ dateCreated(student.created)}}
                 </td>
-                <td class="text-left" [ngClass]="{'active' : getStatus(staff.status)}">status</td>
+                <td class="text-left" [ngClass]="{'active' : getStatus(student.status)}">{{student.status}}</td>
               </ng-container>
 
-              <!-- <td *ngIf="people.length === 0" class="no-content" colspan="5"> -->
-              <td class="no-content" colspan="5">
-                <p>empty</p>
-              </td>
+
             </tr>
           </tbody>
         </table>
@@ -223,44 +218,18 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <form class="user" [formGroup]="addStaffFOrm" (ngSubmit)="onSubmit()">
-          <!-- <div class="form-group">
-            <label for="inputEmail">Email address <span class="validator" *ngIf="email.invalid && email.touched"> - Email is Required</span></label>
-            <input required type="email" class="form-control" id="inputEmail" aria-describedby="email"
-              placeholder="Enter email" formControlName="email">
-          </div> -->
-          <!-- <div class="form-group">
-            <label for="inputFirstName">Firstname <span class="validator" *ngIf="firstname.invalid && firstname.touched"> - Firstname is required</span></label>
-            <input type="text" class="form-control" id="inputFirstName" aria-describedby="firstnameHelp"
-              placeholder="Enter firstname" formControlName="firstname" formControlName="firstname">
-          </div> -->
-          <!-- <div class="form-group">
-            <label for="inputMiddleName">Middle Name (Optional)</label>
-            <input type="text" class="form-control" id="inputMiddleName" aria-describedby="middlenameHelp"
-              placeholder="Enter email" formControlName="middlename">
-            <small id="middlenameHelp" class="form-text text-muted">If you dont have one, you can just skip this field.</small>
-          </div>
+        <form class="user" [formGroup]="addStudentForm" (ngSubmit)="onSubmit()">
+
           <div class="form-group">
-            <label for="inputLastName">Last Name <span class="validator" *ngIf="lastname.invalid && lastname.touched"> - Lastname is required</span></label>
-            <input type="text" class="form-control" id="inputLastName" aria-describedby="lastnameHelp"
-              placeholder="Enter email" formControlName="lastname">
-          </div> -->
-          <div class="form-group">
-            <label for="inputLastName">Postition
-              <span class="validator" *ngIf="position.invalid && position.touched">
+            <label for="inputYearLevel">Postition
+              <span class="validator" *ngIf="yearlevel.invalid && yearlevel.touched">
                 - Position is required</span></label>
-            <input type="text" class="form-control" id="inputPosition" aria-describedby="positionHelp"
-              placeholder="Enter Position" formControlName="position" />
+            <input type="text" class="form-control" id="inputYearLevel" aria-describedby="yearLevelHelp"
+              placeholder="Enter Year Level" formControlName="yearlevel" />
           </div>
+
           <div class="form-group">
-            <label for="inputLastName">Department
-              <span class="validator" *ngIf="department.invalid && department.touched">
-                - Department is required</span></label>
-            <input type="text" class="form-control" id="inputDepartment" aria-describedby="departmentHelp"
-              placeholder="Enter Department" formControlName="department" />
-          </div>
-          <div class="form-group">
-            <label for="inputLastName">Username
+            <label for="inputFirstName">Username
               <span class="validator" *ngIf="username.invalid && username.touched">
                 - Lastname is required</span></label>
             <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp"
@@ -289,7 +258,8 @@
 
           <!-- Modal footer -->
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" style="width: 25%;" [disabled]="addStaffFOrm.valid === false">
+            <button type="submit" class="btn btn-primary" style="width: 25%;"
+              [disabled]="addStudentForm.valid === false">
               Submit
             </button>
             <button type="button" class="btn btn-danger" style="width: 25%;" data-dismiss="modal">

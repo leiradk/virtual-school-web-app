@@ -11,6 +11,7 @@ import { SystemUtils } from "../../../../../../services/system.utils";
 import { AdminListDataService } from "../../../../../../services/admin-list-data.service";
 import { Router } from "@angular/router";
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 declare var jQuery: any;
 
@@ -30,8 +31,8 @@ export class StudentsComponent implements OnInit {
   error: boolean = false;
 
 
-  teacherParams: Observable<string>;
-
+  studentParams: Observable<string>;
+  studentMessage: any;
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
@@ -47,49 +48,67 @@ export class StudentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData = this.system.retrieveItem("userData");
-    this.getStudents();
-    // this.mockData();
+    this.studentParams = this.adminList.allStudents;
+    this.getStudentList();
   }
+  getStudentList() {
+    this.studentParams.pipe(take(1)).subscribe({
+      next: (post) => {
+        console.log(post);
+        if (post === null || post === undefined) {
+          this.getStudents();
+        } else {
+          this.showSpinner = false;
+          this.error = false;
+          this.people = post;
+        }
+      },
+      error: err => {
+        console.log(err)
 
+      },
+      complete: () => {
+
+      },
+    });
+  }
   getStudents() {
     const { token } = this.userData;
     this.apiService.getStudents(token)
       .subscribe((response: any) => {
         const { status, body } = response;
         if (status === 200) {
+          console.log('student', response)
           this.people = body;
+          this.adminList.setAllStudents(body);
           this.showSpinner = false;
         }
       }, (error: any) => {
-        const { message } = error.error;
+        const { status, message } = error.error;
         setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
-
+        this.addStudentForm.reset(); //reset form
         this.showSpinner = false;
         this.error = true;
+        if (status === 500) {
+          this.studentMessage = "Ops. Something went wrong, Please try again"
+        } else if (status === 401) {
+          this.studentMessage = "Unauthorized Access of Data"
+        } else if (status === 404) {
+          this.studentMessage = "Opps! Looks like this list is empty."
+        } else {
+          this.studentMessage = "Ops. Something went wrong, Please try again"
+        }
       });
   }
 
-  // get email() {
-  //   return this.addStudentForm.get('email') as FormControl;
-  // }
-  // get firstname() {
-  //   return this.addStudentForm.get('firstname') as FormControl;
-  // }
-  // get middlename() {
-  //   return this.addStudentForm.get('middlename') as FormControl;
-  // }
-  // get lastname() {
-  //   return this.addStudentForm.get('lastname') as FormControl;
-  // }
+
   get username() {
     return this.addStudentForm.get("username") as FormControl;
   }
   get yearlevel() {
     return this.addStudentForm.get("yearlevel") as FormControl;
   }
-  // get department() {
-  //   return this.addStudentForm.get("department") as FormControl;
-  // }
+
   get password() {
     return this.addStudentForm.get("password") as FormControl;
   }
@@ -99,13 +118,8 @@ export class StudentsComponent implements OnInit {
 
   studentFormModel() {
     this.addStudentForm = this.fb.group({
-      // email: [null, [Validators.required, Validators.email]],
-      // firstname: [null, Validators.required],
-      // middlename: [null, Validators.required],
-      // lastname: [null, Validators.required],
       username: [null, Validators.required],
       yearlevel: [null, Validators.required],
-      // department: [null, Validators.required],
       password: [null, [Validators.required, Validators.minLength(6)]],
       repassword: [null, [Validators.required, Validators.minLength(6)]],
     });
@@ -173,6 +187,17 @@ export class StudentsComponent implements OnInit {
     this.getUsername = user;
     this.getType = type
   }
+  getStatus(status) {
+    if (status === 'Active' || status === 'active') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  dateCreated(date) {
+    const splitData = date.split(' ');
+    return splitData[0];
+  }
 
   pullFromArchive() {
     const { token } = this.data;
@@ -188,20 +213,8 @@ export class StudentsComponent implements OnInit {
         console.log(response);
         this.getStudents();
         this.adminList.setInactiveStudent(null);
-        this.adminList.setAllTeachers(null);
-        this.adminList.setTeacher(null);
-        // this.teacherParams.pipe(take(1)).subscribe({
-        //   next: (post) => {
-        //     console.log('observable data', post);
-        //   },
-        //   error: err => {
-        //     console.log(err)
-
-        //   },
-        //   complete: () => {
-
-        //   },
-        // });
+        this.adminList.setStudent(null);
+        this.adminList.setAllStudents(null);
       }, (error: any) => {
         console.log(error);
       })
@@ -220,9 +233,9 @@ export class StudentsComponent implements OnInit {
     this.apiService.addToArchive(payload)
       .subscribe((response: any) => {
         console.log(response);
-        this.adminList.setInactiveTeacher(null);
-        this.adminList.setTeacher(null);
-        this.adminList.setAllTeachers(null);
+        this.adminList.setInactiveStudent(null);
+        this.adminList.setStudent(null);
+        this.adminList.setAllStudents(null);
         this.getStudents();
       }, (error: any) => {
         console.log(error);

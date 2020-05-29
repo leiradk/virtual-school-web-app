@@ -49,7 +49,6 @@ export class TeacherStaffComponent implements OnInit {
   ngOnInit(): void {
     // this.mockData();
     this.userData = this.system.retrieveItem('userData');
-    this.teacherParams = this.adminList.allTeacher;
 
     this.data = this.system.retrieveItem("userData");
     if (this.data === undefined || this.data === null) {
@@ -66,6 +65,7 @@ export class TeacherStaffComponent implements OnInit {
         }
       }
     }
+    this.teacherParams = this.adminList.allTeacher;
     this.checkTeacherList();
   }
 

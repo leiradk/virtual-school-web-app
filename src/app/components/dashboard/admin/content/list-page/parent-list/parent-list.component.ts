@@ -14,56 +14,7 @@ export class ParentListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.people = [
-      {
-        Name: "Tiger",
-        Position: "System Architect",
-        Office: "Edinburgh",
-        Age: "61",
-        StartDate: "2011/04/25",
-        Salary: "$320,800",
-      },
-      {
-        Name: "Lion",
-        Position: "System Architect",
-        Office: "Edinburgh",
-        Age: "61",
-        StartDate: "2011/04/25",
-        Salary: "$320,800",
-      },
-      {
-        Name: "Tiger",
-        Position: "System Architect",
-        Office: "Edinburgh",
-        Age: "61",
-        StartDate: "2011/04/25",
-        Salary: "$320,800",
-      },
-      {
-        Name: "Lion",
-        Position: "System Architect",
-        Office: "Edinburgh",
-        Age: "61",
-        StartDate: "2011/04/25",
-        Salary: "$320,800",
-      },
-      {
-        Name: "Tiger",
-        Position: "System Architect",
-        Office: "Edinburgh",
-        Age: "61",
-        StartDate: "2011/04/25",
-        Salary: "$320,800",
-      },
-      {
-        Name: "Lion",
-        Position: "System Architect",
-        Office: "Edinburgh",
-        Age: "61",
-        StartDate: "2011/04/25",
-        Salary: "$320,800",
-      },
-    ];
+
   }
 
 }
