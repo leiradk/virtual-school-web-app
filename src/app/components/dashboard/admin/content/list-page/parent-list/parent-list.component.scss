@@ -1,0 +1,92 @@
+#dashboard-content {
+    background-color: #dddddd !important;
+    width: 80vw;
+}
+
+// .hide {
+//   // display: none !important;
+//   color: rgba(33, 37, 41, 0.28);
+// }
+
+.option-edit,
+.option-delete {
+    color: rgba(33, 37, 41, 0.28) !important;
+    padding-right: 10px !important;
+}
+
+.option-edit:hover {
+    color: #2ccb6f !important;
+}
+.option-delete:hover {
+    color: #cd3232 !important;
+}
+.fa-undo:hover {
+    color: #1b1a3d !important;
+}
+
+.link-to-list:hover {
+    cursor: pointer;
+    .list-content-item:hover {
+        .hide {
+            color: #1b1a3d;
+        }
+        .listed-user {
+            color: #1b1a3d;
+            font-size: 18px !important;
+            font-weight: 700;
+        }
+    }
+}
+
+.list-options {
+    padding-right: 30px;
+}
+
+.list-content-item,
+.listed-user {
+    width: 100%;
+}
+
+.teacher-data {
+    text-transform: capitalize;
+}
+
+.refresh-list {
+    cursor: pointer;
+    padding-top: 20px;
+}
+
+.refresh-list:hover {
+    color: #007bff !important;
+    cursor: pointer !important;
+}
+
+.empty-list-text {
+    flex-direction: column !important;
+}
+
+.title,
+.footer {
+    height: 10% !important;
+}
+
+.teacher-list-img {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.list-wrapper {
+    height: 75vh !important;
+}
+
+.inactive {
+    color: #d03a3b;
+    background-color: rgb(208, 58, 59, 0) !important;
+    .link-to-list {
+        .list-content-item {
+            .listed-user {
+                color: #d03a3b;
+            }
+        }
+    }
+}

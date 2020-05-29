@@ -8,13 +8,16 @@ import {
 import { ToastrService } from "ngx-toastr";
 import { ApiHostService } from "../../../../../../services/api-host.service";
 import { SystemUtils } from "../../../../../../services/system.utils";
+import { AdminListDataService } from "../../../../../../services/admin-list-data.service";
+import { Router } from "@angular/router";
+import { Observable } from 'rxjs';
 
 declare var jQuery: any;
 
 @Component({
   selector: "app-students",
   templateUrl: "./students.component.html",
-  styleUrls: ["./students.component.scss"],
+  styleUrls: ["./students.component.scss", "../../../../../../../assets/staff_teacher/css/styles.min.css"],
 })
 export class StudentsComponent implements OnInit {
 
@@ -26,11 +29,16 @@ export class StudentsComponent implements OnInit {
   userData: any;
   error: boolean = false;
 
+
+  teacherParams: Observable<string>;
+
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
     private apiService: ApiHostService,
-    private system: SystemUtils
+    private system: SystemUtils,
+    private router: Router,
+    private adminList: AdminListDataService
   ) {
     this.studentFormModel();
   }
@@ -147,4 +155,77 @@ export class StudentsComponent implements OnInit {
       });
   }
 
+  //Pull from archive and add to archive hihi
+
+  data: any = [];
+  getUsername: any;
+  getType: any;
+
+
+  //teacher variables
+  teacherData: any = [];
+  teacherError: boolean = false;
+  refreshTeacher: boolean = false;
+  teacherSearchText: any;
+  public teacherShowSearch: boolean = false;
+
+  getUsernameData(user, type) {
+    this.getUsername = user;
+    this.getType = type
+  }
+
+  pullFromArchive() {
+    const { token } = this.data;
+    const payload = {
+      token: token,
+      username: this.getUsername,
+      action: 'active'
+    }
+    this.showSpinner = true;
+
+    this.apiService.pullFromArchive(payload)
+      .subscribe((response: any) => {
+        console.log(response);
+        this.getStudents();
+        this.adminList.setInactiveStudent(null);
+        this.adminList.setAllTeachers(null);
+        this.adminList.setTeacher(null);
+        // this.teacherParams.pipe(take(1)).subscribe({
+        //   next: (post) => {
+        //     console.log('observable data', post);
+        //   },
+        //   error: err => {
+        //     console.log(err)
+
+        //   },
+        //   complete: () => {
+
+        //   },
+        // });
+      }, (error: any) => {
+        console.log(error);
+      })
+
+  }
+
+  addToArchive() {
+    const { token } = this.data;
+
+    const payload = {
+      token: token,
+      username: this.getUsername,
+      action: 'inactive'
+    }
+    this.showSpinner = true;
+    this.apiService.addToArchive(payload)
+      .subscribe((response: any) => {
+        console.log(response);
+        this.adminList.setInactiveTeacher(null);
+        this.adminList.setTeacher(null);
+        this.adminList.setAllTeachers(null);
+        this.getStudents();
+      }, (error: any) => {
+        console.log(error);
+      })
+  }
 }
