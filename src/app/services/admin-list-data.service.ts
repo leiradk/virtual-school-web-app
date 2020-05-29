@@ -14,6 +14,7 @@ export class AdminListDataService {
   private inactiveParentParams = new BehaviorSubject<string>(null);
   private allTeacherParams = new BehaviorSubject<string>(null);
   private allStudentsParams = new BehaviorSubject<string>(null);
+  private allParentsParams = new BehaviorSubject<string>(null);
   student: Observable<string>;
   teacher: Observable<string>;
   parent: Observable<string>;
@@ -22,6 +23,7 @@ export class AdminListDataService {
   inactiveParent: Observable<string>;
   allTeacher: Observable<string>;
   allStudents: Observable<string>;
+  allParents: Observable<string>;
   constructor() {
     this.student = this.studentParams.asObservable();
     this.teacher = this.teacherParams.asObservable();
@@ -31,6 +33,7 @@ export class AdminListDataService {
     this.inactiveParent = this.inactiveParentParams.asObservable();
     this.allTeacher = this.allTeacherParams.asObservable();
     this.allStudents = this.allStudentsParams.asObservable();
+    this.allParents = this.allParentsParams.asObservable();
   }
 
   setStudent(activeStudents) {
@@ -60,5 +63,8 @@ export class AdminListDataService {
   }
   setAllStudents(allStudents) {
     this.allStudentsParams.next(allStudents);
+  }
+  setAllParents(allParents) {
+    this.allParentsParams.next(allParents);
   }
 }
