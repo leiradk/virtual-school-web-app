@@ -189,17 +189,12 @@ export class ArchivesComponent implements OnInit {
         this.teacherSpinner = false;
         const { status, body } = response;
         const value = [];
-        const active = [];
         if (status === 200) {
-          this.adminList.setAllTeachers(body);
           for (let i = 0; i <= (body.length - 1); i++) {
             if (body[i].status === 'inactive') {
               value.push(body[i]);
-            } else {
-              active.push(body[i]);
             }
           }
-          this.adminList.setTeacher(active);
           if (value.length === 0) {
             this.teacherError = true;
             this.adminList.setInactiveTeacher(null);
@@ -272,11 +267,8 @@ export class ArchivesComponent implements OnInit {
           for (let i = 0; i <= (body.length - 1); i++) {
             if (body[i].status === 'inactive') {
               value.push(body[i]);
-            } else {
-              active.push(body[i])
             }
           }
-          this.adminList.setParents(active);
           if (value.length === 0) {
             this.parentError = true;
             this.adminList.setInactiveParents(null);
@@ -360,10 +352,17 @@ export class ArchivesComponent implements OnInit {
       .subscribe((response: any) => {
         if (this.getType === 'teacher') {
           this.teacherList();
+          this.adminList.setTeacher(null);
+          this.adminList.setInactiveTeacher(null);
+          this.adminList.setAllTeachers(null);
         } else if (this.getType === 'parent') {
           this.parentsList();
+          this.adminList.setInactiveParents(null);
+          this.adminList.setParents(null);
         } else if (this.getType === 'student') {
           this.studentList();
+          this.adminList.setStudent(null);
+          this.adminList.setInactiveStudent(null);
         }
       }, (error: any) => {
         console.log(error);

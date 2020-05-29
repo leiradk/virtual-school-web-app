@@ -50,7 +50,6 @@ export class TeacherStaffComponent implements OnInit {
     // this.mockData();
     this.userData = this.system.retrieveItem('userData');
     this.teacherParams = this.adminList.allTeacher;
-    this.checkTeacherList();
 
     this.data = this.system.retrieveItem("userData");
     if (this.data === undefined || this.data === null) {
@@ -67,7 +66,6 @@ export class TeacherStaffComponent implements OnInit {
         }
       }
     }
-    this.teacherParams = this.adminList.teacher;
     this.checkTeacherList();
   }
 
@@ -100,8 +98,9 @@ export class TeacherStaffComponent implements OnInit {
         this.error = false;
         const { status, body } = response;
         if (status === 200) {
-          console.log(body);
+          console.log(response);
           this.people = body;
+          console.log('people', this.people)
           this.adminList.setAllTeachers(this.people);
           this.showSpinner = false;
         }
@@ -244,7 +243,23 @@ export class TeacherStaffComponent implements OnInit {
 
     this.apiService.pullFromArchive(payload)
       .subscribe((response: any) => {
-        this.teacherList();
+        console.log(response);
+        this.getTeacher();
+        this.adminList.setInactiveTeacher(null);
+        this.adminList.setAllTeachers(null);
+        this.adminList.setTeacher(null);
+        this.teacherParams.pipe(take(1)).subscribe({
+          next: (post) => {
+            console.log('observable data', post);
+          },
+          error: err => {
+            console.log(err)
+
+          },
+          complete: () => {
+
+          },
+        });
       }, (error: any) => {
         console.log(error);
       })
@@ -262,66 +277,47 @@ export class TeacherStaffComponent implements OnInit {
     this.showSpinner = true;
     this.apiService.addToArchive(payload)
       .subscribe((response: any) => {
-        console.log(response)
-        this.teacherList();
+        console.log(response);
+        this.adminList.setInactiveTeacher(null);
+        this.adminList.setTeacher(null);
+        this.adminList.setAllTeachers(null);
+        this.getTeacher();
       }, (error: any) => {
         console.log(error);
       })
   }
 
-  refreshTeacherList() {
-    console.log('refresh');
-    this.teacherError = false;
-    this.showSpinner = true;
-    this.teacherList();
-  }
+  // teacherList() {
+  //   //get data list for teacher and staff
+  //   const { token } = this.data;
+  //   this.apiService.getTeacher(token)
+  //     .subscribe((response: any) => {
+  //       this.teacherError = false;
+  //       this.showSpinner = false;
+  //       const { status, body } = response;
+  //       const value = [];
+  //       const active = [];
+  //       if (status === 200) {
+  //         console.log('body', body)
+  //         this.adminList.setAllTeachers(body);
+  //         this.teacherData = body;
+  //       }
+  //     }, (error: any) => {
+  //       const { status, message } = error.error;
+  //       this.showSpinner = false;
+  //       this.teacherError = true;
+  //       if (status === 500) {
+  //         this.refreshTeacher = true;
+  //         this.teacherMessage = "Ops. Something went wrong, Click here to try again"
+  //       } else if (status === 401) {
+  //         this.teacherMessage = "Unauthorized Access of Data"
+  //       } else if (status === 404) {
+  //         this.teacherMessage = "Opps! Looks like this list is empty."
+  //       } else {
+  //         this.refreshTeacher = true;
+  //         this.teacherMessage = "Ops. Something went wrong, Click here to try again"
+  //       }
 
-  teacherList() {
-    //get data list for teacher and staff
-    const { token } = this.data;
-    this.apiService.getTeacher(token)
-      .subscribe((response: any) => {
-        this.teacherError = false;
-        this.showSpinner = false;
-        const { status, body } = response;
-        const value = [];
-        const active = [];
-        if (status === 200) {
-          this.adminList.setAllTeachers(body);
-          for (let i = 0; i <= (body.length - 1); i++) {
-            if (body[i].status === 'inactive') {
-              value.push(body[i]);
-            } else {
-              active.push(body[i]);
-            }
-          }
-          this.adminList.setTeacher(active);
-          if (value.length === 0) {
-            this.teacherError = true;
-            this.adminList.setInactiveTeacher(null);
-            this.teacherMessage = "Opps! Looks like this list is empty."
-          } else {
-            this.teacherError = false;
-            this.teacherData = value;
-            this.adminList.setInactiveTeacher(this.teacherData);
-          }
-        }
-      }, (error: any) => {
-        const { status, message } = error.error;
-        this.showSpinner = false;
-        this.teacherError = true;
-        if (status === 500) {
-          this.refreshTeacher = true;
-          this.teacherMessage = "Ops. Something went wrong, Click here to try again"
-        } else if (status === 401) {
-          this.teacherMessage = "Unauthorized Access of Data"
-        } else if (status === 404) {
-          this.teacherMessage = "Opps! Looks like this list is empty."
-        } else {
-          this.refreshTeacher = true;
-          this.teacherMessage = "Ops. Something went wrong, Click here to try again"
-        }
-
-      })
-  }
+  //     })
+  // }
 }

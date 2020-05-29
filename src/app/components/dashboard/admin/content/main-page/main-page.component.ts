@@ -189,15 +189,11 @@ export class MainPageComponent implements OnInit {
         const value = [];
         const inactive = [];
         if (status === 200) {
-          this.adminList.setAllTeachers(body);
           for (let i = 0; i <= (body.length - 1); i++) {
             if (body[i].status === 'active') {
               value.push(body[i]);
-            } else {
-              inactive.push(body[i]);
             }
           }
-          this.adminList.setInactiveTeacher(inactive);
 
           if (value.length === 0) {
             this.teacherError = true;
@@ -350,6 +346,7 @@ export class MainPageComponent implements OnInit {
     }
     if (this.userType === 'teacher') {
       this.teacherSpinner = true;
+      this.adminList.setAllTeachers(null);
     } else if (this.userType === 'parent') {
       this.parentSpinner = true;
     } else if (this.userType === 'student') {
@@ -360,10 +357,17 @@ export class MainPageComponent implements OnInit {
         console.log(response)
         if (this.userType === 'teacher') {
           this.teacherList();
+          this.adminList.setInactiveTeacher(null);
+          this.adminList.setAllTeachers(null);
+          this.adminList.setTeacher(null);
         } else if (this.userType === 'parent') {
           this.parentsList();
+          this.adminList.setParents(null);
+          this.adminList.setInactiveParents(null);
         } else if (this.userType === 'student') {
           this.studentList();
+          this.adminList.setInactiveStudent(null);
+          this.adminList.setStudent(null);
         }
       }, (error: any) => {
         console.log(error);
