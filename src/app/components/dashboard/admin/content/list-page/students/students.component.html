@@ -108,14 +108,13 @@
   </div>
   <div class="d-xl-flex justify-content-xl-center align-items-xl-center title teacher-content title-full-width">
     <div class="d-xl-flex justify-content-xl-center align-items-xl-center left-item-full">
-      <i class="fa fa-user-secret title-icon-left"></i>
+      <i class="fas fa-user-graduate title-icon-left"></i>
     </div>
     <div class="mid-item">
-      <span class="text-uppercase d-xl-flex justify-content-xl-start align-items-xl-center list-title">staff &amp;
-        teacher</span>
+      <span class="text-uppercase d-xl-flex justify-content-xl-start align-items-xl-center list-title">Students</span>
     </div>
     <div class="d-xl-flex justify-content-xl-center align-items-xl-center right-item">
-      <span class="add-text">Add Staff &amp; Teacher</span><a data-toggle="modal" data-target="#myModal">
+      <span class="add-text">Add Student</span><a data-toggle="modal" data-target="#myModal">
         <i class="fa fa-plus title-icon-right"></i></a>
     </div>
   </div>
@@ -126,7 +125,7 @@
           <thead>
             <tr>
               <th class="tbl-large-head">NAME</th>
-              <th class="tbl-large-head">POSITION</th>
+              <th class="tbl-large-head">EMAIL</th>
               <th class="tbl-small-head">DATE CREATED</th>
               <th>STATUS</th>
             </tr>
@@ -221,9 +220,9 @@
         <form class="user" [formGroup]="addStudentForm" (ngSubmit)="onSubmit()">
 
           <div class="form-group">
-            <label for="inputYearLevel">Postition
+            <label for="inputYearLevel">Grade Level
               <span class="validator" *ngIf="yearlevel.invalid && yearlevel.touched">
-                - Position is required</span></label>
+                - Grade Level is required</span></label>
             <input type="text" class="form-control" id="inputYearLevel" aria-describedby="yearLevelHelp"
               placeholder="Enter Year Level" formControlName="yearlevel" />
           </div>
@@ -231,7 +230,7 @@
           <div class="form-group">
             <label for="inputFirstName">Username
               <span class="validator" *ngIf="username.invalid && username.touched">
-                - Lastname is required</span></label>
+                - Username is required</span></label>
             <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp"
               placeholder="Enter username" formControlName="username" />
           </div>
