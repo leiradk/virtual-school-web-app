@@ -18,8 +18,9 @@
   color: #2ccb6f !important;
 }
 .option-delete:hover {
-  color: #cd3232 !important;
+  color: #1b1a3d !important;
 }
+
 
 .link-to-list:hover {
   cursor: pointer;
@@ -65,8 +66,6 @@
 .footer {
   height: 10% !important;
 }
-
-
 
 input {
   outline: none;
@@ -150,6 +149,6 @@ input::-webkit-input-placeholder {
 .hide-for-search {
   span,
   i {
-      display: none !important;
+    display: none !important;
   }
 }

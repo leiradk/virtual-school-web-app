@@ -63,7 +63,7 @@
                     <a data-toggle="modal" data-target="#archiveModal"
                       (click)="getUsernameData(teacher.username, 'teacher')">
                       <i
-                        class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
+                        class="fa fa-undo d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                       </i>
                     </a>
                   </div>
@@ -135,7 +135,7 @@
                     <a data-toggle="modal" data-target="#archiveModal"
                       (click)="getUsernameData(parent.username, 'parent')">
                       <i
-                        class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
+                        class="fa fa-undo d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                       </i>
                     </a>
                   </div>
@@ -208,7 +208,7 @@
                     <a data-toggle="modal" data-target="#archiveModal"
                       (click)="getUsernameData(student.username, 'student')">
                       <i
-                        class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
+                        class="fa fa-undo d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                       </i>
                     </a>
                   </div>
@@ -237,11 +237,11 @@
   <div role="document" class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 id="exampleModalLabel" class="modal-title">Archive</h5><button type="button" data-dismiss="modal"
+        <h5 id="exampleModalLabel" class="modal-title">Activate</h5><button type="button" data-dismiss="modal"
           aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
       </div>
       <div class="modal-body">
-        Are you sure you want to archive this user? Status will be set to 'INACTIVE'.
+        Are you sure you want to activate this user? Status will be set to 'ACTIVE'.
       </div>
       <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>

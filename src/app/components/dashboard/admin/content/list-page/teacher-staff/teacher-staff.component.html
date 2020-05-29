@@ -165,9 +165,13 @@
                             class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
                           </i>
                         </a>
-                        <a data-toggle="modal" data-target="#archiveModal">
+                        <a *ngIf="getStatus(staff.status)" data-toggle="modal" data-target="#archiveModal">
                           <i
                             class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
+                          </i>
+                        </a>
+                        <a *ngIf="!getStatus(staff.status)" data-toggle="modal" data-target="#activateModal">
+                          <i class="fa fa-undo d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                           </i>
                         </a>
                       </div>
@@ -295,6 +299,25 @@
       </div>
       <div class="modal-body">
         Are you sure you want to archive this user? Status will be set to 'INACTIVE'.
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>
+        <a data-dismiss="modal" class="btn btn-primary" style="cursor: pointer;">Send to Archive</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="activateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show"
+  aria-modal="true" style="display: none;">
+  <div role="document" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="exampleModalLabel" class="modal-title">Activate</h5><button type="button" data-dismiss="modal"
+          aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to activate this user? Status will be set to 'ACTIVE'.
       </div>
       <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>
