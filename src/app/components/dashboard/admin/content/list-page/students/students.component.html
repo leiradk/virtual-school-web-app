@@ -168,19 +168,16 @@
                             class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
                           </i>
                         </a>
-                        <!-- <a *ngIf="getStatus(staff.status)" data-toggle="modal" data-target="#archiveModal"
-                          (click)="getUsernameData(staff.username, 'teacher')"> -->
-                        <a>
+                        <a *ngIf="getStatus(student.status)" data-toggle="modal" data-target="#archiveModal"
+                          (click)="getUsernameData(student.username, 'student')">
                           <i
                             class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                           </i>
                         </a>
-                        <!-- <a *ngIf="!getStatus(staff.status)" data-toggle="modal" data-target="#activateModal"> -->
-                        <a>
-                          <!-- <i class="fa fa-undo d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"
-                            (click)="getUsernameData(staff.username, 'teacher')"> -->
-                          <i
-                            class="fa fa-undo d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
+                        <a *ngIf="!getStatus(student.status)" data-toggle="modal" data-target="#activateModal">
+                          <i class="fa fa-undo d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"
+                            (click)="getUsernameData(student.username, 'student')">
+
                           </i>
                         </a>
                       </div>
@@ -189,7 +186,8 @@
                 </td>
                 <td class="text-left" [ngClass]="{'active' : getStatus(student.status)}">{{student.position}}
                 </td>
-                <td class="text-left" [ngClass]="{'active' : getStatus(student.status)}">{{ dateCreated(student.created)}}
+                <td class="text-left" [ngClass]="{'active' : getStatus(student.status)}">
+                  {{ dateCreated(student.created)}}
                 </td>
                 <td class="text-left" [ngClass]="{'active' : getStatus(student.status)}">{{student.status}}</td>
               </ng-container>

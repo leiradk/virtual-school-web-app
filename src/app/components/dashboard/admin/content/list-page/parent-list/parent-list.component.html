@@ -97,9 +97,9 @@
                 </td>
                 <td class="text-left" [ngClass]="{'active' : getStatus(parents.status)}">{{parents.username}}
                 </td>
-                <td class="text-left" [ngClass]="{'active' : getStatus(parents.status)}">{{dateCreated(parent.created)}}
+                <td class="text-left" [ngClass]="{'active' : getStatus(parents.status)}">{{dateCreated(parents.created)}}
                 </td>
-                <td class="text-left" [ngClass]="{'active' : getStatus(parents.status)}">{{parents.status}}</td>
+                <td class="text-left" [ngClass]="{'active' : getStatus(parents.status)}">status</td>
               </ng-container>
 
               <!-- <td *ngIf="people.length === 0" class="no-content" colspan="5"> -->

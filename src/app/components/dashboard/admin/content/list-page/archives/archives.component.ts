@@ -117,11 +117,8 @@ export class ArchivesComponent implements OnInit {
           for (let i = 0; i <= (body.length - 1); i++) {
             if (body[i].status === 'inactive') {
               value.push(body[i]);
-            } else {
-              active.push(body[i]);
             }
           }
-          this.adminList.setStudent(active);
           if (value.length === 0) {
             this.studentError = true;
             this.adminList.setInactiveStudent(null);
@@ -363,6 +360,7 @@ export class ArchivesComponent implements OnInit {
           this.studentList();
           this.adminList.setStudent(null);
           this.adminList.setInactiveStudent(null);
+          this.adminList.setAllStudents(null);
         }
       }, (error: any) => {
         console.log(error);

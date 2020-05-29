@@ -116,11 +116,8 @@ export class MainPageComponent implements OnInit {
           for (let i = 0; i <= (body.length - 1); i++) {
             if (body[i].status === 'active') {
               value.push(body[i]);
-            } else {
-              inactive.push(body[i])
             }
           }
-          this.adminList.setInactiveStudent(inactive);
           if (value.length === 0) {
             this.studentError = true;
             this.adminList.setStudent(null);
@@ -368,6 +365,7 @@ export class MainPageComponent implements OnInit {
           this.studentList();
           this.adminList.setInactiveStudent(null);
           this.adminList.setStudent(null);
+          this.adminList.setAllStudents(null);
         }
       }, (error: any) => {
         console.log(error);
