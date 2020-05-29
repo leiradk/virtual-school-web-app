@@ -200,7 +200,7 @@ export class StudentsComponent implements OnInit {
   }
 
   pullFromArchive() {
-    const { token } = this.data;
+    const { token } = this.userData;
     const payload = {
       token: token,
       username: this.getUsername,
@@ -222,7 +222,7 @@ export class StudentsComponent implements OnInit {
   }
 
   addToArchive() {
-    const { token } = this.data;
+    const { token } = this.userData;
 
     const payload = {
       token: token,
