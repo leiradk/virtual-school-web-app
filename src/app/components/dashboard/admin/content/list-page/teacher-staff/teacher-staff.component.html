@@ -165,13 +165,15 @@
                             class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
                           </i>
                         </a>
-                        <a *ngIf="getStatus(staff.status)" data-toggle="modal" data-target="#archiveModal">
+                        <a *ngIf="getStatus(staff.status)" data-toggle="modal" data-target="#archiveModal"
+                          (click)="getUsernameData(staff.username, 'teacher')">
                           <i
                             class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                           </i>
                         </a>
                         <a *ngIf="!getStatus(staff.status)" data-toggle="modal" data-target="#activateModal">
-                          <i class="fa fa-undo d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
+                          <i class="fa fa-undo d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"
+                            (click)="getUsernameData(staff.username, 'teacher')">
                           </i>
                         </a>
                       </div>
@@ -302,7 +304,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>
-        <a data-dismiss="modal" class="btn btn-primary" style="cursor: pointer;">Send to Archive</a>
+        <a data-dismiss="modal" (click)="addToArchive()" class="btn btn-primary" style="cursor: pointer;">Deactivate User</a>
       </div>
     </div>
   </div>
@@ -321,7 +323,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>
-        <a data-dismiss="modal" class="btn btn-primary" style="cursor: pointer;">Send to Archive</a>
+        <a data-dismiss="modal" (click)="pullFromArchive()" class="btn btn-primary" style="cursor: pointer;">Activate User</a>
       </div>
     </div>
   </div>

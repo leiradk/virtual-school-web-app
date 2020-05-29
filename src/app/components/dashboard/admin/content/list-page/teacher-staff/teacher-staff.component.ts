@@ -8,6 +8,7 @@ import {
 import { ApiHostService } from "../../../../../../services/api-host.service";
 import { ToastrService } from "ngx-toastr";
 import { SystemUtils } from '../../../../../../services/system.utils';
+import { Router } from "@angular/router";
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { AdminListDataService } from "../../../../../../services/admin-list-data.service";
@@ -19,6 +20,7 @@ declare var jQuery: any;
   templateUrl: "./teacher-staff.component.html",
   styleUrls: ["./teacher-staff.component.scss", "../../../../../../../assets/staff_teacher/css/styles.min.css"],
 })
+
 export class TeacherStaffComponent implements OnInit {
   public addStaffFOrm: FormGroup;
 
@@ -35,6 +37,7 @@ export class TeacherStaffComponent implements OnInit {
     private apiService: ApiHostService,
     private toastr: ToastrService,
     private system: SystemUtils,
+    private router: Router,
     private adminList: AdminListDataService
   ) {
     this.studentFormModel();
@@ -47,6 +50,24 @@ export class TeacherStaffComponent implements OnInit {
     // this.mockData();
     this.userData = this.system.retrieveItem('userData');
     this.teacherParams = this.adminList.allTeacher;
+    this.checkTeacherList();
+
+    this.data = this.system.retrieveItem("userData");
+    if (this.data === undefined || this.data === null) {
+      this.router.navigate(["/Landing-Page"]);
+    } else {
+      const { token } = this.data;
+
+      if (token === undefined) {
+        this.router.navigate(["/Landing-Page"]);
+      } else {
+        const { data } = this.data;
+        if (parseInt(data.usertype) === 10002) {
+          this.router.navigate(["/teacher"]);
+        }
+      }
+    }
+    this.teacherParams = this.adminList.teacher;
     this.checkTeacherList();
   }
 
@@ -191,5 +212,116 @@ export class TeacherStaffComponent implements OnInit {
   }
   get repassword() {
     return this.addStaffFOrm.get('repassword') as FormControl;
+  }
+
+  //Pull from archive and add to archive hihi
+
+  data: any = [];
+  getUsername: any;
+  getType: any;
+
+
+  //teacher variables
+  teacherData: any = [];
+  teacherError: boolean = false;
+  refreshTeacher: boolean = false;
+  teacherSearchText: any;
+  public teacherShowSearch: boolean = false;
+
+  getUsernameData(user, type) {
+    this.getUsername = user;
+    this.getType = type
+  }
+
+  pullFromArchive() {
+    const { token } = this.data;
+    const payload = {
+      token: token,
+      username: this.getUsername,
+      action: 'active'
+    }
+    this.showSpinner = true;
+
+    this.apiService.pullFromArchive(payload)
+      .subscribe((response: any) => {
+        this.teacherList();
+      }, (error: any) => {
+        console.log(error);
+      })
+
+  }
+
+  addToArchive() {
+    const { token } = this.data;
+
+    const payload = {
+      token: token,
+      username: this.getUsername,
+      action: 'inactive'
+    }
+    this.showSpinner = true;
+    this.apiService.addToArchive(payload)
+      .subscribe((response: any) => {
+        console.log(response)
+        this.teacherList();
+      }, (error: any) => {
+        console.log(error);
+      })
+  }
+
+  refreshTeacherList() {
+    console.log('refresh');
+    this.teacherError = false;
+    this.showSpinner = true;
+    this.teacherList();
+  }
+
+  teacherList() {
+    //get data list for teacher and staff
+    const { token } = this.data;
+    this.apiService.getTeacher(token)
+      .subscribe((response: any) => {
+        this.teacherError = false;
+        this.showSpinner = false;
+        const { status, body } = response;
+        const value = [];
+        const active = [];
+        if (status === 200) {
+          this.adminList.setAllTeachers(body);
+          for (let i = 0; i <= (body.length - 1); i++) {
+            if (body[i].status === 'inactive') {
+              value.push(body[i]);
+            } else {
+              active.push(body[i]);
+            }
+          }
+          this.adminList.setTeacher(active);
+          if (value.length === 0) {
+            this.teacherError = true;
+            this.adminList.setInactiveTeacher(null);
+            this.teacherMessage = "Opps! Looks like this list is empty."
+          } else {
+            this.teacherError = false;
+            this.teacherData = value;
+            this.adminList.setInactiveTeacher(this.teacherData);
+          }
+        }
+      }, (error: any) => {
+        const { status, message } = error.error;
+        this.showSpinner = false;
+        this.teacherError = true;
+        if (status === 500) {
+          this.refreshTeacher = true;
+          this.teacherMessage = "Ops. Something went wrong, Click here to try again"
+        } else if (status === 401) {
+          this.teacherMessage = "Unauthorized Access of Data"
+        } else if (status === 404) {
+          this.teacherMessage = "Opps! Looks like this list is empty."
+        } else {
+          this.refreshTeacher = true;
+          this.teacherMessage = "Ops. Something went wrong, Click here to try again"
+        }
+
+      })
   }
 }

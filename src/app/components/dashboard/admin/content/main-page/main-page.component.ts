@@ -15,6 +15,7 @@ export class MainPageComponent implements OnInit {
   data: any = [];
   getUsername: any;
   userType: any;
+
   //student variables
   studentData: any = [];
   studentSpinner: boolean = true;
@@ -65,7 +66,6 @@ export class MainPageComponent implements OnInit {
         const { data } = this.data;
         if (parseInt(data.usertype) === 10002) {
           this.router.navigate(["/teacher"]);
-
         }
       }
     }
@@ -198,7 +198,7 @@ export class MainPageComponent implements OnInit {
             }
           }
           this.adminList.setInactiveTeacher(inactive);
-          
+
           if (value.length === 0) {
             this.teacherError = true;
             this.adminList.setTeacher(null);
@@ -339,6 +339,7 @@ export class MainPageComponent implements OnInit {
     this.getUsername = user;
     this.userType = type;
   }
+
   addToArchive() {
     const { token } = this.data;
 
