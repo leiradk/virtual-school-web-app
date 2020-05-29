@@ -156,10 +156,8 @@ export class StudentsComponent implements OnInit {
         this.addStudentForm.reset(); //reset form
         const { status } = response;
         if (status === 201) {
-          this.ngOnInit();
+         this.getStudents();
           this.error = false;
-
-        } else {
         }
       }, (error: any) => {
         const { message } = error.error;

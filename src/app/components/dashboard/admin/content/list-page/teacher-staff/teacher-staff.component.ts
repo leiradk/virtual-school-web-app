@@ -162,7 +162,7 @@ export class TeacherStaffComponent implements OnInit {
           //reload onInit
           setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
           this.addStaffFOrm.reset(); //reset form
-          this.ngOnInit();
+          this.getTeacher();
         } else {
         }
       }, (error: any) => {
