@@ -1,33 +1,65 @@
 <div class="subject-details">
-    <div class="column">
-      <!-- Earnings (Monthly) Card Example -->
-      <div class="col-xl-12 col-md-12 mb-12">
-        <div class="border-bottom-primary h-100 py-2">
-          <div class="card-body">
-            <div class="row no-gutters align-items-center">
-              <div class="col mr-2">
-                <div class="subject-title text-xs font-weight-bold text-primary text-uppercase mb-1">
-                  {{classDetails.className}} Grade {{classDetails.classGradeLevel}}
+  <div class="column">
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-12 col-md-12 mb-12 full-width">
+      <div class="class-info h-100 py-2">
+        <div class="card-body">
+          <div class="additional">
+            <div class="more-info">
+              <h1>Grace</h1>
+              <div class="stats">
+                <div class="stat-group">
+                  <i class="fa fa-group"></i>
+                  <div class="title">Students</div>
+                  <div class="value">1</div>
                 </div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                  {{classDetails.joined}} Students
+                <div class="stat-group">
+                  <i class="fa fa-paper-plane"></i>
+                  <div class="title">Invitations</div>
+                  <div class="value">1</div>
+                </div>
+                <div class="stat-group">
+                  <i class="fa fa-exclamation"></i>
+                  <div class="title">Pending</div>
+                  <div class="value">0</div>
+                </div>
+                <div class="stat-group">
+                  <i class="fa fa-check"></i>
+                  <div class="title">Accepted</div>
+                  <div class="value infinity">1</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-xl-12 col-md-12 mb-12">
-        <div class="row">
-          <div class="col-xl-4 col-md-4 mb-4">
-            <!-- Reminder Here -->
-            <app-reminders></app-reminders>
-          </div>
-          <div class="column col-xl-8 col-md-8 mb-8">
-            <!-- Post Here -->
-            <app-posts></app-posts>
+        <div class="info-class">
+          <div class="coords">Level: <span> Grade 12</span></div>
+          <div class="coords">Subject: <span>ICT</span></div>
+          <div class="coords">Status: <span>Active</span></div>
+          <div class="coords">Created: <span>May 21, 2020</span></div>
+          <div class="coords">Description: <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Fusce a volutpat mauris, at molestie lacus.
+              Nam vestibulum sodales odio ut pulvinar.</span></div>
+        </div>
+        <div class="class-buttons">
+          <div class="buttons">
+            <button class="btn-live"><i class="fa fa-video"></i><span>Start Live</span></button>
+            <button class="btn-invite"><i class="fa fa-paper-plane"></i><span>Invite</span></button>
           </div>
         </div>
       </div>
     </div>
+    <div class="col-xl-12 col-md-12 mb-12">
+      <div class="row">
+        <div class="col-xl-4 col-md-4 mb-4">
+          <!-- Reminder Here -->
+          <app-reminders></app-reminders>
+        </div>
+        <div class="column col-xl-8 col-md-8 mb-8" style="height: 60vh; overflow-y: auto;">
+          <!-- Post Here -->
+          <app-posts></app-posts>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
