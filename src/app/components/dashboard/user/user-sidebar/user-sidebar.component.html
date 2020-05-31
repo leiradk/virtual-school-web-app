@@ -1,111 +1,18 @@
-<div class="page-wrapper chiller-theme toggled" [ngClass]="{'toggled': !toggle}">
-    <a id="show-sidebar" class="btn btn-sm btn-dark">
-        <i class="fas fa-bars" (click)="clickEvent($event)"></i>
+<!-- Start: sidebar -->
+<div id="dashboard-sidebar">
+  <ul class="list-unstyled sidebar-list">
+    <a [routerLink]="['/user/t/main']" routerLinkActive="active" class="collapse-item">
+      <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
+        [ngClass]="{'active':toggleDashboard}">{{toggleSidebar('dashboard')}}
+        <i class="fas fa-tachometer-alt side-icon"></i><span style="font-weight: bold;">Dashboard</span></li>
     </a>
-    <nav id="sidebar" class="sidebar-wrapper">
-        <div class="sidebar-content">
-            <div class="sidebar-brand">
-                <a href="#">pro sidebar</a>
-                <div id="close-sidebar">
-                    <i class="fas fa-times" (click)="clickEvent($event)"></i>
-                </div>
-            </div>
-            <div class="sidebar-header">
-                <div class="user-pic" [ngClass]="{'showMenuIcons': toggle}">
-                    <img class="img-responsive img-rounded"
-                        src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
-                        alt="User picture">
-                </div>
-                <div class="user-info">
-                    <span class="user-name">DK
-                        <strong *ngIf="userType === '10003'">Student</strong>
-                        <strong *ngIf="userType === '10002'">Teacher</strong>
-                    </span>
-                    <span class="user-role">Teacher</span>
-                    <span class="user-status">
-                        <i class="fa fa-circle"></i>
-                        <span>Online</span>
-                    </span>
-                </div>
-            </div>
-            <!-- sidebar-header  -->
-            <div class="sidebar-search">
-                <div>
-                    <div class="input-group">
-                        <input type="text" class="form-control search-menu" placeholder="Search...">
-                        <div class="input-group-append">
-                            <span class="input-group-text" [ngClass]="{'showSearchIcon': toggle}">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- sidebar-search  -->
-            <div class="sidebar-menu">
-                <ul>
-                    <li class="header-menu">
-                        <span>General</span>
-                    </li>
-                    <li class="sidebar-content active">
-                        <a [routerLink]="[dashboardRoute]">
-                            <i class="fa fa-tachometer"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li *ngIf="userType === '10003'" class="sidebar-dropdown">
-                        <a [routerLink]="['/user/s/invitations']">
-                            <i class="fa fa-envelope"></i>
-                            <span>Invitations</span>
-                            <span class="badge badge-pill badge-warning">New</span>
-                            <!-- <span class="badge badge-pill badge-danger">3</span> -->
-                        </a>
-                        <div class="sidebar-submenu">
-                            <ul>
-                                <!-- <li *ngFor="let class of classDetails">
-                      <a (click)="viewDetails(class)">{{class.roomName}}</a>
-                    </li>
-                  </ul> -->
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="sidebar-dropdown" [ngClass]="{'active': togClass}" (click)="toggleClass()">
-                        <a>
-                            <i class="fa fa-envelope"></i>
-                            <span>Classes</span>
-                            <span class="badge badge-pill badge-danger">3</span>
-                        </a>
-                        <div class="sidebar-submenu">
-                            <ul>
-                                <li *ngFor="let class of classDetails">
-                                    <a (click)="viewDetails(class)">{{class.roomName}}</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- sidebar-menu  -->
-        </div>
-        <!-- sidebar-content  -->
-        <div class="sidebar-footer">
-            <a href="#">
-                <i class="fa fa-bell"></i>
-                <span class="badge badge-pill badge-warning notification">3</span>
-            </a>
-            <a href="#">
-                <i class="fa fa-envelope"></i>
-                <span class="badge badge-pill badge-success notification">7</span>
-            </a>
-            <a href="#">
-                <i class="fa fa-cog"></i>
-                <span class="badge-sonar"></span>
-            </a>
-            <a href="#">
-                <i class="fa fa-power-off"></i>
-            </a>
-        </div>
-    </nav>
-    <!-- sidebar-wrapper  -->
-    <!-- page-content" -->
+    <!-- <a [routerLink]="['/dashboard/parents-list']" routerLinkActive="active" class="collapse-item "> -->
+    <a routerLinkActive="active" class="collapse-item disabled">
+      <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
+        [ngClass]="{'active':toggleClass}">{{toggleSidebar('classes')}}
+        <i class="fas fa-users side-icon"></i><span class="disabled" style="font-weight: bold;">Classes</span>
+      </li>
+    </a>
+  </ul>
 </div>
+<!-- End: sidebar -->

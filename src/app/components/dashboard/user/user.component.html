@@ -1,13 +1,16 @@
-<div class="wrapper d-flex align-items-stretch">
-    <nav id="sidebar" class="toggled" [ngClass]="{'afterToggled': toggle, 'toggled': !toggle}">
-      <app-user-sidebar (messageEvent)="receiveMessage($event)"></app-user-sidebar>
-    </nav>
-  
-    <!-- Page Content  -->
-    <div id="content" class="p-4 p-md-5">
-      <app-user-navbar></app-user-navbar>
-      <!-- Content Row -->
-      <router-outlet></router-outlet>
-    </div>
+<!-- <div class="wrapper d-flex align-items-stretch">
+  <nav class="toggled" [ngClass]="{'afterToggled': toggle, 'toggled': !toggle}">
+    <app-user-sidebar></app-user-sidebar>
+  </nav>
+
+  <div id="content" class="p-4 p-md-5">
+    <app-user-navbar></app-user-navbar>
+    <router-outlet></router-outlet>
   </div>
-  
+</div> -->
+
+<app-navbar></app-navbar>
+<div class="d-flex d-xl-flex justify-content-xl-start" id="dashboard-wrapper" style="background-color: #dddddd;">
+  <app-user-sidebar></app-user-sidebar>
+  <router-outlet></router-outlet>
+</div>

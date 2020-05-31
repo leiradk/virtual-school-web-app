@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-teacher-side',
   templateUrl: './teacher-side.component.html',
-  styleUrls: ['./teacher-side.component.scss']
+  styleUrls: ['./teacher-side.component.scss', '../../../../../../assets/admin/css/styles.min.css']
 })
 export class TeacherSideComponent implements OnInit {
 

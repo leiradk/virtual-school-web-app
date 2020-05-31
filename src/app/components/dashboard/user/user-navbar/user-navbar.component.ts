@@ -4,7 +4,7 @@ import { SystemUtils } from '../../../../services/system.utils';
 @Component({
   selector: 'app-user-navbar',
   templateUrl: './user-navbar.component.html',
-  styleUrls: ['./user-navbar.component.scss']
+  styleUrls: ['./user-navbar.component.scss', '../../../../../assets/admin/css/styles.min.css']
 })
 export class UserNavbarComponent implements OnInit {
 

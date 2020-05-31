@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-sidebar',
   templateUrl: './user-sidebar.component.html',
-  styleUrls: ['./user-sidebar.component.scss']
+  styleUrls: ['./user-sidebar.component.scss', '../../../../../assets/admin/css/styles.min.css']
 })
 export class UserSidebarComponent implements OnInit {
   userData: any;
@@ -13,8 +13,6 @@ export class UserSidebarComponent implements OnInit {
   data: any;
   userType: any;
   dashboardRoute: any;
-  public toggle: boolean = false;
-  public togClass: boolean = false;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -55,14 +53,18 @@ export class UserSidebarComponent implements OnInit {
   //     });
   // }
 
-  @Output() messageEvent = new EventEmitter<boolean>();
+  
+  public toggleDashboard: boolean = false;
+  public toggleClass: boolean = false;
 
-  clickEvent(event) {
-    this.toggle = !this.toggle;
-    this.messageEvent.emit(this.toggle)
-  }
-
-  toggleClass() {
-    this.togClass = !this.togClass;
+  toggleSidebar(sidebar) {
+    if (sidebar === 'dashboard') {
+      this.toggleDashboard = true;
+      this.toggleClass = false;
+    }
+    if (sidebar === 'classes') {
+      this.toggleDashboard = false;
+      this.toggleClass = false;
+    }
   }
 }
