@@ -80,7 +80,6 @@ export class MainPageComponent implements OnInit {
   checkStudentList() {
     this.studentParams.pipe(take(1)).subscribe({
       next: (post) => {
-        console.log(post);
         if (post === null || post === undefined || post.length === 0) {
           this.studentList();
         } else {
@@ -99,7 +98,6 @@ export class MainPageComponent implements OnInit {
     });
   }
   refreshStudentList() {
-    console.log('refresh');
     this.studentError = false;
     this.studentSpinner = true;
     this.studentList();
@@ -151,7 +149,6 @@ export class MainPageComponent implements OnInit {
   checkTeacherList() {
     this.teacherParams.pipe(take(1)).subscribe({
       next: (post) => {
-        console.log(post);
         if (post === null || post === undefined || post.length === 0) {
           this.teacherList();
         } else {
@@ -170,7 +167,6 @@ export class MainPageComponent implements OnInit {
     });
   }
   refreshTeacherList() {
-    console.log('refresh');
     this.teacherError = false;
     this.teacherSpinner = true;
     this.teacherList();
@@ -223,7 +219,6 @@ export class MainPageComponent implements OnInit {
   checkParentList() {
     this.parentParams.pipe(take(1)).subscribe({
       next: (post) => {
-        console.log(post);
         if (post === null || post === undefined || post.length === 0) {
           this.parentsList();
         } else {
@@ -237,14 +232,12 @@ export class MainPageComponent implements OnInit {
 
       },
       complete: () => {
-        console.log('completed')
 
       },
     });
   }
 
   refreshParentList() {
-    console.log('refresh');
     this.parentError = false;
     this.parentSpinner = true;
     this.parentsList();
@@ -301,7 +294,6 @@ export class MainPageComponent implements OnInit {
   public showSearch: boolean = false;
 
   toggle(value) {
-    console.log(value)
     if (value === 'teacher') {
       if (this.teacherShowSearch === true) {
         setTimeout(() => {
@@ -351,7 +343,6 @@ export class MainPageComponent implements OnInit {
     }
     this.apiService.addToArchive(payload)
       .subscribe((response: any) => {
-        console.log(response)
         if (this.userType === 'teacher') {
           this.teacherList();
           this.adminList.setInactiveTeacher(null);

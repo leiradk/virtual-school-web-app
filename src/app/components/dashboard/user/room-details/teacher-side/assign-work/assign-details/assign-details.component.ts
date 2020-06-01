@@ -107,7 +107,7 @@ export class AssignDetailsComponent implements OnInit {
         const { classworks } = response.body;
         this.classWork = classworks;
         this.workDetails.setClassWork(this.classWork);
-        // console.log(this.classWork)
+        console.log(this.classWork)
         this.showSpinner = false;
       }, (error: any) => {
         const { message, status } = error.error;
@@ -196,7 +196,7 @@ export class AssignDetailsComponent implements OnInit {
     //close modal
     //loading and toast
     this.showSpinner = true;
-    jQuery('#myModalClasswork').modal('hide'); 
+    jQuery('#myModalClasswork').modal('hide');
     this.classWorkForm.reset();
 
     this.apiService.addClasswork(payload)
@@ -249,11 +249,8 @@ export class AssignDetailsComponent implements OnInit {
   }
 
   viewDetails(work, index) {
-    this.workDetails.setRouteToken(index);
+    this.workDetails.setIndex(index);
     // this.system.storeLocal('workDetails', work);
-    // this.workDetails.workDetails.subscribe((response: any) => {
-    // console.log(response);
-    // this.system.storeLocal('workDetails', response);
-    // })
+
   }
 }

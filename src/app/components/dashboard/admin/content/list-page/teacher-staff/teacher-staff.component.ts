@@ -72,7 +72,6 @@ export class TeacherStaffComponent implements OnInit {
   checkTeacherList() {
     this.teacherParams.pipe(take(1)).subscribe({
       next: (post) => {
-        console.log(post);
         if (post === null || post === undefined) {
           this.getTeacher();
         } else {
@@ -98,9 +97,7 @@ export class TeacherStaffComponent implements OnInit {
         this.error = false;
         const { status, body } = response;
         if (status === 200) {
-          console.log(response);
           this.people = body;
-          console.log('people', this.people)
           this.adminList.setAllTeachers(this.people);
           this.showSpinner = false;
         }
@@ -243,14 +240,12 @@ export class TeacherStaffComponent implements OnInit {
 
     this.apiService.pullFromArchive(payload)
       .subscribe((response: any) => {
-        console.log(response);
         this.getTeacher();
         this.adminList.setInactiveTeacher(null);
         this.adminList.setAllTeachers(null);
         this.adminList.setTeacher(null);
         this.teacherParams.pipe(take(1)).subscribe({
           next: (post) => {
-            console.log('observable data', post);
           },
           error: err => {
             console.log(err)
@@ -277,7 +272,6 @@ export class TeacherStaffComponent implements OnInit {
     this.showSpinner = true;
     this.apiService.addToArchive(payload)
       .subscribe((response: any) => {
-        console.log(response);
         this.adminList.setInactiveTeacher(null);
         this.adminList.setTeacher(null);
         this.adminList.setAllTeachers(null);

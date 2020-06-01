@@ -5,17 +5,17 @@ import { Observable, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedWorkDetailsService {
-  private pathParams = new BehaviorSubject<string>(null);
+  private indexParams = new BehaviorSubject<string>(null);
   private classWorkParams = new BehaviorSubject<string>(null);
-  workDetails: Observable<string>;
+  index: Observable<string>;
   classWork: Observable<string>;
   constructor() {
-    this.workDetails = this.pathParams.asObservable();
+    this.index = this.indexParams.asObservable();
     this.classWork = this.classWorkParams.asObservable();
   }
 
-  setRouteToken(token) {
-    this.pathParams.next(token);
+  setIndex(token) {
+    this.indexParams.next(token);
   }
   setClassWork(classWork) {
     this.classWorkParams.next(classWork);

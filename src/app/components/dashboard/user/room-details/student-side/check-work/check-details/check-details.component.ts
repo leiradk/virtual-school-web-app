@@ -150,7 +150,7 @@ export class CheckDetailsComponent implements OnInit {
 
   viewDetails(work, index) {
     // console.log(work);
-    this.workDetails.setRouteToken(index);
+    this.workDetails.setIndex(index);
     // this.system.storeLocal('workDetails', work);
     // this.workDetails.workDetails.subscribe((response: any) => {
     //   console.log(response);

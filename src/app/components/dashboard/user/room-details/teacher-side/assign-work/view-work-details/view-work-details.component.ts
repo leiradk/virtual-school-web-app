@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiHostService } from '../../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../../services/system.utils';
 import { SharedWorkDetailsService } from '../../../../../../../services/shared-work-details.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-view-work-details',
@@ -24,6 +25,12 @@ export class ViewWorkDetailsComponent implements OnInit {
   message: any;
   disable: boolean = false;
   totalGrade: any = 0;
+  localHostClassWork: any;
+  localHostClassDetails: any;
+  classDetails: any;
+  classWork: any;
+  error: any;
+  errorMessage: any;
   constructor(
     private apiService: ApiHostService,
     private sharedWork: SharedWorkDetailsService,
@@ -35,16 +42,29 @@ export class ViewWorkDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log('workview');
+    this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
-    this.sharedWork.workDetails.subscribe((workDetails: any) => {
-      this.index = workDetails;
+    this.sharedWork.index.subscribe((index: any) => {
       this.sharedWork.classWork.subscribe((classWork: any) => {
-        this.getAllClasswork = classWork;
-        this.workDetails = this.getAllClasswork[this.index];
-        console.log(this.workDetails);
+
+        if (classWork == null || classWork == undefined) {
+          console.log('empty');
+          this.updateClassWork(this.classDetails, this.userData);
+        } else {
+          if (index === null || index === null) {
+            console.log('empty2')
+            this.updateClassWork(this.classDetails, this.userData);
+          } else {
+            console.log('not empty')
+            this.index = index;
+            this.getAllClasswork = classWork;
+            this.workDetails = this.getAllClasswork[this.index];
+            this.getSubmittedWorks();
+          }
+        }
       })
     })
-    this.getSubmittedWorks();
+
   }
 
   next() {
@@ -53,7 +73,7 @@ export class ViewWorkDetailsComponent implements OnInit {
     } else {
       this.showSpinner = true;
       this.index = this.index + 1;
-      this.sharedWork.setRouteToken(this.index);
+      this.sharedWork.setIndex(this.index);
       this.workDetails = this.getAllClasswork[this.index];
       this.getSubmittedWorks();
     }
@@ -66,7 +86,7 @@ export class ViewWorkDetailsComponent implements OnInit {
     } else {
       this.showSpinner = true;
       this.index = this.index - 1;
-      this.sharedWork.setRouteToken(this.index);
+      this.sharedWork.setIndex(this.index);
       this.workDetails = this.getAllClasswork[this.index];
       this.getSubmittedWorks();
     }
@@ -83,7 +103,6 @@ export class ViewWorkDetailsComponent implements OnInit {
         if (status === 200) {
           const { submitted } = response.body;
           this.submittedTask = submitted;
-          console.log(this.submittedTask)
           this.disable = false;
           this.showSpinner = false;
         }
@@ -95,10 +114,8 @@ export class ViewWorkDetailsComponent implements OnInit {
   }
 
   download(file, filename) {
-    console.log(filename)
     this.downloadFile = "data:application/pdf;base64," + file;
     const downloadLink = document.createElement("a");
-    console.log(this.submittedTask.attachmentFilename)
     downloadLink.download = filename;
 
 
@@ -130,5 +147,38 @@ export class ViewWorkDetailsComponent implements OnInit {
       }, (error: any) => {
         console.log(error);
       })
+  }
+
+
+  updateClassWork(classID, userID) {
+    const { token } = userID;
+    const { rid } = classID;
+
+    this.apiService.getClassworkTeacher(rid, token)
+      .subscribe((response: any) => {
+        const { classworks } = response.body;
+        this.classWork = classworks;
+        this.restoreClassWork(this.classWork);
+        this.showSpinner = false;
+      }, (error: any) => {
+        console.log(error)
+        const { message, status } = error.error;
+        this.error = true;
+        this.showSpinner = false;
+        if (status === 404) {
+          this.errorMessage = 'Empty Classwork';
+        } else if (status === 500) {
+          this.errorMessage = 'Something went wrong, please try again';
+        }
+      })
+  }
+
+  restoreClassWork(data) {
+    this.sharedWork.setClassWork(data);
+    this.sharedWork.index.subscribe((index: any) => {
+      this.workDetails = data[index];
+      this.getSubmittedWorks();
+
+    })
   }
 }

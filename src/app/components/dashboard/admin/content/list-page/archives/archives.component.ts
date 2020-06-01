@@ -81,8 +81,7 @@ export class ArchivesComponent implements OnInit {
   checkStudentList() {
     this.studentParams.pipe(take(1)).subscribe({
       next: (post) => {
-        console.log('post', post);
-        console.log(post);
+        
         if (post === null || post === undefined || post.length === 0) {
           this.studentList();
         } else {
@@ -101,7 +100,6 @@ export class ArchivesComponent implements OnInit {
     });
   }
   refreshStudentList() {
-    console.log('refresh');
     this.studentError = false;
     this.studentSpinner = true;
     this.studentList();
@@ -153,7 +151,6 @@ export class ArchivesComponent implements OnInit {
   checkTeacherList() {
     this.teacherParams.pipe(take(1)).subscribe({
       next: (post) => {
-        console.log(post);
         if (post === null || post === undefined || post.length === 0) {
           this.teacherList();
         } else {
@@ -172,7 +169,6 @@ export class ArchivesComponent implements OnInit {
     });
   }
   refreshTeacherList() {
-    console.log('refresh');
     this.teacherError = false;
     this.teacherSpinner = true;
     this.teacherList();
@@ -224,7 +220,6 @@ export class ArchivesComponent implements OnInit {
   checkParentList() {
     this.parentParams.pipe(take(1)).subscribe({
       next: (post) => {
-        console.log(post);
         if (post === null || post === undefined || post.length === 0) {
           this.parentsList();
         } else {
@@ -238,14 +233,12 @@ export class ArchivesComponent implements OnInit {
 
       },
       complete: () => {
-        console.log('completed')
 
       },
     });
   }
 
   refreshParentList() {
-    console.log('refresh');
     this.parentError = false;
     this.parentSpinner = true;
     this.parentsList();

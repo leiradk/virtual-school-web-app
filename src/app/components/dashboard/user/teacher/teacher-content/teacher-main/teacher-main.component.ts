@@ -57,7 +57,7 @@ export class TeacherMainComponent implements OnInit {
     this.sharedPost.setRouteToken(null);
     this.sharedPost.setComments(null);
     this.sharedWork.setClassWork(null);
-    this.sharedWork.setRouteToken(null);
+    this.sharedWork.setIndex(null);
   }
   get name() {
     return this.addClassFOrm.get("name") as FormControl;

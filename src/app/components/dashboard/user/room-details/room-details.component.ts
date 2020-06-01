@@ -23,27 +23,20 @@ export class RoomDetailsComponent implements OnInit {
     const { usertype } = this.data.data;
     this.userType = usertype;
     this.setWorkDetails();
-  
+
 
     window.onbeforeunload = (ev) => {
 
-      this.sharedWork.workDetails.pipe(take(1)).subscribe((response: any) => {
-        console.log(response);
+      this.sharedWork.index.pipe(take(1)).subscribe((response: any) => {
         this.system.storeLocal('workDetails', response);
       })
-      this.sharedWork.classWork.pipe(take(1)).subscribe((response: any) => {
-        console.log(response);
-        this.system.storeLocal('workList', response);
-      })
+
     };
   }
 
   setWorkDetails() {
     this.workDetails = this.system.retrieveItem("workDetails");
-    this.classWork = this.system.retrieveItem("workList");
-    this.sharedWork.setRouteToken(this.workDetails);
-    this.sharedWork.setClassWork(this.classWork);
-    this.system.deleteKey('workList');
+    this.sharedWork.setIndex(this.workDetails);
     this.system.deleteKey('workDetails');
 
   }

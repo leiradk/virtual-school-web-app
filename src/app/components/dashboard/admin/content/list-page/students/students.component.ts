@@ -54,7 +54,6 @@ export class StudentsComponent implements OnInit {
   getStudentList() {
     this.studentParams.pipe(take(1)).subscribe({
       next: (post) => {
-        console.log(post);
         if (post === null || post === undefined) {
           this.getStudents();
         } else {
@@ -78,7 +77,6 @@ export class StudentsComponent implements OnInit {
       .subscribe((response: any) => {
         const { status, body } = response;
         if (status === 200) {
-          console.log('student', response)
           this.people = body;
           this.adminList.setAllStudents(body);
           this.showSpinner = false;
@@ -208,7 +206,6 @@ export class StudentsComponent implements OnInit {
 
     this.apiService.pullFromArchive(payload)
       .subscribe((response: any) => {
-        console.log(response);
         this.getStudents();
         this.adminList.setInactiveStudent(null);
         this.adminList.setStudent(null);
@@ -230,7 +227,6 @@ export class StudentsComponent implements OnInit {
     this.showSpinner = true;
     this.apiService.addToArchive(payload)
       .subscribe((response: any) => {
-        console.log(response);
         this.adminList.setInactiveStudent(null);
         this.adminList.setStudent(null);
         this.adminList.setAllStudents(null);

@@ -42,7 +42,7 @@ export class CheckClassWorkComponent implements OnInit {
   showSpinner: boolean = false;
 
   ngOnInit(): void {
-    this.workDetails.workDetails.subscribe((workDetails: any) => {
+    this.workDetails.index.subscribe((workDetails: any) => {
       this.index = workDetails;
       this.workDetails.classWork.subscribe((classWork: any) => {
         this.getAllClasswork = classWork;
@@ -61,7 +61,7 @@ export class CheckClassWorkComponent implements OnInit {
     } else {
       this.index = this.index + 1;
     }
-    this.workDetails.setRouteToken(this.index);
+    this.workDetails.setIndex(this.index);
     this.workData = this.getAllClasswork[this.index];
   }
   prev() {
@@ -70,7 +70,7 @@ export class CheckClassWorkComponent implements OnInit {
     } else {
       this.index = this.index - 1;
     }
-    this.workDetails.setRouteToken(this.index);
+    this.workDetails.setIndex(this.index);
     this.workData = this.getAllClasswork[this.index];
   }
   submitWorkModel() {
