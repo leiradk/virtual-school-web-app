@@ -10,11 +10,14 @@
             </ol>
 
             <div class="navigate-bar">
-                <div class="nav-item"><button [routerLink]="['/user/t/classroom/home']" class="active">Home</button></div>
-                <div class="nav-item"><button [routerLink]="['/user/t/classroom/class-work']">Classwork</button></div>
-                <div class="nav-item"><button [routerLink]="['/user/t/classroom/invites']">People</button></div>
-                <div class="nav-item"><button [routerLink]="['/user/t/classroom/invites']">Grades</button></div>
-
+                <div class="nav-item"><button [routerLink]="['/user/t/classroom/home']" [ngClass]="homeActive"
+                        (click)="getActiveClass()">Home</button></div>
+                <div class="nav-item"><button [routerLink]="['/user/t/classroom/class-work']" [ngClass]="cwActive"
+                        (click)="getActiveClass()">Classwork</button></div>
+                <div class="nav-item"><button [routerLink]="['/user/t/classroom/invites']" [ngClass]="peopleActive"
+                        (click)="getActiveClass()">People</button></div>
+                <div class="nav-item"><button [routerLink]="['/user/t/classroom/invites']" [ngClass]="gradesActive"
+                        (click)="getActiveClass()">Grades</button></div>
             </div>
             <div class="nav-content">
                 <router-outlet></router-outlet>

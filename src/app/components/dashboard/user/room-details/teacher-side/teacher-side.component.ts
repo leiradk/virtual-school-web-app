@@ -22,17 +22,18 @@ export class TeacherSideComponent implements OnInit {
     setTimeout(() => {
       this.getUrl = window.location.href;
       const page = this.getUrl.split('/');
-      if (page[6] === 'home') {
+      console.log(page[7]);
+      if (page[7] === 'home') {
         this.homeActive = 'active';
         this.cwActive = 'not-active';
         this.peopleActive = 'not-active';
         this.gradesActive = 'not-active';
-      } else if (page[6] === 'class-work') {
+      } else if (page[7] === 'class-work') {
         this.homeActive = 'not-active';
         this.cwActive = 'active';
         this.peopleActive = 'not-active';
         this.gradesActive = 'not-active';
-      } else if (page[6] === 'invites') {
+      } else if (page[7] === 'invites') {
         this.homeActive = 'not-active';
         this.cwActive = 'not-active';
         this.peopleActive = 'active';
