@@ -77,7 +77,6 @@ export class PostsComponent implements OnInit {
     // console.log(this.userData.data);
     const { usertype } = this.userData.data;
     this.sharedPost.setComments(this.storeAllComments);
-    console.log(usertype);
     this.getTeacherComments(id, token, index);
 
   }
@@ -156,10 +155,8 @@ export class PostsComponent implements OnInit {
       next: (post) => {
         this.postDetails = null;
         if (post === null) {
-          console.log(post);
           this.apiService.getTeacherPosts(rid, token)
             .subscribe((response: any) => {
-              console.log(response)
               const { post } = response.body;
               const { status } = response;
               if (status === 200) {
@@ -191,7 +188,6 @@ export class PostsComponent implements OnInit {
         console.log(err)
       },
       complete: () => {
-        console.log('completed')
 
       },
     });

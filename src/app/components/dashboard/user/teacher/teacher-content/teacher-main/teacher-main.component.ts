@@ -110,6 +110,8 @@ export class TeacherMainComponent implements OnInit {
           this.ngOnInit();
         } else {
         }
+      }, (error: any) => {
+        console.log(error);
       });
   }
 

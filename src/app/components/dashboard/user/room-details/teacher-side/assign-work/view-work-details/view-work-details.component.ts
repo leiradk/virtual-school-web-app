@@ -3,6 +3,7 @@ import { ApiHostService } from '../../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../../services/system.utils';
 import { SharedWorkDetailsService } from '../../../../../../../services/shared-work-details.service';
 import { take } from 'rxjs/operators';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-view-work-details',
@@ -31,10 +32,12 @@ export class ViewWorkDetailsComponent implements OnInit {
   classWork: any;
   error: any;
   errorMessage: any;
+  isNull: boolean = false;
   constructor(
     private apiService: ApiHostService,
     private sharedWork: SharedWorkDetailsService,
     private system: SystemUtils,
+    private toastr: ToastrService,
   ) { }
 
 
@@ -46,19 +49,21 @@ export class ViewWorkDetailsComponent implements OnInit {
     this.userData = this.system.retrieveItem('userData');
     this.sharedWork.index.subscribe((index: any) => {
       this.sharedWork.classWork.subscribe((classWork: any) => {
-
         if (classWork == null || classWork == undefined) {
-          console.log('empty');
+          this.isNull = true;
+          this.showSpinner = true;
           this.updateClassWork(this.classDetails, this.userData);
         } else {
           if (index === null || index === null) {
-            console.log('empty2')
+            this.isNull = true;
+            this.showSpinner = true;
             this.updateClassWork(this.classDetails, this.userData);
           } else {
-            console.log('not empty')
+
             this.index = index;
             this.getAllClasswork = classWork;
             this.workDetails = this.getAllClasswork[this.index];
+            this.isNull = false;
             this.getSubmittedWorks();
           }
         }
@@ -116,12 +121,19 @@ export class ViewWorkDetailsComponent implements OnInit {
   download(file, filename) {
     this.downloadFile = "data:application/pdf;base64," + file;
     const downloadLink = document.createElement("a");
-    downloadLink.download = filename;
+    if (filename === 'None' || filename === null || filename === undefined) {
+      this.noUploadedFile();
+    } else {
+      downloadLink.download = filename;
+      downloadLink.href = this.downloadFile;
+      downloadLink.click();
+    }
 
-
-    downloadLink.href = this.downloadFile;
-    downloadLink.click();
   }
+  noUploadedFile() {
+    this.toastr.warning('No file was uploaded', 'File Empty', { timeOut: 4000 })
+  }
+
 
   modalData(workData) {
 
@@ -153,18 +165,16 @@ export class ViewWorkDetailsComponent implements OnInit {
   updateClassWork(classID, userID) {
     const { token } = userID;
     const { rid } = classID;
-
     this.apiService.getClassworkTeacher(rid, token)
       .subscribe((response: any) => {
+        this.isNull = false;
         const { classworks } = response.body;
         this.classWork = classworks;
         this.restoreClassWork(this.classWork);
-        this.showSpinner = false;
       }, (error: any) => {
         console.log(error)
         const { message, status } = error.error;
         this.error = true;
-        this.showSpinner = false;
         if (status === 404) {
           this.errorMessage = 'Empty Classwork';
         } else if (status === 500) {
@@ -180,5 +190,13 @@ export class ViewWorkDetailsComponent implements OnInit {
       this.getSubmittedWorks();
 
     })
+  }
+
+  totalPoint(points) {
+    if (points === 0 || points === null || points === undefined) {
+      return 0;
+    } else {
+      return points;
+    }
   }
 }

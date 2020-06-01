@@ -22,7 +22,6 @@ export class TeacherSideComponent implements OnInit {
     setTimeout(() => {
       this.getUrl = window.location.href;
       const page = this.getUrl.split('/');
-      console.log(page[7]);
       if (page[7] === 'home') {
         this.homeActive = 'active';
         this.cwActive = 'not-active';

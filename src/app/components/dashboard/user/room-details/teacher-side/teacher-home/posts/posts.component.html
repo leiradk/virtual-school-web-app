@@ -17,7 +17,7 @@
             <div class="tools">
               <!-- {{postForm.valid}} -->
               <!-- <button class="btn btn-primary pull-right" *ngIf="postForm.valid">Publish</button> -->
-              <button class="btn btn-primary pull-right">Publish</button>
+              <button *ngIf="postForm.valid" class="btn btn-primary pull-right">Publish</button>
               <ul class="publishing-tools list-inline pull-right">
                 <li><a href="#"><i class="fa fa-pencil-square-o"></i></a></li>
                 <li><a href="#"><i class="fa fa-video-camera"></i></a></li>

@@ -102,12 +102,10 @@ export class AssignDetailsComponent implements OnInit {
     const { rid } = classID;
     this.apiService.getClassworkTeacher(rid, token)
       .subscribe((response: any) => {
-        console.log(response);
         jQuery('#myModal').modal('hide'); //close modal after submit
         const { classworks } = response.body;
         this.classWork = classworks;
         this.workDetails.setClassWork(this.classWork);
-        console.log(this.classWork)
         this.showSpinner = false;
       }, (error: any) => {
         const { message, status } = error.error;
@@ -178,7 +176,6 @@ export class AssignDetailsComponent implements OnInit {
 
   onSubmit() {
 
-    console.log(this.classWorkForm)
     const date = this.classWorkForm.value.dueDate.year + "-" + this.classWorkForm.value.dueDate.month + "-" + this.classWorkForm.value.dueDate.day;
     const payload = {
       token: this.userData.token,

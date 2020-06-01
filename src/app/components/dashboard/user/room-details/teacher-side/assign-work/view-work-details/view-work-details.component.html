@@ -1,10 +1,8 @@
 <div class="layout-content" data-scrollable>
     <div class="container-fluid">
-
-
         <button class="button back-btn" [routerLink]="['/user/t/classroom/class-work/details']">
             Class Details
-        </button>
+        </button> <span *ngIf="isNull"> - Fetching Class Details</span>
         <div class="card">
             <div class="p-a-1">
                 <div class="layout-content" data-scrollable>
@@ -15,7 +13,7 @@
                                     <img src="assets/images/vuejs.png" alt="" width="80" class="img-rounded">
                                 </div>
                                 <div class="media-body media-middle">
-                                    <h4 class="">{{workDetails.title}}</h4>
+                                    <h4 *ngIf="workDetails" class="">{{workDetails.title}}</h4>
                                     <span class="text-muted">Assigned by: </span><a href="#">Instructor Name</a>
                                 </div>
                                 <div class="media-right media-middle">
@@ -93,9 +91,9 @@
                         <div class="tab-pane active" id="first">
                             <ul class="list-group m-b-0">
                                 <li class="list-group-item">
-                                    <div class="row">
+                                    <div *ngIf="workDetails" class="row">
                                         <div class="col-md-12">
-                                            <p>
+                                            <p *ngIf="workDetails">
                                                 <strong>Instruction: </strong>
                                                 <br />
                                                 {{workDetails.instruction}}
@@ -104,7 +102,7 @@
                                             <small class="text-muted">ANSWER:</small>
                                             <br />
                                             <!-- {{workDetails.attachmentFilename}} -->
-                                            <p *ngIf="workDetails.attachmentFilename">File: <a
+                                            <p>File: <a
                                                     (click)="download(reviewData.attachment, reviewData.attachmentFilename)"
                                                     class="btn btn-sm btn-primary">download</a></p>
                                             <br />
@@ -123,11 +121,13 @@
                                                     <div class="media">
                                                         <div class="media-body">
                                                             <input #grade (change)="setGrade(grade.value)" type="range"
-                                                                min="0" max="{{workDetails.points}}" step="1" value="0">
+                                                                min="0" max="{{totalPoint(workDetails.points)}}"
+                                                                step="1" value="0">
                                                         </div>
                                                         <div class="media-right">
                                                             <h4>
-                                                                <div class="value"><span #value class="edit-score" (change)="grade.value = value"
+                                                                <div class="value"><span #value class="edit-score"
+                                                                        (change)="grade.value = value"
                                                                         contenteditable="true">{{totalGrade}}</span>/{{workDetails.points}}
                                                                 </div>
                                                             </h4>
