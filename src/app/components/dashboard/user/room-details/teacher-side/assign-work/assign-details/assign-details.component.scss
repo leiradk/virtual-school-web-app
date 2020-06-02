@@ -112,6 +112,7 @@
 
 .subject-title {
     font-size: 20px;
+    text-align: left !important;
 }
 
 .reminders {
@@ -204,7 +205,6 @@
 //     top: 30px;
 //     width: 25%;
 // }
-
 .empty-work {
     color: #999;
     opacity: 1;
@@ -254,6 +254,7 @@
 .fa-calendar {
     font-size: 25px;
 }
+
 .date-picker {
     display: block;
     width: 100%;
@@ -266,25 +267,10 @@
     border: none !important;
 }
 
-.reminder-butt .card-header {
-    background: #66bb6a !important;
-}
-
-.reminder-butt .card-header:hover {
-    font-size: 35px !important;
-}
-
-.reminder-butt .work-title {
-    color: #fff !important;
-}
-
-.reminder-butt .card-body {
-    background: #dddddddc !important;
-}
-
 .btns-work {
     background: #141414dc !important;
 }
+
 .card-body {
     margin-top: 0;
     margin-bottom: 0p;
@@ -316,4 +302,60 @@
     font-size: 20px;
     font-weight: bold;
     color: #e7dede;
+}
+
+.new-body {
+    background-color: #272652 !important;
+}
+
+.classwork-title {
+    font-size: 20px;
+    text-transform: uppercase !important;
+    color: #2196f3 !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    .add-classwork {
+        cursor: pointer;
+    }
+    .add-classwork:hover {
+        color: #ffffff !important;
+    }
+    .add-reminder {
+        float: right !important;
+        border: 1px #2196f3 solid;
+        border-radius: 50%;
+        padding: 10px;
+        margin-top: -10px;
+    }
+    .add-reminder:hover {
+        border: 1px #ffffff solid !important;
+    }
+}
+
+.classwork-container {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    .reminder-butt1 {
+        .work-title {
+            color: #ffffff !important;
+        }
+        .card-header {
+            background: #41ace2 !important;
+            border-radius: 0px;
+            padding: 25px 20px !important;
+        }
+        .card-header:hover {
+            font-size: 30px !important;
+        }
+        .card-header::after {
+            top: 10%;
+        }
+        .classwork-body {
+            background-color: #5cb8e840;
+            padding: 20px;
+        }
+    }
+    .reminder-butt2 {
+        background-color: #61b5e1;
+    }
 }
