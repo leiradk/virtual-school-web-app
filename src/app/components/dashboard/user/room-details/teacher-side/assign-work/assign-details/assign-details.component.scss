@@ -359,3 +359,23 @@
         background-color: #61b5e1;
     }
 }
+
+.classwork-list {
+    padding: 0px !important;
+    border: none !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    box-shadow: none;
+}
+
+.classdetail {
+    background-color: #ffffff;
+    overflow-y: scroll;
+    height: 72vh !important;
+}
+
+.detail {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 20px 0px 20px 20px !important;
+}
