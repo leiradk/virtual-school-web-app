@@ -26,7 +26,8 @@
 
                     <!-- Display notification for events here -->
                     <!-- Event # 1 -->
-                    <div *ngIf="!showSpinner" class="reminder-butt1">
+                    <!-- class="reminder-butt1" -->
+                    <div *ngIf="!showSpinner" [ngClass]="classWorkStyle(i)">
 
                         <!-- Card Header - Accordion -->
                         <!-- <a href="#collapseCardExample" class="d-block card-header py-3 collapsed"

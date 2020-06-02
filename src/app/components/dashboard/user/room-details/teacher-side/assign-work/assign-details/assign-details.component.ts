@@ -41,6 +41,7 @@ export class AssignDetailsComponent implements OnInit {
   teacherAccount: any;
   classWork: any;
   downloadFile: any;
+  reminder: any;
   public isCollapsed: boolean[] = [];
   constructor(
     private apiService: ApiHostService,
@@ -248,6 +249,16 @@ export class AssignDetailsComponent implements OnInit {
   viewDetails(work, index) {
     this.workDetails.setIndex(index);
     // this.system.storeLocal('workDetails', work);
+
+  }
+
+  classWorkStyle(value: any) {
+    if (value % 2 == 0) {
+      return 'reminder-butt2'
+    } else {
+      return 'reminder-butt1'
+    }
+
 
   }
 }
