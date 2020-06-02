@@ -1,28 +1,57 @@
 .subject-title {
-    font-size: 20px;
+  font-size: 20px;
+  text-transform: capitalize !important;
+  color: #ffffff !important;
+  padding-bottom: 5px;
+  .add-reminder {
+    float: right !important;
+    border: 1px #ffffff solid;
+    border-radius: 50%;
+    padding: 10px;
+    margin-top: -10px;
+  }
 }
 
 .reminders {
-    border: 1px solid #dddfe2;
-    transition: 0.3s;
-    width: 100%;
-    margin: 20px 0;
+  border: 1px solid #dddfe2;
+  transition: 0.3s;
+  width: 100%;
+  margin: 20px 0;
 }
 
-.reminder-butt {
-    border: 1px solid #dddfe2;
+.reminder-butt1 {
+  background-color: #41ace2 !important;
+  color: #ffffff !important;
+  h6 {
+    color: #ffffff !important;
+    vertical-align: middle !important;
+  }
+}
+
+.reminder-details {
+  padding-right: 15px;
+  margin-top: -5px;
+  float: right;
+  p {
+    font-size: 10px;
+  }
+}
+
+.reminder-butt2 {
+  background-color: #61b5e1 !important;
+  color: #ffffff !important;
 }
 
 .view {
-    text-align: right;
-    padding-top: 15px;
+  text-align: right;
+  padding-top: 15px;
 }
 .view:hover {
-    color: dodgerblue;
+  color: dodgerblue;
 }
 
-.fas{
-    float: right;
+.fas {
+  float: right;
 }
 
 // .sticky {
@@ -30,3 +59,6 @@
 //     top: 30px;
 //     width: 25%;
 // }
+.new-body {
+  background-color: #272652 !important;
+}

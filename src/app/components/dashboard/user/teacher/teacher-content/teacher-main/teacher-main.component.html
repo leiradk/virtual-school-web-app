@@ -4,13 +4,6 @@
 
 <div class="subject-lists" style="overflow-y: auto; height: 90vh !important;">
   <div class="row">
-    <!-- Earnings (Monthly) Card Example -->
-    <!-- <div class="col-xl-3 col-md-6 mb-4"> -->
-    <!-- <div class="card border-left-primary shadow h-100 py-2"> -->
-    <!-- <div class="card-body"> -->
-
-    <!-- <ng-container *ngIf="showSpinner === false"> -->
-
     <ng-container *ngIf="!showSpinner && !errorData">
       <div *ngFor="let details of classDetails" class="card">
         <div class="additional">
@@ -149,10 +142,10 @@
       </div>
     </ng-container>
 
-    <div class="empty-room-container" *ngIf="!showSpinner && errorData" style="width: 100%;">
+    <div class="empty-room-container" *ngIf="!showSpinner && errorData">
       <p class="empty-main">No Class Created Yet</p>
     </div>
-    <div *ngIf="showSpinner" style="width: 100%;">
+    <div  class="empty-room-container" *ngIf="showSpinner">
       <app-loading-spinner></app-loading-spinner>
     </div>
     <a *ngIf="!showSpinner" class="card add-class" data-toggle="modal" data-target="#myModal">
