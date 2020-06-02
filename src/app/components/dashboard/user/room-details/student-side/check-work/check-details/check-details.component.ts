@@ -133,8 +133,7 @@ export class CheckDetailsComponent implements OnInit {
 
   download(attachment) {
     this.downloadFile = "data:application/pdf;base64," + attachment;
-    // console.log('data');
-    // console.log(this.downloadFile);
+
     const downloadLink = document.createElement("a");
     const fileName = "sample.pptx";
 

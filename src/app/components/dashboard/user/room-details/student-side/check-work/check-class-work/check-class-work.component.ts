@@ -30,6 +30,10 @@ export class CheckClassWorkComponent implements OnInit {
   base64textString: any;
   index: any;
   getAllClasswork: any;
+  isNull: any;
+  errorMessage: any;
+  error: any;
+  classWork: any;
   constructor(
     private workDetails: SharedWorkDetailsService,
     private system: SystemUtils,
@@ -42,17 +46,37 @@ export class CheckClassWorkComponent implements OnInit {
   showSpinner: boolean = false;
 
   ngOnInit(): void {
-    this.workDetails.index.subscribe((workDetails: any) => {
-      this.index = workDetails;
+    this.classDetails = this.system.retrieveItem('classDetails');
+    this.userData = this.system.retrieveItem('userData');
+    this.workDetails.index.subscribe((index: any) => {
       this.workDetails.classWork.subscribe((classWork: any) => {
         this.getAllClasswork = classWork;
-        this.workData = this.getAllClasswork[this.index];
+        if (classWork == null || classWork == undefined) {
+          // this.isNull = true;
+          console.log('empty')
+          this.showSpinner = true;
+          this.updateClassWork(this.classDetails, this.userData);
+        } else {
+          if (index === null || index === null) {
+          console.log('empty2')
+          this.isNull = true;
+            this.showSpinner = true;
+            this.updateClassWork(this.classDetails, this.userData);
+          } else {
+
+          console.log('!empty')
+          this.index = index;
+            this.getAllClasswork = classWork;
+            this.workData = this.getAllClasswork[this.index];
+            this.isNull = false;
+            // this.getSubmittedWorks();
+          }
+        }
       })
     })
 
     // this.workData = this.system.retrieveItem('workDetails');
-    this.classDetails = this.system.retrieveItem('classDetails');
-    this.userData = this.system.retrieveItem('userData');
+
   }
 
   next() {
@@ -86,10 +110,15 @@ export class CheckClassWorkComponent implements OnInit {
     // console.log(this.downloadFile);
     const downloadLink = document.createElement("a");
     const fileName = filename;
+    if (filename === 'None' || fileName === null || filename === undefined) {
+      this.toastr.warning('No File Was Uploaded', 'Empty File', { timeOut: 5000 })
 
-    downloadLink.href = this.downloadFile;
-    downloadLink.download = fileName;
-    downloadLink.click();
+    } else {
+      downloadLink.href = this.downloadFile;
+      downloadLink.download = fileName;
+      downloadLink.click();
+    }
+
   }
 
   onFileChange(event) {
@@ -159,5 +188,35 @@ export class CheckClassWorkComponent implements OnInit {
       })
   }
 
+  updateClassWork(classID, userID) {
+    const { token } = userID;
+    const { rid } = classID;
+    console.log(rid)
+    console.log(token)
+    this.apiService.getClassworkStudent(rid, token)
+      .subscribe((response: any) => {
+        this.isNull = false;
+        console.log('compiled')
+        const { classworks } = response.body;
+        this.classWork = classworks;
+        this.restoreClassWork(this.classWork);
+      }, (error: any) => {
+        console.log(error)
+        const { message, status } = error.error;
+        this.error = true;
+        if (status === 404) {
+          this.errorMessage = 'Empty Classwork';
+        } else if (status === 500) {
+          this.errorMessage = 'Something went wrong, please try again';
+        }
+      })
+  }
+
+  restoreClassWork(data) {
+    this.workDetails.setClassWork(data);
+    this.workDetails.index.subscribe((index: any) => {
+      this.workData = data[index];
+    })
+  }
 
 }
