@@ -6,27 +6,27 @@
         <div class="card-body">
           <div class="additional">
             <div class="more-info">
-              <h1>Grace</h1>
+              <h1>{{classDetails.className}}</h1>
               <div class="stats">
                 <div class="stat-group">
                   <i class="fa fa-group"></i>
                   <div class="title">Students</div>
-                  <div class="value">1</div>
+                  <div class="value">{{classDetails.joined}}</div>
                 </div>
                 <div class="stat-group">
                   <i class="fa fa-paper-plane"></i>
                   <div class="title">Invitations</div>
-                  <div class="value">1</div>
+                  <div class="value">{{classDetails.invitationRequest}}</div>
                 </div>
                 <div class="stat-group">
                   <i class="fa fa-exclamation"></i>
                   <div class="title">Pending</div>
-                  <div class="value">0</div>
+                  <div class="value">{{classDetails.invitationPending}}</div>
                 </div>
                 <div class="stat-group">
                   <i class="fa fa-check"></i>
                   <div class="title">Accepted</div>
-                  <div class="value infinity">1</div>
+                  <div class="value infinity">{{classDetails.invitationAccepted}}</div>
                 </div>
               </div>
             </div>
@@ -34,9 +34,9 @@
         </div>
         <div class="info-class">
           <div class="coords">Level: <span> Grade 12</span></div>
-          <div class="coords">Subject: <span>ICT</span></div>
+          <div class="coords">Subject: <span>{{classDetails.classSubject}}</span></div>
           <div class="coords">Status: <span>Active</span></div>
-          <div class="coords">Created: <span>May 21, 2020</span></div>
+          <div class="coords">Created: <span>{{getDate(classDetails.classCreated)}}</span></div>
           <div class="coords">Description: <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Fusce a volutpat mauris, at molestie lacus.
               Nam vestibulum sodales odio ut pulvinar.</span></div>
