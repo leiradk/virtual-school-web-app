@@ -82,6 +82,11 @@ import { CheckWorkComponent } from './components/dashboard/user/room-details/stu
 import { CheckDetailsComponent } from './components/dashboard/user/room-details/student-side/check-work/check-details/check-details.component';
 import { CheckClassWorkComponent } from './components/dashboard/user/room-details/student-side/check-work/check-class-work/check-class-work.component';
 import { ArchivesComponent } from './components/dashboard/admin/content/list-page/archives/archives.component';
+import { PeopleTabComponent } from './components/dashboard/user/room-details/teacher-side/invite-users/people-tab/people-tab.component';
+import { TabsComponent } from './components/dashboard/user/room-details/teacher-side/invite-users/tabs/tabs.component';
+import { TeacherStaffTabComponent } from './components/dashboard/user/room-details/teacher-side/invite-users/tabs/teacher-staff-tab/teacher-staff-tab.component';
+import { ParentGuardianTabComponent } from './components/dashboard/user/room-details/teacher-side/invite-users/tabs/parent-guardian-tab/parent-guardian-tab.component';
+import { StudentTabComponent } from './components/dashboard/user/room-details/teacher-side/invite-users/tabs/student-tab/student-tab.component';
 
 @NgModule({
   declarations: [
@@ -145,6 +150,11 @@ import { ArchivesComponent } from './components/dashboard/admin/content/list-pag
     CheckDetailsComponent,
     CheckClassWorkComponent,
     ArchivesComponent,
+    PeopleTabComponent,
+    TabsComponent,
+    TeacherStaffTabComponent,
+    ParentGuardianTabComponent,
+    StudentTabComponent,
   ],
   imports: [
     BrowserModule,
