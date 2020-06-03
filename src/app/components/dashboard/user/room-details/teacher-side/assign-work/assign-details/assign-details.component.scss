@@ -308,6 +308,29 @@
     background-color: #272652 !important;
 }
 
+.new-body2 {
+    background-color: #41ace2 !important;
+    .classwork-title {
+        color: #ffffff !important;
+        .review-classwork {
+            .add-reminder {
+                span {
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+                border-radius: 0px !important;
+                background-color: #272652 !important;
+                border: none;
+                cursor: pointer;
+                padding: 15px !important;
+            }
+            .add-reminder:hover {
+                border: none !important;
+                background-color: #14142e !important;
+            }
+        }
+    }
+}
+
 .classwork-title {
     font-size: 20px;
     text-transform: uppercase !important;
