@@ -335,7 +335,7 @@
 .classwork-container {
     padding-left: 0px !important;
     padding-right: 0px !important;
-    .reminder-butt1 {
+    .reminder-butt2 {
         .work-title {
             color: #ffffff !important;
         }
@@ -355,8 +355,25 @@
             padding: 20px;
         }
     }
-    .reminder-butt2 {
-        background-color: #61b5e1;
+    .reminder-butt1 {
+        .work-title {
+            color: #ffffff !important;
+        }
+        .card-header {
+            background-color: #61b5e1;
+            border-radius: 0px;
+            padding: 25px 20px !important;
+        }
+        .card-header:hover {
+            font-size: 30px !important;
+        }
+        .card-header::after {
+            top: 10%;
+        }
+        .classwork-body {
+            background-color: #5cb8e840;
+            padding: 20px;
+        }
     }
 }
 
