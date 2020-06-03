@@ -15,7 +15,8 @@
             </div>
         </div>
         <div>
-            <div class="col align-items-center" style="background: #ffffff !important; padding-top: 15px; overflow-y: scroll; height: 63.5vh;">
+            <div class="col align-items-center"
+                style="background: #ffffff !important; padding-top: 15px; overflow-y: scroll; height: 63.5vh;">
                 <div class="col" *ngIf="showSpinner">
                     <app-loading-spinner></app-loading-spinner>
                 </div>
@@ -37,7 +38,9 @@
                                 on:{{dueDateVal(work.dueDate)}}
                             </h6>
                         </a> -->
-                        <a (click)="isCollapsed[i] = !isCollapsed[i]" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
+                        <a (click)="isCollapsed[i] = !isCollapsed[i]" class="d-block card-header py-3 collapsed"
+                            data-toggle="collapse" role="button" aria-expanded="false"
+                            aria-controls="collapseCardExample">
                             <h6 class="m-0 font-weight-bold text-primary work-title">{{work.title}}
                             </h6>
                         </a>
@@ -52,8 +55,11 @@
                                 <p class="instructions">{{work.instruction}}</p>
                             </div>
                             <div class="btns-work ctr">
-                                <a (click)="download(work.attachment, work.attachmentFilename)" class="btn btn-primary btn-rounded modal-buttons">Download</a>
-                                <a [routerLink]="['/user/t/classroom/class-work/work-view']" (click)="viewDetails(work, i)" class="btn btn-primary btn-rounded modal-buttons">View Details</a>
+                                <a (click)="download(work.attachment, work.attachmentFilename)"
+                                    class="btn btn-primary btn-rounded modal-buttons">Download</a>
+                                <a [routerLink]="['/user/t/classroom/class-work/work-view']"
+                                    (click)="viewDetails(work, i)"
+                                    class="btn btn-primary btn-rounded modal-buttons">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -78,21 +84,163 @@
     </div>
 </div>
 
-<div class="card column col-xl-8 col-md-8 mb-8  classwork-list" style="padding-left: 20px !important;">
+<div class="card column col-xl-8 col-md-8 mb-8 classwork-list" style="padding-left: 20px !important;">
     <div class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
         <div class="new-body2" style="padding: 20px;">
             <div class="classwork-title">
                 Classwork 101
                 <a *ngIf="teacherAccount" class="review-classwork">
-                    <i class="fa fa-plus add-reminder" aria-hidden="true"> <span> Classwork</span> </i>
+                    <i class="fa fa-plus add-reminder" aria-hidden="true"> <span> Edit Classwork</span> </i>
                 </a>
             </div>
         </div>
         <div>
-            <div class="col align-items-center" style="background: #ffffff !important; padding-top: 15px; overflow-y: scroll; height: 63.5vh;">
+            <div class="col align-items-center"
+                style="background: #ffffff !important; padding-top: 15px; padding-right: 0px; padding-bottom: 15px; height: 63.5vh;">
+                <div class="col col-md-8" style="height: 100%;">
 
+                    <div class="layout-content" data-scrollable>
+                        <div class="container-fluid class-review">
+                            <!-- <button class="button back-btn" [routerLink]="['/user/t/classroom/class-work/details']">
+                                Class Details
+                            </button> -->
+                            <!-- <span *ngIf="isNull"> - Fetching Class Details</span> -->
+
+                            <!-- ngIf="workDetails" -->
+                            <div class="row" style="padding-top: 20px">
+                                <div class="col-md-12">
+                                    <!-- <p *ngIf="workDetails"> -->
+                                    <p>Submitted Attachments: <a class="btn btn-sm btn-primary">download</a></p>
+                                    <br />
+                                    <strong>Classwork Instruction: </strong>
+                                    <br />
+                                    <p class="instructions-text">Instructions: Lorem Ipsum is simply dummy text of the
+                                        printing and typesetting
+                                        industry.
+                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                        when an unknown printer
+                                        took a galley of type and scrambled it to make a type specimen book.
+                                    </p>
+                                    <hr />
+                                    <small class="text-muted">STUDENT'S ANSWER:</small>
+                                    <!-- <a
+                                                    (click)="download(reviewData.attachment, reviewData.attachmentFilename)"
+                                                    class="btn btn-sm btn-primary">download</a></p> -->
+
+                                    <br />
+
+                                    <!-- <div [innerHTML]="message"></div> -->
+                                    <pre class="stude-answer">
+                                        <div>Answer of students goes here. Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer<br>a galley of type and scrambled it to make a type specimen book.
+                                        </div>
+                                    </pre>
+                                    <hr />
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="2"
+                                            placeholder="Write a review!"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-4" style="height: 100%; border-left: 1px #bbbbbb solid;">
+                    <div class="student-details">
+                        <img class="border rounded-circle border-primary profile-img"
+                            src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg">
+                        <span class="stude-name">Wilver the Great</span>
+                        <span class="stude-holder">Student</span>
+                        <hr>
+                        <span class="stude-name1">March 23, 2020</span>
+                        <span class="stude-holder">Date Submitted</span>
+                        <hr>
+                        <span class="stude-name1">Teacher Name</span>
+                        <span class="stude-holder">Assigned By</span>
+                        <hr>
+                        <input type="range" min="0" max="100" step="1" value="0">
+                        <pre class="stude-score">98<p>/100</p></pre>
+                        <span class="stude-holder">Total Score</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <!-- modal -->
+
+<!-- 
+
+<div class="modal" id="reviewModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Review Answer</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="card">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="first">
+                            <ul class="list-group m-b-0">
+                                <li class="list-group-item">
+                                    <div *ngIf="workDetails" class="row">
+                                        <div class="col-md-12">
+                                            <p *ngIf="workDetails">
+                                                <strong>Instruction: </strong>
+                                                <br />
+                                                {{workDetails.instruction}}
+                                            </p>
+                                            <hr />
+                                            <small class="text-muted">ANSWER:</small>
+                                            <br />
+                                            <p>File: <a
+                                                    (click)="download(reviewData.attachment, reviewData.attachmentFilename)"
+                                                    class="btn btn-sm btn-primary">download</a></p>
+                                            <br />
+                                            <pre class="stude-answer">
+                                                <div [innerHTML]="message"></div>
+                                            </pre>
+                                            <hr />
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="2"
+                                                    placeholder="Write a review!"></textarea>
+                                            </div>
+                                            <hr />
+                                            <div class="row m-b-1">
+                                                <strong>Score:</strong>
+                                                <div class="col-md-12">
+                                                    <div class="media">
+                                                        <div class="media-body">
+                                                            <input #grade (change)="setGrade(grade.value)" type="range"
+                                                                min="0" max="{{totalPoint(workDetails.points)}}"
+                                                                step="1" value="0">
+                                                        </div>
+                                                        <div class="media-right">
+                                                            <h4>
+                                                                <div class="value"><span #value class="edit-score"
+                                                                        (change)="grade.value = value"
+                                                                        contenteditable="true">{{totalGrade}}</span>/{{workDetails.points}}
+                                                                </div>
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button (click)="setReview()" class="btn btn-success btn-rounded pull-xs-right btn-sm">Set
+                    Review <i class="fas fa-check"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div> -->
