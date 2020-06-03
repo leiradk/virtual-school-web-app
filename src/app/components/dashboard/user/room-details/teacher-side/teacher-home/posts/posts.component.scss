@@ -83,7 +83,6 @@ section h2.sub-title {
     margin-left: 20px;
 }
 
-
 /*==================================================
   Common
   ==================================================*/
@@ -225,7 +224,6 @@ textarea {
     width: 100%;
 }
 
-
 /*==================================================
   Header
   ==================================================*/
@@ -318,7 +316,6 @@ textarea {
     border: 0;
 }
 
-
 /*For Homepage Header*/
 
 #header.lazy-load {
@@ -336,7 +333,6 @@ textarea {
     transform: translateY(0);
 }
 
-
 /*==================================================
   Homepage Top Banner
   ==================================================*/
@@ -350,7 +346,6 @@ textarea {
     position: relative;
     top: 0;
 }
-
 
 /*==================================================
   Homepage Signup Form
@@ -435,7 +430,6 @@ textarea {
     bottom: -80px;
 }
 
-
 /*==================================================
   Features Section
   ==================================================*/
@@ -511,7 +505,6 @@ textarea {
     margin: 0 auto -250px;
 }
 
-
 /*==================================================
   App Download Section
   ==================================================*/
@@ -548,7 +541,6 @@ textarea {
     border-radius: 6px;
 }
 
-
 /*==================================================
   Homepage Image Divider
   ==================================================*/
@@ -560,7 +552,6 @@ textarea {
     min-height: 460px;
     background-position: center;
 }
-
 
 /*==================================================
   Site Facts Section
@@ -645,7 +636,6 @@ textarea {
     font-size: 50px;
 }
 
-
 /*==================================================
   Live Feed Section Homepage
   ==================================================*/
@@ -659,19 +649,17 @@ textarea {
     margin: 0;
 }
 
-
 /*feed-block and ul.online-users css available below*/
-
 
 /*==================================================
   Newsfeed Left Sidebar
   ==================================================*/
 
-
 /*Profile Card CSS*/
 
 .profile-card {
-    background: linear-gradient(to bottom, rgba(39, 170, 225, 0.8), rgba(28, 117, 188, 0.8)), url(../../../../../../../../assets/images/covers/1.jpg) no-repeat;
+    background: linear-gradient(to bottom, rgba(39, 170, 225, 0.8), rgba(28, 117, 188, 0.8)),
+        url(../../../../../../../../assets/images/covers/1.jpg) no-repeat;
     background-size: cover;
     width: 100%;
     min-height: 90px;
@@ -691,7 +679,6 @@ textarea {
     width: 70px;
     border-radius: 50%;
 }
-
 
 /*Newsfeed Links CSS*/
 
@@ -756,7 +743,6 @@ ul.nav-news-feed i.ion-ios-videocam {
     color: #9e1f63;
 }
 
-
 /*Chat Block CSS*/
 
 #chat-block {
@@ -806,7 +792,6 @@ ul.online-users li span.online-dot {
     margin: auto;
 }
 
-
 /*==================================================
   Newsfeed Right Sidebar
   ==================================================*/
@@ -833,7 +818,6 @@ ul.online-users li span.online-dot {
     left: 0;
     bottom: -10px;
 }
-
 
 /*==================================================
   Create Post Box CSS
@@ -879,13 +863,12 @@ ul.online-users li span.online-dot {
 
 .list-inline {
     margin-left: -5px;
-    >li {
+    > li {
         display: inline-block;
         padding-left: 5px;
         padding-right: 5px;
     }
 }
-
 
 /*==================================================
   Post Contents CSS
@@ -958,7 +941,6 @@ video.post-video,
     min-width: 0;
 }
 
-
 /*==================================================
   Nearby People CSS
   ==================================================*/
@@ -984,7 +966,6 @@ video.post-video,
     margin-bottom: 20px;
 }
 
-
 /*==================================================
   Friend List CSS = Newsfeed and Timeline
   ==================================================*/
@@ -1005,11 +986,9 @@ video.post-video,
     border: 7px solid #fff;
 }
 
-
 /*==================================================
   Chat Room CSS
   ==================================================*/
-
 
 /*Chat Contact List*/
 
@@ -1068,7 +1047,6 @@ video.post-video,
     bottom: 20px;
     font-size: 14px;
 }
-
 
 /*Chat Messages*/
 
@@ -1153,7 +1131,6 @@ video.post-video,
     color: #fff;
 }
 
-
 /*CSS for custom scrollbar*/
 
 .scrollbar-wrapper.scrollbar-dynamic {
@@ -1177,7 +1154,6 @@ video.post-video,
     overflow: auto;
     width: 100%;
 }
-
 
 /*==================================================
   Media = Images and Videos CSS
@@ -1219,7 +1195,6 @@ video {
     margin: 0;
 }
 
-
 /*==================================================
   Timeline
   ==================================================*/
@@ -1232,7 +1207,6 @@ video {
     border-radius: 0 0 4px 4px;
     position: relative;
 }
-
 
 /*Timeline Menu for Large Screens*/
 
@@ -1295,7 +1269,6 @@ video {
     color: #fff;
 }
 
-
 /*Timeline Menu for Small Screens*/
 
 .timeline-cover .navbar-mobile {
@@ -1345,7 +1318,6 @@ video {
     color: #27aae1;
 }
 
-
 /*==================================================
   Timeline Sidebar Right
   ==================================================*/
@@ -1374,7 +1346,6 @@ video {
 .feed-item .live-activity {
     border-bottom: 1px solid #f1f2f2;
 }
-
 
 /*==================================================
  Post Date
@@ -1416,7 +1387,6 @@ video {
 .timeline .post-content img.post-image {
     border-radius: 4px 4px 0 0;
 }
-
 
 /*==================================================
   About Profile
@@ -1476,7 +1446,6 @@ ul.interests span.int-icons {
     pointer-events: auto;
 }
 
-
 /*==================================================
   Profile Album
   ==================================================*/
@@ -1499,7 +1468,6 @@ ul.album-photos li {
 ul.album-photos li img {
     max-width: 100%;
 }
-
 
 /*==================================================
   Contact Us
@@ -1571,7 +1539,6 @@ ul.album-photos li img {
 .contact-us ul.social-icons {
     margin-top: 20px;
 }
-
 
 /*==================================================
   Site Footer
@@ -1669,7 +1636,6 @@ ul.contact li i {
     padding: 12px 0 4px;
 }
 
-
 /*==================================================
   CSS for width 992px
   ==================================================*/
@@ -1689,7 +1655,6 @@ ul.contact li i {
         margin-top: 185px !important;
     }
 }
-
 
 /*==================================================
   CSS for width 768px
@@ -1732,7 +1697,6 @@ ul.contact li i {
     }
 }
 
-
 /*==================================================
   CSS for width 480px
   ==================================================*/
@@ -1753,7 +1717,6 @@ ul.contact li i {
         position: relative;
     }
 }
-
 
 /*==================================================
   Slide Animations
@@ -1868,7 +1831,6 @@ ul.contact li i {
     }
 }
 
-
 /*==================================================
   Scroll Down Arrow
   ==================================================*/
@@ -1907,9 +1869,7 @@ ul.contact li i {
 }
 
 @-webkit-keyframes arrow
-/*Safari and Chrome*/
-
-{
+/*Safari and Chrome*/ {
     0% {
         opacity: 0;
     }
@@ -1938,7 +1898,6 @@ ul.contact li i {
     animation-delay: 0s;
     -webkit-animation-delay: 0s;
 }
-
 
 /*==================================================
   Preloader Animation CSS
@@ -2029,10 +1988,13 @@ ul.contact li i {
     margin-bottom: 0px !important;
 }
 
-.post-comment img {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
+// .post-comment img {
+//     height: 30px;
+//     width: 30px;
+//     border-radius: 50%;
+// }
+.view-comment p {
+    margin-bottom: 0 !important;
 }
 
 .write-comment {
