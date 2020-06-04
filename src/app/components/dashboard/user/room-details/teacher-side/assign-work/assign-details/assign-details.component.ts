@@ -175,6 +175,10 @@ export class AssignDetailsComponent implements OnInit {
       })
   }
 
+  viewStudent(students) {
+    console.log(students);
+  }
+
   get workTitle() {
     return this.classWorkForm.get("workTitle") as FormControl;
   }
