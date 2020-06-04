@@ -4,7 +4,8 @@
     </div>
 </div> -->
 
-<div class="card col-xl-4 col-md-4 mb-4 classwork-list">
+
+<div class="card col-xl-4 col-md-4 mb-4 classwork-list" style="float:left; position:absolute">
     <div class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
         <div class="new-body" style="padding: 20px;">
             <div class="classwork-title">
@@ -84,7 +85,7 @@
     </div>
 </div>
 
-<div class="card column col-xl-8 col-md-8 mb-8 classwork-list" style="padding-left: 20px !important;">
+<div class="card column col-xl-8 col-md-8 mb-8 classwork-list" style="padding-left: 20px !important; float: right;">
     <div class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
         <div class="new-body2" style="padding: 20px;">
             <div class="classwork-title">
@@ -136,8 +137,16 @@
                                     </pre>
                                     <hr />
                                     <div class="form-group">
-                                        <textarea class="form-control" rows="2"
-                                            placeholder="Write a review!"></textarea>
+                                        <textarea class="form-control" rows="2" placeholder="Write a review!"></textarea>
+                                    </div>
+                                    <div>
+                                        <a *ngIf="teacherAccount" class="review-classwork" style="float:right;">
+                                            <i class="fa fa-check add-reminder btn disabled"
+                                                style="background: #CD3132 !important; color: #ffffff !important"
+                                                aria-hidden="true">
+                                                <span> Save Changes</span>
+                                            </i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -166,11 +175,7 @@
         </div>
     </div>
 </div>
-<!-- modal -->
-
-<!-- 
-
-<div class="modal" id="reviewModal">
+<!--<div class="modal" id="reviewModal">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -244,3 +249,88 @@
         </div>
     </div>
 </div> -->
+
+<!-- The Modal -->
+<div id="myModalClasswork" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+
+    <!-- dialog -->
+    <div class="modal-dialog">
+        <form class="user" [formGroup]="classWorkForm" (ngSubmit)="onSubmit()">
+
+            <!-- content -->
+            <div class="modal-content">
+
+                <!-- header -->
+                <div class="modal-header">
+                    <h1 id="myModalLabel" class="modal-title">
+                        Modal title
+                    </h1>
+                </div>
+                <!-- header -->
+
+                <!-- body -->
+                <div class="modal-body">
+                    <div class=" form-group">
+                        <label for="inputName"><span class="validator" *ngIf="workTitle.invalid && workTitle.touched">
+                                Work Title is required</span></label>
+                        <input type="text" class="form-control" id="inputWorkTitle" aria-describedby="workTitleHelp"
+                            placeholder="Enter Work Title" formControlName="workTitle">
+                    </div>
+
+                    <div class=" form-group">
+                        <label for="inputName"><span class="validator" *ngIf="points.invalid && points.touched">
+                                Points/Items is required</span></label>
+                        <input type="text" class="form-control" id="inputPoints" aria-describedby="pointsHelp"
+                            placeholder="Enter Items/Points" formControlName="points">
+                    </div>
+
+                    <div class=" form-group">
+                        <label for="inputName"><span class="validator"
+                                *ngIf="instruction.invalid && instruction.touched">
+                                instruction is required</span></label>
+                        <input type="text" class="form-control" id="inputInstruction" aria-describedby="instructionHelp"
+                            placeholder="Enter Instructions" formControlName="instruction">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="date-container">
+                            <div class="input-group-container">
+                                <input class="date-picker" placeholder="yyyy-mm-dd (Due Date)" name="dp"
+                                    formControlName="dueDate" ngbDatepicker #d="ngbDatepicker">
+                            </div>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
+                                        class="fa fa-calendar"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class=" form-group">
+                        <!-- <label for="inputName"><span class="validator" *ngIf="name.invalid && name.touched"> -->
+                        <!-- Class Name is required</span></label> -->
+                        <a (click)="file.click()" class="btn btn-primary btn-rounded">Upload</a> {{fileName}}
+                        <input type="file" id="file" class="work-file" #file (change)="onFileChange($event)">
+                    </div>
+                </div>
+                <!-- body -->
+
+                <!-- footer -->
+                <div class="modal-footer">
+                    <!-- <button class="btn btn-secondary" data-dismiss="modal">
+                        close
+                    </button>
+                    <button class="btn btn-default">
+                        Default
+                    </button> -->
+                    <button class="btn btn-primary">
+                        Submit
+                    </button>
+                    <a class="btn btn-primary" data-dismiss="modal">Cancel</a>
+                </div>
+                <!-- footer -->
+            </div>
+        </form>
+    </div>
+</div>
+<!-- dialog -->

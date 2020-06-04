@@ -307,29 +307,31 @@
     background-color: #41ace2 !important;
     .classwork-title {
         color: #ffffff !important;
-        .review-classwork {
-            .add-reminder {
-                span {
-                    font-family: Arial, Helvetica, sans-serif;
-                }
-                border-radius: 0px !important;
-                background-color: #272652 !important;
-                border: none;
-                cursor: pointer;
-                padding: 15px !important;
-            }
-            .add-reminder:hover {
-                border: none !important;
-                background-color: #14142e !important;
-            }
+    }
+}
+
+.review-classwork {
+    color: #ffffff !important;
+    .add-reminder {
+        span {
+            font-family: Arial, Helvetica, sans-serif;
         }
+        border-radius: 0px !important;
+        background-color: #272652 !important;
+        border: none;
+        cursor: pointer;
+        padding: 15px !important;
+    }
+    .add-reminder:hover {
+        border: none !important;
+        background-color: #14142e !important;
     }
 }
 
 .classwork-title {
     font-size: 20px;
     text-transform: uppercase !important;
-    color: #2196f3 !important;
+    color: #41ACE2 !important;
     text-transform: uppercase;
     font-weight: bold;
     .add-classwork {
@@ -340,7 +342,7 @@
     }
     .add-reminder {
         float: right !important;
-        border: 1px #2196f3 solid;
+        border: 1px #41ACE2 solid;
         border-radius: 50%;
         padding: 10px;
         margin-top: -10px;
@@ -348,6 +350,10 @@
     .add-reminder:hover {
         border: 1px #ffffff solid !important;
     }
+}
+
+.disabled{
+    cursor: not-allowed !important;
 }
 
 .classwork-container {
@@ -422,11 +428,11 @@
         height: 100px;
         display: inline-block;
     }
-    span{
+    span {
         display: inline-block;
         width: 100%;
     }
-    input{
+    input {
         display: inline-block;
         width: 80%;
     }
@@ -643,7 +649,7 @@ input[type="range"]::-webkit-slider-thumb:active {
     }
 }
 
-.instructions-text{
+.instructions-text {
     height: 80px !important;
     overflow-y: auto;
 }
