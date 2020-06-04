@@ -111,7 +111,8 @@
                             <div class="row" style="padding-top: 20px">
                                 <div class="col-md-12">
                                     <!-- <p *ngIf="workDetails"> -->
-                                    <p>Submitted Attachments: <a (click)="download(viewClassWork.attachment, viewClassWork.attachmentFilename)"
+                                    <p>Submitted Attachments: <a
+                                            (click)="download(viewClassWork.attachment, viewClassWork.attachmentFilename)"
                                             class="btn btn-sm btn-primary">download</a></p>
                                     <br />
                                     <strong>Classwork Instruction: </strong>
@@ -120,37 +121,40 @@
                                         {{viewClassWork.instruction}}
                                     </p>
                                     <hr />
-                                    <small class="text-muted">STUDENT'S ANSWER:</small>
-                                    <!-- <a
-                                                    (click)="download(reviewData.attachment, reviewData.attachmentFilename)"
-                                                    class="btn btn-sm btn-primary">download</a></p> -->
-
-                                    <br />
-
-                                    <!-- <div [innerHTML]="message"></div> -->
-                                    <pre class="stude-answer">
-                                        <div>Answer of students goes here. Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer<br>a galley of type and scrambled it to make a type specimen book.
+                                    <div *ngIf="viewAnswer">
+                                        <small class="text-muted">STUDENT'S ANSWER:</small>
+                                        <!-- <a
+                                                        (click)="download(reviewData.attachment, reviewData.attachmentFilename)"
+                                                        class="btn btn-sm btn-primary">download</a></p> -->
+                                        <br />
+                                        <!-- <div [innerHTML]="message"></div> -->
+                                        <pre class="stude-answer">
+                                            <div>Answer of students goes here. Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer<br>a galley of type and scrambled it to make a type specimen book.
+                                            </div>
+                                        </pre>
+                                        <hr />
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="2"
+                                                placeholder="Write a review!"></textarea>
                                         </div>
-                                    </pre>
-                                    <hr />
-                                    <div class="form-group">
-                                        <textarea class="form-control" rows="2" placeholder="Write a review!"></textarea>
+                                        <div>
+                                            <a *ngIf="teacherAccount" class="review-classwork" style="float:right;">
+                                                <i class="fa fa-check add-reminder btn disabled"
+                                                    style="background: #CD3132 !important; color: #ffffff !important"
+                                                    aria-hidden="true">
+                                                    <span> Save Changes</span>
+                                                </i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <a *ngIf="teacherAccount" class="review-classwork" style="float:right;">
-                                            <i class="fa fa-check add-reminder btn disabled"
-                                                style="background: #CD3132 !important; color: #ffffff !important"
-                                                aria-hidden="true">
-                                                <span> Save Changes</span>
-                                            </i>
-                                        </a>
-                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col col-md-4" style="height: 100%; border-left: 1px #bbbbbb solid;">
+                <div *ngIf="!viewAnswer" class="col col-md-4" style="height: 100%; border-left: 1px #bbbbbb solid;">
                     <div class="student-details">
                         <table class="table table-sm table-middle">
                             <thead>
@@ -160,16 +164,17 @@
                                 </tr>
                             </thead>
                             <tbody *ngIf="!retrieveAnswer">
-                                <tr *ngFor="let students of submittedTask" (click) ="viewStudent(students)">
+                                <tr *ngFor="let students of submittedTask" class="view-answer"
+                                    (click)="viewStudent(students)">
                                     <td>{{students.answeredBy}}</td>
                                     <td>
                                         <!-- <p> <a (click)="download()" class="btn btn-sm btn-primary">View</a></p> -->
-                                        {{students.points}} 
+                                        {{students.points}} / {{students.totalpoints}}
                                     </td>
                                 </tr>
                             </tbody>
                             <tbody *ngIf="retrieveAnswer">
-                                <tr >
+                                <tr>
                                     <td class="center">
                                         <span>Retrieving answers</span>
 
@@ -182,22 +187,23 @@
                         </table>
                     </div>
                 </div>
-                <div class="col col-md-4" style="height: 100%; border-left: 1px #bbbbbb solid;">
+                <div *ngIf="viewAnswer" class="col col-md-4" style="height: 100%; border-left: 1px #bbbbbb solid;">
                     <div class="student-details">
                         <img class="border rounded-circle border-primary profile-img"
                             src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg">
-                        <span class="stude-name">Wilver the Great</span>
+                        <span class="stude-name">{{answerData.answeredBy}}</span>
                         <span class="stude-holder">Student</span>
                         <hr>
-                        <span class="stude-name1">March 23, 2020</span>
+                        <span class="stude-name1">{{getDate(answerData.answeredDate)}}</span>
                         <span class="stude-holder">Date Submitted</span>
                         <hr>
                         <span class="stude-name1">Teacher Name</span>
                         <span class="stude-holder">Assigned By</span>
                         <hr>
-                        <input type="range" min="0" max="100" step="1" value="0">
-                        <pre class="stude-score">98<p>/100</p></pre>
+                        <input type="range" min="0" max="{{answerData.totalpoints}}" step="1" value="{{answerData.points}}">
+                        <pre class="stude-score">{{answerData.points}}<p>/{{answerData.totalpoints}}</p></pre>
                         <span class="stude-holder">Total Score</span>
+                        <p><a (click)="viewAnswer = false" class="btn btn-sm btn-primary">Return</a></p>
                     </div>
                 </div>
             </div>
