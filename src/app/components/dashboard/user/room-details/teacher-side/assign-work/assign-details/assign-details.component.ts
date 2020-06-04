@@ -43,6 +43,9 @@ export class AssignDetailsComponent implements OnInit {
   downloadFile: any;
   reminder: any;
   public isCollapsed: boolean[] = [];
+  viewClassWork: any;
+  submittedTask: any;
+  retrieveAnswer: boolean = true;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -107,6 +110,9 @@ export class AssignDetailsComponent implements OnInit {
         const { classworks } = response.body;
         this.classWork = classworks;
         this.workDetails.setClassWork(this.classWork);
+        console.log(this.classWork)
+        this.viewClassWork = this.classWork[0];
+        this.getSubmittedWorks()
         this.showSpinner = false;
       }, (error: any) => {
         const { message, status } = error.error;
@@ -129,6 +135,7 @@ export class AssignDetailsComponent implements OnInit {
         // this.showSpinner = false;
         this.showSpinner = false;
         this.classWork = response;
+        this.viewClassWork = this.classWork[0];
       }
     })
     // this.apiService.getClassworkTeacher(rid, token)
@@ -146,6 +153,26 @@ export class AssignDetailsComponent implements OnInit {
     //       console.log(message);
     //     }
     //   })
+  }
+
+  getSubmittedWorks() {
+    const { token } = this.userData;
+    const { classworkID } = this.viewClassWork;
+    this.apiService.getClassworkSubmissions(classworkID, token)
+      .subscribe((response: any) => {
+        const { status } = response;
+        if (status === 200) {
+          console.log(response)
+          const { submitted } = response.body;
+          this.submittedTask = submitted;
+          // this.disable = false;
+          this.retrieveAnswer = false;
+        }
+      }, (error: any) => {
+        // this.disable = false;
+        this.retrieveAnswer = false;
+        console.log(error)
+      })
   }
 
   get workTitle() {
@@ -224,21 +251,22 @@ export class AssignDetailsComponent implements OnInit {
   }
   handleFile(event) {
     var binaryString = event.target.result;
-    // console.log(binaryString);
     this.base64textString = btoa(binaryString);
-    // console.log(btoa(binaryString));
-    // this.classWorkForm.value.workFile = this.base64textString;
-    // console.log(this.classWorkForm)
+
   }
 
   download(attachment, name) {
     this.downloadFile = "data:application/pdf;base64," + attachment;
     const downloadLink = document.createElement("a");
     const fileName = name;
+    if (fileName === 'None' || fileName === null || fileName === undefined) {
+      this.toastr.warning('No file was uploaded', 'File Empty', { timeOut: 4000 })
+    } else {
+      downloadLink.href = this.downloadFile;
+      downloadLink.download = fileName;
+      downloadLink.click();
+    }
 
-    downloadLink.href = this.downloadFile;
-    downloadLink.download = fileName;
-    downloadLink.click();
   }
 
   dueDateVal(date) {

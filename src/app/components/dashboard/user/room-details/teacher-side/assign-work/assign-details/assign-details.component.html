@@ -84,11 +84,12 @@
     </div>
 </div>
 
-<div class="card column col-xl-8 col-md-8 mb-8 classwork-list" style="padding-left: 20px !important;">
+<div *ngIf="!showSpinner" class="card column col-xl-8 col-md-8 mb-8 classwork-list"
+    style="padding-left: 20px !important;">
     <div class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
         <div class="new-body2" style="padding: 20px;">
             <div class="classwork-title">
-                Classwork 101
+                {{classWork[0].title}}
                 <a *ngIf="teacherAccount" class="review-classwork">
                     <i class="fa fa-plus add-reminder" aria-hidden="true"> <span> Edit Classwork</span> </i>
                 </a>
@@ -110,16 +111,13 @@
                             <div class="row" style="padding-top: 20px">
                                 <div class="col-md-12">
                                     <!-- <p *ngIf="workDetails"> -->
-                                    <p>Submitted Attachments: <a class="btn btn-sm btn-primary">download</a></p>
+                                    <p>Submitted Attachments: <a (click)="download()"
+                                            class="btn btn-sm btn-primary">download</a></p>
                                     <br />
                                     <strong>Classwork Instruction: </strong>
                                     <br />
-                                    <p class="instructions-text">Instructions: Lorem Ipsum is simply dummy text of the
-                                        printing and typesetting
-                                        industry.
-                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                        when an unknown printer
-                                        took a galley of type and scrambled it to make a type specimen book.
+                                    <p class="instructions-text">Instructions:
+                                        {{classWork[0].instruction}}
                                     </p>
                                     <hr />
                                     <small class="text-muted">STUDENT'S ANSWER:</small>
@@ -142,6 +140,38 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col col-md-4" style="height: 100%; border-left: 1px #bbbbbb solid;">
+                    <div class="student-details">
+                        <table class="table table-sm table-middle">
+                            <thead>
+                                <tr>
+                                    <th class="center">Student</th>
+                                    <th class="center">Score</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngIf="!retrieveAnswer">
+                                <tr *ngFor="let students of submittedTask">
+                                    <td>{{students.answeredBy}}</td>
+                                    <td>
+                                        <!-- <p> <a (click)="download()" class="btn btn-sm btn-primary">View</a></p> -->
+                                        {{students.points}} 
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody *ngIf="retrieveAnswer">
+                                <tr >
+                                    <td class="center">
+                                        <span>Retrieving answers</span>
+
+                                    </td>
+                                </tr>
+                                <tr class="center">
+                                    <app-loading-spinner></app-loading-spinner>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="col col-md-4" style="height: 100%; border-left: 1px #bbbbbb solid;">
