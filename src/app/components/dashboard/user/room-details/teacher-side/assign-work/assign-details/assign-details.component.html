@@ -30,23 +30,15 @@
                     <!-- Event # 1 -->
                     <!-- class="reminder-butt1" -->
                     <div *ngIf="!showSpinner" [ngClass]="classWorkStyle(i)">
-
-                        <!-- Card Header - Accordion -->
-                        <!-- <a href="#collapseCardExample" class="d-block card-header py-3 collapsed"
-                            data-toggle="collapse" role="button" aria-expanded="false"
-                            aria-controls="collapseCardExample">
-                            <h6 class="m-0 font-weight-bold text-primary">{{work.title}} - Due
-                                on:{{dueDateVal(work.dueDate)}}
-                            </h6>
-                        </a> -->
-                        <a (click)="isCollapsed[i] = !isCollapsed[i]" class="d-block card-header py-3 collapsed"
-                            data-toggle="collapse" role="button" aria-expanded="false"
+                        <!-- (click)="isCollapsed[i] = !isCollapsed[i]"  data-toggle="collapse"  -->
+                        <a (click)="viewClasswork(work)" class="d-block card-header py-3 collapsed"
+                           role="button" aria-expanded="false"
                             aria-controls="collapseCardExample">
                             <h6 class="m-0 font-weight-bold text-primary work-title">{{work.title}}
                             </h6>
                         </a>
                         <!-- Card Content - Collapse -->
-                        <div [ngbCollapse]="!isCollapsed[i]" class="collapse" id="collapseCardExample">
+                        <!-- <div [ngbCollapse]="!isCollapsed[i]" class="collapse" id="collapseCardExample">
                             <div class="classwork-body">
                                 <p class="due work-details"> Due on:
                                     <span>{{dueDateVal(work.dueDate)}}</span> </p>
@@ -62,7 +54,7 @@
                                     (click)="viewDetails(work, i)"
                                     class="btn btn-primary btn-rounded modal-buttons">View Details</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- PLEASE READ HERE -->
@@ -92,7 +84,7 @@
     <div *ngIf="!showSpinner&& !error" class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
         <div class="new-body2" style="padding: 20px; height: 70px;">
             <div class="classwork-title">
-                {{classWork[0].title}}
+                {{viewClassWork.title}}
                 <a *ngIf="teacherAccount" class="review-classwork">
                     <i class="fa fa-plus add-reminder" aria-hidden="true"> <span> Edit Classwork</span> </i>
                 </a>

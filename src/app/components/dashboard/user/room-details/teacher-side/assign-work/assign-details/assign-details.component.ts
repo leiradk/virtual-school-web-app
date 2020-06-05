@@ -145,24 +145,10 @@ export class AssignDetailsComponent implements OnInit {
         this.getSubmittedWorks();
       }
     })
-    // this.apiService.getClassworkTeacher(rid, token)
-    //   .subscribe((response: any) => {
-    //     console.log(response);
-    //     const { classworks } = response.body;
-    //     this.classWork = classworks;
-    //     console.log(this.classWork)
-    //   }, (error: any) => {
-    //     const { message, status } = error.error;
-    //     console.log(error);
-    //     if (status === 404) {
-    //       this.error = true;
-    //       this.errorMessage = message;
-    //       console.log(message);
-    //     }
-    //   })
   }
 
   getSubmittedWorks() {
+    this.retrieveAnswer = true;
     const { token } = this.userData;
     const { classworkID } = this.viewClassWork;
     this.apiService.getClassworkSubmissions(classworkID, token)
@@ -190,6 +176,15 @@ export class AssignDetailsComponent implements OnInit {
       })
   }
 
+  viewClasswork(data) {
+    if (data.classworkID === this.viewClassWork.classworkID) {
+      console.log('same data')
+    } else {
+      this.viewClassWork = data;
+      this.getSubmittedWorks();
+    }
+
+  }
   viewStudent(students) {
     console.log(students);
     this.answerData = students;
