@@ -84,7 +84,10 @@
         </div>
     </div>
 </div>
-<div *ngIf="!showSpinner" class="card column col-xl-8 col-md-8 mb-8 classwork-list"
+<div *ngIf="!showSpinner && error">
+    No date was taken
+</div>
+<div *ngIf="!showSpinner&& !error" class="card column col-xl-8 col-md-8 mb-8 classwork-list"
     style="padding-left: 20px !important; float: right;">
     <div class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
         <div class="new-body2" style="padding: 20px; height: 70px;">
