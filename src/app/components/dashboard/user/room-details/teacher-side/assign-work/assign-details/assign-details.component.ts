@@ -115,6 +115,7 @@ export class AssignDetailsComponent implements OnInit {
         const { classworks } = response.body;
         this.classWork = classworks;
         this.workDetails.setClassWork(this.classWork);
+        this.error = false;
         console.log(this.classWork)
         this.viewClassWork = this.classWork[0];
         this.getSubmittedWorks()
