@@ -163,7 +163,7 @@
                                     <th class="center">Score</th>
                                 </tr>
                             </thead>
-                            <tbody *ngIf="!retrieveAnswer">
+                            <tbody *ngIf="!retrieveAnswer && !answerErrorStatus">
                                 <tr *ngFor="let students of submittedTask" class="view-answer"
                                     (click)="viewStudent(students)">
                                     <td>{{students.answeredBy}}</td>
@@ -184,6 +184,14 @@
                                     <app-loading-spinner></app-loading-spinner>
                                 </tr>
                             </tbody>
+                            <tbody *ngIf="!retrieveAnswer && answerErrorStatus">
+                                <tr>
+                                    <td class="center">
+                                        <span>{{answerErrorMessage}}</span>
+
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -200,7 +208,8 @@
                         <span class="stude-name1">Teacher Name</span>
                         <span class="stude-holder">Assigned By</span>
                         <hr>
-                        <input type="range" min="0" max="{{answerData.totalpoints}}" step="1" value="{{answerData.points}}">
+                        <input type="range" min="0" max="{{answerData.totalpoints}}" step="1"
+                            value="{{answerData.points}}">
                         <pre class="stude-score">{{answerData.points}}<p>/{{answerData.totalpoints}}</p></pre>
                         <span class="stude-holder">Total Score</span>
                         <p><a (click)="viewAnswer = false" class="btn btn-sm btn-primary">Return</a></p>

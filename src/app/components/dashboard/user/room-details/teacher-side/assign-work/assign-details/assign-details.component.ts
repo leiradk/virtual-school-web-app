@@ -49,7 +49,8 @@ export class AssignDetailsComponent implements OnInit {
   retrieveAnswer: boolean = true;
   viewAnswer: boolean = false;
   answerData: any;
-
+  answerErrorMessage: any;
+  answerErrorStatus: boolean = true;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -138,7 +139,7 @@ export class AssignDetailsComponent implements OnInit {
       } else {
         // this.showSpinner = false;
         this.showSpinner = false;
-        this.classWork = response;  
+        this.classWork = response;
         this.viewClassWork = this.classWork[0];
         this.getSubmittedWorks();
       }
@@ -166,6 +167,7 @@ export class AssignDetailsComponent implements OnInit {
     this.apiService.getClassworkSubmissions(classworkID, token)
       .subscribe((response: any) => {
         const { status } = response;
+        this.answerErrorStatus = false;
         if (status === 200) {
           console.log(response)
           const { submitted } = response.body;
@@ -175,7 +177,14 @@ export class AssignDetailsComponent implements OnInit {
         }
       }, (error: any) => {
         // this.disable = false;
+        const { status, message } = error.error
         this.retrieveAnswer = false;
+        this.answerErrorStatus = true;
+        if (status === 404) {
+          this.answerErrorMessage = message;
+        } else {
+          this.answerErrorMessage = 'Something went wrong';
+        }
         console.log(error)
       })
   }
