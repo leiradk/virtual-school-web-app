@@ -1,0 +1,41 @@
+.table-header {
+    display: flex;
+    flex-direction: row;
+    .header-date,
+    .header-status {
+        flex: 1;
+    }
+    .header-name {
+        flex: 3;
+    }
+    .header-content {
+        color: black;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 1rem;
+        background: #c6bdbd;
+        border-right: 1px solid white;
+    }
+}
+
+.table-body {
+    .table-body-content {
+        display: flex;
+        flex-direction: row;
+        .body-date,
+        .body-status {
+            flex: 1;
+        }
+        .body-name {
+            flex: 3;
+        }
+        .body-content {
+            color: black;
+            font-weight: bold;
+            font-size: 20px;
+            padding: 1rem;
+            background: white;
+            border-right: 1px solid #c6bdbd;
+        }
+    }
+}

@@ -24,6 +24,10 @@ import { ClassroomComponent } from "./components/dashboard/user/student/student-
 import { UserComponent } from "./components/dashboard/user/user.component";
 import { RoomDetailsComponent } from "./components/dashboard/user/room-details/room-details.component";
 import { InviteUsersComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/invite-users.component";
+import { ParentGuardianTabComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/tabs/parent-guardian-tab/parent-guardian-tab.component";
+import { StudentTabComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/tabs/student-tab/student-tab.component";
+import { TeacherStaffTabComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/tabs/teacher-staff-tab/teacher-staff-tab.component";
+
 import { AssignWorkComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-work.component";
 import { AssignLessonsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-lessons/assign-lessons.component";
 import { AssignDetailsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-details/assign-details.component";
@@ -83,106 +87,6 @@ const routes: Routes = [
 
     ],
   },
-  // {
-  //   path: "teacher",
-  //   component: TeacherComponent,
-  //   children: [
-  //     {
-  //       path: "",
-  //       redirectTo: "main",
-  //       pathMatch: "full"
-  //     },
-  //     {
-  //       path: "main",
-  //       component: TeacherMainComponent
-  //     },
-  //     {
-  //       path: "class-details",
-  //       component: ClassDetailsComponent,
-  //       children: [
-  //         {
-  //           path: "",
-  //           redirectTo: "home",
-  //           pathMatch: "full"
-  //         },
-  //         {
-  //           path: 'home',
-  //           component: ClassHomeComponent
-  //         },
-  //         {
-  //           path: 'class-work',
-  //           component: ClassworkComponent,
-  //           children: [
-  //             {
-  //               path: "",
-  //               redirectTo: 'details',
-  //               pathMatch: "full"
-  //             },
-  //             {
-  //               path: 'details',
-  //               component: DetailsComponent,
-  //             },
-  //             {
-  //               path: 'lessons',
-  //               component: LessonsComponent,
-  //             }, {
-  //               path: 'work-view',
-  //               component: WorkViewComponent,
-  //             },
-  //           ]
-  //         },
-  //         {
-  //           path: 'people',
-  //           component: CheckStudentsComponent
-  //         },
-  //       ]
-  //     }
-  //   ]
-  // },
-  // {
-  //   path: "student",
-  //   component: StudentComponent,
-  //   children: [
-  //     {
-  //       path: "",
-  //       redirectTo: "main",
-  //       pathMatch: "full"
-  //     },
-  //     {
-  //       path: "main",
-  //       component: StudentMainComponent
-  //     },
-  //     {
-  //       path: "invitations",
-  //       component: StudentInvitationsComponent
-  //     },
-  //     {
-  //       path: "classroom",
-  //       component: ClassroomComponent,
-  //       children: [
-  //         {
-  //           path: "",
-  //           redirectTo: "home",
-  //           pathMatch: "full"
-  //         },
-  //         {
-  //           path: 'home',
-  //           component: ClassHomeComponent
-  //         },
-  //         {
-  //           path: 'class-work',
-  //           component: ClassworkComponent,
-
-  //         },
-  //         {
-  //           path: 'people',
-  //           component: CheckStudentsComponent
-  //         },
-  //       ]
-  //     },
-
-  //   ]
-  // },
   {
     path: "user",
     component: UserComponent,
