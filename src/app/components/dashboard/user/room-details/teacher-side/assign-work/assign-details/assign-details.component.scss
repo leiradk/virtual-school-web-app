@@ -359,6 +359,9 @@
 .classwork-container {
     padding-left: 0px !important;
     padding-right: 0px !important;
+    .selected{
+        background: #CD3132 !important;
+    }
     .reminder-butt2 {
         .work-title {
             color: #ffffff !important;
@@ -447,6 +450,7 @@
         margin-top: 0px;
     }
     .stude-name {
+        text-transform: capitalize !important;
         line-height: 0px;
         font-size: 20px;
         margin-top: 30px;
@@ -656,4 +660,29 @@ input[type="range"]::-webkit-slider-thumb:active {
 
 .view-answer {
     cursor: pointer;
+}
+
+.right-score{
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #41ACE2 !important;
+}
+
+.hover-student-answer{
+    border-bottom: solid 0.5px #aaaaaa;
+    cursor: pointer !important;
+}
+
+.hover-student-answer:hover{
+    background-color: rgba(65, 172, 226, 0.2) !important;
+}
+
+.back-arrow{
+    float: left; font-size: 25px;
+    cursor: pointer;
+}
+
+.back-arrow:hover{
+    color: #272652 !important;
+    transition: ease-in 0.2s;
 }

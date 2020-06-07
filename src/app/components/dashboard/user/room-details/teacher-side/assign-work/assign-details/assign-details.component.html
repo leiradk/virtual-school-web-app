@@ -29,11 +29,10 @@
                     <!-- Display notification for events here -->
                     <!-- Event # 1 -->
                     <!-- class="reminder-butt1" -->
-                    <div *ngIf="!showSpinner" [ngClass]="classWorkStyle(i)">
+                    <div (click)="viewAnswer = false" *ngIf="!showSpinner" [ngClass]="classWorkStyle(i)">
                         <!-- (click)="isCollapsed[i] = !isCollapsed[i]"  data-toggle="collapse"  -->
-                        <a (click)="viewClasswork(work)" class="d-block card-header py-3 collapsed"
-                           role="button" aria-expanded="false"
-                            aria-controls="collapseCardExample">
+                        <a (click)="viewClasswork(work)" class="d-block card-header py-3 collapsed" role="button"
+                            aria-expanded="false" aria-controls="collapseCardExample">
                             <h6 class="m-0 font-weight-bold text-primary work-title">{{work.title}}
                             </h6>
                         </a>
@@ -106,10 +105,9 @@
                             <div class="row" style="padding-top: 20px">
                                 <div class="col-md-12">
                                     <!-- <p *ngIf="workDetails"> -->
-                                    <p>Submitted Attachments: <a
+                                    <p>Submitted Attachments: <a *ngIf="viewAnswer"
                                             (click)="download(viewClassWork.attachment, viewClassWork.attachmentFilename)"
                                             class="btn btn-sm btn-primary">download</a></p>
-                                    <br />
                                     <strong>Classwork Instruction: </strong>
                                     <br />
                                     <p class="instructions-text">Instructions:
@@ -142,8 +140,6 @@
                                             </a>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
@@ -160,28 +156,29 @@
                             </thead>
                             <tbody *ngIf="!retrieveAnswer && !answerErrorStatus">
                                 <tr *ngFor="let students of submittedTask" class="view-answer"
-                                    (click)="viewStudent(students)">
-                                    <td>{{students.answeredBy}}</td>
+                                    (click)="viewStudent(students)" class="hover-student-answer">
+                                    <td class="right-score">{{students.answeredBy}}</td>
                                     <td>
                                         <!-- <p> <a (click)="download()" class="btn btn-sm btn-primary">View</a></p> -->
                                         {{students.points}} / {{students.totalpoints}}
                                     </td>
                                 </tr>
                             </tbody>
-                            <tbody *ngIf="retrieveAnswer">
+                            <tbody *ngIf="retrieveAnswer" style="height: 75px; padding: 30px;">
                                 <tr>
-                                    <td class="center">
+                                    <td class="center" colspan="2">
                                         <span>Retrieving answers</span>
-
                                     </td>
                                 </tr>
-                                <tr class="center">
-                                    <app-loading-spinner></app-loading-spinner>
+                                <tr class="center" style="height: 75px; padding: 30px;">
+                                    <td class="center" colspan="2">
+                                        <app-loading-spinner></app-loading-spinner>
+                                    </td>
                                 </tr>
                             </tbody>
                             <tbody *ngIf="!retrieveAnswer && answerErrorStatus">
                                 <tr>
-                                    <td class="center">
+                                    <td class="center" colspan="2" style="height: 75px; padding: 30px;">
                                         <span>{{answerErrorMessage}}</span>
 
                                     </td>
@@ -192,6 +189,9 @@
                 </div>
                 <div *ngIf="viewAnswer" class="col col-md-4" style="height: 100%; border-left: 1px #bbbbbb solid;">
                     <div class="student-details">
+                        <p><a (click)="viewAnswer = false">
+                                <i class="fa fa-arrow-left back-arrow" aria-hidden="true"></i></a>
+                        </p>
                         <img class="border rounded-circle border-primary profile-img"
                             src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg">
                         <span class="stude-name">{{answerData.answeredBy}}</span>
@@ -207,7 +207,6 @@
                             value="{{answerData.points}}">
                         <pre class="stude-score">{{answerData.points}}<p>/{{answerData.totalpoints}}</p></pre>
                         <span class="stude-holder">Total Score</span>
-                        <p><a (click)="viewAnswer = false" class="btn btn-sm btn-primary">Return</a></p>
                     </div>
                 </div>
             </div>

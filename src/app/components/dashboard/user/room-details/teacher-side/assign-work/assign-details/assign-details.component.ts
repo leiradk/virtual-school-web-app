@@ -51,6 +51,7 @@ export class AssignDetailsComponent implements OnInit {
   answerData: any;
   answerErrorMessage: any;
   answerErrorStatus: boolean = true;
+  selected :any;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
