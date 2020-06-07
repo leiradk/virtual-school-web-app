@@ -110,7 +110,7 @@
                                             class="btn btn-sm btn-primary">download</a></p>
                                     <strong>Classwork Instruction: </strong>
                                     <br />
-                                    <p class="instructions-text">Instructions:
+                                    <p class="instructions-text">
                                         {{viewClassWork.instruction}}
                                     </p>
                                     <hr />
@@ -121,10 +121,8 @@
                                                         class="btn btn-sm btn-primary">download</a></p> -->
                                         <br />
                                         <!-- <div [innerHTML]="message"></div> -->
-                                        <pre class="stude-answer">
-                                            <div>{{answerData.messageAnswer}}
-                                            </div>
-                                        </pre>
+                                        <pre class="stude-answer"
+                                            [innerHTML]="answerData.messageAnswer">{{answerData.messageAnswer}}</pre>
                                         <hr />
                                         <div class="form-group">
                                             <textarea class="form-control" rows="2"
