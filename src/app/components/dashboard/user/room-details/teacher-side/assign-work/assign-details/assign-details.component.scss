@@ -689,3 +689,9 @@ input[type="range"]::-webkit-slider-thumb:active {
     color: #272652 !important;
     transition: ease-in 0.2s;
 }
+
+.selected-work{
+    color: red !important;
+    font-weight: bold;
+    font-size: 30px;
+}

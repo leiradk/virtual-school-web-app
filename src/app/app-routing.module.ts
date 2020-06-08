@@ -204,7 +204,29 @@ const routes: Routes = [
               },
               {
                 path: 'invites',
-                component: InviteUsersComponent
+                component: InviteUsersComponent,
+                children: [
+                  {
+                    path: "",
+                    redirectTo: 'teacher',
+                    pathMatch: "full"
+                  },
+                  {
+                    path: 'guardian',
+                    component: ParentGuardianTabComponent,
+                  },
+                  {
+                    path: 'student',
+                    component: StudentTabComponent,
+                  },
+                  {
+                    path: 'teacher',
+                    component: TeacherStaffTabComponent,
+                  }
+                    
+
+
+                ]
               },
             ]
           }

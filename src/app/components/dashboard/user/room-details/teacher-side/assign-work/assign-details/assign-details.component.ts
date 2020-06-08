@@ -51,7 +51,9 @@ export class AssignDetailsComponent implements OnInit {
   answerData: any;
   answerErrorMessage: any;
   answerErrorStatus: boolean = true;
-  selected :any;
+  selected: any;
+  activeClass: any;
+  totalGrade: any;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -86,6 +88,15 @@ export class AssignDetailsComponent implements OnInit {
       date: 'date'
     }]
   }
+
+  setGrade(grade) {
+    this.totalGrade = grade;
+  }
+  
+  selectedWork(data) {
+    this.activeClass = data;
+    console.log('activeClass', this.activeClass)
+  }
   isSticky: boolean = false;
 
   @HostListener('window:scroll', ['$event'])
@@ -117,7 +128,8 @@ export class AssignDetailsComponent implements OnInit {
         this.classWork = classworks;
         this.workDetails.setClassWork(this.classWork);
         this.error = false;
-        console.log(this.classWork)
+        // console.log(this.classWork)
+        this.selectedWork(this.classWork[0].title);
         this.viewClassWork = this.classWork[0];
         this.getSubmittedWorks()
         this.showSpinner = false;
@@ -179,9 +191,11 @@ export class AssignDetailsComponent implements OnInit {
   }
 
   viewClasswork(data) {
+    console.log(data.title)
     if (data.classworkID === this.viewClassWork.classworkID) {
       console.log('same data')
     } else {
+      this.activeClass = data.title;
       this.viewClassWork = data;
       this.getSubmittedWorks();
     }
@@ -190,6 +204,7 @@ export class AssignDetailsComponent implements OnInit {
   viewStudent(students) {
     console.log(students);
     this.answerData = students;
+    this.totalGrade = this.answerData.points
     this.viewAnswer = true;
   }
 
