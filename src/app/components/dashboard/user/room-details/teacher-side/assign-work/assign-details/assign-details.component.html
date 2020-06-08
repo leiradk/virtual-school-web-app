@@ -16,8 +16,7 @@
             </div>
         </div>
         <div>
-            <div class="col align-items-center"
-                style="background: #ffffff !important; padding-top: 15px; overflow-y: scroll; height: 63.5vh;">
+            <div class="col align-items-center" style="background: #ffffff !important; padding-top: 15px; overflow-y: scroll; height: 63.5vh;">
                 <div class="col" *ngIf="showSpinner">
                     <app-loading-spinner></app-loading-spinner>
                 </div>
@@ -90,8 +89,7 @@
             </div>
         </div>
         <div>
-            <div class="col align-items-center"
-                style="background: #ffffff !important; padding-top: 15px; padding-right: 0px; padding-bottom: 15px; height: 63.5vh;">
+            <div class="col align-items-center" style="background: #ffffff !important; padding-top: 15px; padding-right: 0px; padding-bottom: 15px; height: 63.5vh;">
                 <div class="col col-md-8" style="height: 100%;">
 
                     <div class="layout-content" data-scrollable>
@@ -125,14 +123,11 @@
                                             [innerHTML]="answerData.messageAnswer">{{answerData.messageAnswer}}</pre>
                                         <hr />
                                         <div class="form-group">
-                                            <textarea class="form-control" rows="2"
-                                                placeholder="Write a review!"></textarea>
+                                            <textarea class="form-control" rows="2" placeholder="Write a review!"></textarea>
                                         </div>
                                         <div>
                                             <a *ngIf="teacherAccount" class="review-classwork" style="float:right;">
-                                                <i class="fa fa-check add-reminder btn disabled"
-                                                    style="background: #CD3132 !important; color: #ffffff !important"
-                                                    aria-hidden="true">
+                                                <i class="fa fa-check add-reminder btn disabled" style="background: #CD3132 !important; color: #ffffff !important" aria-hidden="true">
                                                     <span> Save Changes</span>
                                                 </i>
                                             </a>
@@ -201,8 +196,7 @@
                         <span class="stude-name1">Teacher Name</span>
                         <span class="stude-holder">Assigned By</span>
                         <hr>
-                        <input type="range" min="0" max="{{answerData.totalpoints}}" step="1"
-                            value="{{answerData.points}}">
+                        <input type="range" min="0" max="{{answerData.totalpoints}}" step="1" value="{{answerData.points}}">
                         <pre class="stude-score">{{answerData.points}}<p>/{{answerData.totalpoints}}</p></pre>
                         <span class="stude-holder">Total Score</span>
                     </div>
@@ -287,8 +281,7 @@
 </div> -->
 
 <!-- The Modal -->
-<div id="myModalClasswork" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
+<div id="myModalClasswork" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
     <!-- dialog -->
     <div class="modal-dialog">
@@ -310,30 +303,26 @@
                     <div class=" form-group">
                         <label for="inputName"><span class="validator" *ngIf="workTitle.invalid && workTitle.touched">
                                 Work Title is required</span></label>
-                        <input type="text" class="form-control" id="inputWorkTitle" aria-describedby="workTitleHelp"
-                            placeholder="Enter Work Title" formControlName="workTitle">
+                        <input type="text" class="form-control" id="inputWorkTitle" aria-describedby="workTitleHelp" placeholder="Enter Work Title" formControlName="workTitle">
                     </div>
 
                     <div class=" form-group">
                         <label for="inputName"><span class="validator" *ngIf="points.invalid && points.touched">
                                 Points/Items is required</span></label>
-                        <input type="text" class="form-control" id="inputPoints" aria-describedby="pointsHelp"
-                            placeholder="Enter Items/Points" formControlName="points">
+                        <input type="text" class="form-control" id="inputPoints" aria-describedby="pointsHelp" placeholder="Enter Items/Points" formControlName="points">
                     </div>
 
                     <div class=" form-group">
                         <label for="inputName"><span class="validator"
                                 *ngIf="instruction.invalid && instruction.touched">
                                 instruction is required</span></label>
-                        <input type="text" class="form-control" id="inputInstruction" aria-describedby="instructionHelp"
-                            placeholder="Enter Instructions" formControlName="instruction">
+                        <input type="text" class="form-control" id="inputInstruction" aria-describedby="instructionHelp" placeholder="Enter Instructions" formControlName="instruction">
                     </div>
 
                     <div class="form-group">
                         <div class="date-container">
                             <div class="input-group-container">
-                                <input class="date-picker" placeholder="yyyy-mm-dd (Due Date)" name="dp"
-                                    formControlName="dueDate" ngbDatepicker #d="ngbDatepicker">
+                                <input class="date-picker" placeholder="yyyy-mm-dd (Due Date)" name="dp" formControlName="dueDate" ngbDatepicker #d="ngbDatepicker">
                             </div>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
