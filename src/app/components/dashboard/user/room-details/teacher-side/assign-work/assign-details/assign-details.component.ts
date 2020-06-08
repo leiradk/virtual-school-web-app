@@ -129,6 +129,7 @@ export class AssignDetailsComponent implements OnInit {
           this.errorMessage = 'Empty Classwork';
         } else if (status === 500) {
           this.errorMessage = 'Something went wrong, please try again';
+          this.ngOnInit();
         }
       })
   }
