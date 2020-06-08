@@ -7,7 +7,7 @@
                 <!-- Event # 1 -->
                 <div class="reminder-butt1">
                     <!-- Card Header - Accordion -->
-                    <a class="d-block card-header py-3" role="button" aria-expanded="true"
+                    <a [routerLink]="['/user/t/classroom/invites/teacher']" class="d-block card-header py-3" role="button" aria-expanded="true"
                         aria-controls="collapseCardExample">
                         <h6 class="m-0 font-weight-bold text-primary">
                             Staff Teacher
@@ -18,7 +18,7 @@
                 <!-- Event # 2 -->
                 <div class="reminder-butt1">
                     <!-- Card Header - Accordion -->
-                    <a class="d-block card-header py-3" role="button" aria-expanded="true"
+                    <a [routerLink]="['/user/t/classroom/invites/guardian']" class="d-block card-header py-3" role="button" aria-expanded="true"
                         aria-controls="collapseCardExample">
                         <h6 class="m-0 font-weight-bold text-primary">
                             Parent/Guardian
@@ -29,7 +29,7 @@
                 <!-- Event # 3 -->
                 <div class="reminder-butt1">
                     <!-- Card Header - Accordion -->
-                    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
+                    <a [routerLink]="['/user/t/classroom/invites/student']" href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
                         aria-expanded="true" aria-controls="collapseCardExample">
                         <h6 class="m-0 font-weight-bold text-primary">
                             Student
