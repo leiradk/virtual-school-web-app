@@ -1,8 +1,8 @@
 <div class="parent-guardian tab-content">
     <div class="tab-table table">
         <div class="table-header">
-            <div class="header-name header-content">Name guardian</div>
-            <div class="header-date header-content">Date Invited</div>
+            <div class="header-name header-content header-split">Name</div>
+            <div class="header-date header-content header-split">Date Invited</div>
             <div class="header-status header-content">Status</div>
         </div>
         <div *ngIf="showSpinner" class="table-body">
@@ -17,9 +17,15 @@
         </div>
         <div *ngIf="!showSpinner && !error" class="table-body">
             <div class="table-body-content" *ngFor="let invites of invitedParent">
-                <div class="body-name body-content">{{invites.student}}</div>
-                <div class="body-date body-content">{{getDate(invites.dateSent)}}</div>
-                <div class="body-status body-content">{{invites.inviteStatus}}</div>
+                <div class="body-name body-content cell-split">
+                    <img class="border rounded-circle border-primary profile-img" src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg"> {{invites.student}}
+                </div>
+                <div class="body-date body-content cell-split">
+                    <img class="center-img"> {{getDate(invites.dateSent)}}
+                </div>
+                <div class="body-status body-content">
+                    <img class="center-img"> {{invites.inviteStatus}}
+                </div>
             </div>
         </div>
     </div>

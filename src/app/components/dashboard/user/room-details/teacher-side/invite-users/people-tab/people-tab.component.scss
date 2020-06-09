@@ -20,7 +20,7 @@
 }
 
 .reminder-butt1 {
-    background-color: #41ace2 !important;
+    background-color: #cccccc !important;
     color: #ffffff !important;
     margin-top: 10px;
     cursor: pointer;
@@ -44,6 +44,7 @@
     .not-selected {
         background-color: #cccccc !important;
         background-image: none !important;
+        transition: ease 1s;
     }
     .student-bg {
         background-image: linear-gradient(to right, #22b3af, #3cd88f);

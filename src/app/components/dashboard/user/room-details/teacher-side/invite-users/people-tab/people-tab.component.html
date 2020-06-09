@@ -7,7 +7,7 @@
                 <!-- Event # 1 -->
                 <div class="reminder-butt1">
                     <!-- Card Header - Accordion -->
-                    <a [routerLink]="['/user/t/classroom/invites/teacher']" class="not-selected staff-bg d-block card-header py-3" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <a [routerLink]="['/user/t/classroom/invites/teacher']" (click)="getSelectedTab()" [ngClass]="teacherActive" class="staff-bg d-block card-header py-3" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                         <h6 class="m-0 font-weight-bold text-primary">
                             <i class="fas fa-chalkboard-teacher  title-icon-left"></i> Staff Teacher
                         </h6>
@@ -17,7 +17,7 @@
                 <!-- Event # 2 -->
                 <div class="reminder-butt1">
                     <!-- Card Header - Accordion -->
-                    <a [routerLink]="['/user/t/classroom/invites/guardian']" class="not-selected parent-bg d-block card-header py-3" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <a [routerLink]="['/user/t/classroom/invites/guardian']" (click)="getSelectedTab()" [ngClass]="guardianActive" class="parent-bg d-block card-header py-3" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                         <h6 class="m-0 font-weight-bold text-primary">
                             <i class="fas fa-users title-icon-left"></i> Parent/Guardian
                         </h6>
@@ -27,7 +27,7 @@
                 <!-- Event # 3 -->
                 <div class="reminder-butt1">
                     <!-- Card Header - Accordion -->
-                    <a [routerLink]="['/user/t/classroom/invites/student']" class="student-bg d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <a [routerLink]="['/user/t/classroom/invites/student']" (click)="getSelectedTab()" [ngClass]="studentActive" class="student-bg d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                         <h6 class="m-0 font-weight-bold text-primary">
                             <i class="fas fa-user-graduate title-icon-left"></i>Student
                         </h6>

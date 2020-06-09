@@ -22,23 +22,22 @@ export class TeacherSideComponent implements OnInit {
     setTimeout(() => {
       this.getUrl = window.location.href;
       const page = this.getUrl.split('/');
-      if (page[7] === 'home') {
+      if (page[7] === 'home' || page[6] === 'home') {
         this.homeActive = 'active';
         this.cwActive = 'not-active';
         this.peopleActive = 'not-active';
         this.gradesActive = 'not-active';
-      } else if (page[7] === 'class-work') {
+      } else if (page[7] === 'class-work' || page[6] === 'class-work') {
         this.homeActive = 'not-active';
         this.cwActive = 'active';
         this.peopleActive = 'not-active';
         this.gradesActive = 'not-active';
-      } else if (page[7] === 'invites') {
+      } else if (page[7] === 'invites' || page[6] === 'invites') {
         this.homeActive = 'not-active';
         this.cwActive = 'not-active';
         this.peopleActive = 'active';
         this.gradesActive = 'not-active';
       }
     });
-
   }
 }
