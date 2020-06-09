@@ -1,6 +1,7 @@
 .table-header {
     display: flex;
     flex-direction: row;
+    background-color: #cccccc !important;
     .header-date,
     .header-status {
         flex: 1;
@@ -9,12 +10,15 @@
         flex: 3;
     }
     .header-content {
-        color: black;
+        color: #272652;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 15px;
         padding: 1rem;
-        background: #c6bdbd;
-        border-right: 1px solid white;
+        background: #cccccc;
+        text-transform: uppercase;
+    }
+    .header-split {
+        border-right: 1px solid #ffffff;
     }
 }
 
@@ -28,14 +32,31 @@
         }
         .body-name {
             flex: 3;
+            color: #272652 !important;
+            font-weight: 600;
         }
         .body-content {
-            color: black;
-            font-weight: bold;
-            font-size: 20px;
+            color: #222222;
+            font-size: 15px;
             padding: 1rem;
-            background: white;
-            border-right: 1px solid #c6bdbd;
+            background: #ffffff;
+            text-transform: capitalize;
+            border: 1px solid #cccccc;
+            border-top: none !important;
+            vertical-align: middle;
         }
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .center-img {
+            width: 0px;
+            height: 40px;
+            border: none;
+        }
+    }
+    .cell-split {
+        border-right: none !important;
     }
 }
