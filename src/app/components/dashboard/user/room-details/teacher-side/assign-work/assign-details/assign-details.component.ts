@@ -54,6 +54,9 @@ export class AssignDetailsComponent implements OnInit {
   selected: any;
   activeClass: any;
   totalGrade: any;
+
+  savingChanges: boolean = false;
+
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -310,6 +313,7 @@ export class AssignDetailsComponent implements OnInit {
   }
 
   updateClassPoints(points) {
+    this.savingChanges = true;
     console.log(points)
     const { token } = this.userData;
     const payload = {
@@ -323,11 +327,14 @@ export class AssignDetailsComponent implements OnInit {
     this.answerErrorStatus = true;
     this.apiService.submitClassworkPoints(payload)
       .subscribe((response: any) => {
+        this.savingChanges = false;
+        this.toastr.success('Score updated successfully.', 'Success', { timeOut: 5000 })
         console.log(response)
         this.getSubmittedWorks();
       }, (error: any) => {
         console.log(error)
-        this.answerErrorStatus = false;
+        this.savingChanges = false;
+        this.toastr.error('Something went wrong. Please try again.', 'Error', { timeOut: 5000 })
       })
   }
   dueDateVal(date) {

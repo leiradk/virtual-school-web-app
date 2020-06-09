@@ -363,7 +363,7 @@
     padding-right: 0px !important;
     .selected-work {
         .card-header {
-            background: #272652 !important;
+            background-image: linear-gradient(to right, #f17580, #f18873) !important;
             cursor: default;
         }
     }
@@ -496,7 +496,6 @@ ol {
 .media {
     display: block;
 }
-
 
 /* Button pointing left */
 

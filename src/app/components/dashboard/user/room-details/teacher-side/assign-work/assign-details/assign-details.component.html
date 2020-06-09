@@ -133,16 +133,19 @@
                                         </div>
                                         <div>
                                             <!-- disabled -->
-                                            <a *ngIf="teacherAccount" (click)="updateClassPoints(answerData)"
-                                                class="review-classwork" style="float:right;">
+                                            <a *ngIf="teacherAccount && !savingChanges"
+                                                (click)="updateClassPoints(answerData)" class="review-classwork"
+                                                style="float:right;">
                                                 <i class="fa fa-check add-reminder btn "
                                                     style="background: #CD3132 !important; color: #ffffff !important"
                                                     aria-hidden="true">
-                                                    <span> Save Changes</span>
+                                                    <span> Save Changes </span>
                                                 </i>
                                             </a>
-                                            <!-- <p>Updating Answer</p> -->
-                                            <!-- disabled -->
+                                            <a *ngIf="savingChanges" (click)="updateClassPoints(answerData)"
+                                                class="review-classwork" style="float:right; padding-right: 45px">
+                                                <app-loading-spinner style="background: none;"></app-loading-spinner>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
