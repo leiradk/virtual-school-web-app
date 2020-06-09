@@ -4,20 +4,16 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#"><span>Dashboard</span></a></li>
-                <li class="breadcrumb-item"><span>Class</span></li>
-                <li class="breadcrumb-item active"><span>Home</span></li>
+                <li class="breadcrumb-item"><a href="/user/t/main"><span>Dashboard</span></a></li>
+                <li class="breadcrumb-item"><span>My Classroom</span></li>
+                <li class="breadcrumb-item active"><span>{{breadcrumbAdd}}</span></li>
             </ol>
 
             <div class="navigate-bar">
-                <div class="nav-item"><button [routerLink]="['/user/t/classroom/home']" [ngClass]="homeActive"
-                        (click)="getActiveClass()">Home</button></div>
-                <div class="nav-item"><button [routerLink]="['/user/t/classroom/class-work']" [ngClass]="cwActive"
-                        (click)="getActiveClass()">Classwork</button></div>
-                <div class="nav-item"><button [routerLink]="['/user/t/classroom/invites']" [ngClass]="peopleActive"
-                        (click)="getActiveClass()">People</button></div>
-                <div class="nav-item"><button [routerLink]="['/user/t/classroom/invites']" [ngClass]="gradesActive"
-                        (click)="getActiveClass()">Grades</button></div>
+                <div class="nav-item"><button [routerLink]="['/user/t/classroom/home']" [ngClass]="homeActive" (click)="getActiveClass()">Home</button></div>
+                <div class="nav-item"><button [routerLink]="['/user/t/classroom/class-work']" [ngClass]="cwActive" (click)="getActiveClass()">Classwork</button></div>
+                <div class="nav-item"><button [routerLink]="['/user/t/classroom/invites']" [ngClass]="peopleActive" (click)="getActiveClass()">People</button></div>
+                <div class="nav-item"><button [routerLink]="['/user/t/classroom/invites']" [ngClass]="gradesActive" (click)="getActiveClass()">Grades</button></div>
             </div>
             <div class="nav-content">
                 <router-outlet></router-outlet>

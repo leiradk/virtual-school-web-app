@@ -12,6 +12,7 @@ export class TeacherSideComponent implements OnInit {
   peopleActive: any;
   gradesActive: any;
   getUrl: any;
+  breadcrumbAdd: any;
   constructor() { }
 
   ngOnInit(): void {
@@ -27,16 +28,19 @@ export class TeacherSideComponent implements OnInit {
         this.cwActive = 'not-active';
         this.peopleActive = 'not-active';
         this.gradesActive = 'not-active';
+        this.breadcrumbAdd = 'Home';
       } else if (page[7] === 'class-work' || page[6] === 'class-work') {
         this.homeActive = 'not-active';
         this.cwActive = 'active';
         this.peopleActive = 'not-active';
         this.gradesActive = 'not-active';
+        this.breadcrumbAdd = 'Classwork';
       } else if (page[7] === 'invites' || page[6] === 'invites') {
         this.homeActive = 'not-active';
         this.cwActive = 'not-active';
         this.peopleActive = 'active';
         this.gradesActive = 'not-active';
+        this.breadcrumbAdd = 'People';
       }
     });
   }

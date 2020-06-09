@@ -37,3 +37,16 @@ li.nav-item {
         background-color: #dddddd !important;
     }
 }
+
+.breadcrumb-item.active {
+    font-weight: 600 !important;
+}
+
+.breadcrumb-item {
+    a {
+        cursor: pointer;
+    }
+    a:hover {
+        color: #2e4c8b;
+    }
+}
