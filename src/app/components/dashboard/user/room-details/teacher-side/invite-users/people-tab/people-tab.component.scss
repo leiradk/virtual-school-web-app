@@ -22,17 +22,38 @@
 .reminder-butt1 {
     background-color: #41ace2 !important;
     color: #ffffff !important;
-    margin-top: 15px;
+    margin-top: 10px;
     cursor: pointer;
+    a {
+        padding: 25px !important;
+        text-transform: uppercase;
+        border-bottom: none;
+    }
     h6 {
         color: #ffffff !important;
         vertical-align: middle !important;
     }
-}
-
-.reminder-butt2 {
-    background-color: #61b5e1 !important;
-    color: #ffffff !important;
+    .title-icon-left {
+        float: left !important;
+        margin: 0px 10px 0 0;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 15px;
+        margin-top: -14px;
+        border-radius: 50%;
+    }
+    .not-selected {
+        background-color: #cccccc !important;
+        background-image: none !important;
+    }
+    .student-bg {
+        background-image: linear-gradient(to right, #22b3af, #3cd88f);
+    }
+    .parent-bg {
+        background-image: linear-gradient(to right, #f17580, #f18873);
+    }
+    .staff-bg {
+        background-image: linear-gradient(to right, #5598ef, #74b1e3);
+    }
 }
 
 .view {
