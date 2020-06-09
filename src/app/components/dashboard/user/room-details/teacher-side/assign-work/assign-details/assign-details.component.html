@@ -16,8 +16,7 @@
             </div>
         </div>
         <div>
-            <div class="col align-items-center"
-                style="background: #ffffff !important; padding-top: 15px; overflow-y: scroll; height: 63.5vh;">
+            <div class="col align-items-center" style="background: #ffffff !important; padding-top: 15px; overflow-y: scroll; height: 63.5vh;">
                 <div class="col" *ngIf="showSpinner">
                     <app-loading-spinner></app-loading-spinner>
                 </div>
@@ -29,11 +28,9 @@
                     <!-- Display notification for events here -->
                     <!-- Event # 1 -->
                     <!-- class="reminder-butt1" -->
-                    <div (click)="viewAnswer = false" *ngIf="!showSpinner" [className]="classWorkStyle(i)" 
-                        [ngClass]="{'selected-work' : activeClass === work.title}">
+                    <div (click)="viewAnswer = false" *ngIf="!showSpinner" [className]="classWorkStyle(i)" [ngClass]="{'selected-work' : activeClass === work.title}">
                         <!-- (click)="isCollapsed[i] = !isCollapsed[i]"  data-toggle="collapse"  -->
-                        <a (click)="viewClasswork(work)" class="d-block card-header py-3 collapsed" role="button"
-                            aria-expanded="false" aria-controls="collapseCardExample">
+                        <a (click)="viewClasswork(work)" class="d-block card-header py-3 collapsed" role="button" aria-expanded="false" aria-controls="collapseCardExample">
                             <h6 class="m-0 font-weight-bold text-primary work-title">{{work.title}}
                             </h6>
                         </a>
@@ -78,9 +75,7 @@
 </div>
 
 <div class="card column col-xl-8 col-md-8 mb-8 classwork-list" style="padding-left: 20px !important; float: right;">
-    <div *ngIf="!showSpinner && error"
-        style="width: 100%;text-align: center;border: none;height: 100vh; font-size: 30px;color: #777777;"
-        class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
+    <div *ngIf="!showSpinner && error" style="width: 100%;text-align: center;border: none;height: 100vh; font-size: 30px;color: #777777;" class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
         Something went wrong! Please reload your browser.
     </div>
     <div *ngIf="!showSpinner&& !error" class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
@@ -93,8 +88,7 @@
             </div>
         </div>
         <div>
-            <div class="col align-items-center"
-                style="background: #ffffff !important; padding-top: 15px; padding-right: 0px; padding-bottom: 15px; height: 63.5vh;">
+            <div class="col align-items-center" style="background: #ffffff !important; padding-top: 15px; padding-right: 0px; padding-bottom: 15px; height: 63.5vh;">
                 <div class="col col-md-8" style="height: 100%;">
 
                     <div class="layout-content" data-scrollable>
@@ -108,9 +102,7 @@
                             <div class="row" style="padding-top: 20px">
                                 <div class="col-md-12">
                                     <!-- <p *ngIf="workDetails"> -->
-                                    <p>Submitted Attachments: <a *ngIf="viewAnswer"
-                                            (click)="download(viewClassWork.attachment, viewClassWork.attachmentFilename)"
-                                            class="btn btn-sm btn-primary">download</a></p>
+                                    <p>Submitted Attachments: <a *ngIf="viewAnswer" (click)="download(viewClassWork.attachment, viewClassWork.attachmentFilename)" class="btn btn-sm btn-primary">download</a></p>
                                     <strong>Classwork Instruction: </strong>
                                     <br />
                                     <p class="instructions-text">
@@ -124,18 +116,14 @@
                                                         class="btn btn-sm btn-primary">download</a></p> -->
                                         <br />
                                         <!-- <div [innerHTML]="message"></div> -->
-                                        <pre class="stude-answer"
-                                            [innerHTML]="answerData.messageAnswer">{{answerData.messageAnswer}}</pre>
+                                        <pre class="stude-answer" [innerHTML]="answerData.messageAnswer">{{answerData.messageAnswer}}</pre>
                                         <hr />
                                         <div class="form-group">
-                                            <textarea class="form-control" rows="2"
-                                                placeholder="Write a review!"></textarea>
+                                            <textarea class="form-control" rows="2" placeholder="Write a review!"></textarea>
                                         </div>
                                         <div>
                                             <a *ngIf="teacherAccount" class="review-classwork" style="float:right;">
-                                                <i class="fa fa-check add-reminder btn disabled"
-                                                    style="background: #CD3132 !important; color: #ffffff !important"
-                                                    aria-hidden="true">
+                                                <i class="fa fa-check add-reminder btn disabled" style="background: #CD3132 !important; color: #ffffff !important" aria-hidden="true">
                                                     <span> Save Changes</span>
                                                 </i>
                                             </a>
@@ -146,7 +134,7 @@
                         </div>
                     </div>
                 </div>
-                <div *ngIf="!viewAnswer" class="col col-md-4" style="height: 100%; border-left: 1px #bbbbbb solid;">
+                <div *ngIf="!viewAnswer" class="col col-md-4" style="height: 100%; border-left: 1px #bbbbbb solid; overflow-y: auto;">
                     <div class="student-details">
                         <table class="table table-sm table-middle">
                             <thead>
@@ -156,12 +144,9 @@
                                 </tr>
                             </thead>
                             <tbody *ngIf="!retrieveAnswer && !answerErrorStatus">
-                                <tr *ngFor="let students of submittedTask" class="view-answer"
-                                    (click)="viewStudent(students)" class="hover-student-answer">
+                                <tr *ngFor="let students of submittedTask" class="view-answer" (click)="viewStudent(students)" class="hover-student-answer">
                                     <td class="right-score">
-                                        <img class="border rounded-circle border-primary profile-img"
-                                            src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg"
-                                            style="width:30px; height:30px; margin-right: 10px;">{{students.answeredBy}}
+                                        <img class="border rounded-circle border-primary profile-img" src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg" style="width:30px; height:30px; margin-right: 10px;">{{students.answeredBy}}
                                     </td>
                                     <td>
                                         <!-- <p> <a (click)="download()" class="btn btn-sm btn-primary">View</a></p> -->
@@ -194,11 +179,11 @@
                 </div>
                 <div *ngIf="viewAnswer" class="col col-md-4" style="height: 100%; border-left: 1px #bbbbbb solid;">
                     <div class="student-details">
-                        <p><a (click)="viewAnswer = false">
+                        <p>
+                            <a (click)="viewAnswer = false">
                                 <i class="fa fa-arrow-left back-arrow" aria-hidden="true"></i></a>
                         </p>
-                        <img class="border rounded-circle border-primary profile-img"
-                            src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg">
+                        <img class="border rounded-circle border-primary profile-img" src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg">
                         <span class="stude-name">{{answerData.answeredBy}}</span>
                         <span class="stude-holder">Student</span>
                         <hr>
@@ -208,8 +193,7 @@
                         <span class="stude-name1">Teacher Name</span>
                         <span class="stude-holder">Assigned By</span>
                         <hr>
-                        <input #grade type="range" min="0" max="{{answerData.totalpoints}}" step="1"
-                            value="{{totalGrade}}" (change)="setGrade(grade.value)">
+                        <input #grade type="range" min="0" max="{{answerData.totalpoints}}" step="1" value="{{totalGrade}}" (change)="setGrade(grade.value)">
                         <pre class="stude-score">{{totalGrade}}<p>/{{answerData.totalpoints}}</p></pre>
                         <span class="stude-holder">Total Score</span>
                     </div>
@@ -294,8 +278,7 @@
 </div> -->
 
 <!-- The Modal -->
-<div id="myModalClasswork" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
+<div id="myModalClasswork" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
     <!-- dialog -->
     <div class="modal-dialog">
@@ -317,30 +300,26 @@
                     <div class=" form-group">
                         <label for="inputName"><span class="validator" *ngIf="workTitle.invalid && workTitle.touched">
                                 Work Title is required</span></label>
-                        <input type="text" class="form-control" id="inputWorkTitle" aria-describedby="workTitleHelp"
-                            placeholder="Enter Work Title" formControlName="workTitle">
+                        <input type="text" class="form-control" id="inputWorkTitle" aria-describedby="workTitleHelp" placeholder="Enter Work Title" formControlName="workTitle">
                     </div>
 
                     <div class=" form-group">
                         <label for="inputName"><span class="validator" *ngIf="points.invalid && points.touched">
                                 Points/Items is required</span></label>
-                        <input type="text" class="form-control" id="inputPoints" aria-describedby="pointsHelp"
-                            placeholder="Enter Items/Points" formControlName="points">
+                        <input type="text" class="form-control" id="inputPoints" aria-describedby="pointsHelp" placeholder="Enter Items/Points" formControlName="points">
                     </div>
 
                     <div class=" form-group">
                         <label for="inputName"><span class="validator"
                                 *ngIf="instruction.invalid && instruction.touched">
                                 instruction is required</span></label>
-                        <input type="text" class="form-control" id="inputInstruction" aria-describedby="instructionHelp"
-                            placeholder="Enter Instructions" formControlName="instruction">
+                        <input type="text" class="form-control" id="inputInstruction" aria-describedby="instructionHelp" placeholder="Enter Instructions" formControlName="instruction">
                     </div>
 
                     <div class="form-group">
                         <div class="date-container">
                             <div class="input-group-container">
-                                <input class="date-picker" placeholder="yyyy-mm-dd (Due Date)" name="dp"
-                                    formControlName="dueDate" ngbDatepicker #d="ngbDatepicker">
+                                <input class="date-picker" placeholder="yyyy-mm-dd (Due Date)" name="dp" formControlName="dueDate" ngbDatepicker #d="ngbDatepicker">
                             </div>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
