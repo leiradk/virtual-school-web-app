@@ -92,7 +92,7 @@ export class AssignDetailsComponent implements OnInit {
   setGrade(grade) {
     this.totalGrade = grade;
   }
-  
+
   selectedWork(data) {
     this.activeClass = data;
     console.log('activeClass', this.activeClass)
@@ -307,9 +307,26 @@ export class AssignDetailsComponent implements OnInit {
       downloadLink.download = fileName;
       downloadLink.click();
     }
-
   }
 
+  updateClassPoints(points) {
+    console.log(points)
+    const { token } = this.userData;
+    const payload = {
+      token: token,
+      classworkID: this.viewClassWork.classworkID,
+      answeredID: points.answeredID,
+      points: this.totalGrade
+
+    }
+    console.log(payload);
+    this.apiService.submitClassworkPoints(payload)
+      .subscribe((response: any) => {
+        console.log(response)
+      }, (error: any) => {
+        console.log(error)
+      })
+  }
   dueDateVal(date) {
     const dateSplit = date.split(' ');
     return dateSplit[0];

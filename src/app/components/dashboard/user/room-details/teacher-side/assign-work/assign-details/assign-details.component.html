@@ -122,8 +122,9 @@
                                             <textarea class="form-control" rows="2" placeholder="Write a review!"></textarea>
                                         </div>
                                         <div>
-                                            <a *ngIf="teacherAccount" class="review-classwork" style="float:right;">
-                                                <i class="fa fa-check add-reminder btn disabled" style="background: #CD3132 !important; color: #ffffff !important" aria-hidden="true">
+                                            <!-- disabled -->
+                                            <a *ngIf="teacherAccount" (click)="updateClassPoints(answerData)" class="review-classwork" style="float:right;">
+                                                <i class="fa fa-check add-reminder btn " style="background: #CD3132 !important; color: #ffffff !important" aria-hidden="true">
                                                     <span> Save Changes</span>
                                                 </i>
                                             </a>
