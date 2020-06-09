@@ -361,15 +361,18 @@
 .classwork-container {
     padding-left: 0px !important;
     padding-right: 0px !important;
-    .selected{
-        background: #CD3132 !important;
+    .selected-work {
+        .card-header {
+            background: #272652 !important;
+            cursor: default;
+        }
     }
     .reminder-butt2 {
         .work-title {
             color: #ffffff !important;
         }
         .card-header {
-            background: #41ace2 !important;
+            background: #41ace2;
             border-radius: 0px;
             padding: 25px 20px !important;
         }
@@ -494,6 +497,7 @@ ol {
     display: block;
 }
 
+
 /* Button pointing left */
 
 .button.back-btn {
@@ -512,6 +516,7 @@ ol {
     box-sizing: border-box;
     margin-bottom: 20px;
 }
+
 .button.back-btn:after {
     content: "";
     width: 0;
@@ -540,14 +545,12 @@ button.back-btn:hover {
     border: dashed 1px #979797;
     position: relative;
     margin: 0 auto;
-
     i {
         font-size: 45px;
         color: #333;
         padding-bottom: 10px;
         margin-top: -10px;
     }
-
     input {
         opacity: 0;
         position: absolute;
@@ -557,7 +560,6 @@ button.back-btn:hover {
         top: 0;
         left: 0;
     }
-
     label {
         color: white;
         width: 183px;
@@ -566,7 +568,6 @@ button.back-btn:hover {
         background-color: #db202f;
         padding: 8px 16px;
     }
-
     h3 {
         font-size: 20px;
         font-weight: 700;
@@ -582,11 +583,13 @@ body {
     padding-top: 40px;
     text-shadow: white 1px 1px 1px;
 }
+
 .value {
     font-weight: bold;
     font-size: 25px;
     text-shadow: white 2px 2px 2px;
 }
+
 input[type="range"] {
     display: block;
     -webkit-appearance: none;
@@ -595,6 +598,7 @@ input[type="range"] {
     border-radius: 5px;
     outline: 0;
 }
+
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     background-color: #e74c3c;
@@ -605,10 +609,12 @@ input[type="range"]::-webkit-slider-thumb {
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
+
 ​ input[type="range"]::-webkit-slider-thumb:hover {
     background-color: white;
     border: 2px solid #e74c3c;
 }
+
 input[type="range"]::-webkit-slider-thumb:active {
     transform: scale(1.6);
 }
@@ -623,10 +629,12 @@ input[type="range"]::-webkit-slider-thumb:active {
     display: table-cell;
     vertical-align: middle !important;
 }
+
 .col-md-3 {
     width: 25%;
     padding-top: 3px;
 }
+
 .media-right {
     padding-left: 0.5rem !important;
 }
@@ -642,7 +650,6 @@ input[type="range"]::-webkit-slider-thumb:active {
 .class-review {
     padding: 0px !important;
     margin-top: -10px !important;
-
     .page-heading {
         margin: 0px;
         .assigned-by {
@@ -664,34 +671,29 @@ input[type="range"]::-webkit-slider-thumb:active {
     cursor: pointer;
 }
 
-.right-score{
+.right-score {
     font-weight: bold;
     text-transform: capitalize;
-    color: #41ACE2 !important;
+    color: #41ace2 !important;
 }
 
-.hover-student-answer{
+.hover-student-answer {
     border-bottom: solid 0.5px #aaaaaa;
     cursor: pointer !important;
 }
 
-.hover-student-answer:hover{
+.hover-student-answer:hover {
     background-color: rgba(65, 172, 226, 0.2) !important;
 }
 
-.back-arrow{
+.back-arrow {
     color: #777777 !important;
-    float: left; font-size: 25px;
+    float: left;
+    font-size: 25px;
     cursor: pointer;
 }
 
-.back-arrow:hover{
+.back-arrow:hover {
     color: #272652 !important;
     transition: ease-in 0.2s;
-}
-
-.selected-work{
-    color: red !important;
-    font-weight: bold;
-    font-size: 30px;
 }
