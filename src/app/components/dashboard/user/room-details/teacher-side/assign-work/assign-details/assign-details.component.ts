@@ -320,11 +320,14 @@ export class AssignDetailsComponent implements OnInit {
 
     }
     console.log(payload);
+    this.answerErrorStatus = true;
     this.apiService.submitClassworkPoints(payload)
       .subscribe((response: any) => {
         console.log(response)
+        this.getSubmittedWorks();
       }, (error: any) => {
         console.log(error)
+        this.answerErrorStatus = false;
       })
   }
   dueDateVal(date) {
