@@ -14,10 +14,10 @@
     </a>
     <!-- disabled -->
     <!-- <a [routerLink]="['/dashboard/parents-list']" routerLinkActive="active" class="collapse-item "> -->
-    <a routerLinkActive="active" class="collapse-item disabled">
+    <a  [routerLink]="['/dashboard/parents-list']" routerLinkActive="active" class="collapse-item">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleParent}">{{toggleSidebar('parent')}}
-        <i class="fas fa-users side-icon"></i><span class="disabled" style="font-weight: bold;">Parent/Guardian</span>
+        <i class="fas fa-users side-icon"></i><span style="font-weight: bold;">Parent/Guardian</span>
       </li>
     </a>
     <a [routerLink]="['/dashboard/student-lists']" routerLinkActive="active" class="collapse-item">
