@@ -159,6 +159,7 @@ export class AssignDetailsComponent implements OnInit {
         this.showSpinner = false;
         this.classWork = response;
         this.viewClassWork = this.classWork[0];
+        this.selectedWork(this.classWork[0].title);
         this.getSubmittedWorks();
       }
     })

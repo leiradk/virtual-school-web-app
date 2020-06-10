@@ -87,6 +87,8 @@ import { TabsComponent } from './components/dashboard/user/room-details/teacher-
 import { TeacherStaffTabComponent } from './components/dashboard/user/room-details/teacher-side/invite-users/tabs/teacher-staff-tab/teacher-staff-tab.component';
 import { ParentGuardianTabComponent } from './components/dashboard/user/room-details/teacher-side/invite-users/tabs/parent-guardian-tab/parent-guardian-tab.component';
 import { StudentTabComponent } from './components/dashboard/user/room-details/teacher-side/invite-users/tabs/student-tab/student-tab.component';
+import { VerificationComponent } from './components/verification/verification.component';
+import { ClassGradesComponent } from './components/dashboard/user/room-details/teacher-side/class-grades/class-grades.component';
 
 @NgModule({
   declarations: [
@@ -155,6 +157,8 @@ import { StudentTabComponent } from './components/dashboard/user/room-details/te
     TeacherStaffTabComponent,
     ParentGuardianTabComponent,
     StudentTabComponent,
+    VerificationComponent,
+    ClassGradesComponent,
   ],
   imports: [
     BrowserModule,
