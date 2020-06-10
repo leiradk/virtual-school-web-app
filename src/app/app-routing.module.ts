@@ -24,6 +24,7 @@ import { ClassroomComponent } from "./components/dashboard/user/student/student-
 import { UserComponent } from "./components/dashboard/user/user.component";
 import { RoomDetailsComponent } from "./components/dashboard/user/room-details/room-details.component";
 import { InviteUsersComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/invite-users.component";
+import { ClassGradesComponent } from "./components/dashboard/user/room-details/teacher-side/class-grades/class-grades.component";
 import { ParentGuardianTabComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/tabs/parent-guardian-tab/parent-guardian-tab.component";
 import { StudentTabComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/tabs/student-tab/student-tab.component";
 import { TeacherStaffTabComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/tabs/teacher-staff-tab/teacher-staff-tab.component";
@@ -223,10 +224,11 @@ const routes: Routes = [
                     path: 'teacher',
                     component: TeacherStaffTabComponent,
                   }
-                    
-
-
                 ]
+              },
+              {
+                path: 'grades',
+                component: ClassGradesComponent
               },
             ]
           }

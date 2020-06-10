@@ -41,6 +41,12 @@ export class TeacherSideComponent implements OnInit {
         this.peopleActive = 'active';
         this.gradesActive = 'not-active';
         this.breadcrumbAdd = 'People';
+      } else if (page[7] === 'grades' || page[6] === 'grades') {
+        this.homeActive = 'not-active';
+        this.cwActive = 'not-active';
+        this.peopleActive = 'not-active';
+        this.gradesActive = 'active';
+        this.breadcrumbAdd = 'People';
       }
     });
   }
