@@ -56,4 +56,16 @@ export class TeacherHomeComponent implements OnInit {
     }
   }
 
+  homeActive: any;
+  peopleActive: any;
+  getUrl: any;
+  breadcrumbAdd: any;
+
+  getActiveClass() {
+    console.log('activeClass method')
+    this.homeActive = 'not-active';
+    this.peopleActive = 'active';
+    this.breadcrumbAdd = 'People';
+  }
+
 }
