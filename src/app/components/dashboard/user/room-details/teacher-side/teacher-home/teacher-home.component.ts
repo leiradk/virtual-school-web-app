@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SystemUtils } from '../../../../../../services/system.utils';
-
+import { TeacherSideComponent } from '../teacher-side.component';
 @Component({
   selector: 'app-teacher-home',
   templateUrl: './teacher-home.component.html',
@@ -13,6 +13,7 @@ export class TeacherHomeComponent implements OnInit {
   userData: any;
   constructor(
     private system: SystemUtils,
+    private teacher: TeacherSideComponent
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +28,9 @@ export class TeacherHomeComponent implements OnInit {
     const date = dateTimeSplit[0].split('-');
     const month = this.getMonth(parseInt(date[1]));
     return month + ' ' + date[2] + ', ' + date[0];
+  }
+  invites() {
+    this.teacher.invites();
   }
   getMonth(month) {
     if (month === 1) {

@@ -50,4 +50,12 @@ export class TeacherSideComponent implements OnInit {
       }
     });
   }
+
+  invites() {
+    this.homeActive = 'not-active';
+    this.cwActive = 'not-active';
+    this.peopleActive = 'active';
+    this.gradesActive = 'not-active';
+    this.breadcrumbAdd = 'People';
+  }
 }
