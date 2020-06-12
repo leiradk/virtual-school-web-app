@@ -54,7 +54,7 @@ export class AssignDetailsComponent implements OnInit {
   selected: any;
   activeClass: any;
   totalGrade: any;
-
+  review: any;
   savingChanges: boolean = false;
 
   constructor(
@@ -131,7 +131,7 @@ export class AssignDetailsComponent implements OnInit {
         this.classWork = classworks;
         this.workDetails.setClassWork(this.classWork);
         this.error = false;
-        // console.log(this.classWork)
+        console.log(this.classWork)
         this.selectedWork(this.classWork[0].title);
         this.viewClassWork = this.classWork[0];
         this.getSubmittedWorks()
@@ -321,8 +321,8 @@ export class AssignDetailsComponent implements OnInit {
       token: token,
       classworkID: this.viewClassWork.classworkID,
       answeredID: points.answeredID,
-      points: this.totalGrade
-
+      points: this.totalGrade,
+      review: this.review
     }
     console.log(payload);
     this.answerErrorStatus = true;
