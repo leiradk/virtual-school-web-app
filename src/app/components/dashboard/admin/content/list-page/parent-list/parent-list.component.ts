@@ -31,7 +31,7 @@ export class ParentListComponent implements OnInit {
   viewList: number = 5;
   userData: any;
   error: boolean = false;
-  teacherParams: Observable<string>;
+  parentParams: Observable<string>;
   teacherMessage: any;
   constructor(
     private fb: FormBuilder,
@@ -66,15 +66,15 @@ export class ParentListComponent implements OnInit {
         }
       }
     }
-    this.teacherParams = this.adminList.allTeacher;
-    this.checkTeacherList();
+    this.parentParams = this.adminList.allParents;
+    this.checkParentsList();
   }
 
-  checkTeacherList() {
-    this.teacherParams.pipe(take(1)).subscribe({
+  checkParentsList() {
+    this.parentParams.pipe(take(1)).subscribe({
       next: (post) => {
         if (post === null || post === undefined) {
-          this.getTeacher();
+          this.getParents();
         } else {
           this.showSpinner = false;
           this.error = false;
@@ -91,9 +91,9 @@ export class ParentListComponent implements OnInit {
     });
   }
   //get data list for teacher and staff
-  getTeacher() {
+  getParents() {
     const { token } = this.userData;
-    this.apiService.getTeacher(token)
+    this.apiService.getParents(token)
       .subscribe((response: any) => {
         this.error = false;
         const { status, body } = response;
@@ -160,7 +160,7 @@ export class ParentListComponent implements OnInit {
           //reload onInit
           setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
           this.addStaffFOrm.reset(); //reset form
-          this.getTeacher();
+          this.getParents();
         } else {
         }
       }, (error: any) => {
@@ -241,11 +241,11 @@ export class ParentListComponent implements OnInit {
 
     this.apiService.pullFromArchive(payload)
       .subscribe((response: any) => {
-        this.getTeacher();
-        this.adminList.setInactiveTeacher(null);
-        this.adminList.setAllTeachers(null);
-        this.adminList.setTeacher(null);
-        this.teacherParams.pipe(take(1)).subscribe({
+        this.getParents();
+        this.adminList.setInactiveParents(null);
+        this.adminList.setAllParents(null);
+        this.adminList.setParents(null);
+        this.parentParams.pipe(take(1)).subscribe({
           next: (post) => {
           },
           error: err => {
@@ -273,10 +273,10 @@ export class ParentListComponent implements OnInit {
     this.showSpinner = true;
     this.apiService.addToArchive(payload)
       .subscribe((response: any) => {
-        this.adminList.setInactiveTeacher(null);
-        this.adminList.setTeacher(null);
-        this.adminList.setAllTeachers(null);
-        this.getTeacher();
+        this.adminList.setInactiveParents(null);
+        this.adminList.setParents(null);
+        this.adminList.setAllParents(null);
+        this.getParents();
       }, (error: any) => {
         console.log(error);
       })
