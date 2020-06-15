@@ -49,6 +49,7 @@ export class PostsComponent implements OnInit {
   showSpinner: boolean = true;
 
   isSticky: boolean = false;
+
   ngOnInit(): void {
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
@@ -197,6 +198,7 @@ export class PostsComponent implements OnInit {
 
   //passing data (post details) to the backend
   onSubmit() {
+    this.showSpinner = true;
     const { value } = this.postForm;
     const { token } = this.userData;
     const { rid } = this.classDetails
@@ -209,8 +211,12 @@ export class PostsComponent implements OnInit {
     this.apiService.teacherPost(payload)
       .subscribe((response: any) => {
         console.log(response);
+        this.showSpinner = false;
+        window.location.reload();
       }, (error: any) => {
         console.log(error);
+        this.showSpinner = false;
+        window.location.reload();
       });
   }
 
