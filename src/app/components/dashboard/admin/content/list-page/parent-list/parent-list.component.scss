@@ -94,3 +94,17 @@
 .title.teacher-content {
     background-image: linear-gradient(to right, #f17580, #f18873) !important;
 }
+
+.no-content {
+    height: 95%;
+    font-size: 40px;
+    padding: 50px;
+    font-weight: 700;
+    color: rgba(33, 37, 41, 0.28);
+    font-family: "Barlow Semi Condensed", sans-serif;
+    line-height: 40px;
+    letter-spacing: -2px;
+    p{
+        text-align: center;
+    }
+}

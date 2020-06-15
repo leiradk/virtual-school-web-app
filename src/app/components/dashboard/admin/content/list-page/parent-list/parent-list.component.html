@@ -148,12 +148,10 @@
                     </tbody>
                     <tbody *ngIf="!showSpinner && !error">
 
-                        <tr [ngClass]="{'inactive' : !getStatus(staff.status)}" class="teacher-data" *ngFor="
-                    let staff of people
-                      | filter: searchText
-                      | paginate: { itemsPerPage: viewList, currentPage: p };
-                    let i = index
-                  ">
+                        <tr [ngClass]="{'inactive' : !getStatus(staff.status)}" class="teacher-data" *ngFor=" let staff of people
+                            | filter: searchText
+                            | paginate: { itemsPerPage: viewList, currentPage: p };
+                            let i = index">
                             <ng-container>
                                 <td>
                                     <a class="link-to-list" href="#">
