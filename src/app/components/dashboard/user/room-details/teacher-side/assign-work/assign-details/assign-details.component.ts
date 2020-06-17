@@ -4,12 +4,7 @@ import { ApiHostService } from '../../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../../services/system.utils';
 import { SharedWorkDetailsService } from '../../../../../../../services/shared-work-details.service';
 import { ToastrService } from "ngx-toastr";
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-  FormControl,
-} from "@angular/forms";
+
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { take } from 'rxjs/operators';
 
@@ -26,7 +21,6 @@ declare var jQuery: any;
 })
 export class AssignDetailsComponent implements OnInit {
 
-  public classWorkForm: FormGroup;
   model: NgbDateStruct;
   p: number = 1;
   searchText;
@@ -60,11 +54,9 @@ export class AssignDetailsComponent implements OnInit {
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
-    private fb: FormBuilder,
     private workDetails: SharedWorkDetailsService,
     private toastr: ToastrService,
   ) {
-    this.workFormModel();
   }
 
   showSpinner: boolean = true;
@@ -90,6 +82,13 @@ export class AssignDetailsComponent implements OnInit {
       filename: 'filename',
       date: 'date'
     }]
+  }
+
+  closeModal() {
+    this.showSpinner = true;
+    this.updateClassWork(this.classDetails, this.userData);
+    this.showSuccess();
+    jQuery('#addClasswork').modal('hide');
   }
 
   setGrade(grade) {
@@ -220,85 +219,26 @@ export class AssignDetailsComponent implements OnInit {
     return month + ' ' + date[2] + ', ' + date[0];
   }
 
-  get workTitle() {
-    return this.classWorkForm.get("workTitle") as FormControl;
-  }
-  get points() {
-    return this.classWorkForm.get("points") as FormControl;
-  }
-  get instruction() {
-    return this.classWorkForm.get("instruction") as FormControl;
-  }
-  get dueDate() {
-    return this.classWorkForm.get("dueDate") as FormControl;
-  }
-  // get workFile() {
-  //   return this.classWorkForm.get("workFile") as FormControl;
+
+  // onFileChange(event) {
+  //   var files = event.target.files;
+  //   var file = files[0];
+  //   this.fileName = file.name;
+  //   if (files && file) {
+  //     var reader = new FileReader();
+
+  //     reader.onload = this.handleFile.bind(this);
+
+  //     reader.readAsBinaryString(file);
+  //     // console.log(reader.readAsBinaryString(file));
+
+  //   }
   // }
+  // handleFile(event) {
+  //   var binaryString = event.target.result;
+  //   this.base64textString = btoa(binaryString);
 
-
-  workFormModel() {
-    this.classWorkForm = this.fb.group({
-      workTitle: [null, Validators.required],
-      points: [null, Validators.required],
-      instruction: [null, Validators.required],
-      dueDate: [null, Validators.required],
-      // workFile: [null, Validators.required]
-    });
-  }
-
-  onSubmit() {
-
-    const date = this.classWorkForm.value.dueDate.year + "-" + this.classWorkForm.value.dueDate.month + "-" + this.classWorkForm.value.dueDate.day;
-    const payload = {
-      token: this.userData.token,
-      title: this.classWorkForm.value.workTitle,
-      classID: this.classDetails.rid,
-      instruction: this.classWorkForm.value.instruction,
-      points: this.classWorkForm.value.points,
-      dueDate: date,
-      attachment: this.base64textString,
-      attachmentFilename: this.fileName
-    }
-    console.log(payload);
-
-    //animation 
-    //close modal
-    //loading and toast
-    this.showSpinner = true;
-    jQuery('#myModalClasswork').modal('hide');
-    this.classWorkForm.reset();
-
-    this.apiService.addClasswork(payload)
-      .subscribe((response: any) => {
-        console.log(response);
-
-        this.updateClassWork(this.classDetails, this.userData);
-        this.showSuccess();
-      }, (error: any) => {
-        console.log(error);
-      })
-  }
-
-  onFileChange(event) {
-    var files = event.target.files;
-    var file = files[0];
-    this.fileName = file.name;
-    if (files && file) {
-      var reader = new FileReader();
-
-      reader.onload = this.handleFile.bind(this);
-
-      reader.readAsBinaryString(file);
-      // console.log(reader.readAsBinaryString(file));
-
-    }
-  }
-  handleFile(event) {
-    var binaryString = event.target.result;
-    this.base64textString = btoa(binaryString);
-
-  }
+  // }
 
   download(attachment, name) {
     this.downloadFile = "data:application/pdf;base64," + attachment;

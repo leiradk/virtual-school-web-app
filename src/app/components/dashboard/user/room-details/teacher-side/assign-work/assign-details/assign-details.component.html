@@ -10,7 +10,7 @@
         <div class="new-body" style="padding: 20px;">
             <div class="classwork-title">
                 <i class="fa fa-book" aria-hidden="true"></i> Classworks
-                <a *ngIf="teacherAccount" class="add-classwork" data-toggle="modal" data-target="#myModalClasswork">
+                <a *ngIf="teacherAccount" class="add-classwork" data-toggle="modal" data-target="#addClasswork">
                     <i class="fa fa-plus add-reminder" aria-hidden="true"></i>
                 </a>
             </div>
@@ -89,7 +89,7 @@
         <div class="new-body2" style="padding: 20px; height: 70px;">
             <div class="classwork-title">
                 {{viewClassWork.title}}
-                <a *ngIf="teacherAccount" class="review-classwork">
+                <a *ngIf="teacherAccount"  data-toggle="modal" data-target="#updateClasswork" class="review-classwork">
                     <i class="fa fa-plus add-reminder" aria-hidden="true"> <span> Edit Classwork</span> </i>
                 </a>
             </div>
@@ -130,8 +130,8 @@
                                             [innerHTML]="answerData.messageAnswer">{{answerData.messageAnswer}}</pre>
                                         <hr />
                                         <div class="form-group">
-                                            <textarea class="form-control" rows="2"
-                                                placeholder="Write a review!"[(ngModel)]="review"></textarea>
+                                            <textarea class="form-control" rows="2" placeholder="Write a review!"
+                                                [(ngModel)]="review"></textarea>
                                         </div>
                                         <div>
                                             <!-- disabled -->
@@ -304,87 +304,22 @@
     </div>
 </div> -->
 
-<!-- The Modal -->
-<div id="myModalClasswork" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<!-- The Modal ADD CLASSWORK -->
+<div id="addClasswork" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
     aria-hidden="true">
-
     <!-- dialog -->
     <div class="modal-dialog">
-        <form class="user" [formGroup]="classWorkForm" (ngSubmit)="onSubmit()">
+        <app-add-classwork></app-add-classwork>
+    </div>
+</div>
+<!-- dialog -->
 
-            <!-- content -->
-            <div class="modal-content">
-
-                <!-- header -->
-                <div class="modal-header">
-                    <h1 id="myModalLabel" class="modal-title">
-                        Modal title
-                    </h1>
-                </div>
-                <!-- header -->
-
-                <!-- body -->
-                <div class="modal-body">
-                    <div class=" form-group">
-                        <label for="inputName"><span class="validator" *ngIf="workTitle.invalid && workTitle.touched">
-                                Work Title is required</span></label>
-                        <input type="text" class="form-control" id="inputWorkTitle" aria-describedby="workTitleHelp"
-                            placeholder="Enter Work Title" formControlName="workTitle">
-                    </div>
-
-                    <div class=" form-group">
-                        <label for="inputName"><span class="validator" *ngIf="points.invalid && points.touched">
-                                Points/Items is required</span></label>
-                        <input type="text" class="form-control" id="inputPoints" aria-describedby="pointsHelp"
-                            placeholder="Enter Items/Points" formControlName="points">
-                    </div>
-
-                    <div class=" form-group">
-                        <label for="inputName"><span class="validator"
-                                *ngIf="instruction.invalid && instruction.touched">
-                                instruction is required</span></label>
-                        <input type="text" class="form-control" id="inputInstruction" aria-describedby="instructionHelp"
-                            placeholder="Enter Instructions" formControlName="instruction">
-                    </div>
-
-                    <div class="form-group">
-                        <div class="date-container">
-                            <div class="input-group-container">
-                                <input class="date-picker" placeholder="yyyy-mm-dd (Due Date)" name="dp"
-                                    formControlName="dueDate" ngbDatepicker #d="ngbDatepicker">
-                            </div>
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
-                                        class="fa fa-calendar"></i></button>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class=" form-group">
-                        <!-- <label for="inputName"><span class="validator" *ngIf="name.invalid && name.touched"> -->
-                        <!-- Class Name is required</span></label> -->
-                        <a (click)="file.click()" class="btn btn-primary btn-rounded">Upload</a> {{fileName}}
-                        <input type="file" id="file" class="work-file" #file (change)="onFileChange($event)">
-                    </div>
-                </div>
-                <!-- body -->
-
-                <!-- footer -->
-                <div class="modal-footer">
-                    <!-- <button class="btn btn-secondary" data-dismiss="modal">
-                        close
-                    </button>
-                    <button class="btn btn-default">
-                        Default
-                    </button> -->
-                    <button class="btn btn-primary">
-                        Submit
-                    </button>
-                    <a class="btn btn-primary" data-dismiss="modal">Cancel</a>
-                </div>
-                <!-- footer -->
-            </div>
-        </form>
+<!-- The Modal UPDATE CLASSWORK -->
+<div id="updateClasswork" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel"
+    aria-hidden="true">
+    <!-- dialog -->
+    <div class="modal-dialog">
+        <app-update-classwork></app-update-classwork>
     </div>
 </div>
 <!-- dialog -->

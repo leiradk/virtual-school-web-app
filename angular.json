@@ -15,6 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
+          "showCircularDependencies": false,
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/project-a-web-app",
