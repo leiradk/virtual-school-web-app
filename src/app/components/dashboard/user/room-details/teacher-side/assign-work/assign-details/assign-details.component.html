@@ -36,7 +36,10 @@
                             aria-expanded="false" aria-controls="collapseCardExample">
                             <h6 class="m-0 font-weight-bold text-primary work-title">{{work.title}}
                                 <!-- {{getDate(dueDate)}} -->
-                                <span style="float:right">Due Date: {{getDate(work.dueDate)}}</span>
+                                <div class="reminder-details">
+                                    <span>{{getDate(work.dueDate)}}</span>
+                                    <p>Due Date</p>
+                                </div>
                             </h6>
                         </a>
                         <!-- Card Content - Collapse -->
