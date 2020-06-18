@@ -1,4 +1,4 @@
-<form class="user">
+<form *ngIf="updatedClasswork" class="user" [formGroup]="updateClassWorkForm" (ngSubmit)="onSubmit()">
 
     <!-- content -->
     <div class="modal-content">
@@ -13,7 +13,56 @@
 
         <!-- body -->
         <div class="modal-body">
-       
+            <div class=" form-group">
+                <label for="inputWorkTitle"><span class="validator" *ngIf="workTitle.invalid && workTitle.touched">
+                        Work Title is required</span></label>
+                <input type="text" class="form-control" id="inputWorkTitle" aria-describedby="workTitleHelp"
+                    placeholder="Enter Work Title" formControlName="workTitle">
+            </div>
+            <div class=" form-group">
+                <label for="inputWorkDescription"><span class="validator"
+                        *ngIf="description.invalid && description.touched">
+                        Work Decription is required</span></label>
+                <input type="text" class="form-control" id="inputWorkDescription" aria-describedby="workDescriptionHelp"
+                    placeholder="Enter Work Description" formControlName="description">
+            </div>
+            <div class=" form-group">
+                <label for="inputPoints"><span class="validator" *ngIf="points.invalid && points.touched">
+                        Points/Items is required</span></label>
+                <input type="text" class="form-control" id="inputPoints" aria-describedby="pointsHelp"
+                    placeholder="Enter Items/Points" formControlName="points">
+            </div>
+
+            <div class=" form-group">
+                <label for="inputInstruction"><span class="validator"
+                        *ngIf="instruction.invalid && instruction.touched">
+                        instruction is required</span></label>
+                <input type="text" class="form-control" id="inputInstruction" aria-describedby="instructionHelp"
+                    placeholder="Enter Instructions" formControlName="instruction">
+            </div>
+
+            <div class="form-group">
+                <div *ngIf="!changeDate" class="due-date-container">
+                    Due Date: {{updateDate.toString()}} <a class="change-date" (click)="updateDueDate()">Change</a>
+                </div>
+                <div *ngIf="changeDate" class="date-container">
+                    <div class="input-group-container">
+                        <input class="date-picker" placeholder="yyyy-mm-dd (Due Date)" name="dp"
+                            formControlName="dueDate" ngbDatepicker #d="ngbDatepicker">
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
+                                class="fa fa-calendar"></i></button>
+                    </div>
+                </div>
+
+            </div>
+            <div class=" form-group">
+                <!-- <label for="inputName"><span class="validator" *ngIf="name.invalid && name.touched"> -->
+                <!-- Class Name is required</span></label> -->
+                <a (click)="file.click()" class="btn btn-primary btn-rounded">Upload</a> {{fileName}}
+                <input type="file" id="file" class="work-file" #file (change)="onFileChange($event)">
+            </div>
         </div>
         <!-- body -->
 

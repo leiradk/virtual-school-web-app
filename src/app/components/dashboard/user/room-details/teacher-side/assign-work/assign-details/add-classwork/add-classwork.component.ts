@@ -25,12 +25,13 @@ export class AddClassworkComponent implements OnInit {
     private fb: FormBuilder,
     private system: SystemUtils,
     private toastr: ToastrService,
-    private details: AssignDetailsComponent
+    private details: AssignDetailsComponent,
   ) { this.workFormModel(); }
 
   ngOnInit(): void {
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
+
   }
 
   get workTitle() {

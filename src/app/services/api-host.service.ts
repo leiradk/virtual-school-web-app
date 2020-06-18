@@ -178,7 +178,7 @@ export class ApiHostService {
   }
   //update classwork for students
   updateClassWork(payload) {
-    return this.https.put(`${this.localhost}/teacher/update/classwork`, payload)
+    return this.https.put(`${this.localhost}teacher/update/classwork`, payload)
       .pipe(
         map((data: any) => {
           return data;

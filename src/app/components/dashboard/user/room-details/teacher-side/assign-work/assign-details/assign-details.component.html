@@ -92,7 +92,7 @@
         <div class="new-body2" style="padding: 20px; height: 70px;">
             <div class="classwork-title">
                 {{viewClassWork.title}}
-                <a *ngIf="teacherAccount"  data-toggle="modal" data-target="#updateClasswork" class="review-classwork">
+                <a *ngIf="teacherAccount" (click)="editClasswork(viewClassWork)" data-toggle="modal" data-target="#updateClasswork" class="review-classwork">
                     <i class="fa fa-plus add-reminder" aria-hidden="true"> <span> Edit Classwork</span> </i>
                 </a>
             </div>

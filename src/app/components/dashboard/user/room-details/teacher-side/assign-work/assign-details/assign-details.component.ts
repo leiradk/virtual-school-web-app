@@ -7,7 +7,7 @@ import { ToastrService } from "ngx-toastr";
 
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { take } from 'rxjs/operators';
-
+import { UpdateClassworkService } from '../../../../../../../services/update-classwork.service';
 declare var jQuery: any;
 
 @Component({
@@ -56,6 +56,7 @@ export class AssignDetailsComponent implements OnInit {
     private system: SystemUtils,
     private workDetails: SharedWorkDetailsService,
     private toastr: ToastrService,
+    private updateCW: UpdateClassworkService
   ) {
   }
 
@@ -84,6 +85,10 @@ export class AssignDetailsComponent implements OnInit {
     }]
   }
 
+  editClasswork(data) {
+    // console.log(data);
+    this.updateCW.setClasswork(data);
+  }
   closeModal() {
     this.showSpinner = true;
     this.updateClassWork(this.classDetails, this.userData);
