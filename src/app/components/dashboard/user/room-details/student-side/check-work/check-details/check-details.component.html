@@ -1,256 +1,126 @@
-<div class="container-fluid">
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <div class="classwork">
-                <div class="card col-xl-4 col-md-4 mb-4 list-classwork">
-                    <div class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
-                        <div class="card-body">
-                            <div class="col align-items-center">
-                                <div class="subject-title text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    List of Classworks
-                                </div>
-                                <div class="col" *ngIf="showSpinner">
-                                    <app-loading-spinner></app-loading-spinner>
-                                </div>
-                                <div class="col" *ngIf="error">
-                                    <p class="no-classwork">{{errorMessage}}</p>
-                                </div>
-                                <div *ngFor="let work of classWork; let i = index" class="col">
+<div class="card col-xl-4 col-md-4 mb-4 classwork-list" style="float:left; position:absolute">
+    <div class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
+        <div class="new-body" style="padding: 20px;">
+            <div class="classwork-title">
+                <i class="fa fa-book" aria-hidden="true"></i> Classworks
+                <a *ngIf="teacherAccount" class="add-classwork" data-toggle="modal" data-target="#addClasswork">
+                    <i class="fa fa-plus add-reminder" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+        <div>
+            <div class="col align-items-center"
+                style="background: #ffffff !important; padding-top: 15px; overflow-y: scroll; height: 63.5vh;">
+                <div class="col" *ngIf="showSpinner">
+                    <app-loading-spinner></app-loading-spinner>
+                </div>
+                <div class="col" *ngIf="error">
+                    <p class="no-classwork">{{errorMessage}}</p>
+                </div>
+                <div *ngFor="let work of classWork; let i = index" class="classwork-container">
 
-                                    <!-- Display notification for events here -->
-                                    <!-- Event # 1 -->
-                                    <div class="reminder-butt">
-                                        <!-- Card Header - Accordion -->
-                                        <!-- <a href="#collapseCardExample" class="d-block card-header py-3 collapsed"
-                                            data-toggle="collapse" role="button" aria-expanded="false"
-                                            aria-controls="collapseCardExample">
-                                            <h6 class="m-0 font-weight-bold text-primary">{{work.title}} - Due
-                                                on:{{dueDateVal(work.dueDate)}}
-                                            </h6>
-                                        </a> -->
-                                        <a (click)="isCollapsed[i] = !isCollapsed[i]"
-                                            class="d-block card-header py-3 collapsed" data-toggle="collapse"
-                                            role="button" aria-expanded="false" aria-controls="collapseCardExample">
-                                            <h6 class="m-0 font-weight-bold text-primary work-title">{{work.title}}
-                                            </h6>
-                                        </a>
-                                        <!-- Card Content - Collapse -->
-                                        <div [ngbCollapse]="!isCollapsed[i]" class="collapse" id="collapseCardExample">
-                                            <div class="card-body">
-                                                <p class="due work-details"> Due on:
-                                                    <span>{{dueDateVal(work.dueDate)}}</span> </p>
-                                                <p class="points work-details">Total Points:
-                                                    <span>{{work.points}}</span></p>
-                                                <p class="submit work-details">Total Submission: <span>5</span></p>
-                                                <p class="instructions">{{work.instruction}}</p>
-                                            </div>
-                                            <div class="btns-work ctr">
-                                                <a [routerLink]="['/user/s/classroom/class-work/work-view']"
-                                                    (click)="viewDetails(work, i)"
-                                                    class="btn btn-primary btn-rounded modal-buttons">View Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- PLEASE READ HERE -->
-                                    <!-- Add ngIf here. Show only if empty classwork -->
-                                    <!-- <div class="empty-work" >
-                                        {{errorMessage}}
-                                    </div> -->
-
+                    <!-- Display notification for events here -->
+                    <!-- Event # 1 -->
+                    <!-- class="reminder-butt1" -->
+                    <div (click)="viewAnswer = false" *ngIf="!showSpinner" [className]="classWorkStyle(i)"
+                        [ngClass]="{'selected-work' : activeClass === work.title}">
+                        <!-- (click)="isCollapsed[i] = !isCollapsed[i]"  data-toggle="collapse"  -->
+                        <a (click)="viewClasswork(work)" class="d-block card-header py-3 collapsed" role="button"
+                            aria-expanded="false" aria-controls="collapseCardExample">
+                            <h6 class="m-0 font-weight-bold text-primary work-title">{{work.title}}
+                                <!-- {{getDate(dueDate)}} -->
+                                <div class="reminder-details">
+                                    <span>{{getDate(work.dueDate)}}</span>
+                                    <p>Due Date</p>
                                 </div>
-                                <div *ngIf="teacherAccount" class="view ctr">
-                                    <p><a class="btn btn-primary btn-rounded modal-buttons" data-toggle="modal"
-                                            data-target="#myModalClasswork">
-                                            Add Classwork
-                                            <i class="fa fa-plus" aria-hidden="true"></i>
-                                        </a>
-                                        <a [routerLink]="['/teacher/class-details/class-work/quizzes']"
-                                            class="btn btn-primary btn-rounded modal-buttons" data-toggle="modal"
-                                            data-target="#myModalClasswork">
-                                            Quizzes
-                                            <i class="fa fa-plus" aria-hidden="true"></i>
-                                        </a>
+                            </h6>
+                        </a>
+                    </div>
+                </div>
+                <div *ngIf="teacherAccount" class="view ctr">
+                    <!-- <p>
+                        <a [routerLink]="['/teacher/class-details/class-work/quizzes']" class="btn btn-primary btn-rounded modal-buttons" data-toggle="modal" data-target="#myModalClasswork">
+                            Quizzes
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </a>
+                    </p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card column col-xl-8 col-md-8 mb-8 classwork-list" style="padding-left: 20px !important; float: right;">
+    <div *ngIf="!showSpinner && error"
+        style="width: 100%;text-align: center;border: none;height: 100vh; font-size: 30px;color: #777777;"
+        class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
+        Something went wrong! Please reload your browser.
+    </div>
+    <div *ngIf="!showSpinner&& !error" class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
+        <div class="new-body2" style="padding: 20px; height: 70px;">
+            <div class="classwork-title">
+                {{viewClassWork.title}}
+
+                <!-- (click)="download(workData.attachment, workData.attachmentFilename)" -->
+                <a class="review-classwork">
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                    <br> Download Files
+                </a>
+            </div>
+        </div>
+        <div>
+            <div class="col align-items-center"
+                style="background: #ffffff !important; padding-top: 15px; padding-right: 0px; padding-bottom: 15px; height: 63.5vh;">
+                <div class="col col-md-8" style="height: 100%;">
+
+                    <div class="layout-content" data-scrollable>
+                        <div class="container-fluid class-review">
+                            <div class="row" style="padding-top: 20px">
+                                <div class="col-md-12">
+                                    <p>Submitted Attachments: <a *ngIf="viewAnswer"
+                                            (click)="download(viewClassWork.attachment, viewClassWork.attachmentFilename)"
+                                            class="btn btn-sm btn-primary">download</a></p>
+                                    <strong>Classwork Instruction: </strong>
+                                    <br />
+                                    <p class="instructions-text">
+                                        {{viewClassWork.instruction}}
                                     </p>
+                                    <hr />
+                                    <div *ngIf="viewAnswer">
+                                        <small class="text-muted">STUDENT'S ANSWER:</small>
+                                        <!-- <a
+                                                        (click)="download(reviewData.attachment, reviewData.attachmentFilename)"
+                                                        class="btn btn-sm btn-primary">download</a></p> -->
+                                        <br />
+                                        <!-- <div [innerHTML]="message"></div> -->
+                                        <pre class="stude-answer"
+                                            [innerHTML]="answerData.messageAnswer">{{answerData.messageAnswer}}</pre>
+                                        <hr />
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="2" placeholder="Write a review!"
+                                                [(ngModel)]="review"></textarea>
+                                        </div>
+                                        <div>
+                                            <!-- disabled -->
+                                            <a *ngIf="teacherAccount && !savingChanges"
+                                                (click)="updateClassPoints(answerData)" class="review-classwork"
+                                                style="float:right;">
+                                                <i class="fa fa-check add-reminder btn "
+                                                    style="background: #CD3132 !important; color: #ffffff !important"
+                                                    aria-hidden="true">
+                                                    <span> Save Changes </span>
+                                                </i>
+                                            </a>
+                                            <a *ngIf="savingChanges" (click)="updateClassPoints(answerData)"
+                                                class="review-classwork" style="float:right; padding-right: 45px">
+                                                <app-loading-spinner style="background: none;"></app-loading-spinner>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Event # 1 -->
-                <div class="card column col-xl-8 col-md-8 mb-8">
-                    <!-- <div class="card-title">
-                        <div class="title-name">Class Work Title</div>
-                        <div class="view-details"><a>View</a></div>
-                    </div> -->
-                    <div class="card-body">
-                        <!-- Content -->
-                        <div class="layout-content" data-scrollable>
-                            <div class="container-fluid">
-                                <h1 class="page-heading h2">Basics of Vue.js</h1>
-                                <!--name of class-->
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="card">
-                                            <div style="overflow:hidden; height:300px">
-                                                <iframe class="embed-responsive-item"
-                                                    src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0"
-                                                    frameborder="0" webkitallowfullscreen="" mozallowfullscreen=""
-                                                    allowfullscreen="" width="100%" height="300"></iframe>
-                                            </div>
-                                            <div class="card-block">
-                                                <!--class description-->
-                                                The RichTextEditor triggers events based on its actions.
-                                                The events can be used as an extension point to perform custom
-                                                operations.
-                                            </div>
-                                        </div>
-
-                                        <!-- Lessons -->
-                                        <div class="card">
-                                            <ul class="list-group">
-                                                <li class="list-group-item active">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="text-muted">1.</div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <a href="#">Awesome Vue.js with SASS Processing</a>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small class="text-muted-light">2:03</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="text-muted">2.</div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <a href="#">Github Webhooks for Beginners</a>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small class="text-muted-light">25:01</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="text-muted">3.</div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <a href="#">Browserify: Writing Modular JavaScript</a>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small class="text-muted-light">12:10</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="text-muted">4.</div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <a href="#">Take Quiz</a>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small class="text-muted-light">10:00</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="card">
-                                            <div class="card-block">
-                                                <a href="#" class="btn btn-primary btn-block btn-rounded">
-                                                    <i class="fa fa-download" aria-hidden="true"></i>
-                                                    <br> Download Files</a>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-header bg-white">
-                                                <div class="media">
-                                                    <div class="media-left media-middle">
-                                                        <img src="../../../../../../../../assets/teacher/images/classwork/people/teacher/guy-9.jpg"
-                                                            alt="About Adrian" width="50" class="img-circle">
-                                                    </div>
-                                                    <div class="media-body media-middle">
-                                                        <h4 class="teacher-title"><a href="#">Adrian Demian</a></h4>
-                                                        <p class="teacher-subtitle">Instructor</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-block">
-                                                <p>Having over 12 years exp. Adrian is one of the lead UI designers in
-                                                    the industry Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                    elit. Facere, aut.</p>
-                                                <div>
-                                                    <a href="" class="btns"><i class="fa fa-facebook"></i></a>
-                                                    <a href="" class="btns"><i class="fa fa-twitter"></i></a>
-                                                    <a href="" class="btns"><i class="fa fa-github"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="card">
-                                            <ul class="list-group list-group-fit">
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                                        </div>
-                                                        <div class="media-body media-middle">
-                                                            2
-                                                            <small class="text-muted">hrs</small> &nbsp; 26
-                                                            <small class="text-muted">min</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <i class="fa fa-bar-chart" aria-hidden="true"></i>
-                                                        </div>
-                                                        <div class="media-body media-middle">
-                                                            Beginner
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h4 class="card-title">Ratings</h4>
-                                            </div>
-                                            <div class="card-block">
-                                                <div>
-                                                    <i class="fa fa-star rating-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star rating-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star rating-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star rating-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star-o rating-star" aria-hidden="true"></i>
-                                                </div>
-                                                <small class="text-muted">20 ratings</small>
-                                            </div>
-                                        </div>
-
-                                        <a href="forum.html" class="btn-block btn-rounded btns">
-                                            <i class="fa fa-question-circle" aria-hidden="true"></i> Get Help
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tasks right">
                 </div>
             </div>
         </div>
