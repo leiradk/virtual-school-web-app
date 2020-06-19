@@ -1,7 +1,7 @@
 <!-- Start: sidebar -->
 <div id="dashboard-sidebar">
   <ul class="list-unstyled sidebar-list">
-    <a [routerLink]="['/user/t/main']" routerLinkActive="active" class="collapse-item">
+    <a [routerLink]="[dashboardRoute]" routerLinkActive="active" class="collapse-item">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleDashboard}">{{toggleSidebar('dashboard')}}
         <i class="fas fa-tachometer-alt side-icon"></i><span style="font-weight: bold;">Dashboard</span></li>
