@@ -2,14 +2,18 @@
     <div class="row">
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <br />
 
-            <div class="navigate-bar border-bottom-primary">
-                <div class="nav-item"><button [routerLink]="['/user/s/classroom/home']"  [ngClass]="homeActive" (click)="getActiveClass()">Home</button></div>
-                <div class="nav-item" ><button [routerLink]="['/user/s/classroom/class-work']" [ngClass]="cwActive" (click)="getActiveClass()">Classwork</button></div>
-                <div class="nav-item" ><button [routerLink]="['/user/s/classroom/people']" [ngClass]="peopleActive" (click)="getActiveClass()">People</button></div>
-                <div class="nav-item" ><button [routerLink]="['/user/t/classroom/invites']" [ngClass]="gradesActive">Grades</button></div>
-              
+            <ol class="breadcrumb" style="background: transparent;margin-bottom: 0;">
+                <li class="breadcrumb-item"><a href="/user/t/main"><span>Dashboard</span></a></li>
+                <li class="breadcrumb-item"><span>My Classroom</span></li>
+                <li class="breadcrumb-item active"><span>{{breadcrumbAdd}}</span></li>
+            </ol>
+
+            <div class="navigate-bar">
+                <div class="nav-item"><button [routerLink]="['/user/s/classroom/home']" [ngClass]="homeActive" (click)="getActiveClass()">Home</button></div>
+                <div class="nav-item"><button [routerLink]="['/user/s/classroom/class-work']" [ngClass]="cwActive" (click)="getActiveClass()">Classwork</button></div>
+                <div class="nav-item"><button [routerLink]="['/user/s/classroom/invites']" [ngClass]="peopleActive" (click)="getActiveClass()">People</button></div>
+                <div class="nav-item"><button [routerLink]="['/user/s/classroom/grades']" [ngClass]="gradesActive" (click)="getActiveClass()">Grades</button></div>
             </div>
             <div class="nav-content">
                 <router-outlet></router-outlet>

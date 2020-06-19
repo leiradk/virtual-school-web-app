@@ -11,34 +11,42 @@ li.nav-item {
 .navigate-bar {
     display: flex;
     border: none;
+    background: rgb(65, 172, 226) !important;
+    padding-top: 15px;
+    padding-left: 15px;
     .nav-item {
-        width: 25%;
-        text-align: center;
+        margin-right: 2px;
     }
     button {
         cursor: pointer;
         border: none;
-        width: 100%;
         /* color: white; */
-        background: white;
+        color: white;
         padding: 10px;
-        border-color: #dee2e6 #dee2e6 #fff;
-        color: #007bff;
-        border-radius: 10px;
-        border-bottom-left-radius: 0px !important;
-        border-bottom-right-radius: 0px !important;
+        background: #61b5e1;
+        padding: 10px 80px;
     }
-    button:hover:not(.active) {
-        color: #dee2e6 !important;
-        font-weight: bold;
-        background-color: #7f8c8d !important;
+    button:hover {
+        background: rgb(255, 255, 255, 0.5);
+        transition: ease 0.3s;
+        color: #1f1d42 !important;
     }
     .active {
-        border-right: 1px solid;
-        border-left: 1px solid;
-        border-color: #dee2e6 #dee2e6 #fff;
-        color: #dee2e6 !important;
+        color: #1f1d42 !important;
         font-weight: bold;
-        background-color: #4e73df !important;
+        background-color: #dddddd !important;
+    }
+}
+
+.breadcrumb-item.active {
+    font-weight: 600 !important;
+}
+
+.breadcrumb-item {
+    a {
+        cursor: pointer;
+    }
+    a:hover {
+        color: #2e4c8b;
     }
 }
