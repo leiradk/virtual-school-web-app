@@ -22,7 +22,8 @@
                     <!-- Display notification for events here -->
                     <!-- Event # 1 -->
                     <!-- class="reminder-butt1" -->
-                    <div (click)="viewAnswer = false" *ngIf="!showSpinner" [className]="classWorkStyle(i)"
+                    <!-- (click)="viewAnswer = false" -->
+                    <div  *ngIf="!showSpinner" [className]="classWorkStyle(i)"
                         [ngClass]="{'selected-work' : activeClass === work.title}">
                         <!-- (click)="isCollapsed[i] = !isCollapsed[i]"  data-toggle="collapse"  -->
                         <a (click)="viewClasswork(work)" class="d-block card-header py-3 collapsed" role="button"
@@ -62,10 +63,10 @@
                 {{viewClassWork.title}}
 
                 <!-- (click)="download(workData.attachment, workData.attachmentFilename)" -->
-                <a class="review-classwork">
+                <!-- <a class="review-classwork">
                     <i class="fa fa-download" aria-hidden="true"></i>
                     <br> Download Files
-                </a>
+                </a> -->
             </div>
         </div>
         <div>
@@ -77,7 +78,8 @@
                         <div class="container-fluid class-review">
                             <div class="row" style="padding-top: 20px">
                                 <div class="col-md-12">
-                                    <p>Submitted Attachments: <a *ngIf="viewAnswer"
+                                    <!-- *ngIf="viewAnswer" -->
+                                    <p>Submitted Attachments: <a
                                             (click)="download(viewClassWork.attachment, viewClassWork.attachmentFilename)"
                                             class="btn btn-sm btn-primary">download</a></p>
                                     <strong>Classwork Instruction: </strong>
@@ -86,37 +88,6 @@
                                         {{viewClassWork.instruction}}
                                     </p>
                                     <hr />
-                                    <div *ngIf="viewAnswer">
-                                        <small class="text-muted">STUDENT'S ANSWER:</small>
-                                        <!-- <a
-                                                        (click)="download(reviewData.attachment, reviewData.attachmentFilename)"
-                                                        class="btn btn-sm btn-primary">download</a></p> -->
-                                        <br />
-                                        <!-- <div [innerHTML]="message"></div> -->
-                                        <pre class="stude-answer"
-                                            [innerHTML]="answerData.messageAnswer">{{answerData.messageAnswer}}</pre>
-                                        <hr />
-                                        <div class="form-group">
-                                            <textarea class="form-control" rows="2" placeholder="Write a review!"
-                                                [(ngModel)]="review"></textarea>
-                                        </div>
-                                        <div>
-                                            <!-- disabled -->
-                                            <a *ngIf="teacherAccount && !savingChanges"
-                                                (click)="updateClassPoints(answerData)" class="review-classwork"
-                                                style="float:right;">
-                                                <i class="fa fa-check add-reminder btn "
-                                                    style="background: #CD3132 !important; color: #ffffff !important"
-                                                    aria-hidden="true">
-                                                    <span> Save Changes </span>
-                                                </i>
-                                            </a>
-                                            <a *ngIf="savingChanges" (click)="updateClassPoints(answerData)"
-                                                class="review-classwork" style="float:right; padding-right: 45px">
-                                                <app-loading-spinner style="background: none;"></app-loading-spinner>
-                                            </a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -15,6 +15,8 @@ import { take } from 'rxjs/operators';
 })
 export class CheckDetailsComponent implements OnInit {
 
+  activeClass: any;
+  viewClassWork: any;
   p: number = 1;
   searchText;
   viewList: number = 5;
@@ -30,6 +32,8 @@ export class CheckDetailsComponent implements OnInit {
   classWork: any;
   downloadFile: any;
   public isCollapsed: boolean[] = [];
+  isSticky: boolean = false;
+
   constructor(
     private apiService: ApiHostService,
     private workDetails: SharedWorkDetailsService,
@@ -55,8 +59,29 @@ export class CheckDetailsComponent implements OnInit {
     }]
   }
 
-  isSticky: boolean = false;
+  selectedWork(data) {
+    this.activeClass = data;
+    console.log('activeClass', this.activeClass)
+  }
+  viewClasswork(data) {
+    console.log(data.title)
+    if (data.classworkID === this.viewClassWork.classworkID) {
+      console.log('same data')
+    } else {
+      this.activeClass = data.title;
+      this.viewClassWork = data;
+      // this.getSubmittedWorks();
+    }
 
+  }
+
+  classWorkStyle(value: any) {
+    if (value % 2 == 0) {
+      return 'reminder-butt2'
+    } else {
+      return 'reminder-butt1'
+    }
+  }
   @HostListener('window:scroll', ['$event'])
   checkScroll() {
     this.isSticky = window.pageYOffset >= 250;
@@ -87,6 +112,7 @@ export class CheckDetailsComponent implements OnInit {
             this.showSpinner = false;
             const { classworks } = response.body;
             this.classWork = classworks;
+            this.viewClassWork = classworks[0]
             this.workDetails.setClassWork(this.classWork);
             // console.log(this.classWork)
           }, (error: any) => {
@@ -131,12 +157,11 @@ export class CheckDetailsComponent implements OnInit {
     // console.log(this.classWorkForm)
   }
 
-  download(attachment) {
+  download(attachment, name) {
     this.downloadFile = "data:application/pdf;base64," + attachment;
 
     const downloadLink = document.createElement("a");
-    const fileName = "sample.pptx";
-
+    const fileName = name;
     downloadLink.href = this.downloadFile;
     downloadLink.download = fileName;
     downloadLink.click();
@@ -154,5 +179,40 @@ export class CheckDetailsComponent implements OnInit {
     // this.workDetails.workDetails.subscribe((response: any) => {
     //   console.log(response);
     // })
+  }
+  getDate(submitted) {
+    const dateTime = submitted;
+    const dateTimeSplit = dateTime.split(' ');
+    const date = dateTimeSplit[0].split('-');
+    const month = this.getMonth(parseInt(date[1]));
+    return month + ' ' + date[2] + ', ' + date[0];
+  }
+
+  getMonth(month) {
+    if (month === 1) {
+      return 'January';
+    } else if (month === 2) {
+      return 'February'
+    } else if (month === 3) {
+      return 'March'
+    } else if (month === 4) {
+      return 'April'
+    } else if (month === 5) {
+      return 'May'
+    } else if (month === 6) {
+      return 'June'
+    } else if (month === 7) {
+      return 'July'
+    } else if (month === 8) {
+      return 'August'
+    } else if (month === 9) {
+      return 'September'
+    } else if (month === 10) {
+      return 'October'
+    } else if (month === 11) {
+      return 'November'
+    } else if (month === 12) {
+      return 'December'
+    }
   }
 }
