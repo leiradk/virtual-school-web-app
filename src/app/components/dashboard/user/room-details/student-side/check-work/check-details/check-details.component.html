@@ -23,7 +23,7 @@
                     <!-- Event # 1 -->
                     <!-- class="reminder-butt1" -->
                     <!-- (click)="viewAnswer = false" -->
-                    <div  *ngIf="!showSpinner" [className]="classWorkStyle(i)"
+                    <div *ngIf="!showSpinner" [className]="classWorkStyle(i)"
                         [ngClass]="{'selected-work' : activeClass === work.title}">
                         <!-- (click)="isCollapsed[i] = !isCollapsed[i]"  data-toggle="collapse"  -->
                         <a (click)="viewClasswork(work)" class="d-block card-header py-3 collapsed" role="button"
@@ -62,11 +62,11 @@
             <div class="classwork-title">
                 {{viewClassWork.title}}
 
-                <!-- (click)="download(workData.attachment, workData.attachmentFilename)" -->
-                <!-- <a class="review-classwork">
+                <!-- Download files from teacher -->
+                <!-- <a (click)="download(workData.attachment, workData.attachmentFilename)" -->
+                <a class="btn btn-primary btn-block btn-rounded">
                     <i class="fa fa-download" aria-hidden="true"></i>
-                    <br> Download Files
-                </a> -->
+                    <br> Download Files</a>
             </div>
         </div>
         <div>
@@ -88,6 +88,66 @@
                                         {{viewClassWork.instruction}}
                                     </p>
                                     <hr />
+                                    <div class="card">
+                                        <div class="p-a-1">
+                                            <div class="layout-content" data-scrollable>
+                                                <div class="container-fluid">
+                                                    <form [formGroup]="submitWorkForm" (ngSubmit)="onSubmit()">
+                                                        <div class="card">
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane active" id="first">
+                                                                    <ul class="list-group m-b-0">
+                                                                        <li class="list-group-item">
+                                                                            <div class="row">
+                                                                                <div class="full-width">
+                                                                                    <p class="instruction">
+                                                                                        <strong>Instruction:</strong>
+                                                                                        {{workData.instruction}}
+                                                                                    </p>
+                                                                                </div>
+                                                                                <div class="col-md-8">
+                                                                                    <ejs-richtexteditor #toolsRTE
+                                                                                        id='alltoolRTE'
+                                                                                        formControlName="comment"
+                                                                                        [toolbarSettings]='tools'>
+                                                                                    </ejs-richtexteditor>
+                                                                                    <div class="uploaded"
+                                                                                        *ngIf="fileName">{{fileName}}
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-4 form-group">
+                                                                                    <div class="btns-work ctr">
+                                                                                        <!-- Upload files / answer -->
+                                                                                        <div class="break-line"></div>
+                                                                                        <a (click)="file.click()"
+                                                                                            class="btn btn-primary btn-block btn-rounded">
+                                                                                            <i class="fa fa-upload"
+                                                                                                aria-hidden="true"></i>
+                                                                                            <br> Upload Files</a>
+                                                                                        <input type="file" id="file"
+                                                                                            class="work-file" #file
+                                                                                            (change)="onFileChange($event)">
+                                                                                        <div class="break-line"></div>
+                                                                                        <button
+                                                                                            class="btn btn-success btn-block btn-rounded">
+                                                                                            <i class="fas fa-check"></i>
+                                                                                            <br> Submit Answer</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <div *ngIf="showSpinner">
+                                                        <app-loading-spinner></app-loading-spinner>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
