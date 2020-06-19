@@ -53,18 +53,27 @@ export class UserSidebarComponent implements OnInit {
   //     });
   // }
 
-  
+
   public toggleDashboard: boolean = false;
   public toggleClass: boolean = false;
+  public toggleInvitation: boolean = false;
 
   toggleSidebar(sidebar) {
     if (sidebar === 'dashboard') {
       this.toggleDashboard = true;
       this.toggleClass = false;
+      this.toggleInvitation = false;
+
     }
     if (sidebar === 'classes') {
       this.toggleDashboard = false;
       this.toggleClass = false;
+      this.toggleInvitation = false;
+    }
+    if (sidebar === 'invitation') {
+      this.toggleDashboard = false;
+      this.toggleClass = false;
+      this.toggleInvitation = true;
     }
   }
 }

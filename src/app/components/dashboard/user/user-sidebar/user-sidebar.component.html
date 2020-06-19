@@ -6,11 +6,22 @@
         [ngClass]="{'active':toggleDashboard}">{{toggleSidebar('dashboard')}}
         <i class="fas fa-tachometer-alt side-icon"></i><span style="font-weight: bold;">Dashboard</span></li>
     </a>
+    <a [routerLink]="[dashboardRoute]" routerLinkActive="active" class="collapse-item">
+      <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
+        [ngClass]="{'active':toggleInvitation}">{{toggleSidebar('invitation')}}
+        <i class="fas fa-tachometer-alt side-icon"></i><span style="font-weight: bold;">Invitation</span></li>
+    </a>
     <!-- <a [routerLink]="['/dashboard/parents-list']" routerLinkActive="active" class="collapse-item "> -->
     <a routerLinkActive="active" class="collapse-item disabled">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleClass}">{{toggleSidebar('classes')}}
         <i class="fas fa-users side-icon"></i><span class="disabled" style="font-weight: bold;">Classes</span>
+      </li>
+    </a>
+    <a routerLinkActive="active" class="collapse-item disabled">
+      <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
+        [ngClass]="{'active':toggleInvitation}">{{toggleSidebar('invitation')}}
+        <i class="fas fa-users side-icon"></i><span class="disabled" style="font-weight: bold;">Invitation</span>
       </li>
     </a>
   </ul>
