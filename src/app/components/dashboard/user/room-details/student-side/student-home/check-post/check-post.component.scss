@@ -221,7 +221,6 @@ textarea {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-
   width: 100%;
 }
 
@@ -328,6 +327,7 @@ textarea {
   transform: translateY(-50px);
   z-index: 99999;
 }
+
 #header.lazy-load.visible {
   visibility: visible;
   transform: translateY(0);
@@ -487,6 +487,7 @@ textarea {
   font-weight: normal;
   font-family: "Agency FB", sans-serif;
 }
+
 #incremental-counter .num::before {
   background: #00aae6;
   content: "";
@@ -841,7 +842,9 @@ ul.online-users li span.online-dot {
 }
 
 .create-post .tools {
-  padding: 8px 0 10px;
+  margin-left: 60px;
+  margin-top: 0px;
+  padding-bottom: 5px;
 }
 
 .create-post .tools ul.publishing-tools {
@@ -862,7 +865,6 @@ ul.online-users li span.online-dot {
 
 .list-inline {
   margin-left: -5px;
-
   > li {
     display: inline-block;
     padding-left: 5px;
@@ -909,19 +911,28 @@ video.post-video,
   margin: 0;
 }
 
-.post-content .post-container .post-detail .reaction {
-  position: absolute;
-  right: 0;
-  top: 0;
+.post-detail {
+  .reaction {
+    float: left;
+  }
+  .reaction:hover {
+    color: #ffffff !important;
+  }
+  .view-all {
+    float: right;
+    padding-top: 2px;
+    color: #41ace2 !important;
+    font-size: 15px;
+    margin-right: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+  .view-all:hover {
+    color: rgb(34, 117, 158) !important;
+  }
 }
 
-.post-content .post-container .post-detail .post-comment {
-  display: inline-flex;
-  margin: 10px auto;
-  width: 100%;
-}
-
-.post-content .post-container .post-detail .post-comment img.profile-photo-sm {
+.post-detail .post-content .post-container .post-detail .post-comment img.profile-photo-sm {
   margin-right: 10px;
 }
 
@@ -1127,6 +1138,7 @@ video.post-video,
 .scrollbar-wrapper.scrollbar-dynamic {
   max-height: none;
 }
+
 .scrollbar-wrapper.tab-content {
   overflow-y: auto;
   height: 400px;
@@ -1423,12 +1435,15 @@ ul.interests span.int-icons {
 .map-container {
   width: 100%;
 }
+
 .map-container iframe {
   display: block;
   width: 100%;
-  position: relative; /* IE needs a position other than static */
+  position: relative;
+  /* IE needs a position other than static */
   pointer-events: none;
 }
+
 .map-container iframe.clicked {
   pointer-events: auto;
 }
@@ -1632,15 +1647,12 @@ ul.contact li i {
     font-size: 175px;
     margin-bottom: -40px;
   }
-
   #features .feature-item {
     margin-bottom: 20px;
   }
-
   #features .item {
     margin-bottom: 20px;
   }
-
   .timeline #page-contents {
     margin-top: 185px !important;
   }
@@ -1654,43 +1666,34 @@ ul.contact li i {
   .menu ul.main-menu li.dropdown ul.dropdown-menu li {
     background: #282425;
   }
-
   .sign-up-form {
     left: 0;
     right: 0;
     margin: auto;
   }
-
   section h1.section-title {
     font-size: 90px !important;
     margin-bottom: 0 !important;
   }
-
   #features .feature-item {
     margin-bottom: 20px;
   }
-
   #site-facts .circle {
     width: 100%;
     border-radius: 1000px;
   }
-
   .nearby-user {
     text-align: center;
   }
-
   .nearby-user button.btn-primary {
     float: none !important;
   }
-
   .post-content .post-container .post-detail .reaction {
     position: relative;
   }
-
   #footer .footer-wrapper ul {
     margin-bottom: 20px;
   }
-
   .contact-us .col-sm-7 {
     margin-bottom: 20px !important;
   }
@@ -1709,11 +1712,9 @@ ul.contact li i {
     overflow: hidden;
     border-radius: 0 0 4px 4px;
   }
-
   #app-download ul.app-btn li button {
     margin-bottom: 20px;
   }
-
   .post-contents .post-container .post-detail .reaction {
     position: relative;
   }
@@ -1731,13 +1732,10 @@ ul.contact li i {
 .slideDown.appear {
   animation-name: slideDown;
   -webkit-animation-name: slideDown;
-
   animation-duration: 1s;
   -webkit-animation-duration: 1s;
-
   animation-timing-function: ease;
   -webkit-animation-timing-function: ease;
-
   visibility: visible !important;
 }
 
@@ -1786,13 +1784,10 @@ ul.contact li i {
 .slideUp.appear {
   animation-name: slideUp;
   -webkit-animation-name: slideUp;
-
   animation-duration: 1s;
   -webkit-animation-duration: 1s;
-
   animation-timing-function: ease;
   -webkit-animation-timing-function: ease;
-
   visibility: visible !important;
 }
 
@@ -1875,7 +1870,8 @@ ul.contact li i {
   }
 }
 
-@-webkit-keyframes arrow /*Safari and Chrome*/ {
+@-webkit-keyframes arrow
+/*Safari and Chrome*/ {
   0% {
     opacity: 0;
   }
@@ -1964,12 +1960,6 @@ ul.contact li i {
   padding-right: 30px;
 }
 
-.view-all {
-  cursor: pointer;
-  color: #27aae1 !important;
-  font-weight: bold;
-}
-
 .comment-list {
   border-bottom: 1px solid #e6e6e6;
   padding: 0 0 15px 0px;
@@ -1980,21 +1970,6 @@ ul.contact li i {
   padding: 0px !important;
   margin-bottom: 5px;
   margin-top: -5px;
-}
-
-.view-comment {
-  margin-top: -5px !important;
-  margin-bottom: -7px !important;
-  font-size: 14px;
-  width: fit-content;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-radius: 6px;
-}
-
-.view-comment:hover {
-  background: rgba(0, 0, 0, 0.1);
-  transition: opacity ease-in-out 0.25s;
 }
 
 .unviewed {
@@ -2015,18 +1990,26 @@ ul.contact li i {
   margin-bottom: 0px !important;
 }
 
-.post-comment img {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
+// .post-comment img {
+//     height: 30px;
+//     width: 30px;
+//     border-radius: 50%;
+// }
+.view-comment p {
+  margin-bottom: 0 !important;
 }
 
 .write-comment {
   padding-top: 10px !important;
+  display: flex;
 }
 
 .write-comment img {
-  margin-top: 7px !important;
+  margin-top: 3px !important;
+  margin-right: 10px !important;
+  input {
+    font-size: 14px !important;
+  }
 }
 
 .post-comment p {
@@ -2037,4 +2020,45 @@ ul.contact li i {
   font-size: 20px;
   font-weight: bold;
   color: #c0c0c0;
+}
+
+.create-post-container {
+  background: #fff;
+  padding-top: 25px;
+}
+
+#exampleTextarea {
+  box-sizing: unset;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  font-size: 14px !important;
+}
+
+.tool-name {
+  font-size: 12px !important;
+  padding-left: 5px;
+}
+
+.btn-publish {
+  background-color: #41ace2 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 0px !important;
+}
+
+.btn-publish:hover {
+  background-color: #3498db !important;
+  color: #fff !important;
+}
+
+.view-comment {
+  p {
+    a {
+      font-size: 14px !important;
+    }
+  }
+}
+
+.post-a-comment {
+  font-size: 14px !important;
 }

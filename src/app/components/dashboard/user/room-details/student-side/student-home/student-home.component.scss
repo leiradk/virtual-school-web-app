@@ -1,0 +1,96 @@
+.full-width {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.class-info {
+    border-bottom: 1px #999999 solid;
+    display: inline-flex;
+    .card-body {
+        width: 300px;
+        height: 150px;
+        background: linear-gradient(#f07884, #f18277);
+        overflow: none;
+        position: relative;
+        margin: 10px 0px;
+        padding: 0px 10px !important;
+        .additional {
+            .more-info {
+                width: 300px;
+                float: left;
+                left: 150px;
+                h1 {
+                    color: #fff;
+                    font-size: 25px !important;
+                    margin-top: 10px;
+                    margin-left: 5px;
+                    text-transform: uppercase;
+                }
+                .stats {
+                    text-align: center;
+                    font-size: 2rem;
+                    display: flex;
+                    color: #fff;
+                    margin-top: 0px !important;
+                    .stat-group {
+                        padding: 0px 10px;
+                        text-align: center !important;
+                        i {
+                            font-size: 30px !important;
+                        }
+                        .title {
+                            font-size: 12px !important;
+                            margin: -6px 0px;
+                        }
+                        .value {
+                            font-size: 25px !important;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .info-class {
+        margin: 10px 0px;
+        padding: 0px 20px !important;
+        width: 80%;
+        span {
+            font-weight: bold;
+        }
+    }
+    .class-buttons {
+        text-align: right !important;
+        button {
+            font-weight: bold;
+            width: 160px;
+            text-align: left !important;
+            height: 40px;
+            margin: 5px 0px;
+            border: none;
+            i {
+                padding: 0px 10px;
+                border-right: 0.3px solid #cccccc;
+            }
+            span {
+                padding-left: 10px;
+            }
+        }
+        .btn-live {
+            background-color: #cd3132 !important;
+            color: #fff !important;
+        }
+        .btn-live:hover {
+            background-color: #b42626 !important;
+            color: #fff !important;
+        }
+        .btn-invite {
+            background-color: #41ace2 !important;
+            color: #fff !important;
+        }
+        .btn-invite:hover {
+            background-color: #3498db !important;
+            color: #fff !important;
+        }
+    }
+}

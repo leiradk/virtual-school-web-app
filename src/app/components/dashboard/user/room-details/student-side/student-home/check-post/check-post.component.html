@@ -1,81 +1,91 @@
-<div style="padding-top: 20px; text-align: center;" *ngIf="showSpinner">
-  <app-loading-spinner></app-loading-spinner>
-</div>
-<div style="padding-top: 20px; text-align: center;" *ngIf="error">
-  <p class="error-message">{{message}}</p>
-</div>
 <div class="row" style="padding-top: 20px;">
-
   <div class="container-fluid">
     <!-- Post Create Box
-              ================================================= -->
+            ================================================= -->
     <!-- <form *ngIf="postForm && userData.data.usertype === '10002'" [formGroup]="postForm" (ngSubmit)="onSubmit()">
-        <div class="create-post">
-          <div class="row">
-            <div class="col-md-12 col-sm-12">
-              <div class="form-group">
-                <img src="../../../../../../../assets/images/users/user-1.jpg" alt="" class="profile-photo-md" />
-                <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control"
-                  placeholder="Post an announcement" formControlName="postContent"></textarea>
+          <div class="create-post">
+              <div class="row create-post-container">
+                  <div class="col-md-12 col-sm-12">
+                      <div class="form-group"> -->
+    <!-- <img src="../../../../../../../assets/images/users/user-1.jpg" alt="" -->
+    <!-- <img src="../../../../../../../../assets/teacher/images/classwork/people/teacher/guy-9.jpg" alt="teacher-photo" class="profile-photo-md" />
+                          <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Post an announcement" formControlName="postContent"></textarea>
+                      </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                      <div class="tools"> -->
+    <!-- {{postForm.valid}} -->
+    <!-- <button class="btn btn-primary pull-right btn-publish">Publish</button> -->
+    <!-- <button *ngIf="postForm.valid" class="btn btn-primary pull-right">Publish</button> -->
+    <!-- <ul class="publishing-tools list-inline"> -->
+    <!-- <li>
+                                  <a href="#"><i class="fa fa-picture-o"></i><span class="tool-name">Photo</span></a>
+                              </li>
+                              <li>
+                                  <a href="#"><i class="fa fa-video-camera"></i><span class="tool-name">Video</span></a>
+                              </li>
+                              <li>
+                                  <a href="#"><i class="fa fa-file"></i><span class="tool-name">File</span></a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
               </div>
-            </div>
-            <div class="col-md-12 col-sm-12">
-              <div class="tools">
-                <button class="btn btn-primary pull-right" *ngIf="postForm.valid">Publish</button>
-                <ul class="publishing-tools list-inline pull-right">
-                  <li><a href="#"><i class="fa fa-pencil-square-o"></i></a></li>
-                  <li><a href="#"><i class="fa fa-video-camera"></i></a></li>
-                  <li><a href="#"><i class="fa fa-picture-o"></i></a></li>
-                  <li><a href="#"><i class="fa fa-map-o"></i></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> -->
+          </div> -->
     <!-- Post Create Box End-->
     <!-- </form> -->
+
+    <div style="padding-top: 20px; text-align: center;" *ngIf="showSpinner">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div style="padding-top: 20px; text-align: center;" *ngIf="error">
+      <p class="error-message">{{ message }}</p>
+    </div>
     <!-- Post Content
-              ================================================= -->
+            ================================================= -->
     <div *ngFor="let post of postDetails; let i = index" class="post-content">
       <div class="post-container">
         <img src="../../../../../../../assets/images/users/user-5.jpg" alt="user" class="profile-photo-md pull-left" />
         <div class="post-detail">
           <div class="user-info">
-            <h5><a href="timeline.html" class="profile-link">{{post.postedBy}}</a> <span
-                class="following">Teacher</span>
+            <h5>
+              <a href="timeline.html" class="profile-link">{{post.postedBy}}</a>
+              <span class="following">Teacher</span>
             </h5>
             <p class="text-muted">Published a photo about 3 mins ago</p>
           </div>
-          <div class="reaction">
-            <a class="btn text-green"><i class="fa fa-thumbs-up"></i> 13</a>
-            <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
-          </div>
           <div class="line-divider"></div>
           <div class="post-text">
-            <p>{{post.message}} <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i
-                class="em em-anguished"></i></p>
-          </div>
-          <div class="line-divider"></div>
-          <div class="view-comment">
             <p>
-              <a *ngIf="!viewAllComments[i]" (click)="viewComments(true, post.postID, i)" class="view-all">View
-                Comments</a>
-              <a *ngIf="viewAllComments[i]" (click)="viewComments(false, post.postID, i)" class="view-all">Hide
-                Comments</a>
+              {{ post.message }} <i class="em em-anguished"></i>
+              <i class="em em-anguished"></i> <i class="em em-anguished"></i>
             </p>
           </div>
           <div class="line-divider"></div>
-          <div *ngFor="let comment of getAllComments;" class="post-comment unviewed"
-            [ngClass]="{'unviewed': !unviewed}">
+          <div>
+            <div class="view-comment">
+              <p>
+                <a class="btn text-green"><i class="fa fa-thumbs-up"></i> 13</a>
+                <a *ngIf="!viewAllComments[i]" (click)="viewComments(true, post.postID, i)" class="view-all">View
+                  Comments</a>
+                <a *ngIf="viewAllComments[i]" (click)="viewComments(false, post.postID, i)" class="view-all">Hide
+                  Comments</a>
+              </p>
+            </div>
+          </div>
+          <div class="line-divider"></div>
+          <div *ngFor="let comment of getAllComments" class="post-comment unviewed" [ngClass]="{ unviewed: !unviewed }">
             <div class="post-comment comment-list" *ngIf="viewAllComments[i] && postID === post.postID">
               <img src="../../../../../../../assets/images/users/user-11.jpg" alt="" class="profile-photo-sm" />
-              <p><a href="timeline.html" class="profile-link">{{comment.commentedBy}} </a>{{comment.comment}} </p>
+              <p>
+                <a href="timeline.html" class="profile-link">{{ comment.commentedBy }} </a> {{ comment.comment }}
+              </p>
             </div>
           </div>
           <div class="post-comment write-comment">
             <img src="../../../../../../../assets/images/users/user-1.jpg" alt="" class="profile-photo-sm" />
-            <input type="text" class="form-control" placeholder="Post a comment" [(ngModel)]="arr[i]"
-              (keyup.enter)="addInput(arr[i], post)">
+            <input type="text" class="form-control post-a-comment" placeholder="Post a comment" [(ngModel)]="arr[i]"
+              (keyup.enter)="addInput(arr[i], post)" />
           </div>
         </div>
       </div>
