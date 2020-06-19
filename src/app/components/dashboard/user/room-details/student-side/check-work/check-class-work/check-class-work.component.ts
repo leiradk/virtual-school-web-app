@@ -165,8 +165,6 @@ export class CheckClassWorkComponent implements OnInit {
       attachmentFilename: this.fileName
     }
 
-
-
     this.apiService.submitClasswork(payload)
       .subscribe((response: any) => {
         const { status, body } = response;

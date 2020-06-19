@@ -3,7 +3,13 @@ import { ApiHostService } from '../../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../../services/system.utils';
 import { SharedWorkDetailsService } from '../../../../../../../services/shared-work-details.service';
 import { take } from 'rxjs/operators';
-
+import { ToastrService } from "ngx-toastr";
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from "@angular/forms";
 @Component({
   selector: 'app-check-details',
   templateUrl: './check-details.component.html',
@@ -15,6 +21,8 @@ import { take } from 'rxjs/operators';
 })
 export class CheckDetailsComponent implements OnInit {
 
+  public submitWorkForm: FormGroup;
+  workData: any;
   activeClass: any;
   viewClassWork: any;
   p: number = 1;
@@ -38,6 +46,7 @@ export class CheckDetailsComponent implements OnInit {
     private apiService: ApiHostService,
     private workDetails: SharedWorkDetailsService,
     private system: SystemUtils,
+    private toastr: ToastrService
   ) {
   }
 
@@ -132,6 +141,37 @@ export class CheckDetailsComponent implements OnInit {
     })
   }
 
+  onSubmit() {
+    this.showSpinner = true;
+
+    const payload = {
+      token: this.userData.token,
+      classworkID: this.workData.classworkID,
+      messageAnswer: this.submitWorkForm.value.comment,
+      attachment: this.submitWorkForm.value.file,
+      attachmentFilename: this.fileName
+    }
+
+    this.apiService.submitClasswork(payload)
+      .subscribe((response: any) => {
+        const { status, body } = response;
+        if (status === 201 || status === 200) {
+          //
+          //   PLEASE
+          //   FIX HERE - Elay
+          //
+          const { status, body } = response;
+          this.toastr.success('Answer submitted successfully!', 'Congratulations', { timeOut: 5000 })
+          this.showSpinner = false;
+        }
+      }, (error: any) => {
+        const { message, status } = error.error;
+        if (status === 403) {
+          this.toastr.error(message, 'Error', { timeOut: 5000 })
+          this.showSpinner = false;
+        }
+      })
+  }
 
   onFileChange(event) {
     var files = event.target.files;
