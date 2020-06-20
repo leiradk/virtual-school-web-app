@@ -13,6 +13,8 @@ export class UserSidebarComponent implements OnInit {
   data: any;
   userType: any;
   dashboardRoute: any;
+  invitationRoute:any;
+  isStudentSide:boolean = false;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -37,8 +39,11 @@ export class UserSidebarComponent implements OnInit {
     const { usertype } = this.userData.data;
     if (usertype === '10002') {
       this.dashboardRoute = '/user/t/main';
+      this.isStudentSide = false;
     } else if (usertype === '10003') {
       this.dashboardRoute = '/user/s/main';
+      this.invitationRoute = '/user/s/invitations';
+      this.isStudentSide = true;
     }
   }
   //getting all classroom for one specific teacher
