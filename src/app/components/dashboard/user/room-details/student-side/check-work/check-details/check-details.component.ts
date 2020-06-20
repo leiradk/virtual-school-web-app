@@ -10,6 +10,7 @@ import {
   Validators,
   FormControl,
 } from "@angular/forms";
+
 @Component({
   selector: 'app-check-details',
   templateUrl: './check-details.component.html',
@@ -46,9 +47,9 @@ export class CheckDetailsComponent implements OnInit {
     private apiService: ApiHostService,
     private workDetails: SharedWorkDetailsService,
     private system: SystemUtils,
+    private fb: FormBuilder,
     private toastr: ToastrService
-  ) {
-  }
+  ) { this.submitWorkModel() }
 
 
   showSpinner: boolean = true;
@@ -139,6 +140,13 @@ export class CheckDetailsComponent implements OnInit {
         this.classWork = response;
       }
     })
+  }
+  
+  submitWorkModel() {
+    this.submitWorkForm = this.fb.group({
+      comment: [null, Validators.required],
+      file: [null, Validators.required],
+    });
   }
 
   onSubmit() {

@@ -59,27 +59,26 @@
     </div>
     <div *ngIf="!showSpinner&& !error" class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
         <div class="new-body2" style="padding: 20px; height: 70px;">
-            <div class="classwork-title">
+            <div class="classwork-title" style="display: inline-flex;">
                 {{viewClassWork.title}}
 
                 <!-- Download files from teacher -->
                 <!-- <a (click)="download(workData.attachment, workData.attachmentFilename)" -->
-                <a class="btn btn-primary btn-block btn-rounded">
+                <!-- <a class="btn btn-primary btn-block btn-rounded">
                     <i class="fa fa-download" aria-hidden="true"></i>
-                    <br> Download Files</a>
+                    <br> Download Files</a> -->
             </div>
         </div>
         <div>
             <div class="col align-items-center"
                 style="background: #ffffff !important; padding-top: 15px; padding-right: 0px; padding-bottom: 15px; height: 63.5vh;">
-                <div class="col col-md-8" style="height: 100%;">
-
+                <div style="height: 100%;">
                     <div class="layout-content" data-scrollable>
                         <div class="container-fluid class-review">
                             <div class="row" style="padding-top: 20px">
                                 <div class="col-md-12">
                                     <!-- *ngIf="viewAnswer" -->
-                                    <p>Submitted Attachments: <a
+                                    <p>Download Attachments for Classwork: <a
                                             (click)="download(viewClassWork.attachment, viewClassWork.attachmentFilename)"
                                             class="btn btn-sm btn-primary">download</a></p>
                                     <strong>Classwork Instruction: </strong>
@@ -88,64 +87,44 @@
                                         {{viewClassWork.instruction}}
                                     </p>
                                     <hr />
-                                    <div class="card">
-                                        <div class="p-a-1">
-                                            <div class="layout-content" data-scrollable>
-                                                <div class="container-fluid">
-                                                    <form [formGroup]="submitWorkForm" (ngSubmit)="onSubmit()">
-                                                        <div class="card">
-                                                            <div class="tab-content">
-                                                                <div class="tab-pane active" id="first">
-                                                                    <ul class="list-group m-b-0">
-                                                                        <li class="list-group-item">
-                                                                            <div class="row">
-                                                                                <div class="full-width">
-                                                                                    <p class="instruction">
-                                                                                        <strong>Instruction:</strong>
-                                                                                        {{workData.instruction}}
-                                                                                    </p>
-                                                                                </div>
-                                                                                <div class="col-md-8">
-                                                                                    <ejs-richtexteditor #toolsRTE
-                                                                                        id='alltoolRTE'
-                                                                                        formControlName="comment"
-                                                                                        [toolbarSettings]='tools'>
-                                                                                    </ejs-richtexteditor>
-                                                                                    <div class="uploaded"
-                                                                                        *ngIf="fileName">{{fileName}}
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-4 form-group">
-                                                                                    <div class="btns-work ctr">
-                                                                                        <!-- Upload files / answer -->
-                                                                                        <div class="break-line"></div>
-                                                                                        <a (click)="file.click()"
-                                                                                            class="btn btn-primary btn-block btn-rounded">
-                                                                                            <i class="fa fa-upload"
-                                                                                                aria-hidden="true"></i>
-                                                                                            <br> Upload Files</a>
-                                                                                        <input type="file" id="file"
-                                                                                            class="work-file" #file
-                                                                                            (change)="onFileChange($event)">
-                                                                                        <div class="break-line"></div>
-                                                                                        <button
-                                                                                            class="btn btn-success btn-block btn-rounded">
-                                                                                            <i class="fas fa-check"></i>
-                                                                                            <br> Submit Answer</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
+
+                                    <div class="container-fluid">
+                                        <form [formGroup]="submitWorkForm" (ngSubmit)="onSubmit()">
+                                                    <div class="row" style="display: inline;">
+                                                        <div class="full-width">
+                                                            <p class="instruction">
+                                                                <strong>Instruction:</strong>
+                                                                {{workData.instruction}}
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <ejs-richtexteditor #toolsRTE id='alltoolRTE'
+                                                                formControlName="comment" [toolbarSettings]='tools'>
+                                                            </ejs-richtexteditor>
+                                                            <div class="uploaded" *ngIf="fileName">
+                                                                {{fileName}}
                                                             </div>
                                                         </div>
-                                                    </form>
-                                                    <div *ngIf="showSpinner">
-                                                        <app-loading-spinner></app-loading-spinner>
+                                                        <div class="col-md-4 form-group">
+                                                            <div class="btns-work ctr">
+                                                                <!-- Upload files / answer -->
+                                                                <div class="break-line"></div>
+                                                                <a (click)="file.click()"
+                                                                    class="btn btn-primary btn-block btn-rounded">
+                                                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                                                    <br> Upload Files</a>
+                                                                <input type="file" id="file" class="work-file" #file
+                                                                    (change)="onFileChange($event)">
+                                                                <div class="break-line"></div>
+                                                                <button class="btn btn-success btn-block btn-rounded">
+                                                                    <i class="fas fa-check"></i>
+                                                                    <br> Submit Answer</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                        </form>
+                                        <div *ngIf="showSpinner">
+                                            <app-loading-spinner></app-loading-spinner>
                                         </div>
                                     </div>
                                 </div>
