@@ -64,8 +64,17 @@ export class LoginComponent implements OnInit {
 
           } else if (parseInt(data.usertype) === 10003) {
             this.system.storeLocal('userData', body);
-            this.router.navigate(["/user/s"]);
-            this.loading = false;
+            console.log(body.data.isVerified)
+            if (body.data.isVerified === false) {
+              const message = "This account in not yet verified";
+              this.router.navigate(["vierify"]);
+              setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
+              this.loading = false;
+            } else {
+              this.router.navigate(["/user/s"]);
+              this.loading = false;
+            }
+
 
           } else {
             console.log('failed')
