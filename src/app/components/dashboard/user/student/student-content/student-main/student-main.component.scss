@@ -1,5 +1,5 @@
 .subject-lists {
-  padding: 30px;
+  padding: 10px;
 }
 .col-auto.add-class {
   width: 100%;
@@ -34,6 +34,19 @@ body {
   position: relative;
   margin: 1.5rem;
   font-family: "Abel", sans-serif !important;
+  .general {
+    h1 {
+      text-transform: uppercase;
+    }
+  }
+  .additional {
+    background-image: linear-gradient(to right,#5598ef,#74b1e3) !important;
+    .more-info {
+      h1 {
+        text-transform: uppercase;
+      }
+    }
+  }
 }
 
 .card h1 {
@@ -198,19 +211,31 @@ body {
   color: white;
 }
 
-.error-message {
-  width: 100%;
-  text-align: center;
-  font-size: 50px;
-  font-weight: bold;
-}
-
 .empty-room-container {
-  width: 100%;
-  .empty-room {
+  width: 80vw;
+  .empty-main {
     font-size: 50px;
     font-weight: bold;
     color: #c0c0c0;
     text-align: center;
   }
+}
+
+.points {
+  background: #ffffff !important;
+  border-radius: 10px !important;
+  cursor: pointer !important;
+  a {
+    padding: 5px 40px !important;
+    color: #333333 !important;
+    font-size: 15px !important;
+  }
+  a:hover {
+    color: #ffffff !important;
+  }
+}
+
+.points:hover {
+  background-color: #16a085 !important;
+  transition: ease 300ms;
 }
