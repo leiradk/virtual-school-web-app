@@ -51,9 +51,9 @@ export class CheckClassWorkComponent implements OnInit {
     this.workDetails.index.subscribe((index: any) => {
       this.workDetails.classWork.subscribe((classWork: any) => {
         this.getAllClasswork = classWork;
+        console.log('classwork', classWork)
         if (classWork == null || classWork == undefined) {
           // this.isNull = true;
-          console.log('empty')
           this.showSpinner = true;
           this.updateClassWork(this.classDetails, this.userData);
         } else {
@@ -197,6 +197,7 @@ export class CheckClassWorkComponent implements OnInit {
         console.log('compiled')
         const { classworks } = response.body;
         this.classWork = classworks;
+        console.log(this.classWork)
         this.restoreClassWork(this.classWork);
       }, (error: any) => {
         console.log(error)

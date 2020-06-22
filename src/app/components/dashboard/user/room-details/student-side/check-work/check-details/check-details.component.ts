@@ -23,7 +23,7 @@ import {
 export class CheckDetailsComponent implements OnInit {
 
   public submitWorkForm: FormGroup;
-  workData: any;
+  // workData: any;
   activeClass: any;
   viewClassWork: any;
   p: number = 1;
@@ -123,6 +123,7 @@ export class CheckDetailsComponent implements OnInit {
             const { classworks } = response.body;
             this.classWork = classworks;
             this.viewClassWork = classworks[0]
+            // this.workData = this.viewClassWork;
             this.workDetails.setClassWork(this.classWork);
             // console.log(this.classWork)
           }, (error: any) => {
@@ -154,7 +155,7 @@ export class CheckDetailsComponent implements OnInit {
 
     const payload = {
       token: this.userData.token,
-      classworkID: this.workData.classworkID,
+      classworkID: this.viewClassWork.classworkID,
       messageAnswer: this.submitWorkForm.value.comment,
       attachment: this.submitWorkForm.value.file,
       attachmentFilename: this.fileName
