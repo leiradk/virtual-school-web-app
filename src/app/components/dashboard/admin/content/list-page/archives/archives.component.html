@@ -3,10 +3,12 @@
   <div id="dashboard-content">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="#"><span>Dashboard</span></a>
+          <a [routerLink]="['/dashboard/main']" routerLinkActive="active" class="collapse-item" style="cursor: pointer;">
+              <span>Home</span>
+          </a>
       </li>
-      <li class="breadcrumb-item active"><span>Archive</span></li>
-    </ol>
+      <li class="breadcrumb-item active"><span>Library</span></li>
+  </ol>
     <!-- Start: list wrapper -->
     <div class="d-lg-flex d-xl-flex justify-content-lg-start justify-content-xl-start list-wrapper">
       <!-- Start: list content -->

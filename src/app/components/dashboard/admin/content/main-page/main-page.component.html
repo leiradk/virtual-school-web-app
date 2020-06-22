@@ -1,7 +1,11 @@
 <!-- Start: content -->
 <div id="dashboard-content">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#"><span>Home</span></a></li>
+        <li class="breadcrumb-item">
+            <a [routerLink]="['/dashboard/main']" routerLinkActive="active" class="collapse-item" style="cursor: pointer;">
+                <span>Home</span>
+            </a>
+        </li>
         <li class="breadcrumb-item active"><span>Library</span></li>
     </ol>
     <!-- Start: list wrapper -->
@@ -73,9 +77,14 @@
             </div>
             <!-- End: list-body -->
             <!-- Start: list footer -->
-            <div class="d-xl-flex align-items-xl-center footer"><span
-                    class="text-capitalize text-center d-lg-flex d-xl-flex justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center footer-view-all">View
-                    All Teacher &amp; Staff</span></div>
+            <div class="d-xl-flex align-items-xl-center footer">
+                <a [routerLink]="['/dashboard/staff-teacher-lists']" routerLinkActive="active">
+                    <span
+                        class="text-capitalize text-center d-lg-flex d-xl-flex justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center footer-view-all">View
+                        All Teacher &amp; Staff</span>
+                </a>
+            </div>
+
             <!-- End: list footer -->
         </div>
         <!-- End: list content -->
@@ -146,9 +155,13 @@
             </div>
             <!-- End: list-body -->
             <!-- Start: list footer -->
-            <div class="d-xl-flex align-items-xl-center footer"><span
-                    class="text-capitalize text-center d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center footer-view-all">View
-                    All Parent/Guardian</span></div>
+            <div class="d-xl-flex align-items-xl-center footer">
+                <a [routerLink]="['/dashboard/parents-list']" routerLinkActive="active" class="collapse-item">
+                    <span
+                        class="text-capitalize text-center d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center footer-view-all">View
+                        All Parent/Guardian</span>
+                </a>
+            </div>
             <!-- End: list footer -->
         </div>
         <!-- End: list content -->
@@ -218,9 +231,13 @@
             </div>
             <!-- End: list-body -->
             <!-- Start: list footer -->
-            <div class="d-xl-flex align-items-xl-center footer"><span
-                    class="text-capitalize text-center d-xl-flex justify-content-xl-center align-items-xl-center footer-view-all">View
-                    All Student</span></div>
+            <div class="d-xl-flex align-items-xl-center footer">
+                <a [routerLink]="['/dashboard/student-lists']" routerLinkActive="active" class="collapse-item">
+                    <span
+                        class="text-capitalize text-center d-xl-flex justify-content-xl-center align-items-xl-center footer-view-all">View
+                        All Student</span>
+                </a>
+            </div>
             <!-- End: list footer -->
         </div>
         <!-- End: list content -->

@@ -95,9 +95,11 @@
     <div class="d-xl-flex justify-content-xl-start">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#"><span>Dashboard</span></a>
+                <a [routerLink]="['/dashboard/main']" routerLinkActive="active" class="collapse-item" style="cursor: pointer;">
+                    <span>Home</span>
+                </a>
             </li>
-            <li class="breadcrumb-item active"><span>Parent/Guardian</span></li>
+            <li class="breadcrumb-item active"><span>Library</span></li>
         </ol>
         <div class="float-right d-xl-flex justify-content-xl-end total-number">
             <span class="d-xl-flex justify-content-xl-end align-items-xl-center">Total number of

@@ -95,9 +95,11 @@
   <div class="d-xl-flex justify-content-xl-start">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="#"><span>Dashboard</span></a>
+        <a [routerLink]="['/dashboard/main']" routerLinkActive="active" class="collapse-item" style="cursor: pointer;">
+          <span>Home</span>
+        </a>
       </li>
-      <li class="breadcrumb-item active"><span>Teacher & Staff</span></li>
+      <li class="breadcrumb-item active"><span>Library</span></li>
     </ol>
     <div class="float-right d-xl-flex justify-content-xl-end total-number">
       <span class="d-xl-flex justify-content-xl-end align-items-xl-center">Total number of Staff &amp;
@@ -304,7 +306,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>
-        <a data-dismiss="modal" (click)="addToArchive()" class="btn btn-primary" style="cursor: pointer;">Deactivate User</a>
+        <a data-dismiss="modal" (click)="addToArchive()" class="btn btn-primary" style="cursor: pointer;">Deactivate
+          User</a>
       </div>
     </div>
   </div>
@@ -323,7 +326,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>
-        <a data-dismiss="modal" (click)="pullFromArchive()" class="btn btn-primary" style="cursor: pointer;">Activate User</a>
+        <a data-dismiss="modal" (click)="pullFromArchive()" class="btn btn-primary" style="cursor: pointer;">Activate
+          User</a>
       </div>
     </div>
   </div>

@@ -66,6 +66,9 @@
 .title,
 .footer {
     height: 10% !important;
+    a {
+        width: 100%;
+    }
 }
 
 input {
