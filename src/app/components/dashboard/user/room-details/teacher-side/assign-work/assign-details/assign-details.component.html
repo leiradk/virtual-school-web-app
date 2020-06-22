@@ -92,7 +92,8 @@
         <div class="new-body2" style="padding: 20px; height: 70px;">
             <div class="classwork-title">
                 {{viewClassWork.title}}
-                <a *ngIf="teacherAccount" (click)="editClasswork(viewClassWork)" data-toggle="modal" data-target="#updateClasswork" class="review-classwork">
+                <a *ngIf="teacherAccount" (click)="editClasswork(viewClassWork)" data-toggle="modal"
+                    data-target="#updateClasswork" class="review-classwork">
                     <i class="fa fa-plus add-reminder" aria-hidden="true"> <span> Edit Classwork</span> </i>
                 </a>
             </div>
@@ -116,6 +117,11 @@
                                     <p>Submitted Attachments: <a *ngIf="viewAnswer"
                                             (click)="download(viewClassWork.attachment, viewClassWork.attachmentFilename)"
                                             class="btn btn-sm btn-primary">download</a></p>
+                                    <strong>Classwork Description: </strong>
+                                    <br />
+                                    <p class="instructions-text">
+                                        {{viewClassWork.description}}
+                                    </p>
                                     <strong>Classwork Instruction: </strong>
                                     <br />
                                     <p class="instructions-text">

@@ -123,6 +123,7 @@ export class CheckDetailsComponent implements OnInit {
             const { classworks } = response.body;
             this.classWork = classworks;
             this.viewClassWork = classworks[0]
+            console.log(this.viewClassWork)
             // this.workData = this.viewClassWork;
             this.workDetails.setClassWork(this.classWork);
             // console.log(this.classWork)
