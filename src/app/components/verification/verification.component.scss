@@ -15,7 +15,7 @@ body,
 
 .contenido {
     @include centered;
-    height: 50%;
+    padding-bottom: 45px;
     width: 400px;
     background: #f1f1f1;
     // border:1px dotted lightgray;
