@@ -64,12 +64,16 @@ export class LoginComponent implements OnInit {
 
           } else if (parseInt(data.usertype) === 10003) {
             this.system.storeLocal('userData', body);
-            console.log(body.data.isVerified)
-            if (body.data.isVerified === false) {
-              const message = "This account in not yet verified";
-              this.router.navigate(["vierify"]);
+            console.log(data.isVerified)
+            if (data.isVerified === false && data.isChange === false) {
+              const message = "Please Update your password";
+              this.router.navigate(["vierify/update-password"]);
               setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
               this.loading = false;
+            } else if (data.isVerified === false && data.isChange === true) {
+              const message = "Please Update your profile";
+              this.router.navigate(["vierify/update-profile"]);
+              setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
             } else {
               this.router.navigate(["/user/s"]);
               this.loading = false;

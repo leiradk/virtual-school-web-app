@@ -2,6 +2,9 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { LoginComponent } from "./components/landing-page/login/login.component";
 import { VerificationComponent } from "./components/verification/verification.component";
+import { UpdateProfileComponent } from "./components/verification/update-profile/update-profile.component";
+import { UpdatePasswordComponent } from "./components/verification/update-password/update-password.component";
+
 // import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { MainPageComponent } from "./components/dashboard/admin/content/main-page/main-page.component";
@@ -58,6 +61,16 @@ const routes: Routes = [
   {
     path: "vierify",
     component: VerificationComponent,
+    children: [
+      {
+        path: "update-profile",
+        component: UpdateProfileComponent,
+      },
+      {
+        path: "update-password",
+        component: UpdatePasswordComponent,
+      },
+    ]
   },
   {
     path: "dashboard",
