@@ -91,6 +91,9 @@ import { VerificationComponent } from './components/verification/verification.co
 import { ClassGradesComponent } from './components/dashboard/user/room-details/teacher-side/class-grades/class-grades.component';
 import { AddClassworkComponent } from './components/dashboard/user/room-details/teacher-side/assign-work/assign-details/add-classwork/add-classwork.component';
 import { UpdateClassworkComponent } from './components/dashboard/user/room-details/teacher-side/assign-work/assign-details/update-classwork/update-classwork.component';
+import { ParentComponent } from './components/dashboard/user/parent/parent.component';
+import { UpdatePasswordComponent } from './components/verification/update-password/update-password.component';
+import { UpdateProfileComponent } from './components/verification/update-profile/update-profile.component';
 
 @NgModule({
   declarations: [
@@ -163,6 +166,9 @@ import { UpdateClassworkComponent } from './components/dashboard/user/room-detai
     ClassGradesComponent,
     AddClassworkComponent,
     UpdateClassworkComponent,
+    ParentComponent,
+    UpdatePasswordComponent,
+    UpdateProfileComponent,
   ],
   imports: [
     BrowserModule,
