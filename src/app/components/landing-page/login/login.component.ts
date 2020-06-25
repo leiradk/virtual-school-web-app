@@ -78,7 +78,10 @@ export class LoginComponent implements OnInit {
               this.router.navigate(["/user/s"]);
               this.loading = false;
             }
-
+          } else if (parseInt(data.usertype) === 10004) {
+            this.system.storeLocal('userData', body);
+            const message = "Please Update your password";
+            this.router.navigate(["vierify/update-password"]);
 
           } else {
             console.log('failed')
