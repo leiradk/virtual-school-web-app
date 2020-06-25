@@ -94,6 +94,7 @@ import { UpdateClassworkComponent } from './components/dashboard/user/room-detai
 import { ParentComponent } from './components/dashboard/user/parent/parent.component';
 import { UpdatePasswordComponent } from './components/verification/update-password/update-password.component';
 import { UpdateProfileComponent } from './components/verification/update-profile/update-profile.component';
+import { AddStudentComponent } from './components/verification/add-student/add-student.component';
 
 @NgModule({
   declarations: [
@@ -169,6 +170,7 @@ import { UpdateProfileComponent } from './components/verification/update-profile
     ParentComponent,
     UpdatePasswordComponent,
     UpdateProfileComponent,
+    AddStudentComponent,
   ],
   imports: [
     BrowserModule,

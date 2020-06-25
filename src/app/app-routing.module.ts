@@ -4,6 +4,7 @@ import { LoginComponent } from "./components/landing-page/login/login.component"
 import { VerificationComponent } from "./components/verification/verification.component";
 import { UpdateProfileComponent } from "./components/verification/update-profile/update-profile.component";
 import { UpdatePasswordComponent } from "./components/verification/update-password/update-password.component";
+import { AddStudentComponent } from "./components/verification/add-student/add-student.component";
 
 // import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
@@ -69,7 +70,11 @@ const routes: Routes = [
       {
         path: "update-password",
         component: UpdatePasswordComponent,
+      }, {
+        path: "add-student",
+        component: AddStudentComponent,
       },
+
     ]
   },
   {
