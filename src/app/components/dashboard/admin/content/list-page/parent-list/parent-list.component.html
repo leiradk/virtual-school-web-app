@@ -95,7 +95,8 @@
     <div class="d-xl-flex justify-content-xl-start">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a [routerLink]="['/dashboard/main']" routerLinkActive="active" class="collapse-item" style="cursor: pointer;">
+                <a [routerLink]="['/dashboard/main']" routerLinkActive="active" class="collapse-item"
+                    style="cursor: pointer;">
                     <span>Home</span>
                 </a>
             </li>
@@ -150,7 +151,7 @@
                     </tbody>
                     <tbody *ngIf="!showSpinner && !error">
 
-                        <tr [ngClass]="{'inactive' : !getStatus(staff.status)}" class="teacher-data" *ngFor=" let staff of people
+                        <tr [ngClass]="{'inactive' : !getStatus(parent.status)}" class="teacher-data" *ngFor=" let parent of people
                             | filter: searchText
                             | paginate: { itemsPerPage: viewList, currentPage: p };
                             let i = index">
@@ -160,7 +161,7 @@
                                         <div class="d-xl-flex align-items-xl-center list-content-item">
                                             <img class="border rounded-circle border-primary teacher-list-img"
                                                 src="../../../../../../../assets/images/profile.jpg" /><span
-                                                class="d-xl-flex align-items-xl-center listed-user">{{ staff.username }}</span>
+                                                class="d-xl-flex align-items-xl-center listed-user">{{ parent.username }}</span>
                                             <div
                                                 class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
                                                 <a data-toggle="modal" data-target="#editModal">
@@ -168,30 +169,30 @@
                                                         class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
                                                     </i>
                                                 </a>
-                                                <a *ngIf="getStatus(staff.status)" data-toggle="modal"
+                                                <a *ngIf="getStatus(parent.status)" data-toggle="modal"
                                                     data-target="#archiveModal"
-                                                    (click)="getUsernameData(staff.username, 'teacher')">
+                                                    (click)="getUsernameData(parent.username, 'teacher')">
                                                     <i
                                                         class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                                                     </i>
                                                 </a>
-                                                <a *ngIf="!getStatus(staff.status)" data-toggle="modal"
+                                                <a *ngIf="!getStatus(parent.status)" data-toggle="modal"
                                                     data-target="#activateModal">
                                                     <i class="fa fa-undo d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"
-                                                        (click)="getUsernameData(staff.username, 'teacher')">
+                                                        (click)="getUsernameData(parent.username, 'teacher')">
                                                     </i>
                                                 </a>
                                             </div>
                                         </div>
                                     </a>
                                 </td>
-                                <td class="text-left" [ngClass]="{'active' : getStatus(staff.status)}">
-                                    {{ staff.position }}
+                                <td class="text-left" [ngClass]="{'active' : getStatus(parent.status)}">
+                                    {{ parent.email }}
                                 </td>
-                                <td class="text-left" [ngClass]="{'active' : getStatus(staff.status)}">
-                                    {{ dateCreated(staff.created) }}
+                                <td class="text-left" [ngClass]="{'active' : getStatus(parent.status)}">
+                                    {{ dateCreated(parent.created) }}
                                 </td>
-                                <td class="text-left" [ngClass]="{'active' : getStatus(staff.status)}">{{staff.status}}
+                                <td class="text-left" [ngClass]="{'active' : getStatus(parent.status)}">{{parent.status}}
                                 </td>
                             </ng-container>
 
@@ -244,12 +245,34 @@
             </div> -->
                     <div class="form-group">
                         <label for="inputLastName">Email
-                            <span class="validator" *ngIf="position.invalid && position.touched">
+                            <span class="validator" *ngIf="email.invalid && email.touched">
                                 - Email is required</span></label>
-                        <input type="text" class="form-control" id="inputPosition" aria-describedby="positionHelp"
-                            placeholder="Enter Email" formControlName="position" />
+                        <input type="text" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+                            placeholder="Enter Email" formControlName="email" />
                     </div>
                     <div class="form-group">
+                        <label for="inputLastName">Username
+                            <span class="validator" *ngIf="username.invalid && username.touched">
+                                - Username is required</span></label>
+                        <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp"
+                            placeholder="Enter Username" formControlName="username" />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLastName">Password
+                            <span class="validator" *ngIf="password.invalid && password.touched">
+                                - Password is required</span></label>
+                        <input type="text" class="form-control" id="inputPassword" aria-describedby="passwordHelp"
+                            placeholder="Enter Password" formControlName="password" />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLastName">Re-Enter Password
+                            <span class="validator" *ngIf="repassword.invalid && repassword.touched">
+                                - Re-Enter Password is required</span></label>
+                        <input type="text" class="form-control" id="inputRePassword" aria-describedby="repasswordHelp"
+                            placeholder="Re-Enter password" formControlName="repassword" />
+                    </div>
+
+                    <!-- <div class="form-group">
                         <label for="inputLastName">First Name
                             <span class="validator" *ngIf="department.invalid && department.touched">
                                 - First Name is required</span></label>
@@ -278,7 +301,7 @@
                             <input type="checkbox" class="custom-control-input" id="continueModal" />
                             <label class="custom-control-label" for="continueModal">Do not close modal</label>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Modal footer -->
                     <div class="modal-footer">

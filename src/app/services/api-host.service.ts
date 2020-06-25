@@ -37,7 +37,17 @@ export class ApiHostService {
         })
       );
   }
-
+  //api for adding parent on admin side
+  addParent(payload) {
+    return this.https.post(`${this.localhost}admin/add/parent`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
   //add student admin side
   addStudent(payload) {
     return this.https.post(`${this.localhost}admin/add/student`, payload)

@@ -97,6 +97,7 @@ export class ParentListComponent implements OnInit {
       .subscribe((response: any) => {
         this.error = false;
         const { status, body } = response;
+        console.log(response)
         if (status === 200) {
           this.people = body;
           this.adminList.setAllTeachers(this.people);
@@ -136,31 +137,33 @@ export class ParentListComponent implements OnInit {
     this.error = false;
     const { value } = this.addStaffFOrm;
     const data = {
+      email: value.email,
       username: value.username,
       password: value.password,
-      position: value.position,
-      department: value.department
+      // position: 'parent',
+      // department: 'parent'
     }
 
     // get chckbox status
-    let contModal = <HTMLInputElement>document.getElementById('continueModal');
-    if (!contModal.checked) {
-      jQuery('#myModal').modal('hide'); //close modal after submit
-    }
+    // let contModal = <HTMLInputElement>document.getElementById('continueModal');
+    // if (!contModal.checked) {
+    // }
 
     this.showSpinner = true;
 
-
     // ------>  Please check the code below. I want to put the top code snippet inside if(status === 200)
     // adds a teacher
-    this.apiService.addTeacher(data)
+    this.apiService.addParent(data)
       .subscribe((response: any) => {
         const { status } = response;
+        console.log(response)
         if (status === 201) {
           //reload onInit
           setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
           this.addStaffFOrm.reset(); //reset form
           this.getParents();
+          jQuery('#myModal').modal('hide'); //close modal after submit
+
         } else {
         }
       }, (error: any) => {
@@ -169,19 +172,30 @@ export class ParentListComponent implements OnInit {
         setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
       })
   }
-
-
   studentFormModel() {
     this.addStaffFOrm = this.fb.group({
 
-      position: [null, Validators.required],
-      department: [null, Validators.required],
       username: [null, Validators.required],
+      email: [null, Validators.required],
+      // password: [null, Validators.required],
+      // username: [null, Validators.required],
       password: [null, [Validators.required, Validators.minLength(6)]],
       repassword: [null, [Validators.required, Validators.minLength(6)]],
     }, {
     });
   }
+
+  // studentFormModel() {
+  //   this.addStaffFOrm = this.fb.group({
+
+  //     position: [null, Validators.required],
+  //     department: [null, Validators.required],
+  //     username: [null, Validators.required],
+  //     password: [null, [Validators.required, Validators.minLength(6)]],
+  //     repassword: [null, [Validators.required, Validators.minLength(6)]],
+  //   }, {
+  //   });
+  // }
 
   dateCreated(date) {
     const splitData = date.split(' ');
@@ -195,11 +209,11 @@ export class ParentListComponent implements OnInit {
       return false;
     }
   }
-  get position() {
-    return this.addStaffFOrm.get('position') as FormControl;
-  }
-  get department() {
-    return this.addStaffFOrm.get('department') as FormControl;
+  // get position() {
+  //   return this.addStaffFOrm.get('position') as FormControl;
+  // }
+  get email() {
+    return this.addStaffFOrm.get('email') as FormControl;
   }
   get username() {
     return this.addStaffFOrm.get('username') as FormControl;
