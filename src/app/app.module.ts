@@ -95,6 +95,12 @@ import { ParentComponent } from './components/dashboard/user/parent/parent.compo
 import { UpdatePasswordComponent } from './components/verification/update-password/update-password.component';
 import { UpdateProfileComponent } from './components/verification/update-profile/update-profile.component';
 import { AddStudentComponent } from './components/verification/add-student/add-student.component';
+import { ParentSideComponent } from './components/dashboard/user/room-details/parent-side/parent-side.component';
+import { ParentMainComponent } from './components/dashboard/user/parent/parent-main/parent-main.component';
+import { StudentRoomsComponent } from './components/dashboard/user/parent/student-rooms/student-rooms.component';
+import { ParentHomeComponent } from './components/dashboard/user/room-details/parent-side/parent-home/parent-home.component';
+import { CheckStudentClassworkComponent } from './components/dashboard/user/room-details/parent-side/check-student-classwork/check-student-classwork.component';
+import { CheckStudentGradeComponent } from './components/dashboard/user/room-details/parent-side/check-student-grade/check-student-grade.component';
 
 @NgModule({
   declarations: [
@@ -171,6 +177,12 @@ import { AddStudentComponent } from './components/verification/add-student/add-s
     UpdatePasswordComponent,
     UpdateProfileComponent,
     AddStudentComponent,
+    ParentSideComponent,
+    ParentMainComponent,
+    StudentRoomsComponent,
+    ParentHomeComponent,
+    CheckStudentClassworkComponent,
+    CheckStudentGradeComponent,
   ],
   imports: [
     BrowserModule,
