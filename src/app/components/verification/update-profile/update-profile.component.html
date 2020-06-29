@@ -22,31 +22,30 @@
         <p class="subtitle">We've already added some of your details but we would like you to verify it.</p>
         <form *ngIf="updateProfileForm" [formGroup]="updateProfileForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <input type="text" placeholder="First Name" formControlName="firstname" />
+                <input type="text" placeholder="First Name" class="form-control" formControlName="firstname" />
             </div>
             <div class="form-group">
-                <input type="text" placeholder="Middle Name" formControlName="middlename" />
+                <input type="text" placeholder="Middle Name" class="form-control" formControlName="middlename" />
             </div>
             <div class="form-group">
-                <input type="text" placeholder="Last Name" formControlName="lastname" />
+                <input type="text" placeholder="Last Name" class="form-control" formControlName="lastname" />
             </div>
             <div class="form-group">
-                <input type="text" placeholder="Address" formControlName="address" />
+                <input type="text" placeholder="Address" class="form-control" formControlName="address" />
             </div>
             <div class="form-group">
-                <input type="text" placeholder="Occupation" formControlName="occupation" />
+                <input type="text" placeholder="Occupation" class="form-control" formControlName="occupation" />
             </div>
             <div class="form-group">
-                <input type="text" placeholder="Phone Number" formControlName="phone" />
+                <input type="text" placeholder="Phone Number" class="form-control" formControlName="phone" />
             </div>
 
-            <p style="letter-spacing: 1px;">By clicking <span style="font-weight: bold;">Create Account</span>, I agree
-                to
-                the<br />
+            <p style="letter-spacing: 1px;">By clicking <span style="font-weight: bold;">Create Account</span>, I agree to the
+                <br />
                 <span style="font-weight: bold;">Terms of Service</span> and <span style="font-weight: bold;">Privacy
                     Policy</span></p>
 
-            <button>SAVE CHANGES</button>
+            <button [routerLink]="['/vierify/add-student']">SAVE CHANGES</button>
 
         </form>
 

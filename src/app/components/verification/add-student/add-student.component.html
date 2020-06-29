@@ -22,19 +22,18 @@
         <p class="subtitle">Now it's time to add your student.</p>
         <form *ngIf="addStudentForm" [formGroup]="addStudentForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <input type="password" placeholder="First Name" class="form-control" formControlName="firstname" />
+                <input type="text" placeholder="First Name" class="form-control" formControlName="firstname" />
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Last Name" class="form-control" formControlName="lastname" />
+                <input type="text" placeholder="Last Name" class="form-control" formControlName="lastname" />
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Email Address" class="form-control" formControlName="email" />
+                <input type="text" placeholder="Email Address" class="form-control" formControlName="email" />
             </div>
 
-            <p style="letter-spacing: 1px;">We will be sending a <span style="font-weight: bold;">link</span> to
-                the<br />
-                <span style="font-weight: bold;">email address</span> of your <span
-                    style="font-weight: bold;">student.</span></p>
+            <p style="letter-spacing: 1px;">We will be sending a <span style="font-weight: bold;">link</span> to the
+                <br />
+                <span style="font-weight: bold;">email address</span> of your <span style="font-weight: bold;">student.</span></p>
 
             <button>ADD STUDENT</button>
             <button class="btn-skip">SKIP FOR NOW</button>
