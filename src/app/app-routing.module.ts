@@ -66,13 +66,16 @@ const routes: Routes = [
       {
         path: "update-profile",
         component: UpdateProfileComponent,
+        data: {animation: 'UpdateProfile'},
       },
       {
         path: "update-password",
         component: UpdatePasswordComponent,
+        data: {animation: 'UpdatePassword'},
       }, {
         path: "add-student",
         component: AddStudentComponent,
+        data: {animation: 'AddStudent'},
       },
 
     ]
