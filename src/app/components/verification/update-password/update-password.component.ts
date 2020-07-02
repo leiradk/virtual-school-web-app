@@ -17,6 +17,10 @@ import { ToastrService } from "ngx-toastr";
 })
 export class UpdatePasswordComponent implements OnInit {
   public updatePasswordForm: FormGroup;
+  userData: any;
+  matchPW: boolean = false;
+  errorMessage: any;
+  errorStatus: boolean = false;
   constructor(
     private apiHost: ApiHostService,
     private fb: FormBuilder,
@@ -29,15 +33,53 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userData = this.system.retrieveItem('userData');
   }
   updatePassword() {
     this.updatePasswordForm = this.fb.group({
       verifyPassword: [null, Validators.required],
+      oldpassword: [null, Validators.required],
       password: [null, Validators.required],
     });
   }
 
   onSubmit() {
-    console.log(this.updatePasswordForm)
+    const { token } = this.userData;
+    const password = this.updatePasswordForm.value.password;
+    const verifyPassword = this.updatePasswordForm.value.verifyPassword;
+    const oldpassword = this.updatePasswordForm.value.oldpassword;
+
+
+    if (password === verifyPassword) {
+      const payload = {
+        token: token,
+        password: password,
+        oldpassword: oldpassword
+      }
+      console.log(payload)
+
+      this.apiHost.updatePassword(payload)
+        .subscribe((response: any) => {
+          console.log(response)
+          this.router.navigate(['verify/update-profile']);
+        }, (error: any) => {
+          console.log(error)
+
+          this.errorStatus = true;
+          this.errorMessage = 'Something Went Wrong';
+          setTimeout(() => {
+            this.errorStatus = false;
+          }, 3000)
+        })
+    } else {
+      this.matchPW = true;
+      setTimeout(() => {
+        this.matchPW = false;
+      }, 3000)
+
+    }
+
   }
+
+
 }

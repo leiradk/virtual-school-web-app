@@ -138,7 +138,9 @@ export class ParentListComponent implements OnInit {
     const { value } = this.addStaffFOrm;
     const data = {
       email: value.email,
-      username: value.username,
+      firstname: value.firstname,
+      lastname: value.lastname,
+      // username: value.username,  
       password: value.password,
       // position: 'parent',
       // department: 'parent'
@@ -175,8 +177,10 @@ export class ParentListComponent implements OnInit {
   studentFormModel() {
     this.addStaffFOrm = this.fb.group({
 
-      username: [null, Validators.required],
+      // username: [null, Validators.required],
       email: [null, Validators.required],
+      lastname: [null, Validators.required],
+      firstname: [null, Validators.required],
       // password: [null, Validators.required],
       // username: [null, Validators.required],
       password: [null, [Validators.required, Validators.minLength(6)]],
@@ -215,9 +219,15 @@ export class ParentListComponent implements OnInit {
   get email() {
     return this.addStaffFOrm.get('email') as FormControl;
   }
-  get username() {
-    return this.addStaffFOrm.get('username') as FormControl;
+  get firstname() {
+    return this.addStaffFOrm.get('firstname') as FormControl;
   }
+  get lastname() {
+    return this.addStaffFOrm.get('lastname') as FormControl;
+  }
+  // get username() {
+  //   return this.addStaffFOrm.get('username') as FormControl;
+  // }
   get password() {
     return this.addStaffFOrm.get('password') as FormControl;
   }

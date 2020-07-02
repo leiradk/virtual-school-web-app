@@ -34,6 +34,9 @@ import { ParentGuardianTabComponent } from "./components/dashboard/user/room-det
 import { StudentTabComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/tabs/student-tab/student-tab.component";
 import { TeacherStaffTabComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/tabs/teacher-staff-tab/teacher-staff-tab.component";
 
+// parent
+import { ParentComponent } from "./components/dashboard/user/parent/parent.component";
+
 import { AssignWorkComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-work.component";
 import { AssignLessonsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-lessons/assign-lessons.component";
 import { AssignDetailsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-details/assign-details.component";
@@ -60,22 +63,22 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: "vierify",
+    path: "verify",
     component: VerificationComponent,
     children: [
       {
         path: "update-profile",
         component: UpdateProfileComponent,
-        data: {animation: 'UpdateProfile'},
+        data: { animation: 'UpdateProfile' },
       },
       {
         path: "update-password",
         component: UpdatePasswordComponent,
-        data: {animation: 'UpdatePassword'},
+        data: { animation: 'UpdatePassword' },
       }, {
         path: "add-student",
         component: AddStudentComponent,
-        data: {animation: 'AddStudent'},
+        data: { animation: 'AddStudent' },
       },
 
     ]
@@ -112,6 +115,10 @@ const routes: Routes = [
       },
 
     ],
+  },
+  {
+    path: "parent",
+    component: ParentComponent
   },
   {
     path: "user",

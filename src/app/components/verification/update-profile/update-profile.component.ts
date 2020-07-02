@@ -17,7 +17,7 @@ import { ToastrService } from "ngx-toastr";
 })
 export class UpdateProfileComponent implements OnInit {
   public updateProfileForm: FormGroup;
-
+  userData: any;
   constructor(
     private apiHost: ApiHostService,
     private fb: FormBuilder,
@@ -28,6 +28,9 @@ export class UpdateProfileComponent implements OnInit {
   ) { this.updateProfile() }
 
   ngOnInit(): void {
+    this.userData = this.system.retrieveItem('userData');
+    this.getProfile();
+
   }
   updateProfile() {
     this.updateProfileForm = this.fb.group({
@@ -38,6 +41,17 @@ export class UpdateProfileComponent implements OnInit {
       occupation: [null, Validators.required],
       phone: [null, Validators.required],
     });
+  }
+
+  getProfile() {
+    const { token } = this.userData;
+    this.apiHost.getParentProfile(token)
+      .subscribe((response: any) => {
+        console.log(response)
+      }, (error: any) => {
+        console.log(error)
+
+      })
   }
   onSubmit() {
     console.log(this.updateProfileForm)

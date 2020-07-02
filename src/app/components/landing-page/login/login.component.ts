@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
           } else if (parseInt(data.usertype) === 10004) {
             this.system.storeLocal('userData', body);
             const message = "Please Update your password";
-            this.router.navigate(["vierify/update-password"]);
+            this.router.navigate(["verify/update-password"]);
 
           } else {
             console.log('failed')

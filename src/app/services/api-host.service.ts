@@ -198,7 +198,18 @@ export class ApiHostService {
       );
   }
 
-  // http://139.162.238.76/vs/teacher/update/classwork
+  //update classwork for students
+  updatePassword(payload) {
+    return this.https.put(`${this.localhost}update/password`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
 
   //get data
   //get list teacher for the admin 
@@ -379,5 +390,15 @@ export class ApiHostService {
       );
   }
 
+  getParentProfile(token) {
+    return this.https.get(`${this.localhost}parent/get/profile`, token)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
 }
