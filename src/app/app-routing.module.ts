@@ -116,14 +116,15 @@ const routes: Routes = [
 
     ],
   },
-  {
-    path: "parent",
-    component: ParentComponent
-  },
+ 
   {
     path: "user",
     component: UserComponent,
     children: [
+      {
+        path: "p",
+        component: ParentComponent
+      },
       {
         path: "s",
         component: StudentComponent,
