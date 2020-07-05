@@ -153,11 +153,13 @@ const routes: Routes = [
               },
               {
                 path: 'home',
-                component: StudentHomeComponent
+                component: StudentHomeComponent,
+                data: { animation: 'One' }
               },
               {
                 path: 'class-work',
                 component: CheckWorkComponent,
+                data: { animation: 'Two' },
                 children: [
                   {
                     path: "",
@@ -180,7 +182,8 @@ const routes: Routes = [
               },
               {
                 path: 'people',
-                component: CheckUsersComponent
+                component: CheckUsersComponent,
+                data: { animation: 'Three' }
               },
             ]
           },
@@ -211,11 +214,13 @@ const routes: Routes = [
               },
               {
                 path: 'home',
-                component: TeacherHomeComponent
+                component: TeacherHomeComponent,
+                data: { animation: 'One' }
               },
               {
                 path: 'class-work',
                 component: AssignWorkComponent,
+                data: { animation: 'Two' },
                 children: [
                   {
                     path: "",
@@ -239,6 +244,7 @@ const routes: Routes = [
               {
                 path: 'invites',
                 component: InviteUsersComponent,
+                data: { animation: 'Three' },
                 children: [
                   {
                     path: "",
@@ -261,7 +267,8 @@ const routes: Routes = [
               },
               {
                 path: 'grades',
-                component: ClassGradesComponent
+                component: ClassGradesComponent,
+                data: { animation: 'Four' }
               },
             ]
           }

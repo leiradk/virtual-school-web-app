@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {routeTransitionAnimations} from '../../../../../route-animation';
 
 @Component({
   selector: 'app-teacher-side',
   templateUrl: './teacher-side.component.html',
-  styleUrls: ['./teacher-side.component.scss', '../../../../../../assets/admin/css/styles.min.css']
+  styleUrls: ['./teacher-side.component.scss', '../../../../../../assets/admin/css/styles.min.css'],
+  animations: [ routeTransitionAnimations ]
 })
 export class TeacherSideComponent implements OnInit {
 
