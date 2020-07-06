@@ -40,5 +40,7 @@ export class AddStudentComponent implements OnInit {
 
   onSubmit() {
     console.log(this.addStudentForm)
+    this.router.navigate(['user/p']);
+
   }
 }
