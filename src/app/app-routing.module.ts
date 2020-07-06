@@ -36,6 +36,7 @@ import { TeacherStaffTabComponent } from "./components/dashboard/user/room-detai
 
 // parent
 import { ParentComponent } from "./components/dashboard/user/parent/parent.component";
+import { ParentMainComponent } from "./components/dashboard/user/parent/parent-main/parent-main.component";
 
 import { AssignWorkComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-work.component";
 import { AssignLessonsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-lessons/assign-lessons.component";
@@ -116,14 +117,26 @@ const routes: Routes = [
 
     ],
   },
- 
+
   {
     path: "user",
     component: UserComponent,
     children: [
       {
         path: "p",
-        component: ParentComponent
+        component: ParentComponent,
+        children: [
+          {
+            path: "",
+            redirectTo: "main",
+            pathMatch: "full"
+          },
+          {
+            path: "main",
+            component: ParentMainComponent
+          },
+        ]
+
       },
       {
         path: "s",
