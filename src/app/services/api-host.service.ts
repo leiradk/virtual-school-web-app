@@ -210,6 +210,17 @@ export class ApiHostService {
       );
   }
 
+  updateParentProfile(payload) {
+    return this.https.put(`${this.localhost}student/submit/classworks`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+s
 
   //get data
   //get list teacher for the admin 
@@ -391,7 +402,7 @@ export class ApiHostService {
   }
 
   getParentProfile(token) {
-    return this.https.get(`${this.localhost}parent/get/profile`, token)
+    return this.https.get(`${this.localhost}parent/get/profile?token=${token}`)
       .pipe(
         map((data: any) => {
           return data;
@@ -401,4 +412,5 @@ export class ApiHostService {
       );
   }
 
-}
+  
+  }

@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
     const { value } = this.signInForm;
     this.loading = true;
     this.apiHost.signin(value).subscribe((response: any) => {
+      console.log(response);
       if (response) {
         const { status, body } = response;
         if (status === 200) {
@@ -66,25 +67,25 @@ export class LoginComponent implements OnInit {
             this.system.storeLocal('userData', body);
             this.router.navigate(["/user/s"]);
             this.loading = false;
-            console.log(data.isVerified)
-            // if (data.isVerified === false && data.isChange === false) {
-            //   const message = "Please Update your password";
-            //   this.router.navigate(["vierify/update-password"]);
-            //   setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
-            //   this.loading = false;
-            // } else if (data.isVerified === false && data.isChange === true) {
-            //   const message = "Please Update your profile";
-            //   this.router.navigate(["vierify/update-profile"]);
-            //   setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
-            // } else {
-            //   this.router.navigate(["/user/s"]);
-            //   this.loading = false;
-            // }
+            console.log('data: ', data)
+
           } else if (parseInt(data.usertype) === 10004) {
             this.system.storeLocal('userData', body);
-            const message = "Please Update your password";
-            this.router.navigate(["verify/update-password"]);
-
+            // const message = "Please Update your password";
+            // this.router.navigate(["verify/update-password"]);
+            if (data.isVerified === false && data.isChange === false) {
+              const message = "Please Update your password";
+              this.router.navigate(["verify/update-password"]);
+              setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
+              this.loading = false;
+            } else if (data.isVerified === false && data.isChange === true) {
+              const message = "Please Update your profile";
+              this.router.navigate(["verify/update-profile"]);
+              setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
+            } else {
+              this.router.navigate(["/user/p"]);
+              this.loading = false;
+            }
           } else {
             console.log('failed')
             this.loading = false;
