@@ -16,9 +16,67 @@
                     <!-- <div class="col" *ngIf="showSpinner">
                     <app-loading-spinner></app-loading-spinner>
                 </div> -->
-                    <div class="col">
+                    <div class="classwork-container">
                         <!-- <div class="col" *ngIf="error"> -->
-                        <p class="no-classwork">No Student added</p>
+                        <!-- <p class="no-classwork">No Student added</p> -->
+
+                        <!-- Student #1 of this parent -->
+                        <div class="selected-work ">
+                            <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
+                                aria-controls="collapseCardExample">
+                                <h6 class="m-0 font-weight-bold text-primary work-title">Melvin Elayron Jr
+                                    <!-- {{getDate(dueDate)}} -->
+                                    <div class="reminder-details">
+                                        <span>Grade 12</span>
+                                        <p>Active</p>
+                                    </div>
+                                </h6>
+                            </a>
+                        </div>
+
+                        <!-- Student #2 of this parent -->
+                        <div class="reminder-butt1">
+                            <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
+                                aria-controls="collapseCardExample">
+                                <h6 class="m-0 font-weight-bold text-primary work-title">Wilver Deypalubos
+                                    <!-- {{getDate(dueDate)}} -->
+                                    <div class="reminder-details">
+                                        <span>Grade 11</span>
+                                        <p>Active</p>
+                                    </div>
+                                </h6>
+                            </a>
+                        </div>
+
+                        <!-- Student #3 of this parent -->
+                        <div class="reminder-butt2">
+                            <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
+                                aria-controls="collapseCardExample">
+                                <h6 class="m-0 font-weight-bold text-primary work-title">Blythe Lobrigas
+                                    <!-- {{getDate(dueDate)}} -->
+                                    <div class="reminder-details">
+                                        <span>Grade 11</span>
+                                        <p>Active</p>
+                                    </div>
+                                </h6>
+                            </a>
+                        </div>
+
+                        <!-- Student #4 of this parent -->
+                        <div class="reminder-butt1">
+                            <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
+                                aria-controls="collapseCardExample">
+                                <h6 class="m-0 font-weight-bold text-primary work-title">Ariel Delos Santos
+                                    <!-- {{getDate(dueDate)}} -->
+                                    <div class="reminder-details">
+                                        <span>Grade 12</span>
+                                        <p>Active</p>
+                                    </div>
+                                </h6>
+                            </a>
+                        </div>
+
+
                         <!-- <p class="no-classwork">{{errorMessage}}</p> -->
                     </div>
                     <!-- <div *ngFor="let work of classWork; let i = index" class="classwork-container"> -->
@@ -67,75 +125,115 @@
                 <div class="classwork-title" style="display: inline-flex;">
                     <!-- {{viewClassWork.title}} -->
                     List of Classes Available for this student
-
-                    <!-- Download files from teacher -->
-                    <!-- <a (click)="download(workData.attachment, workData.attachmentFilename)" -->
-                    <!-- <a class="btn btn-primary btn-block btn-rounded">
-                    <i class="fa fa-download" aria-hidden="true"></i>
-                    <br> Download Files</a> -->
                 </div>
             </div>
             <div>
                 <div class="col align-items-center"
                     style="background: #ffffff !important; padding-top: 15px; padding-right: 0px; padding-bottom: 15px; height: 77.5vh;">
-                    <div style="height: 100%;">
-                        <div class="layout-content" data-scrollable>
-                            <!-- <div class="container-fluid class-review">
-                            <div class="row" style="padding-top: 20px">
-                                <div class="col-md-12">
-                                    <p>Download Attachments for Classwork: <a
-                                            (click)="download(viewClassWork.attachment, viewClassWork.attachmentFilename)"
-                                            class="btn btn-sm btn-primary">download</a></p>
-                                    <strong>Classwork Description: </strong>
-                                    <br />
-                                    <p class="instructions-text">
-                                        {{viewClassWork.instruction}}
-                                    </p>
-                                    <hr />
+                    <div style="height: 100%; display: flex">
 
-                                    <div class="container-fluid">
-                                        <form [formGroup]="submitWorkForm" (ngSubmit)="onSubmit()">
-                                            <div class="row" style="display: inline;">
-                                                <div class="full-width">
-                                                    <p class="instruction">
-                                                        <strong>Instruction:</strong>
-                                                        {{viewClassWork.instruction}}
-                                                    </p>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <ejs-richtexteditor #toolsRTE id='alltoolRTE'
-                                                        formControlName="comment" [toolbarSettings]='tools'>
-                                                    </ejs-richtexteditor>
-                                                    <div class="uploaded" *ngIf="fileName">
-                                                        {{fileName}}
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 form-group">
-                                                    <div class="btns-work ctr">
-                                                        <div class="break-line"></div>
-                                                        <a (click)="file.click()"
-                                                            class="btn btn-primary btn-block btn-rounded"
-                                                            style="margin-bottom: 5px">
-                                                            <i class="fa fa-upload" aria-hidden="true"></i>
-                                                            <br> Upload Files</a>
-                                                        <input type="file" id="file" class="work-file" #file
-                                                            (change)="onFileChange($event)">
-                                                        <div class="break-line"></div>
-                                                        <button class="btn btn-success btn-block btn-rounded">
-                                                            <i class="fas fa-check"></i>
-                                                            <br> Submit Answer</button>
-                                                    </div>
+                            <div class="col col-md-4"
+                                style="height: 100%; border-right: 1px #bbbbbb solid; overflow-y: auto;">
+                                <div class="student-details">
+                                    <table class="table table-sm table-middle">
+                                        <thead>
+                                            <tr>
+                                                <th class="center" colspan="2">Classes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr class="view-answer" class="hover-student-answer">
+                                                <td class="right-score">
+                                                    Class Name #1
+                                                </td>
+                                                <td>
+                                                    Subject #1
+                                                </td>
+                                            </tr>
+
+                                            <tr class="view-answer" class="hover-student-answer">
+                                                <td class="right-score selected">
+                                                    Class Name #2
+                                                </td>
+                                                <td>
+                                                    Subject #2
+                                                </td>
+                                            </tr>
+
+                                            <tr class="view-answer" class="hover-student-answer">
+                                                <td class="right-score">
+                                                    Class Name #3
+                                                </td>
+                                                <td>
+                                                    Subject #3
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="col col-md-8" style="height: 100%;">
+
+                                <div class="layout-content" data-scrollable>
+                                    <div class="container-fluid class-review">
+                                        <!-- <button class="button back-btn" [routerLink]="['/user/t/classroom/class-work/details']">
+                                            Class Details
+                                        </button> -->
+                                        <!-- <span *ngIf="isNull"> - Fetching Class Details</span> -->
+
+                                        <!-- ngIf="workDetails" -->
+                                        <div class="row" style="padding-top: 20px">
+                                            <div class="col-md-12">
+                                                <!-- <p *ngIf="workDetails"> -->
+                                                <strong style="font-size: 20px; color: #272652; text-transform: uppercase;">Class Name #2</strong>
+                                                <br />
+                                                <hr>
+                                                <strong>Class Description: </strong>
+                                                <br />
+                                                <p class="instructions-text">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a volutpat mauris, at molestie lacus. Nam vestibulum sodales odio ut pulvinar.
+                                                </p>
+                                                <strong>Subject: </strong>
+                                                <p>
+                                                    This is the Class Subject
+                                                </p>
+                                                <strong>Status: </strong>
+                                                <p>
+                                                    Active
+                                                </p>
+                                                <strong>Teacher: </strong>
+                                                <p>
+                                                    Twila Kate Lobrigas
+                                                </p>
+                                                <strong>Total # of Students: </strong>
+                                                <p>
+                                                    120 Students
+                                                </p>
+                                                <br />
+                                                <div>
+                                                    <!-- disabled -->
+                                                    <a class="review-classwork"
+                                                        style="float:left;">
+                                                        <i class="fa fa-check add-reminder btn "
+                                                            style="background: #CD3132 !important; color: #ffffff !important"
+                                                            aria-hidden="true">
+                                                            <span> View Classworks </span>
+                                                        </i>
+                                                    </a>
+                                                    <!-- <a *ngIf="savingChanges" (click)="updateClassPoints(answerData)"
+                                                        class="review-classwork" style="float:right; padding-right: 45px">
+                                                        <app-loading-spinner style="background: none;"></app-loading-spinner>
+                                                    </a> -->
                                                 </div>
                                             </div>
-                                        </form>
-                                        <div *ngIf="showSpinner">
-                                            <app-loading-spinner></app-loading-spinner>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
-                        </div>
+
                     </div>
                 </div>
             </div>
