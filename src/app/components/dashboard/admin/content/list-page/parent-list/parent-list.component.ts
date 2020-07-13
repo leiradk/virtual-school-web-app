@@ -145,7 +145,7 @@ export class ParentListComponent implements OnInit {
       // position: 'parent',
       // department: 'parent'
     }
-
+    console.log(data);
     // get chckbox status
     // let contModal = <HTMLInputElement>document.getElementById('continueModal');
     // if (!contModal.checked) {
@@ -155,24 +155,7 @@ export class ParentListComponent implements OnInit {
 
     // ------>  Please check the code below. I want to put the top code snippet inside if(status === 200)
     // adds a teacher
-    this.apiService.addParent(data)
-      .subscribe((response: any) => {
-        const { status } = response;
-        console.log(response)
-        if (status === 201) {
-          //reload onInit
-          setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
-          this.addStaffFOrm.reset(); //reset form
-          this.getParents();
-          jQuery('#myModal').modal('hide'); //close modal after submit
 
-        } else {
-        }
-      }, (error: any) => {
-        const { message } = error.error;
-        this.addStaffFOrm.reset(); //reset form
-        setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
-      })
   }
   studentFormModel() {
     this.addStaffFOrm = this.fb.group({

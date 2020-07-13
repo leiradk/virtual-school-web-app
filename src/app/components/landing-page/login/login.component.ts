@@ -73,15 +73,20 @@ export class LoginComponent implements OnInit {
             this.system.storeLocal('userData', body);
             // const message = "Please Update your password";
             // this.router.navigate(["verify/update-password"]);
-            if (data.isVerified === false && data.isChange === false) {
+            if (data.isVerified === false && data.isChange === false && data.isChecked === false) {
               const message = "Please Update your password";
               this.router.navigate(["verify/update-password"]);
               setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
               this.loading = false;
-            } else if (data.isVerified === false && data.isChange === true) {
+            } else if (data.isVerified === false && data.isChange === true && data.isChecked === false) {
               const message = "Please Update your profile";
               this.router.navigate(["verify/update-profile"]);
               setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
+            } else if (data.isVerified === false && data.isChange === true && data.isChecked === true) {
+              // const message = "Please Update your profile";
+              this.router.navigate(["user/p/main"]);
+              // setTimeout(() => { this.showFailed(message); }, 1000);
+               //add toast message
             } else {
               this.router.navigate(["/user/p"]);
               this.loading = false;
