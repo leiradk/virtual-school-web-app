@@ -61,7 +61,7 @@ export class UpdatePasswordComponent implements OnInit {
       this.apiHost.updatePassword(payload)
         .subscribe((response: any) => {
           console.log(response)
-          this.router.navigate(['verify/update-profile']);
+          this.router.navigate(['login']);
         }, (error: any) => {
           console.log(error)
 
