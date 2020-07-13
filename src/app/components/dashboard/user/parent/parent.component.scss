@@ -508,6 +508,96 @@ ol {
     display: block;
 }
 
+.classwork-container {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    .selected-work {
+        border-bottom: solid 1px #fff !important;
+        .card-header {
+            background-image: linear-gradient(to right, #f17580, #f18873) !important;
+            cursor: default;
+            padding: 25px 20px !important;
+        }
+        .work-title {
+            color: #ffffff !important;
+        }
+    }
+    .reminder-butt2 {
+        border-bottom: solid 1px #fff !important;
+        .work-title {
+            color: #ffffff !important;
+        }
+        .card-header {
+            background: #41ace2;
+            border-radius: 0px;
+            padding: 25px 20px !important;
+        }
+        .card-header:hover {
+            font-size: 30px !important;
+        }
+        .card-header::after {
+            top: 10%;
+        }
+        .classwork-body {
+            background-color: #5cb8e840;
+            padding: 20px;
+        }
+    }
+    .reminder-butt1 {
+        border-bottom: solid 1px #fff !important;
+        .work-title {
+            color: #ffffff !important;
+        }
+        .card-header {
+            background-color: #61b5e1;
+            border-radius: 0px;
+            padding: 25px 20px !important;
+        }
+        .card-header:hover {
+            font-size: 30px !important;
+        }
+        .card-header::after {
+            top: 10%;
+        }
+        .classwork-body {
+            background-color: #5cb8e840;
+            padding: 20px;
+        }
+    }
+}
+
+.view-answer {
+    cursor: pointer;
+}
+
+.right-score {
+    text-transform: capitalize;
+    color: #41ace2 !important;
+}
+.right-score.selected {
+    font-weight: bold;
+}
+
+.hover-student-answer {
+    border-bottom: solid 0.5px #aaaaaa;
+    cursor: pointer !important;
+}
+
+.hover-student-answer:hover {
+    background-color: rgba(65, 172, 226, 0.2) !important;
+}
+
+.reminder-details {
+    padding-right: 15px;
+    margin-top: -7px;
+    float: right;
+    p {
+        font-size: 12px;
+        text-align: right;
+        padding-top: 3px;
+    }
+}
+
 /* Button pointing left */
 
 .button.back-btn {
@@ -679,12 +769,6 @@ input[type="range"]::-webkit-slider-thumb:active {
 
 .view-answer {
     cursor: pointer;
-}
-
-.right-score {
-    font-weight: bold;
-    text-transform: capitalize;
-    color: #41ace2 !important;
 }
 
 .hover-student-answer {
