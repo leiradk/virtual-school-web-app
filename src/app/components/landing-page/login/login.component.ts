@@ -99,6 +99,7 @@ export class LoginComponent implements OnInit {
       }
     }, (error: any) => {
       const { message } = error.error;
+      console.log(error)
       setTimeout(() => { this.showFailed(message); }, 1000); //add toast message
       this.loading = false;
     });

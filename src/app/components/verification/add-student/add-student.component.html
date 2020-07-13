@@ -25,18 +25,28 @@
                 <input type="text" placeholder="First Name" class="form-control" formControlName="firstname" />
             </div>
             <div class="form-group">
+                <input type="text" placeholder="Middle Name" class="form-control" formControlName="middlename" />
+            </div>
+            <div class="form-group">
                 <input type="text" placeholder="Last Name" class="form-control" formControlName="lastname" />
             </div>
             <div class="form-group">
                 <input type="text" placeholder="Email Address" class="form-control" formControlName="email" />
             </div>
-
+            <div class="form-group">
+                <input type="text" placeholder="Grade Level" class="form-control" formControlName="gradeLevel" />
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Gender" class="form-control" formControlName="gender" />
+            </div>
+            
             <p style="letter-spacing: 1px;">We will be sending a <span style="font-weight: bold;">link</span> to the
                 <br />
                 <span style="font-weight: bold;">email address</span> of your <span style="font-weight: bold;">student.</span></p>
 
-            <button [routerLink]="['/user/p']">ADD STUDENT</button>
-            <button [routerLink]="['/user/p']" class="btn-skip">SKIP FOR NOW</button>
+            <!-- <button [routerLink]="['/user/p']">ADD STUDENT</button> -->
+            <button >ADD STUDENT</button>
+            <!-- <button [routerLink]="['/user/p']" class="btn-skip">SKIP FOR NOW</button> -->
         </form>
 
     </div>

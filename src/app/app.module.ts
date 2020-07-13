@@ -101,6 +101,9 @@ import { StudentRoomsComponent } from './components/dashboard/user/parent/studen
 import { ParentHomeComponent } from './components/dashboard/user/room-details/parent-side/parent-home/parent-home.component';
 import { CheckStudentClassworkComponent } from './components/dashboard/user/room-details/parent-side/check-student-classwork/check-student-classwork.component';
 import { CheckStudentGradeComponent } from './components/dashboard/user/room-details/parent-side/check-student-grade/check-student-grade.component';
+import { ProfileComponent } from './components/dashboard/admin/profile/profile.component';
+import { StudentProfileComponent } from './components/dashboard/admin/profile/student-profile/student-profile.component';
+import { ParentProfileComponent } from './components/dashboard/admin/profile/parent-profile/parent-profile.component';
 
 @NgModule({
   declarations: [
@@ -183,6 +186,9 @@ import { CheckStudentGradeComponent } from './components/dashboard/user/room-det
     ParentHomeComponent,
     CheckStudentClassworkComponent,
     CheckStudentGradeComponent,
+    ProfileComponent,
+    StudentProfileComponent,
+    ParentProfileComponent,
   ],
   imports: [
     BrowserModule,

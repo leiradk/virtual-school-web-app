@@ -129,6 +129,7 @@ export class ApiHostService {
         })
       );
   }
+  //submit answer on classwork
   submitClasswork(payload) {
     return this.https.post(`${this.localhost}student/submit/classwork`, payload)
       .pipe(
@@ -140,6 +141,17 @@ export class ApiHostService {
       );
   }
 
+  //adding student on parent side
+  addMyStudent(payload) {
+    return this.https.post(`${this.localhost}parent/add/student`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
 
   //put data
@@ -211,7 +223,7 @@ export class ApiHostService {
   }
 
   updateParentProfile(payload) {
-    return this.https.put(`${this.localhost}student/submit/classworks`, payload)
+    return this.https.put(`${this.localhost}parent/update/profile`, payload)
       .pipe(
         map((data: any) => {
           return data;
@@ -220,7 +232,7 @@ export class ApiHostService {
         })
       );
   }
-s
+
 
   //get data
   //get list teacher for the admin 

@@ -26,16 +26,30 @@ export class UpdateProfileComponent implements OnInit {
     private system: SystemUtils,
     private sharedWork: SharedWorkDetailsService,
     private toastr: ToastrService
-  ) { }
+  ) {
+    //  this.updateProfile(); 
+  }
 
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
     this.getProfile();
 
   }
+  // updateProfile() {
+
+
+  //   this.updateProfileForm = this.fb.group({
+  //     firstname: [null, Validators.required],
+  //     middlename: [null, Validators.required],
+  //     lastname: [null, Validators.required],
+  //     address: [null, Validators.required],
+  //     occupation: [null, Validators.required],
+  //     phone: [null, Validators.required],
+  //   });
+  // }
+
   updateProfile(user) {
     const { userProfile} = user.body;
-    // console.log(userProfile[0].address)
     console.log(userProfile)
 
     this.updateProfileForm = this.fb.group({
@@ -44,7 +58,7 @@ export class UpdateProfileComponent implements OnInit {
       lastname: [userProfile[0].lastname, Validators.required],
       address: [userProfile[0].address, Validators.required],
       occupation: [userProfile[0].occupation, Validators.required],
-      phone: [null, Validators.required],
+      phone: [userProfile[0].phone, Validators.required],
     });
   }
   get firstname() {
@@ -86,15 +100,21 @@ export class UpdateProfileComponent implements OnInit {
       token: token,
       firstname: this.updateProfileForm.value.firstname,
       middlename: this.updateProfileForm.value.middlename,
-      lastname: this.updateProfileForm.value.lastname
+      lastname: this.updateProfileForm.value.lastname,
+      address: this.updateProfileForm.value.address,
+      occupation: this.updateProfileForm.value.occupation,
+      phone: this.updateProfileForm.value.phone
     };
-    this.router.navigate(['verify/add-student']);
+    console.log(payload);
+    // this.router.navigate(['verify/add-student']);
 
-  //   this.apiHost.updateParentProfile(payload)
-  //     .subscribe((response: any) => {
-  //       this.router.navigate(['verify/add-student']);
-  //     }, (error: any) => {
+      this.apiHost.updateParentProfile(payload)
+        .subscribe((response: any) => {
+          console.log(response)
+          this.router.navigate(['verify/add-student']);
+        }, (error: any) => {
+          console.log(error)
 
-  //     })
+        })
   }
 }
