@@ -34,6 +34,10 @@ export class UpdatePasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
+    const { isChange } = this.userData.data;
+    if(isChange === true ) {
+      this.router.navigate(['verify/update-profile']);
+    }
   }
   updatePassword() {
     this.updatePasswordForm = this.fb.group({
