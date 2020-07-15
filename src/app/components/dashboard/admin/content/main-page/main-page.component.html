@@ -58,7 +58,7 @@
                                     class="d-xl-flex align-items-xl-center listed-user">{{teacher.username}}</span>
                                 <div
                                     class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
-                                    <a data-toggle="modal" data-target="#editModal">
+                                    <a data-toggle="modal" data-target="#parentProfileModal">
                                         <i
                                             class="fa fa-user d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
                                         </i>
@@ -218,7 +218,7 @@
                                     class="d-xl-flex align-items-xl-center listed-user">{{student.username}}</span>
                                 <div
                                     class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
-                                    <a data-toggle="modal" data-target="#editModal">
+                                    <a data-toggle="modal" data-target="#studentProfileModal">
                                         <i
                                             class="fa fa-user d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
                                         </i>
@@ -256,8 +256,40 @@
         <!-- End: list content -->
     </div>
 </div>
-
-
+<div id="parentProfileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show"
+    aria-modal="true" style="display: none;">
+    <div role="document" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="exampleModalLabel" class="modal-title">Archive</h5><button type="button" data-dismiss="modal"
+                    aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <app-parent-profile></app-parent-profile>
+            </div>
+            <div class="modal-footer">
+          
+            </div>
+        </div>
+    </div>
+</div>
+<div id="studentProfileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show"
+    aria-modal="true" style="display: none;">
+    <div role="document" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="exampleModalLabel" class="modal-title">Archive</h5><button type="button" data-dismiss="modal"
+                    aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <app-student-profile></app-student-profile>
+            </div>
+            <div class="modal-footer">
+          
+            </div>
+        </div>
+    </div>
+</div>
 <div id="archiveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show"
     aria-modal="true" style="display: none;">
     <div role="document" class="modal-dialog">
