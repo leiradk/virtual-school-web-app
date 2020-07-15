@@ -424,5 +424,15 @@ export class ApiHostService {
       );
   }
 
-  
+  getMyStudents(token) {
+    return this.https.get(`${this.localhost}parent/get/students?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
   }
+
+}
