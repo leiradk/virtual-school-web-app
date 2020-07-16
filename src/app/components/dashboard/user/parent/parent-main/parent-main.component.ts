@@ -8,6 +8,9 @@ import { SystemUtils } from '../../../../../services/system.utils';
 })
 export class ParentMainComponent implements OnInit {
 
+
+  showSpinner: boolean = true;
+
   userData: any;
   emptyErrorMessage: any;
   errorMessage: any;
@@ -18,6 +21,7 @@ export class ParentMainComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.showSpinner = true;
     this.userData = this.system.retrieveItem('userData');
     this.getStudentInfo();
   }
@@ -32,6 +36,7 @@ export class ParentMainComponent implements OnInit {
         console.log(error)
         const { status, message } = error.error;
         this.errorStatus = true;
+        this.showSpinner = false;
         if(status === 404) {
           this.emptyErrorMessage = message
         } else {

@@ -16,18 +16,27 @@
                     <!-- <div class="col" *ngIf="showSpinner">
                     <app-loading-spinner></app-loading-spinner>
                 </div> -->
+
+                    <div *ngIf="showSpinner" class="classwork-container">
+                        <app-loading-spinner></app-loading-spinner>
+                    </div>
+
                     <div *ngIf="errorStatus" class="classwork-container">
                         <div>
                             {{emptyErrorMessage}}
                         </div>
                     </div>
-                    <div *ngIf="!errorStatus" class="classwork-container">
 
-                        <!-- <div class="col" *ngIf="error"> -->
-                        <!-- <p class="no-classwork">No Student added</p> -->
 
-                        <!-- Student #1 of this parent -->
-                        <div class="selected-work ">
+
+                    <!-- IF STUDENTS FOUND -->
+
+                    <!-- <div *ngIf="!errorStatus" class="classwork-container"> -->
+                    <!-- <div class="col" *ngIf="error"> -->
+                    <!-- <p class="no-classwork">No Student added</p> -->
+
+                    <!-- Student #1 of this parent -->
+                    <!-- <div class="selected-work ">
                             <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
                                 aria-controls="collapseCardExample">
                                 <h6 class="m-0 font-weight-bold text-primary work-title">Melvin Elayron Jr
@@ -37,10 +46,10 @@
                                     </div>
                                 </h6>
                             </a>
-                        </div>
+                        </div> -->
 
-                        <!-- Student #2 of this parent -->
-                        <!-- <div class="reminder-butt1">
+                    <!-- Student #2 of this parent -->
+                    <!-- <div class="reminder-butt1">
                             <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
                                 aria-controls="collapseCardExample">
                                 <h6 class="m-0 font-weight-bold text-primary work-title">Wilver Deypalubos
@@ -52,8 +61,8 @@
                             </a>
                         </div> -->
 
-                        <!-- Student #3 of this parent -->
-                        <!-- <div class="reminder-butt2">
+                    <!-- Student #3 of this parent -->
+                    <!-- <div class="reminder-butt2">
                             <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
                                 aria-controls="collapseCardExample">
                                 <h6 class="m-0 font-weight-bold text-primary work-title">Blythe Lobrigas
@@ -65,8 +74,8 @@
                             </a>
                         </div> -->
 
-                        <!-- Student #4 of this parent -->
-                        <!-- <div class="reminder-butt1">
+                    <!-- Student #4 of this parent -->
+                    <!-- <div class="reminder-butt1">
                             <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
                                 aria-controls="collapseCardExample">
                                 <h6 class="m-0 font-weight-bold text-primary work-title">Ariel Delos Santos
@@ -79,8 +88,12 @@
                         </div> -->
 
 
-                        <!-- <p class="no-classwork">{{errorMessage}}</p> -->
-                    </div>
+                    <!-- <p class="no-classwork">{{errorMessage}}</p> -->
+                    <!-- </div> -->
+
+
+
+
                     <!-- <div *ngFor="let work of classWork; let i = index" class="classwork-container"> -->
 
                     <!-- Display notification for events here -->

@@ -104,6 +104,7 @@ import { CheckStudentGradeComponent } from './components/dashboard/user/room-det
 import { ProfileComponent } from './components/dashboard/admin/profile/profile.component';
 import { StudentProfileComponent } from './components/dashboard/admin/profile/student-profile/student-profile.component';
 import { ParentProfileComponent } from './components/dashboard/admin/profile/parent-profile/parent-profile.component';
+import { NewStudentComponent } from './components/dashboard/user/parent/parent-main/new-student/new-student.component';
 
 @NgModule({
   declarations: [
@@ -189,6 +190,7 @@ import { ParentProfileComponent } from './components/dashboard/admin/profile/par
     ProfileComponent,
     StudentProfileComponent,
     ParentProfileComponent,
+    NewStudentComponent,
   ],
   imports: [
     BrowserModule,
