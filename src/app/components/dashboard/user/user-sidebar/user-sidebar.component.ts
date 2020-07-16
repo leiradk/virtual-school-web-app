@@ -44,6 +44,8 @@ export class UserSidebarComponent implements OnInit {
       this.dashboardRoute = '/user/s/main';
       this.invitationRoute = '/user/s/invitations';
       this.isStudentSide = true;
+    } else if(usertype === '10004') {
+      this.dashboardRoute = '/user/p/main'
     }
   }
   //getting all classroom for one specific teacher
