@@ -23,7 +23,17 @@
 
                     <div *ngIf="errorStatus" class="classwork-container">
                         <div>
-                            {{emptyErrorMessage}}
+                            <h6 style="text-align: center;cursor: pointer;padding: 20px 5px;font-size: 25px;font-weight: 700;color: #888;">
+                                Opps! Looks like you haven't added a student yet.</h6>
+                        </div>
+                        
+                        <!-- SEND THIS TO ADD NEW STUDENT COMPONENT -->
+                        <div class="reminder-butt1">
+                            <a class="d-block card-header py-3 collapsed" style="cursor: pointer;" role="button"
+                                aria-expanded="false" aria-controls="collapseCardExample">
+                                <h6 class="m-0 font-weight-bold text-primary work-title"
+                                    style="text-align: center; cursor: pointer;">Add Student Now</h6>
+                            </a>
                         </div>
                     </div>
 
