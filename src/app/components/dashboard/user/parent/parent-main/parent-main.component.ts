@@ -15,6 +15,7 @@ export class ParentMainComponent implements OnInit {
   emptyErrorMessage: any;
   errorMessage: any;
   errorStatus: any;
+  myStudent: any;
   constructor(
     private apiHost: ApiHostService,
     private system: SystemUtils
@@ -31,17 +32,25 @@ export class ParentMainComponent implements OnInit {
     console.log(token)
     this.apiHost.getMyStudents(token)
       .subscribe((response: any) => {
-        console.log(response)
+        this.errorStatus = false;
+        this.showSpinner = false;
+
+        const { body } = response
+        this.myStudent = body;
+
+        console.log(this.myStudent)
       }, (error: any) => {
         console.log(error)
         const { status, message } = error.error;
         this.errorStatus = true;
         this.showSpinner = false;
-        if(status === 404) {
+        if (status === 404) {
           this.emptyErrorMessage = message
         } else {
           this.errorMessage = 'Something went wrong'
         }
       })
   }
+
+
 }

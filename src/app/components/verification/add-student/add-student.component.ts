@@ -48,7 +48,6 @@ export class AddStudentComponent implements OnInit {
 
   onSubmit() {
     const { token } = this.userData
-    this.router.navigate(['user/p']);
     const payload = {
       token: token,
       email: this.addStudentForm.value.email,
@@ -62,6 +61,7 @@ export class AddStudentComponent implements OnInit {
     this.apiHost.addMyStudent(payload)
       .subscribe((response: any) => {
         console.log(response)
+        this.router.navigate(['user/p']);
       }, (error: any) => {
         console.log(error)
       })

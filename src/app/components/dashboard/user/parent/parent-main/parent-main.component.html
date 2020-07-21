@@ -23,14 +23,16 @@
 
                     <div *ngIf="errorStatus" class="classwork-container">
                         <div>
-                            <h6 style="text-align: center;cursor: pointer;padding: 20px 5px;font-size: 25px;font-weight: 700;color: #888;">
+                            <h6
+                                style="text-align: center;cursor: pointer;padding: 20px 5px;font-size: 25px;font-weight: 700;color: #888;">
                                 Opps! Looks like you haven't added a student yet.</h6>
                         </div>
-                        
+
                         <!-- SEND THIS TO ADD NEW STUDENT COMPONENT -->
                         <div class="reminder-butt1">
-                            <a [routerLink]="['/user/p/add-student']" class="d-block card-header py-3 collapsed" style="cursor: pointer;" role="button"
-                                aria-expanded="false" aria-controls="collapseCardExample">
+                            <a [routerLink]="['/user/p/add-student']" class="d-block card-header py-3 collapsed"
+                                style="cursor: pointer;" role="button" aria-expanded="false"
+                                aria-controls="collapseCardExample">
                                 <h6 class="m-0 font-weight-bold text-primary work-title"
                                     style="text-align: center; cursor: pointer;">Add Student Now</h6>
                             </a>
@@ -46,17 +48,23 @@
                     <!-- <p class="no-classwork">No Student added</p> -->
 
                     <!-- Student #1 of this parent -->
-                    <!-- <div class="selected-work ">
+                    <!--  -->
+                    <div *ngIf="!showSpinner && !errorStatus">
+                        <div *ngFor="let student of myStudent" class="selected-work ">
                             <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
                                 aria-controls="collapseCardExample">
-                                <h6 class="m-0 font-weight-bold text-primary work-title">Melvin Elayron Jr
+                                <h6 class="m-0 font-weight-bold text-primary work-title">
+                                    {{student.firstname}} {{student.middlename}} {{student.lastname}}
                                     <div class="reminder-details">
                                         <span>Grade 12</span>
                                         <p>Active</p>
                                     </div>
                                 </h6>
                             </a>
-                        </div> -->
+                        </div>
+
+                    </div>
+
 
                     <!-- Student #2 of this parent -->
                     <!-- <div class="reminder-butt1">

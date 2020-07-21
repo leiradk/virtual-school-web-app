@@ -435,4 +435,17 @@ export class ApiHostService {
       );
   }
 
+
+  getMyStudentsClass(token, user) {
+    return this.https.get(`${this.localhost}parent/get/classrooms?token=${token}&user=${user}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
 }
+
