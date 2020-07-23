@@ -34,10 +34,10 @@ export class ParentMainComponent implements OnInit {
       .subscribe((response: any) => {
         this.errorStatus = false;
         this.showSpinner = false;
-
+        console.log(response)
         const { body } = response
         this.myStudent = body;
-
+        this.getStudentClass(token, body[0].email)
         console.log(this.myStudent)
       }, (error: any) => {
         console.log(error)
@@ -52,5 +52,17 @@ export class ParentMainComponent implements OnInit {
       })
   }
 
+  getStudentClass(token, user) {
+    this.apiHost.getMyStudentsClass(token, user)
+      .subscribe((response: any) => {
+        console.log(response)
+      }, (error: any) => {
+        console.log(error)
+      })
+  }
+
+  checkRoom(data) {
+    console.log(data)
+  }
 
 }
