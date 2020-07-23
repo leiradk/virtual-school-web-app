@@ -160,7 +160,10 @@
                     List of Classes Available for this student
                 </div>
             </div>
-            <div>
+            <div *ngIf="!classExist">
+                No Class joined yet
+            </div>
+            <div *ngIf="classExist">
                 <div class="col align-items-center"
                     style="background: #ffffff !important; padding-top: 15px; padding-right: 0px; padding-bottom: 15px; height: 77.5vh;">
                     <div style="height: 100%; display: flex">

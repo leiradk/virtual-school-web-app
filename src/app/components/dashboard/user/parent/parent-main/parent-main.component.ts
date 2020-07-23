@@ -16,6 +16,8 @@ export class ParentMainComponent implements OnInit {
   errorMessage: any;
   errorStatus: any;
   myStudent: any;
+  classExist: any;
+  classStatus: any;
   constructor(
     private apiHost: ApiHostService,
     private system: SystemUtils
@@ -55,10 +57,14 @@ export class ParentMainComponent implements OnInit {
   getStudentClass(token, user) {
     this.apiHost.getMyStudentsClass(token, user)
       .subscribe((response: any) => {
+        this.classExist = true;
         console.log(response)
       }, (error: any) => {
         console.log(error)
-      })
+        const { status } = error;
+        this.classExist = false;
+      });
+
   }
 
   checkRoom(data) {
