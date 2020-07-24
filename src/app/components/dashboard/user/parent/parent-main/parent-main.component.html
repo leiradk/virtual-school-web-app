@@ -5,9 +5,10 @@
             <div class="new-body" style="padding: 20px;">
                 <div class="classwork-title">
                     <i class="fa fa-book" aria-hidden="true"></i> Student List
-                    <!-- <a *ngIf="teacherAccount" class="add-classwork" data-toggle="modal" data-target="#addClasswork">
-                    <i class="fa fa-plus add-reminder" aria-hidden="true"></i>
-                </a> -->
+                    <a [routerLink]="['/user/p/add-student']" *ngIf="!showSpinner && !errorStatus"
+                        class="add-classwork">
+                        <i class="fa fa-plus add-reminder" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
             <div>
@@ -49,12 +50,13 @@
 
                     <!-- Student #1 of this parent -->
                     <!--  -->
-                    <div *ngIf="!showSpinner && !errorStatus">
-                        <div *ngFor="let student of myStudent" class="selected-work" (clicl)="checkRoom(student)">
+                    <div *ngIf="!showSpinner && !errorStatus" class="classwork-container">
+                        <div *ngFor="let student of myStudent" class="selected-work reminder-butt1"
+                            (click)="checkRoom(student)">
                             <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
                                 aria-controls="collapseCardExample">
                                 <h6 class="m-0 font-weight-bold text-primary work-title">
-                                    {{student.firstname}} {{student.middlename}} {{student.lastname}}
+                                    <span class="stude-name">{{student.firstname}} {{student.middlename}} {{student.lastname}}</span>
                                     <div class="reminder-details">
                                         <span>Grade 12</span>
                                         <p>Active</p>
@@ -62,7 +64,6 @@
                                 </h6>
                             </a>
                         </div>
-
                     </div>
 
 
@@ -146,7 +147,8 @@
         </div>
     </div>
 
-    <div class="card column col-xl-8 col-md-8 mb-8 classwork-list" style="padding-left: 20px !important; float: right;">
+    <div *ngIf="classExist" class="card column col-xl-8 col-md-8 mb-8 classwork-list"
+        style="padding-left: 20px !important; float: right;">
         <!-- <div *ngIf="!showSpinner && error"
         style="width: 100%;text-align: center;border: none;height: 100vh; font-size: 30px;color: #777777;"
         class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
@@ -160,10 +162,10 @@
                     List of Classes Available for this student
                 </div>
             </div>
-            <div *ngIf="!classExist">
+            <!-- <div *ngIf="!classExist">
                 No Class joined yet
-            </div>
-            <div *ngIf="classExist">
+            </div> -->
+            <div>
                 <div class="col align-items-center"
                     style="background: #ffffff !important; padding-top: 15px; padding-right: 0px; padding-bottom: 15px; height: 77.5vh;">
                     <div style="height: 100%; display: flex">

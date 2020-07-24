@@ -168,3 +168,15 @@ button {
         }
     }
 }
+
+.top-left-icon{
+    position: absolute;
+    font-size: 30px;
+    padding: 35px;
+    transition: all 0.3s;
+}
+
+.top-left-icon:hover{
+    color: #2196F3 !important;
+    cursor: pointer;
+}
