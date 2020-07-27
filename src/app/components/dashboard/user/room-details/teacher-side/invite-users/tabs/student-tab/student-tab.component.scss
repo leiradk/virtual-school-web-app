@@ -60,3 +60,24 @@
         border-right: none !important;
     }
 }
+
+.invite-student {
+    width: 100% !important;
+    text-align: center !important;
+    margin-bottom: -15px;
+}
+
+.invite-button {
+    color: #222222;
+    background-color: #cccccc !important;
+    text-transform: uppercase !important;
+    border-top: none !important;
+    vertical-align: middle;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+.invite-button:hover {
+    color: #ffffff !important;
+    background-color: #41ACE2 !important;
+}
