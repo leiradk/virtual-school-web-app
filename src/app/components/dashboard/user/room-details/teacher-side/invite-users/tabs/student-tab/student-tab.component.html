@@ -18,7 +18,8 @@
         <div *ngIf="!showSpinner && !error" class="table-body">
             <div class="table-body-content" *ngFor="let invites of invitedParent">
                 <div class="body-name body-content cell-split">
-                    <img class="border rounded-circle border-primary profile-img" src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg"> {{invites.student}}
+                    <img class="border rounded-circle border-primary profile-img"
+                        src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg"> {{invites.student}}
                 </div>
                 <div class="body-date body-content cell-split">
                     <img class="center-img"> {{getDate(invites.dateSent)}}
@@ -29,9 +30,24 @@
             </div>
             <div class="table-body-content">
                 <div class="body-status body-content invite-button">
-                    <div class="center-img invite-student">Invite Student</div>
+                    <div class="center-img invite-student" data-toggle="modal" data-target="#updateClasswork">Invite
+                        Student</div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div id="updateClasswork" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+    aria-hidden="true">
+    <!-- dialog -->
+    <div class="modal-dialog">
+        <!-- [formGroup]="addClassWorkForm" (ngSubmit)="onSubmit()" -->
+        <form class="user">
+            <!-- content -->
+            <div class="modal-content">
+                wew
+            </div>
+        </form>
     </div>
 </div>
