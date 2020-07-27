@@ -146,12 +146,19 @@ export class ParentListComponent implements OnInit {
       // department: 'parent'
     }
     console.log(data);
-    // get chckbox status
-    // let contModal = <HTMLInputElement>document.getElementById('continueModal');
-    // if (!contModal.checked) {
-    // }
 
     this.showSpinner = true;
+
+    this.apiService.addParent(data)
+      .subscribe((response: any) => {
+        // get chckbox status
+        // let contModal = <HTMLInputElement>document.getElementById('continueModal');
+        // if (!contModal.checked) {
+        // }
+        console.log(response)
+      }, (error: any) => {
+        console.log(error)
+      })
 
     // ------>  Please check the code below. I want to put the top code snippet inside if(status === 200)
     // adds a teacher
