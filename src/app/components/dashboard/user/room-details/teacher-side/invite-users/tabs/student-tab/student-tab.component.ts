@@ -2,28 +2,44 @@ import { Component, OnInit } from '@angular/core';
 import { ApiHostService } from '../../../../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../../../../services/system.utils';
 import { ToastrService } from "ngx-toastr";
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from "@angular/forms";
+declare var jQuery: any;
+
 @Component({
   selector: 'app-student-tab',
   templateUrl: './student-tab.component.html',
   styleUrls: ['./student-tab.component.scss']
 })
 export class StudentTabComponent implements OnInit {
+  public inviteForm: FormGroup;
+
   userData: any;
   classDetails: any;
   showSpinner: boolean = true;
   error: boolean = false;
   invitedParent: any;
   errorMessage: any;
+  student: any;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
-    private toastr: ToastrService
-  ) { }
+    private toastr: ToastrService,
+    private fb: FormBuilder,
+  ) {
+    this.classFormModel()
+  }
 
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
     this.classDetails = this.system.retrieveItem('classDetails');
+    console.log(this.classDetails)
     this.getInvitedStudents();
+    this.getStudents(this.userData, this.classDetails)
   }
   showSuccess() {
     this.toastr.success('Invite has been successfully sent', 'Congratulations', { timeOut: 4000 })
@@ -32,6 +48,30 @@ export class StudentTabComponent implements OnInit {
     this.toastr.warning('Invite have failed to sent', 'Try Again', { timeOut: 4000 })
   }
 
+  classFormModel() {
+    this.inviteForm = this.fb.group({
+      username: [null, Validators.required]
+    });
+  }
+  getStudents(userData, classDetails) {
+    const { token } = userData;
+    const { classGradeLevel } = classDetails
+    console.log('token', token)
+    this.apiService.searchStudents(token, classGradeLevel)
+      .subscribe((response: any) => {
+        // this.showSpinner = false;
+        console.log('search', response);
+
+        const { body, status } = response;
+        if (status === 200) {
+          this.student = body;
+          // this.showSpinner = false;
+        }
+      }, (error: any) => {
+        console.log('search', error);
+        // this.showSpinner = false;
+      })
+  }
   getInvitedStudents() {
     const { token } = this.userData;
     const { rid } = this.classDetails;
@@ -91,5 +131,32 @@ export class StudentTabComponent implements OnInit {
     } else if (month === 12) {
       return 'December'
     }
+  }
+
+  onSubmit() {
+    const { value } = this.inviteForm;
+    const { token } = this.userData;
+    const { rid } = this.classDetails;
+    const payload = {
+      token: token,
+      classID: rid,
+      user: value.username
+
+    }
+    this.error = false;
+    this.showSpinner = true;
+    this.apiService.sendClassInvites(payload)
+      .subscribe((response: any) => {
+        console.log(response);
+        // this.getStudents(this.userData);
+        this.showSuccess(); // show toastr
+        jQuery('#myModal').modal('hide'); //close modal after submit
+      }, (error:any) => {
+        console.log(error)
+        this.showSpinner = false;
+        this.showFailed()
+        jQuery('#myModal').modal('hide'); //close modal after submit
+      })
+
   }
 }

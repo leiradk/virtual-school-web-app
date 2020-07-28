@@ -4,7 +4,7 @@
     </a>
     <h1>ADD STUDENT DETAILS</h1>
     <p class="subtitle">Now it's time to add your student.</p>
-    <form>
+    <form *ngIf="addStudentForm" [formGroup]="addStudentForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <input type="text" placeholder="First Name" class="form-control" formControlName="firstname" />
         </div>

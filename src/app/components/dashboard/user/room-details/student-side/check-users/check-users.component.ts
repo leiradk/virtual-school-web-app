@@ -32,19 +32,19 @@ export class CheckUsersComponent implements OnInit {
 
     console.log(this.userData.data.usertype);
   }
-  getStudents(userData) {
-    const { token } = userData;
-    this.apiService.searchStudents(token)
-      .subscribe((response: any) => {
-        const { body, status } = response;
-        if (status === 200) {
-          this.student = body;
-          this.showSpinner = false;
-        }
-      }, (error: any) => {
-        console.log
-      })
-  }
+  // getStudents(userData) {
+  //   const { token } = userData;
+  //   this.apiService.searchStudents(token)
+  //     .subscribe((response: any) => {
+  //       const { body, status } = response;
+  //       if (status === 200) {
+  //         this.student = body;
+  //         this.showSpinner = false;
+  //       }
+  //     }, (error: any) => {
+  //       console.log
+  //     })
+  // }
 
 
 

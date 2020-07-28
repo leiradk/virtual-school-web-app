@@ -296,8 +296,8 @@ export class ApiHostService {
   }
 
   //search student based on the list
-  searchStudents(token) {
-    return this.https.get(`${this.localhost}list/student?token=${token}`)
+  searchStudents(token, yearlevel) {
+    return this.https.get(`${this.localhost}list/student?token=${token}&yearlevel=${yearlevel}`)
       .pipe(
         map((data: any) => {
           return data;

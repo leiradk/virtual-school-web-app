@@ -30,7 +30,7 @@
             </div>
             <div class="table-body-content">
                 <div class="body-status body-content invite-button">
-                    <div class="center-img invite-student" data-toggle="modal" data-target="#updateClasswork">Invite
+                    <div class="center-img invite-student" data-toggle="modal" data-target="#invitePeople">Invite
                         Student</div>
                 </div>
             </div>
@@ -38,16 +38,44 @@
     </div>
 </div>
 
-<div id="updateClasswork" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
-    aria-hidden="true">
-    <!-- dialog -->
+
+<!-- The Modal -->
+<div class="modal" id="invitePeople">
     <div class="modal-dialog">
-        <!-- [formGroup]="addClassWorkForm" (ngSubmit)="onSubmit()" -->
-        <form class="user">
-            <!-- content -->
-            <div class="modal-content">
-                wew
-            </div>
-        </form>
+        <div class="modal-content">
+            <form class="user" [formGroup]="inviteForm" (ngSubmit)="onSubmit()">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Send Invites</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <input type="search" placeholder="Type a username" class="search-students"
+                        formControlName="username" list="mylist">
+                    <datalist id="mylist">
+                        <option *ngFor="let students of student" value="{{students.username}}">
+                    </datalist>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">Send Invite</button>
+                </div>
+            </form>
+
+
+            <!-- <form class="user" [formGroup]="addClassFOrm" (ngSubmit)="onSubmit()">
+
+                <div class="modal-body">
+                    <div class=" form-group">
+                        <label for="inputName"><span class="validator" *ngIf="name.invalid && name.touched">
+                                Class Name is required</span></label>
+                        <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp"
+                            placeholder="Enter Class Name" formControlName="name">
+                    </div>
+          </form> -->
+
+        </div>
     </div>
 </div>

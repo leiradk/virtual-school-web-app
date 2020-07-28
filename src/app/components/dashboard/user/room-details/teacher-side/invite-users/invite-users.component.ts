@@ -61,23 +61,23 @@ export class InviteUsersComponent implements OnInit {
     });
   }
 
-  getStudents(userData) {
-    const { token } = userData;
-    this.apiService.searchStudents(token)
-      .subscribe((response: any) => {
-        this.showSpinner = false;
-        console.log(response);
+  // getStudents(userData) {
+  //   const { token } = userData;
+  //   this.apiService.searchStudents(token)
+  //     .subscribe((response: any) => {
+  //       this.showSpinner = false;
+  //       console.log(response);
 
-        const { body, status } = response;
-        if (status === 200) {
-          this.student = body;
-          this.showSpinner = false;
-        }
-      }, (error: any) => {
-        console.log(error);
-        this.showSpinner = false;
-      })
-  }
+  //       const { body, status } = response;
+  //       if (status === 200) {
+  //         this.student = body;
+  //         this.showSpinner = false;
+  //       }
+  //     }, (error: any) => {
+  //       console.log(error);
+  //       this.showSpinner = false;
+  //     })
+  // }
 
   onSubmit() {
     const { value } = this.inviteForm;
@@ -94,7 +94,7 @@ export class InviteUsersComponent implements OnInit {
     this.apiService.sendClassInvites(payload)
       .subscribe((response: any) => {
         console.log(response);
-        this.getStudents(this.userData);
+        // this.getStudents(this.userData);
         this.showSuccess(); // show toastr
         jQuery('#myModal').modal('hide'); //close modal after submit
       }, (error => {

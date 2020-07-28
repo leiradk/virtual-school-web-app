@@ -68,7 +68,11 @@ export class ParentMainComponent implements OnInit {
   }
 
   checkRoom(data) {
+    const { token } = this.userData;
+
     console.log(data)
+    this.getStudentClass(token, data.username)
+
   }
 
 }
