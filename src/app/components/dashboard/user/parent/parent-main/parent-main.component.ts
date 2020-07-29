@@ -55,6 +55,8 @@ export class ParentMainComponent implements OnInit {
   }
 
   getStudentClass(token, user) {
+    console.log('payload', token)
+    console.log('payload', user)
     this.apiHost.getMyStudentsClass(token, user)
       .subscribe((response: any) => {
         this.classExist = true;
@@ -71,7 +73,7 @@ export class ParentMainComponent implements OnInit {
     const { token } = this.userData;
 
     console.log(data)
-    this.getStudentClass(token, data.username)
+    this.getStudentClass(token, data.email)
 
   }
 

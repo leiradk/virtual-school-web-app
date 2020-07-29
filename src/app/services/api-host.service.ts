@@ -8,7 +8,7 @@ import { throwError } from 'rxjs';
 })
 export class ApiHostService {
 
-  localhost = `http://139.162.238.76:8000/vs/`
+  localhost = `http://139.162.238.76/vs/`
   constructor(
     private https: HttpClient
   ) { }
@@ -437,7 +437,7 @@ export class ApiHostService {
 
 
   getMyStudentsClass(token, user) {
-    return this.https.get(`${this.localhost}parent/get/classrooms?token=${token}&user=${user}`)
+    return this.https.get(`${this.localhost}parent/get/student/classrooms?token=${token}&user=${user}`)
       .pipe(
         map((data: any) => {
           return data;
