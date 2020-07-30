@@ -18,6 +18,8 @@ export class ParentMainComponent implements OnInit {
   myStudent: any;
   classExist: any;
   classStatus: any;
+  classList: any;
+  activeClass: any;
   constructor(
     private apiHost: ApiHostService,
     private system: SystemUtils
@@ -55,11 +57,13 @@ export class ParentMainComponent implements OnInit {
   }
 
   getStudentClass(token, user) {
-    console.log('payload', token)
-    console.log('payload', user)
+
     this.apiHost.getMyStudentsClass(token, user)
       .subscribe((response: any) => {
         this.classExist = true;
+        const { body } = response;
+        this.classList = body;
+        this.activeClass = this.classList[0];
         console.log(response)
       }, (error: any) => {
         console.log(error)

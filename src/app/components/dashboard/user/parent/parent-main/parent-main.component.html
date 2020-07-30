@@ -181,15 +181,15 @@
                                     </thead>
                                     <tbody>
 
-                                        <tr class="view-answer" class="hover-student-answer">
+                                        <tr *ngFor="let class of classList" class="view-answer" class="hover-student-answer">
                                             <td class="right-score">
-                                                Class Name #1
+                                               {{class.className}}
                                             </td>
                                             <td>
-                                                Subject #1
+                                                {{class.classSubject}}
                                             </td>
                                         </tr>
-
+<!-- 
                                         <tr class="view-answer" class="hover-student-answer">
                                             <td class="right-score selected">
                                                 Class Name #2
@@ -206,7 +206,7 @@
                                             <td>
                                                 Subject #3
                                             </td>
-                                        </tr>
+                                        </tr> -->
 
                                     </tbody>
                                 </table>
@@ -227,8 +227,7 @@
                                         <div class="col-md-12">
                                             <!-- <p *ngIf="workDetails"> -->
                                             <strong
-                                                style="font-size: 20px; color: #272652; text-transform: uppercase;">Class
-                                                Name #2</strong>
+                                                style="font-size: 20px; color: #272652; text-transform: uppercase;">{{activeClass.className}}</strong>
                                             <br />
                                             <hr>
                                             <strong>Class Description: </strong>
@@ -240,7 +239,11 @@
                                             </p>
                                             <strong>Subject: </strong>
                                             <p>
-                                                This is the Class Subject
+                                                {{activeClass.classSubject}}
+                                            </p>
+                                            <strong>Grade: </strong>
+                                            <p>
+                                                {{activeClass.gradeLevel}}
                                             </p>
                                             <strong>Status: </strong>
                                             <p>
@@ -257,7 +260,7 @@
                                             <br />
                                             <div>
                                                 <!-- disabled -->
-                                                <a class="review-classwork" style="float:left;">
+                                                <a [routerLink]="['/user/p/classroom']" class="review-classwork" style="float:left;">
                                                     <i class="fa fa-check add-reminder btn "
                                                         style="background: #CD3132 !important; color: #ffffff !important"
                                                         aria-hidden="true">

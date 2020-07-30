@@ -38,6 +38,9 @@ import { TeacherStaffTabComponent } from "./components/dashboard/user/room-detai
 import { ParentComponent } from "./components/dashboard/user/parent/parent.component";
 import { ParentMainComponent } from "./components/dashboard/user/parent/parent-main/parent-main.component";
 import { NewStudentComponent } from "./components/dashboard/user/parent/parent-main/new-student/new-student.component";
+import { ParentSideComponent } from "./components/dashboard/user/room-details/parent-side/parent-side.component";
+import { ParentHomeComponent } from "./components/dashboard/user/room-details/parent-side/parent-home/parent-home.component";
+
 
 import { AssignWorkComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-work.component";
 import { AssignLessonsComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-lessons/assign-lessons.component";
@@ -135,6 +138,21 @@ const routes: Routes = [
           {
             path: "main",
             component: ParentMainComponent,
+          },
+          {
+            path: "classroom",
+            component: ParentSideComponent,
+            children: [
+              {
+                path: "",
+                redirectTo: "home",
+                pathMatch: "full"
+              },
+              {
+                path: "home",
+                component: ParentHomeComponent,
+              },
+            ],
           },
           {
             path: "add-student",
