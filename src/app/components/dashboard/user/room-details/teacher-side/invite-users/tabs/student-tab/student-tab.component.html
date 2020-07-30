@@ -51,16 +51,15 @@
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
-                    <input type="search" placeholder="Type a username" class="search-students"
+                <div class="modal-body" style="display: inline-flex; width: 100%;">
+                    <input type="search" placeholder="Type a username" class="search-students" style="width: 100%;"
                         formControlName="username" list="mylist">
                     <datalist id="mylist">
                         <option *ngFor="let students of student" value="{{students.username}}">
                     </datalist>
-
+                    <button class="btn btn-primary" style="width: 200px; margin-left: 10px;">Send Invite</button>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary">Send Invite</button>
                 </div>
             </form>
 
