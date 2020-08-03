@@ -17,7 +17,7 @@ declare var jQuery: any;
 })
 export class StudentTabComponent implements OnInit {
   public inviteForm: FormGroup;
-
+  teacherSearchText: any;
   userData: any;
   classDetails: any;
   showSpinner: boolean = true;
@@ -133,14 +133,14 @@ export class StudentTabComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    const { value } = this.inviteForm;
+  inviteStudent(data) {
+    
     const { token } = this.userData;
     const { rid } = this.classDetails;
     const payload = {
       token: token,
       classID: rid,
-      user: value.username
+      user: data.username
 
     }
     this.error = false;
@@ -151,7 +151,7 @@ export class StudentTabComponent implements OnInit {
         // this.getStudents(this.userData);
         this.showSuccess(); // show toastr
         jQuery('#myModal').modal('hide'); //close modal after submit
-      }, (error:any) => {
+      }, (error: any) => {
         console.log(error)
         this.showSpinner = false;
         this.showFailed()
