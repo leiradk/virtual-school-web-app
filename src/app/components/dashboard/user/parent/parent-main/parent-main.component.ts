@@ -9,7 +9,11 @@ import { SystemUtils } from '../../../../../services/system.utils';
 export class ParentMainComponent implements OnInit {
 
 
+  classWork: any;
+
   showSpinner: boolean = true;
+  showSpinnerClass: boolean = true;
+  notFound: boolean = false;
 
   userData: any;
   emptyErrorMessage: any;
@@ -29,6 +33,15 @@ export class ParentMainComponent implements OnInit {
     this.showSpinner = true;
     this.userData = this.system.retrieveItem('userData');
     this.getStudentInfo();
+  }
+
+  
+  classWorkStyle(value: any) {
+    if (value % 2 == 0) {
+      return 'reminder-butt2'
+    } else {
+      return 'reminder-butt1'
+    }
   }
 
   getStudentInfo() {
@@ -58,17 +71,22 @@ export class ParentMainComponent implements OnInit {
 
   getStudentClass(token, user) {
 
+    this.showSpinnerClass = true;
     this.apiHost.getMyStudentsClass(token, user)
       .subscribe((response: any) => {
         this.classExist = true;
         const { body } = response;
         this.classList = body;
         this.activeClass = this.classList[0];
-        console.log(response)
+        this.notFound = false;
+        this.showSpinnerClass = false;
+        console.log(response);
       }, (error: any) => {
         console.log(error)
         const { status } = error;
         this.classExist = false;
+        this.notFound = true;
+        this.showSpinnerClass = false;
       });
 
   }

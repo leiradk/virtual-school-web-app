@@ -5,15 +5,13 @@
             <div class="new-body" style="padding: 20px;">
                 <div class="classwork-title">
                     <i class="fa fa-book" aria-hidden="true"></i> Student List
-                    <a [routerLink]="['/user/p/add-student']" *ngIf="!showSpinner && !errorStatus"
-                        class="add-classwork">
+                    <a [routerLink]="['/user/p/add-student']" *ngIf="!showSpinner && !errorStatus" class="add-classwork">
                         <i class="fa fa-plus add-reminder" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
             <div>
-                <div class="col align-items-center"
-                    style="background: #ffffff !important; padding-top: 15px; overflow-y: scroll; height: 77.5vh;">
+                <div class="col align-items-center" style="background: #ffffff !important; padding-top: 15px; overflow-y: scroll; height: 77.5vh;">
                     <!-- <div class="col" *ngIf="showSpinner">
                     <app-loading-spinner></app-loading-spinner>
                 </div> -->
@@ -24,131 +22,48 @@
 
                     <div *ngIf="errorStatus" class="classwork-container">
                         <div>
-                            <h6
-                                style="text-align: center;cursor: pointer;padding: 20px 5px;font-size: 25px;font-weight: 700;color: #888;">
+                            <h6 style="text-align: center;cursor: pointer;padding: 20px 5px;font-size: 25px;font-weight: 700;color: #888;">
                                 Opps! Looks like you haven't added a student yet.</h6>
                         </div>
 
                         <!-- SEND THIS TO ADD NEW STUDENT COMPONENT -->
                         <div class="reminder-butt1">
-                            <a [routerLink]="['/user/p/add-student']" class="d-block card-header py-3 collapsed"
-                                style="cursor: pointer;" role="button" aria-expanded="false"
-                                aria-controls="collapseCardExample">
-                                <h6 class="m-0 font-weight-bold text-primary work-title"
-                                    style="text-align: center; cursor: pointer;">Add Student Now</h6>
+                            <a [routerLink]="['/user/p/add-student']" class="d-block card-header py-3 collapsed" style="cursor: pointer;" role="button" aria-expanded="false" aria-controls="collapseCardExample">
+                                <h6 class="m-0 font-weight-bold text-primary work-title" style="text-align: center; cursor: pointer;">Add Student Now</h6>
                             </a>
                         </div>
                     </div>
-
-
 
                     <!-- IF STUDENTS FOUND -->
-
-                    <!-- <div *ngIf="!errorStatus" class="classwork-container"> -->
-                    <!-- <div class="col" *ngIf="error"> -->
-                    <!-- <p class="no-classwork">No Student added</p> -->
-
-                    <!-- Student #1 of this parent -->
-                    <!--  -->
-                    <div *ngIf="!showSpinner && !errorStatus" class="classwork-container">
-                        <div *ngFor="let student of myStudent" class="selected-work reminder-butt1"
-                            (click)="checkRoom(student)">
-                            <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
-                                aria-controls="collapseCardExample">
-                                <h6 class="m-0 font-weight-bold text-primary work-title">
-                                    <span class="stude-name">{{student.firstname}} {{student.middlename}} {{student.lastname}}</span>
-                                    <div class="reminder-details">
-                                        <span>Grade 12</span>
-                                        <p>Active</p>
-                                    </div>
-                                </h6>
-                            </a>
+                    <div *ngIf="!showSpinner && !errorStatus">
+                        <div *ngFor="let student of myStudent;  let i = index" (click)="checkRoom(student)" class="classwork-container">
+                            <div [className]="classWorkStyle(i)">
+                                <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false" aria-controls="collapseCardExample">
+                                    <h6 class="m-0 font-weight-bold text-primary work-title">
+                                        <span class="stude-name">{{student.firstname}} {{student.middlename}} {{student.lastname}}</span>
+                                        <div class="reminder-details">
+                                            <span>Grade 12</span>
+                                            <p>Active</p>
+                                        </div>
+                                    </h6>
+                                </a>
+                            </div>
                         </div>
                     </div>
-
-
-                    <!-- Student #2 of this parent -->
-                    <!-- <div class="reminder-butt1">
-                            <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
-                                aria-controls="collapseCardExample">
-                                <h6 class="m-0 font-weight-bold text-primary work-title">Wilver Deypalubos
-                                    <div class="reminder-details">
-                                        <span>Grade 11</span>
-                                        <p>Active</p>
-                                    </div>
-                                </h6>
-                            </a>
-                        </div> -->
-
-                    <!-- Student #3 of this parent -->
-                    <!-- <div class="reminder-butt2">
-                            <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
-                                aria-controls="collapseCardExample">
-                                <h6 class="m-0 font-weight-bold text-primary work-title">Blythe Lobrigas
-                                    <div class="reminder-details">
-                                        <span>Grade 11</span>
-                                        <p>Active</p>
-                                    </div>
-                                </h6>
-                            </a>
-                        </div> -->
-
-                    <!-- Student #4 of this parent -->
-                    <!-- <div class="reminder-butt1">
-                            <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
-                                aria-controls="collapseCardExample">
-                                <h6 class="m-0 font-weight-bold text-primary work-title">Ariel Delos Santos
-                                    <div class="reminder-details">
-                                        <span>Grade 12</span>
-                                        <p>Active</p>
-                                    </div>
-                                </h6>
-                            </a>
-                        </div> -->
-
-
-                    <!-- <p class="no-classwork">{{errorMessage}}</p> -->
-                    <!-- </div> -->
-
-
-
-
-                    <!-- <div *ngFor="let work of classWork; let i = index" class="classwork-container"> -->
-
-                    <!-- Display notification for events here -->
-                    <!-- Event # 1 -->
-                    <!-- class="reminder-butt1" -->
-                    <!-- (click)="viewAnswer = false" -->
-                    <!-- <div *ngIf="!showSpinner" [className]="classWorkStyle(i)" -->
-                    <!-- [ngClass]="{'selected-work' : activeClass === work.title}"> -->
-                    <!-- (click)="isCollapsed[i] = !isCollapsed[i]"  data-toggle="collapse"  -->
-                    <!-- <a (click)="viewClasswork(work)" class="d-block card-header py-3 collapsed" role="button" -->
-                    <!-- aria-expanded="false" aria-controls="collapseCardExample"> -->
-                    <!-- <h6 class="m-0 font-weight-bold text-primary work-title">{{work.title}} -->
-                    <!-- {{getDate(dueDate)}} -->
-                    <!-- <div class="reminder-details"> -->
-                    <!-- <span>{{getDate(work.dueDate)}}</span> -->
-                    <!-- <p>Due Date</p> -->
-                    <!-- </div> -->
-                    <!-- </h6> -->
-                    <!-- </a> -->
-                    <!-- </div> -->
-                    <!-- </div> -->
-                    <!-- <div *ngIf="teacherAccount" class="view ctr"> -->
-                    <!-- <p>
-                        <a [routerLink]="['/teacher/class-details/class-work/quizzes']" class="btn btn-primary btn-rounded modal-buttons" data-toggle="modal" data-target="#myModalClasswork">
-                            Quizzes
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                        </a>
-                    </p> -->
-                    <!-- </div> -->
                 </div>
             </div>
         </div>
     </div>
 
-    <div *ngIf="classExist" class="card column col-xl-8 col-md-8 mb-8 classwork-list"
-        style="padding-left: 20px !important; float: right;">
+    <div *ngIf="notFound && !showSpinnerClass" class="card column col-xl-8 col-md-8 mb-8 classwork-list" style="padding-left: 20px !important; float: right;">
+        <div style="height: 100%;width: 50%;top: 50%;text-align: center;position: fixed;font-size: 40px;font-weight: 700;
+        color: rgba(33,37,41,.28);font-family: 'Barlow Semi Condensed',sans-serif;line-height: 40px;letter-spacing: -2px;">No class found</div>
+    </div>
+    <div *ngIf="showSpinnerClass" class="card column col-xl-8 col-md-8 mb-8 classwork-list" style="padding-left: 20px !important;">
+        <app-loading-spinner style="height: 100%;width: 100%;top: 50%;text-align: center;position: fixed;"></app-loading-spinner>
+    </div>
+
+    <div *ngIf="classExist && !showSpinnerClass" class="card column col-xl-8 col-md-8 mb-8 classwork-list" style="padding-left: 20px !important;float: right;">
         <!-- <div *ngIf="!showSpinner && error"
         style="width: 100%;text-align: center;border: none;height: 100vh; font-size: 30px;color: #777777;"
         class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
@@ -166,12 +81,10 @@
                 No Class joined yet
             </div> -->
             <div>
-                <div class="col align-items-center"
-                    style="background: #ffffff !important; padding-top: 15px; padding-right: 0px; padding-bottom: 15px; height: 77.5vh;">
+                <div class="col align-items-center" style="background: #ffffff !important; padding-top: 15px; padding-right: 0px; padding-bottom: 15px; height: 77.5vh;">
                     <div style="height: 100%; display: flex">
 
-                        <div class="col col-md-4"
-                            style="height: 100%; border-right: 1px #bbbbbb solid; overflow-y: auto;">
+                        <div class="col col-md-4" style="height: 100%; border-right: 1px #bbbbbb solid; overflow-y: auto;">
                             <div class="student-details">
                                 <table class="table table-sm table-middle">
                                     <thead>
@@ -183,13 +96,13 @@
 
                                         <tr *ngFor="let class of classList" class="view-answer" class="hover-student-answer">
                                             <td class="right-score">
-                                               {{class.className}}
+                                                {{class.className}}
                                             </td>
                                             <td>
                                                 {{class.classSubject}}
                                             </td>
                                         </tr>
-<!-- 
+                                        <!-- 
                                         <tr class="view-answer" class="hover-student-answer">
                                             <td class="right-score selected">
                                                 Class Name #2
@@ -226,16 +139,13 @@
                                     <div class="row" style="padding-top: 20px">
                                         <div class="col-md-12">
                                             <!-- <p *ngIf="workDetails"> -->
-                                            <strong
-                                                style="font-size: 20px; color: #272652; text-transform: uppercase;">{{activeClass.className}}</strong>
+                                            <strong style="font-size: 20px; color: #272652; text-transform: uppercase;">{{activeClass.className}}</strong>
                                             <br />
                                             <hr>
                                             <strong>Class Description: </strong>
                                             <br />
                                             <p class="instructions-text">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a
-                                                volutpat mauris, at molestie lacus. Nam vestibulum sodales odio ut
-                                                pulvinar.
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a volutpat mauris, at molestie lacus. Nam vestibulum sodales odio ut pulvinar.
                                             </p>
                                             <strong>Subject: </strong>
                                             <p>
@@ -261,9 +171,7 @@
                                             <div>
                                                 <!-- disabled -->
                                                 <a [routerLink]="['/user/p/classroom']" class="review-classwork" style="float:left;">
-                                                    <i class="fa fa-check add-reminder btn "
-                                                        style="background: #CD3132 !important; color: #ffffff !important"
-                                                        aria-hidden="true">
+                                                    <i class="fa fa-check add-reminder btn " style="background: #CD3132 !important; color: #ffffff !important" aria-hidden="true">
                                                         <span> View Classworks </span>
                                                     </i>
                                                 </a>
@@ -284,3 +192,4 @@
             <!-- </div> -->
         </div>
     </div>
+</div>
