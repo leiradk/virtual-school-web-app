@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiHostService } from '../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../services/system.utils';
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-parent-main',
   templateUrl: './parent-main.component.html',
@@ -26,7 +27,8 @@ export class ParentMainComponent implements OnInit {
   activeClass: any;
   constructor(
     private apiHost: ApiHostService,
-    private system: SystemUtils
+    private system: SystemUtils,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,7 +37,7 @@ export class ParentMainComponent implements OnInit {
     this.getStudentInfo();
   }
 
-  
+
   classWorkStyle(value: any) {
     if (value % 2 == 0) {
       return 'reminder-butt2'
@@ -54,6 +56,7 @@ export class ParentMainComponent implements OnInit {
         console.log(response)
         const { body } = response
         this.myStudent = body;
+        this.system.storeLocal('studentData', body[0]);
         this.getStudentClass(token, body[0].email)
         console.log(this.myStudent)
       }, (error: any) => {
@@ -96,6 +99,15 @@ export class ParentMainComponent implements OnInit {
 
     console.log(data)
     this.getStudentClass(token, data.email)
+    this.system.storeLocal('studentData', data);
+  }
+
+  getClassroom(data) {
+    console.log(data)
+    this.system.storeLocal('classData', data);
+
+
+    this.router.navigate(['/user/p/classroom']);
 
   }
 

@@ -81,3 +81,27 @@
     color: #ffffff !important;
     background-color: #41ace2 !important;
 }
+
+.table-footer {
+    display: flex;
+    flex-direction: row;
+    .body-date,
+    .body-status {
+        flex: 1;
+    }
+    .body-name {
+        flex: 3;
+        color: #272652 !important;
+        font-weight: 600;
+    }
+    .body-content {
+        color: #222222;
+        font-size: 15px;
+        padding: 1rem;
+        background: #ffffff;
+        text-transform: capitalize;
+        border: 1px solid #cccccc;
+        border-top: none !important;
+        vertical-align: middle;
+    }
+}

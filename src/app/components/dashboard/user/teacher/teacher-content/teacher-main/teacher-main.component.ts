@@ -45,7 +45,9 @@ export class TeacherMainComponent implements OnInit {
   showSuccess() {
     this.toastr.success('Class has been added successfully. Reloading data. Please wait.', 'Congratulations', { timeOut: 5000 })
   }
-
+  showFailed() {
+    this.toastr.error('Failed to add class. Please try again.', 'Failed', { timeOut: 5000 })
+  }
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
     this.getClassroom(this.userData);
@@ -100,18 +102,20 @@ export class TeacherMainComponent implements OnInit {
 
     this.showSpinner = true;
 
-    setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
     this.addClassFOrm.reset(); //reset form
 
     this.apiService.addClass(payload)
       .subscribe((response: any) => {
         const { status } = response;
         if (status === 201) {
+          setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
           this.ngOnInit();
         } else {
         }
       }, (error: any) => {
         console.log(error);
+        setTimeout(() => { this.showFailed(); }, 1000); //add toast message
+
       });
   }
 

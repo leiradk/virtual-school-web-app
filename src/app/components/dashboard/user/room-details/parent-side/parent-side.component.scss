@@ -1,0 +1,52 @@
+.class-details {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 77vw;
+}
+
+li.nav-item {
+    width: 25%;
+}
+
+.navigate-bar {
+    display: flex;
+    border: none;
+    background: rgb(65, 172, 226) !important;
+    padding-top: 15px;
+    padding-left: 15px;
+    .nav-item {
+        margin-right: 2px;
+    }
+    button {
+        cursor: pointer;
+        border: none;
+        /* color: white; */
+        color: white;
+        padding: 10px;
+        background: #61b5e1;
+        padding: 10px 80px;
+    }
+    button:hover {
+        background: rgb(255, 255, 255, 0.5);
+        transition: ease 0.3s;
+        color: #1f1d42 !important;
+    }
+    .active {
+        color: #1f1d42 !important;
+        font-weight: bold;
+        background-color: #dddddd !important;
+    }
+}
+
+.breadcrumb-item.active {
+    font-weight: 600 !important;
+}
+
+.breadcrumb-item {
+    a {
+        cursor: pointer;
+    }
+    a:hover {
+        color: #2e4c8b;
+    }
+}

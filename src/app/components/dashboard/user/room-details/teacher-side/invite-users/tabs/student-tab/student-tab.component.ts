@@ -134,15 +134,16 @@ export class StudentTabComponent implements OnInit {
   }
 
   inviteStudent(data) {
-    
+
     const { token } = this.userData;
     const { rid } = this.classDetails;
     const payload = {
       token: token,
       classID: rid,
-      user: data.username
+      user: data.email
 
     }
+    console.log('payload', payload)
     this.error = false;
     this.showSpinner = true;
     this.apiService.sendClassInvites(payload)

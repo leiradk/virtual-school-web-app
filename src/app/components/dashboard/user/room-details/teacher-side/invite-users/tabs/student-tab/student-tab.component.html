@@ -28,11 +28,12 @@
                     <img class="center-img"> {{invites.inviteStatus}}
                 </div>
             </div>
-            <div class="table-body-content">
-                <div class="body-status body-content invite-button">
-                    <div class="center-img invite-student" data-toggle="modal" data-target="#invitePeople">Invite
-                        Student</div>
-                </div>
+
+        </div>
+        <div class="table-footer">
+            <div class="body-status body-content invite-button">
+                <div class="center-img invite-student" data-toggle="modal" data-target="#invitePeople">Invite
+                    Student</div>
             </div>
         </div>
     </div>
@@ -73,9 +74,17 @@
                         <th class="tbl-large-head">{{students.firstname}}</th>
                         <th class="tbl-large-head">{{students.email}}</th>
                         <th class="tbl-large-head"> <button class="btn btn-primary"
-                                style="width: 200px; margin-left: 10px;" (click)="inviteStudent(students)">Search</button></th>
+                                style="width: 200px; margin-left: 10px;"
+                                (click)="inviteStudent(students)">Invite</button></th>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th class="tbl-large-head">Name</th>
+                        <th class="tbl-large-head">Email</th>
+                        <th class="tbl-large-head">Action</th>
+                    </tr>
+                </tfoot>
             </table>
             <div class="modal-footer">
             </div>
