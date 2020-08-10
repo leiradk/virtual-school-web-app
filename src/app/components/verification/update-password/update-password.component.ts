@@ -21,6 +21,7 @@ export class UpdatePasswordComponent implements OnInit {
   matchPW: boolean = false;
   errorMessage: any;
   errorStatus: boolean = false;
+  showSpinner: boolean = false;
   constructor(
     private apiHost: ApiHostService,
     private fb: FormBuilder,
@@ -39,6 +40,7 @@ export class UpdatePasswordComponent implements OnInit {
       this.router.navigate(['verify/update-profile']);
     }
   }
+
   updatePassword() {
     this.updatePasswordForm = this.fb.group({
       verifyPassword: [null, Validators.required],
@@ -52,7 +54,7 @@ export class UpdatePasswordComponent implements OnInit {
     const password = this.updatePasswordForm.value.password;
     const verifyPassword = this.updatePasswordForm.value.verifyPassword;
     const oldpassword = this.updatePasswordForm.value.oldpassword;
-
+    this.showSpinner = true;
 
     if (password === verifyPassword) {
       const payload = {
@@ -66,9 +68,10 @@ export class UpdatePasswordComponent implements OnInit {
         .subscribe((response: any) => {
           console.log(response)
           this.router.navigate(['login']);
+          this.showSpinner = false;
         }, (error: any) => {
           console.log(error)
-
+          this.showSpinner = false;
           this.errorStatus = true;
           this.errorMessage = 'Something Went Wrong';
           setTimeout(() => {
@@ -84,6 +87,4 @@ export class UpdatePasswordComponent implements OnInit {
     }
 
   }
-
-
 }

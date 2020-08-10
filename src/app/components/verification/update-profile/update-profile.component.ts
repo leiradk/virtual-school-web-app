@@ -19,6 +19,10 @@ export class UpdateProfileComponent implements OnInit {
   public updateProfileForm: FormGroup;
   userData: any;
   getProfileData: boolean = false;
+
+  showSpinner: boolean = false;
+
+
   constructor(
     private apiHost: ApiHostService,
     private fb: FormBuilder,
@@ -31,9 +35,9 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.showSpinner = true;
     this.userData = this.system.retrieveItem('userData');
     this.getProfile();
-
   }
   // updateProfile() {
 
@@ -49,9 +53,8 @@ export class UpdateProfileComponent implements OnInit {
   // }
 
   updateProfile(user) {
-    const { userProfile} = user.body;
+    const { userProfile } = user.body;
     console.log(userProfile)
-
     this.updateProfileForm = this.fb.group({
       firstname: [userProfile[0].firstname, Validators.required],
       middlename: [userProfile[0].middlename, Validators.required],
@@ -88,12 +91,14 @@ export class UpdateProfileComponent implements OnInit {
         console.log(response)
         this.getProfileData = true;
         this.updateProfile(response);
+        this.showSpinner = false;
       }, (error: any) => {
         console.log(error)
-
+        this.showSpinner = false;
       })
   }
   onSubmit() {
+    this.showSpinner = true;
     const { token } = this.userData;
     console.log(this.updateProfileForm)
     const payload = {
@@ -108,13 +113,15 @@ export class UpdateProfileComponent implements OnInit {
     console.log(payload);
     // this.router.navigate(['verify/add-student']);
 
-      this.apiHost.updateParentProfile(payload)
-        .subscribe((response: any) => {
-          console.log(response)
-          this.router.navigate(['verify/add-student']);
-        }, (error: any) => {
-          console.log(error)
+    this.apiHost.updateParentProfile(payload)
+      .subscribe((response: any) => {
+        console.log(response)
+        this.showSpinner = false;
+        this.router.navigate(['verify/add-student']);
+      }, (error: any) => {
+        console.log(error)
+        this.showSpinner = false;
 
-        })
+      })
   }
 }

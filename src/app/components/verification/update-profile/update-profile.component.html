@@ -21,7 +21,8 @@
         <h1>VERIFY DETAILS</h1>
         <!--  -->
         <p class="subtitle">We've already added some of your details but we would like you to verify it.</p>
-        <form  *ngIf="getProfileData && updateProfileForm" [formGroup]="updateProfileForm" (ngSubmit)="onSubmit()">
+
+        <form *ngIf="getProfileData && updateProfileForm" [formGroup]="updateProfileForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <input type="text" placeholder="First Name" class="form-control" formControlName="firstname" />
             </div>
@@ -45,10 +46,13 @@
                 <br />
                 <span style="font-weight: bold;">Terms of Service</span> and <span style="font-weight: bold;">Privacy
                     Policy</span></p>
-                    <!-- [routerLink]="['/verify/add-student']" -->
-            <button >SAVE CHANGES</button>
+            <!-- [routerLink]="['/verify/add-student']" -->
 
+            <button>SAVE CHANGES</button>
         </form>
 
+        <div *ngIf="showSpinner">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
     </div>
 </div>
