@@ -35,7 +35,7 @@ export class ParentSideComponent implements OnInit {
       }, (error: any) => {
         console.log(error)
       })
-
+    this.cwActive = 'active';
     this.getActiveClass();
 
   }
