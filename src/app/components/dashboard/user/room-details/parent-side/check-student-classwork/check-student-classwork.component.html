@@ -1,1 +1,96 @@
-<p>check-student-classwork works!</p>
+<div class="card col-xl-4 col-md-4 mb-4 classwork-list" style="float:left; position:absolute">
+    <div class="reminders">
+        <div class="new-body" style="padding: 20px;">
+            <div class="classwork-title">
+                <i class="fa fa-book" aria-hidden="true"></i> Classworks
+                <a class="add-classwork" data-toggle="modal" data-target="#addClasswork">
+                    <i class="fa fa-plus add-reminder" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+        <div>
+            <div class="col align-items-center" style="background: #ffffff !important; padding-top: 15px; overflow-y: scroll; height: 63.5vh;">
+                <!-- <div class="col" >
+                    <app-loading-spinner></app-loading-spinner>
+                </div> -->
+                <div class="classwork-container">
+                    <div class="selected-work reminder-butt1">
+                        <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false" aria-controls="collapseCardExample">
+                            <h6 class="m-0 font-weight-bold text-primary work-title">Classwork Title
+                                <!-- {{getDate(dueDate)}} -->
+                                <div class="reminder-details">
+                                    <span>October 12, 2014</span>
+                                    <p>Due Date</p>
+                                </div>
+                            </h6>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card column col-xl-8 col-md-8 mb-8 classwork-list" style="padding-left: 20px !important; float: right;">
+    <!-- <div *ngIf="!showSpinner && error" style="width: 100%;text-align: center;border: none;height: 100vh; font-size: 30px;color: #777777;" class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
+        Something went wrong! Please reload your browser.
+    </div> -->
+    <div class="reminders">
+        <div class="new-body2" style="padding: 20px; height: 70px;">
+            <div class="classwork-title" style="display: inline-flex;">
+                This is the classwork Title
+
+                <!-- Download files from teacher -->
+                <!-- <a (click)="download(workData.attachment, workData.attachmentFilename)" -->
+                <!-- <a class="btn btn-primary btn-block btn-rounded">
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                    <br> Download Files</a> -->
+            </div>
+        </div>
+        <div>
+            <div class="col align-items-center" style="background: #ffffff !important; padding-top: 15px; padding-right: 0px; padding-bottom: 15px; height: 63.5vh;">
+                <div style="height: 100%;">
+                    <div class="layout-content" data-scrollable>
+                        <div class="container-fluid class-review">
+                            <div class="row" style="padding-top: 20px">
+                                <div class="col-md-12">
+                                    <!-- *ngIf="viewAnswer" -->
+                                    <p>Download Attachments for Classwork: <a class="btn btn-sm btn-primary">download</a></p>
+                                    <strong>Classwork Description: </strong>
+                                    <br />
+                                    <p class="instructions-text">
+                                        <!-- {{viewClassWork.instruction}} -->
+                                        This is the classwork description, please insert description here
+                                    </p>
+                                    <hr />
+
+                                    <div class="container-fluid">
+                                        <!-- <form [formGroup]="submitWorkForm" (ngSubmit)="onSubmit()"> -->
+                                        <div class="row" style="display: inline;">
+                                            <div class="full-width">
+                                                <p class="instruction">
+                                                    <strong>Instruction:</strong> This is where the instructions are being laid
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="container-fluid">
+                                        <!-- <form [formGroup]="submitWorkForm" (ngSubmit)="onSubmit()"> -->
+                                        <div class="row" style="display: inline;">
+                                            <div class="full-width">
+                                                <p class="instruction">
+                                                    <strong>Score:</strong> This classwork is not graded yet.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

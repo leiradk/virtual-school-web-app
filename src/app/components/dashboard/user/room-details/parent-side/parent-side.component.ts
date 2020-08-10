@@ -44,6 +44,7 @@ export class ParentSideComponent implements OnInit {
     setTimeout(() => {
       this.getUrl = window.location.href;
       const page = this.getUrl.split('/');
+      console.log(page)
       if (page[6] === 'home' || page[7] === 'home') {
         this.homeActive = 'active';
         this.cwActive = 'not-active';
@@ -56,12 +57,12 @@ export class ParentSideComponent implements OnInit {
         this.peopleActive = 'not-active';
         this.gradesActive = 'not-active';
         this.breadcrumbAdd = 'Classwork';
-      } else if (page[6] === 'people' || page[7] === 'people') {
+      } else if (page[6] === 'grades' || page[7] === 'grades') {
         this.homeActive = 'not-active';
         this.cwActive = 'not-active';
-        this.peopleActive = 'active';
-        this.gradesActive = 'not-active';
-        this.breadcrumbAdd = 'People';
+        this.peopleActive = 'not-active';
+        this.gradesActive = 'active';
+        this.breadcrumbAdd = 'Grades';
       }
     });
 

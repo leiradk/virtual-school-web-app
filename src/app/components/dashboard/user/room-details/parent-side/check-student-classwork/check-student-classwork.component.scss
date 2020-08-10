@@ -1,0 +1,710 @@
+.create-work {
+    border: none;
+    background: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.container-fluid {
+    margin-top: 20px;
+}
+
+.classwork {
+    display: flex;
+    .left {
+        flex: 1;
+        margin: 5px;
+        margin: 0px 15px 0 0px;
+        .task-list {
+            display: flex;
+            div {
+                flex: 1;
+                font-weight: bold;
+                &.task-view {
+                    text-align: right;
+                }
+            }
+        }
+    }
+    .center {
+        flex: 2;
+        margin: 0px 15px 0 15px;
+        .card-title {
+            div {
+                flex: 1;
+                &.view-details {
+                    text-align: right;
+                }
+            }
+        }
+        .card-body {
+            .tasked-student {
+                display: flex;
+                text-align: center;
+                .submitted-task {
+                    flex: 1;
+                    .submit-count {
+                        font-weight: bold;
+                        font-size: 30px;
+                    }
+                    .footer-title {
+                        font-weight: bold;
+                        font-size: 25px;
+                    }
+                }
+                .student-assigned {
+                    flex: 1;
+                    .student-count {
+                        font-weight: bold;
+                        font-size: 30px;
+                    }
+                    .footer-title {
+                        font-weight: bold;
+                        font-size: 25px;
+                    }
+                }
+            }
+        }
+    }
+    .right {
+        flex: 1;
+        margin: 0px 0px 0 15px;
+    }
+}
+
+.list-classwork {
+    border: none !important;
+    margin-top: -20px !important;
+    height: 100% !important;
+    padding-bottom: 1 0px !important;
+}
+
+.list-classwork.card-body {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+.basic-info-title {
+    font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgb(78, 115, 223);
+}
+
+.vl {
+    border-left: 1px solid rgba(0, 0, 0, 0.125);
+    top: 0;
+}
+
+.card-title {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    display: flex;
+    padding: 10px;
+    font-weight: bold;
+    font-weight: 20px;
+    background-color: #4e73df !important;
+    color: white;
+}
+
+.show {
+    display: block !important;
+}
+
+.subject-title {
+    font-size: 20px;
+    text-align: left !important;
+}
+
+.reminders {
+    border: 1px solid #dddfe2;
+    transition: 0.3s;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.view {
+    text-align: right;
+    padding-top: 15px;
+}
+
+.view:hover {
+    color: #5c647e;
+}
+
+.fas {
+    float: right;
+}
+
+.btn.active.focus {
+    outline: none !important;
+    color: #dddfe2 !important;
+    box-shadow: none !important;
+}
+
+.badge1.active.focus {
+    background-color: #2196f3 !important;
+}
+
+.badge2.active.focus {
+    background-color: #f44336 !important;
+}
+
+.badge3.active.focus {
+    background-color: #66bb6a !important;
+}
+
+.badge4.active.focus {
+    background-color: #ffa726 !important;
+}
+
+.badge5.active.focus {
+    background-color: #29b6f6 !important;
+}
+
+.badge1:hover {
+    background-color: #2196f3 !important;
+    color: #fff !important;
+}
+
+.badge2:hover {
+    background-color: #f44336 !important;
+    color: #fff !important;
+}
+
+.badge3:hover {
+    background-color: #66bb6a !important;
+    color: #fff !important;
+}
+
+.badge4:hover {
+    background-color: #ffa726 !important;
+    color: #fff !important;
+}
+
+.badge5:hover {
+    background-color: #29b6f6 !important;
+    color: #fff !important;
+}
+
+.lesson-title {
+    background-color: #fff !important;
+    font-weight: 700 !important;
+}
+
+.media {
+    display: block;
+}
+
+// .sticky {
+//     position: fixed;
+//     top: 30px;
+//     width: 25%;
+// }
+.empty-work {
+    color: #999;
+    opacity: 1;
+    text-align: center;
+    padding: 30px 0 15px 0px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.work-file {
+    display: none;
+}
+
+.modal-buttons {
+    margin: 10px;
+}
+
+.date-container {
+    display: flex;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #eceeef;
+    border-radius: 0.25rem;
+    .input-group-container {
+        width: 90%;
+        .input-group-container {
+            width: 90%;
+            .date-picker {
+                font-size: 200px;
+            }
+        }
+        .input-group-append {
+            width: 10%;
+            text-align: center;
+            /* align-items: center; */
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+        }
+    }
+}
+
+// .date-container:focus {
+//     outline: none;
+// }
+.fa-calendar {
+    font-size: 25px;
+}
+
+.date-picker {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: none !important;
+}
+
+.btns-work {
+    // background: #141414dc !important;
+}
+
+.card-body {
+    margin-top: 0;
+    margin-bottom: 0p;
+    margin-bottom: 0px;
+    border-bottom: solid #aaa 1px;
+    span {
+        font-weight: 700;
+    }
+    .instructions {
+        color: #141414;
+        font-style: italic;
+    }
+}
+
+.ctr {
+    text-align: center;
+}
+
+.subject-title {
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 10px !important;
+    border-bottom: #1414147c solid 2px;
+    margin-bottom: 20px !important;
+}
+
+.no-classwork {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #e7dede;
+}
+
+.new-body {
+    background-color: #272652 !important;
+}
+
+.new-body2 {
+    background-color: #41ace2 !important;
+    .classwork-title {
+        color: #ffffff !important;
+    }
+}
+
+.review-classwork {
+    color: #ffffff !important;
+    .add-reminder {
+        span {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        border-radius: 0px !important;
+        background-color: #272652 !important;
+        border: none;
+        cursor: pointer;
+        padding: 15px !important;
+    }
+    .add-reminder:hover {
+        border: none !important;
+        background-color: #14142e !important;
+    }
+}
+
+.classwork-title {
+    font-size: 20px;
+    text-transform: uppercase !important;
+    color: #41ace2 !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    .add-classwork {
+        cursor: pointer;
+    }
+    .add-classwork:hover {
+        color: #ffffff !important;
+    }
+    .add-reminder {
+        float: right !important;
+        border: 1px #41ace2 solid;
+        border-radius: 50%;
+        padding: 10px;
+        margin-top: -10px;
+    }
+    .add-reminder:hover {
+        border: 1px #ffffff solid !important;
+    }
+}
+
+.disabled {
+    cursor: not-allowed !important;
+}
+
+.classwork-container {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    .selected-work {
+        .card-header {
+            background-image: linear-gradient(to right, #f17580, #f18873) !important;
+            cursor: default;
+        }
+    }
+    .reminder-butt2 {
+        .work-title {
+            color: #ffffff !important;
+        }
+        .card-header {
+            background: #41ace2;
+            border-radius: 0px;
+            padding: 25px 20px !important;
+        }
+        .card-header:hover {
+            font-size: 30px !important;
+        }
+        .card-header::after {
+            top: 10%;
+        }
+        .classwork-body {
+            background-color: #5cb8e840;
+            padding: 20px;
+        }
+    }
+    .reminder-butt1 {
+        .work-title {
+            color: #ffffff !important;
+        }
+        .card-header {
+            background-color: #61b5e1;
+            border-radius: 0px;
+            padding: 25px 20px !important;
+        }
+        .card-header:hover {
+            font-size: 30px !important;
+        }
+        .card-header::after {
+            top: 10%;
+        }
+        .classwork-body {
+            background-color: #5cb8e840;
+            padding: 20px;
+        }
+    }
+}
+
+.reminder-details {
+    padding-right: 15px;
+    margin-top: -7px;
+    float: right;
+    p {
+        font-size: 12px;
+        text-align: right;
+        padding-top: 3px;
+    }
+}
+
+.classwork-list {
+    padding: 0px !important;
+    border: none !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    box-shadow: none;
+}
+
+.classdetail {
+    background-color: #ffffff;
+    overflow-y: scroll;
+    height: 72vh !important;
+}
+
+.detail {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 20px 0px 20px 20px !important;
+}
+
+.student-details {
+    text-align: center !important;
+    .profile-img {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+    }
+    span {
+        display: inline-block;
+        width: 100%;
+    }
+    input {
+        display: inline-block;
+        width: 80%;
+    }
+    p {
+        display: inline;
+        font-size: 20px;
+        color: #444444;
+    }
+    .stude-holder {
+        font-size: 12px;
+        color: #444444;
+        margin-top: 0px;
+    }
+    .stude-name {
+        text-transform: capitalize !important;
+        line-height: 0px;
+        font-size: 20px;
+        margin-top: 30px;
+        font-weight: 600;
+    }
+    .stude-score {
+        margin-bottom: -10px;
+    }
+    pre {
+        font-size: 35px;
+        font-weight: bold;
+        color: #00ad85;
+    }
+}
+
+.breadcrumb {
+    font-size: 0.95rem;
+    padding: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+
+.breadcrumb,
+.media-body {
+    line-height: normal;
+}
+
+ol {
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.media {
+    display: block;
+}
+
+
+/* Button pointing left */
+
+.button.back-btn {
+    margin-top: 15px !important;
+    width: 140px;
+    height: 40px;
+    background: linear-gradient(to bottom, #4eb5e5 0%, #389ed5 100%);
+    border: none;
+    border-radius: 5px !important;
+    position: relative;
+    color: #fbfbfb !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+    text-align: right;
+    padding-right: 12px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.button.back-btn:after {
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+    border-top: 20px solid #187dbc;
+    border-bottom: 20px solid #187dbc;
+    border-right: 16px solid transparent;
+    border-left: 20px solid #187dbc;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 5px 0 0 5px;
+}
+
+button.back-btn:hover {
+    background: linear-gradient(to bottom, #f8b739 0%, #f8b739 100%) !important;
+}
+
+//Drag and drop file
+.dropzone {
+    width: 450px;
+    height: 200px;
+    padding: 2rem;
+    text-align: center;
+    border: dashed 1px #979797;
+    position: relative;
+    margin: 0 auto;
+    i {
+        font-size: 45px;
+        color: #333;
+        padding-bottom: 10px;
+        margin-top: -10px;
+    }
+    input {
+        opacity: 0;
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    label {
+        color: white;
+        width: 183px;
+        height: 44px;
+        border-radius: 21.5px;
+        background-color: #db202f;
+        padding: 8px 16px;
+    }
+    h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #38424c;
+    }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Dosis:700);
+body {
+    font-family: "Dosis", Helvetica, Arial, sans-serif;
+    background: #ecf0f1;
+    color: #34495e;
+    padding-top: 40px;
+    text-shadow: white 1px 1px 1px;
+}
+
+.value {
+    font-weight: bold;
+    font-size: 25px;
+    text-shadow: white 2px 2px 2px;
+}
+
+input[type="range"] {
+    display: block;
+    -webkit-appearance: none;
+    background-color: #bdc3c7;
+    height: 5px;
+    border-radius: 5px;
+    outline: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #e74c3c;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+​ input[type="range"]::-webkit-slider-thumb:hover {
+    background-color: white;
+    border: 2px solid #e74c3c;
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1.6);
+}
+
+.edit-score {
+    border: solid 1px;
+}
+
+.media-left,
+.media-right,
+.media-body {
+    display: table-cell;
+    vertical-align: middle !important;
+}
+
+.col-md-3 {
+    width: 25%;
+    padding-top: 3px;
+}
+
+.media-right {
+    padding-left: 0.5rem !important;
+}
+
+.stude-answer {
+    border: solid 1px #999;
+    padding-left: 5px;
+    border-radius: 5px;
+    height: 100px !important;
+    overflow-y: auto;
+}
+
+.class-review {
+    padding: 0px !important;
+    margin-top: -10px !important;
+    .page-heading {
+        margin: 0px;
+        .assigned-by {
+            font-size: 14px !important;
+        }
+        a {
+            padding-left: 10px;
+            font-size: 18px !important;
+        }
+    }
+}
+
+.instructions-text {
+    height: 80px !important;
+    overflow-y: auto;
+}
+
+.view-answer {
+    cursor: pointer;
+}
+
+.right-score {
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #41ace2 !important;
+}
+
+.hover-student-answer {
+    border-bottom: solid 0.5px #aaaaaa;
+    cursor: pointer !important;
+}
+
+.hover-student-answer:hover {
+    background-color: rgba(65, 172, 226, 0.2) !important;
+}
+
+.back-arrow {
+    color: #777777 !important;
+    float: left;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.back-arrow:hover {
+    color: #272652 !important;
+    transition: ease-in 0.2s;
+}
