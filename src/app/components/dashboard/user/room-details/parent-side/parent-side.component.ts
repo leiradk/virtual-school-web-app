@@ -50,7 +50,7 @@ export class ParentSideComponent implements OnInit {
         this.peopleActive = 'not-active';
         this.gradesActive = 'not-active';
         this.breadcrumbAdd = 'Home';
-      } else if (page[6] === 'class-work' || page[7] === 'class-work') {
+      } else if (page[6] === 'classwork' || page[7] === 'classwork') {
         this.homeActive = 'not-active';
         this.cwActive = 'active';
         this.peopleActive = 'not-active';

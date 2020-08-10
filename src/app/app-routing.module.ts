@@ -40,6 +40,8 @@ import { ParentMainComponent } from "./components/dashboard/user/parent/parent-m
 import { NewStudentComponent } from "./components/dashboard/user/parent/parent-main/new-student/new-student.component";
 import { ParentSideComponent } from "./components/dashboard/user/room-details/parent-side/parent-side.component";
 import { ParentHomeComponent } from "./components/dashboard/user/room-details/parent-side/parent-home/parent-home.component";
+import { CheckStudentClassworkComponent } from "./components/dashboard/user/room-details/parent-side/check-student-classwork/check-student-classwork.component";
+import { CheckStudentGradeComponent } from "./components/dashboard/user/room-details/parent-side/check-student-grade/check-student-grade.component";
 
 
 import { AssignWorkComponent } from "./components/dashboard/user/room-details/teacher-side/assign-work/assign-work.component";
@@ -145,12 +147,16 @@ const routes: Routes = [
             children: [
               {
                 path: "",
-                redirectTo: "home",
+                redirectTo: "classwork",
                 pathMatch: "full"
               },
               {
-                path: "home",
-                component: ParentHomeComponent,
+                path: "classwork",
+                component: CheckStudentClassworkComponent,
+              },
+              {
+                path: "grades",
+                component: CheckStudentGradeComponent,
               },
             ],
           },
