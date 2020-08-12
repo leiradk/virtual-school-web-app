@@ -15,7 +15,7 @@
                     <app-loading-spinner></app-loading-spinner>
                 </div> -->
                 <div class="classwork-container">
-                    <div *ngFor="let work of classworks" class="selected-work reminder-butt1">
+                    <div (click)="checkWork(work)" *ngFor="let work of classworks" class="selected-work reminder-butt1">
                         <a class="d-block card-header py-3 collapsed" role="button" aria-expanded="false"
                             aria-controls="collapseCardExample">
                             <h6 class="m-0 font-weight-bold text-primary work-title">{{work.title}}
@@ -33,7 +33,8 @@
     </div>
 </div>
 
-<div *ngIf="workExist" class="card column col-xl-8 col-md-8 mb-8 classwork-list" style="padding-left: 20px !important; float: right;">
+<div *ngIf="workExist" class="card column col-xl-8 col-md-8 mb-8 classwork-list"
+    style="padding-left: 20px !important; float: right;">
     <!-- <div *ngIf="!showSpinner && error" style="width: 100%;text-align: center;border: none;height: 100vh; font-size: 30px;color: #777777;" class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
         Something went wrong! Please reload your browser.
     </div> -->
@@ -58,6 +59,7 @@
                                 <div class="col-md-12">
                                     <!-- *ngIf="viewAnswer" -->
                                     <p>Download Attachments for Classwork: <a
+                                            (click)="download(getWork.attachment, getWork.attachmentFilename)"
                                             class="btn btn-sm btn-primary">download</a></p>
                                     <strong>Classwork Description: </strong>
                                     <br />

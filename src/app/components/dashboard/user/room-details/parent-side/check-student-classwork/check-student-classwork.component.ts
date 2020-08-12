@@ -13,6 +13,7 @@ export class CheckStudentClassworkComponent implements OnInit {
   userdata: any;
   studentdata: any;
   roomdata: any;
+  downloadFile: any;
   constructor(
     private system: SystemUtils,
     private apiHost: ApiHostService
@@ -38,5 +39,27 @@ export class CheckStudentClassworkComponent implements OnInit {
         this.workExist = false;
         console.log(error)
       })
+  }
+
+  checkWork(data: any) {
+    console.log(data)
+    this.getWork = data;
+  }
+
+  download(attachment, filename) {
+    this.downloadFile = "data:application/pdf;base64," + attachment;
+    // console.log('data');
+    // console.log(this.downloadFile);
+    const downloadLink = document.createElement("a");
+    const fileName = filename;
+    if (filename === 'None' || fileName === null || filename === undefined) {
+      // this.toastr.warning('No File Was Uploaded', 'Empty File', { timeOut: 5000 })
+
+    } else {
+      downloadLink.href = this.downloadFile;
+      downloadLink.download = fileName;
+      downloadLink.click();
+    }
+
   }
 }
