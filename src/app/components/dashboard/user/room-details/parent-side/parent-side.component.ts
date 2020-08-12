@@ -16,6 +16,8 @@ export class ParentSideComponent implements OnInit {
   gradesActive: any;
   getUrl: any;
   breadcrumbAdd: any;
+  classworks: any;
+
   constructor(
     private system: SystemUtils,
     private apiHost: ApiHostService
@@ -23,18 +25,6 @@ export class ParentSideComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const userdata = this.system.retrieveItem('userData')
-    const studentdata = this.system.retrieveItem('studentData')
-    const roomdata = this.system.retrieveItem('classData')
-    console.log(userdata.token)
-    console.log(studentdata.userID)
-    console.log(roomdata.classID)
-    this.apiHost.getStudentClasswork(userdata.token, studentdata.userID, roomdata.classID)
-      .subscribe((response: any) => {
-        console.log(response)
-      }, (error: any) => {
-        console.log(error)
-      })
     this.cwActive = 'active';
     this.getActiveClass();
 

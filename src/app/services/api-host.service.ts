@@ -458,5 +458,16 @@ export class ApiHostService {
       );
   }
 
+  getStudentgrade(token, studId, classId) {
+    return this.https.get(`${this.localhost}parent/get/student/grades?token=${token}&studID=${studId}&classID=${classId}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
 }
 

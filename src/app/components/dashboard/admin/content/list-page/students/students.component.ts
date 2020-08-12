@@ -30,7 +30,6 @@ export class StudentsComponent implements OnInit {
   userData: any;
   error: boolean = false;
 
-
   studentParams: Observable<string>;
   studentMessage: any;
   constructor(
@@ -76,6 +75,7 @@ export class StudentsComponent implements OnInit {
     this.apiService.getStudents(token)
       .subscribe((response: any) => {
         const { status, body } = response;
+        console.log(response)
         if (status === 200) {
           this.people = body;
           this.adminList.setAllStudents(body);
