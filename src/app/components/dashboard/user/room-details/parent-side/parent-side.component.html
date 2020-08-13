@@ -12,9 +12,9 @@
             <div class="navigate-bar">
                 <!-- <div class="nav-item"><button [routerLink]="['/user/s/classroom/home']" [ngClass]="homeActive"
                         (click)="getActiveClass()">Home</button></div> -->
-                <div class="nav-item"><button [routerLink]="['/user/p/classroom/classwork']" [ngClass]="cwActive" (click)="getActiveClass()">My Classwork</button></div>
+                <div class="nav-item"><button [routerLink]="['/user/p/classroom/classwork']" [ngClass]="cwActive" (click)="getActiveClass()">Student's Classwork</button></div>
                 <!-- <div class="nav-item"><button [routerLink]="['/user/s/classroom/invites']" [ngClass]="peopleActive" (click)="getActiveClass()">People</button></div> -->
-                <div class="nav-item"><button [routerLink]="['/user/p/classroom/grades']" [ngClass]="gradesActive" (click)="getActiveClass()">My Grades</button></div>
+                <div class="nav-item"><button [routerLink]="['/user/p/classroom/grades']" [ngClass]="gradesActive" (click)="getActiveClass()">Student's Grades</button></div>
             </div>
             <div class="nav-content">
                 <div [@tabsAnimation]="o && o.activatedRouteData && o.activatedRouteData['animation']">

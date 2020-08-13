@@ -10,6 +10,15 @@
     margin-top: 20px;
 }
 
+.view-answer{
+    cursor: pointer;
+    color: #272652 !important;
+}
+.view-answer:hover{
+    color: #ffffff !important;
+    background: #61B5E1 !important;
+}
+
 .classwork {
     display: flex;
     .left {
