@@ -99,11 +99,14 @@
           <span>Home</span>
         </a>
       </li>
-      <li class="breadcrumb-item active"><span>Library</span></li>
+      <li class="breadcrumb-item active">
+        <span>Library</span>
+      </li>
     </ol>
     <div class="float-right d-xl-flex justify-content-xl-end total-number">
-      <span class="d-xl-flex justify-content-xl-end align-items-xl-center">Total number of Staff &amp;
-        Teacher:</span><strong class="d-xl-flex justify-content-xl-center align-items-xl-center total-number-value">
+      <span class="d-xl-flex justify-content-xl-end align-items-xl-center">Total number of Staff &amp; Teacher:
+      </span>
+      <strong class="d-xl-flex justify-content-xl-center align-items-xl-center total-number-value">
         {{people.length}}</strong>
     </div>
   </div>
@@ -112,12 +115,14 @@
       <i class="fas fa-chalkboard-teacher  title-icon-left"></i>
     </div>
     <div class="mid-item">
-      <span class="text-uppercase d-xl-flex justify-content-xl-start align-items-xl-center list-title">staff &amp;
-        teacher</span>
+      <span class="text-uppercase d-xl-flex justify-content-xl-start align-items-xl-center list-title">staff &amp; teacher
+      </span>
     </div>
     <div class="d-xl-flex justify-content-xl-center align-items-xl-center right-item">
-      <span class="add-text">Add Staff &amp; Teacher</span><a data-toggle="modal" data-target="#myModal">
-        <i class="fa fa-plus title-icon-right"></i></a>
+      <span class="add-text">Add Staff &amp; Teacher</span>
+      <a data-toggle="modal" data-target="#myModal">
+        <i class="fa fa-plus title-icon-right"></i>
+      </a>
     </div>
   </div>
   <div class="d-xl-flex justify-content-xl-center align-items-xl-start list-wrapper">
@@ -158,24 +163,19 @@
                 <td>
                   <a class="link-to-list" href="#">
                     <div class="d-xl-flex align-items-xl-center list-content-item">
-                      <img class="border rounded-circle border-primary teacher-list-img"
-                        src="../../../../../../../assets/images/profile.jpg" /><span
-                        class="d-xl-flex align-items-xl-center listed-user">{{ staff.username }}</span>
+                      <img class="border rounded-circle border-primary teacher-list-img" src="../../../../../../../assets/images/profile.jpg" />
+                      <span class="d-xl-flex align-items-xl-center listed-user">{{ staff.username }}</span>
                       <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
                         <a data-toggle="modal" data-target="#editModal">
-                          <i
-                            class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
+                          <i class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
                           </i>
                         </a>
-                        <a *ngIf="getStatus(staff.status)" data-toggle="modal" data-target="#archiveModal"
-                          (click)="getUsernameData(staff.username, 'teacher')">
-                          <i
-                            class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
+                        <a *ngIf="getStatus(staff.status)" data-toggle="modal" data-target="#archiveModal" (click)="getUsernameData(staff.username, 'teacher')">
+                          <i class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                           </i>
                         </a>
                         <a *ngIf="!getStatus(staff.status)" data-toggle="modal" data-target="#activateModal">
-                          <i class="fa fa-undo d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"
-                            (click)="getUsernameData(staff.username, 'teacher')">
+                          <i class="fa fa-undo d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options" (click)="getUsernameData(staff.username, 'teacher')">
                           </i>
                         </a>
                       </div>
@@ -239,37 +239,41 @@
           <div class="form-group">
             <label for="inputLastName">Postition
               <span class="validator" *ngIf="position.invalid && position.touched">
-                - Position is required</span></label>
-            <input type="text" class="form-control" id="inputPosition" aria-describedby="positionHelp"
-              placeholder="Enter Position" formControlName="position" />
+                - Position is required</span>
+            </label>
+            <input type="text" class="form-control" id="inputPosition" aria-describedby="positionHelp" placeholder="Enter Position" formControlName="position"
+            />
           </div>
           <div class="form-group">
             <label for="inputLastName">Department
               <span class="validator" *ngIf="department.invalid && department.touched">
-                - Department is required</span></label>
-            <input type="text" class="form-control" id="inputDepartment" aria-describedby="departmentHelp"
-              placeholder="Enter Department" formControlName="department" />
+                - Department is required</span>
+            </label>
+            <input type="text" class="form-control" id="inputDepartment" aria-describedby="departmentHelp" placeholder="Enter Department"
+              formControlName="department" />
           </div>
           <div class="form-group">
             <label for="inputLastName">Username
               <span class="validator" *ngIf="username.invalid && username.touched">
-                - Lastname is required</span></label>
-            <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp"
-              placeholder="Enter username" formControlName="username" />
+                - Lastname is required</span>
+            </label>
+            <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter username" formControlName="username"
+            />
           </div>
           <div class="form-group">
             <label for="inputPassword">Password
               <span class="validator" *ngIf="password.invalid && password.touched">
-                - Input 6 character or more</span></label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password"
-              formControlName="password" />
+                - Input 6 character or more</span>
+            </label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password" formControlName="password" />
           </div>
           <div class="form-group">
             <label for="inputReTypePassword">Re-type Password
               <span class="validator" *ngIf="repassword.invalid && repassword.touched">
-                - Input 6 character or more</span></label>
-            <input type="password" class="form-control" id="inputReTypePassword" placeholder="Password"
-              formControlName="repassword" />
+                - Input 6 character or more</span>
+            </label>
+            <input type="password" class="form-control" id="inputReTypePassword" placeholder="Password" formControlName="repassword"
+            />
           </div>
           <div class="form-group">
             <div class="custom-control custom-checkbox small">
@@ -293,54 +297,60 @@
   </div>
 </div>
 
-<div id="archiveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show"
-  aria-modal="true" style="display: none;">
+<div id="archiveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show" aria-modal="true"
+  style="display: none;">
   <div role="document" class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 id="exampleModalLabel" class="modal-title">Archive</h5><button type="button" data-dismiss="modal"
-          aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+        <h5 id="exampleModalLabel" class="modal-title">Archive</h5>
+        <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+          <span aria-hidden="true">×</span>
+        </button>
       </div>
       <div class="modal-body">
         Are you sure you want to archive this user? Status will be set to 'INACTIVE'.
       </div>
       <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>
-        <a data-dismiss="modal" (click)="addToArchive()" class="btn btn-primary" style="cursor: pointer;">Deactivate
-          User</a>
+        <a data-dismiss="modal" (click)="addToArchive()" class="btn btn-primary" style="cursor: pointer;">Deactivate User
+        </a>
       </div>
     </div>
   </div>
 </div>
 
-<div id="activateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show"
-  aria-modal="true" style="display: none;">
+<div id="activateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show" aria-modal="true"
+  style="display: none;">
   <div role="document" class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 id="exampleModalLabel" class="modal-title">Activate</h5><button type="button" data-dismiss="modal"
-          aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+        <h5 id="exampleModalLabel" class="modal-title">Activate</h5>
+        <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+          <span aria-hidden="true">×</span>
+        </button>
       </div>
       <div class="modal-body">
         Are you sure you want to activate this user? Status will be set to 'ACTIVE'.
       </div>
       <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>
-        <a data-dismiss="modal" (click)="pullFromArchive()" class="btn btn-primary" style="cursor: pointer;">Activate
-          User</a>
+        <a data-dismiss="modal" (click)="pullFromArchive()" class="btn btn-primary" style="cursor: pointer;">Activate User
+        </a>
       </div>
     </div>
   </div>
 </div>
 
 
-<div id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show"
-  aria-modal="true" style="display: none;">
+<div id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show" aria-modal="true"
+  style="display: none;">
   <div role="document" class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 id="exampleModalLabel" class="modal-title">Edit User</h5><button type="button" data-dismiss="modal"
-          aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+        <h5 id="exampleModalLabel" class="modal-title">Edit User</h5>
+        <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+          <span aria-hidden="true">×</span>
+        </button>
       </div>
       <div class="modal-body">
         Form body here.

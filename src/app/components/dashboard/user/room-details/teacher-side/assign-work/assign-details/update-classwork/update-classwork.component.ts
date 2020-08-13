@@ -24,6 +24,9 @@ export class UpdateClassworkComponent implements OnInit {
   updatedClasswork: any;
   updateDate: any;
   changeDate: boolean = false;
+
+  showSpinnerLoad: boolean = false;
+
   constructor(
     private apiService: ApiHostService,
     private fb: FormBuilder,
@@ -51,7 +54,7 @@ export class UpdateClassworkComponent implements OnInit {
           this.updateClassWorkForm.controls['points'].setValue(this.updatedClasswork.points)
           this.updateClassWorkForm.controls['instruction'].setValue(this.updatedClasswork.instruction)
           this.fileName = this.updatedClasswork.attachmentFilename;
-      
+
           const datetime = this.updatedClasswork.dueDate.split(' ');
           const date = new Date(datetime[0]).toISOString().substring(0, 10);
           console.log(date);
@@ -105,6 +108,9 @@ export class UpdateClassworkComponent implements OnInit {
       attachment: this.base64textString,
       attachmentFilename: this.fileName
     }
+
+
+    this.showSpinnerLoad = true;
     console.log(payload);
 
     this.apiService.updateClassWork(payload)

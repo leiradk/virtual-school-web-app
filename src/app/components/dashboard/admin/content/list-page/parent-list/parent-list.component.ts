@@ -131,7 +131,6 @@ export class ParentListComponent implements OnInit {
   }
 
 
-
   //adding teacher and staff
   onSubmit() {
     this.error = false;
@@ -147,6 +146,11 @@ export class ParentListComponent implements OnInit {
     }
     console.log(data);
 
+    let contModal = <HTMLInputElement>document.getElementById('continueModal');
+    if (!contModal.checked) {
+      jQuery('#myModal').modal('hide'); //close modal after submit
+    }
+
     this.showSpinner = true;
 
     this.apiService.addParent(data)
@@ -156,8 +160,13 @@ export class ParentListComponent implements OnInit {
         // if (!contModal.checked) {
         // }
         console.log(response)
+        setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
+        this.addStaffFOrm.reset();
+        this.getParents();
       }, (error: any) => {
         console.log(error)
+        this.addStaffFOrm.reset(); //reset form
+        setTimeout(() => { this.showFailed("Warning"); }, 1000); //add toast message
       })
 
     // ------>  Please check the code below. I want to put the top code snippet inside if(status === 200)
@@ -176,7 +185,7 @@ export class ParentListComponent implements OnInit {
       password: [null, [Validators.required, Validators.minLength(6)]],
       repassword: [null, [Validators.required, Validators.minLength(6)]],
     }, {
-    });
+      });
   }
 
   // studentFormModel() {

@@ -95,17 +95,18 @@
     <div class="d-xl-flex justify-content-xl-start">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a [routerLink]="['/dashboard/main']" routerLinkActive="active" class="collapse-item"
-                    style="cursor: pointer;">
+                <a [routerLink]="['/dashboard/main']" routerLinkActive="active" class="collapse-item" style="cursor: pointer;">
                     <span>Home</span>
                 </a>
             </li>
-            <li class="breadcrumb-item active"><span>Library</span></li>
+            <li class="breadcrumb-item active">
+                <span>Library</span>
+            </li>
         </ol>
         <div class="float-right d-xl-flex justify-content-xl-end total-number">
-            <span class="d-xl-flex justify-content-xl-end align-items-xl-center">Total number of
-                Parent/Guardian</span><strong
-                class="d-xl-flex justify-content-xl-center align-items-xl-center total-number-value">
+            <span class="d-xl-flex justify-content-xl-end align-items-xl-center">Total number of Parent/Guardian
+            </span>
+            <strong class="d-xl-flex justify-content-xl-center align-items-xl-center total-number-value">
                 {{people.length}}</strong>
         </div>
     </div>
@@ -114,17 +115,17 @@
             <i class="fas fa-users  title-icon-left"></i>
         </div>
         <div class="mid-item">
-            <span
-                class="text-uppercase d-xl-flex justify-content-xl-start align-items-xl-center list-title">Parent/Guardian</span>
+            <span class="text-uppercase d-xl-flex justify-content-xl-start align-items-xl-center list-title">Parent/Guardian</span>
         </div>
         <div class="d-xl-flex justify-content-xl-center align-items-xl-center right-item">
-            <span class="add-text">Add Parent/Guardian</span><a data-toggle="modal" data-target="#myModal">
-                <i class="fa fa-plus title-icon-right"></i></a>
+            <span class="add-text">Add Parent/Guardian</span>
+            <a data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-plus title-icon-right"></i>
+            </a>
         </div>
     </div>
     <div class="d-xl-flex justify-content-xl-center align-items-xl-start list-wrapper">
-        <div
-            class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list full-width">
+        <div class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list full-width">
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -159,27 +160,19 @@
                                 <td>
                                     <a class="link-to-list" href="#">
                                         <div class="d-xl-flex align-items-xl-center list-content-item">
-                                            <img class="border rounded-circle border-primary teacher-list-img"
-                                                src="../../../../../../../assets/images/profile.jpg" /><span
-                                                class="d-xl-flex align-items-xl-center listed-user">{{ parent.username }}</span>
-                                            <div
-                                                class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
+                                            <img class="border rounded-circle border-primary teacher-list-img" src="../../../../../../../assets/images/profile.jpg" />
+                                            <span class="d-xl-flex align-items-xl-center listed-user">{{ parent.username }}</span>
+                                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
                                                 <a data-toggle="modal" data-target="#editModal">
-                                                    <i
-                                                        class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
+                                                    <i class="fa fa-pencil-square-o d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
                                                     </i>
                                                 </a>
-                                                <a *ngIf="getStatus(parent.status)" data-toggle="modal"
-                                                    data-target="#archiveModal"
-                                                    (click)="getUsernameData(parent.username, 'teacher')">
-                                                    <i
-                                                        class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
+                                                <a *ngIf="getStatus(parent.status)" data-toggle="modal" data-target="#archiveModal" (click)="getUsernameData(parent.username, 'teacher')">
+                                                    <i class="fa fa-remove d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options">
                                                     </i>
                                                 </a>
-                                                <a *ngIf="!getStatus(parent.status)" data-toggle="modal"
-                                                    data-target="#activateModal">
-                                                    <i class="fa fa-undo d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options"
-                                                        (click)="getUsernameData(parent.username, 'teacher')">
+                                                <a *ngIf="!getStatus(parent.status)" data-toggle="modal" data-target="#activateModal">
+                                                    <i class="fa fa-undo d-xl-flex justify-content-xl-center align-items-xl-center option-delete list-options" (click)="getUsernameData(parent.username, 'teacher')">
                                                     </i>
                                                 </a>
                                             </div>
@@ -246,23 +239,26 @@
                     <div class="form-group">
                         <label for="inputLastName">Email
                             <span class="validator" *ngIf="email.invalid && email.touched">
-                                - Email is required</span></label>
-                        <input type="text" class="form-control" id="inputEmail" aria-describedby="emailHelp"
-                            placeholder="Enter Email" formControlName="email" />
+                                - Email is required</span>
+                        </label>
+                        <input type="text" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter Email" formControlName="email"
+                        />
                     </div>
                     <div class="form-group">
                         <label for="inputLastName">Firstname
                             <span class="validator" *ngIf="firstname.invalid && firstname.touched">
-                                - Firstname is required</span></label>
-                        <input type="text" class="form-control" id="inputfirstname" aria-describedby="firstnameHelp"
-                            placeholder="Enter Firstname" formControlName="firstname" />
+                                - Firstname is required</span>
+                        </label>
+                        <input type="text" class="form-control" id="inputfirstname" aria-describedby="firstnameHelp" placeholder="Enter Firstname"
+                            formControlName="firstname" />
                     </div>
                     <div class="form-group">
                         <label for="inputLastName">Lastname
                             <span class="validator" *ngIf="lastname.invalid && lastname.touched">
-                                - Lastname is required</span></label>
-                        <input type="text" class="form-control" id="inputlastname" aria-describedby="lastnameHelp"
-                            placeholder="Enter Lastname" formControlName="lastname" />
+                                - Lastname is required</span>
+                        </label>
+                        <input type="text" class="form-control" id="inputlastname" aria-describedby="lastnameHelp" placeholder="Enter Lastname" formControlName="lastname"
+                        />
                     </div>
                     <!-- <div class="form-group">
                         <label for="inputLastName">Username
@@ -274,16 +270,24 @@
                     <div class="form-group">
                         <label for="inputLastName">Password
                             <span class="validator" *ngIf="password.invalid && password.touched">
-                                - Password is required</span></label>
-                        <input type="text" class="form-control" id="inputPassword" aria-describedby="passwordHelp"
-                            placeholder="Enter Password" formControlName="password" />
+                                - Password is required</span>
+                        </label>
+                        <input type="text" class="form-control" id="inputPassword" aria-describedby="passwordHelp" placeholder="Enter Password" formControlName="password"
+                        />
                     </div>
                     <div class="form-group">
                         <label for="inputLastName">Re-Enter Password
                             <span class="validator" *ngIf="repassword.invalid && repassword.touched">
-                                - Re-Enter Password is required</span></label>
-                        <input type="text" class="form-control" id="inputRePassword" aria-describedby="repasswordHelp"
-                            placeholder="Re-Enter password" formControlName="repassword" />
+                                - Re-Enter Password is required</span>
+                        </label>
+                        <input type="text" class="form-control" id="inputRePassword" aria-describedby="repasswordHelp" placeholder="Re-Enter password"
+                            formControlName="repassword" />
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox small">
+                            <input type="checkbox" class="custom-control-input" id="continueModal" />
+                            <label class="custom-control-label" for="continueModal">Do not close modal</label>
+                        </div>
                     </div>
 
                     <!-- <div class="form-group">
@@ -319,8 +323,7 @@
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" style="width: 25%;"
-                            [disabled]="addStaffFOrm.valid === false">
+                        <button type="submit" class="btn btn-primary" style="width: 25%;" [disabled]="addStaffFOrm.valid === false">
                             Submit
                         </button>
                         <button type="button" class="btn btn-danger" style="width: 25%;" data-dismiss="modal">
@@ -333,54 +336,58 @@
     </div>
 </div>
 
-<div id="archiveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show"
-    aria-modal="true" style="display: none;">
+<div id="archiveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show" aria-modal="true"
+    style="display: none;">
     <div role="document" class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 id="exampleModalLabel" class="modal-title">Archive</h5><button type="button" data-dismiss="modal"
-                    aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                <h5 id="exampleModalLabel" class="modal-title">Archive</h5>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
             </div>
             <div class="modal-body">
                 Are you sure you want to archive this user? Status will be set to 'INACTIVE'.
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>
-                <a data-dismiss="modal" (click)="addToArchive()" class="btn btn-primary"
-                    style="cursor: pointer;">Deactivate User</a>
+                <a data-dismiss="modal" (click)="addToArchive()" class="btn btn-primary" style="cursor: pointer;">Deactivate User</a>
             </div>
         </div>
     </div>
 </div>
 
-<div id="activateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show"
-    aria-modal="true" style="display: none;">
+<div id="activateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show" aria-modal="true"
+    style="display: none;">
     <div role="document" class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 id="exampleModalLabel" class="modal-title">Activate</h5><button type="button" data-dismiss="modal"
-                    aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                <h5 id="exampleModalLabel" class="modal-title">Activate</h5>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
             </div>
             <div class="modal-body">
                 Are you sure you want to activate this user? Status will be set to 'ACTIVE'.
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-secondary"> Cancel </button>
-                <a data-dismiss="modal" (click)="pullFromArchive()" class="btn btn-primary"
-                    style="cursor: pointer;">Activate User</a>
+                <a data-dismiss="modal" (click)="pullFromArchive()" class="btn btn-primary" style="cursor: pointer;">Activate User</a>
             </div>
         </div>
     </div>
 </div>
 
 
-<div id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show"
-    aria-modal="true" style="display: none;">
+<div id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show" aria-modal="true"
+    style="display: none;">
     <div role="document" class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 id="exampleModalLabel" class="modal-title">Edit User</h5><button type="button" data-dismiss="modal"
-                    aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                <h5 id="exampleModalLabel" class="modal-title">Edit User</h5>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
             </div>
             <div class="modal-body">
                 Form body here.
