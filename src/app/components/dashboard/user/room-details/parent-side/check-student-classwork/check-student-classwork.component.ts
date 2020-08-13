@@ -14,6 +14,7 @@ export class CheckStudentClassworkComponent implements OnInit {
   studentdata: any;
   roomdata: any;
   downloadFile: any;
+  loading: any = true;
   constructor(
     private system: SystemUtils,
     private apiHost: ApiHostService
@@ -35,7 +36,9 @@ export class CheckStudentClassworkComponent implements OnInit {
         console.log(this.classworks)
         this.getWork = this.classworks[0]
         this.workExist = true;
+        this.loading = false;
       }, (error: any) => {
+        this.loading = false;
         this.workExist = false;
         console.log(error)
       })

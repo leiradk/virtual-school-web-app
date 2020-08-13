@@ -8,8 +8,13 @@
                 </a>
             </div>
         </div>
+
         <div>
-            <div class="col align-items-center"
+            <div *ngIf="loading" class="col align-items-center"
+                style="background: #ffffff !important; padding-top: 15px; overflow-y: scroll; height: 63.5vh;">
+                <app-loading-spinner></app-loading-spinner>
+            </div>
+            <div *ngIf="!loading" class="col align-items-center"
                 style="background: #ffffff !important; padding-top: 15px; overflow-y: scroll; height: 63.5vh;">
                 <!-- <div class="col" >
                     <app-loading-spinner></app-loading-spinner>
@@ -32,7 +37,10 @@
         </div>
     </div>
 </div>
-
+<div *ngIf="loading" class="card column col-xl-8 col-md-8 mb-8 classwork-list"
+    style="padding-left: 20px !important; float: right;">
+    <app-loading-spinner></app-loading-spinner>
+</div>
 <div *ngIf="workExist" class="card column col-xl-8 col-md-8 mb-8 classwork-list"
     style="padding-left: 20px !important; float: right;">
     <!-- <div *ngIf="!showSpinner && error" style="width: 100%;text-align: center;border: none;height: 100vh; font-size: 30px;color: #777777;" class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
