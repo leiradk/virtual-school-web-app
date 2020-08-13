@@ -361,6 +361,7 @@
 .classwork-container {
     padding-left: 0px !important;
     padding-right: 0px !important;
+    cursor: pointer;
     .selected-work {
         .card-header {
             background-image: linear-gradient(to right, #f17580, #f18873) !important;
@@ -387,6 +388,13 @@
             padding: 20px;
         }
     }
+
+    .reminder-butt1:hover, .reminder-butt2:hover{
+        .work-title{
+            color: #dddbdb !important;
+        }
+    }
+
     .reminder-butt1 {
         .work-title {
             color: #ffffff !important;
