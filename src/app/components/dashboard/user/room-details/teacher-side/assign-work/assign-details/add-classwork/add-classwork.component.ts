@@ -20,6 +20,10 @@ export class AddClassworkComponent implements OnInit {
   fileName: any;
   classDetails: any;
   userData: any;
+
+
+  showSpinnerLoad: boolean = false;
+
   constructor(
     private apiService: ApiHostService,
     private fb: FormBuilder,
@@ -62,7 +66,6 @@ export class AddClassworkComponent implements OnInit {
 
 
   onSubmit() {
-
     const date = this.addClassWorkForm.value.dueDate.year + "-" + this.addClassWorkForm.value.dueDate.month + "-" + this.addClassWorkForm.value.dueDate.day;
     const payload = {
       token: this.userData.token,
@@ -74,6 +77,8 @@ export class AddClassworkComponent implements OnInit {
       attachment: this.base64textString,
       attachmentFilename: this.fileName
     }
+
+    this.showSpinnerLoad = true;
     console.log(payload);
 
     this.apiService.addClasswork(payload)

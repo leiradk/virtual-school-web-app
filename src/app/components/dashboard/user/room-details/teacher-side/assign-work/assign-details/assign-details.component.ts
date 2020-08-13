@@ -63,7 +63,7 @@ export class AssignDetailsComponent implements OnInit {
   showSpinner: boolean = true;
 
   showSuccess() {
-    this.toastr.success('Teacher Added successfully. Reloading List.', 'Congratulations', { timeOut: 5000 })
+    this.toastr.success('Teacher classwork successfully. Reloading List.', 'Congratulations', { timeOut: 5000 })
   }
 
   showFailed(message) {
