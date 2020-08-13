@@ -1,17 +1,62 @@
-<div class="row">
-    <table class="tg">
-        <thead>
-            <tr>
-                <th class="tg-73oq" style="z-index: 99;">Student Name</th>
-                <th *ngFor="let grade of grades; let i = index" class="tg-73oq">Classwork {{i}}</th>
+<div id="dashboard-content">
+    <div class="d-xl-flex justify-content-xl-center align-items-xl-start list-wrapper">
+        <div class="d-inline d-lg-flex d-xl-flex justify-content-xl-center align-items-xl-start content-list full-width">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="tbl-large-head">CLASSWORK</th>
+                            <th class="tbl-large-head">SCORE</th>
+                        </tr>
+                    </thead>
+                    <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+                    <tbody *ngIf="!showSpinner">
+                        <tr *ngFor="let grade of grades; let i = index" class="teacher-data">
+                            <td>
+                                <a class="link-to-list" href="#">
+                                    <div class="d-xl-flex align-items-xl-center list-content-item">
+                                        <span class="d-xl-flex align-items-xl-center listed-user">Classwork {{i}}</span>
+                                        <div class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
+                                            <a data-toggle="modal" data-target="#editModal">
+                                                <i class="fa fa-eye d-xl-flex justify-content-xl-center align-items-xl-center option-edit list-options">
+                                                </i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="text-left">
+                                {{grade.grades}}/{{grade.points}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="tg-73oq">Student 1</td>
-                <td *ngFor="let grade of grades; let i = index" class="tg-aa13">{{grade.grades}}/{{grade.points}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade show" aria-modal="true"
+    style="display: none;">
+    <div role="document" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="exampleModalLabel" class="modal-title">Show Classwork Details</h5>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Classwork Name
+                <br /> 100/100
+                <br /> Details
+                <br /> Instructions
+                <br /> Date Created
+                <br /> Date Submitted
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-secondary"> Done </button>
+            </div>
+        </div>
+    </div>
 </div>

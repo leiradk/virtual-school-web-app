@@ -11,6 +11,9 @@ export class CheckStudentGradeComponent implements OnInit {
   studentdata: any;
   roomdata: any;
   grades: any;
+
+  showSpinner:boolean = true;
+
   constructor(
     private system: SystemUtils,
     private apiHost: ApiHostService
@@ -25,8 +28,10 @@ export class CheckStudentGradeComponent implements OnInit {
       .subscribe((response: any) => {
         console.log(response)
         this.grades = response.body.grades;
+        this.showSpinner = false;
       }, (error: any) => {
-        console.log(error)
+        console.log(error);
+        this.showSpinner = false;
       })
   }
 
