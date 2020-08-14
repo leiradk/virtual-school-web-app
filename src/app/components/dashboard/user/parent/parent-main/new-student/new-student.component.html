@@ -1,4 +1,7 @@
-<div style="height: 100%; width: 80%; position: absolute; ">
+<div *ngIf="saveData" style="height: 100%; width: 80%; position: absolute; ">
+    <app-loading-spinner></app-loading-spinner>
+</div>
+<div *ngIf="!saveData" style="height: 100%; width: 80%; position: absolute; ">
     <a [routerLink]="['/user/p/main']">
         <i class="top-left-icon fa fa-arrow-left" aria-hidden="true"></i>
     </a>

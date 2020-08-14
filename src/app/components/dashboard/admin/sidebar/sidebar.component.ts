@@ -19,7 +19,8 @@ export class SidebarComponent implements OnInit {
   public toggleStaff: boolean = false;
   public toggleParent: boolean = false;
   public toggleStudent: boolean = false;
-  public toggleAchive: boolean = false;
+  public toggleAcount: boolean = false;
+  public toggleMaterial: boolean = false;
 
   clickEvent(event) {
     this.toggle = !this.toggle;
@@ -31,35 +32,48 @@ export class SidebarComponent implements OnInit {
       this.toggleParent = false;
       this.toggleStaff = false;
       this.toggleStudent = false;
-      this.toggleAchive = false;
+      this.toggleAcount = false;
+      this.toggleMaterial = false;
     }
     if (sidebar === 'parent') {
       this.toggleDashboard = false;
       this.toggleParent = true;
       this.toggleStaff = false;
       this.toggleStudent = false;
-      this.toggleAchive = false;
+      this.toggleAcount = false;
+      this.toggleMaterial = false;
     }
     if (sidebar === 'staff') {
       this.toggleDashboard = false;
       this.toggleParent = false;
       this.toggleStaff = true;
       this.toggleStudent = false;
-      this.toggleAchive = false;
+      this.toggleAcount = false;
+      this.toggleMaterial = false;
     }
     if (sidebar === 'student') {
       this.toggleDashboard = false;
       this.toggleParent = false;
       this.toggleStaff = false;
       this.toggleStudent = true;
-      this.toggleAchive = false;
+      this.toggleAcount = false;
+      this.toggleMaterial = false;
     }
-    if (sidebar === 'archive') {
+    if (sidebar === 'acount') {
       this.toggleDashboard = false;
       this.toggleParent = false;
       this.toggleStaff = false;
       this.toggleStudent = false;
-      this.toggleAchive = true;
+      this.toggleAcount = true;
+      this.toggleMaterial = false;
+    }
+    if (sidebar === 'material') {
+      this.toggleDashboard = false;
+      this.toggleParent = false;
+      this.toggleStaff = false;
+      this.toggleStudent = false;
+      this.toggleAcount = false;
+      this.toggleMaterial = true;
     }
   }
 

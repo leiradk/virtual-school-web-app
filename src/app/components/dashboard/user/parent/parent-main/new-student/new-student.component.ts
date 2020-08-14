@@ -17,6 +17,7 @@ import { SystemUtils } from '../../../../../../services/system.utils';
 export class NewStudentComponent implements OnInit {
   public addStudentForm: FormGroup;
   userData: any;
+  saveData: any = false;
   constructor(
     private fb: FormBuilder,
     private apiHost: ApiHostService,
@@ -54,13 +55,17 @@ export class NewStudentComponent implements OnInit {
       yearLevel: this.addStudentForm.value.gradeLevel,
       gender: this.addStudentForm.value.gender
     }
+    this.saveData = true;
     console.log(payload)
     this.apiHost.addMyStudent(payload)
       .subscribe((response: any) => {
         console.log(response)
+        this.saveData = false;
         // this.router.navigate(['user/p']);
       }, (error: any) => {
         console.log(error)
+        this.saveData = false;
+
       })
 
   }

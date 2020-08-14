@@ -43,8 +43,8 @@
         </div>
         <div class="class-buttons">
           <div class="buttons">
-            <button class="btn-live"><i class="fa fa-video" data-toggle="modal"
-                data-target="#addClasswork"></i><span>Start Live</span></button>
+            <button class="btn-live" data-toggle="modal" data-target="#createConference"><i
+                class="fa fa-video"></i><span>Start Live</span></button>
             <button [routerLink]="['/user/t/classroom/invites']" (click)="invites()" class="btn-invite"><i
                 class="fa fa-paper-plane"></i><span>Invite</span></button>
           </div>
@@ -72,7 +72,29 @@
   aria-hidden="true">
   <!-- dialog -->
   <div class="modal-dialog">
-    <!-- <app-add-classwork></app-add-classwork> -->
+    <!-- content -->
+    <div class="modal-content">
+
+      <!-- header -->
+      <div class="modal-header">
+        <h1 id="myModalLabel" class="modal-title">
+          Input Topic
+        </h1>
+      </div>
+      <!-- header -->
+
+      <!-- body -->
+      <div class="modal-body">
+        <input type="text">
+      </div>
+      <!-- body -->
+
+      <!-- footer -->
+      <div class="modal-footer">
+        <button>Create</button>
+      </div>
+      <!-- footer -->
+    </div>
   </div>
 </div>
 <!-- dialog -->

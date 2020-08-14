@@ -12,11 +12,17 @@
         <i class="fa fa-envelope side-icon"></i><span style="font-weight: bold;">Invitations</span></li>
     </a>
     <!-- <a [routerLink]="['/dashboard/parents-list']" routerLinkActive="active" class="collapse-item "> -->
-    <a routerLinkActive="active" class="collapse-item disabled">
+    <!-- <a routerLinkActive="active" class="collapse-item disabled">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleClass}">{{toggleSidebar('classes')}}
         <i class="fas fa-users side-icon"></i><span class="disabled" style="font-weight: bold;">Classes</span>
       </li>
+    </a> -->
+    
+    <a *ngIf="isStudentSide" [routerLink]="['/user/s/library']" routerLinkActive="active" class="collapse-item">
+      <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
+        [ngClass]="{'active':toggleLibrary}">{{toggleSidebar('library')}}
+        <i class="fa fa-envelope side-icon"></i><span style="font-weight: bold;">Library</span></li>
     </a>
     <!-- <a routerLinkActive="active" class="collapse-item disabled">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"

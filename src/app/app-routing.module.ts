@@ -13,6 +13,7 @@ import { StudentsComponent } from "./components/dashboard/admin/content/list-pag
 import { TeacherStaffComponent } from "./components/dashboard/admin/content/list-page/teacher-staff/teacher-staff.component";
 import { ParentListComponent } from "./components/dashboard/admin/content/list-page/parent-list/parent-list.component";
 import { ArchivesComponent } from "./components/dashboard/admin/content/list-page/archives/archives.component";
+import { MaterialsComponent } from "./components/dashboard/admin/content/materials/materials.component";
 import { TeacherComponent } from './components/dashboard/user/teacher/teacher.component';
 import { TeacherMainComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-main.component';
 // import { ClassDetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-details.component';
@@ -26,6 +27,8 @@ import { StudentComponent } from "./components/dashboard/user/student/student.co
 import { StudentMainComponent } from "./components/dashboard/user/student/student-content/student-main/student-main.component";
 import { StudentInvitationsComponent } from "./components/dashboard/user/student/student-content/student-invitations/student-invitations.component";
 import { ClassroomComponent } from "./components/dashboard/user/student/student-content/classroom/classroom.component";
+import { LibraryComponent } from "./components/dashboard/user/student/student-content/library/library.component";
+
 import { UserComponent } from "./components/dashboard/user/user.component";
 import { RoomDetailsComponent } from "./components/dashboard/user/room-details/room-details.component";
 import { InviteUsersComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/invite-users.component";
@@ -117,10 +120,13 @@ const routes: Routes = [
         component: ParentListComponent,
       },
       {
-        path: "archive",
+        path: "acounts-archive",
         component: ArchivesComponent,
       },
-
+      {
+        path: "materials-archive",
+        component: MaterialsComponent,
+      },
     ],
   },
 
@@ -184,6 +190,11 @@ const routes: Routes = [
             path: "invitations",
             component: StudentInvitationsComponent
           },
+          {
+            path: "library",
+            component: LibraryComponent
+          },
+          
           {
             path: "classroom",
             component: RoomDetailsComponent,
