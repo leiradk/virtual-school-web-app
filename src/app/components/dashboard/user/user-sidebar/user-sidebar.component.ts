@@ -15,7 +15,6 @@ export class UserSidebarComponent implements OnInit {
   dashboardRoute: any;
   invitationRoute: any;
   isStudentSide: boolean = false;
-  toggleLibrary: boolean = false;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -65,6 +64,9 @@ export class UserSidebarComponent implements OnInit {
   public toggleDashboard: boolean = false;
   public toggleClass: boolean = false;
   public toggleInvitation: boolean = false;
+  public toggleLibrary: boolean = false;
+  public toggleMyTeachers: boolean = false;
+  public toggleMyBadges: boolean = false;
 
   toggleSidebar(sidebar) {
     if (sidebar === 'dashboard') {
@@ -72,25 +74,56 @@ export class UserSidebarComponent implements OnInit {
       this.toggleClass = false;
       this.toggleInvitation = false;
       this.toggleLibrary = false;
+      this.toggleMyTeachers = false;
+      this.toggleMyBadges = false;
+
     }
     if (sidebar === 'classes') {
       this.toggleDashboard = false;
       this.toggleClass = false;
       this.toggleInvitation = false;
       this.toggleLibrary = false;
+      this.toggleMyTeachers = false;
+      this.toggleMyBadges = false;
+
     }
     if (sidebar === 'invitation') {
       this.toggleDashboard = false;
       this.toggleClass = false;
       this.toggleInvitation = true;
       this.toggleLibrary = false;
+      this.toggleMyTeachers = false;
+      this.toggleMyBadges = false;
+
     }
     if (sidebar === 'library') {
       this.toggleDashboard = false;
       this.toggleClass = false;
       this.toggleInvitation = false;
       this.toggleLibrary = true;
+      this.toggleMyTeachers = false;
+      this.toggleMyBadges = false;
+
     }
+    if (sidebar === 'myteachers') {
+      this.toggleDashboard = false;
+      this.toggleClass = false;
+      this.toggleInvitation = false;
+      this.toggleLibrary = false;
+      this.toggleMyTeachers = true;
+      this.toggleMyBadges = false;
+
+    }
+    if (sidebar === 'mybadges') {
+      this.toggleDashboard = false;
+      this.toggleClass = false;
+      this.toggleInvitation = false;
+      this.toggleLibrary = false;
+      this.toggleMyTeachers = false;
+      this.toggleMyBadges = true;
+
+    }
+
 
   }
 }

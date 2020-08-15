@@ -1,0 +1,39 @@
+.header-title {
+    width: 100%;
+    height: 200px;
+    background-color: white;
+    .title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 100px;
+        padding: 20px 0;
+    }
+}
+
+.my-teachers {
+    padding: 15px 0 15px 0;
+    .teachers-content {
+        display: flex;
+        .box {
+            padding: 10px;
+            margin: 10px;
+            flex: 1;
+            background: white;
+            border-radius: 20px;
+            height: 300px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            &:hover {
+                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            }
+            .header {
+                padding: 15px 10px;
+                text-align: center;
+                border-bottom: 1px solid;
+            }
+            .body{
+                text-align: center;
+            }
+        }
+    }
+}

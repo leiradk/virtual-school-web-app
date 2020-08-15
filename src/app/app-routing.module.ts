@@ -8,6 +8,7 @@ import { AddStudentComponent } from "./components/verification/add-student/add-s
 
 // import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { AdminComponent } from "./components/dashboard/admin/admin.component";
 import { MainPageComponent } from "./components/dashboard/admin/content/main-page/main-page.component";
 import { StudentsComponent } from "./components/dashboard/admin/content/list-page/students/students.component";
 import { TeacherStaffComponent } from "./components/dashboard/admin/content/list-page/teacher-staff/teacher-staff.component";
@@ -59,6 +60,8 @@ import { CheckDetailsComponent } from "./components/dashboard/user/room-details/
 import { CheckClassWorkComponent } from "./components/dashboard/user/room-details/student-side/check-work/check-class-work/check-class-work.component";
 import { StudentHomeComponent } from "./components/dashboard/user/room-details/student-side/student-home/student-home.component";
 import { CheckUsersComponent } from "./components/dashboard/user/room-details/student-side/check-users/check-users.component";
+import { MyTeachersComponent } from "./components/dashboard/user/student/student-content/my-teachers/my-teachers.component";
+import { MyBadgesComponent } from "./components/dashboard/user/student/student-content/my-badges/my-badges.component";
 
 // CheckStudentsComponent
 const routes: Routes = [
@@ -95,7 +98,7 @@ const routes: Routes = [
   },
   {
     path: "dashboard",
-    component: DashboardComponent,
+    component: AdminComponent,
     children: [
       {
         path: "",
@@ -147,6 +150,7 @@ const routes: Routes = [
             path: "main",
             component: ParentMainComponent,
           },
+      
           {
             path: "classroom",
             component: ParentSideComponent,
@@ -194,7 +198,14 @@ const routes: Routes = [
             path: "library",
             component: LibraryComponent
           },
-          
+          {
+            path: "my-teachers",
+            component: MyTeachersComponent,
+          },
+          {
+            path: "my-badges",
+            component: MyBadgesComponent,
+          },
           {
             path: "classroom",
             component: RoomDetailsComponent,

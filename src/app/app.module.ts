@@ -107,6 +107,9 @@ import { ParentProfileComponent } from './components/dashboard/admin/profile/par
 import { NewStudentComponent } from './components/dashboard/user/parent/parent-main/new-student/new-student.component';
 import { MaterialsComponent } from './components/dashboard/admin/content/materials/materials.component';
 import { LibraryComponent } from './components/dashboard/user/student/student-content/library/library.component';
+import { AdminComponent } from './components/dashboard/admin/admin.component';
+import { MyTeachersComponent } from './components/dashboard/user/student/student-content/my-teachers/my-teachers.component';
+import { MyBadgesComponent } from './components/dashboard/user/student/student-content/my-badges/my-badges.component';
 
 @NgModule({
   declarations: [
@@ -195,6 +198,9 @@ import { LibraryComponent } from './components/dashboard/user/student/student-co
     NewStudentComponent,
     MaterialsComponent,
     LibraryComponent,
+    AdminComponent,
+    MyTeachersComponent,
+    MyBadgesComponent,
   ],
   imports: [
     BrowserModule,
