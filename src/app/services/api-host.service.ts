@@ -198,6 +198,17 @@ export class ApiHostService {
         })
       );
   }
+ //Create Conference room
+ createConference(payload) {
+  return this.https.put(`${this.localhost}create/conference/room`, payload)
+    .pipe(
+      map((data: any) => {
+        return data;
+      }), catchError(error => {
+        return throwError(error);
+      })
+    );
+}
   //update classwork for students
   updateClassWork(payload) {
     return this.https.put(`${this.localhost}teacher/update/classwork`, payload)

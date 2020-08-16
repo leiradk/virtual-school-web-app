@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SystemUtils } from '../../../../../../services/system.utils';
+import { ApiHostService } from '../../../../../../services/api-host.service';
 import { TeacherSideComponent } from '../teacher-side.component';
 @Component({
   selector: 'app-teacher-home',
@@ -11,7 +12,9 @@ export class TeacherHomeComponent implements OnInit {
   comments: any = [];
   classDetails: any;
   userData: any;
+  topic: any;
   constructor(
+    private apiHost: ApiHostService,
     private system: SystemUtils,
     private teacher: TeacherSideComponent
   ) { }
@@ -32,6 +35,30 @@ export class TeacherHomeComponent implements OnInit {
   invites() {
     this.teacher.invites();
   }
+
+  createRoom() {
+    const { rid, className } = this.classDetails;
+    const { data } = this.userData;
+    const payload = {
+      token: this.userData.token,
+      classID: rid,
+      roomName: className,
+      participantName: data.username,
+      subject: this.topic
+    };
+    // this.apiHost.createConference(payload)
+    //   .subscribe((response: any) => {
+    //     console.log(response)
+    //     window.open(`http://localhost:8000?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}`, '_blank');
+
+    //   }, (error: any) => {
+    //     console.log(error)
+    //   })
+    window.open(`http://localhost:8000?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}`, '_blank');
+
+    console.log(payload);
+  }
+
   getMonth(month) {
     if (month === 1) {
       return 'January';

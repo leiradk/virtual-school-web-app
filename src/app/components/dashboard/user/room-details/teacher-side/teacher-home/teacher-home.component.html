@@ -85,13 +85,13 @@
 
       <!-- body -->
       <div class="modal-body">
-        <input type="text">
+        <input type="text" [(ngModel)]="topic" >
       </div>
       <!-- body -->
 
       <!-- footer -->
       <div class="modal-footer">
-        <button>Create</button>
+        <button (click)="createRoom()">Create</button>
       </div>
       <!-- footer -->
     </div>
