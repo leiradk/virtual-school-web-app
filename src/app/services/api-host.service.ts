@@ -200,7 +200,7 @@ export class ApiHostService {
   }
  //Create Conference room
  createConference(payload) {
-  return this.https.put(`${this.localhost}create/conference/room`, payload)
+  return this.https.post(`${this.localhost}create/conference/room`, payload)
     .pipe(
       map((data: any) => {
         return data;
@@ -479,6 +479,15 @@ export class ApiHostService {
         })
       );
   }
-
+  getConferenceLink(token, classId) {
+    return this.https.get(`${this.localhost}get/conference/url?token=${token}&classID=${classId}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 }
 
