@@ -64,15 +64,18 @@ export class StudentMainComponent implements OnInit {
             for (let i = 0; i <= (this.classDetails.length - 1); i++) {
               if (this.classDetails[i].inviteStatus === 'accepted') {
                 roomCount++;
+
+              } else {
+                // this.roomExists = false;
+                // this.errorMessage = "No class found yet";
+              }
+              if (i === (this.classDetails.length - 1)) {
                 if (roomCount > 0) {
                   this.roomExists = true;
                 } else {
                   this.roomExists = false;
                   this.errorMessage = "No class found yet";
                 }
-              } else {
-                this.roomExists = false;
-                this.errorMessage = "No class found yet";
               }
             }
           } else {

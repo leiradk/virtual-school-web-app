@@ -39,21 +39,18 @@
             </div>
             <div class="Search">
                 <div class="search-field">
-                    <input type="text" placeholder="Search....">
-                    <div class="btn">
-                        <a href="#"><i class="fa fa-search-plus"></i></a>
-                    </div>
+                    <input type="text" placeholder="Search...." [(ngModel)]="searchModule">
                 </div>
             </div>
             <div class="library-contents">
-                <div class="book-details">
+                <div *ngFor=" let module of library| filter: searchModule; let i = index" class="book-details">
                     <div class="count">
-                        1
+                        {{i+1}}
                     </div>
                     <div class="details">
-                        <div class="title">Title: the title</div>
-                        <div class="subject">Subject: the subject</div>
-                        <div class="grade">Grade: 1</div>
+                        <div class="title">Title:{{module.title}}</div>
+                        <div class="subject">Subject: {{module.Subject}}</div>
+                        <div class="grade">Grade:{{module.grade}}</div>
                     </div>
                     <div class="download">
                         <i class="fa fa-download"></i>

@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
     const { value } = this.signInForm;
     this.loading = true;
     this.apiHost.signin(value).subscribe((response: any) => {
-      console.log(response);
+      console.log('loginResponse', response);
       if (response) {
         const { status, body } = response;
         if (status === 200) {
@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
             this.system.storeLocal('userData', body);
             this.router.navigate(["/user/t"]);
           } else if (parseInt(data.usertype) === 10001) {
+            console.log('admin data');
             this.system.storeLocal('userData', body);
             this.router.navigate(["/dashboard"]);
 

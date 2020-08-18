@@ -14,7 +14,6 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  this.logout() 
 }
   logout() {
     console.log('logout')

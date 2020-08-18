@@ -489,5 +489,15 @@ export class ApiHostService {
         })
       );
   }
+  getMyTeacherList(token) {
+    return this.https.get(`${this.localhost}student/get/teachers?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 }
 

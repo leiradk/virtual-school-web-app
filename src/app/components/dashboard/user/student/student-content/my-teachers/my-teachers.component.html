@@ -6,8 +6,16 @@
 <div class="my-teachers">
     <div class="container">
         <div class="content">
-            <div class="teachers-content">
-                <div class="box">
+            <div  class="teachers-content">
+                <div *ngFor=" let teacher of myTeachers" class="box">
+                    <div class="header">
+                        {{teacher[0]}}
+                    </div>
+                    <div *ngFor=" let classes of myClasses" class="body">
+                        <span *ngIf="teacher[1] === classes.teacherID">{{classes.className}}</span>
+                    </div>
+                </div>
+                <!-- <div class="box">
                     <div class="header">
                         Teacher name
                     </div>
@@ -22,15 +30,7 @@
                     <div class="body">
                         Class names
                     </div>
-                </div>
-                <div class="box">
-                    <div class="header">
-                        Teacher name
-                    </div>
-                    <div class="body">
-                        Class names
-                    </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
