@@ -6,13 +6,20 @@
 <div class="my-teachers">
     <div class="container">
         <div class="content">
-            <div  class="teachers-content">
+            <div class="teachers-content">
                 <div *ngFor=" let teacher of myTeachers" class="box">
                     <div class="header">
-                        {{teacher[0]}}
+                        <img src="../../../../../../../assets/images/teacher-profile/sample-profile.jpg"
+                            alt="Teacher Profile">
                     </div>
-                    <div *ngFor=" let classes of myClasses" class="body">
-                        <span *ngIf="teacher[1] === classes.teacherID">{{classes.className}}</span>
+                    <div class="body">
+                        <div class="teacher">
+                            <h5>{{teacher[0]}}</h5>
+                        </div>
+               
+                        <div *ngFor=" let classes of myClasses" class="classes">
+                            <div *ngIf="teacher[1] === classes.teacherID" class="classroom-name">{{classes.className}}</div>
+                        </div>
                     </div>
                 </div>
                 <!-- <div class="box">
