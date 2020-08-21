@@ -1,6 +1,11 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
+import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
+import dayGridPlugin from '@fullcalendar/daygrid';
+
+import '@fullcalendar/daygrid/main.css';
+
 import { BrowserModule } from "@angular/platform-browser";
 // import { Http, HttpModule } from "@angular/http";
 import { HttpClientModule, HttpClient } from "@angular/common/http";
@@ -12,8 +17,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
-import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { ToastrModule} from "ngx-toastr";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from "ngx-toastr";
 import { IonicModule } from '@ionic/angular';
 
 //services
@@ -110,6 +115,9 @@ import { LibraryComponent } from './components/dashboard/user/student/student-co
 import { AdminComponent } from './components/dashboard/admin/admin.component';
 import { MyTeachersComponent } from './components/dashboard/user/student/student-content/my-teachers/my-teachers.component';
 import { MyBadgesComponent } from './components/dashboard/user/student/student-content/my-badges/my-badges.component';
+import { MyAssignedClassesComponent } from './components/dashboard/user/teacher/teacher-content/my-assigned-classes/my-assigned-classes.component';
+import { CalendarComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/calendar/calendar.component';
+import { SetEventsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/set-events/set-events.component';
 
 @NgModule({
   declarations: [
@@ -201,6 +209,9 @@ import { MyBadgesComponent } from './components/dashboard/user/student/student-c
     AdminComponent,
     MyTeachersComponent,
     MyBadgesComponent,
+    MyAssignedClassesComponent,
+    CalendarComponent,
+    SetEventsComponent,
   ],
   imports: [
     BrowserModule,
@@ -217,8 +228,9 @@ import { MyBadgesComponent } from './components/dashboard/user/student/student-c
     IonicModule.forRoot(),
     RichTextEditorAllModule,
     NgbModule,
+    FullCalendarModule // register FullCalendar with you app
   ],
-  providers: [ ApiHostService, SystemUtils],
+  providers: [ApiHostService, SystemUtils],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

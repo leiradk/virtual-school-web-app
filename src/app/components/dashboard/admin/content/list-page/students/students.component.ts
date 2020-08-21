@@ -15,6 +15,8 @@ import { take } from 'rxjs/operators';
 
 declare var jQuery: any;
 
+
+
 @Component({
   selector: "app-students",
   templateUrl: "./students.component.html",
@@ -154,7 +156,7 @@ export class StudentsComponent implements OnInit {
         this.addStudentForm.reset(); //reset form
         const { status } = response;
         if (status === 201) {
-         this.getStudents();
+          this.getStudents();
           this.error = false;
         }
       }, (error: any) => {

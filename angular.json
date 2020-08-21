@@ -29,6 +29,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@fullcalendar/daygrid/main.css",
               "src/styles.scss"
             ],
             "scripts": []

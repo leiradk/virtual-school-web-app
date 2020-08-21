@@ -15,6 +15,7 @@ export class UserSidebarComponent implements OnInit {
   dashboardRoute: any;
   invitationRoute: any;
   isStudentSide: boolean = false;
+  isTeacherSide: boolean = false;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -40,10 +41,12 @@ export class UserSidebarComponent implements OnInit {
     if (usertype === '10002') {
       this.dashboardRoute = '/user/t/main';
       this.isStudentSide = false;
+      this.isTeacherSide = true;
     } else if (usertype === '10003') {
       this.dashboardRoute = '/user/s/main';
       this.invitationRoute = '/user/s/invitations';
       this.isStudentSide = true;
+      this.isTeacherSide = false;
     } else if (usertype === '10004') {
       this.dashboardRoute = '/user/p/main'
     }
@@ -80,7 +83,7 @@ export class UserSidebarComponent implements OnInit {
     }
     if (sidebar === 'classes') {
       this.toggleDashboard = false;
-      this.toggleClass = false;
+      this.toggleClass = true;
       this.toggleInvitation = false;
       this.toggleLibrary = false;
       this.toggleMyTeachers = false;

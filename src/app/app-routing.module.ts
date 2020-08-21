@@ -17,6 +17,9 @@ import { ArchivesComponent } from "./components/dashboard/admin/content/list-pag
 import { MaterialsComponent } from "./components/dashboard/admin/content/materials/materials.component";
 import { TeacherComponent } from './components/dashboard/user/teacher/teacher.component';
 import { TeacherMainComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-main.component';
+import { CalendarComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/calendar/calendar.component';
+import { SetEventsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/set-events/set-events.component';
+
 // import { ClassDetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-details.component';
 // import { ClassHomeComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-home.component';
 // import { ClassworkComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/classwork.component';
@@ -37,6 +40,7 @@ import { ClassGradesComponent } from "./components/dashboard/user/room-details/t
 import { ParentGuardianTabComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/tabs/parent-guardian-tab/parent-guardian-tab.component";
 import { StudentTabComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/tabs/student-tab/student-tab.component";
 import { TeacherStaffTabComponent } from "./components/dashboard/user/room-details/teacher-side/invite-users/tabs/teacher-staff-tab/teacher-staff-tab.component";
+import { MyAssignedClassesComponent } from "./components/dashboard/user/teacher/teacher-content/my-assigned-classes/my-assigned-classes.component";
 
 // parent
 import { ParentComponent } from "./components/dashboard/user/parent/parent.component";
@@ -150,7 +154,7 @@ const routes: Routes = [
             path: "main",
             component: ParentMainComponent,
           },
-      
+
           {
             path: "classroom",
             component: ParentSideComponent,
@@ -265,8 +269,28 @@ const routes: Routes = [
           },
           {
             path: "main",
-            component: TeacherMainComponent
+            component: TeacherMainComponent,
+            children: [
+              {
+                path: "",
+                redirectTo: "calendar",
+                pathMatch: "full"
+              },
+              {
+                path: "calendar",
+                component: CalendarComponent
+              },
+              {
+                path: "event-scheduler",
+                component: SetEventsComponent
+              }
+            ]
           },
+          {
+            path: "classes",
+            component: MyAssignedClassesComponent
+          },
+          
           {
             path: "classroom",
             component: RoomDetailsComponent,

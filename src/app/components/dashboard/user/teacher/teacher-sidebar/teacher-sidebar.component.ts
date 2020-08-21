@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ApiHostService } from '../../../../../services/api-host.service';
 import { SystemUtils } from '../../../../../services/system.utils';
-import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-teacher-sidebar',
   templateUrl: './teacher-sidebar.component.html',
@@ -13,7 +13,6 @@ export class TeacherSidebarComponent implements OnInit {
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
-    private router: Router,
     // private location: Location
   ) { }
 
