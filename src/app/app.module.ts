@@ -118,6 +118,10 @@ import { MyBadgesComponent } from './components/dashboard/user/student/student-c
 import { MyAssignedClassesComponent } from './components/dashboard/user/teacher/teacher-content/my-assigned-classes/my-assigned-classes.component';
 import { CalendarComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/calendar/calendar.component';
 import { SetEventsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/set-events/set-events.component';
+import { LoadingLibraryComponent } from './components/ui/loading-library/loading-library.component';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 @NgModule({
   declarations: [
@@ -212,10 +216,12 @@ import { SetEventsComponent } from './components/dashboard/user/teacher/teacher-
     MyAssignedClassesComponent,
     CalendarComponent,
     SetEventsComponent,
+    LoadingLibraryComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgSelectModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,

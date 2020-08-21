@@ -14,6 +14,11 @@
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
 
+
+// import form module style
+
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
 html{
     overflow: hidden;
 }
