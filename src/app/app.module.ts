@@ -12,8 +12,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
-import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { ToastrModule} from "ngx-toastr";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from "ngx-toastr";
 import { IonicModule } from '@ionic/angular';
 
 //services
@@ -110,6 +110,10 @@ import { LibraryComponent } from './components/dashboard/user/student/student-co
 import { AdminComponent } from './components/dashboard/admin/admin.component';
 import { MyTeachersComponent } from './components/dashboard/user/student/student-content/my-teachers/my-teachers.component';
 import { MyBadgesComponent } from './components/dashboard/user/student/student-content/my-badges/my-badges.component';
+import { LoadingLibraryComponent } from './components/ui/loading-library/loading-library.component';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 @NgModule({
   declarations: [
@@ -201,10 +205,12 @@ import { MyBadgesComponent } from './components/dashboard/user/student/student-c
     AdminComponent,
     MyTeachersComponent,
     MyBadgesComponent,
+    LoadingLibraryComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgSelectModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
@@ -218,7 +224,7 @@ import { MyBadgesComponent } from './components/dashboard/user/student/student-c
     RichTextEditorAllModule,
     NgbModule,
   ],
-  providers: [ ApiHostService, SystemUtils],
+  providers: [ApiHostService, SystemUtils],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

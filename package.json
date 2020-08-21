@@ -26,6 +26,7 @@
     "@ionic/angular": "^5.0.7",
     "@material/slider": "^6.0.0",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "@ng-select/ng-select": "^5.0.1",
     "@syncfusion/ej2-angular-richtexteditor": "^18.1.48",
     "angular-material": "^1.1.22",
     "bootstrap": "^4.4.1",
