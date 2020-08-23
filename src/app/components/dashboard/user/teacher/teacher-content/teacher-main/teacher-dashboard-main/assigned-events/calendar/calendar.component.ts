@@ -76,7 +76,7 @@ export class CalendarComponent implements OnInit {
           confirmButtonText: 'Create'
         }).then((result) => {
           if (result.value) {
-            this.router.navigate(["/user/t/main/home/event-scheduler"]);
+            this.router.navigate(["/user/t/main/event-scheduler"]);
           }
         })
         // jQuery('#addEvent').modal('show');
