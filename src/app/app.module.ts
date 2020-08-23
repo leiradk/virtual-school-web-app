@@ -116,11 +116,17 @@ import { AdminComponent } from './components/dashboard/admin/admin.component';
 import { MyTeachersComponent } from './components/dashboard/user/student/student-content/my-teachers/my-teachers.component';
 import { MyBadgesComponent } from './components/dashboard/user/student/student-content/my-badges/my-badges.component';
 import { MyAssignedClassesComponent } from './components/dashboard/user/teacher/teacher-content/my-assigned-classes/my-assigned-classes.component';
-import { CalendarComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/calendar/calendar.component';
-import { SetEventsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/set-events/set-events.component';
+import { CalendarComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/assigned-events/calendar/calendar.component';
+import { SetEventsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/assigned-events/set-events/set-events.component';
 import { LoadingLibraryComponent } from './components/ui/loading-library/loading-library.component';
 
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ClassAnnouncementsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/class-announcements/class-announcements.component';
+import { TeachingMaterialsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teaching-materials/teaching-materials.component';
+import { LessonPlanComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/lesson-plan/lesson-plan.component';
+import { RecordComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/record/record.component';
+import { AssignedEventsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/assigned-events/assigned-events.component';
+import { TeacherDashboardMainComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/teacher-dashboard-main.component';
 
 
 @NgModule({
@@ -217,6 +223,12 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CalendarComponent,
     SetEventsComponent,
     LoadingLibraryComponent,
+    ClassAnnouncementsComponent,
+    TeachingMaterialsComponent,
+    LessonPlanComponent,
+    RecordComponent,
+    AssignedEventsComponent,
+    TeacherDashboardMainComponent,
   ],
   imports: [
     BrowserModule,

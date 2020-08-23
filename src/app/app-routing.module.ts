@@ -17,8 +17,13 @@ import { ArchivesComponent } from "./components/dashboard/admin/content/list-pag
 import { MaterialsComponent } from "./components/dashboard/admin/content/materials/materials.component";
 import { TeacherComponent } from './components/dashboard/user/teacher/teacher.component';
 import { TeacherMainComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-main.component';
-import { CalendarComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/calendar/calendar.component';
-import { SetEventsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/set-events/set-events.component';
+import { CalendarComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/assigned-events/calendar/calendar.component';
+import { SetEventsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/assigned-events/set-events/set-events.component';
+import { TeachingMaterialsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teaching-materials/teaching-materials.component';
+import { LessonPlanComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/lesson-plan/lesson-plan.component';
+import { RecordComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/record/record.component';
+import { AssignedEventsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/assigned-events/assigned-events.component';
+import { TeacherDashboardMainComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/teacher-dashboard-main.component';
 
 // import { ClassDetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-details.component';
 // import { ClassHomeComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-home.component';
@@ -267,30 +272,56 @@ const routes: Routes = [
             redirectTo: "main",
             pathMatch: "full"
           },
+          // {
+          //   path: "main",
+          //   component: TeacherMainComponent,
+          //   children: [
+          //     {
+          //       path: "",
+          //       redirectTo: "home",
+          //       pathMatch: "full"
+          //     },
+
+
+          //   ]
+          // },
           {
             path: "main",
-            component: TeacherMainComponent,
+            component: TeacherDashboardMainComponent,
             children: [
               {
                 path: "",
-                redirectTo: "calendar",
+                redirectTo: "events",
                 pathMatch: "full"
               },
               {
-                path: "calendar",
+                path: "events",
                 component: CalendarComponent
               },
               {
                 path: "event-scheduler",
                 component: SetEventsComponent
-              }
+              },
             ]
           },
+          {
+            path: "teaching-materials",
+            component: TeachingMaterialsComponent
+          },
+          {
+            path: "lesson-plan",
+            component: LessonPlanComponent
+          },
+          {
+            path: "records",
+            component: RecordComponent
+          },
+     
           {
             path: "classes",
             component: MyAssignedClassesComponent
           },
-          
+
           {
             path: "classroom",
             component: RoomDetailsComponent,

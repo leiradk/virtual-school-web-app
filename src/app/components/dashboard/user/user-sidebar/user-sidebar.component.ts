@@ -70,6 +70,9 @@ export class UserSidebarComponent implements OnInit {
   public toggleLibrary: boolean = false;
   public toggleMyTeachers: boolean = false;
   public toggleMyBadges: boolean = false;
+  public toggleTeachingMaterials: boolean = false;
+  public toggleLessonPlan: boolean = false;
+  public toggleRecord: boolean = false;
 
   toggleSidebar(sidebar) {
     if (sidebar === 'dashboard') {
@@ -79,6 +82,9 @@ export class UserSidebarComponent implements OnInit {
       this.toggleLibrary = false;
       this.toggleMyTeachers = false;
       this.toggleMyBadges = false;
+      this.toggleTeachingMaterials = false;
+      this.toggleLessonPlan = false;
+      this.toggleRecord = false;
 
     }
     if (sidebar === 'classes') {
@@ -88,7 +94,9 @@ export class UserSidebarComponent implements OnInit {
       this.toggleLibrary = false;
       this.toggleMyTeachers = false;
       this.toggleMyBadges = false;
-
+      this.toggleTeachingMaterials = false;
+      this.toggleLessonPlan = false;
+      this.toggleRecord = false;
     }
     if (sidebar === 'invitation') {
       this.toggleDashboard = false;
@@ -97,7 +105,9 @@ export class UserSidebarComponent implements OnInit {
       this.toggleLibrary = false;
       this.toggleMyTeachers = false;
       this.toggleMyBadges = false;
-
+      this.toggleTeachingMaterials = false;
+      this.toggleLessonPlan = false;
+      this.toggleRecord = false;
     }
     if (sidebar === 'library') {
       this.toggleDashboard = false;
@@ -106,7 +116,9 @@ export class UserSidebarComponent implements OnInit {
       this.toggleLibrary = true;
       this.toggleMyTeachers = false;
       this.toggleMyBadges = false;
-
+      this.toggleTeachingMaterials = false;
+      this.toggleLessonPlan = false;
+      this.toggleRecord = false;
     }
     if (sidebar === 'myteachers') {
       this.toggleDashboard = false;
@@ -115,7 +127,9 @@ export class UserSidebarComponent implements OnInit {
       this.toggleLibrary = false;
       this.toggleMyTeachers = true;
       this.toggleMyBadges = false;
-
+      this.toggleTeachingMaterials = false;
+      this.toggleLessonPlan = false;
+      this.toggleRecord = false;
     }
     if (sidebar === 'mybadges') {
       this.toggleDashboard = false;
@@ -124,7 +138,42 @@ export class UserSidebarComponent implements OnInit {
       this.toggleLibrary = false;
       this.toggleMyTeachers = false;
       this.toggleMyBadges = true;
-
+      this.toggleTeachingMaterials = false;
+      this.toggleLessonPlan = false;
+      this.toggleRecord = false;
+    }
+    if (sidebar === 'record') {
+      this.toggleDashboard = false;
+      this.toggleClass = false;
+      this.toggleInvitation = false;
+      this.toggleLibrary = false;
+      this.toggleMyTeachers = false;
+      this.toggleMyBadges = false;
+      this.toggleTeachingMaterials = false;
+      this.toggleLessonPlan = false;
+      this.toggleRecord = true;
+    }
+    if (sidebar === 'teachingMaterials') {
+      this.toggleDashboard = false;
+      this.toggleClass = false;
+      this.toggleInvitation = false;
+      this.toggleLibrary = false;
+      this.toggleMyTeachers = false;
+      this.toggleMyBadges = false;
+      this.toggleTeachingMaterials = true;
+      this.toggleLessonPlan = false;
+      this.toggleRecord = false;
+    }
+    if (sidebar === 'lessonPlan') {
+      this.toggleDashboard = false;
+      this.toggleClass = false;
+      this.toggleInvitation = false;
+      this.toggleLibrary = false;
+      this.toggleMyTeachers = false;
+      this.toggleMyBadges = false;
+      this.toggleTeachingMaterials = false;
+      this.toggleLessonPlan = true;
+      this.toggleRecord = false;
     }
 
 
