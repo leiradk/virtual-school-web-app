@@ -1,9 +1,68 @@
-<div class="main">
+<!-- <div class="main">
     <div class="events">
         <app-assigned-events></app-assigned-events>
     </div>
     <div class="announcements">
         <app-class-announcements></app-class-announcements>
     </div>
+</div> -->
+
+<div class="row" style="padding: 30px 30px 0px 30px">
+    <div class="col-lg-4 col-xs-6">
+        <div class="rad-info-box rad-txt-success">
+            <i class="fa fa-graduation-cap"></i>
+            <span class="heading">Students</span>
+            <span class="value">
+                <span>25</span>
+            </span>
+        </div>
+    </div>
+    <div class="col-lg-4 col-xs-6">
+        <div class="rad-info-box rad-txt-primary">
+            <i class="fa fa-users"></i>
+            <span class="heading">Parents</span>
+            <span class="value">
+                <span>23</span>
+            </span>
+        </div>
+    </div>
+    <div class="col-lg-4 col-xs-6">
+        <div class="rad-info-box rad-txt-danger">
+            <i class="fa fa-th"></i>
+            <span class="heading">Classes</span>
+            <span class="value">
+                <span>5</span>
+            </span>
+        </div>
+    </div>
 </div>
- 
+
+
+<!-- Content Row -->
+<div class="row" style="padding: 20px 30px 30px 30px">
+
+    <!-- Content Column -->
+    <div class="col-lg-6 mb-4">
+        <!-- Project Card Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Calendar</h6>
+            </div>
+            <app-assigned-events></app-assigned-events>
+        </div>
+    </div>
+
+    <div class="col-lg-6 mb-4">
+
+        <!-- Illustrations -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Announcements</h6>
+            </div>
+            <div class="card-body">
+                <app-class-announcements></app-class-announcements>
+            </div>
+        </div>
+
+    </div>
+</div>

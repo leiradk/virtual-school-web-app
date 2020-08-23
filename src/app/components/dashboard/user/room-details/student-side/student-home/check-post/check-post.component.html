@@ -57,19 +57,22 @@
           <div class="line-divider"></div>
           <div class="post-text">
             <p>
-              {{ post.message }} <i class="em em-anguished"></i>
-              <i class="em em-anguished"></i> <i class="em em-anguished"></i>
+              {{ post.message }}
+              <i class="em em-anguished"></i>
+              <i class="em em-anguished"></i>
+              <i class="em em-anguished"></i>
             </p>
           </div>
           <div class="line-divider"></div>
           <div>
             <div class="view-comment">
               <p>
-                <a class="btn text-green"><i class="fa fa-thumbs-up"></i> 13</a>
-                <a *ngIf="!viewAllComments[i]" (click)="viewComments(true, post.postID, i)" class="view-all">View
-                  Comments</a>
-                <a *ngIf="viewAllComments[i]" (click)="viewComments(false, post.postID, i)" class="view-all">Hide
-                  Comments</a>
+                <a class="btn text-green">
+                  <i class="fa fa-thumbs-up"></i> 13</a>
+                <a *ngIf="!viewAllComments[i]" (click)="viewComments(true, post.postID, i)" class="view-all">View Comments
+                </a>
+                <a *ngIf="viewAllComments[i]" (click)="viewComments(false, post.postID, i)" class="view-all">Hide Comments
+                </a>
               </p>
             </div>
           </div>
@@ -84,8 +87,8 @@
           </div>
           <div class="post-comment write-comment">
             <img src="../../../../../../../assets/images/users/user-1.jpg" alt="" class="profile-photo-sm" />
-            <input type="text" class="form-control post-a-comment" placeholder="Post a comment" [(ngModel)]="arr[i]"
-              (keyup.enter)="addInput(arr[i], post)" />
+            <input type="text" class="form-control post-a-comment" placeholder="Post a comment" [(ngModel)]="arr[i]" (keyup.enter)="addInput(arr[i], post)"
+            />
           </div>
         </div>
       </div>
