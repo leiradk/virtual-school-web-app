@@ -3,7 +3,8 @@
     flex-direction: row;
     background-color: #cccccc !important;
     .header-date,
-    .header-status {
+    .header-status,
+    .header-badge {
         flex: 1;
     }
     .header-name {
@@ -27,8 +28,16 @@
         display: flex;
         flex-direction: row;
         .body-date,
-        .body-status {
+        .body-status,
+        .body-badge {
             flex: 1;
+            
+        }
+        .body-badge{
+            text-align: center;
+            &i{
+                cursor: pointer;
+            }
         }
         .body-name {
             flex: 3;

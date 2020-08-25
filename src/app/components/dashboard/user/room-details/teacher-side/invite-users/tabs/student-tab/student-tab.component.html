@@ -2,6 +2,7 @@
     <div class="tab-table table">
         <div class="table-header">
             <div class="header-name header-content header-split">Name</div>
+            <div class="header-badge header-content header-split">Add Badge</div>
             <div class="header-date header-content header-split">Date Invited</div>
             <div class="header-status header-content">Status</div>
         </div>
@@ -19,7 +20,10 @@
             <div class="table-body-content" *ngFor="let invites of invitedParent">
                 <div class="body-name body-content cell-split">
                     <img class="border rounded-circle border-primary profile-img"
-                        src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg"> {{invites.student}}
+                        src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg"> {{invites.email}}
+                </div>
+                <div class="body-badge body-content cell-split">
+                    <i (click)="getAvailableBadges(invites.userID)" class="fa fa-plus"></i>
                 </div>
                 <div class="body-date body-content cell-split">
                     <img class="center-img"> {{getDate(invites.dateSent)}}

@@ -40,6 +40,7 @@ export class StudentTabComponent implements OnInit {
     console.log(this.classDetails)
     this.getInvitedStudents();
     this.getStudents(this.userData, this.classDetails)
+    this.getBadges();
   }
   showSuccess() {
     this.toastr.success('Invite has been successfully sent', 'Congratulations', { timeOut: 4000 })
@@ -78,6 +79,7 @@ export class StudentTabComponent implements OnInit {
     this.apiService.getInvitedStudents(rid, token)
       .subscribe((response: any) => {
         const { status } = response;
+        console.log('getInvitedStuds', response)
         this.showSpinner = false;
         if (status === 200) {
           const { body } = response;
@@ -159,5 +161,27 @@ export class StudentTabComponent implements OnInit {
         jQuery('#myModal').modal('hide'); //close modal after submit
       })
 
+  }
+
+  getBadges() {
+    const { token } = this.userData;
+
+    this.apiService.getBadges(token)
+      .subscribe((response: any) => {
+        console.log(response)
+      }, (error: any) => {
+        console.log(error)
+      })
+  }
+  getAvailableBadges(sid) {
+    const { rid } = this.classDetails;
+    const studID = sid;
+    const { token } = this.userData;
+    this.apiService.getAvailableBadges(token, studID, rid)
+      .subscribe((response: any) => {
+        console.log(response)
+      }, (error: any) => {
+        console.log(error)
+      })
   }
 }

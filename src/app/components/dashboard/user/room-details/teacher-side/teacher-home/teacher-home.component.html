@@ -47,7 +47,10 @@
                 class="fa fa-video"></i><span>Start Live</span></button>
             <button [routerLink]="['/user/t/classroom/invites']" (click)="invites()" class="btn-invite"><i
                 class="fa fa-paper-plane"></i><span>Invite</span></button>
+            <button data-toggle="modal" data-target="#addBadges" class="btn-invite"><i
+                class="fa fa-paper-plane"></i><span>Add Badges</span></button>
           </div>
+
         </div>
       </div>
     </div>
@@ -85,13 +88,46 @@
 
       <!-- body -->
       <div class="modal-body">
-        <input type="text" [(ngModel)]="topic" >
+        <input type="text" [(ngModel)]="topic">
       </div>
       <!-- body -->
 
       <!-- footer -->
       <div class="modal-footer">
         <button (click)="createRoom()">Create</button>
+      </div>
+      <!-- footer -->
+    </div>
+  </div>
+</div>
+<!-- dialog -->
+
+
+<!-- The Modal ADD CLASSWORK -->
+<div id="addBadges" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+  aria-hidden="true">
+  <!-- dialog -->
+  <div class="modal-dialog">
+    <!-- content -->
+    <div class="modal-content">
+
+      <!-- header -->
+      <div class="modal-header">
+        <h1 id="myModalLabel" class="modal-title">
+          Add Badge
+        </h1>
+      </div>
+      <!-- header -->
+
+      <!-- body -->
+      <div class="modal-body">
+        <input type="text" [(ngModel)]="badge">
+      </div>
+      <!-- body -->
+
+      <!-- footer -->
+      <div class="modal-footer">
+        <button (click)="addBadgeName(badge)">Add</button>
       </div>
       <!-- footer -->
     </div>

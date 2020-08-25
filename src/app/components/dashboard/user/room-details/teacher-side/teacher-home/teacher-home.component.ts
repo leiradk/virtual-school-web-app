@@ -13,6 +13,7 @@ export class TeacherHomeComponent implements OnInit {
   classDetails: any;
   userData: any;
   topic: any;
+  badge: any;
   constructor(
     private apiHost: ApiHostService,
     private system: SystemUtils,
@@ -101,4 +102,18 @@ export class TeacherHomeComponent implements OnInit {
     this.breadcrumbAdd = 'People';
   }
 
+  addBadgeName(badge) {
+    console.log(badge)
+    const { token } = this.userData;
+    const payload = {
+      token: token,
+      badgeName: badge
+    }
+    this.apiHost.addStudentBadge(payload)
+      .subscribe((response: any) => {
+        console.log(response)
+      }, (error: any) => {
+        console.log(error)
+      })
+  }
 }
