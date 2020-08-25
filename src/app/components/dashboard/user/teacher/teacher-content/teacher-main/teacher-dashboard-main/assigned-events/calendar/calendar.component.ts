@@ -28,6 +28,16 @@ export class CalendarComponent implements OnInit {
       type: 1 // Custom field
     },
     {
+      title: 'My Event',
+      start: '2020-08-19',
+      type: 1 // Custom field
+    },
+    {
+      title: 'My Event',
+      start: '2020-08-19',
+      type: 1 // Custom field
+    },
+    {
       title: 'My Event 2',
       start: '2020-08-20',
       eventContent: "weweweweww",

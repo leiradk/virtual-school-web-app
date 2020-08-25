@@ -153,6 +153,17 @@ export class ApiHostService {
       );
   }
 
+  //adding badges for giving to student
+  addStudentBadge(payload) {
+    return this.https.post(`${this.localhost}teacher/add/badge`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
   //put data
   //accept classroom invitation on student side
@@ -198,17 +209,17 @@ export class ApiHostService {
         })
       );
   }
- //Create Conference room
- createConference(payload) {
-  return this.https.post(`${this.localhost}create/conference/room`, payload)
-    .pipe(
-      map((data: any) => {
-        return data;
-      }), catchError(error => {
-        return throwError(error);
-      })
-    );
-}
+  //Create Conference room
+  createConference(payload) {
+    return this.https.post(`${this.localhost}create/conference/room`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
   //update classwork for students
   updateClassWork(payload) {
     return this.https.put(`${this.localhost}teacher/update/classwork`, payload)
@@ -491,6 +502,56 @@ export class ApiHostService {
   }
   getMyTeacherList(token) {
     return this.https.get(`${this.localhost}student/get/teachers?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+  teacherGetTotalStudents(token) {
+    return this.https.get(`${this.localhost}teacher/get/students/total?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+  teacherGetTotalClasses(token) {
+    return this.https.get(`${this.localhost}teacher/get/classes/total?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+  teacherGetTotalParents(token) {
+    return this.https.get(`${this.localhost}teacher/get/student/parents/total?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+  getBadges(token) {
+    return this.https.get(`${this.localhost}teacher/get/badges?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+  getAvailableBadges(token, studId, classId) {
+    return this.https.get(`${this.localhost}teacher/get/student/available/badges?token=${token}&studID=${studId}&classID=${classId}`)
       .pipe(
         map((data: any) => {
           return data;
