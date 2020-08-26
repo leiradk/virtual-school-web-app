@@ -24,7 +24,6 @@ import { LessonPlanComponent } from './components/dashboard/user/teacher/teacher
 import { RecordComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/record/record.component';
 import { AssignedEventsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/assigned-events/assigned-events.component';
 import { TeacherDashboardMainComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/teacher-dashboard-main.component';
-
 // import { ClassDetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-details.component';
 // import { ClassHomeComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-home.component';
 // import { ClassworkComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/classwork.component';
@@ -37,6 +36,11 @@ import { StudentMainComponent } from "./components/dashboard/user/student/studen
 import { StudentInvitationsComponent } from "./components/dashboard/user/student/student-content/student-invitations/student-invitations.component";
 import { ClassroomComponent } from "./components/dashboard/user/student/student-content/classroom/classroom.component";
 import { LibraryComponent } from "./components/dashboard/user/student/student-content/library/library.component";
+import { StudentClassesComponent } from "./components/dashboard/user/student/student-content/student-classes/student-classes.component";
+import { StudentCalendarComponent } from "./components/dashboard/user/student/student-content/student-main/student-assigned-events/student-calendar/student-calendar.component";
+import { StudentSetEventsComponent } from "./components/dashboard/user/student/student-content/student-main/student-assigned-events/student-set-events/student-set-events.component";
+
+
 
 import { UserComponent } from "./components/dashboard/user/user.component";
 import { RoomDetailsComponent } from "./components/dashboard/user/room-details/room-details.component";
@@ -197,8 +201,28 @@ const routes: Routes = [
           },
           {
             path: "main",
-            component: StudentMainComponent
+            component: StudentMainComponent,
+            children: [
+              {
+                path: "",
+                redirectTo: "events",
+                pathMatch: "full"
+              },
+              {
+                path: "events",
+                component: StudentCalendarComponent
+              },
+              {
+                path: "event-scheduler",
+                component: StudentSetEventsComponent
+              },
+            ]
           },
+          {
+            path: "classes",
+            component: StudentClassesComponent
+          },
+          
           {
             path: "invitations",
             component: StudentInvitationsComponent

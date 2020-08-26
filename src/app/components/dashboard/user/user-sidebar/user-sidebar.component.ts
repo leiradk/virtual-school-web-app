@@ -13,6 +13,7 @@ export class UserSidebarComponent implements OnInit {
   data: any;
   userType: any;
   dashboardRoute: any;
+  classesRoute: any;
   invitationRoute: any;
   isStudentSide: boolean = false;
   isTeacherSide: boolean = false;
@@ -29,6 +30,7 @@ export class UserSidebarComponent implements OnInit {
     this.userType = usertype;
     // console.log(usertype)
     this.routeDashboard();
+    this.routeToClasses()
   }
   viewDetails(data) {
     console.log(data)
@@ -37,6 +39,23 @@ export class UserSidebarComponent implements OnInit {
   }
 
   routeDashboard() {
+    const { usertype } = this.userData.data;
+    if (usertype === '10002') {
+      this.dashboardRoute = '/user/t/main';
+      this.classesRoute = '/user/t/classes';
+      this.isStudentSide = false;
+      this.isTeacherSide = true;
+    } else if (usertype === '10003') {
+      this.dashboardRoute = '/user/s/main';
+      this.invitationRoute = '/user/s/invitations';
+      this.classesRoute = '/user/s/classes';
+      this.isStudentSide = true;
+      this.isTeacherSide = false;
+    } else if (usertype === '10004') {
+      this.dashboardRoute = '/user/p/main'
+    }
+  }
+  routeToClasses() {
     const { usertype } = this.userData.data;
     if (usertype === '10002') {
       this.dashboardRoute = '/user/t/main';

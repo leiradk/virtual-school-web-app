@@ -127,6 +127,11 @@ import { LessonPlanComponent } from './components/dashboard/user/teacher/teacher
 import { RecordComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/record/record.component';
 import { AssignedEventsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/assigned-events/assigned-events.component';
 import { TeacherDashboardMainComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/teacher-dashboard-main.component';
+import { StudentClassesComponent } from './components/dashboard/user/student/student-content/student-classes/student-classes.component';
+import { StudentAssignedEventsComponent } from './components/dashboard/user/student/student-content/student-main/student-assigned-events/student-assigned-events.component';
+import { StudentCalendarComponent } from './components/dashboard/user/student/student-content/student-main/student-assigned-events/student-calendar/student-calendar.component';
+import { StudentSetEventsComponent } from './components/dashboard/user/student/student-content/student-main/student-assigned-events/student-set-events/student-set-events.component';
+import { StudentClassAnnouncemetsComponent } from './components/dashboard/user/student/student-content/student-main/student-class-announcemets/student-class-announcemets.component';
 
 
 @NgModule({
@@ -229,6 +234,11 @@ import { TeacherDashboardMainComponent } from './components/dashboard/user/teach
     RecordComponent,
     AssignedEventsComponent,
     TeacherDashboardMainComponent,
+    StudentClassesComponent,
+    StudentAssignedEventsComponent,
+    StudentCalendarComponent,
+    StudentSetEventsComponent,
+    StudentClassAnnouncemetsComponent,
   ],
   imports: [
     BrowserModule,

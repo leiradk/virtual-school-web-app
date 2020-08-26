@@ -574,6 +574,36 @@ export class ApiHostService {
       );
   }
 
+  studentGetTotalTeachers(token) {
+    return this.https.get(`${this.localhost}student/get/total/teachers?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+  studentGetTotalBadge(token) {
+    return this.https.get(`${this.localhost}student/get/total/badges?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+  studentGetTotatClasses(token) {
+    return this.https.get(`${this.localhost}student/get/total/classes?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
 }
 
