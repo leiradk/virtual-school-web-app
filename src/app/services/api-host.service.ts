@@ -165,6 +165,19 @@ export class ApiHostService {
       );
   }
 
+    //adding module on admin side
+    addModule(payload) {
+      return this.https.post(`${this.localhost}admin/add/module`, payload)
+        .pipe(
+          map((data: any) => {
+            return data;
+          }), catchError(error => {
+            return throwError(error);
+          })
+        );
+    }
+
+
   //put data
   //accept classroom invitation on student side
   acceptInvitation(payload) {
@@ -560,5 +573,7 @@ export class ApiHostService {
         })
       );
   }
+
+
 }
 
