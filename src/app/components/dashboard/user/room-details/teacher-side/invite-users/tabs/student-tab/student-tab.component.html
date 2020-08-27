@@ -19,8 +19,7 @@
         <div *ngIf="!showSpinner && !error" class="table-body">
             <div class="table-body-content" *ngFor="let invites of invitedParent">
                 <div class="body-name body-content cell-split">
-                    <img class="border rounded-circle border-primary profile-img"
-                        src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg"> {{invites.email}}
+                    <img class="border rounded-circle border-primary profile-img" src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg"> {{invites.email}}
                 </div>
                 <div class="body-badge body-content cell-split">
                     <i (click)="getAvailableBadges(invites.userID)" class="fa fa-plus"></i>
@@ -36,8 +35,8 @@
         </div>
         <div class="table-footer">
             <div class="body-status body-content invite-button">
-                <div class="center-img invite-student" data-toggle="modal" data-target="#invitePeople">Invite
-                    Student</div>
+                <div class="center-img invite-student" data-toggle="modal" data-target="#invitePeople">Invite Student
+                </div>
             </div>
         </div>
     </div>
@@ -64,33 +63,44 @@
                     </datalist>
                     <button class="btn btn-primary" style="width: 200px; margin-left: 10px;">Send Invite</button>
                 </div> -->
-            <input type="text" [(ngModel)]="teacherSearchText">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="tbl-large-head">Name</th>
-                        <th class="tbl-large-head">Email</th>
-                        <th class="tbl-large-head">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let students of student | filter: teacherSearchText">
-                        <th class="tbl-large-head">{{students.firstname}}</th>
-                        <th class="tbl-large-head">{{students.email}}</th>
-                        <th class="tbl-large-head"> <button class="btn btn-primary"
-                                style="width: 200px; margin-left: 10px;"
-                                (click)="inviteStudent(students)">Invite</button></th>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th class="tbl-large-head">Name</th>
-                        <th class="tbl-large-head">Email</th>
-                        <th class="tbl-large-head">Action</th>
-                    </tr>
-                </tfoot>
-            </table>
+            <div class="form">
+                <p class="group">
+                    <input [(ngModel)]="teacherSearchText" type="text" id="inputSearch" required>
+                    <label for="inputSearch">Search Student</label>
+                </p>
+                <div class="table-container">
+                    <table class="table" style="table-layout:fixed">
+                        <thead>
+                            <tr>
+                                <th class="tbl-large-head">Name</th>
+                                <th class="tbl-large-head">Email</th>
+                                <th class="tbl-large-head">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let students of student | filter: teacherSearchText">
+                                <th class="tbl-large-head">{{students.firstname}}</th>
+                                <th class="tbl-large-head">{{students.email}}</th>
+                                <th class="tbl-large-head">
+                                    <button class="btn btn-primary" style="width: 200px; margin-left: 10px;" (click)="inviteStudent(students)">Invite</button>
+                                </th>
+                            </tr>
+                        </tbody>
+                        <!-- <tfoot>
+                        <tr>
+                            <th class="tbl-large-head">Name</th>
+                            <th class="tbl-large-head">Email</th>
+                            <th class="tbl-large-head">Action</th>
+                        </tr>
+                    </tfoot> -->
+                    </table>
+                </div>
+
+            </div>
             <div class="modal-footer">
+                <div class="form">
+                    <input type="submit" value="Done">
+                </div>
             </div>
             <!-- </form> -->
 
