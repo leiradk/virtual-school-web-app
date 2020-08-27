@@ -191,6 +191,7 @@ h2, p{
   border-top-right-radius:5px;
   position:relative;
 }
+
 .drie .inhoud{
   background-color:#A9E5BB;
   transition: all .2s ease-in-out;
@@ -198,6 +199,11 @@ h2, p{
 
 .drie .inhoud:hover{
   background-color:#A2CECD;
+  cursor: pointer;
+  i{
+      transition: .2s all ease-in-out;
+      color: #1E2330 !important;
+  }
 }
 
 .drie .inhoud:hover .iconmelon {
