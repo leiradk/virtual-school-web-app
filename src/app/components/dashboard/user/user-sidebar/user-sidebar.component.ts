@@ -17,6 +17,7 @@ export class UserSidebarComponent implements OnInit {
   invitationRoute: any;
   isStudentSide: boolean = false;
   isTeacherSide: boolean = false;
+  isParentSide: boolean = false;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -30,7 +31,6 @@ export class UserSidebarComponent implements OnInit {
     this.userType = usertype;
     // console.log(usertype)
     this.routeDashboard();
-    this.routeToClasses()
   }
   viewDetails(data) {
     console.log(data)
@@ -44,6 +44,7 @@ export class UserSidebarComponent implements OnInit {
       this.dashboardRoute = '/user/t/main';
       this.classesRoute = '/user/t/classes';
       this.isStudentSide = false;
+      this.isParentSide = false;
       this.isTeacherSide = true;
     } else if (usertype === '10003') {
       this.dashboardRoute = '/user/s/main';
@@ -51,36 +52,15 @@ export class UserSidebarComponent implements OnInit {
       this.classesRoute = '/user/s/classes';
       this.isStudentSide = true;
       this.isTeacherSide = false;
+      this.isParentSide = false;
     } else if (usertype === '10004') {
       this.dashboardRoute = '/user/p/main'
-    }
-  }
-  routeToClasses() {
-    const { usertype } = this.userData.data;
-    if (usertype === '10002') {
-      this.dashboardRoute = '/user/t/main';
+      this.isParentSide = true;
       this.isStudentSide = false;
-      this.isTeacherSide = true;
-    } else if (usertype === '10003') {
-      this.dashboardRoute = '/user/s/main';
-      this.invitationRoute = '/user/s/invitations';
-      this.isStudentSide = true;
-      this.isTeacherSide = false;
-    } else if (usertype === '10004') {
-      this.dashboardRoute = '/user/p/main'
+      this.isTeacherSide = false;     
     }
   }
-  //getting all classroom for one specific teacher
-  // getClassroom(data) {
-  //   const { token } = data;
-  //   this.apiService.getClassroom(token)
-  //     .subscribe((response: any) => {
-  //       const { status, message, body } = response;
-  //       if (status === 200) {
-  //         this.classDetails = body;
-  //       }
-  //     });
-  // }
+
 
 
   public toggleDashboard: boolean = false;

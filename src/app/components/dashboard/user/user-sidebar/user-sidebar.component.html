@@ -7,7 +7,7 @@
         <i class="fas fa-tachometer-alt side-icon"></i><span style="font-weight: bold;">Dashboard</span></li>
     </a>
     <!-- *ngIf="isTeacherSide"  -->
-    <a [routerLink]="[classesRoute]" routerLinkActive="active" class="collapse-item">
+    <a  *ngIf="isTeacherSide || isStudentSide" [routerLink]="[classesRoute]" routerLinkActive="active" class="collapse-item">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleClass}">{{toggleSidebar('classes')}}
         <i class="fa fa-envelope side-icon"></i><span style="font-weight: bold;">Classes</span></li>
