@@ -31,6 +31,7 @@ export class TeacherStaffComponent implements OnInit {
   viewList: number = 5;
   userData: any;
   error: boolean = false;
+  hide: boolean = false;
   teacherParams: Observable<string>;
   teacherMessage: any;
   constructor(

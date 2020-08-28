@@ -134,6 +134,14 @@ import { StudentSetEventsComponent } from './components/dashboard/user/student/s
 import { StudentClassAnnouncemetsComponent } from './components/dashboard/user/student/student-content/student-main/student-class-announcemets/student-class-announcemets.component';
 
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -256,6 +264,11 @@ import { StudentClassAnnouncemetsComponent } from './components/dashboard/user/s
     IonicModule.forRoot(),
     RichTextEditorAllModule,
     NgbModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
     FullCalendarModule // register FullCalendar with you app
   ],
   providers: [ApiHostService, SystemUtils],

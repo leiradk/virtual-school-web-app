@@ -31,6 +31,7 @@ export class StudentsComponent implements OnInit {
   viewList: number = 5;
   userData: any;
   error: boolean = false;
+  hide: boolean = false;
 
   studentParams: Observable<string>;
   studentMessage: any;
