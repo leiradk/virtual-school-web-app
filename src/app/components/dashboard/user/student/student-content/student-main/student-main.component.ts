@@ -26,12 +26,9 @@ export class StudentMainComponent implements OnInit {
   getTotalTeacher(token) {
     this.apiHost.studentGetTotalTeachers(token)
       .subscribe((response: any) => {
-        console.log('totalTeachers:', response)
         const { classes } = response.body[0]; 
-        console.log(classes)
         this.totalTeacherCount = classes
       }, (error: any) => {
-        console.log('totalTeachers:', error)
         if(error.status === 404) {
           if(error.statusText === "Not Found") {
             this.totalTeacherCount = 0;
@@ -42,12 +39,9 @@ export class StudentMainComponent implements OnInit {
   getTotalClasses(token) {
     this.apiHost.studentGetTotatClasses(token)
     .subscribe((response: any) => {
-      console.log('totalClasses:', response)
       const { classes } = response.body[0]; 
-      console.log(classes)
       this.totalClassesCount = classes
     }, (error: any) => {
-      console.log('totalStudentsError:', error)
       if(error.status === 404) {
         if(error.statusText === "Not Found") {
           this.totalClassesCount = 0;
@@ -58,12 +52,9 @@ export class StudentMainComponent implements OnInit {
   getTotalBadge(token) {
     this.apiHost.studentGetTotalBadge(token)
     .subscribe((response: any) => {
-      console.log('totalParents:', response)
       const { badges } = response.body[0]; 
-      console.log(badges)
       this.totalBadgeCount = badges
     }, (error: any) => {
-      console.log('totalStudentsError:', error)
       if(error.status === 404) {
         if(error.statusText === "Not Found") {
           this.totalBadgeCount = 0;

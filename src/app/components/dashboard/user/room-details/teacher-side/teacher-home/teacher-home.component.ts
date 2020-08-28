@@ -23,7 +23,6 @@ export class TeacherHomeComponent implements OnInit {
   ngOnInit(): void {
     this.classDetails = this.system.retrieveItem('classDetails');
     this.userData = this.system.retrieveItem('userData');
-    console.log(this.classDetails)
   }
 
   getDate(created) {
@@ -49,17 +48,14 @@ export class TeacherHomeComponent implements OnInit {
     };
     this.apiHost.createConference(payload)
       .subscribe((response: any) => {
-        console.log(response)
         const { body } = response;
         const conferenceID = body.conferenceID
         window.open(`http://localhost:8000/cr?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}&conferenceID=${conferenceID}`, '_blank');
 
       }, (error: any) => {
-        console.log(error)
       })
     // window.open(`http://localhost:8000/cr?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}&conferenceID=conferenceIDHere`, '_blank');
 
-    console.log(payload);
   }
 
   getMonth(month) {
@@ -96,14 +92,12 @@ export class TeacherHomeComponent implements OnInit {
   breadcrumbAdd: any;
 
   getActiveClass() {
-    console.log('activeClass method')
     this.homeActive = 'not-active';
     this.peopleActive = 'active';
     this.breadcrumbAdd = 'People';
   }
 
   addBadgeName(badge) {
-    console.log(badge)
     const { token } = this.userData;
     const payload = {
       token: token,
