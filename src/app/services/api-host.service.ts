@@ -165,17 +165,29 @@ export class ApiHostService {
       );
   }
 
-    //adding module on admin side
-    addModule(payload) {
-      return this.https.post(`${this.localhost}admin/add/module`, payload)
-        .pipe(
-          map((data: any) => {
-            return data;
-          }), catchError(error => {
-            return throwError(error);
-          })
-        );
-    }
+  //adding module on admin side
+  addModule(payload) {
+    return this.https.post(`${this.localhost}admin/add/module`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+  //add badge on student
+  addBadgeForStudent(payload) {
+    return this.https.post(`${this.localhost}teacher/add/badge/student`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
 
 
   //put data
@@ -596,6 +608,66 @@ export class ApiHostService {
   }
   studentGetTotatClasses(token) {
     return this.https.get(`${this.localhost}student/get/total/classes?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
+  //get modules for admin
+  getModule(token) {
+    return this.https.get(`${this.localhost}admin/get/modules?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
+  //get modules for student
+  getModuleStudent(token) {
+    return this.https.get(`${this.localhost}student/get/modules?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
+  //get modules for teacher
+  getModuleTeacher(token) {
+    return this.https.get(`${this.localhost}teacher/get/modules?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
+  //get all classes post on teacher side
+  getAllPostOnTeacher(token) {
+    return this.https.get(`${this.localhost}teacher/get/all/classes/post?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
+  //get all classes post on student side
+  getAllPostOnStudent(token) {
+    return this.https.get(`${this.localhost}student/get/all/classes/post?token=${token}`)
       .pipe(
         map((data: any) => {
           return data;
