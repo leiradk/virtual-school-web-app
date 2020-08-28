@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from "@angular/forms";
+import { ApiHostService } from "../../../../../services/api-host.service";
+import { ToastrService } from "ngx-toastr";
+import { SystemUtils } from '../../../../../services/system.utils';
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-materials',
   templateUrl: './materials.component.html',
@@ -8,7 +17,11 @@ import { Component, OnInit } from '@angular/core';
 export class MaterialsComponent implements OnInit {
   selectedSubject: any;
   selectedGrade: any;
-  
+  hide: boolean = false;
+  public addModuleForm: FormGroup;
+  fileName: any;
+  base64textString: any;
+  userData: any;
   gradeLevel = [
     { id: 1, name: 'Grade 1' },
     { id: 2, name: 'Grade 2' },
@@ -25,16 +38,87 @@ export class MaterialsComponent implements OnInit {
   ];
 
   subjects = [
-    {id: 1, subject: 'English'},
-    {id: 2, subject: 'Mathematics'},
-    {id: 3, subject: 'Science'},
-    {id: 4, subject: 'Physical Education'},
-    {id: 5, subject: 'History'},
+    { id: 1, subject: 'English' },
+    { id: 2, subject: 'Mathematics' },
+    { id: 3, subject: 'Science' },
+    { id: 4, subject: 'Physical Education' },
+    { id: 5, subject: 'History' },
   ];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private fb: FormBuilder,
+    private apiService: ApiHostService,
+    private toastr: ToastrService,
+    private system: SystemUtils,
+    private router: Router,
+  ) {
+    this.addModuleFields();
   }
 
+  ngOnInit(): void {
+    this.userData = this.system.retrieveItem('userData');
+    this.getModule();
+  }
+
+  getModule() {
+    this.apiService.getModule(this.userData.token)
+      .subscribe((response: any) => {
+        console.log(response)
+      }, (error: any) => {
+        console.log(error)
+      })
+  }
+  addModuleFields() {
+    this.addModuleForm = this.fb.group({
+
+      moduleName: [null, Validators.required],
+      moduleNumber: [null, Validators.required],
+      grade: [null, Validators.required],
+      fileName: [null, [Validators.required, Validators.minLength(6)]],
+      dateCreated: [null, [Validators.required, Validators.minLength(6)]],
+    }, {
+    });
+  }
+
+  onSubmit(value) {
+    console.log(value)
+    const payload = {
+      token: this.userData.token,
+      moduleName: this.addModuleForm.value.moduleName,
+      moduleNumber: this.addModuleForm.value.moduleNumber,
+      grade: this.addModuleForm.value.grade,
+      dateCreated: this.addModuleForm.value.dateCreated,
+      fileb64: this.base64textString,
+      filename: this.fileName
+    }
+    console.log(payload)
+    this.apiService.addModule(payload)
+      .subscribe((response: any) => {
+        console.log(response)
+      }, (error: any) => {
+        console.log(error)
+      })
+  }
+
+  upload(file) {
+    this.fileName = file[0].name
+  }
+  onFileChange(event) {
+    var files = event.target.files;
+    var file = files[0];
+    this.fileName = file.name;
+    if (files && file) {
+      var reader = new FileReader();
+
+      reader.onload = this.handleFile.bind(this);
+
+      reader.readAsBinaryString(file);
+      // console.log(reader.readAsBinaryString(file));
+
+    }
+  }
+  handleFile(event) {
+    var binaryString = event.target.result;
+    this.base64textString = btoa(binaryString);
+  }
 }
