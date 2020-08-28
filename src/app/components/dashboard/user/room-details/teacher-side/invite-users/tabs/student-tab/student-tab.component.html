@@ -19,10 +19,11 @@
         <div *ngIf="!showSpinner && !error" class="table-body">
             <div class="table-body-content" *ngFor="let invites of invitedParent">
                 <div class="body-name body-content cell-split" style="text-transform: lowercase">
-                    <img class="border rounded-circle border-primary profile-img" src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg"> {{invites.email}}
+                    <img class="border rounded-circle border-primary profile-img"
+                        src="../../../../../../../../assets/admin/img/avatars/avatar5.jpeg"> {{invites.email}}
                 </div>
-                <div class="body-badge body-content cell-split">
-                    <i (click)="getAvailableBadges(invites.userID)" class="fa fa-plus"></i>
+                <div data-toggle="modal" data-target="#addBadges" class="body-badge body-content cell-split">
+                    <i class="add-badge" (click)="getAvailableBadges(invites.userID)" class="fa fa-plus"></i>
                 </div>
                 <div class="body-date body-content cell-split">
                     <img class="center-img"> {{getDate(invites.dateSent)}}
@@ -80,10 +81,12 @@
                         <tbody>
                             <tr *ngFor="let students of student | filter: teacherSearchText">
                                 <th class="" style="vertical-align: middle;">{{students.firstname}}</th>
-                                <th class="" style="font-weight:100; vertical-align: middle; text-transform:lowercase">{{students.email}}</th>
+                                <th class="" style="font-weight:100; vertical-align: middle; text-transform:lowercase">
+                                    {{students.email}}</th>
                                 <th class="">
                                     <div class="form" style="padding: 0px">
-                                        <input style="font-size: 12px" (click)="inviteStudent(students)" type="submit" value="Invite">
+                                        <input style="font-size: 12px" (click)="inviteStudent(students)" type="submit"
+                                            value="Invite">
                                     </div>
                                 </th>
                             </tr>
@@ -120,3 +123,64 @@
         </div>
     </div>
 </div>
+
+
+<!-- Add Badges -->
+<div id="addBadges" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+    aria-hidden="true">
+    <!-- dialog -->
+    <div class="modal-dialog">
+        <!-- content -->
+        <div class="modal-content">
+
+            <!-- header -->
+            <div class="modal-header">
+                <h1 id="myModalLabel" class="modal-title">
+                    Add Badge
+                </h1>
+            </div>
+            <!-- header -->
+
+            <!-- body -->
+            <div class="modal-body">
+                <table class="table" style="table-layout:fixed; margin-bottom: 0px">
+                    <thead>
+                        <tr>
+                            <th class="tbl-large-head" style="width: 50%">Email</th>
+                            <th class="tbl-large-head" style="width: 30%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let badges of badge">
+                            <th class="" style="font-weight:100; vertical-align: middle; text-transform:lowercase">
+                                {{badges.badgeName}}</th>
+                            <th class="">
+                                <div class="form" style="padding: 0px">
+                                    <input style="font-size: 12px" (click)="adddBadgeOnStudent(badges.badgeID)" type="submit"
+                                        value="Add Badge">
+                                </div>
+                            </th>
+                        </tr>
+                    </tbody>
+                    <!-- <tfoot>
+                <tr>
+                    <th class="tbl-large-head">Name</th>
+                    <th class="tbl-large-head">Email</th>
+                    <th class="tbl-large-head">Action</th>
+                </tr>
+            </tfoot> -->
+                </table>
+            </div>
+            <!-- body -->
+
+            <!-- footer -->
+            <div class="modal-footer">
+                <div class="form">
+                    <!-- <input (click)="addBadgeName(badge)" type="submit" value="Add Badge"> -->
+                </div>
+            </div>
+            <!-- footer -->
+        </div>
+    </div>
+</div>
+<!-- dialog -->

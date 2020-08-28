@@ -31,11 +31,10 @@
         .body-status,
         .body-badge {
             flex: 1;
-            
         }
-        .body-badge{
+        .body-badge {
             text-align: center;
-            &i{
+            &i {
                 cursor: pointer;
             }
         }
@@ -114,4 +113,8 @@
         border-top: none !important;
         vertical-align: middle;
     }
+}
+
+.add-badge {
+    cursor: pointer;
 }

@@ -25,6 +25,8 @@ export class StudentTabComponent implements OnInit {
   invitedParent: any;
   errorMessage: any;
   student: any;
+  badge: any;
+  getStudentID: any;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -37,7 +39,6 @@ export class StudentTabComponent implements OnInit {
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
     this.classDetails = this.system.retrieveItem('classDetails');
-    console.log(this.classDetails)
     this.getInvitedStudents();
     this.getStudents(this.userData, this.classDetails)
     this.getBadges();
@@ -57,19 +58,15 @@ export class StudentTabComponent implements OnInit {
   getStudents(userData, classDetails) {
     const { token } = userData;
     const { classGradeLevel } = classDetails
-    console.log('token', token)
     this.apiService.searchStudents(token, classGradeLevel)
       .subscribe((response: any) => {
         // this.showSpinner = false;
-        console.log('search', response);
-
         const { body, status } = response;
         if (status === 200) {
           this.student = body;
           // this.showSpinner = false;
         }
       }, (error: any) => {
-        console.log('search', error);
         // this.showSpinner = false;
       })
   }
@@ -79,16 +76,13 @@ export class StudentTabComponent implements OnInit {
     this.apiService.getInvitedStudents(rid, token)
       .subscribe((response: any) => {
         const { status } = response;
-        console.log('getInvitedStuds', response)
         this.showSpinner = false;
         if (status === 200) {
           const { body } = response;
           this.invitedParent = body;
-          console.log(this.invitedParent);
         }
 
       }, (error: any) => {
-        console.log(error);
         const { status, message } = error.error;
         this.error = true;
         this.showSpinner = false;
@@ -145,17 +139,14 @@ export class StudentTabComponent implements OnInit {
       user: data.email
 
     }
-    console.log('payload', payload)
     this.error = false;
     this.showSpinner = true;
     this.apiService.sendClassInvites(payload)
       .subscribe((response: any) => {
-        console.log(response);
         // this.getStudents(this.userData);
         this.showSuccess(); // show toastr
         jQuery('#myModal').modal('hide'); //close modal after submit
       }, (error: any) => {
-        console.log(error)
         this.showSpinner = false;
         this.showFailed()
         jQuery('#myModal').modal('hide'); //close modal after submit
@@ -169,15 +160,32 @@ export class StudentTabComponent implements OnInit {
     this.apiService.getBadges(token)
       .subscribe((response: any) => {
         console.log(response)
+        this.badge = response.body.badges
       }, (error: any) => {
         console.log(error)
       })
   }
   getAvailableBadges(sid) {
     const { rid } = this.classDetails;
-    const studID = sid;
+    this.getStudentID = sid;
     const { token } = this.userData;
-    this.apiService.getAvailableBadges(token, studID, rid)
+    this.apiService.getAvailableBadges(token, this.getStudentID, rid)
+      .subscribe((response: any) => {
+        console.log(response)
+      }, (error: any) => {
+        console.log(error)
+      })
+  }
+
+  adddBadgeOnStudent(badgeID) {
+    const payload = {
+      token: this.userData.token,
+      badgeID: badgeID,
+      studID: this.getStudentID,
+      classID: this.classDetails.rid
+    }
+    console.log(payload)
+    this.apiService.addBadgeForStudent(payload)
       .subscribe((response: any) => {
         console.log(response)
       }, (error: any) => {
