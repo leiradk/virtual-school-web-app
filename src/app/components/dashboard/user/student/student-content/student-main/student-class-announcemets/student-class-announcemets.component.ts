@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SystemUtils } from '../../../../../../../services/system.utils';
+import { ApiHostService } from '../../../../../../../services/api-host.service';
 
 @Component({
   selector: 'app-student-class-announcemets',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentClassAnnouncemetsComponent implements OnInit {
 
-  constructor() { }
+  classPosts: any;
+  userData: any;
+  constructor(
+    private apiHost: ApiHostService,
+    private system: SystemUtils
+  ) { }
 
   ngOnInit(): void {
+    this.userData = this.system.retrieveItem('userData');
+    this.getAllClassPost();
   }
 
+  getAllClassPost() {
+    const { token } = this.userData;
+    this.apiHost.getAllPostOnStudent(token)
+      .subscribe((response: any) => {
+        console.log(response)
+        this.classPosts = response.body.posts;
+      }, (error: any) => {
+        console.log(error)
+      })
+  }
 }
