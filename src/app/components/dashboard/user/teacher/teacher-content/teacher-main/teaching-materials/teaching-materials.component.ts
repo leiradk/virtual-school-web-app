@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormBuilder,Validators,FormControl,
+import {
+  FormGroup, FormBuilder, Validators, FormControl,
 } from "@angular/forms";
 import { ApiHostService } from "../../../../../../../services/api-host.service";
 import { ToastrService } from "ngx-toastr";
@@ -18,6 +19,8 @@ export class TeachingMaterialsComponent implements OnInit {
   fileName: any;
   base64textString: any;
   userData: any;
+  search: any;
+  teachingMaterials: any;
   gradeLevel = [
     { id: 1, name: 'Grade 1' },
     { id: 2, name: 'Grade 2' },
@@ -53,13 +56,15 @@ export class TeachingMaterialsComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
+    this.userData = this.system.retrieveItem('userData');
     this.getModule();
   }
 
   getModule() {
-    this.apiService.getModule(this.userData.token)
+    this.apiService.getTeachingMaterialsTeacher(this.userData.token)
       .subscribe((response: any) => {
         console.log(response)
+        this.teachingMaterials = response.body.materials
       }, (error: any) => {
         console.log(error)
       })
@@ -67,28 +72,26 @@ export class TeachingMaterialsComponent implements OnInit {
   addModuleFields() {
     this.addModuleForm = this.fb.group({
 
-      moduleName: [null, Validators.required],
-      moduleNumber: [null, Validators.required],
+      title: [null, Validators.required],
+      subject: [null, Validators.required],
       grade: [null, Validators.required],
       fileName: [null, [Validators.required, Validators.minLength(6)]],
-      dateCreated: [null, [Validators.required, Validators.minLength(6)]],
+      // dateCreated: [null, [Validators.required, Validators.minLength(6)]],
     }, {
     });
   }
 
-  onSubmit(value) {
-    console.log(value)
+  onSubmit() {
     const payload = {
       token: this.userData.token,
-      moduleName: this.addModuleForm.value.moduleName,
-      moduleNumber: this.addModuleForm.value.moduleNumber,
+      title: this.addModuleForm.value.title,
+      subject: this.addModuleForm.value.subject,
       grade: this.addModuleForm.value.grade,
-      dateCreated: this.addModuleForm.value.dateCreated,
-      fileb64: this.base64textString,
+      file: this.base64textString,
       filename: this.fileName
     }
     console.log(payload)
-    this.apiService.addModule(payload)
+    this.apiService.addTeachingMaterials(payload)
       .subscribe((response: any) => {
         console.log(response)
       }, (error: any) => {

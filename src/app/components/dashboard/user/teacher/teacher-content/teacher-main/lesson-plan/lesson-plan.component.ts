@@ -16,6 +16,7 @@ export class LessonPlanComponent implements OnInit {
   hide: boolean = false;
   public addModuleForm: FormGroup;
   public searchModuleForm: FormGroup;
+  lessonPlan: any;
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -58,13 +59,14 @@ export class LessonPlanComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
-    this.getModule();
+    this.getLessonPlan();
   }
 
-  getModule() {
-    this.apiService.getModule(this.userData.token)
+  getLessonPlan() {
+    this.apiService.getLessonPlanTeacher(this.userData.token)
       .subscribe((response: any) => {
         console.log(response)
+        this.lessonPlan = response.body.lessonPlans
       }, (error: any) => {
         console.log(error)
       })
@@ -72,11 +74,11 @@ export class LessonPlanComponent implements OnInit {
   addModuleFields() {
     this.addModuleForm = this.fb.group({
 
-      moduleName: [null, Validators.required],
-      moduleNumber: [null, Validators.required],
+      title: [null, Validators.required],
+      subject: [null, Validators.required],
       grade: [null, Validators.required],
       fileName: [null, [Validators.required, Validators.minLength(6)]],
-      dateCreated: [null, [Validators.required, Validators.minLength(6)]],
+      // dateCreated: [null, [Validators.required, Validators.minLength(6)]],
     }, {
     });
   }
@@ -85,15 +87,14 @@ export class LessonPlanComponent implements OnInit {
     console.log(value)
     const payload = {
       token: this.userData.token,
-      moduleName: this.addModuleForm.value.moduleName,
-      moduleNumber: this.addModuleForm.value.moduleNumber,
+      title: this.addModuleForm.value.title,
+      subject: this.addModuleForm.value.subject,
       grade: this.addModuleForm.value.grade,
-      dateCreated: this.addModuleForm.value.dateCreated,
-      fileb64: this.base64textString,
+      file: this.base64textString,
       filename: this.fileName
     }
     console.log(payload)
-    this.apiService.addModule(payload)
+    this.apiService.addLessonPlan(payload)
       .subscribe((response: any) => {
         console.log(response)
       }, (error: any) => {
