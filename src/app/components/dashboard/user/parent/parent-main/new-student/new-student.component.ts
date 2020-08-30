@@ -5,6 +5,7 @@ import {
   Validators,
   FormControl,
 } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
 import { ApiHostService } from "../../../../../../services/api-host.service";
 import { SystemUtils } from '../../../../../../services/system.utils';
 
@@ -20,10 +21,19 @@ export class NewStudentComponent implements OnInit {
   saveData: any = false;
   constructor(
     private fb: FormBuilder,
+    private toastr: ToastrService,
     private apiHost: ApiHostService,
     private system: SystemUtils,
   ) {
     this.addStudent()
+  }
+
+  
+  showSuccess() {
+    this.toastr.success('Student Added successfully. Reloading List.', 'Congratulations', { timeOut: 5000 })
+  }
+  showFailed(message) {
+    this.toastr.warning(message, 'Warning', { timeOut: 5000 })
   }
 
   ngOnInit(): void {
@@ -61,11 +71,12 @@ export class NewStudentComponent implements OnInit {
       .subscribe((response: any) => {
         console.log(response)
         this.saveData = false;
+        setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
         // this.router.navigate(['user/p']);
       }, (error: any) => {
         console.log(error)
         this.saveData = false;
-
+        setTimeout(() => { this.showFailed("Opps, something went wrong. Please contact admin."); }, 1000); //add toast message
       })
 
   }
