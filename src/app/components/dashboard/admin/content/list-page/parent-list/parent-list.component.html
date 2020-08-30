@@ -1,96 +1,3 @@
-<!-- Begin Page Content -->
-<!-- <div class="container-fluid"> -->
-<!-- Page Heading -->
-<!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-  <p class="mb-4">
-    DataTables is a third party plugin that is used to generate the demo table
-    below. For more information about DataTables, please visit the
-    <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.
-  </p> -->
-
-<!-- DataTales Example -->
-<!-- <div class="card shadow mb-4">
-    <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Teacher List <a data-toggle="modal" data-target="#myModal"><i
-            class="fas fa-fw fa-plus-circle"></i></a></h6>
-    </div>
-    <div class="card-body">
-      <div class="table-responsive">
-        <div class="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-          <div class="row">
-            <div class="col-sm-12 col-md-6">
-              <div class="dataTables_length" id="dataTable_length">
-                <label>
-                  Show
-                  <select class="custom-select custom-select-sm form-control form-control-sm" [(ngModel)]="viewList">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                  </select>
-                  entries
-                </label>
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-6">
-              <div class="dataTables_filter" id="dataTable_filter">
-                <label for="Search">
-                  Search:
-                  <input type="search" class="form-control form-control-sm" aria-controls="dataTable"
-                    [(ngModel)]="searchText" />
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Position</th>
-            <th>Created</th>
-          </tr>
-        </thead>
-        <tfoot>
-          <tr>
-            <th>Username</th>
-            <th>Position</th>
-            <th>Created</th>
-          </tr>
-        </tfoot>
-        <tbody>
-          <tr *ngIf="showSpinner">
-            <td colspan="5">
-              <app-loading-spinner></app-loading-spinner>
-            </td>
-          </tr>
-          <tr>
-            <td *ngIf="error && !showSpinner" class="no-content" colspan="5">
-              <p>No user added yet</p>
-            </td>
-          </tr>
-          <ng-container *ngIf="showSpinner === false">
-            <tr *ngFor="
-              let staff of people
-                | filter: searchText
-                | paginate: { itemsPerPage: viewList, currentPage: p };
-              let i = index
-            ">
-              <td>{{ staff.username }}</td>
-              <td>{{ staff.position }}</td>
-              <td>{{ staff.created }}</td>
-            </tr>
-          </ng-container>
-        </tbody>
-      </table>
-    </div>
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
-  </div>
-</div> -->
-<!-- /.container-fluid -->
-
 <div id="dashboard-content" style="width: 80vw;">
     <div class="d-xl-flex justify-content-xl-start">
         <ol class="breadcrumb">
@@ -215,111 +122,34 @@
             <!-- Modal body -->
             <div class="modal-body">
                 <form class="user" [formGroup]="addStaffFOrm" (ngSubmit)="onSubmit()">
-                    <!-- <div class="form-group">
-              <label for="inputEmail">Email address <span class="validator" *ngIf="email.invalid && email.touched"> - Email is Required</span></label>
-              <input required type="email" class="form-control" id="inputEmail" aria-describedby="email"
-                placeholder="Enter email" formControlName="email">
-            </div> -->
-                    <!-- <div class="form-group">
-              <label for="inputFirstName">Firstname <span class="validator" *ngIf="firstname.invalid && firstname.touched"> - Firstname is required</span></label>
-              <input type="text" class="form-control" id="inputFirstName" aria-describedby="firstnameHelp"
-                placeholder="Enter firstname" formControlName="firstname" formControlName="firstname">
-            </div> -->
-                    <!-- <div class="form-group">
-              <label for="inputMiddleName">Middle Name (Optional)</label>
-              <input type="text" class="form-control" id="inputMiddleName" aria-describedby="middlenameHelp"
-                placeholder="Enter email" formControlName="middlename">
-              <small id="middlenameHelp" class="form-text text-muted">If you dont have one, you can just skip this field.</small>
-            </div>
-            <div class="form-group">
-              <label for="inputLastName">Last Name <span class="validator" *ngIf="lastname.invalid && lastname.touched"> - Lastname is required</span></label>
-              <input type="text" class="form-control" id="inputLastName" aria-describedby="lastnameHelp"
-                placeholder="Enter email" formControlName="lastname">
-            </div> -->
-                    <div class="form-group">
-                        <label for="inputLastName">Email
-                            <span class="validator" *ngIf="email.invalid && email.touched">
-                                - Email is required</span>
-                        </label>
-                        <input type="text" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter Email" formControlName="email"
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLastName">Firstname
-                            <span class="validator" *ngIf="firstname.invalid && firstname.touched">
-                                - Firstname is required</span>
-                        </label>
-                        <input type="text" class="form-control" id="inputfirstname" aria-describedby="firstnameHelp" placeholder="Enter Firstname"
-                            formControlName="firstname" />
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLastName">Lastname
-                            <span class="validator" *ngIf="lastname.invalid && lastname.touched">
-                                - Lastname is required</span>
-                        </label>
-                        <input type="text" class="form-control" id="inputlastname" aria-describedby="lastnameHelp" placeholder="Enter Lastname" formControlName="lastname"
-                        />
-                    </div>
-                    <!-- <div class="form-group">
-                        <label for="inputLastName">Username
-                            <span class="validator" *ngIf="username.invalid && username.touched">
-                                - Username is required</span></label>
-                        <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp"
-                            placeholder="Enter Username" formControlName="username" />
-                    </div> -->
-                    <div class="form-group">
-                        <label for="inputLastName">Password
-                            <span class="validator" *ngIf="password.invalid && password.touched">
-                                - Password is required</span>
-                        </label>
-                        <input type="text" class="form-control" id="inputPassword" aria-describedby="passwordHelp" placeholder="Enter Password" formControlName="password"
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLastName">Re-Enter Password
-                            <span class="validator" *ngIf="repassword.invalid && repassword.touched">
-                                - Re-Enter Password is required</span>
-                        </label>
-                        <input type="text" class="form-control" id="inputRePassword" aria-describedby="repasswordHelp" placeholder="Re-Enter password"
-                            formControlName="repassword" />
-                    </div>
-                    <div class="form-group">
-                        <div class="custom-control custom-checkbox small">
-                            <input type="checkbox" class="custom-control-input" id="continueModal" />
-                            <label class="custom-control-label" for="continueModal">Do not close modal</label>
-                        </div>
-                    </div>
-
-                    <!-- <div class="form-group">
-                        <label for="inputLastName">First Name
-                            <span class="validator" *ngIf="department.invalid && department.touched">
-                                - First Name is required</span></label>
-                        <input type="text" class="form-control" id="inputDepartment" aria-describedby="departmentHelp"
-                            placeholder="Enter First Name" formControlName="department" />
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLastName">Middle Name</label>
-                        <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp"
-                            placeholder="Enter Middle Name" formControlName="username" />
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword">Last Name
-                            <span class="validator" *ngIf="password.invalid && password.touched">
-                                - Last Name is Required</span></label>
-                        <input type="text" class="form-control" id="inputPassword" placeholder="Enter Lastname"
-                            formControlName="password" />
-                    </div>
-                    <div class="form-group">
-                        <label for="inputReTypePassword">Name Extension (if available)</label>
-                        <input type="text" class="form-control" id="inputReTypePassword"
-                            placeholder="Enter Extension (if any)" formControlName="repassword" />
-                    </div>
-                    <div class="form-group">
-                        <div class="custom-control custom-checkbox small">
-                            <input type="checkbox" class="custom-control-input" id="continueModal" />
-                            <label class="custom-control-label" for="continueModal">Do not close modal</label>
-                        </div>
-                    </div> -->
+                    
+                    <mat-form-field class="col-12">
+                        <input matInput type="text" id="inputEmail" formControlName="email" placeholder="Email" required>
+                      </mat-form-field>
+            
+                      <mat-form-field class="col-12">
+                        <input matInput type="text" id="inputFirstname" formControlName="firstname" placeholder="First Name" required>
+                      </mat-form-field>
+            
+                      <mat-form-field class="col-12">
+                        <input matInput type="text" id="inputLastname" formControlName="lastname" placeholder="Last Name" required>
+                      </mat-form-field>
+            
+                      <mat-form-field class="col-12">
+                        <input matInput [type]="hide ? 'password' : 'text'" id="inputPassword" formControlName="password" placeholder="Password"
+                          required>
+                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                      </mat-form-field>
+            
+                      <mat-form-field class="col-12">
+                        <input matInput [type]="hide ? 'password' : 'text'" id="repassword" formControlName="repassword" placeholder="Re-enter Password"
+                          required>
+                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                      </mat-form-field>
+            
+                      <div style="padding: 0px 15px; ">
+                          <mat-checkbox id="continueModal">Do not close modal</mat-checkbox>
+                      </div>
 
                     <!-- Modal footer -->
                     <div class="modal-footer">

@@ -20,6 +20,10 @@
     justify-content: center;
 }
 
+.inhoud:hover{
+
+}
+
 .Search {
     .search-field {
         border: 3px solid #32e17c;
@@ -197,7 +201,7 @@ h2, p{
   transition: all .2s ease-in-out;
 }
 
-.drie .inhoud:hover{
+.inhoud:hover{
   background-color:#A2CECD;
   cursor: pointer;
   i{
