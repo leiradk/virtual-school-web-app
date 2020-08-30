@@ -35,6 +35,21 @@ export class SetEventsComponent implements OnInit {
     });
   }
   onSubmit() {
-
+    const { token } = this.system.retrieveItem('userData');
+    const payload = {
+      token: token,
+      title: this.setEventsForm.value.title,
+      description: this.setEventsForm.value.description,
+      startDate: this.setEventsForm.value.startDate,
+      endDate: this.setEventsForm.value.endDate,
+      classID: ''
+    }
+    console.log(payload)
+    this.apiHost.addEventScheduleForTeacher(payload)
+      .subscribe((response: any) => {
+        console.log(response)
+      },(error: any) => {
+        console.log(error)
+      })
   }
 }

@@ -1,24 +1,36 @@
 <form *ngIf="setEventsForm" [formGroup]="setEventsForm" (ngSubmit)="onSubmit()">
   <div class="form">
     <p class="group">
-      <input type="text" id="inputTitle"  formControlName="title" required>
+      <input type="text" id="inputTitle" formControlName="title" required>
       <label for="inputTitle">Title</label>
     </p>
     <p class="group">
       <input type="text" id="inputDescription" formControlName="description" required>
       <label for="inputDescription">Description</label>
     </p>
-    <p class="group">
+    <!-- <p class="group">
       <input type="text" id="inputStartDate" formControlName="startDate" required>
       <label for="inputStartDate">Start Date</label>
     </p>
     <p class="group">
-      <input type="text" id="inputEndDate" formControlName="endDate" required>
+      <input type="date" id="inputEndDate" formControlName="endDate" required>
       <label for="inputEdnDate">End Date</label>
-    </p>
+    </p> -->
+    <div class="form-group row group">
+      <div class="col-12">
+        <input class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Start Date"
+          id="example-date-input" formControlName="startDate">
+      </div>
+    </div>
+    <div class="form-group row group">
+      <div class="col-12">
+        <input class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"
+          placeholder="End Date" id="example-date-input" formControlName="endDate">
+      </div>
+    </div>
     <input type="submit" value="Set Event">
   </div>
 </form>
 
-  <!-- [disabled]="loading" [class.spinner]="loading" -->
-  <!-- [disabled]="loading" -->
+<!-- [disabled]="loading" [class.spinner]="loading" -->
+<!-- [disabled]="loading" -->

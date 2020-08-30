@@ -1,7 +1,5 @@
-
-
 <div class="calendar" style="overflow-y: auto; height: 100% !important;">
-    <full-calendar id="full-calendar" [options]="calendarOptions"></full-calendar>
-  </div>
-  
-  
+  <full-calendar #fullcalendar deepChangeDetection="true" id="full-calendar" [options]="calendarOptions">
+  </full-calendar>
+</div>
+<!-- *ngIf="viewCalendar" -->
