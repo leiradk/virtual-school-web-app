@@ -20,8 +20,7 @@
     justify-content: center;
 }
 
-.inhoud:hover{
-
+.inhoud:hover {
 }
 
 .Search {
@@ -61,7 +60,7 @@
         display: flex;
         background: white;
         padding: 5px;
-        .count{
+        .count {
             flex: 1;
             text-align: center;
             border-right: 1px solid;
@@ -71,7 +70,8 @@
             flex: 7;
             padding: 0px 0px 0 20px;
         }
-        .download, .edit{
+        .download,
+        .edit {
             flex: 1;
             text-align: center;
             border-left: 1px solid;
@@ -82,150 +82,167 @@
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,700,300);
 
-body{
-  font-family: 'Open Sans', Arial, serif; 
-  font-weight: 400;
-  background-color:#fff;
-  color:rgb(44, 62, 80);
+body {
+    font-family: "Open Sans", Arial, serif;
+    font-weight: 400;
+    background-color: #fff;
+    color: rgb(44, 62, 80);
 }
-h1{
-  font-family: 'Montserrat', Arial, serif; 
-  /*font-family: 'Open Sans', Arial, serif;*/
-  font-weight: 700;
+h1 {
+    font-family: "Montserrat", Arial, serif;
+    /*font-family: 'Open Sans', Arial, serif;*/
+    font-weight: 700;
 }
-.header h1{
-  margin:1%;
+.header h1 {
+    margin: 1%;
 }
-.container{
+.container {
     display: flex;
     align-items: center;
     height: 24em;
     justify-content: center;
     border: solid 1px #999999;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 24em;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 24em;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
 
-.content{
-  
+.content {
 }
-.inner{
-  -webkit-flex: none;
-  -ms-flex: none;
-  flex: none;
-  max-width: 50%;
+.inner {
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    max-width: 50%;
 }
 .inner .iconmelon {
-  position: relative;
-  width: 64px;
-  height: 64px;
-  display: block;
-  fill: #525151;
-  margin:0 auto;
+    position: relative;
+    width: 64px;
+    height: 64px;
+    display: block;
+    fill: #525151;
+    margin: 0 auto;
 }
 
 .inhoud .iconmelon {
-  position: absolute;
-  width:128px;
-  height:128px;
-  display: block;
-  fill: #525151;
-  bottom:0px;
-  left:calc(50% - 64px);
-  transition: all .3s ease-in-out;
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    display: block;
+    fill: #525151;
+    bottom: 0px;
+    left: calc(50% - 64px);
+    transition: all 0.3s ease-in-out;
 }
 .iconmelon:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
-h2, p{
-  text-align:center;
-  font-size:0.8725em;
-  margin:0;
+h2,
+p {
+    text-align: center;
+    font-size: 0.8725em;
+    margin: 0;
 }
-.onder{
-  text-align:left;
-  padding:8px 10px;
+.onder {
+    text-align: left;
+    padding: 8px 10px;
 }
-.onder p{
-  font-weight:400;
-  margin:0;
-  text-align:left;
-  font-size:0.8125em;
+.onder p {
+    font-weight: 400;
+    margin: 0;
+    text-align: left;
+    font-size: 0.8125em;
 }
 .onder p strong {
-  font-weight:700;
-  text-transform:uppercase;
-  font-size:1em;
-  margin:0;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1em;
+    margin: 0;
 }
 
-.containerblok{
-  width:100%
+.containerblok {
+    width: 100%;
 }
-.een{
-  width:31%;
-  background-color:#2D1E2F;
-  border-radius:3px;
-  height:250px;
-  margin:1%;
+.een {
+    width: 31%;
+    background-color: #2d1e2f;
+    border-radius: 3px;
+    height: 250px;
+    margin: 1%;
 }
-.twee{
-  width:30%;
-  height:250px;
-  margin:1%;
+.twee {
+    width: 30%;
+    height: 250px;
+    margin: 1%;
 }
-.drie{
-  width:30%;
-  height:250px;
-  margin:1%;
+.drie {
+    width: 25%;
+    height: 250px;
+    margin: 10px 0px;
 }
-.inhoud{
-  height:calc(100% - 50px);
-  border-top-left-radius:5px;
-  border-top-right-radius:5px;
-  position:relative;
-}
-
-.drie .inhoud{
-  background-color:#A9E5BB;
-  transition: all .2s ease-in-out;
+.inhoud {
+    height: calc(100% - 50px);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: relative;
 }
 
-.inhoud:hover{
-  background-color:#A2CECD;
-  cursor: pointer;
-  i{
-      transition: .2s all ease-in-out;
-      color: #1E2330 !important;
-  }
+.add-module {
+    cursor: pointer;
+    a {
+        i {
+            transition: all 0.5s ease-in-out;
+        }
+    }
+}
+
+.add-module:hover {
+    a {
+        i {
+            color: #1e2330 !important;
+        }
+    }
+}
+
+.drie .inhoud {
+    background-color: #a9e5bb;
+    transition: all 0.2s ease-in-out;
+}
+
+.inhoud:hover {
+    background-color: #a2cecd;
+    cursor: pointer;
+    i {
+        transition: 0.2s all ease-in-out;
+        color: #1e2330 !important;
+    }
 }
 
 .drie .inhoud:hover .iconmelon {
-  position: absolute;
-  width:164px;
-  height:164px;
-  display: block;
-  fill: #525151;
-  bottom:0px;
-  left:calc(50% - 82px);
+    position: absolute;
+    width: 164px;
+    height: 164px;
+    display: block;
+    fill: #525151;
+    bottom: 0px;
+    left: calc(50% - 82px);
 }
-.onder{
-  background-color:#FCF6B1;
-  height:50px;
+.onder {
+    background-color: #fcf6b1;
+    height: 50px;
 }
 
-$textColor: #1E2330;
-$primary: #4D18FF;
+$textColor: #1e2330;
+$primary: #4d18ff;
 
 .selectMultiple {
     width: 240px;
@@ -241,10 +258,10 @@ $primary: #4D18FF;
         background: #fff;
         font-size: 14px;
         min-height: 44px;
-        box-shadow: 0 4px 16px 0 rgba(#162A5A, .12);
-        transition: box-shadow .3s ease;
+        box-shadow: 0 4px 16px 0 rgba(#162a5a, 0.12);
+        transition: box-shadow 0.3s ease;
         &:hover {
-            box-shadow: 0 4px 24px -1px rgba(#162A5A, .16);
+            box-shadow: 0 4px 24px -1px rgba(#162a5a, 0.16);
         }
         .arrow {
             right: 1px;
@@ -255,14 +272,14 @@ $primary: #4D18FF;
             position: absolute;
             &:before,
             &:after {
-                content: '';
+                content: "";
                 position: absolute;
                 display: block;
                 width: 2px;
                 height: 8px;
-                border-bottom: 8px solid #99A3BA;
+                border-bottom: 8px solid #99a3ba;
                 top: 43%;
-                transition: all .3s ease;
+                transition: all 0.3s ease;
             }
             &:before {
                 right: 12px;
@@ -274,14 +291,14 @@ $primary: #4D18FF;
             }
         }
         span {
-            color: #99A3BA;
+            color: #99a3ba;
             display: block;
             position: absolute;
             left: 12px;
             cursor: pointer;
             top: 8px;
             line-height: 28px;
-            transition: all .3s ease;
+            transition: all 0.3s ease;
             &.hide {
                 opacity: 0;
                 visibility: hidden;
@@ -302,14 +319,14 @@ $primary: #4D18FF;
                 white-space: nowrap;
             }
             &:before {
-                content: '';
+                content: "";
                 left: 0;
                 top: 0;
                 bottom: 6px;
                 width: 100%;
                 position: absolute;
                 display: block;
-                background: rgba(#E4ECFA, .7);
+                background: rgba(#e4ecfa, 0.7);
                 z-index: -1;
                 border-radius: 4px;
             }
@@ -323,7 +340,7 @@ $primary: #4D18FF;
                 display: block;
                 &:before,
                 &:after {
-                    content: '';
+                    content: "";
                     display: block;
                     width: 2px;
                     height: 10px;
@@ -342,19 +359,19 @@ $primary: #4D18FF;
             }
             &.notShown {
                 opacity: 0;
-                transition: opacity .3s ease;
+                transition: opacity 0.3s ease;
                 &:before {
                     width: 28px;
-                    transition: width .45s cubic-bezier(.87,-.41,.19,1.44) .2s;
+                    transition: width 0.45s cubic-bezier(0.87, -0.41, 0.19, 1.44) 0.2s;
                 }
                 i {
                     opacity: 0;
-                    transition: all .3s ease .3s;
+                    transition: all 0.3s ease 0.3s;
                 }
                 em {
                     opacity: 0;
                     transform: translate(-6px, 0);
-                    transition: all .4s ease .3s;
+                    transition: all 0.4s ease 0.3s;
                 }
                 &.shown {
                     opacity: 1;
@@ -373,20 +390,20 @@ $primary: #4D18FF;
             &.remove {
                 &:before {
                     width: 28px;
-                    transition: width .4s cubic-bezier(.87,-.41,.19,1.44) 0s;
+                    transition: width 0.4s cubic-bezier(0.87, -0.41, 0.19, 1.44) 0s;
                 }
                 i {
                     opacity: 0;
-                    transition: all .3s ease 0s;
+                    transition: all 0.3s ease 0s;
                 }
                 em {
                     opacity: 0;
                     transform: translate(-12px, 0);
-                    transition: all .4s ease 0s;
+                    transition: all 0.4s ease 0s;
                 }
                 &.disappear {
                     opacity: 0;
-                    transition: opacity .5s ease 0s;
+                    transition: opacity 0.5s ease 0s;
                 }
             }
         }
@@ -404,10 +421,10 @@ $primary: #4D18FF;
         visibility: hidden;
         opacity: 0;
         border-radius: 8px;
-        transform: translate(0, 20px) scale(.8);
+        transform: translate(0, 20px) scale(0.8);
         transform-origin: 0 0;
-        filter: drop-shadow(0 12px 20px rgba(#162A5A, .08));
-        transition: all .4s ease, transform .4s cubic-bezier(.87,-.41,.19,1.44), filter .3s ease .2s;
+        filter: drop-shadow(0 12px 20px rgba(#162a5a, 0.08));
+        transition: all 0.4s ease, transform 0.4s cubic-bezier(0.87, -0.41, 0.19, 1.44), filter 0.3s ease 0.2s;
         li {
             color: $textColor;
             background: #fff;
@@ -415,7 +432,8 @@ $primary: #4D18FF;
             cursor: pointer;
             overflow: hidden;
             position: relative;
-            transition: background .3s ease, color .3s ease, transform .3s ease .3s, opacity .5s ease .3s, border-radius .3s ease .3s;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease 0.3s, opacity 0.5s ease 0.3s,
+                border-radius 0.3s ease 0.3s;
             &:first-child {
                 border-radius: 8px 8px 0 0;
                 &:last-child {
@@ -433,13 +451,13 @@ $primary: #4D18FF;
                 color: #fff;
             }
             &:after {
-                content: '';
+                content: "";
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 width: 6px;
                 height: 6px;
-                background: rgba(#000, .4);
+                background: rgba(#000, 0.4);
                 opacity: 0;
                 border-radius: 100%;
                 transform: scale(1, 1) translate(-50%, -50%);
@@ -461,14 +479,14 @@ $primary: #4D18FF;
                 transform: scale(0);
                 opacity: 0;
                 &:after {
-                    animation: ripple .4s ease-out;
+                    animation: ripple 0.4s ease-out;
                 }
             }
             &.notShown {
                 display: none;
                 transform: scale(0);
                 opacity: 0;
-                transition: transform .35s ease, opacity .4s ease;
+                transition: transform 0.35s ease, opacity 0.4s ease;
                 &.show {
                     transform: scale(1);
                     opacity: 1;
@@ -478,7 +496,7 @@ $primary: #4D18FF;
     }
     &.open {
         & > div {
-            box-shadow: 0 4px 20px -1px rgba(#162A5A, .12);
+            box-shadow: 0 4px 20px -1px rgba(#162a5a, 0.12);
             .arrow {
                 &:before {
                     transform: rotate(-50deg);
@@ -492,7 +510,7 @@ $primary: #4D18FF;
             transform: translate(0, 12px) scale(1);
             opacity: 1;
             visibility: visible;
-            filter: drop-shadow(0 16px 24px rgba(#162A5A, .16));
+            filter: drop-shadow(0 16px 24px rgba(#162a5a, 0.16));
         }
     }
 }
