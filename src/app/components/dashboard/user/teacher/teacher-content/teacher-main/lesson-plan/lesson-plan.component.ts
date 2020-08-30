@@ -24,6 +24,7 @@ export class LessonPlanComponent implements OnInit {
   fileName: any;
   base64textString: any;
   userData: any;
+  search: any
   gradeLevel = [
     { id: 1, name: 'Grade 1' },
     { id: 2, name: 'Grade 2' },
