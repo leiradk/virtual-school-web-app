@@ -31,6 +31,7 @@ export class ParentListComponent implements OnInit {
   viewList: number = 5;
   userData: any;
   error: boolean = false;
+  hide: boolean = false;
   parentParams: Observable<string>;
   teacherMessage: any;
   constructor(

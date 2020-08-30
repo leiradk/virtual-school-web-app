@@ -136,9 +136,15 @@
           </mat-form-field>
 
           <mat-form-field class="col-12">
-            <input matInput [type]="hide ? 'password' : 'text'" id="inputLastName" formControlName="password" placeholder="Password"
+            <input matInput [type]="hide ? 'password' : 'text'" id="inputPassword" formControlName="password" placeholder="Password"
               required>
-            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <input matInput [type]="hide ? 'password' : 'text'" id="repassword" formControlName="repassword" placeholder="Re-enter Password"
+              required>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
           </mat-form-field>
 
           <div style="padding: 0px 15px; ">

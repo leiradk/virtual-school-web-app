@@ -1,15 +1,17 @@
 <!-- <app-loading-library></app-loading-library> -->
 
 <div class="header-title">
-    <div class="title">
-        <span>Library</span>
+    <div class="title" style="top: 25%; position: relative;">
+        <span>Modules</span>
     </div>
 </div>
 
 <div class="body-library">
     <div class="content">
-        <div class="search-panel">
-            <div class="row">
+
+        <hr>
+        <section class="search-panel section">
+            <div class="row" style="padding:0px 30px">
                 <div class="col-md-6">
                     <!-- select grade level -->
                     <ng-select [items]="gradeLevel" bindLabel="name"
@@ -24,74 +26,50 @@
                 </div>
             </div>
 
-            <div class="full-width">
-                <div class="input-group">
-                    <input type="text" class="form-control" name="x" placeholder="Search topic...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                            <span class="fas fa-search"></span>
-                        </button>
-                    </span>
-                </div>
+            <div class="full-width" style="padding:0px 15px">
+                <mat-form-field class="col-12">
+                    <input matInput type="text" formControlName="search" placeholder="Search content related to..."
+                        required>
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
             </div>
-        </div>
-
-        <div class="library-contents">
-            <div class="header">
-                <div class="container">
-
-                    <div *ngFor="let module of modules" class="drie">
-                        <div class="inhoud">
-                            <div class="iconmelon">
-                                <svg viewBox="0 0 32 32">
-                                    <g filter="">
-                                        <use xlink:href="#bookshelf"></use>
-                                    </g>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="onder" style="display: flex;">
-                            <div class="left">
-
-                            </div>
-                            <p>
-                                <strong>{{module.moduleName}} {{module.moduleNumber}} - Grade {{module.grade}}</strong>
-                                <br /> Date Created: {{dateCreated(module.created)}}
-                            </p>
-                            <div class=right>
-                                <button class="btn btn-primary download"
-                                    (click)="download(module.file64, module.filename)">Download</button>
-                            </div>
-                        </div>
-
-                    </div>
+        </section>
 
 
-                    <div class="drie">
-                        <a data-toggle="modal" data-target="#addModule">
-                            <div class="inhoud" style="font-size: 100px; text-align: center">
-                                <!-- <div class="iconmelon">
-                                    <svg viewBox="0 0 32 32">
-                                        <g filter="">
-                                            <use xlink:href="#bookshelf"></use>
-                                        </g>
-                                    </svg>
-                                </div> -->
-                                <i class="fa fa-plus"
-                                    style="display: inline-block; vertical-align: bottom; color: #888888"></i>
-                            </div>
-                        </a>
+        <hr>
 
-                        <div class="onder">
-                            <p>
-                                <strong>Add Module</strong>
-                                <br /> Author: Wilver D. Palubos</p>
+        <section class="library-contents">
+
+            <div class="row col-12" style="overflow-y: auto; max-height: 500px; min-height: 200px;">
+
+                <div *ngFor="let module of modules" class="drie col-4">
+                    <div class="inhoud">
+                        <div class="iconmelon">
+                            <svg viewBox="0 0 32 32">
+                                <g filter="">
+                                    <use xlink:href="#bookshelf"></use>
+                                </g>
+                            </svg>
                         </div>
                     </div>
-
+                    <div class="onder">
+                        <p>
+                            <strong>{{module.moduleName}} {{module.moduleNumber}} - Grade {{module.grade}}</strong>
+                            <br /> Date Created: {{dateCreated(module.created)}}</p>
+                    </div>
                 </div>
+
+
+                <!-- ADD NEW MODULES -->
+                <div class="add-module drie col-4" style="font-size: 100px; text-align: center;">
+                    <a data-toggle="modal" data-target="#addModule" style="width: 30%; height: 250px; color: #888888;">
+                        <i class="fa fa-plus" style="top: 30%; position: relative;">
+                        </i>
+                    </a>
+                </div>
+                <!--end | ADD NEW MODULES -->
             </div>
-        </div>
+        </section>
     </div>
 </div>
 
@@ -160,21 +138,26 @@
                         <input matInput type="text" id="inputUsername" formControlName="grade" placeholder="Grade"
                             required>
                     </mat-form-field>
-                    <div class="col-12">
+
+                    <!-- <input type="date" formControlName="dateCreated" required> -->
+                    <mat-form-field appearance="fill" class="col-12">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput formControlName="dateCreated" [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+                    <div class="col-12 row" style="padding: 10px;">
                         <div class="col-4">
-                            <input #file type="file" class="file" [hidden]="true"
-                                formControlName="fileName" (change)="onFileChange($event)">
-                            <button mat-button (click)="file.click()">Upload file</button>
+                            <input #file type="file" class="file" [hidden]="true" formControlName="fileName"
+                                (change)="onFileChange($event)">
+                            <button color="primary" mat-raised-button (click)="file.click()">Upload file</button>
                         </div>
-                        <div class="col-6">
+
+                        <div class="col-8" style="align-self: center;">
                             {{fileName}}
                         </div>
-
                     </div>
-                    <div class="col-12">
-                        <input type="date" formControlName="dateCreated" required>
-                    </div>
-
 
 
                     <div style="padding: 0px 15px; ">
@@ -192,7 +175,6 @@
                         </button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>

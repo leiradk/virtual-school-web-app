@@ -1,1 +1,231 @@
-<p>teaching-materials works!</p>
+<!-- <app-loading-library></app-loading-library> -->
+
+<div class="header-title">
+    <div class="title" style="top: 25%; position: relative;">
+        <span>Teaching Materials</span>
+    </div>
+</div>
+
+<div class="body-library">
+    <div class="content">
+
+        <hr>
+        <section class="search-panel section">
+            <div class="row" style="padding:0px 30px">
+                <div class="col-md-6">
+                    <!-- select grade level -->
+                    <ng-select [items]="gradeLevel" bindLabel="name"
+                        placeholder="Search content related for: Grade Level" appendTo="body" multiple="true">
+                    </ng-select>
+                </div>
+                <div class="col-md-6">
+                    <!-- select subjects -->
+                    <ng-select [items]="subjects" bindLabel="subject" placeholder="Search content related to: Subject"
+                        appendTo="body" multiple="true">
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="full-width" style="padding:0px 15px">
+                <mat-form-field class="col-12">
+                    <input matInput type="text" formControlName="search" placeholder="Search content related to..."
+                        required>
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+            </div>
+        </section>
+
+
+        <hr>
+
+        <section class="library-contents">
+
+            <div class="row col-12" style="overflow-y: auto; max-height: 500px; min-height: 200px;">
+
+                <div class="drie col-4">
+                    <div class="inhoud">
+                        <div class="iconmelon">
+                            <svg viewBox="0 0 32 32">
+                                <g filter="">
+                                    <use xlink:href="#bookshelf"></use>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="onder">
+                        <p>
+                            <strong>ENGLISH 1 - Grade 1</strong>
+                            <br /> Author: Wilver D. Palubos</p>
+                    </div>
+                </div>
+
+                <div class="drie col-4">
+                    <div class="inhoud">
+                        <div class="iconmelon">
+                            <svg viewBox="0 0 32 32">
+                                <g filter="">
+                                    <use xlink:href="#bookshelf"></use>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="onder">
+                        <p>
+                            <strong>INTERMIDIATE ENGLISH I - Grade 2</strong>
+                            <br /> Author: Wilver D. Palubos</p>
+                    </div>
+                </div>
+
+                <div class="drie col-4">
+                    <div class="inhoud">
+                        <div class="iconmelon">
+                            <svg viewBox="0 0 32 32">
+                                <g filter="">
+                                    <use xlink:href="#bookshelf"></use>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="onder">
+                        <p>
+                            <strong>INTERMIDIATE ENGLISH II - Grade 3</strong>
+                            <br /> Author: Wilver D. Palubos</p>
+                    </div>
+                </div>
+
+                <div class="drie col-4">
+                    <div class="inhoud">
+                        <div class="iconmelon">
+                            <svg viewBox="0 0 32 32">
+                                <g filter="">
+                                    <use xlink:href="#bookshelf"></use>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="onder">
+                        <p>
+                            <strong>INTERMIDIATE ENGLISH II - Grade 3</strong>
+                            <br /> Author: Wilver D. Palubos</p>
+                    </div>
+                </div>
+
+                <!-- ADD NEW MODULES -->
+                <div class="add-module drie col-4" style="font-size: 100px; text-align: center;">
+                    <a data-toggle="modal" data-target="#addModule" style="width: 30%; height: 250px; color: #888888;">
+                        <i class="fa fa-plus" style="top: 30%; position: relative;">
+                        </i>
+                    </a>
+                </div>
+                <!--end | ADD NEW MODULES -->
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<!-- ICONS -->
+<svg id="svg-source" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute">
+    <g id="bookshelf" data-iconmelon="Smallicons:7fea483ebf6d507599e8f11ef3513d92">
+        <path fill="#3F95D4"
+            d="M6 4h4c.553 0 1 .449 1 1.002v19.998c0 .553-.447 1-1 1h-4c-.553 0-1-.447-1-1v-19.999c0-.552.447-1.001 1-1.001z">
+        </path>
+        <path fill="#367FB4"
+            d="M7 25v-19.999c0-.552.447-1.001 1-1.001h-2c-.553 0-1 .449-1 1.001v19.999c0 .553.447 1 1 1h2c-.553 0-1-.448-1-1z">
+        </path>
+        <path fill="#D99666" d="M0 26h32v6h-32v-6z"></path>
+        <path fill="#F7CB8B" d="M5 19h6v4.002h-6v-4.002z"></path>
+        <path fill="#349886"
+            d="M12 0h6c.553 0 1 .449 1 1.002v23.998c0 .553-.447 1-1 1h-6c-.553 0-1-.447-1-1v-23.999c0-.552.447-1.001 1-1.001z">
+        </path>
+        <path fill="#9ACCC3" d="M14 22.001h2v-14.001h-2v14.001zm0-18.001v2h2v-2h-2z"></path>
+        <path fill="#E2574C"
+            d="M20 6h6c.553 0 1 .449 1 1v18c0 .553-.447 1-1 1h-6c-.553 0-1-.447-1-1v-18c0-.551.447-1 1-1z"></path>
+        <rect x="5" y="19" fill="#D2AD77" width="2" height="4.002"></rect>
+        <path fill="#2C8172"
+            d="M13 25v-23.999c0-.552.447-1.001 1-1.001h-2c-.553 0-1 .449-1 1.001v23.999c0 .553.447 1 1 1h2c-.553 0-1-.448-1-1z">
+        </path>
+        <path fill="#C04A40"
+            d="M21 25v-18c0-.551.447-1 1-1h-2c-.553 0-1 .449-1 1v18c0 .553.447 1 1 1h2c-.553 0-1-.448-1-1z"></path>
+        <path fill="#F7CB8B" d="M19 16h8v-4h-8v4zm0-6v1.002h8v-1.002h-8z"></path>
+        <g fill="#D2AD77">
+            <rect x="19" y="10" width="2" height="1.002"></rect>
+            <rect x="19" y="12" width="2" height="4"></rect>
+        </g>
+    </g>
+</svg>
+<!-- ICONS -->
+
+
+<!-- The Modal -->
+<div class="modal" id="addModule">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add Staff Or Teacher</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form class="user" [formGroup]="addModuleForm" (ngSubmit)="onSubmit(addModuleForm)">
+
+                    <mat-form-field class="col-12">
+                        <input matInput type="text" id="inputPosition" formControlName="moduleName" placeholder="Name"
+                            required>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-12">
+                        <input matInput type="text" id="inputDepartment" formControlName="moduleNumber"
+                            placeholder="Number" required>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-12">
+                        <input matInput type="text" id="inputUsername" formControlName="grade" placeholder="Grade"
+                            required>
+                    </mat-form-field>
+
+                    <!-- <input type="date" formControlName="dateCreated" required> -->
+                    <mat-form-field appearance="fill" class="col-12">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput formControlName="dateCreated" [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+                    <div class="col-12 row" style="padding: 10px;">
+                        <div class="col-4">
+                            <input #file type="file" class="file" [hidden]="true" accept="image/*"
+                                formControlName="fileName" (change)="onFileChange($event)">
+                            <button color="primary" mat-raised-button (click)="file.click()">Upload file</button>
+                        </div>
+
+                        <div class="col-8" style="align-self: center;">
+                            {{fileName}}
+                        </div>
+                    </div>
+
+
+                    <div style="padding: 0px 15px; ">
+                        <mat-checkbox id="continueModal">Do not close modal</mat-checkbox>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" style="width: 25%;">
+                            <!-- [disabled]="addStaffFOrm.valid === false" -->
+                            Submit
+                        </button>
+                        <button type="button" class="btn btn-danger" style="width: 25%;" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
