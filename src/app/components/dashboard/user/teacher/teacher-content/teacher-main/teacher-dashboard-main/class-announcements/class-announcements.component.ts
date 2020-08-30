@@ -25,10 +25,8 @@ export class ClassAnnouncementsComponent implements OnInit {
     const { token } = this.userData;
     this.apiHost.getAllPostOnTeacher(token)
       .subscribe((response: any) => {
-        console.log(response)
         this.classPosts = response.body.posts;
       }, (error: any) => {
-        console.log(error)
       })
   }
 }

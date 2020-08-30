@@ -46,8 +46,11 @@ export class TeacherHomeComponent implements OnInit {
       participantName: data.username,
       subject: this.topic
     };
+    console.log(payload)
+    // window.open(`http://localhost:8000/cr?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}&conferenceID=1`, '_blank')
     this.apiHost.createConference(payload)
       .subscribe((response: any) => {
+        console.log(response)
         const { body } = response;
         const conferenceID = body.conferenceID
         window.open(`http://localhost:8000/cr?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}&conferenceID=${conferenceID}`, '_blank');

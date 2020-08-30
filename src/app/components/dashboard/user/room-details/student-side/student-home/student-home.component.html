@@ -43,7 +43,7 @@
         </div>
         <div class="class-buttons">
           <div class="buttons">
-            <button class="btn-live"><i class="fa fa-video"></i><span>Join Live</span></button>
+            <button *ngIf="conferenceStatus === 'active'" class="btn-live" (click)="enterRoom()"><i class="fa fa-video"></i><span>Join Live</span></button>
           </div>
         </div>
       </div>

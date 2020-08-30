@@ -40,7 +40,7 @@
             <div class="header">
                 <div class="container">
 
-                    <div class="drie">
+                    <div *ngFor="let module of modules" class="drie">
                         <div class="inhoud">
                             <div class="iconmelon">
                                 <svg viewBox="0 0 32 32">
@@ -50,46 +50,22 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="onder">
+                        <div class="onder" style="display: flex;">
+                            <div class="left">
+
+                            </div>
                             <p>
-                                <strong>ENGLISH 1 - Grade 1</strong>
-                                <br /> Author: Wilver D. Palubos</p>
+                                <strong>{{module.moduleName}} {{module.moduleNumber}} - Grade {{module.grade}}</strong>
+                                <br /> Date Created: {{dateCreated(module.created)}}
+                            </p>
+                            <div class=right>
+                                <button class="btn btn-primary download"
+                                    (click)="download(module.file64, module.filename)">Download</button>
+                            </div>
                         </div>
+
                     </div>
 
-                    <div class="drie">
-                        <div class="inhoud">
-                            <div class="iconmelon">
-                                <svg viewBox="0 0 32 32">
-                                    <g filter="">
-                                        <use xlink:href="#bookshelf"></use>
-                                    </g>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="onder">
-                            <p>
-                                <strong>INTERMIDIATE ENGLISH I - Grade 2</strong>
-                                <br /> Author: Wilver D. Palubos</p>
-                        </div>
-                    </div>
-
-                    <div class="drie">
-                        <div class="inhoud">
-                            <div class="iconmelon">
-                                <svg viewBox="0 0 32 32">
-                                    <g filter="">
-                                        <use xlink:href="#bookshelf"></use>
-                                    </g>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="onder">
-                            <p>
-                                <strong>INTERMIDIATE ENGLISH II - Grade 3</strong>
-                                <br /> Author: Wilver D. Palubos</p>
-                        </div>
-                    </div>
 
                     <div class="drie">
                         <a data-toggle="modal" data-target="#addModule">
@@ -186,7 +162,7 @@
                     </mat-form-field>
                     <div class="col-12">
                         <div class="col-4">
-                            <input #file type="file" class="file" [hidden]="true" accept="image/*"
+                            <input #file type="file" class="file" [hidden]="true"
                                 formControlName="fileName" (change)="onFileChange($event)">
                             <button mat-button (click)="file.click()">Upload file</button>
                         </div>

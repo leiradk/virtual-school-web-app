@@ -22,6 +22,8 @@ export class MaterialsComponent implements OnInit {
   fileName: any;
   base64textString: any;
   userData: any;
+  modules: any;
+  downloadFile: any;
   gradeLevel = [
     { id: 1, name: 'Grade 1' },
     { id: 2, name: 'Grade 2' },
@@ -64,6 +66,7 @@ export class MaterialsComponent implements OnInit {
     this.apiService.getModule(this.userData.token)
       .subscribe((response: any) => {
         console.log(response)
+        this.modules = response.body.modules;
       }, (error: any) => {
         console.log(error)
       })
@@ -120,5 +123,26 @@ export class MaterialsComponent implements OnInit {
   handleFile(event) {
     var binaryString = event.target.result;
     this.base64textString = btoa(binaryString);
+  }
+
+  dateCreated(date){
+    const splitDate = date.split(' ');
+    return splitDate[0];
+  }
+  download(attachment, filename) {
+    this.downloadFile = "data:application/pdf;base64," + attachment;
+    // console.log('data');
+    // console.log(this.downloadFile);
+    const downloadLink = document.createElement("a");
+    const fileName = filename;
+    if (filename === 'None' || fileName === null || filename === undefined) {
+      this.toastr.warning('No File Was Uploaded', 'Empty File', { timeOut: 5000 })
+
+    } else {
+      downloadLink.href = this.downloadFile;
+      downloadLink.download = fileName;
+      downloadLink.click();
+    }
+
   }
 }

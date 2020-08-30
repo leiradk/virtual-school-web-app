@@ -176,6 +176,7 @@ export class ApiHostService {
         })
       );
   }
+
   //add badge on student
   addBadgeForStudent(payload) {
     return this.https.post(`${this.localhost}teacher/add/badge/student`, payload)
@@ -188,7 +189,17 @@ export class ApiHostService {
       );
   }
 
-
+  //add an event schedule for the teacher side
+  addEventScheduleForTeacher(payload) {
+    return this.https.post(`${this.localhost}teacher/create/event/schedule`, payload)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
 
   //put data
   //accept classroom invitation on student side
@@ -245,6 +256,7 @@ export class ApiHostService {
         })
       );
   }
+
   //update classwork for students
   updateClassWork(payload) {
     return this.https.put(`${this.localhost}teacher/update/classwork`, payload)
@@ -515,6 +527,7 @@ export class ApiHostService {
         })
       );
   }
+  //redirect to a conference room student side
   getConferenceLink(token, classId) {
     return this.https.get(`${this.localhost}get/conference/url?token=${token}&classID=${classId}`)
       .pipe(
@@ -676,6 +689,20 @@ export class ApiHostService {
         })
       );
   }
+
+  //get all events Scheduled on teacher side
+  getEventScheduleForTeacher(token) {
+    return this.https.get(`${this.localhost}teacher/get/events/schedule?token=${token}`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        }), catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
+
 
 }
 
