@@ -47,18 +47,19 @@ export class TeacherHomeComponent implements OnInit {
       subject: this.topic
     };
     console.log(payload)
+    window.open(`https://3255d0efae4e.ngrok.io`, '_blank');
     // window.open(`http://localhost:8000/cr?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}&conferenceID=1`, '_blank')
-    this.apiHost.createConference(payload)
-      .subscribe((response: any) => {
-        console.log(response)
-        const { body } = response;
-        const conferenceID = body.conferenceID
-        // window.open(`http://localhost:8000/cr?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}&conferenceID=${conferenceID}`, '_blank');
-        window.open(`https://5e78a9c4cfd8.ngrok.io/cr?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}&conferenceID=${conferenceID}`, '_blank');
+    // this.apiHost.createConference(payload)
+    //   .subscribe((response: any) => {
+    //     console.log(response)
+    //     const { body } = response;
+    //     const conferenceID = body.conferenceID
+    //     // window.open(`http://localhost:8000/cr?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}&conferenceID=${conferenceID}`, '_blank');
+    //     // window.open(`https://5e78a9c4cfd8.ngrok.io/cr?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}&conferenceID=${conferenceID}`, '_blank');
+  
        
-      }, (error: any) => {
-      })
-    // window.open(`http://localhost:8000/cr?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}&conferenceID=conferenceIDHere`, '_blank');
+    //   }, (error: any) => {
+    //   })
 
   }
 
