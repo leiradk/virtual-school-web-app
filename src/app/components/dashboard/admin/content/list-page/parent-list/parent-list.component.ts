@@ -98,7 +98,6 @@ export class ParentListComponent implements OnInit {
       .subscribe((response: any) => {
         this.error = false;
         const { status, body } = response;
-        console.log(response)
         if (status === 200) {
           this.people = body;
           this.adminList.setAllTeachers(this.people);
@@ -145,7 +144,6 @@ export class ParentListComponent implements OnInit {
       // position: 'parent',
       // department: 'parent'
     }
-    console.log(data);
 
     let contModal = <HTMLInputElement>document.getElementById('continueModal');
     if (!contModal.checked) {
@@ -160,7 +158,6 @@ export class ParentListComponent implements OnInit {
         // let contModal = <HTMLInputElement>document.getElementById('continueModal');
         // if (!contModal.checked) {
         // }
-        console.log(response)
         setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
         this.addStaffFOrm.reset();
         this.getParents();

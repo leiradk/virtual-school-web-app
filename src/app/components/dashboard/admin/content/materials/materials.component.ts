@@ -24,6 +24,7 @@ export class MaterialsComponent implements OnInit {
   userData: any;
   modules: any;
   downloadFile: any;
+  search: any;
   gradeLevel = [
     { id: 1, name: 'Grade 1' },
     { id: 2, name: 'Grade 2' },
@@ -65,7 +66,6 @@ export class MaterialsComponent implements OnInit {
   getModule() {
     this.apiService.getModule(this.userData.token)
       .subscribe((response: any) => {
-        console.log(response)
         this.modules = response.body.modules;
       }, (error: any) => {
         console.log(error)
@@ -84,7 +84,6 @@ export class MaterialsComponent implements OnInit {
   }
 
   onSubmit(value) {
-    console.log(value)
     const payload = {
       token: this.userData.token,
       moduleName: this.addModuleForm.value.moduleName,
@@ -94,10 +93,9 @@ export class MaterialsComponent implements OnInit {
       fileb64: this.base64textString,
       filename: this.fileName
     }
-    console.log(payload)
     this.apiService.addModule(payload)
       .subscribe((response: any) => {
-        console.log(response)
+        // console.log(response)
       }, (error: any) => {
         console.log(error)
       })

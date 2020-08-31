@@ -63,7 +63,6 @@ export class TeachingMaterialsComponent implements OnInit {
   getModule() {
     this.apiService.getTeachingMaterialsTeacher(this.userData.token)
       .subscribe((response: any) => {
-        console.log(response)
         this.teachingMaterials = response.body.materials
       }, (error: any) => {
         console.log(error)
@@ -90,7 +89,6 @@ export class TeachingMaterialsComponent implements OnInit {
       file: this.base64textString,
       filename: this.fileName
     }
-    console.log(payload)
     this.apiService.addTeachingMaterials(payload)
       .subscribe((response: any) => {
         console.log(response)

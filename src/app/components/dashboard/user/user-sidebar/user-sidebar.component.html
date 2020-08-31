@@ -7,10 +7,18 @@
         <i class="fas fa-tachometer-alt side-icon"></i><span style="font-weight: bold;">Dashboard</span></li>
     </a>
     <!-- *ngIf="isTeacherSide"  -->
-    <a  *ngIf="isTeacherSide || isStudentSide" [routerLink]="[classesRoute]" routerLinkActive="active" class="collapse-item">
+    <a *ngIf="isTeacherSide || isStudentSide" [routerLink]="[classesRoute]" routerLinkActive="active"
+      class="collapse-item">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleClass}">{{toggleSidebar('classes')}}
         <i class="fa fa-envelope side-icon"></i><span style="font-weight: bold;">Classes</span></li>
+    </a>
+
+    <a *ngIf="isTeacherSide || isStudentSide" [routerLink]="[libraryRoute]" routerLinkActive="active"
+      class="collapse-item">
+      <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
+        [ngClass]="{'active':toggleLibrary}">{{toggleSidebar('library')}}
+        <i class="fa fa-envelope side-icon"></i><span style="font-weight: bold;">Library</span></li>
     </a>
     <a *ngIf="isStudentSide" [routerLink]="[invitationRoute]" routerLinkActive="active" class="collapse-item">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
@@ -18,8 +26,9 @@
         <i class="fa fa-envelope side-icon"></i><span style="font-weight: bold;">Invitations</span></li>
     </a>
 
- 
-    <a *ngIf="isTeacherSide" [routerLink]="['/user/t/teaching-materials']" routerLinkActive="active" class="collapse-item">
+
+    <a *ngIf="isTeacherSide" [routerLink]="['/user/t/teaching-materials']" routerLinkActive="active"
+      class="collapse-item">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleTeachingMaterials}">{{toggleSidebar('teachingMaterials')}}
         <i class="fa fa-envelope side-icon"></i><span style="font-weight: bold;">Teaching Materials</span></li>
@@ -29,11 +38,11 @@
         [ngClass]="{'active':toggleLessonPlan}">{{toggleSidebar('lessonPlan')}}
         <i class="fa fa-envelope side-icon"></i><span style="font-weight: bold;">Lesson Plan</span></li>
     </a>
-    <a *ngIf="isTeacherSide" [routerLink]="['/user/t/records']" routerLinkActive="active" class="collapse-item">
+    <!-- <a *ngIf="isTeacherSide" [routerLink]="['/user/t/records']" routerLinkActive="active" class="collapse-item">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleRecord}">{{toggleSidebar('record')}}
         <i class="fa fa-envelope side-icon"></i><span style="font-weight: bold;">Record</span></li>
-    </a>
+    </a> -->
     <!-- <a [routerLink]="['/dashboard/parents-list']" routerLinkActive="active" class="collapse-item "> -->
     <!-- <a routerLinkActive="active" class="collapse-item disabled">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
@@ -42,11 +51,6 @@
       </li>
     </a> -->
 
-    <a *ngIf="isStudentSide" [routerLink]="['/user/s/library']" routerLinkActive="active" class="collapse-item">
-      <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
-        [ngClass]="{'active':toggleLibrary}">{{toggleSidebar('library')}}
-        <i class="fa fa-envelope side-icon"></i><span style="font-weight: bold;">Library</span></li>
-    </a>
     <a *ngIf="isStudentSide" [routerLink]="['/user/s/my-teachers']" routerLinkActive="active" class="collapse-item">
       <li class="d-lg-flex d-xl-flex align-items-lg-center align-items-xl-center list-item"
         [ngClass]="{'active':toggleMyTeachers}">{{toggleSidebar('myteachers')}}

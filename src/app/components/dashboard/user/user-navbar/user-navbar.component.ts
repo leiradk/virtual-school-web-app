@@ -18,16 +18,15 @@ export class UserNavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
+    const un = this.system.retrieveItem('username');
     const { username, usertype } = this.userData.data;
-    this.username = username;
-    console.log(usertype)
+    this.username = un;
     
     if (parseInt(usertype) === 10002) {
       this.usertype = 'Teacher';
     } else if(parseInt(usertype) === 10003) {
       this.usertype = 'Student';
     } else {
-      console.log('not accepted')
     }
 
   }
@@ -37,6 +36,7 @@ export class UserNavbarComponent implements OnInit {
     this.system.deleteKey('userData');
     this.system.deleteKey('classDetails');
     this.system.deleteKey('workDetails');
+    this.system.deleteKey('username');
 
   }
 }

@@ -42,7 +42,7 @@
 
             <div class="row col-12" style="overflow-y: auto; max-height: 500px; min-height: 200px;">
 
-                <div *ngFor="let teachMat of teachingMaterials" class="drie col-4">
+                <div *ngFor="let teachMat of teachingMaterials| filter: search " class="drie col-4">
                     <div class="inhoud">
                         <div class="iconmelon">
                             <svg viewBox="0 0 32 32">

@@ -15,6 +15,7 @@ export class UserSidebarComponent implements OnInit {
   dashboardRoute: any;
   classesRoute: any;
   invitationRoute: any;
+  libraryRoute: any;
   isStudentSide: boolean = false;
   isTeacherSide: boolean = false;
   isParentSide: boolean = false;
@@ -33,7 +34,6 @@ export class UserSidebarComponent implements OnInit {
     this.routeDashboard();
   }
   viewDetails(data) {
-    console.log(data)
     this.system.storeLocal('classDetails', data);
 
   }
@@ -43,6 +43,7 @@ export class UserSidebarComponent implements OnInit {
     if (usertype === '10002') {
       this.dashboardRoute = '/user/t/main';
       this.classesRoute = '/user/t/classes';
+      this.libraryRoute = '/user/t/library'
       this.isStudentSide = false;
       this.isParentSide = false;
       this.isTeacherSide = true;
@@ -50,6 +51,7 @@ export class UserSidebarComponent implements OnInit {
       this.dashboardRoute = '/user/s/main';
       this.invitationRoute = '/user/s/invitations';
       this.classesRoute = '/user/s/classes';
+      this.libraryRoute = '/user/s/library'
       this.isStudentSide = true;
       this.isTeacherSide = false;
       this.isParentSide = false;

@@ -28,7 +28,7 @@
 
             <div class="full-width" style="padding:0px 15px">
                 <mat-form-field class="col-12">
-                    <input matInput type="text" formControlName="search" placeholder="Search content related to..."
+                    <input matInput type="text" [(ngModel)]="search" placeholder="Search content related to..."
                         required>
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
@@ -151,7 +151,7 @@
                         <div class="col-4">
                             <input #file type="file" class="file" [hidden]="true" formControlName="fileName"
                                 (change)="onFileChange($event)">
-                            <button color="primary" mat-raised-button (click)="file.click()">Upload file</button>
+                            <a color="primary" mat-raised-button (click)="file.click()">Upload file</a>
                         </div>
 
                         <div class="col-8" style="align-self: center;">

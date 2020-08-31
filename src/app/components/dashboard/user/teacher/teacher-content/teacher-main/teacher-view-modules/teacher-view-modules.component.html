@@ -28,8 +28,7 @@
 
             <div class="full-width" style="padding:0px 15px">
                 <mat-form-field class="col-12">
-                    <input matInput type="text" [(ngModel)]="searchModule" placeholder="Search content related to..."
-                        required>
+                    <input matInput type="text" [(ngModel)]="search" placeholder="Search content related to...">
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
             </div>
@@ -42,7 +41,7 @@
 
             <div class="row col-12" style="overflow-y: auto; max-height: 500px; min-height: 200px;">
 
-                <div *ngFor="let module of modules" class="drie col-4">
+                <div *ngFor="let module of modules | filter: search" class="drie col-4">
                     <div class="inhoud">
                         <div class="iconmelon">
                             <svg viewBox="0 0 32 32">
@@ -58,6 +57,7 @@
                             <br /> Date Created: {{dateCreated(module.created)}}</p>
                     </div>
                 </div>
+
 
             </div>
         </section>
@@ -97,4 +97,3 @@
     </g>
 </svg>
 <!-- ICONS -->
-

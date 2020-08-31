@@ -24,6 +24,8 @@ import { LessonPlanComponent } from './components/dashboard/user/teacher/teacher
 import { RecordComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/record/record.component';
 import { AssignedEventsComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/assigned-events/assigned-events.component';
 import { TeacherDashboardMainComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-dashboard-main/teacher-dashboard-main.component';
+import { TeacherViewModulesComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-view-modules/teacher-view-modules.component';
+
 // import { ClassDetailsComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-details.component';
 // import { ClassHomeComponent } from './components/dashboard/user/teacher/teacher-content/class-details/class-home/class-home.component';
 // import { ClassworkComponent } from './components/dashboard/user/teacher/teacher-content/class-details/classwork/classwork.component';
@@ -327,6 +329,10 @@ const routes: Routes = [
                 component: SetEventsComponent
               },
             ]
+          },
+          {
+            path: "library",
+            component: TeacherViewModulesComponent
           },
           {
             path: "teaching-materials",

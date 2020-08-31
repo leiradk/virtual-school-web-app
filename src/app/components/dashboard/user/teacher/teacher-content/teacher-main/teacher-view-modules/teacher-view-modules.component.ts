@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiHostService } from '../../../../../../services/api-host.service';
-import { SystemUtils } from '../../../../../../services/system.utils';
+import { ApiHostService } from '../../../../../../../services/api-host.service';
+import { SystemUtils } from '../../../../../../../services/system.utils';
 
 @Component({
-  selector: 'app-library',
-  templateUrl: './library.component.html',
-  styleUrls: ['./library.component.scss']
+  selector: 'app-teacher-view-modules',
+  templateUrl: './teacher-view-modules.component.html',
+  styleUrls: ['./teacher-view-modules.component.scss']
 })
-export class LibraryComponent implements OnInit {
+export class TeacherViewModulesComponent implements OnInit {
 
   searchModule: any;
   library: any;
   userData: any;
+  search: any;
   modules: any;
   gradeLevel = [
     { id: 1, name: 'Grade 1' },
@@ -41,7 +42,7 @@ export class LibraryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userData = this.system.retrieveItem('userData')
+    this.userData = this.system.retrieveItem('userData');
     this.library = [
       {
         title: 'Module 1',
@@ -59,19 +60,20 @@ export class LibraryComponent implements OnInit {
         Grade: 5
       }
     ]
-
     this.getModules();
   }
+
   getModules() {
-    this.apiHost.getModuleStudent(this.userData.token)
+    this.apiHost.getModuleTeacher(this.userData.token)
       .subscribe((response: any) => {
-        console.log(response)
+        // console.log(response)
         this.modules = response.body.modules;
       }, (error: any) => {
         console.log(error)
       })
   }
-  dateCreated(date) {
+
+  dateCreated(date){
     const splitDate = date.split(' ');
     return splitDate[0];
   }

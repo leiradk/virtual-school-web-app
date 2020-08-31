@@ -21,7 +21,6 @@ export class DashboardComponent implements OnInit {
    
   }
   logout() {
-    console.log('logout')
     this.router.navigate(["/login"]);
     this.system.deleteKey('userData');
     this.system.deleteKey('classDetails');

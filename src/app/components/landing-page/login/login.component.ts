@@ -50,17 +50,17 @@ export class LoginComponent implements OnInit {
     const { value } = this.signInForm;
     this.loading = true;
     this.apiHost.signin(value).subscribe((response: any) => {
-      console.log('loginResponse', response);
       if (response) {
         const { status, body } = response;
         if (status === 200) {
           const { data } = body;
+          this.system.storeLocal('username', value.username);
+          console.log(value)
 
           if (parseInt(data.usertype) === 10002) {
             this.system.storeLocal('userData', body);
             this.router.navigate(["/user/t"]);
           } else if (parseInt(data.usertype) === 10001) {
-            console.log('admin data');
             this.system.storeLocal('userData', body);
             this.router.navigate(["/dashboard"]);
 
@@ -68,7 +68,6 @@ export class LoginComponent implements OnInit {
             this.system.storeLocal('userData', body);
             this.router.navigate(["/user/s"]);
             this.loading = false;
-            console.log('data: ', data)
 
           } else if (parseInt(data.usertype) === 10004) {
             this.system.storeLocal('userData', body);

@@ -82,7 +82,6 @@ export class CalendarComponent implements OnInit {
 
   }
   fullCalendarOptions() {
-    console.log('refresh')
     this.calendarOptions = {
       initialView: 'dayGridMonth',
       plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
@@ -92,14 +91,12 @@ export class CalendarComponent implements OnInit {
       // },
       eventClick: function (info) {
         // this.getDate(event);
-        console.log(info)
       },
       editable: true,
 
       dateClick: (info) => {
         // console.log(info)
         this.addEventDate = info.dateStr;
-        console.log(this.addEventDate)
         Swal.fire({
           title: 'Create an Event',
           text: info.dateStr,
@@ -126,7 +123,6 @@ export class CalendarComponent implements OnInit {
   // }
 
   dateClick() {
-    console.log('clicked', this.addEventDate)
     const eventSetup = {
       title: this.EventData,
       start: this.addEventDate,
@@ -152,7 +148,6 @@ export class CalendarComponent implements OnInit {
     // this.events = data;
     // console.log(this.events.length);
     for (let i = 0; i <= (data.length - 1); i++) {
-      console.log(i);
       const payload = {
         title: data[i].title,
         description: data[i].description,
@@ -163,7 +158,6 @@ export class CalendarComponent implements OnInit {
       this.events.push(payload);
       // this.calendarOptions.events.push(payload);
     }
-    console.log('setEvent', this.events);
     // this.viewCalendar = true 
     // this.calendarOptions.addEv. = this.events;
     // this.calendarComponent.fullCalendar('')

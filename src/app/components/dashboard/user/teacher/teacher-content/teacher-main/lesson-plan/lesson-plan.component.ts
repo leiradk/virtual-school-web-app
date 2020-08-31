@@ -85,7 +85,6 @@ export class LessonPlanComponent implements OnInit {
   }
 
   onSubmit(value) {
-    console.log(value)
     const payload = {
       token: this.userData.token,
       title: this.addModuleForm.value.title,
@@ -94,7 +93,6 @@ export class LessonPlanComponent implements OnInit {
       file: this.base64textString,
       filename: this.fileName
     }
-    console.log(payload)
     this.apiService.addLessonPlan(payload)
       .subscribe((response: any) => {
         console.log(response)

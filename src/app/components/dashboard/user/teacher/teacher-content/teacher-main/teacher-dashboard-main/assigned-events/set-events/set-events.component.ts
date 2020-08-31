@@ -44,7 +44,6 @@ export class SetEventsComponent implements OnInit {
       endDate: this.setEventsForm.value.endDate,
       classID: ''
     }
-    console.log(payload)
     this.apiHost.addEventScheduleForTeacher(payload)
       .subscribe((response: any) => {
         console.log(response)

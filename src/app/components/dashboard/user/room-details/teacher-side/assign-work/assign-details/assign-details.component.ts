@@ -268,7 +268,7 @@ export class AssignDetailsComponent implements OnInit {
       answeredID: points.answeredID,
       points: this.totalGrade,
       review: this.review
-    }
+    } 
     console.log(payload);
     this.answerErrorStatus = true;
     this.apiService.submitClassworkPoints(payload)
