@@ -133,8 +133,9 @@
                             <div *ngIf="parent.status === 'active'"
                                 class="d-xl-flex align-items-xl-center list-content-item"><img
                                     class="border rounded-circle border-primary teacher-list-img"
-                                    src="../../../../../../assets/admin/img/avatars/avatar1.jpeg"><span
-                                    class="d-xl-flex align-items-xl-center listed-user">{{parent.username}}</span>
+                                    src="../../../../../../assets/admin/img/avatars/avatar1.jpeg">
+                                    <span *ngIf="parent.username" class="d-xl-flex align-items-xl-center listed-user">{{parent.username}}</span>
+                                    <span *ngIf="parent.username === null" class="d-xl-flex align-items-xl-center listed-user">{{parent.email}}</span>
                                 <div
                                     class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
                                     <a data-toggle="modal" data-target="#parentProfileModal">
@@ -214,8 +215,9 @@
                             <div *ngIf="student.status === 'active'"
                                 class="d-xl-flex align-items-xl-center list-content-item"><img
                                     class="border rounded-circle border-primary teacher-list-img"
-                                    src="../../../../../../assets/admin/img/avatars/avatar5.jpeg"><span
-                                    class="d-xl-flex align-items-xl-center listed-user">{{student.username}}</span>
+                                    src="../../../../../../assets/admin/img/avatars/avatar5.jpeg">
+                                    <span *ngIf="student.username" class="d-xl-flex align-items-xl-center listed-user">{{student.username}}</span>
+                                    <span *ngIf="student.username === null" class="d-xl-flex align-items-xl-center listed-user">{{student.email}}</span>
                                 <div
                                     class="d-xl-flex justify-content-xl-center align-items-xl-center list-options hide">
                                     <a data-toggle="modal" data-target="#studentProfileModal">

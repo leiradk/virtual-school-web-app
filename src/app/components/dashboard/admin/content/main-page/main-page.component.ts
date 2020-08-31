@@ -106,6 +106,7 @@ export class MainPageComponent implements OnInit {
     const { token } = this.data;
     this.apiService.getStudents(token)
       .subscribe((response: any) => {
+        console.log(response)
         const { status, body } = response;
         const value = [];
         const inactive = [];
@@ -247,6 +248,7 @@ export class MainPageComponent implements OnInit {
     const { token } = this.data;
     this.apiService.getParents(token)
       .subscribe((response: any) => {
+        console.log(response)
         this.parentSpinner = false;
         const { status, body } = response;
         const value = [];
