@@ -15,6 +15,7 @@ export class TeachingMaterialsComponent implements OnInit {
   selectedSubject: any;
   selectedGrade: any;
   hide: boolean = false;
+  loadingModules: boolean = false;
   public addModuleForm: FormGroup;
   fileName: any;
   base64textString: any;
@@ -44,6 +45,14 @@ export class TeachingMaterialsComponent implements OnInit {
     { id: 5, subject: 'History' },
   ];
 
+  showSuccess() {
+    this.toastr.success('Item Added successfully. Reloading List.', 'Congratulations', { timeOut: 5000 })
+  }
+
+  showFailed() {
+    this.toastr.warning("Error", 'Warning', { timeOut: 5000 })
+  }
+
   constructor(
     private fb: FormBuilder,
     private apiService: ApiHostService,
@@ -61,11 +70,14 @@ export class TeachingMaterialsComponent implements OnInit {
   }
 
   getModule() {
+    this.loadingModules = true
     this.apiService.getTeachingMaterialsTeacher(this.userData.token)
       .subscribe((response: any) => {
         this.teachingMaterials = response.body.materials
+        this.loadingModules = false
       }, (error: any) => {
         console.log(error)
+        this.loadingModules = false
       })
   }
   addModuleFields() {
@@ -89,11 +101,16 @@ export class TeachingMaterialsComponent implements OnInit {
       file: this.base64textString,
       filename: this.fileName
     }
+    this.loadingModules = true
     this.apiService.addTeachingMaterials(payload)
       .subscribe((response: any) => {
         console.log(response)
+        this.loadingModules = false
+        setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
       }, (error: any) => {
         console.log(error)
+        this.loadingModules = false
+        setTimeout(() => { this.showFailed(); }, 1000); //add toast message
       })
   }
 

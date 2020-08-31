@@ -39,7 +39,10 @@
         <hr>
 
         <section class="library-contents">
-
+            <div *ngIf="loadingModules" class="row col-12" style="overflow-y: auto; max-height: 500px; min-height: 200px; margin-top:30px !important">
+                <app-loading-library></app-loading-library>
+            </div>
+            
             <div class="row col-12" style="overflow-y: auto; max-height: 500px; min-height: 200px;">
 
                 <div *ngFor="let teachMat of teachingMaterials| filter: search " class="drie col-4">

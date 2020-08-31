@@ -14,6 +14,7 @@ export class LessonPlanComponent implements OnInit {
   selectedSubject: any;
   selectedGrade: any;
   hide: boolean = false;
+  loadingModules: boolean = false;
   public addModuleForm: FormGroup;
   public searchModuleForm: FormGroup;
   lessonPlan: any;
@@ -58,17 +59,30 @@ export class LessonPlanComponent implements OnInit {
     this.addModuleFields();
   }
 
+  
+  showSuccess() {
+    this.toastr.success('Item Added successfully. Reloading List.', 'Congratulations', { timeOut: 5000 })
+  }
+
+  showFailed() {
+    this.toastr.warning("Error", 'Warning', { timeOut: 5000 })
+  }
+
+
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
     this.getLessonPlan();
   }
 
   getLessonPlan() {
+    this.loadingModules = true
     this.apiService.getLessonPlanTeacher(this.userData.token)
       .subscribe((response: any) => {
         console.log(response)
+        this.loadingModules = false
         this.lessonPlan = response.body.lessonPlans
       }, (error: any) => {
+        this.loadingModules = false
         console.log(error)
       })
   }
@@ -93,10 +107,15 @@ export class LessonPlanComponent implements OnInit {
       file: this.base64textString,
       filename: this.fileName
     }
+    this.loadingModules = true
     this.apiService.addLessonPlan(payload)
       .subscribe((response: any) => {
+        this.loadingModules = false
         console.log(response)
+        setTimeout(() => { this.showSuccess(); }, 1000); //add toast message
       }, (error: any) => {
+        this.loadingModules = false
+        setTimeout(() => { this.showFailed(); }, 1000); //add toast message
         console.log(error)
       })
   }
