@@ -54,7 +54,7 @@ export class TeacherHomeComponent implements OnInit {
         const { body } = response;
         const conferenceID = body.conferenceID
         // window.open(`http://localhost:8000/cr?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}&conferenceID=${conferenceID}`, '_blank');
-        window.open(`5e78a9c4cfd8.ngrok.io/cr?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}&conferenceID=${conferenceID}`, '_blank');
+        window.open(`https://5e78a9c4cfd8.ngrok.io/cr?token=${this.userData.token}&cid=${rid}&user=${data.username}&subject=${this.topic}&classroom=${className}&conferenceID=${conferenceID}`, '_blank');
        
       }, (error: any) => {
       })
