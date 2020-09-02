@@ -178,6 +178,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+
 
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -407,7 +409,7 @@ FullCalendarModule.registerPlugins([
     PortalModule,
     ScrollingModule,  
   ],
-  providers: [ApiHostService, SystemUtils],
+  providers: [ApiHostService, SystemUtils, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
