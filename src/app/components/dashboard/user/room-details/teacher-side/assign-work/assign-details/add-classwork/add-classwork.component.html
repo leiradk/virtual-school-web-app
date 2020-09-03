@@ -3,7 +3,8 @@
     <div *ngIf="showSpinnerLoad" style="position: absolute;z-index:90;top: 45%; left: 45%;">
         <app-loading-bar style="background: none;"></app-loading-bar>
     </div>
-    <div *ngIf="showSpinnerLoad" style="background: rgba(0,0,0,0.8);width: 100%;height: 100%;position: absolute;z-index: 89;border-radius: 5px;">
+    <div *ngIf="showSpinnerLoad"
+        style="background: rgba(0,0,0,0.8);width: 100%;height: 100%;position: absolute;z-index: 89;border-radius: 5px;">
     </div>
     <!-- content -->
     <div class="modal-content">
@@ -18,75 +19,54 @@
 
         <!-- body -->
         <div class="modal-body">
-            <div class=" form-group">
-                <label for="inputWorkTitle">
-                    <span class="validator" *ngIf="workTitle.invalid && workTitle.touched">
-                        Work Title is required</span>
-                </label>
-                <input type="text" class="form-control" id="inputWorkTitle" aria-describedby="workTitleHelp" placeholder="Enter Work Title"
-                    formControlName="workTitle">
-            </div>
-            <div class=" form-group">
-                <label for="inputWorkDescription">
-                    <span class="validator" *ngIf="description.invalid && description.touched">
-                        Work Decription is required</span>
-                </label>
-                <input type="text" class="form-control" id="inputWorkDescription" aria-describedby="workDescriptionHelp" placeholder="Enter Work Description"
-                    formControlName="description">
-            </div>
-            <div class=" form-group">
-                <label for="inputPoints">
-                    <span class="validator" *ngIf="points.invalid && points.touched">
-                        Points/Items is required</span>
-                </label>
-                <input type="text" class="form-control" id="inputPoints" aria-describedby="pointsHelp" placeholder="Enter Items/Points" formControlName="points">
-            </div>
+            <mat-form-field class="col-12">
+                <input matInput type="text" id="inputWorkTitle" formControlName="workTitle"
+                    placeholder="Classwork Title" required>
+            </mat-form-field>
 
-            <div class=" form-group">
-                <label for="inputInstruction">
-                    <span class="validator" *ngIf="instruction.invalid && instruction.touched">
-                        instruction is required</span>
-                </label>
-                <input type="text" class="form-control" id="inputInstruction" aria-describedby="instructionHelp" placeholder="Enter Instructions"
-                    formControlName="instruction">
-            </div>
+            <mat-form-field class="col-12">
+                <input matInput type="text" id="inputWorkDescription" formControlName="workDescription"
+                    placeholder="Description" required>
+            </mat-form-field>
 
-            <div class="form-group">
-                <div class="date-container">
-                    <div class="input-group-container">
-                        <input class="date-picker" placeholder="yyyy-mm-dd (Due Date)" name="dp" formControlName="dueDate" ngbDatepicker #d="ngbDatepicker">
-                    </div>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
-                            <i class="fa fa-calendar"></i>
-                        </button>
-                    </div>
+            <mat-form-field class="col-12">
+                <input matInput type="number" id="inputPoints" formControlName="points" placeholder="Points" required>
+            </mat-form-field>
+
+
+            <mat-form-field class="col-12">
+                <textarea matInput type="text" id="inputInstruction" formControlName="instruction"
+                    placeholder="Instructions" required></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-12">
+                <mat-label>Due Date</mat-label>
+                <input matInput formControlName="dueDate" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <div class="col-12 row" style="padding: 10px;">
+                <div class="col-4">
+                    <input #file type="file" class="file" [hidden]="true" formControlName="fileName"
+                        (change)="onFileChange($event)">
+                    <a color="primary" mat-raised-button (click)="file.click()">Upload file</a>
                 </div>
 
-            </div>
-            <div class=" form-group">
-                <!-- <label for="inputName"><span class="validator" *ngIf="name.invalid && name.touched"> -->
-                <!-- Class Name is required</span></label> -->
-                <a (click)="file.click()" class="btn btn-primary btn-rounded">Upload</a> {{fileName}}
-                <input type="file" id="file" class="work-file" #file (change)="onFileChange($event)">
+                <div class="col-8" style="align-self: center;">
+                    {{fileName}}
+                </div>
             </div>
         </div>
         <!-- body -->
 
         <!-- footer -->
         <div class="modal-footer">
-            <!-- <button class="btn btn-secondary" data-dismiss="modal">
-                close
-            </button>
-            <button class="btn btn-default">
-                Default
-            </button> -->
-            <!-- <app-loading-spinner style="background: none;" *ngIf="showSpinnerLoad"></app-loading-spinner> -->
+
             <button class="btn btn-primary">
                 Submit
             </button>
             <a class="btn btn-primary" data-dismiss="modal">Cancel</a>
         </div>
-        <!-- footer -->
     </div>
 </form>
