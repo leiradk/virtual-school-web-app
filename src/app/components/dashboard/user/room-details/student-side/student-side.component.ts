@@ -42,6 +42,12 @@ export class StudentSideComponent implements OnInit {
         this.cwActive = 'not-active';
         this.peopleActive = 'active';
         this.gradesActive = 'not-active';
+        this.breadcrumbAdd = 'Peo ple';
+      } else if (page[6] === 'grades' || page[7] === 'grades') {
+        this.homeActive = 'not-active';
+        this.cwActive = 'not-active';
+        this.peopleActive = 'not-active';
+        this.gradesActive = 'active';
         this.breadcrumbAdd = 'People';
       }
     });

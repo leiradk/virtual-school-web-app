@@ -33,6 +33,7 @@ export class UserNavbarComponent implements OnInit {
   logout() {
     console.log('logout')
     this.router.navigate(["/login"]);
+    this.system.deleteKey('studentData');
     this.system.deleteKey('userData');
     this.system.deleteKey('classDetails');
     this.system.deleteKey('workDetails');

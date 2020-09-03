@@ -77,6 +77,7 @@ import { StudentHomeComponent } from "./components/dashboard/user/room-details/s
 import { CheckUsersComponent } from "./components/dashboard/user/room-details/student-side/check-users/check-users.component";
 import { MyTeachersComponent } from "./components/dashboard/user/student/student-content/my-teachers/my-teachers.component";
 import { MyBadgesComponent } from "./components/dashboard/user/student/student-content/my-badges/my-badges.component";
+import { MyGradesComponent } from "./components/dashboard/user/room-details/student-side/my-grades/my-grades.component";
 
 // CheckStudentsComponent
 const routes: Routes = [
@@ -277,8 +278,14 @@ const routes: Routes = [
                     path: 'work-view',
                     component: CheckClassWorkComponent,
                   },
+               
                 ]
               },
+              {
+                path: 'grades',
+                component: MyGradesComponent,
+              }, 
+              
               {
                 path: 'people',
                 component: CheckUsersComponent,

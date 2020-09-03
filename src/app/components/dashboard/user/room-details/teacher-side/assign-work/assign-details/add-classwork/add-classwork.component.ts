@@ -72,6 +72,7 @@ export class AddClassworkComponent implements OnInit {
       title: this.addClassWorkForm.value.workTitle,
       classID: this.classDetails.rid,
       instruction: this.addClassWorkForm.value.instruction,
+      description: this.addClassWorkForm.value.description,
       points: this.addClassWorkForm.value.points,
       dueDate: date,
       attachment: this.base64textString,

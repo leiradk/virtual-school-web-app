@@ -184,6 +184,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 import { TeacherViewModulesComponent } from './components/dashboard/user/teacher/teacher-content/teacher-main/teacher-view-modules/teacher-view-modules.component';
+import { MyGradesComponent } from './components/dashboard/user/room-details/student-side/my-grades/my-grades.component';
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   timeGridPlugin,
@@ -296,6 +297,7 @@ FullCalendarModule.registerPlugins([
     StudentSetEventsComponent,
     StudentClassAnnouncemetsComponent,
     TeacherViewModulesComponent,
+    MyGradesComponent,
   ],
   imports: [
     BrowserModule,

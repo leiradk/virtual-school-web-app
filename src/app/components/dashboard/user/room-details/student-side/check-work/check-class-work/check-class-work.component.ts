@@ -200,9 +200,10 @@ export class CheckClassWorkComponent implements OnInit {
         console.log(this.classWork)
         this.restoreClassWork(this.classWork);
       }, (error: any) => {
-        console.log(error)
+        // console.log(error)
         const { message, status } = error.error;
         this.error = true;
+        console.log(status)
         if (status === 404) {
           this.errorMessage = 'Empty Classwork';
         } else if (status === 500) {

@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
     const { value } = this.signInForm;
     this.loading = true;
     this.apiHost.signin(value).subscribe((response: any) => {
+      console.log(response)
       if (response) {
         const { status, body } = response;
         if (status === 200) {
