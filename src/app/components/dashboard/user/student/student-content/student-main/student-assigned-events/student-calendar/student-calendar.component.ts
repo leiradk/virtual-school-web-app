@@ -65,29 +65,26 @@ export class StudentCalendarComponent implements OnInit {
       initialView: 'dayGridMonth',
       plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
       events: this.events,
-      eventClick: function (info) {
-        // this.getDate(event);
-        console.log(info)
-      },
-      dateClick: (info) => {
-        // console.log(info)
-        this.addEventDate = info.dateStr;
-        console.log(this.addEventDate)
-        Swal.fire({
-          title: 'Create an Event',
-          text: info.dateStr,
-          icon: 'question',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Create'
-        }).then((result) => {
-          if (result.value) {
-            this.router.navigate(["/user/s/main/event-scheduler"]);
-          }
-        })
-        // jQuery('#addEvent').modal('show');
-      },
+      // eventClick: function (info) {
+      //   console.log(info)
+      // },
+      // dateClick: (info) => {
+      //   this.addEventDate = info.dateStr;
+      //   console.log(this.addEventDate)
+      //   Swal.fire({
+      //     title: 'Create an Event',
+      //     text: info.dateStr,
+      //     icon: 'question',
+      //     showCancelButton: true,
+      //     confirmButtonColor: '#3085d6',
+      //     cancelButtonColor: '#d33',
+      //     confirmButtonText: 'Create'
+      //   }).then((result) => {
+      //     if (result.value) {
+      //       this.router.navigate(["/user/s/main/event-scheduler"]);
+      //     }
+      //   })
+      // },
 
     };
   }

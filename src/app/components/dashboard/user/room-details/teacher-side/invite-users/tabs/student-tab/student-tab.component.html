@@ -70,7 +70,12 @@
                     <label for="inputSearch">Search Student</label>
                 </p>
                 <div class="table-container" style="max-height: 470px; overflow-y:auto">
-                    <table class="table" style="table-layout:fixed; margin-bottom: 0px">
+                    <div *ngIf="inviting" class="table-body">
+                        <div class="retrieving-data">
+                            <app-loading-spinner></app-loading-spinner>
+                        </div>
+                    </div>
+                    <table *ngIf="!inviting" class="table" style="table-layout:fixed; margin-bottom: 0px">
                         <thead>
                             <tr>
                                 <th class="tbl-large-head" style="width: 20%">Name</th>
@@ -91,13 +96,7 @@
                                 </th>
                             </tr>
                         </tbody>
-                        <!-- <tfoot>
-                        <tr>
-                            <th class="tbl-large-head">Name</th>
-                            <th class="tbl-large-head">Email</th>
-                            <th class="tbl-large-head">Action</th>
-                        </tr>
-                    </tfoot> -->
+
                     </table>
                 </div>
             </div>
@@ -106,19 +105,7 @@
                     <input type="submit" data-dismiss="modal" value="Done">
                 </div>
             </div>
-            <!-- </form> -->
 
-
-            <!-- <form class="user" [formGroup]="addClassFOrm" (ngSubmit)="onSubmit()">
-
-                <div class="modal-body">
-                    <div class=" form-group">
-                        <label for="inputName"><span class="validator" *ngIf="name.invalid && name.touched">
-                                Class Name is required</span></label>
-                        <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp"
-                            placeholder="Enter Class Name" formControlName="name">
-                    </div>
-          </form> -->
 
         </div>
     </div>
@@ -143,7 +130,12 @@
 
             <!-- body -->
             <div class="modal-body">
-                <table class="table" style="table-layout:fixed; margin-bottom: 0px">
+                <div *ngIf="noBadgeFound" class="table-body">
+                    <div class="no-badge">
+                        {{noBadgeMessage}}
+                    </div>
+                </div>
+                <table *ngIf="!noBadgeFound" class="table" style="table-layout:fixed; margin-bottom: 0px">
                     <thead>
                         <tr>
                             <th class="tbl-large-head" style="width: 50%">Email</th>
@@ -156,8 +148,8 @@
                                 {{badges.badgeName}}</th>
                             <th class="">
                                 <div class="form" style="padding: 0px">
-                                    <input style="font-size: 12px" (click)="adddBadgeOnStudent(badges.badgeID)" type="submit"
-                                        value="Add Badge">
+                                    <input style="font-size: 12px" (click)="adddBadgeOnStudent(badges.badgeID)"
+                                        type="submit" value="Add Badge">
                                 </div>
                             </th>
                         </tr>

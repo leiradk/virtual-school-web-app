@@ -86,7 +86,7 @@
     <div *ngIf="!showSpinner && error"
         style="width: 100%;text-align: center;border: none;height: 100vh; font-size: 30px;color: #777777;"
         class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
-        Something went wrong! Please reload your browser.
+        <!-- Something went wrong! Please reload your browser. --> {{errorMessage}}
     </div>
     <div *ngIf="!showSpinner&& !error" class="reminders" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
         <div class="new-body2" style="padding: 20px; height: 70px;">
@@ -114,7 +114,7 @@
                             <div class="row" style="padding-top: 20px">
                                 <div class="col-md-12">
                                     <!-- <p *ngIf="workDetails"> -->
-                                    <p>Submitted Attachments: <a *ngIf="viewAnswer"
+                                    <p *ngIf="viewAnswer">Submitted Attachments: <a
                                             (click)="download(viewClassWork.attachment, viewClassWork.attachmentFilename)"
                                             class="btn btn-sm btn-primary">download</a></p>
                                     <strong>Classwork Description: </strong>
@@ -129,7 +129,7 @@
                                     </p>
                                     <hr />
                                     <div *ngIf="viewAnswer">
-                                        <small class="text-muted">STUDENT'S ANSWER:</small>
+                                        <small class="text-muted">STUDENT'S Review:</small>
                                         <!-- <a
                                                         (click)="download(reviewData.attachment, reviewData.attachmentFilename)"
                                                         class="btn btn-sm btn-primary">download</a></p> -->
@@ -224,9 +224,6 @@
                         <hr>
                         <span class="stude-name1">{{getDate(answerData.answeredDate)}}</span>
                         <span class="stude-holder">Date Submitted</span>
-                        <hr>
-                        <span class="stude-name1">Teacher Name</span>
-                        <span class="stude-holder">Assigned By</span>
                         <hr>
                         <input #grade type="range" min="0" max="{{answerData.totalpoints}}" step="1"
                             value="{{totalGrade}}" (change)="setGrade(grade.value)">

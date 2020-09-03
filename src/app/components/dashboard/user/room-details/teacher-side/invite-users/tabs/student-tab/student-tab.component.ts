@@ -27,6 +27,9 @@ export class StudentTabComponent implements OnInit {
   student: any;
   badge: any;
   getStudentID: any;
+  inviting: boolean = false;
+  noBadgeFound: boolean = false;
+  noBadgeMessage: any;
   constructor(
     private apiService: ApiHostService,
     private system: SystemUtils,
@@ -46,8 +49,8 @@ export class StudentTabComponent implements OnInit {
   showSuccess() {
     this.toastr.success('Invite has been successfully sent', 'Congratulations', { timeOut: 4000 })
   }
-  showFailed() {
-    this.toastr.warning('Invite have failed to sent', 'Try Again', { timeOut: 4000 })
+  showFailed(message) {
+    this.toastr.warning(message, 'Try Again', { timeOut: 4000 })
   }
 
   classFormModel() {
@@ -139,6 +142,7 @@ export class StudentTabComponent implements OnInit {
       user: data.email
 
     }
+    this.inviting = true;
     this.error = false;
     this.showSpinner = true;
     this.apiService.sendClassInvites(payload)
@@ -146,9 +150,17 @@ export class StudentTabComponent implements OnInit {
         // this.getStudents(this.userData);
         this.showSuccess(); // show toastr
         jQuery('#myModal').modal('hide'); //close modal after submit
+        this.inviting = false;
       }, (error: any) => {
+        const { message, status } = error.error;
+        this.inviting = false;
         this.showSpinner = false;
-        this.showFailed()
+        console.log(error.error);
+        if (status === 403) {
+          this.showFailed(message)
+        } else {
+          this.showFailed('Invite have failed to sent');
+        }
         jQuery('#myModal').modal('hide'); //close modal after submit
       })
 
@@ -162,7 +174,15 @@ export class StudentTabComponent implements OnInit {
         console.log(response)
         this.badge = response.body.badges
       }, (error: any) => {
-        console.log(error)
+        console.log('badge: ', error)
+        const { status } = error;
+        this.noBadgeFound = true;
+        if (status === 404) {
+          console.log('no badge found')
+          this.noBadgeMessage = 'no badge found';
+        } else {
+          this.noBadgeMessage = 'Something went wrong';
+        }
       })
   }
   getAvailableBadges(sid) {

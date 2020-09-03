@@ -404,7 +404,7 @@ const routes: Routes = [
                 children: [
                   {
                     path: "",
-                    redirectTo: 'teacher',
+                    redirectTo: 'student',
                     pathMatch: "full"
                   },
                   {
