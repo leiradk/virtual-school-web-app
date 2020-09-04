@@ -8,7 +8,8 @@ import { throwError } from 'rxjs';
 })
 export class ApiHostService {
 
-  localhost = `http://139.162.238.76/vs/`
+  // localhost = `http://139.162.238.76/vs/`;
+  localhost = 'https://twowaydigitalschool.ie/vs/';
   constructor(
     private https: HttpClient
   ) { }
