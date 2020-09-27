@@ -66,7 +66,9 @@ export class AddClassworkComponent implements OnInit {
 
 
   onSubmit() {
-    const date = this.addClassWorkForm.value.dueDate.year + "-" + this.addClassWorkForm.value.dueDate.month + "-" + this.addClassWorkForm.value.dueDate.day;
+    const date = this.addClassWorkForm.value.dueDate.toString().split(" ")
+
+   // const date = this.addClassWorkForm.value.dueDate.year + "-" + this.addClassWorkForm.value.dueDate.month + "-" + this.addClassWorkForm.value.dueDate.day;
     const payload = {
       token: this.userData.token,
       title: this.addClassWorkForm.value.workTitle,
@@ -74,13 +76,10 @@ export class AddClassworkComponent implements OnInit {
       instruction: this.addClassWorkForm.value.instruction,
       description: this.addClassWorkForm.value.description,
       points: this.addClassWorkForm.value.points,
-      dueDate: "2020-09-23",
+      dueDate: this.getDueDate(date),
       attachment: this.base64textString,
       attachmentFilename: this.fileName
     }
-
-    this.showSpinnerLoad = true;
-    console.log(payload);
 
     this.apiService.addClasswork(payload)
       .subscribe((response: any) => {
@@ -110,5 +109,37 @@ export class AddClassworkComponent implements OnInit {
     var binaryString = event.target.result;
     this.base64textString = btoa(binaryString);
 
+  }
+
+  getDueDate(date: any) {
+    console.log(date)
+    let month;
+    if(date[1] === 'Jan' ){
+      month = "01";
+    }  else if(date[1] === 'Feb') {
+      month = "02";
+    } else if(date[1] === 'Mar') {
+      month = "03";
+    } else if(date[1] === 'Apr') {
+      month = "04";     
+    } else if(date[1] === 'May') {
+      month = "05";
+    } else if(date[1] === 'Jun') {
+      month = "06";
+    } else if(date[1] === 'Jul') {
+      month = "07";
+    } else if(date[1] === 'Aug') {
+      month = "08";
+    } else if(date[1] === 'Sep') {
+      month = "09";
+    } else if(date[1] === 'Oct') {
+      month = "10"; 
+    } else if(date[1] === 'Nov') {
+      month = "11";
+    } else if(date[1] === 'Dec') {
+      month = "12";
+    }
+    const fullDueDate = date[3]+"-"+month+"-"+date[2];
+    return fullDueDate;
   }
 }

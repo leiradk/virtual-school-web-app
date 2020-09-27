@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.loggout();
+   // this.loggout();
   }
   signInModel() {
     this.signInForm = this.fb.group({
@@ -111,6 +111,7 @@ export class LoginComponent implements OnInit {
     });
   }
   loggout() {
+    console.log('login')
     this.sharedWork.setClassWork(null);
     this.sharedWork.setClassWork(null);
     this.system.deleteKey('workList');

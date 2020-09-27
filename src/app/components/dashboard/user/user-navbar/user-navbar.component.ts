@@ -19,7 +19,7 @@ export class UserNavbarComponent implements OnInit {
   ngOnInit(): void {
     this.userData = this.system.retrieveItem('userData');
     const un = this.system.retrieveItem('username');
-    const { username, usertype } = this.userData.data;
+    const { usertype } = this.userData.data;
     this.username = un;
     
     if (parseInt(usertype) === 10002) {

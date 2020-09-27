@@ -19,11 +19,13 @@ export class TeacherComponent implements OnInit {
     this.data = this.system.retrieveItem("userData");
     if (this.data === undefined || this.data === null) {
       this.router.navigate(["/Landing-Page"]);
+      console.log('data2')
     } else {
       const { token } = this.data;
 
       if (token === undefined) {
         this.router.navigate(["/Landing-Page"]);
+        console.log('data1')
       } else {
         const { data } = this.data;
         // console.log(data.usertype);
